@@ -1,0 +1,34 @@
+stages:
+  - test
+  - beta
+before_script:
+  - "bundle install --path vendor/bundle"
+variables:
+  LC_ALL: "en_US.UTF-8"
+  LANG: "en_US.UTF-8"
+test:
+  dependencies: []
+  stage: test
+  artifacts:
+    paths:
+      - fastlane/screenshots
+      - fastlane/logs
+      - fastlane/test_output
+  script:
+    - "bundle exec fastlane test"
+  tags:
+    - xcode
+beta:
+  dependencies: []
+  stage: beta
+  artifacts:
+    paths:
+      - fastlane/screenshots
+      - fastlane/logs
+  script:
+    - "bundle exec fastlane beta"
+  tags:
+    - xcode
+  only:
+    - master
+    - /^release\/(.*)$/
