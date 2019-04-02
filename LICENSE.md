@@ -1,0 +1,1 @@
+Copyright © 2019 Cocoatype, LLC. All rights reserved.
