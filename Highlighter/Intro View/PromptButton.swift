@@ -1,12 +1,14 @@
-//  Created by Geoff Pado on 3/31/19.
+//  Created by Geoff Pado on 4/1/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import UIKit
 
-class AppViewController: UIViewController {
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        embed(IntroViewController())
+class PromptButton: UIButton {
+    init(title string: String) {
+        super.init(frame: .zero)
+        setTitleColor(tintColor, for: .normal)
+        setTitle(string, for: .normal)
+        translatesAutoresizingMaskIntoConstraints = false
     }
 
     @available(*, unavailable)

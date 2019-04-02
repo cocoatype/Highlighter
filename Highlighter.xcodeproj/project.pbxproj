@@ -14,6 +14,11 @@
 		041EFF0E2251A9F50058D8EE /* HighlighterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF0D2251A9F50058D8EE /* HighlighterTests.swift */; };
 		041EFF192251AAFE0058D8EE /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF182251AAFE0058D8EE /* UIViewControllerExtensions.swift */; };
 		041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF1A2251AB8D0058D8EE /* AppWindow.swift */; };
+		041EFF492252FAF50058D8EE /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF482252FAF50058D8EE /* IntroViewController.swift */; };
+		041EFF4B225300030058D8EE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF4A225300030058D8EE /* Localizable.strings */; };
+		041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF4D225302CC0058D8EE /* IntroView.swift */; };
+		041EFF50225303120058D8EE /* PromptLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF4F225303120058D8EE /* PromptLabel.swift */; };
+		041EFF52225303430058D8EE /* PromptButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF51225303430058D8EE /* PromptButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +43,11 @@
 		041EFF0F2251A9F50058D8EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		041EFF182251AAFE0058D8EE /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		041EFF1A2251AB8D0058D8EE /* AppWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWindow.swift; sourceTree = "<group>"; };
+		041EFF482252FAF50058D8EE /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		041EFF4A225300030058D8EE /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		041EFF4D225302CC0058D8EE /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		041EFF4F225303120058D8EE /* PromptLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptLabel.swift; sourceTree = "<group>"; };
+		041EFF51225303430058D8EE /* PromptButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +89,7 @@
 		041EFEF72251A9F30058D8EE /* Highlighter */ = {
 			isa = PBXGroup;
 			children = (
+				041EFF4C225302B90058D8EE /* Intro View */,
 				041EFEF82251A9F30058D8EE /* AppDelegate.swift */,
 				041EFEFA2251A9F30058D8EE /* AppViewController.swift */,
 				041EFEFF2251A9F50058D8EE /* Assets.xcassets */,
@@ -86,6 +97,7 @@
 				041EFF042251A9F50058D8EE /* Info.plist */,
 				041EFF182251AAFE0058D8EE /* UIViewControllerExtensions.swift */,
 				041EFF1A2251AB8D0058D8EE /* AppWindow.swift */,
+				041EFF4A225300030058D8EE /* Localizable.strings */,
 			);
 			path = Highlighter;
 			sourceTree = "<group>";
@@ -97,6 +109,17 @@
 				041EFF0F2251A9F50058D8EE /* Info.plist */,
 			);
 			path = HighlighterTests;
+			sourceTree = "<group>";
+		};
+		041EFF4C225302B90058D8EE /* Intro View */ = {
+			isa = PBXGroup;
+			children = (
+				041EFF482252FAF50058D8EE /* IntroViewController.swift */,
+				041EFF4D225302CC0058D8EE /* IntroView.swift */,
+				041EFF4F225303120058D8EE /* PromptLabel.swift */,
+				041EFF51225303430058D8EE /* PromptButton.swift */,
+			);
+			path = "Intro View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				041EFF032251A9F50058D8EE /* LaunchScreen.storyboard in Resources */,
+				041EFF4B225300030058D8EE /* Localizable.strings in Resources */,
 				041EFF002251A9F50058D8EE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,10 +223,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041EFF492252FAF50058D8EE /* IntroViewController.swift in Sources */,
 				041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */,
 				041EFF192251AAFE0058D8EE /* UIViewControllerExtensions.swift in Sources */,
+				041EFF52225303430058D8EE /* PromptButton.swift in Sources */,
 				041EFEF92251A9F30058D8EE /* AppDelegate.swift in Sources */,
+				041EFF50225303120058D8EE /* PromptLabel.swift in Sources */,
 				041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */,
+				041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
