@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Highlighter
+
+  Created by Geoff Pado on 4/1/19.
+  Copyright © 2019 Cocoatype, LLC. All rights reserved.
+*/
+
+"IntroView.promptLabelText" = "Black Highlighter needs permission to edit your photos.";
+"IntroView.promptButtonTitle" = "Grant Access";

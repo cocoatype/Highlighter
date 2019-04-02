@@ -1,12 +1,15 @@
-//  Created by Geoff Pado on 3/31/19.
+//  Created by Geoff Pado on 4/1/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import UIKit
 
-class AppViewController: UIViewController {
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        embed(IntroViewController())
+class PromptLabel: UILabel {
+    init(text string: String) {
+        super.init(frame: .zero)
+
+        numberOfLines = 0
+        text = string
+        translatesAutoresizingMaskIntoConstraints = false
     }
 
     @available(*, unavailable)
