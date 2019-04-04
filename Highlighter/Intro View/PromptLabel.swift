@@ -7,8 +7,11 @@ class PromptLabel: UILabel {
     init(text string: String) {
         super.init(frame: .zero)
 
+        adjustsFontForContentSizeCategory = true
+        font = .appFont(forTextStyle: .body)
         numberOfLines = 0
         text = string
+        textColor = .primaryExtraLight
         translatesAutoresizingMaskIntoConstraints = false
     }
 

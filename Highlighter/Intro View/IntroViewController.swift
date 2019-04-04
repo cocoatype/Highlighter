@@ -7,6 +7,7 @@ import UIKit
 class IntroViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
+        navigationItem.title = IntroViewController.navigationItemTitle
     }
 
     override func loadView() {
@@ -20,6 +21,10 @@ class IntroViewController: UIViewController {
 
         print("permission requested")
     }
+
+    // MARK: Boilerplate
+
+    private static let navigationItemTitle = NSLocalizedString("IntroViewController.navigationItemTitle", comment: "Navigation title for the intro view")
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

@@ -6,7 +6,11 @@ import UIKit
 class PromptButton: UIButton {
     init(title string: String) {
         super.init(frame: .zero)
-        setTitleColor(tintColor, for: .normal)
+
+        titleLabel?.font = .appFont(forTextStyle: .headline)
+        titleLabel?.adjustsFontForContentSizeCategory = true
+
+        setTitleColor(.white, for: .normal)
         setTitle(string, for: .normal)
         translatesAutoresizingMaskIntoConstraints = false
     }
