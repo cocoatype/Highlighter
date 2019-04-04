@@ -11,7 +11,7 @@ class IntroView: UIView {
 
         super.init(frame: .zero)
 
-        backgroundColor = .white
+        backgroundColor = .primary
 
         addSubview(promptLabel)
         addSubview(promptButton)

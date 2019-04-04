@@ -19,6 +19,11 @@
 		041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF4D225302CC0058D8EE /* IntroView.swift */; };
 		041EFF50225303120058D8EE /* PromptLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF4F225303120058D8EE /* PromptLabel.swift */; };
 		041EFF52225303430058D8EE /* PromptButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF51225303430058D8EE /* PromptButton.swift */; };
+		041EFF552255A0B00058D8EE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF542255A0B00058D8EE /* Colors.swift */; };
+		041EFF582255A2FB0058D8EE /* Aleo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF562255A2ED0058D8EE /* Aleo-Bold.otf */; };
+		041EFF592255A2FB0058D8EE /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
+		041EFF5B2255A39D0058D8EE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF5A2255A39D0058D8EE /* Fonts.swift */; };
+		041EFF5D2255A85F0058D8EE /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF5C2255A85F0058D8EE /* NavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,11 @@
 		041EFF4D225302CC0058D8EE /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		041EFF4F225303120058D8EE /* PromptLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptLabel.swift; sourceTree = "<group>"; };
 		041EFF51225303430058D8EE /* PromptButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptButton.swift; sourceTree = "<group>"; };
+		041EFF542255A0B00058D8EE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		041EFF562255A2ED0058D8EE /* Aleo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aleo-Bold.otf"; sourceTree = "<group>"; };
+		041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aleo-Regular.otf"; sourceTree = "<group>"; };
+		041EFF5A2255A39D0058D8EE /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		041EFF5C2255A85F0058D8EE /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +99,7 @@
 		041EFEF72251A9F30058D8EE /* Highlighter */ = {
 			isa = PBXGroup;
 			children = (
+				041EFF532255A0930058D8EE /* Style */,
 				041EFF4C225302B90058D8EE /* Intro View */,
 				041EFEF82251A9F30058D8EE /* AppDelegate.swift */,
 				041EFEFA2251A9F30058D8EE /* AppViewController.swift */,
@@ -98,6 +109,7 @@
 				041EFF182251AAFE0058D8EE /* UIViewControllerExtensions.swift */,
 				041EFF1A2251AB8D0058D8EE /* AppWindow.swift */,
 				041EFF4A225300030058D8EE /* Localizable.strings */,
+				041EFF5C2255A85F0058D8EE /* NavigationController.swift */,
 			);
 			path = Highlighter;
 			sourceTree = "<group>";
@@ -120,6 +132,17 @@
 				041EFF51225303430058D8EE /* PromptButton.swift */,
 			);
 			path = "Intro View";
+			sourceTree = "<group>";
+		};
+		041EFF532255A0930058D8EE /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				041EFF562255A2ED0058D8EE /* Aleo-Bold.otf */,
+				041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */,
+				041EFF542255A0B00058D8EE /* Colors.swift */,
+				041EFF5A2255A39D0058D8EE /* Fonts.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +226,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041EFF582255A2FB0058D8EE /* Aleo-Bold.otf in Resources */,
+				041EFF592255A2FB0058D8EE /* Aleo-Regular.otf in Resources */,
 				041EFF032251A9F50058D8EE /* LaunchScreen.storyboard in Resources */,
 				041EFF4B225300030058D8EE /* Localizable.strings in Resources */,
 				041EFF002251A9F50058D8EE /* Assets.xcassets in Resources */,
@@ -223,11 +248,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041EFF5D2255A85F0058D8EE /* NavigationController.swift in Sources */,
 				041EFF492252FAF50058D8EE /* IntroViewController.swift in Sources */,
+				041EFF552255A0B00058D8EE /* Colors.swift in Sources */,
 				041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */,
 				041EFF192251AAFE0058D8EE /* UIViewControllerExtensions.swift in Sources */,
 				041EFF52225303430058D8EE /* PromptButton.swift in Sources */,
 				041EFEF92251A9F30058D8EE /* AppDelegate.swift in Sources */,
+				041EFF5B2255A39D0058D8EE /* Fonts.swift in Sources */,
 				041EFF50225303120058D8EE /* PromptLabel.swift in Sources */,
 				041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */,
 				041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */,

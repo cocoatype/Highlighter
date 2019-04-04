@@ -6,8 +6,17 @@ import UIKit
 class AppViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
-        embed(IntroViewController())
+
+        let navigationController = NavigationController(rootViewController: IntroViewController())
+        embed(navigationController)
     }
+
+    // MARK: Status Bar
+
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    override var childForStatusBarStyle: UIViewController? { return nil }
+
+    // MARK: Boilerplate
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
