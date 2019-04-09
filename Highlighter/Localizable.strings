@@ -6,6 +6,6 @@
   Copyright © 2019 Cocoatype, LLC. All rights reserved.
 */
 
-"IntroViewController.navigationItemTitle" = "Welcome";
 "IntroView.promptLabelText" = "Black Highlighter needs permission to edit your photos.";
 "IntroView.promptButtonTitle" = "Grant Access";
+"PhotoSelectionViewController.navigationItemTitle" = "Photos";
