@@ -7,7 +7,7 @@ class AppViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
 
-        let navigationController = NavigationController(rootViewController: IntroViewController())
+        let navigationController = NavigationController(rootViewController: PhotoSelectionViewController())
         embed(navigationController)
     }
 

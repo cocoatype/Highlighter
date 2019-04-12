@@ -23,7 +23,7 @@ extension UIViewController {
             newChildView.heightAnchor.constraint(equalTo: view.heightAnchor),
             newChildView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             newChildView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-            ])
+        ])
     }
 
     func transition(to child: UIViewController, completion: ((Bool) -> Void)? = nil) {
