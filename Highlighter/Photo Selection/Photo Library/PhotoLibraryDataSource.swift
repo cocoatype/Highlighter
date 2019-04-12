@@ -6,12 +6,24 @@ import UIKit
 
 class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let fetchOptions = PHFetchOptions()
-        let allPhotos = PHAsset.fetchAssets(with: fetchOptions)
         return allPhotos.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: PhotoLibraryViewCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoLibraryViewCell.identifier, for: indexPath)
+        guard let photoCell = cell as? PhotoLibraryViewCell else {
+            fatalError("Got incorrect type of cell for photo picker: \(String(describing: type(of: cell)))")
+        }
+
+        photoCell.asset = allPhotos[indexPath.item]
+
+        return cell
     }
+
+    // MARK: Photos
+
+    lazy var allPhotos: PHFetchResult<PHAsset> = {
+        let fetchOptions = PHFetchOptions()
+        return PHAsset.fetchAssets(with: fetchOptions)
+    }()
 }

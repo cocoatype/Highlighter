@@ -11,13 +11,14 @@ class PhotoLibraryViewLayout: UICollectionViewFlowLayout {
     override func prepare() {
         super.prepare()
 
+        minimumInteritemSpacing = 1.0
         itemSize = PhotoLibraryViewLayout.itemSize(for: collectionView?.traitCollection)
     }
 
     // MARK: Boilerplate
 
-    private static let smallCellSize = CGSize(width: 50.0, height: 50.0)
-    private static let largeCellSize = CGSize(width: 100.0, height: 100.0)
+    private static let smallCellSize = CGSize(width: 74.0, height: 74.0)
+    private static let largeCellSize = CGSize(width: 190.0, height: 190.0)
 
     private static func itemSize(for traitCollection: UITraitCollection?) -> CGSize {
         let horizontalSizeClass = traitCollection?.horizontalSizeClass ?? .unspecified
