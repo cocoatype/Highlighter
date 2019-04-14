@@ -4,7 +4,8 @@
 import UIKit
 
 class IntroViewController: UIViewController {
-    init() {
+    init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
+        self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -18,8 +19,7 @@ class IntroViewController: UIViewController {
             case .authorized:
                 UIApplication.shared.sendAction(#selector(PhotoSelectionViewController.showPhotoLibrary), to: nil, from: self, for: nil)
             case .restricted:
-                #warning("handle restricted state")
-                fatalError("handle restricted state")
+                self?.present(PhotoPermissionsRestrictedAlertController(), animated: true)
             case .denied:
                 self?.present(PhotoPermissionsDeniedAlertController(), animated: true)
             case .notDetermined:
@@ -30,11 +30,9 @@ class IntroViewController: UIViewController {
         }
     }
 
-
-
     // MARK: Boilerplate
 
-    private let permissionsRequester = PhotoPermissionsRequester()
+    private let permissionsRequester: PhotoPermissionsRequester
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

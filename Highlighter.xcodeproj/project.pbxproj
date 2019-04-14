@@ -137,7 +137,7 @@
 		041EFF0C2251A9F50058D8EE /* HighlighterTests */ = {
 			isa = PBXGroup;
 			children = (
-				041EFF0D2251A9F50058D8EE /* HighlighterTests.swift */,
+				04D68BCD2262B9BF00D09BBD /* Photo Selection */,
 				041EFF0F2251A9F50058D8EE /* Info.plist */,
 			);
 			path = HighlighterTests;
@@ -205,6 +205,22 @@
 				04D68BCB2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift */,
 			);
 			path = "Photo Permissions";
+			sourceTree = "<group>";
+		};
+		04D68BCD2262B9BF00D09BBD /* Photo Selection */ = {
+			isa = PBXGroup;
+			children = (
+				04D68BCE2262BA0E00D09BBD /* Intro View */,
+			);
+			path = "Photo Selection";
+			sourceTree = "<group>";
+		};
+		04D68BCE2262BA0E00D09BBD /* Intro View */ = {
+			isa = PBXGroup;
+			children = (
+				041EFF0D2251A9F50058D8EE /* HighlighterTests.swift */,
+			);
+			path = "Intro View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
