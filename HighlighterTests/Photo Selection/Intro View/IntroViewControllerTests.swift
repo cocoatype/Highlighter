@@ -26,18 +26,6 @@ class IntroViewControllerTests: XCTestCase {
         waitForExpectations(timeout: 1)
     }
 
-    class MockPhotoPermissionsRequester: PhotoPermissionsRequester {
-        init(desiredAuthorizationStatus: PHAuthorizationStatus) {
-            self.authorizationStatus = desiredAuthorizationStatus
-            super.init()
-        }
-
-        var authorizationStatus: PHAuthorizationStatus
-        override func requestAuthorization(_ handler: @escaping (PHAuthorizationStatus) -> Void) {
-            handler(authorizationStatus)
-        }
-    }
-
     class PresentationExpectationMockIntroViewController: IntroViewController {
         var presentedViewControllerExpectedType: UIViewController.Type?
         var presentationExpectation: XCTestExpectation?
