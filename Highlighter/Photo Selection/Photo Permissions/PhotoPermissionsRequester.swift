@@ -4,6 +4,10 @@
 import Photos
 
 class PhotoPermissionsRequester: NSObject {
+    func authorizationStatus() -> PHAuthorizationStatus {
+        return PHPhotoLibrary.authorizationStatus()
+    }
+
     func requestAuthorization(_ handler: @escaping (PHAuthorizationStatus) -> Void) {
         PHPhotoLibrary.requestAuthorization { authorizationStatus in
             DispatchQueue.main.async {
