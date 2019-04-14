@@ -32,6 +32,8 @@
 		041EFF76225C3DF10058D8EE /* PhotoLibraryViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF75225C3DF10058D8EE /* PhotoLibraryViewLayout.swift */; };
 		04D68BC5225EE2C000D09BBD /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */; };
 		04D68BC7225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC6225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift */; };
+		04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */; };
+		04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BCB2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		041EFF75225C3DF10058D8EE /* PhotoLibraryViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewLayout.swift; sourceTree = "<group>"; };
 		04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
 		04D68BC6225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewCellImageView.swift; sourceTree = "<group>"; };
+		04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPermissionsRequester.swift; sourceTree = "<group>"; };
+		04D68BCB2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPermissionsDeniedAlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +184,7 @@
 				041EFF4C225302B90058D8EE /* Intro View */,
 				041EFF69225C36130058D8EE /* Photo Library */,
 				041EFF6D225C38800058D8EE /* PhotoSelectionViewController.swift */,
+				04D68BCA2262B34600D09BBD /* Photo Permissions */,
 			);
 			path = "Photo Selection";
 			sourceTree = "<group>";
@@ -191,6 +196,15 @@
 				04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		04D68BCA2262B34600D09BBD /* Photo Permissions */ = {
+			isa = PBXGroup;
+			children = (
+				04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */,
+				04D68BCB2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift */,
+			);
+			path = "Photo Permissions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +318,8 @@
 				041EFF72225C3DC00058D8EE /* PhotoLibraryDataSource.swift in Sources */,
 				041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */,
 				041EFF6E225C38800058D8EE /* PhotoSelectionViewController.swift in Sources */,
+				04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */,
+				04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */,
 				041EFF192251AAFE0058D8EE /* UIViewControllerExtensions.swift in Sources */,
 				041EFF52225303430058D8EE /* PromptButton.swift in Sources */,
 				041EFEF92251A9F30058D8EE /* AppDelegate.swift in Sources */,
