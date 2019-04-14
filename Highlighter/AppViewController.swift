@@ -7,6 +7,8 @@ class AppViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
 
+        UIView.appearance().tintColor = .primary
+
         let navigationController = NavigationController(rootViewController: PhotoSelectionViewController())
         embed(navigationController)
     }

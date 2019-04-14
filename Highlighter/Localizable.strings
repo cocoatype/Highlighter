@@ -8,4 +8,14 @@
 
 "IntroView.promptLabelText" = "Black Highlighter needs permission to edit your photos.";
 "IntroView.promptButtonTitle" = "Grant Access";
+
+"PhotoPermissionsDeniedAlertController.alertTitle" = "No Access to Your Photos";
+"PhotoPermissionsDeniedAlertController.alertMessage" = "Black Highlighter needs permission to edit your photos. Open Settings to grant access.";
+"PhotoPermissionsDeniedAlertController.actionButtonTitle" = "Open Settings";
+"PhotoPermissionsDeniedAlertController.cancelButtonTitle" = "Dismiss";
+
+"PhotoPermissionsRestrictedAlertController.alertTitle" = "Photos Access Restricted";
+"PhotoPermissionsRestrictedAlertController.alertMessage" = "Black Highlighter needs permission to edit your photos. However, restrictions on your device prevent that access. Ask whoever controls permissions for you to grant access to the photo library to Black Highlighter.";
+"PhotoPermissionsRestrictedAlertController.dismissButtonTitle" = "Dismiss";
+
 "PhotoSelectionViewController.navigationItemTitle" = "Photos";

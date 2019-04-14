@@ -1,11 +1,11 @@
 //  Created by Geoff Pado on 4/1/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
-import Photos
 import UIKit
 
 class IntroViewController: UIViewController {
-    init() {
+    init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
+        self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -14,20 +14,25 @@ class IntroViewController: UIViewController {
     }
 
     @objc func requestPermission() {
-        PHPhotoLibrary.requestAuthorization { status in
-            print("got status: \(status)")
-
-            if status == .authorized {
-                DispatchQueue.main.async {
-                    UIApplication.shared.sendAction(#selector(PhotoSelectionViewController.showPhotoLibrary), to: nil, from: self, for: nil)
-                }
+        permissionsRequester.requestAuthorization { [weak self] status in
+            switch status {
+            case .authorized:
+                UIApplication.shared.sendAction(#selector(PhotoSelectionViewController.showPhotoLibrary), to: nil, from: self, for: nil)
+            case .restricted:
+                self?.present(PhotoPermissionsRestrictedAlertController(), animated: true)
+            case .denied:
+                self?.present(PhotoPermissionsDeniedAlertController(), animated: true)
+            case .notDetermined:
+                fallthrough
+            @unknown default:
+                break
             }
         }
-
-        print("permission requested")
     }
 
     // MARK: Boilerplate
+
+    private let permissionsRequester: PhotoPermissionsRequester
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
