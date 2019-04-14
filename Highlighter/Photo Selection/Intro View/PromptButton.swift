@@ -7,11 +7,16 @@ class PromptButton: UIButton {
     init(title string: String) {
         super.init(frame: .zero)
 
-        titleLabel?.font = .appFont(forTextStyle: .headline)
-        titleLabel?.adjustsFontForContentSizeCategory = true
+        let attributes: [NSAttributedString.Key : Any] = [
+            .font: UIFont.appFont(forTextStyle: .headline),
+            .foregroundColor: UIColor.white,
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
 
-        setTitleColor(.white, for: .normal)
-        setTitle(string, for: .normal)
+        let underlinedTitle = NSAttributedString(string: string, attributes: attributes)
+        setAttributedTitle(underlinedTitle, for: .normal)
+
+        titleLabel?.adjustsFontForContentSizeCategory = true
         translatesAutoresizingMaskIntoConstraints = false
     }
 
