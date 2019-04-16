@@ -14,7 +14,18 @@ class NavigationController: UINavigationController {
             .font: UIFont.appFont(forTextStyle: .headline),
             .foregroundColor: UIColor.white
         ]
+
+        let appearance = UIBarButtonItem.appearance()
+        appearance.setTitleTextAttributes([
+            .font: UIFont.appFont(forTextStyle: .subheadline),
+            .foregroundColor: UIColor.white
+        ], for: .normal)
     }
+
+    // MARK: Status Bar
+
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    override var childForStatusBarStyle: UIViewController? { return nil }
 
     // MARK: Boilerplate
 
