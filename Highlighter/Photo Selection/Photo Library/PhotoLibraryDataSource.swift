@@ -22,8 +22,12 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource {
 
     // MARK: Photos
 
-    lazy var allPhotos: PHFetchResult<PHAsset> = {
+    private lazy var allPhotos: PHFetchResult<PHAsset> = {
         let fetchOptions = PHFetchOptions()
         return PHAsset.fetchAssets(with: fetchOptions)
     }()
+
+    func photo(at indexPath: IndexPath) -> PHAsset {
+        return allPhotos[indexPath.item]
+    }
 }

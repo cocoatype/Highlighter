@@ -3,7 +3,7 @@
 
 import UIKit
 
-class PhotoLibraryViewController: UIViewController {
+class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate {
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -11,7 +11,15 @@ class PhotoLibraryViewController: UIViewController {
     override func loadView() {
         let libraryView = PhotoLibraryView()
         libraryView.dataSource = dataSource
+        libraryView.delegate = self
         view = libraryView
+    }
+
+    // MARK: UICollectionViewDelegate
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let asset = dataSource.photo(at: indexPath)
+        photoEditorPresenter?.presentPhotoEditingViewController(for: asset)
     }
 
     // MARK: Boilerplate
