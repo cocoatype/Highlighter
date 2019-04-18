@@ -30,6 +30,8 @@
 		041EFF72225C3DC00058D8EE /* PhotoLibraryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF71225C3DC00058D8EE /* PhotoLibraryDataSource.swift */; };
 		041EFF74225C3DD20058D8EE /* PhotoLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF73225C3DD20058D8EE /* PhotoLibraryViewCell.swift */; };
 		041EFF76225C3DF10058D8EE /* PhotoLibraryViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF75225C3DF10058D8EE /* PhotoLibraryViewLayout.swift */; };
+		047072932268134500FF20B6 /* PhotoEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingView.swift */; };
+		047072952268137900FF20B6 /* PhotoEditingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072942268137900FF20B6 /* PhotoEditingImageView.swift */; };
 		048909F2226571AB0048E203 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F1226571AB0048E203 /* PhotoEditingViewController.swift */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
 		04D68BC5225EE2C000D09BBD /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */; };
@@ -78,6 +80,8 @@
 		041EFF71225C3DC00058D8EE /* PhotoLibraryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryDataSource.swift; sourceTree = "<group>"; };
 		041EFF73225C3DD20058D8EE /* PhotoLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewCell.swift; sourceTree = "<group>"; };
 		041EFF75225C3DF10058D8EE /* PhotoLibraryViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewLayout.swift; sourceTree = "<group>"; };
+		047072922268134500FF20B6 /* PhotoEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingView.swift; sourceTree = "<group>"; };
+		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
 		048909F3226573750048E203 /* PhotoEditorPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorPresenting.swift; sourceTree = "<group>"; };
 		04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				048909F1226571AB0048E203 /* PhotoEditingViewController.swift */,
+				047072922268134500FF20B6 /* PhotoEditingView.swift */,
+				047072942268137900FF20B6 /* PhotoEditingImageView.swift */,
 				048909F3226573750048E203 /* PhotoEditorPresenting.swift */,
 			);
 			path = "Photo Editing";
@@ -372,6 +378,8 @@
 			files = (
 				041EFF5D2255A85F0058D8EE /* NavigationController.swift in Sources */,
 				041EFF492252FAF50058D8EE /* IntroViewController.swift in Sources */,
+				047072952268137900FF20B6 /* PhotoEditingImageView.swift in Sources */,
+				047072932268134500FF20B6 /* PhotoEditingView.swift in Sources */,
 				041EFF6B225C36350058D8EE /* PhotoLibraryViewController.swift in Sources */,
 				041EFF70225C3D830058D8EE /* PhotoLibraryView.swift in Sources */,
 				048909F2226571AB0048E203 /* PhotoEditingViewController.swift in Sources */,
