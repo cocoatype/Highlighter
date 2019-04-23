@@ -30,6 +30,12 @@
 		041EFF72225C3DC00058D8EE /* PhotoLibraryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF71225C3DC00058D8EE /* PhotoLibraryDataSource.swift */; };
 		041EFF74225C3DD20058D8EE /* PhotoLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF73225C3DD20058D8EE /* PhotoLibraryViewCell.swift */; };
 		041EFF76225C3DF10058D8EE /* PhotoLibraryViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF75225C3DF10058D8EE /* PhotoLibraryViewLayout.swift */; };
+		043CD9C9226EB0400012F5AE /* TextRectangleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */; };
+		043CD9CB226EB0830012F5AE /* TextRectangleDetectionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */; };
+		043CD9CF226EB0C70012F5AE /* DetectedTextObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CE226EB0C70012F5AE /* DetectedTextObservation.swift */; };
+		043CD9D1226EB0F60012F5AE /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */; };
+		047072932268134500FF20B6 /* PhotoEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingView.swift */; };
+		047072952268137900FF20B6 /* PhotoEditingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072942268137900FF20B6 /* PhotoEditingImageView.swift */; };
 		048909F2226571AB0048E203 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F1226571AB0048E203 /* PhotoEditingViewController.swift */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
 		04D68BC5225EE2C000D09BBD /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */; };
@@ -78,6 +84,12 @@
 		041EFF71225C3DC00058D8EE /* PhotoLibraryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryDataSource.swift; sourceTree = "<group>"; };
 		041EFF73225C3DD20058D8EE /* PhotoLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewCell.swift; sourceTree = "<group>"; };
 		041EFF75225C3DF10058D8EE /* PhotoLibraryViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewLayout.swift; sourceTree = "<group>"; };
+		043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRectangleDetector.swift; sourceTree = "<group>"; };
+		043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRectangleDetectionOperation.swift; sourceTree = "<group>"; };
+		043CD9CE226EB0C70012F5AE /* DetectedTextObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedTextObservation.swift; sourceTree = "<group>"; };
+		043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		047072922268134500FF20B6 /* PhotoEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingView.swift; sourceTree = "<group>"; };
+		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
 		048909F3226573750048E203 /* PhotoEditorPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorPresenting.swift; sourceTree = "<group>"; };
 		04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
@@ -193,10 +205,23 @@
 			path = "Photo Selection";
 			sourceTree = "<group>";
 		};
+		043CD9CD226EB0B20012F5AE /* Text Detection */ = {
+			isa = PBXGroup;
+			children = (
+				043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */,
+				043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */,
+				043CD9CE226EB0C70012F5AE /* DetectedTextObservation.swift */,
+			);
+			path = "Text Detection";
+			sourceTree = "<group>";
+		};
 		048909EF2265716B0048E203 /* Photo Editing */ = {
 			isa = PBXGroup;
 			children = (
 				048909F1226571AB0048E203 /* PhotoEditingViewController.swift */,
+				043CD9CD226EB0B20012F5AE /* Text Detection */,
+				047072922268134500FF20B6 /* PhotoEditingView.swift */,
+				047072942268137900FF20B6 /* PhotoEditingImageView.swift */,
 				048909F3226573750048E203 /* PhotoEditorPresenting.swift */,
 			);
 			path = "Photo Editing";
@@ -218,6 +243,7 @@
 			children = (
 				041EFF182251AAFE0058D8EE /* UIViewControllerExtensions.swift */,
 				04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */,
+				043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -372,8 +398,12 @@
 			files = (
 				041EFF5D2255A85F0058D8EE /* NavigationController.swift in Sources */,
 				041EFF492252FAF50058D8EE /* IntroViewController.swift in Sources */,
+				047072952268137900FF20B6 /* PhotoEditingImageView.swift in Sources */,
+				043CD9CF226EB0C70012F5AE /* DetectedTextObservation.swift in Sources */,
+				047072932268134500FF20B6 /* PhotoEditingView.swift in Sources */,
 				041EFF6B225C36350058D8EE /* PhotoLibraryViewController.swift in Sources */,
 				041EFF70225C3D830058D8EE /* PhotoLibraryView.swift in Sources */,
+				043CD9C9226EB0400012F5AE /* TextRectangleDetector.swift in Sources */,
 				048909F2226571AB0048E203 /* PhotoEditingViewController.swift in Sources */,
 				041EFF552255A0B00058D8EE /* Colors.swift in Sources */,
 				041EFF72225C3DC00058D8EE /* PhotoLibraryDataSource.swift in Sources */,
@@ -389,10 +419,12 @@
 				04D68BC7225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift in Sources */,
 				041EFF5B2255A39D0058D8EE /* Fonts.swift in Sources */,
 				041EFF50225303120058D8EE /* PromptLabel.swift in Sources */,
+				043CD9D1226EB0F60012F5AE /* UIImageExtensions.swift in Sources */,
 				041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */,
 				041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */,
 				041EFF74225C3DD20058D8EE /* PhotoLibraryViewCell.swift in Sources */,
 				04D68BC5225EE2C000D09BBD /* GeometryExtensions.swift in Sources */,
+				043CD9CB226EB0830012F5AE /* TextRectangleDetectionOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
