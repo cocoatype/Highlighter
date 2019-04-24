@@ -29,7 +29,9 @@ class PhotoEditingViewController: UIViewController {
             guard let image = image, isDegraded == false else { return }
 
             self?.textRectangleDetector.detectTextRectangles(in: image) { (textObservations) in
-                dump(textObservations)
+                DispatchQueue.main.async { [weak self] in
+                    self?.photoEditingView?.textObservations = textObservations
+                }
             }
 
             DispatchQueue.main.async { [weak self] in
