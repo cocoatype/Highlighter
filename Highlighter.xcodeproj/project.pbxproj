@@ -36,6 +36,7 @@
 		043CD9D1226EB0F60012F5AE /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */; };
 		043CD9D62275316E0012F5AE /* PhotoEditingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */; };
 		043CD9D8227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */; };
+		043CD9DB22753D510012F5AE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DA22753D510012F5AE /* SettingsViewController.swift */; };
 		047072932268134500FF20B6 /* PhotoEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingView.swift */; };
 		047072952268137900FF20B6 /* PhotoEditingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072942268137900FF20B6 /* PhotoEditingImageView.swift */; };
 		048909F2226571AB0048E203 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F1226571AB0048E203 /* PhotoEditingViewController.swift */; };
@@ -92,6 +93,7 @@
 		043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingScrollView.swift; sourceTree = "<group>"; };
 		043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingObservationVisualizationView.swift; sourceTree = "<group>"; };
+		043CD9DA22753D510012F5AE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		047072922268134500FF20B6 /* PhotoEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingView.swift; sourceTree = "<group>"; };
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				04D68BC3225EE2A500D09BBD /* Extensions */,
 				048909EF2265716B0048E203 /* Photo Editing */,
 				041EFF6C225C38600058D8EE /* Photo Selection */,
+				043CD9D922753D450012F5AE /* Settings */,
 				041EFF532255A0930058D8EE /* Style */,
 				048909F0226571830048E203 /* Supporting Files */,
 			);
@@ -217,6 +220,14 @@
 				043CD9CE226EB0C70012F5AE /* DetectedTextObservation.swift */,
 			);
 			path = "Text Detection";
+			sourceTree = "<group>";
+		};
+		043CD9D922753D450012F5AE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				043CD9DA22753D510012F5AE /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		048909EF2265716B0048E203 /* Photo Editing */ = {
@@ -409,6 +420,7 @@
 				043CD9CF226EB0C70012F5AE /* DetectedTextObservation.swift in Sources */,
 				047072932268134500FF20B6 /* PhotoEditingView.swift in Sources */,
 				041EFF6B225C36350058D8EE /* PhotoLibraryViewController.swift in Sources */,
+				043CD9DB22753D510012F5AE /* SettingsViewController.swift in Sources */,
 				041EFF70225C3D830058D8EE /* PhotoLibraryView.swift in Sources */,
 				043CD9C9226EB0400012F5AE /* TextRectangleDetector.swift in Sources */,
 				048909F2226571AB0048E203 /* PhotoEditingViewController.swift in Sources */,
