@@ -6,6 +6,7 @@ import UIKit
 class SettingsViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(AppViewController.dismissSettingsViewController))
     }
 
     override func loadView() {
