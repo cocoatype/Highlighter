@@ -8,11 +8,11 @@ class AppViewController: UIViewController, PhotoEditorPresenting {
     init() {
         super.init(nibName: nil, bundle: nil)
 
-        UIView.appearance().tintColor = .primary
-
         let navigationController = NavigationController(rootViewController: PhotoSelectionViewController())
         embed(navigationController)
     }
+
+    // MARK: Photo Editing View Controller
 
     func presentPhotoEditingViewController(for asset: PHAsset) {
         let navigationController = NavigationController(rootViewController: PhotoEditingViewController(asset: asset))
@@ -23,6 +23,21 @@ class AppViewController: UIViewController, PhotoEditorPresenting {
         if let presentedNavigationController = (presentedViewController as? NavigationController),
           let rootViewController = presentedNavigationController.viewControllers.first,
           rootViewController is PhotoEditingViewController {
+            dismiss(animated: true)
+        }
+    }
+
+    // MARK: Settings View Controller
+
+    @objc func presentSettingsViewController() {
+        let navigationController = NavigationController(rootViewController: SettingsViewController())
+        present(navigationController, animated: true)
+    }
+
+    @objc func dismissSettingsViewController() {
+        if let presentedNavigationController = (presentedViewController as? NavigationController),
+          let rootViewController = presentedNavigationController.viewControllers.first,
+          rootViewController is SettingsViewController {
             dismiss(animated: true)
         }
     }

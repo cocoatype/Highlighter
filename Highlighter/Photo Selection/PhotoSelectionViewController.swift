@@ -9,6 +9,7 @@ class PhotoSelectionViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
 
         navigationItem.title = PhotoSelectionViewController.navigationItemTitle
+        navigationItem.rightBarButtonItem = settingsBarButtonItem
         embed(initialViewController)
     }
 
@@ -26,8 +27,15 @@ class PhotoSelectionViewController: UIViewController {
     // MARK: Boilerplate
 
     private static let navigationItemTitle = NSLocalizedString("PhotoSelectionViewController.navigationItemTitle", comment: "Navigation title for the photo selector")
+    private static let settingsButtonAccessibilityLabel = NSLocalizedString("PhotoSelectionViewController.settingsButtonAccessibilityLabel", comment: "Accessibility label for the button to get to settings")
 
     private var permissionsRequester: PhotoPermissionsRequester
+
+    private lazy var settingsBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(image: UIImage(named: "Help"), style: .plain, target: nil, action: #selector(AppViewController.presentSettingsViewController))
+        barButtonItem.accessibilityLabel = PhotoSelectionViewController.settingsButtonAccessibilityLabel
+        return barButtonItem
+    }()
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
