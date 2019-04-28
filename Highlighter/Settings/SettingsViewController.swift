@@ -45,6 +45,7 @@ class SettingsTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: SettingsTableViewCell.identifier)
+        accessoryType = .disclosureIndicator
     }
 
     var item: SettingsContentProvider.Item? {

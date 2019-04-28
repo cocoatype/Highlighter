@@ -20,3 +20,8 @@
 
 "PhotoSelectionViewController.navigationItemTitle" = "Photos";
 "PhotoSelectionViewController.settingsButtonAccessibilityLabel" = "Help";
+
+"SettingsContentProvider.Item.about" = "About Black Highlighter";
+"SettingsContentProvider.Item.acknowledgements" = "Acknowledgements";
+"SettingsContentProvider.Item.contact" = "Contact the Developer";
+"SettingsContentProvider.Item.privacy" = "Privacy Policy";
