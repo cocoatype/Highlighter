@@ -6,10 +6,11 @@ import UIKit
 class PhotoEditingView: UIView {
     init() {
         imageView = PhotoEditingImageView()
-        visualizationView = DetectionVisualizationView()
+        visualizationView = PhotoEditingObservationVisualizationView()
 
         super.init(frame: .zero)
         backgroundColor = .primary
+        translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(imageView)
         addSubview(visualizationView)
@@ -43,42 +44,7 @@ class PhotoEditingView: UIView {
     // MARK: Boilerplate
 
     private var imageView: PhotoEditingImageView
-    private var visualizationView: DetectionVisualizationView
-
-    @available(*, unavailable)
-    required init(coder: NSCoder) {
-        let className = String(describing: type(of: self))
-        fatalError("\(className) does not implement init(coder:)")
-    }
-}
-
-class DetectionVisualizationView: UIView {
-    init() {
-        super.init(frame: .zero)
-
-        backgroundColor = .clear
-        isOpaque = false
-        translatesAutoresizingMaskIntoConstraints = false
-    }
-
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-
-        guard let textObservations = textObservations else { return }
-
-        UIColor.black.setFill()
-        textObservations.forEach { observation in
-            UIBezierPath(rect: observation.bounds).fill()
-        }
-    }
-
-    var textObservations: [DetectedTextObservation]? {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-
-    // MARK: Boilerplate
+    private var visualizationView: PhotoEditingObservationVisualizationView
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

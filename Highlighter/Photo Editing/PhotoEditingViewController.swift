@@ -4,7 +4,7 @@
 import Photos
 import UIKit
 
-class PhotoEditingViewController: UIViewController {
+class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     init(asset: PHAsset) {
         self.asset = asset
         super.init(nibName: nil, bundle: nil)
@@ -13,7 +13,8 @@ class PhotoEditingViewController: UIViewController {
     }
 
     override func loadView() {
-        view = PhotoEditingView()
+        view = PhotoEditingScrollView()
+        photoScrollView?.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -30,22 +31,28 @@ class PhotoEditingViewController: UIViewController {
 
             self?.textRectangleDetector.detectTextRectangles(in: image) { (textObservations) in
                 DispatchQueue.main.async { [weak self] in
-                    self?.photoEditingView?.textObservations = textObservations
+                    self?.photoScrollView?.textObservations = textObservations
                 }
             }
 
             DispatchQueue.main.async { [weak self] in
-                self?.photoEditingView?.image = image
+                self?.photoScrollView?.image = image
             }
         }
+    }
+
+    // MARK: UIScrollViewDelegate
+
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return photoScrollView?.photoEditingView
     }
 
     // MARK: Boilerplate
 
     private let asset: PHAsset
     private let imageManager = PHImageManager()
-    private var photoEditingView: PhotoEditingView? { return view as? PhotoEditingView }
     private let textRectangleDetector = TextRectangleDetector()
+    private var photoScrollView: PhotoEditingScrollView? { return (view as? PhotoEditingScrollView) }
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

@@ -7,7 +7,7 @@ class PhotoEditingImageView: UIImageView {
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
-        contentMode = .scaleAspectFit
+        contentMode = .center
     }
 
     @available(*, unavailable)
