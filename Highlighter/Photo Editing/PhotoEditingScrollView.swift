@@ -17,7 +17,7 @@ class PhotoEditingScrollView: UIScrollView {
             photoEditingView.centerYAnchor.constraint(equalTo: contentLayoutGuide.centerYAnchor),
             photoEditingView.widthAnchor.constraint(equalTo: contentLayoutGuide.widthAnchor),
             photoEditingView.heightAnchor.constraint(equalTo: contentLayoutGuide.heightAnchor)
-            ])
+        ])
     }
 
     private(set) var photoEditingView: PhotoEditingView
@@ -54,6 +54,19 @@ class PhotoEditingScrollView: UIScrollView {
         if zoomScale == 1.0 {
             zoomScale = minimumZoomScaleForCurrentImage
         }
+
+        updateScrollViewContentInsets()
+    }
+
+    private func updateScrollViewContentInsets() {
+        guard let image = image else { return }
+        let zoomedImageSize = image.size * image.scale * zoomScale
+        let scrollSize = bounds.size
+
+        let widthPadding = max(scrollSize.width - zoomedImageSize.width, 0) / 2
+        let heightPadding = max(scrollSize.height - zoomedImageSize.height, 0) / 2
+
+        contentInset = UIEdgeInsets(top: heightPadding, left: widthPadding, bottom: heightPadding, right: widthPadding)
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
