@@ -34,6 +34,8 @@
 		043CD9CB226EB0830012F5AE /* TextRectangleDetectionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */; };
 		043CD9CF226EB0C70012F5AE /* DetectedTextObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CE226EB0C70012F5AE /* DetectedTextObservation.swift */; };
 		043CD9D1226EB0F60012F5AE /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */; };
+		043CD9D62275316E0012F5AE /* PhotoEditingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */; };
+		043CD9D8227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */; };
 		047072932268134500FF20B6 /* PhotoEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingView.swift */; };
 		047072952268137900FF20B6 /* PhotoEditingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072942268137900FF20B6 /* PhotoEditingImageView.swift */; };
 		048909F2226571AB0048E203 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F1226571AB0048E203 /* PhotoEditingViewController.swift */; };
@@ -88,6 +90,8 @@
 		043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRectangleDetectionOperation.swift; sourceTree = "<group>"; };
 		043CD9CE226EB0C70012F5AE /* DetectedTextObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedTextObservation.swift; sourceTree = "<group>"; };
 		043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingScrollView.swift; sourceTree = "<group>"; };
+		043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingObservationVisualizationView.swift; sourceTree = "<group>"; };
 		047072922268134500FF20B6 /* PhotoEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingView.swift; sourceTree = "<group>"; };
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +227,8 @@
 				047072922268134500FF20B6 /* PhotoEditingView.swift */,
 				047072942268137900FF20B6 /* PhotoEditingImageView.swift */,
 				048909F3226573750048E203 /* PhotoEditorPresenting.swift */,
+				043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */,
+				043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */,
 			);
 			path = "Photo Editing";
 			sourceTree = "<group>";
@@ -396,6 +402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				043CD9D8227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift in Sources */,
 				041EFF5D2255A85F0058D8EE /* NavigationController.swift in Sources */,
 				041EFF492252FAF50058D8EE /* IntroViewController.swift in Sources */,
 				047072952268137900FF20B6 /* PhotoEditingImageView.swift in Sources */,
@@ -411,6 +418,7 @@
 				041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */,
 				041EFF6E225C38800058D8EE /* PhotoSelectionViewController.swift in Sources */,
 				04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */,
+				043CD9D62275316E0012F5AE /* PhotoEditingScrollView.swift in Sources */,
 				04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */,
 				041EFF192251AAFE0058D8EE /* UIViewControllerExtensions.swift in Sources */,
 				041EFF52225303430058D8EE /* PromptButton.swift in Sources */,
