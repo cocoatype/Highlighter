@@ -41,6 +41,7 @@
 		043CD9DF227548F30012F5AE /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DE227548F30012F5AE /* SettingsTableViewCell.swift */; };
 		043CD9E12275490E0012F5AE /* SettingsContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E02275490E0012F5AE /* SettingsContentProvider.swift */; };
 		043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */; };
+		043CD9E52277EC910012F5AE /* PhotoEditingBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */; };
 		047072932268134500FF20B6 /* PhotoEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingView.swift */; };
 		047072952268137900FF20B6 /* PhotoEditingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072942268137900FF20B6 /* PhotoEditingImageView.swift */; };
 		048909F2226571AB0048E203 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F1226571AB0048E203 /* PhotoEditingViewController.swift */; };
@@ -102,6 +103,7 @@
 		043CD9DE227548F30012F5AE /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		043CD9E02275490E0012F5AE /* SettingsContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContentProvider.swift; sourceTree = "<group>"; };
 		043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewDataSource.swift; sourceTree = "<group>"; };
+		043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingBrushStrokeView.swift; sourceTree = "<group>"; };
 		047072922268134500FF20B6 /* PhotoEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingView.swift; sourceTree = "<group>"; };
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				048909F1226571AB0048E203 /* PhotoEditingViewController.swift */,
 				043CD9CD226EB0B20012F5AE /* Text Detection */,
 				047072922268134500FF20B6 /* PhotoEditingView.swift */,
+				043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */,
 				047072942268137900FF20B6 /* PhotoEditingImageView.swift */,
 				048909F3226573750048E203 /* PhotoEditorPresenting.swift */,
 				043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */,
@@ -436,6 +439,7 @@
 				041EFF6B225C36350058D8EE /* PhotoLibraryViewController.swift in Sources */,
 				043CD9DB22753D510012F5AE /* SettingsViewController.swift in Sources */,
 				041EFF70225C3D830058D8EE /* PhotoLibraryView.swift in Sources */,
+				043CD9E52277EC910012F5AE /* PhotoEditingBrushStrokeView.swift in Sources */,
 				043CD9C9226EB0400012F5AE /* TextRectangleDetector.swift in Sources */,
 				048909F2226571AB0048E203 /* PhotoEditingViewController.swift in Sources */,
 				041EFF552255A0B00058D8EE /* Colors.swift in Sources */,

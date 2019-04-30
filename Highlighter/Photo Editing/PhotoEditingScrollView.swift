@@ -12,6 +12,8 @@ class PhotoEditingScrollView: UIScrollView {
 
         addSubview(photoEditingView)
 
+        panGestureRecognizer.minimumNumberOfTouches = 2
+
         NSLayoutConstraint.activate([
             photoEditingView.centerXAnchor.constraint(equalTo: contentLayoutGuide.centerXAnchor),
             photoEditingView.centerYAnchor.constraint(equalTo: contentLayoutGuide.centerYAnchor),
@@ -80,5 +82,15 @@ class PhotoEditingScrollView: UIScrollView {
     required init(coder: NSCoder) {
         let className = String(describing: type(of: self))
         fatalError("\(className) does not implement init(coder:)")
+    }
+}
+
+extension UIResponder {
+    var scrollView: UIScrollView? {
+        if let scrollView = (self as? UIScrollView) {
+            return scrollView
+        }
+
+        return next?.scrollView
     }
 }

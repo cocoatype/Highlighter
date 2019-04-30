@@ -7,6 +7,7 @@ class PhotoEditingView: UIView {
     init() {
         imageView = PhotoEditingImageView()
         visualizationView = PhotoEditingObservationVisualizationView()
+        brushStrokeView = PhotoEditingBrushStrokeView()
 
         super.init(frame: .zero)
         backgroundColor = .primary
@@ -14,6 +15,7 @@ class PhotoEditingView: UIView {
 
         addSubview(imageView)
         addSubview(visualizationView)
+        addSubview(brushStrokeView)
 
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -23,8 +25,14 @@ class PhotoEditingView: UIView {
             visualizationView.centerXAnchor.constraint(equalTo: centerXAnchor),
             visualizationView.centerYAnchor.constraint(equalTo: centerYAnchor),
             visualizationView.widthAnchor.constraint(equalTo: widthAnchor),
-            visualizationView.heightAnchor.constraint(equalTo: heightAnchor)
+            visualizationView.heightAnchor.constraint(equalTo: heightAnchor),
+            brushStrokeView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            brushStrokeView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            brushStrokeView.widthAnchor.constraint(equalTo: widthAnchor),
+            brushStrokeView.heightAnchor.constraint(equalTo: heightAnchor)
         ])
+
+        brushStrokeView.addTarget(self, action: #selector(handleStrokeCompletion), for: .touchUpInside)
     }
 
     var image: UIImage? {
@@ -41,10 +49,18 @@ class PhotoEditingView: UIView {
         }
     }
 
+    // MARK: Actions
+
+    @objc func handleStrokeCompletion() {
+        guard let strokePath = brushStrokeView.currentPath else { return }
+        dump(strokePath)
+    }
+
     // MARK: Boilerplate
 
-    private var imageView: PhotoEditingImageView
-    private var visualizationView: PhotoEditingObservationVisualizationView
+    private let imageView: PhotoEditingImageView
+    private let visualizationView: PhotoEditingObservationVisualizationView
+    private let brushStrokeView: PhotoEditingBrushStrokeView
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
