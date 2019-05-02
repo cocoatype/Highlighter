@@ -10,6 +10,10 @@ extension CGSize {
 }
 
 extension CGRect {
+    var center: CGPoint {
+        return CGPoint(x: midX, y: midY)
+    }
+
     func fitting(rect fittingRect: CGRect) -> CGRect {
         let aspectRatio = width / height
         let fittingAspectRatio = fittingRect.width / fittingRect.height

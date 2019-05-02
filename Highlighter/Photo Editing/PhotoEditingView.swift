@@ -52,8 +52,12 @@ class PhotoEditingView: UIView {
     // MARK: Actions
 
     @objc func handleStrokeCompletion() {
-        guard let strokePath = brushStrokeView.currentPath else { return }
-        dump(strokePath)
+        guard let strokePath = brushStrokeView.currentPath, let textObservations = textObservations else { return }
+        let strokeBorderPath = strokePath.strokeBorderPath
+        visualizationView.redactedCharacterObservations = textObservations
+          .compactMap { $0.characterObservations }
+          .flatMap { $0 }
+          .filter { strokeBorderPath.contains($0.bounds.center) }
     }
 
     // MARK: Boilerplate

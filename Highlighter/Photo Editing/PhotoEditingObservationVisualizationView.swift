@@ -25,10 +25,12 @@ class PhotoEditingObservationVisualizationView: UIView {
             boundsPath.fill()
             boundsPath.stroke()
 
-            UIColor.blue.withAlphaComponent(0.3).setFill()
-            UIColor.blue.setStroke()
-
             observation.characterObservations?.forEach { characterObservation in
+                let isRedacted = redactedCharacterObservations?.contains(characterObservation) ?? false
+                let baseColor = isRedacted ? UIColor.green : UIColor.blue
+                baseColor.withAlphaComponent(0.3).setFill()
+                baseColor.setStroke()
+
                 let boundsPath = UIBezierPath(rect: characterObservation.bounds)
                 boundsPath.fill()
                 boundsPath.stroke()
@@ -37,6 +39,13 @@ class PhotoEditingObservationVisualizationView: UIView {
     }
 
     var textObservations: [DetectedTextObservation]? {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+
+    #warning("Do not merge; only for temporary debugging purposes")
+    var redactedCharacterObservations: [DetectedCharacterObservation]? {
         didSet {
             setNeedsDisplay()
         }

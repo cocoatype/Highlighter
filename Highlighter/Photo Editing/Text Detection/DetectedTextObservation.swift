@@ -4,7 +4,7 @@
 import UIKit
 import Vision
 
-struct DetectedTextObservation {
+struct DetectedTextObservation: Equatable {
     init(_ textObservation: VNTextObservation, in image: UIImage) {
         let boundingBox = textObservation.boundingBox
         let imageSize = image.size * image.scale
@@ -17,8 +17,4 @@ struct DetectedTextObservation {
 
     let bounds: CGRect
     let characterObservations: [DetectedCharacterObservation]?
-}
-
-struct DetectedCharacterObservation {
-    let bounds: CGRect
 }

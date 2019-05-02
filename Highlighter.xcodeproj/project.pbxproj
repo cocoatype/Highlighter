@@ -46,6 +46,8 @@
 		047072952268137900FF20B6 /* PhotoEditingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072942268137900FF20B6 /* PhotoEditingImageView.swift */; };
 		048909F2226571AB0048E203 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F1226571AB0048E203 /* PhotoEditingViewController.swift */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
+		04A3AEF6227A8CE700F21229 /* UIBezierPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */; };
+		04A3AEF8227A924D00F21229 /* DetectedCharacterObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF7227A924D00F21229 /* DetectedCharacterObservation.swift */; };
 		04D68BC5225EE2C000D09BBD /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */; };
 		04D68BC7225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC6225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift */; };
 		04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */; };
@@ -108,6 +110,8 @@
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
 		048909F3226573750048E203 /* PhotoEditorPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorPresenting.swift; sourceTree = "<group>"; };
+		04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtensions.swift; sourceTree = "<group>"; };
+		04A3AEF7227A924D00F21229 /* DetectedCharacterObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedCharacterObservation.swift; sourceTree = "<group>"; };
 		04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
 		04D68BC6225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewCellImageView.swift; sourceTree = "<group>"; };
 		04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPermissionsRequester.swift; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 				043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */,
 				043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */,
 				043CD9CE226EB0C70012F5AE /* DetectedTextObservation.swift */,
+				04A3AEF7227A924D00F21229 /* DetectedCharacterObservation.swift */,
 			);
 			path = "Text Detection";
 			sourceTree = "<group>";
@@ -276,6 +281,7 @@
 				041EFF182251AAFE0058D8EE /* UIViewControllerExtensions.swift */,
 				04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */,
 				043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */,
+				04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -449,6 +455,7 @@
 				041EFF6E225C38800058D8EE /* PhotoSelectionViewController.swift in Sources */,
 				04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */,
 				043CD9D62275316E0012F5AE /* PhotoEditingScrollView.swift in Sources */,
+				04A3AEF6227A8CE700F21229 /* UIBezierPathExtensions.swift in Sources */,
 				04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */,
 				041EFF192251AAFE0058D8EE /* UIViewControllerExtensions.swift in Sources */,
 				041EFF52225303430058D8EE /* PromptButton.swift in Sources */,
@@ -460,6 +467,7 @@
 				041EFF50225303120058D8EE /* PromptLabel.swift in Sources */,
 				043CD9D1226EB0F60012F5AE /* UIImageExtensions.swift in Sources */,
 				043CD9DF227548F30012F5AE /* SettingsTableViewCell.swift in Sources */,
+				04A3AEF8227A924D00F21229 /* DetectedCharacterObservation.swift in Sources */,
 				041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */,
 				041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */,
 				041EFF74225C3DD20058D8EE /* PhotoLibraryViewCell.swift in Sources */,
