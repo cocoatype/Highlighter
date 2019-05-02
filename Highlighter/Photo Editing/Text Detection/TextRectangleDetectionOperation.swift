@@ -28,6 +28,7 @@ class TextRectangleDetectionOperation: Operation {
             self?._finished = true
             self?._executing = false
         }
+        imageRequest.reportCharacterBoxes = true
 
         do {
             try imageRequestHandler.perform([imageRequest])

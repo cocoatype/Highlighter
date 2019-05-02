@@ -17,13 +17,22 @@ class PhotoEditingObservationVisualizationView: UIView {
 
         guard let textObservations = textObservations else { return }
 
-        UIColor.red.withAlphaComponent(0.3).setFill()
-        UIColor.red.setStroke()
-
         textObservations.forEach { observation in
+            UIColor.red.withAlphaComponent(0.3).setFill()
+            UIColor.red.setStroke()
+
             let boundsPath = UIBezierPath(rect: observation.bounds)
             boundsPath.fill()
             boundsPath.stroke()
+
+            UIColor.blue.withAlphaComponent(0.3).setFill()
+            UIColor.blue.setStroke()
+
+            observation.characterObservations?.forEach { characterObservation in
+                let boundsPath = UIBezierPath(rect: characterObservation.bounds)
+                boundsPath.fill()
+                boundsPath.stroke()
+            }
         }
     }
 

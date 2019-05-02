@@ -6,18 +6,19 @@ import Vision
 
 struct DetectedTextObservation {
     init(_ textObservation: VNTextObservation, in image: UIImage) {
-        var boundingBox = textObservation.boundingBox
-        boundingBox.origin.y = (1.0 - boundingBox.origin.y)
-
+        let boundingBox = textObservation.boundingBox
         let imageSize = image.size * image.scale
-        boundingBox.origin.x *= imageSize.width
-        boundingBox.origin.y *= imageSize.height
-        boundingBox.size.width *= imageSize.width
-        boundingBox.size.height *= imageSize.height
-        boundingBox.origin.y -= boundingBox.size.height
+        self.bounds = CGRect.flippedRect(from: boundingBox, scaledTo: imageSize)
 
-        self.bounds = boundingBox.integral
+        self.characterObservations = textObservation.characterBoxes?.map {
+            DetectedCharacterObservation(bounds: CGRect.flippedRect(from: $0.boundingBox, scaledTo: imageSize))
+        }
     }
 
+    let bounds: CGRect
+    let characterObservations: [DetectedCharacterObservation]?
+}
+
+struct DetectedCharacterObservation {
     let bounds: CGRect
 }
