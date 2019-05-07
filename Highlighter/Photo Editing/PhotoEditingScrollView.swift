@@ -32,7 +32,7 @@ class PhotoEditingScrollView: UIScrollView {
         }
     }
 
-    var textObservations: [DetectedTextObservation]? {
+    var textObservations: [TextObservation]? {
         get { return photoEditingView.textObservations }
         set(newTextObservations) {
             photoEditingView.textObservations = newTextObservations

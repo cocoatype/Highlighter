@@ -4,17 +4,21 @@
 import UIKit
 import Vision
 
-struct DetectedTextObservation: Equatable {
+struct TextObservation: Equatable {
     init(_ textObservation: VNTextObservation, in image: UIImage) {
         let boundingBox = textObservation.boundingBox
         let imageSize = image.size * image.scale
         self.bounds = CGRect.flippedRect(from: boundingBox, scaledTo: imageSize)
 
+        let observationUUID = textObservation.uuid
+        self.uuid = observationUUID
+
         self.characterObservations = textObservation.characterBoxes?.map {
-            DetectedCharacterObservation(bounds: CGRect.flippedRect(from: $0.boundingBox, scaledTo: imageSize))
+            CharacterObservation(bounds: CGRect.flippedRect(from: $0.boundingBox, scaledTo: imageSize), textObservationUUID: observationUUID)
         }
     }
 
     let bounds: CGRect
-    let characterObservations: [DetectedCharacterObservation]?
+    let characterObservations: [CharacterObservation]?
+    let uuid: UUID
 }

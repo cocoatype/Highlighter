@@ -3,6 +3,7 @@
 
 import UIKit
 
-struct DetectedCharacterObservation: Equatable {
+struct CharacterObservation: Equatable {
     let bounds: CGRect
+    let textObservationUUID: UUID
 }
