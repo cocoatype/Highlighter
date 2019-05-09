@@ -4,14 +4,14 @@
 import UIKit
 
 protocol Redaction {
-    var path: UIBezierPath { get }
+    var paths: [UIBezierPath] { get }
 }
 
 struct CharacterObservationRedaction: Redaction {
     init(_ characterObservations: [CharacterObservation]) {
         self.characterObservations = characterObservations
 
-        self.path = characterObservations.reduce(into: [UUID: [CharacterObservation]]()) { result, characterObservation in
+        self.paths = characterObservations.reduce(into: [UUID: [CharacterObservation]]()) { result, characterObservation in
             let textObservationUUID = characterObservation.textObservationUUID
             var siblingObservations = result[textObservationUUID] ?? []
             siblingObservations.append(characterObservation)
@@ -20,12 +20,15 @@ struct CharacterObservationRedaction: Redaction {
             siblingObservations.reduce(siblingObservations[0].bounds, { currentRect, characterObservation in
                 currentRect.union(characterObservation.bounds)
             })
-        }.reduce(into: UIBezierPath(), { path, rect in
+        }.map { rect in
+            let path = UIBezierPath()
+            path.lineWidth = rect.height
             path.move(to: CGPoint(x: rect.minX, y: rect.midY))
             path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
-        })
+            return path
+        }
     }
 
-    let path: UIBezierPath
+    let paths: [UIBezierPath]
     private let characterObservations: [CharacterObservation]
 }
