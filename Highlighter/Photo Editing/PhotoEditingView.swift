@@ -7,6 +7,7 @@ class PhotoEditingView: UIView {
     init() {
         imageView = PhotoEditingImageView()
         visualizationView = PhotoEditingObservationVisualizationView()
+        redactionView = PhotoEditingRedactionView()
         brushStrokeView = PhotoEditingBrushStrokeView()
 
         super.init(frame: .zero)
@@ -15,6 +16,7 @@ class PhotoEditingView: UIView {
 
         addSubview(imageView)
         addSubview(visualizationView)
+        addSubview(redactionView)
         addSubview(brushStrokeView)
 
         NSLayoutConstraint.activate([
@@ -26,6 +28,10 @@ class PhotoEditingView: UIView {
             visualizationView.centerYAnchor.constraint(equalTo: centerYAnchor),
             visualizationView.widthAnchor.constraint(equalTo: widthAnchor),
             visualizationView.heightAnchor.constraint(equalTo: heightAnchor),
+            redactionView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            redactionView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            redactionView.widthAnchor.constraint(equalTo: widthAnchor),
+            redactionView.heightAnchor.constraint(equalTo: heightAnchor),
             brushStrokeView.centerXAnchor.constraint(equalTo: centerXAnchor),
             brushStrokeView.centerYAnchor.constraint(equalTo: centerYAnchor),
             brushStrokeView.widthAnchor.constraint(equalTo: widthAnchor),
@@ -42,7 +48,7 @@ class PhotoEditingView: UIView {
         }
     }
 
-    var textObservations: [DetectedTextObservation]? {
+    var textObservations: [TextObservation]? {
         get { return visualizationView.textObservations }
         set(newTextObservations) {
             visualizationView.textObservations = newTextObservations
@@ -52,14 +58,21 @@ class PhotoEditingView: UIView {
     // MARK: Actions
 
     @objc func handleStrokeCompletion() {
-        guard let strokePath = brushStrokeView.currentPath else { return }
-        dump(strokePath)
+        guard let strokePath = brushStrokeView.currentPath, let textObservations = textObservations else { return }
+        let strokeBorderPath = strokePath.strokeBorderPath
+        let redactedCharacterObservations = textObservations
+          .compactMap { $0.characterObservations }
+          .flatMap { $0 }
+          .filter { strokeBorderPath.contains($0.bounds.center) }
+
+        redactionView.add(CharacterObservationRedaction(redactedCharacterObservations))
     }
 
     // MARK: Boilerplate
 
     private let imageView: PhotoEditingImageView
     private let visualizationView: PhotoEditingObservationVisualizationView
+    private let redactionView: PhotoEditingRedactionView
     private let brushStrokeView: PhotoEditingBrushStrokeView
 
     @available(*, unavailable)

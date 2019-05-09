@@ -10,6 +10,10 @@ extension CGSize {
 }
 
 extension CGRect {
+    var center: CGPoint {
+        return CGPoint(x: midX, y: midY)
+    }
+
     func fitting(rect fittingRect: CGRect) -> CGRect {
         let aspectRatio = width / height
         let fittingAspectRatio = fittingRect.width / fittingRect.height
@@ -32,5 +36,18 @@ extension CGRect {
         } else { //same aspect ratio
             return fittingRect
         }
+    }
+
+    static func flippedRect(from rect: CGRect, scaledTo size: CGSize) -> CGRect {
+        var scaledRect = rect
+        scaledRect.origin.y = (1.0 - scaledRect.origin.y)
+
+        scaledRect.origin.x *= size.width
+        scaledRect.origin.y *= size.height
+        scaledRect.size.width *= size.width
+        scaledRect.size.height *= size.height
+        scaledRect.origin.y -= scaledRect.size.height
+
+        return scaledRect.integral
     }
 }

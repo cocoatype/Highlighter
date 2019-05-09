@@ -4,14 +4,14 @@
 import UIKit
 
 class TextRectangleDetector: NSObject {
-    func detectTextRectangles(in image: UIImage, completionHandler: (([DetectedTextObservation]?) -> Void)? = nil) {
+    func detectTextRectangles(in image: UIImage, completionHandler: (([TextObservation]?) -> Void)? = nil) {
         guard let detectionOperation = TextRectangleDetectionOperation(image: image) else {
             completionHandler?(nil)
             return
         }
 
         detectionOperation.completionBlock = { [weak detectionOperation] in
-            let detectedTextObservations = detectionOperation?.textRectangleResults?.map { DetectedTextObservation($0, in: image) }
+            let detectedTextObservations = detectionOperation?.textRectangleResults?.map { TextObservation($0, in: image) }
             completionHandler?(detectedTextObservations)
         }
 
