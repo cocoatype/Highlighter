@@ -52,6 +52,9 @@
 		049F292B22875ADD00A335BE /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F292A22875ADD00A335BE /* WebViewController.swift */; };
 		049F292D22875AFA00A335BE /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F292C22875AFA00A335BE /* AboutViewController.swift */; };
 		049F292F22875B1300A335BE /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F292E22875B1300A335BE /* PrivacyViewController.swift */; };
+		049F293122875D5B00A335BE /* AcknowledgementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F293022875D5B00A335BE /* AcknowledgementsViewController.swift */; };
+		049F293322875E4D00A335BE /* ContactWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F293222875E4D00A335BE /* ContactWebViewController.swift */; };
+		049F293522875F7E00A335BE /* ContactMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F293422875F7E00A335BE /* ContactMailViewController.swift */; };
 		04A3AEF6227A8CE700F21229 /* UIBezierPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */; };
 		04A3AEF8227A924D00F21229 /* CharacterObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF7227A924D00F21229 /* CharacterObservation.swift */; };
 		04D68BC5225EE2C000D09BBD /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */; };
@@ -122,6 +125,9 @@
 		049F292A22875ADD00A335BE /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		049F292C22875AFA00A335BE /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		049F292E22875B1300A335BE /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		049F293022875D5B00A335BE /* AcknowledgementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsViewController.swift; sourceTree = "<group>"; };
+		049F293222875E4D00A335BE /* ContactWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactWebViewController.swift; sourceTree = "<group>"; };
+		049F293422875F7E00A335BE /* ContactMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMailViewController.swift; sourceTree = "<group>"; };
 		04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtensions.swift; sourceTree = "<group>"; };
 		04A3AEF7227A924D00F21229 /* CharacterObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterObservation.swift; sourceTree = "<group>"; };
 		04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
@@ -305,6 +311,9 @@
 				049F292A22875ADD00A335BE /* WebViewController.swift */,
 				049F292C22875AFA00A335BE /* AboutViewController.swift */,
 				049F292E22875B1300A335BE /* PrivacyViewController.swift */,
+				049F293022875D5B00A335BE /* AcknowledgementsViewController.swift */,
+				049F293222875E4D00A335BE /* ContactWebViewController.swift */,
+				049F293422875F7E00A335BE /* ContactMailViewController.swift */,
 			);
 			path = "Presented View Controllers";
 			sourceTree = "<group>";
@@ -471,10 +480,12 @@
 				043CD9D8227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift in Sources */,
 				043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */,
 				049F292D22875AFA00A335BE /* AboutViewController.swift in Sources */,
+				049F293122875D5B00A335BE /* AcknowledgementsViewController.swift in Sources */,
 				041EFF5D2255A85F0058D8EE /* NavigationController.swift in Sources */,
 				041EFF492252FAF50058D8EE /* IntroViewController.swift in Sources */,
 				047072952268137900FF20B6 /* PhotoEditingImageView.swift in Sources */,
 				042A39AF228125FA009C1C07 /* PhotoEditingRedactionView.swift in Sources */,
+				049F293522875F7E00A335BE /* ContactMailViewController.swift in Sources */,
 				043CD9CF226EB0C70012F5AE /* TextObservation.swift in Sources */,
 				047072932268134500FF20B6 /* PhotoEditingView.swift in Sources */,
 				043CD9E12275490E0012F5AE /* SettingsContentProvider.swift in Sources */,
@@ -506,6 +517,7 @@
 				041EFF50225303120058D8EE /* PromptLabel.swift in Sources */,
 				043CD9D1226EB0F60012F5AE /* UIImageExtensions.swift in Sources */,
 				043CD9DF227548F30012F5AE /* SettingsTableViewCell.swift in Sources */,
+				049F293322875E4D00A335BE /* ContactWebViewController.swift in Sources */,
 				04A3AEF8227A924D00F21229 /* CharacterObservation.swift in Sources */,
 				041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */,
 				041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */,
