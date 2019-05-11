@@ -30,14 +30,11 @@ class AppViewController: UIViewController, PhotoEditorPresenting {
     // MARK: Settings View Controller
 
     @objc func presentSettingsViewController() {
-        let navigationController = NavigationController(rootViewController: SettingsViewController())
-        present(navigationController, animated: true)
+        present(SettingsNavigationController(), animated: true)
     }
 
     @objc func dismissSettingsViewController() {
-        if let presentedNavigationController = (presentedViewController as? NavigationController),
-          let rootViewController = presentedNavigationController.viewControllers.first,
-          rootViewController is SettingsViewController {
+        if presentedViewController is SettingsNavigationController {
             dismiss(animated: true)
         }
     }
