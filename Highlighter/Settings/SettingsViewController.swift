@@ -32,14 +32,19 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
 
         switch item {
         case .about:
-            UIApplication.shared.sendAction(#selector(SettingsNavigationController.presentAboutViewController), to: nil, from: self, for: nil)
+            sendResponderAction(#selector(SettingsNavigationController.presentAboutViewController))
         case .acknowledgements:
-            UIApplication.shared.sendAction(#selector(SettingsNavigationController.presentAcknowledgementsViewController), to: nil, from: self, for: nil)
-        case .contact: break // display contact e-mail editor
+            sendResponderAction(#selector(SettingsNavigationController.presentAcknowledgementsViewController))
+        case .contact:
+            sendResponderAction(#selector(SettingsNavigationController.presentContactViewController))
         case .otherApp: break // open App Store
         case .privacy:
-            UIApplication.shared.sendAction(#selector(SettingsNavigationController.presentPrivacyViewController), to: nil, from: self, for: nil)
+            sendResponderAction(#selector(SettingsNavigationController.presentPrivacyViewController))
         }
+    }
+
+    private func sendResponderAction(_ selector: Selector) {
+        UIApplication.shared.sendAction(selector, to: nil, from: self, for: nil)
     }
 
     // MARK: Boilerplate

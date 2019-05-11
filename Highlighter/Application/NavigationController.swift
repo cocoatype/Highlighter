@@ -17,8 +17,7 @@ class NavigationController: UINavigationController {
 
         let appearance = UIBarButtonItem.appearance()
         appearance.setTitleTextAttributes([
-            .font: UIFont.appFont(forTextStyle: .subheadline),
-            .foregroundColor: UIColor.white
+            .font: UIFont.appFont(forTextStyle: .subheadline)
         ], for: .normal)
     }
 

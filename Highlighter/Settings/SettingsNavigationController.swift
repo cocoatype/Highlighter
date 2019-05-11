@@ -21,6 +21,15 @@ class SettingsNavigationController: NavigationController {
         present(acknowledgementsViewController, animated: true)
     }
 
+    @objc func presentContactViewController() {
+        if ContactMailViewController.canBePresented {
+            present(ContactMailViewController(), animated: true)
+        } else {
+            guard let contactViewController = ContactWebViewController() else { return }
+            present(contactViewController, animated: true)
+        }
+    }
+
     @objc func presentPrivacyViewController() {
         guard let privacyViewController = PrivacyViewController() else { return }
         present(privacyViewController, animated: true)
