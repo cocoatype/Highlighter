@@ -8,5 +8,6 @@ class WebViewController: SFSafariViewController {
         let configuration = SFSafariViewController.Configuration()
         super.init(url: url, configuration: configuration)
         preferredControlTintColor = .primary
+        modalPresentationStyle = .currentContext
     }
 }

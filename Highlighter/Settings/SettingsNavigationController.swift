@@ -7,6 +7,7 @@ import UIKit
 class SettingsNavigationController: NavigationController {
     init() {
         super.init(rootViewController: SettingsViewController())
+        modalPresentationStyle = .formSheet
     }
 
     // MARK: Navigation
