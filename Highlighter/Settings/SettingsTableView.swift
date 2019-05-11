@@ -6,6 +6,10 @@ import UIKit
 class SettingsTableView: UITableView {
     init() {
         super.init(frame: .zero, style: .grouped)
+        backgroundColor = .primary
+        separatorColor = .primaryExtraLight
+        separatorInset = .zero
+
         register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
     }
 
