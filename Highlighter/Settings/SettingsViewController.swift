@@ -33,7 +33,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
         switch item {
         case .about:
             UIApplication.shared.sendAction(#selector(SettingsNavigationController.presentAboutViewController), to: nil, from: self, for: nil)
-        case .acknowledgements: break // display acknowledgements
+        case .acknowledgements:
+            UIApplication.shared.sendAction(#selector(SettingsNavigationController.presentAcknowledgementsViewController), to: nil, from: self, for: nil)
         case .contact: break // display contact e-mail editor
         case .otherApp: break // open App Store
         case .privacy:

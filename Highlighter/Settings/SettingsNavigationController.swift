@@ -16,6 +16,11 @@ class SettingsNavigationController: NavigationController {
         present(aboutViewController, animated: true)
     }
 
+    @objc func presentAcknowledgementsViewController() {
+        guard let acknowledgementsViewController = AcknowledgementsViewController() else { return }
+        present(acknowledgementsViewController, animated: true)
+    }
+
     @objc func presentPrivacyViewController() {
         guard let privacyViewController = PrivacyViewController() else { return }
         present(privacyViewController, animated: true)
