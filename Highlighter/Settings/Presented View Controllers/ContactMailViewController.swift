@@ -3,13 +3,14 @@
 
 import MessageUI
 
-class ContactMailViewController: MFMailComposeViewController {
+class ContactMailViewController: MFMailComposeViewController, MFMailComposeViewControllerDelegate {
     class var canBePresented: Bool {
         return MFMailComposeViewController.canSendMail()
     }
 
     init() {
         super.init(nibName: nil, bundle: nil)
+        mailComposeDelegate = self
         setSubject(ContactMailViewController.emailSubject)
         setToRecipients([ContactMailViewController.emailToAddress])
         setMessageBody("<br><br>\(versionInformation)", isHTML: true)
@@ -47,6 +48,12 @@ class ContactMailViewController: MFMailComposeViewController {
         versionInformation.append(contentsOf: "running iOS \(systemVersion)")
 
         return versionInformation
+    }
+
+    // MARK: Delegate
+
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        UIApplication.shared.sendAction(#selector(SettingsNavigationController.dismissContactMailViewController), to: nil, from: self, for: nil)
     }
 
     // MARK: Boilerplate
