@@ -10,6 +10,7 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
         super.init(nibName: nil, bundle: nil)
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(AppViewController.dismissPhotoEditingViewController))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(PhotoEditingViewController.sharePhoto))
     }
 
     override func loadView() {
@@ -39,6 +40,28 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
                 self?.photoScrollView?.image = image
             }
         }
+    }
+
+    // MARK: Edit Protection
+
+    private(set) var hasMadeEdits = false
+    @objc func markHasMadeEdits() {
+        hasMadeEdits = true
+    }
+
+    // MARK: Sharing
+
+    @objc func sharePhoto() {
+        guard let editingView = photoScrollView?.photoEditingView, let image = editingView.image else { return }
+        let photoExporter = PhotoExporter(image: image, redactions: editingView.redactions)
+        guard let exportedImage = photoExporter.exportedImage else { return }
+
+        let activityController = UIActivityViewController(activityItems: [exportedImage], applicationActivities: nil)
+        activityController.completionWithItemsHandler = { [weak self] _, completed, _, _ in
+            self?.hasMadeEdits = false
+        }
+
+        present(activityController, animated: true)
     }
 
     // MARK: UIScrollViewDelegate

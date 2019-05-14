@@ -20,6 +20,17 @@ class AppViewController: UIViewController, PhotoEditorPresenting {
     }
 
     @objc func dismissPhotoEditingViewController() {
+        guard let presentedNavigationController = (presentedViewController as? NavigationController),
+          let editingViewController = (presentedNavigationController.viewControllers.first as? PhotoEditingViewController)
+        else { return }
+
+        guard editingViewController.hasMadeEdits else { dismiss(animated: true); return }
+
+        let alertController = PhotoEditingProtectionAlertController(appViewController: self)
+        editingViewController.present(alertController, animated: true)
+    }
+
+    @objc func destructivelyDismissPhotoEditingViewController() {
         if let presentedNavigationController = (presentedViewController as? NavigationController),
           let rootViewController = presentedNavigationController.viewControllers.first,
           rootViewController is PhotoEditingViewController {
