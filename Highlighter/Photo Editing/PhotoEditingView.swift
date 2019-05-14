@@ -48,6 +48,10 @@ class PhotoEditingView: UIView {
         }
     }
 
+    var redactions: [Redaction] {
+        return redactionView.redactions
+    }
+
     var textObservations: [TextObservation]? {
         get { return visualizationView.textObservations }
         set(newTextObservations) {
@@ -66,6 +70,8 @@ class PhotoEditingView: UIView {
           .filter { strokeBorderPath.contains($0.bounds.center) }
 
         redactionView.add(CharacterObservationRedaction(redactedCharacterObservations))
+
+        UIApplication.shared.sendAction(#selector(PhotoEditingViewController.markHasMadeEdits), to: nil, from: self, for: nil)
     }
 
     // MARK: Boilerplate

@@ -34,7 +34,11 @@ class PhotoEditingRedactionView: UIView {
     }
 
     func add(_ redaction: Redaction) {
-        redactions.append(redaction)
+        add([redaction])
+    }
+
+    func add(_ redactions: [Redaction]) {
+        redactions.forEach { [unowned self] in self.redactions.append($0) }
         setNeedsDisplay()
     }
 
@@ -58,7 +62,7 @@ class PhotoEditingRedactionView: UIView {
 
     // MARK: Boilerplate
 
-    private var redactions = [Redaction]()
+    private(set) var redactions = [Redaction]()
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
