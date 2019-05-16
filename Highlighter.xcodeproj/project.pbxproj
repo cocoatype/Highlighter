@@ -36,6 +36,7 @@
 		042A2B7E228CFEDB00353414 /* PhotoEditingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B7D228CFEDB00353414 /* PhotoEditingNavigationController.swift */; };
 		042A2B81228D012F00353414 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B80228D012F00353414 /* NavigationBar.swift */; };
 		042A2B83228D014900353414 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B82228D014900353414 /* Toolbar.swift */; };
+		042A2B85228D01BD00353414 /* HighlighterTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B84228D01BD00353414 /* HighlighterTool.swift */; };
 		042A39AD22811F87009C1C07 /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
 		042A39AF228125FA009C1C07 /* PhotoEditingRedactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */; };
 		043CD9C9226EB0400012F5AE /* TextRectangleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */; };
@@ -115,6 +116,7 @@
 		042A2B7D228CFEDB00353414 /* PhotoEditingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingNavigationController.swift; sourceTree = "<group>"; };
 		042A2B80228D012F00353414 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		042A2B82228D014900353414 /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
+		042A2B84228D01BD00353414 /* HighlighterTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlighterTool.swift; sourceTree = "<group>"; };
 		042A39AC22811F87009C1C07 /* Redaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redaction.swift; sourceTree = "<group>"; };
 		042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingRedactionView.swift; sourceTree = "<group>"; };
 		043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRectangleDetector.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */,
 				042A2B79228A642100353414 /* PhotoEditingProtectionAlertController.swift */,
 				042A2B7D228CFEDB00353414 /* PhotoEditingNavigationController.swift */,
+				042A2B84228D01BD00353414 /* HighlighterTool.swift */,
 			);
 			path = "Photo Editing";
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				043CD9D8227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift in Sources */,
+				042A2B85228D01BD00353414 /* HighlighterTool.swift in Sources */,
 				042A2B7A228A642100353414 /* PhotoEditingProtectionAlertController.swift in Sources */,
 				043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */,
 				049F292D22875AFA00A335BE /* AboutViewController.swift in Sources */,

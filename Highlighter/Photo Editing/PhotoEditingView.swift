@@ -41,6 +41,8 @@ class PhotoEditingView: UIView {
         brushStrokeView.addTarget(self, action: #selector(handleStrokeCompletion), for: .touchUpInside)
     }
 
+    var highlighterTool = HighlighterTool.magic
+
     var image: UIImage? {
         get { return imageView.image }
         set(newImage) {
