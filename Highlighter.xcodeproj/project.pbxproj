@@ -37,6 +37,8 @@
 		042A2B81228D012F00353414 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B80228D012F00353414 /* NavigationBar.swift */; };
 		042A2B83228D014900353414 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B82228D014900353414 /* Toolbar.swift */; };
 		042A2B85228D01BD00353414 /* HighlighterTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B84228D01BD00353414 /* HighlighterTool.swift */; };
+		042A2B87228D08D800353414 /* CharacterObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B86228D08D800353414 /* CharacterObservationRedaction.swift */; };
+		042A2B89228D091000353414 /* PathRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B88228D091000353414 /* PathRedaction.swift */; };
 		042A39AD22811F87009C1C07 /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
 		042A39AF228125FA009C1C07 /* PhotoEditingRedactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */; };
 		043CD9C9226EB0400012F5AE /* TextRectangleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */; };
@@ -117,6 +119,8 @@
 		042A2B80228D012F00353414 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		042A2B82228D014900353414 /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		042A2B84228D01BD00353414 /* HighlighterTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlighterTool.swift; sourceTree = "<group>"; };
+		042A2B86228D08D800353414 /* CharacterObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterObservationRedaction.swift; sourceTree = "<group>"; };
+		042A2B88228D091000353414 /* PathRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathRedaction.swift; sourceTree = "<group>"; };
 		042A39AC22811F87009C1C07 /* Redaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redaction.swift; sourceTree = "<group>"; };
 		042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingRedactionView.swift; sourceTree = "<group>"; };
 		043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRectangleDetector.swift; sourceTree = "<group>"; };
@@ -272,6 +276,8 @@
 			isa = PBXGroup;
 			children = (
 				042A39AC22811F87009C1C07 /* Redaction.swift */,
+				042A2B86228D08D800353414 /* CharacterObservationRedaction.swift */,
+				042A2B88228D091000353414 /* PathRedaction.swift */,
 			);
 			path = Redactions;
 			sourceTree = "<group>";
@@ -530,6 +536,7 @@
 				041EFF72225C3DC00058D8EE /* PhotoLibraryDataSource.swift in Sources */,
 				048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */,
 				041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */,
+				042A2B87228D08D800353414 /* CharacterObservationRedaction.swift in Sources */,
 				041EFF6E225C38800058D8EE /* PhotoSelectionViewController.swift in Sources */,
 				042A39AD22811F87009C1C07 /* Redaction.swift in Sources */,
 				049F292B22875ADD00A335BE /* WebViewController.swift in Sources */,
@@ -544,6 +551,7 @@
 				043CD9DD227548C20012F5AE /* SettingsTableView.swift in Sources */,
 				042A2B78228A5B6F00353414 /* PhotoExporter.swift in Sources */,
 				041EFF76225C3DF10058D8EE /* PhotoLibraryViewLayout.swift in Sources */,
+				042A2B89228D091000353414 /* PathRedaction.swift in Sources */,
 				049F292F22875B1300A335BE /* PrivacyViewController.swift in Sources */,
 				04D68BC7225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift in Sources */,
 				041EFF5B2255A39D0058D8EE /* Fonts.swift in Sources */,
