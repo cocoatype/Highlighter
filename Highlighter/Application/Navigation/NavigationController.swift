@@ -5,15 +5,8 @@ import UIKit
 
 class NavigationController: UINavigationController {
     override init(rootViewController: UIViewController) {
-        super.init(rootViewController: rootViewController)
-
-        navigationBar.barTintColor = .primaryDark
-        navigationBar.isTranslucent = false
-        navigationBar.tintColor = .white
-        navigationBar.titleTextAttributes = [
-            .font: UIFont.appFont(forTextStyle: .headline),
-            .foregroundColor: UIColor.white
-        ]
+        super.init(navigationBarClass: NavigationBar.self, toolbarClass: Toolbar.self)
+        setViewControllers([rootViewController], animated: false)
 
         let appearance = UIBarButtonItem.appearance()
         appearance.setTitleTextAttributes([

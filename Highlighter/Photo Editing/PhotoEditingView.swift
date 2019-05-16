@@ -41,6 +41,8 @@ class PhotoEditingView: UIView {
         brushStrokeView.addTarget(self, action: #selector(handleStrokeCompletion), for: .touchUpInside)
     }
 
+    var highlighterTool = HighlighterTool.magic
+
     var image: UIImage? {
         get { return imageView.image }
         set(newImage) {
@@ -62,16 +64,28 @@ class PhotoEditingView: UIView {
     // MARK: Actions
 
     @objc func handleStrokeCompletion() {
+        switch highlighterTool {
+        case .magic: handleMagicStrokeCompletion()
+        case .manual: handleManualStrokeCompletion()
+        }
+
+        UIApplication.shared.sendAction(#selector(PhotoEditingViewController.markHasMadeEdits), to: nil, from: self, for: nil)
+    }
+
+    private func handleMagicStrokeCompletion() {
         guard let strokePath = brushStrokeView.currentPath, let textObservations = textObservations else { return }
         let strokeBorderPath = strokePath.strokeBorderPath
         let redactedCharacterObservations = textObservations
-          .compactMap { $0.characterObservations }
-          .flatMap { $0 }
-          .filter { strokeBorderPath.contains($0.bounds.center) }
+            .compactMap { $0.characterObservations }
+            .flatMap { $0 }
+            .filter { strokeBorderPath.contains($0.bounds.center) }
 
         redactionView.add(CharacterObservationRedaction(redactedCharacterObservations))
+    }
 
-        UIApplication.shared.sendAction(#selector(PhotoEditingViewController.markHasMadeEdits), to: nil, from: self, for: nil)
+    private func handleManualStrokeCompletion() {
+        guard let strokePath = brushStrokeView.currentPath else { return }
+        redactionView.add(PathRedaction(strokePath))
     }
 
     // MARK: Boilerplate

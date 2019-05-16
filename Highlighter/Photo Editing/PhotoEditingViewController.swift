@@ -11,6 +11,7 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(AppViewController.dismissPhotoEditingViewController))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(PhotoEditingViewController.sharePhoto))
+        updateToolbarItems(animated: false)
     }
 
     override func loadView() {
@@ -52,7 +53,7 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     // MARK: Sharing
 
     @objc func sharePhoto() {
-        guard let editingView = photoScrollView?.photoEditingView, let image = editingView.image else { return }
+        guard let editingView = photoEditingView, let image = editingView.image else { return }
         let photoExporter = PhotoExporter(image: image, redactions: editingView.redactions)
         guard let exportedImage = photoExporter.exportedImage else { return }
 
@@ -64,10 +65,28 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
         present(activityController, animated: true)
     }
 
+    // MARK: Highlighters
+
+    @objc func toggleHighlighterTool() {
+        guard let currentTool = photoEditingView?.highlighterTool else { return }
+        let allTools = HighlighterTool.allCases
+        let currentToolIndex = allTools.firstIndex(of: currentTool) ?? allTools.startIndex
+        let nextToolIndex = (currentToolIndex + 1) % allTools.count
+        let nextTool = allTools[nextToolIndex]
+        photoEditingView?.highlighterTool = nextTool
+        updateToolbarItems()
+    }
+
+    private func updateToolbarItems(animated: Bool = true) {
+        guard let icon = photoEditingView?.highlighterTool.image else { return }
+        let highlighterToolItem = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(toggleHighlighterTool))
+        setToolbarItems([highlighterToolItem], animated: animated)
+    }
+
     // MARK: UIScrollViewDelegate
 
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return photoScrollView?.photoEditingView
+        return photoEditingView
     }
 
     // MARK: Boilerplate
@@ -76,6 +95,7 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     private let imageManager = PHImageManager()
     private let textRectangleDetector = TextRectangleDetector()
     private var photoScrollView: PhotoEditingScrollView? { return (view as? PhotoEditingScrollView) }
+    private var photoEditingView: PhotoEditingView? { return photoScrollView?.photoEditingView }
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
