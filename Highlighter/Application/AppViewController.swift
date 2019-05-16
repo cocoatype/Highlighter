@@ -15,8 +15,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting {
     // MARK: Photo Editing View Controller
 
     func presentPhotoEditingViewController(for asset: PHAsset) {
-        let navigationController = NavigationController(rootViewController: PhotoEditingViewController(asset: asset))
-        present(navigationController, animated: true)
+        present(PhotoEditingNavigationController(asset: asset), animated: true)
     }
 
     @objc func dismissPhotoEditingViewController() {

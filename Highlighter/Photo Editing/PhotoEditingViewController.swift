@@ -11,6 +11,7 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(AppViewController.dismissPhotoEditingViewController))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(PhotoEditingViewController.sharePhoto))
+        toolbarItems = [UIBarButtonItem(title: "Magic", style: .plain, target: self, action: #selector(toggleHighlighterTool))]
     }
 
     override func loadView() {
@@ -62,6 +63,12 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
         }
 
         present(activityController, animated: true)
+    }
+
+    // MARK: Highlighters
+
+    @objc func toggleHighlighterTool() {
+        print("good job")
     }
 
     // MARK: UIScrollViewDelegate

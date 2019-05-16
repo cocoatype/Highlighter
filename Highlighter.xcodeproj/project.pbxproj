@@ -33,6 +33,9 @@
 		042A2B78228A5B6F00353414 /* PhotoExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B77228A5B6F00353414 /* PhotoExporter.swift */; };
 		042A2B7A228A642100353414 /* PhotoEditingProtectionAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B79228A642100353414 /* PhotoEditingProtectionAlertController.swift */; };
 		042A2B7C228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B7B228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift */; };
+		042A2B7E228CFEDB00353414 /* PhotoEditingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B7D228CFEDB00353414 /* PhotoEditingNavigationController.swift */; };
+		042A2B81228D012F00353414 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B80228D012F00353414 /* NavigationBar.swift */; };
+		042A2B83228D014900353414 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B82228D014900353414 /* Toolbar.swift */; };
 		042A39AD22811F87009C1C07 /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
 		042A39AF228125FA009C1C07 /* PhotoEditingRedactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */; };
 		043CD9C9226EB0400012F5AE /* TextRectangleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */; };
@@ -109,6 +112,9 @@
 		042A2B77228A5B6F00353414 /* PhotoExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExporter.swift; sourceTree = "<group>"; };
 		042A2B79228A642100353414 /* PhotoEditingProtectionAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingProtectionAlertController.swift; sourceTree = "<group>"; };
 		042A2B7B228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPermissionsRestrictedAlertController.swift; sourceTree = "<group>"; };
+		042A2B7D228CFEDB00353414 /* PhotoEditingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingNavigationController.swift; sourceTree = "<group>"; };
+		042A2B80228D012F00353414 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		042A2B82228D014900353414 /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		042A39AC22811F87009C1C07 /* Redaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redaction.swift; sourceTree = "<group>"; };
 		042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingRedactionView.swift; sourceTree = "<group>"; };
 		043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRectangleDetector.swift; sourceTree = "<group>"; };
@@ -250,6 +256,16 @@
 			path = "Photo Selection";
 			sourceTree = "<group>";
 		};
+		042A2B7F228D012300353414 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				041EFF5C2255A85F0058D8EE /* NavigationController.swift */,
+				042A2B80228D012F00353414 /* NavigationBar.swift */,
+				042A2B82228D014900353414 /* Toolbar.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		042A39AB22811F7A009C1C07 /* Redactions */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +314,7 @@
 				043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */,
 				043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */,
 				042A2B79228A642100353414 /* PhotoEditingProtectionAlertController.swift */,
+				042A2B7D228CFEDB00353414 /* PhotoEditingNavigationController.swift */,
 			);
 			path = "Photo Editing";
 			sourceTree = "<group>";
@@ -370,7 +387,7 @@
 				041EFEF82251A9F30058D8EE /* AppDelegate.swift */,
 				041EFEFA2251A9F30058D8EE /* AppViewController.swift */,
 				041EFF1A2251AB8D0058D8EE /* AppWindow.swift */,
-				041EFF5C2255A85F0058D8EE /* NavigationController.swift */,
+				042A2B7F228D012300353414 /* Navigation */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -513,6 +530,7 @@
 				042A39AD22811F87009C1C07 /* Redaction.swift in Sources */,
 				049F292B22875ADD00A335BE /* WebViewController.swift in Sources */,
 				04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */,
+				042A2B81228D012F00353414 /* NavigationBar.swift in Sources */,
 				043CD9D62275316E0012F5AE /* PhotoEditingScrollView.swift in Sources */,
 				04A3AEF6227A8CE700F21229 /* UIBezierPathExtensions.swift in Sources */,
 				04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */,
@@ -525,10 +543,12 @@
 				049F292F22875B1300A335BE /* PrivacyViewController.swift in Sources */,
 				04D68BC7225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift in Sources */,
 				041EFF5B2255A39D0058D8EE /* Fonts.swift in Sources */,
+				042A2B7E228CFEDB00353414 /* PhotoEditingNavigationController.swift in Sources */,
 				042A2B7C228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift in Sources */,
 				041EFF50225303120058D8EE /* PromptLabel.swift in Sources */,
 				043CD9D1226EB0F60012F5AE /* UIImageExtensions.swift in Sources */,
 				043CD9DF227548F30012F5AE /* SettingsTableViewCell.swift in Sources */,
+				042A2B83228D014900353414 /* Toolbar.swift in Sources */,
 				049F293322875E4D00A335BE /* ContactWebViewController.swift in Sources */,
 				04A3AEF8227A924D00F21229 /* CharacterObservation.swift in Sources */,
 				041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */,
