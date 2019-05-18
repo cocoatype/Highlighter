@@ -24,6 +24,7 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource {
 
     private lazy var allPhotos: PHFetchResult<PHAsset> = {
         let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         return PHAsset.fetchAssets(with: fetchOptions)
     }()
 
