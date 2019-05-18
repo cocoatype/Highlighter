@@ -41,7 +41,7 @@ class PhotoLibraryViewCell: UICollectionViewCell {
             imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
 
-        backgroundColor = .red
+        backgroundColor = .primary
     }
 
     override func prepareForReuse() {
