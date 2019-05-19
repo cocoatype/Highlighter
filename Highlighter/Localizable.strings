@@ -30,3 +30,5 @@
 "SettingsContentProvider.Item.acknowledgements" = "Acknowledgements";
 "SettingsContentProvider.Item.contact" = "Contact the Developer";
 "SettingsContentProvider.Item.privacy" = "Privacy Policy";
+
+"SettingsContentProvider.Section.otherApps.header" = "Other Apps by Cocoatype";

@@ -18,11 +18,29 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let tableView = (view as? SettingsTableView),
+        refreshOtherAppsList()
+
+        guard let tableView = tableView,
           let selectedRowIndex = tableView.indexPathForSelectedRow
         else { return }
 
         tableView.deselectRow(at: selectedRowIndex, animated: true)
+    }
+
+    // MARK: Other Apps
+
+    private func refreshOtherAppsList() {
+        AppListFetcher().fetchAppEntries { [weak self] appEntries, _ in
+            guard let appEntries = appEntries,
+              let contentProvider = self?.contentProvider
+            else { return }
+
+            contentProvider.otherAppEntries = appEntries
+
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView?.reloadSections(IndexSet(integer: 1), with: .automatic)
+            }
+        }
     }
 
     // MARK: Table View Delegate
@@ -51,6 +69,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
 
     private let contentProvider = SettingsContentProvider()
     private lazy var dataSource = SettingsTableViewDataSource(contentProvider: contentProvider)
+    private var tableView: SettingsTableView? { return view as? SettingsTableView }
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
