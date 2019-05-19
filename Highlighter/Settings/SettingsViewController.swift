@@ -7,6 +7,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
     init() {
         super.init(nibName: nil, bundle: nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(AppViewController.dismissSettingsViewController))
+
+        activeObserver = NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { [weak self] _ in
+            self?.deselectSelectedRows()
+        }
     }
 
     override func loadView() {
@@ -19,10 +23,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refreshOtherAppsList()
+        deselectSelectedRows()
+    }
 
+    // MARK: User Interface
+
+    private func deselectSelectedRows() {
         guard let tableView = tableView,
-          let selectedRowIndex = tableView.indexPathForSelectedRow
-        else { return }
+            let selectedRowIndex = tableView.indexPathForSelectedRow
+            else { return }
 
         tableView.deselectRow(at: selectedRowIndex, animated: true)
     }
@@ -55,7 +64,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
             sendResponderAction(#selector(SettingsNavigationController.presentAcknowledgementsViewController))
         case .contact:
             sendResponderAction(#selector(SettingsNavigationController.presentContactViewController))
-        case .otherApp: break // open App Store
+        case .otherApp(let appEntry):
+            appEntryOpener?.openAppStore(displaying: appEntry)
         case .privacy:
             sendResponderAction(#selector(SettingsNavigationController.presentPrivacyViewController))
         }
@@ -67,9 +77,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
 
     // MARK: Boilerplate
 
+    private var activeObserver: Any?
     private let contentProvider = SettingsContentProvider()
     private lazy var dataSource = SettingsTableViewDataSource(contentProvider: contentProvider)
     private var tableView: SettingsTableView? { return view as? SettingsTableView }
+
+    deinit {
+        activeObserver.map(NotificationCenter.default.removeObserver)
+    }
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
