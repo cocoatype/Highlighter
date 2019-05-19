@@ -36,6 +36,13 @@ class SettingsContentProvider: NSObject {
             case .privacy: return NSLocalizedString("SettingsContentProvider.Item.privacy", comment: "Title for the privacy policy settings item")
             }
         }
+
+        var imageURL: URL? {
+            switch self {
+            case .otherApp(let app): return app.iconURL
+            default: return nil
+            }
+        }
     }
 
     var otherAppEntries = [AppEntry]()

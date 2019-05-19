@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 4/27/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Kingfisher
 import UIKit
 
 class SettingsTableViewCell: UITableViewCell {
@@ -30,8 +31,13 @@ class SettingsTableViewCell: UITableViewCell {
         }
     }
 
-    // MARK: Boilerplate
+    // MARK: Image Processing
 
+    private static var imageProcessor: ImageProcessor {
+        return DownsamplingImageProcessor(size: CGSize(width: 32.0, height: 32.0)) >> RoundCornerImageProcessor(cornerRadius: 5.6)
+    }
+
+    // MARK: Boilerplate
     private let label = Label()
 
     @available(*, unavailable)
