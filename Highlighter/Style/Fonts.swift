@@ -11,6 +11,14 @@ extension UIFont {
         return fontMetrics.scaledFont(for: regularFont)
     }
 
+    class var navigationBarTitleFont: UIFont {
+        return boldFont
+    }
+
+    class var navigationBarButtonFont: UIFont {
+        return regularFont.withSize(15.0)
+    }
+
     // MARK: Boilerplate
 
     private static let boldFontName = "Aleo-Bold"
