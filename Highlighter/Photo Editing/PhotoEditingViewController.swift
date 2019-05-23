@@ -82,10 +82,10 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     }
 
     private func updateToolbarItems(animated: Bool = true) {
-        let undoToolItem = UIBarButtonItem(image: UIImage(named: "Undo"), style: .plain, target: editingUndoManager, action: #selector(UndoManager.undo))
+        let undoToolItem = UIBarButtonItem(image: UIImage(named: "Undo"), style: .plain, target: self, action: #selector(PhotoEditingViewController.undo))
         undoToolItem.isEnabled = editingUndoManager.canUndo
 
-        let redoToolItem = UIBarButtonItem(image: UIImage(named: "Redo"), style: .plain, target: editingUndoManager, action: #selector(UndoManager.redo))
+        let redoToolItem = UIBarButtonItem(image: UIImage(named: "Redo"), style: .plain, target: self, action: #selector(PhotoEditingViewController.redo))
         redoToolItem.isEnabled = editingUndoManager.canRedo
 
         let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -100,6 +100,16 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     let editingUndoManager = UndoManager()
     override var undoManager: UndoManager? {
         return editingUndoManager
+    }
+
+    @objc private func undo() {
+        editingUndoManager.undo()
+        updateToolbarItems()
+    }
+
+    @objc private func redo() {
+        editingUndoManager.redo()
+        updateToolbarItems()
     }
 
     // MARK: UIScrollViewDelegate
