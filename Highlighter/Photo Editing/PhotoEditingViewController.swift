@@ -12,6 +12,10 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(AppViewController.dismissPhotoEditingViewController))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(PhotoEditingViewController.sharePhoto))
         updateToolbarItems(animated: false)
+
+        redactionChangeObserver = NotificationCenter.default.addObserver(forName: PhotoEditingRedactionView.redactionsDidChange, object: nil, queue: .main, using: { [weak self] _ in
+            self?.updateToolbarItems()
+        })
     }
 
     override func loadView() {
@@ -78,9 +82,24 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     }
 
     private func updateToolbarItems(animated: Bool = true) {
-        guard let icon = photoEditingView?.highlighterTool.image else { return }
-        let highlighterToolItem = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(toggleHighlighterTool))
-        setToolbarItems([highlighterToolItem], animated: animated)
+        let undoToolItem = UIBarButtonItem(image: UIImage(named: "Undo"), style: .plain, target: editingUndoManager, action: #selector(UndoManager.undo))
+        undoToolItem.isEnabled = editingUndoManager.canUndo
+
+        let redoToolItem = UIBarButtonItem(image: UIImage(named: "Redo"), style: .plain, target: editingUndoManager, action: #selector(UndoManager.redo))
+        redoToolItem.isEnabled = editingUndoManager.canRedo
+
+        let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+
+        let highlighterToolIcon = photoEditingView?.highlighterTool.image
+        let highlighterToolItem = UIBarButtonItem(image: highlighterToolIcon, style: .plain, target: self, action: #selector(toggleHighlighterTool))
+        setToolbarItems([undoToolItem, redoToolItem, spacerItem, highlighterToolItem], animated: animated)
+    }
+
+    // MARK: Undo/Redo
+
+    let editingUndoManager = UndoManager()
+    override var undoManager: UndoManager? {
+        return editingUndoManager
     }
 
     // MARK: UIScrollViewDelegate
@@ -96,6 +115,11 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     private let textRectangleDetector = TextRectangleDetector()
     private var photoScrollView: PhotoEditingScrollView? { return (view as? PhotoEditingScrollView) }
     private var photoEditingView: PhotoEditingView? { return photoScrollView?.photoEditingView }
+    private var redactionChangeObserver: Any?
+
+    deinit {
+        redactionChangeObserver.map(NotificationCenter.default.removeObserver)
+    }
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
