@@ -53,6 +53,8 @@
 		043CD9E12275490E0012F5AE /* SettingsContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E02275490E0012F5AE /* SettingsContentProvider.swift */; };
 		043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */; };
 		043CD9E52277EC910012F5AE /* PhotoEditingBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */; };
+		0454C30522963937004FDBFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0454C30322963937004FDBFB /* Assets.xcassets */; };
+		0454C30622963937004FDBFB /* Magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0454C30422963937004FDBFB /* Magic.sks */; };
 		047072932268134500FF20B6 /* PhotoEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingView.swift */; };
 		047072952268137900FF20B6 /* PhotoEditingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072942268137900FF20B6 /* PhotoEditingImageView.swift */; };
 		048909F2226571AB0048E203 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F1226571AB0048E203 /* PhotoEditingViewController.swift */; };
@@ -135,6 +137,8 @@
 		043CD9E02275490E0012F5AE /* SettingsContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContentProvider.swift; sourceTree = "<group>"; };
 		043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewDataSource.swift; sourceTree = "<group>"; };
 		043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingBrushStrokeView.swift; sourceTree = "<group>"; };
+		0454C30322963937004FDBFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0454C30422963937004FDBFB /* Magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Magic.sks; sourceTree = "<group>"; };
 		047072922268134500FF20B6 /* PhotoEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingView.swift; sourceTree = "<group>"; };
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
@@ -310,6 +314,8 @@
 		048909EF2265716B0048E203 /* Photo Editing */ = {
 			isa = PBXGroup;
 			children = (
+				0454C30322963937004FDBFB /* Assets.xcassets */,
+				0454C30422963937004FDBFB /* Magic.sks */,
 				042A39AB22811F7A009C1C07 /* Redactions */,
 				048909F1226571AB0048E203 /* PhotoEditingViewController.swift */,
 				042A2B77228A5B6F00353414 /* PhotoExporter.swift */,
@@ -493,7 +499,9 @@
 				041EFF582255A2FB0058D8EE /* Aleo-Bold.otf in Resources */,
 				041EFF592255A2FB0058D8EE /* Aleo-Regular.otf in Resources */,
 				041EFF032251A9F50058D8EE /* LaunchScreen.storyboard in Resources */,
+				0454C30622963937004FDBFB /* Magic.sks in Resources */,
 				041EFF4B225300030058D8EE /* Localizable.strings in Resources */,
+				0454C30522963937004FDBFB /* Assets.xcassets in Resources */,
 				041EFF002251A9F50058D8EE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
