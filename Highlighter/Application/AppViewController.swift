@@ -18,6 +18,10 @@ class AppViewController: UIViewController, PhotoEditorPresenting {
         present(PhotoEditingNavigationController(asset: asset), animated: true)
     }
 
+    func presentPhotoEditingViewController(for image: UIImage) {
+        present(PhotoEditingNavigationController(image: image), animated: true)
+    }
+
     @objc func dismissPhotoEditingViewController() {
         guard let presentedNavigationController = (presentedViewController as? NavigationController),
           let editingViewController = (presentedNavigationController.viewControllers.first as? PhotoEditingViewController)
