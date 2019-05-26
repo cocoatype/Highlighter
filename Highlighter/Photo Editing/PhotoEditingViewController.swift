@@ -63,6 +63,8 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
         let activityController = UIActivityViewController(activityItems: [exportedImage], applicationActivities: nil)
         activityController.completionWithItemsHandler = { [weak self] _, completed, _, _ in
             self?.hasMadeEdits = false
+            Defaults.numberOfSaves = Defaults.numberOfSaves + 1
+            AppRatingsPrompter.displayRatingsPrompt()
         }
 
         present(activityController, animated: true)
