@@ -3,7 +3,7 @@
 
 import UIKit
 
-class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate {
+class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UIDropInteractionDelegate {
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -12,7 +12,34 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate {
         let libraryView = PhotoLibraryView()
         libraryView.dataSource = dataSource
         libraryView.delegate = self
+
+        let dropInteraction = UIDropInteraction(delegate: self)
+        libraryView.addInteraction(dropInteraction)
+
         view = libraryView
+    }
+
+    // MARK: UIDropInteractionDelegate
+
+    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
+        print("can handle drop?")
+        guard session.items.count == 1 else { return false }
+        guard session.canLoadObjects(ofClass: UIImage.self) else { return false }
+
+        print("can handle drop!")
+
+        return true
+    }
+
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
+        return UIDropProposal(operation: .copy)
+    }
+
+    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
+        session.loadObjects(ofClass: UIImage.self) { [weak self] dropItems in
+            guard let image = (dropItems.first as? UIImage) else { return }
+            self?.photoEditorPresenter?.presentPhotoEditingViewController(for: image)
+        }
     }
 
     // MARK: UICollectionViewDelegate
