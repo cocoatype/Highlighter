@@ -10,6 +10,11 @@ class PhotoEditingNavigationController: NavigationController {
         isToolbarHidden = false
     }
 
+    init(image: UIImage) {
+        super.init(rootViewController: PhotoEditingViewController(image: image))
+        isToolbarHidden = false
+    }
+
     // MARK: Boilerplate
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
