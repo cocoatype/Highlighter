@@ -67,6 +67,13 @@
 		049F293522875F7E00A335BE /* ContactMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F293422875F7E00A335BE /* ContactMailViewController.swift */; };
 		04A3AEF6227A8CE700F21229 /* UIBezierPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */; };
 		04A3AEF8227A924D00F21229 /* CharacterObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF7227A924D00F21229 /* CharacterObservation.swift */; };
+		04ADD1562290CCC200E17445 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1552290CCC200E17445 /* AppEntry.swift */; };
+		04ADD1582290CFF100E17445 /* AppListFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1572290CFF100E17445 /* AppListFetcher.swift */; };
+		04ADD15A2290D1C500E17445 /* AppLookupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1592290D1C500E17445 /* AppLookupResponse.swift */; };
+		04ADD15C2290D29400E17445 /* AppLookupResponseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15B2290D29400E17445 /* AppLookupResponseResult.swift */; };
+		04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15D2290D2D200E17445 /* AppDeveloperInfo.swift */; };
+		04ADD1602290DA8E00E17445 /* AppEntryOpening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15F2290DA8E00E17445 /* AppEntryOpening.swift */; };
+		04ADD1642290DE6800E17445 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ADD1632290DE6700E17445 /* Kingfisher.framework */; };
 		04D68BC5225EE2C000D09BBD /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */; };
 		04D68BC7225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC6225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift */; };
 		04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */; };
@@ -150,6 +157,13 @@
 		049F293422875F7E00A335BE /* ContactMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMailViewController.swift; sourceTree = "<group>"; };
 		04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtensions.swift; sourceTree = "<group>"; };
 		04A3AEF7227A924D00F21229 /* CharacterObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterObservation.swift; sourceTree = "<group>"; };
+		04ADD1552290CCC200E17445 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
+		04ADD1572290CFF100E17445 /* AppListFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListFetcher.swift; sourceTree = "<group>"; };
+		04ADD1592290D1C500E17445 /* AppLookupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLookupResponse.swift; sourceTree = "<group>"; };
+		04ADD15B2290D29400E17445 /* AppLookupResponseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLookupResponseResult.swift; sourceTree = "<group>"; };
+		04ADD15D2290D2D200E17445 /* AppDeveloperInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeveloperInfo.swift; sourceTree = "<group>"; };
+		04ADD15F2290DA8E00E17445 /* AppEntryOpening.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntryOpening.swift; sourceTree = "<group>"; };
+		04ADD1632290DE6700E17445 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
 		04D68BC6225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewCellImageView.swift; sourceTree = "<group>"; };
 		04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPermissionsRequester.swift; sourceTree = "<group>"; };
@@ -163,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04ADD1642290DE6800E17445 /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +197,7 @@
 				041EFEF72251A9F30058D8EE /* Highlighter */,
 				041EFF0C2251A9F50058D8EE /* HighlighterTests */,
 				041EFEF62251A9F30058D8EE /* Products */,
+				04ADD1622290DE6700E17445 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -306,6 +322,7 @@
 		043CD9D922753D450012F5AE /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				04ADD1542290CBF300E17445 /* Other Apps */,
 				049F292922875AC200A335BE /* Presented View Controllers */,
 				043CD9DA22753D510012F5AE /* SettingsViewController.swift */,
 				043CD9DC227548C20012F5AE /* SettingsTableView.swift */,
@@ -360,6 +377,27 @@
 				049F293422875F7E00A335BE /* ContactMailViewController.swift */,
 			);
 			path = "Presented View Controllers";
+			sourceTree = "<group>";
+		};
+		04ADD1542290CBF300E17445 /* Other Apps */ = {
+			isa = PBXGroup;
+			children = (
+				04ADD1552290CCC200E17445 /* AppEntry.swift */,
+				04ADD1572290CFF100E17445 /* AppListFetcher.swift */,
+				04ADD1592290D1C500E17445 /* AppLookupResponse.swift */,
+				04ADD15B2290D29400E17445 /* AppLookupResponseResult.swift */,
+				04ADD15D2290D2D200E17445 /* AppDeveloperInfo.swift */,
+				04ADD15F2290DA8E00E17445 /* AppEntryOpening.swift */,
+			);
+			path = "Other Apps";
+			sourceTree = "<group>";
+		};
+		04ADD1622290DE6700E17445 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04ADD1632290DE6700E17445 /* Kingfisher.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		04D68BC3225EE2A500D09BBD /* Extensions */ = {
@@ -430,6 +468,7 @@
 				041EFEF12251A9F30058D8EE /* Sources */,
 				041EFEF22251A9F30058D8EE /* Frameworks */,
 				041EFEF32251A9F30058D8EE /* Resources */,
+				04ADD1612290DDEB00E17445 /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -518,6 +557,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		04ADD1612290DDEB00E17445 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		041EFEF12251A9F30058D8EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -545,6 +606,7 @@
 				048909F2226571AB0048E203 /* PhotoEditingViewController.swift in Sources */,
 				041EFF552255A0B00058D8EE /* Colors.swift in Sources */,
 				041EFF72225C3DC00058D8EE /* PhotoLibraryDataSource.swift in Sources */,
+				04ADD15C2290D29400E17445 /* AppLookupResponseResult.swift in Sources */,
 				048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */,
 				041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */,
 				042A2B87228D08D800353414 /* CharacterObservationRedaction.swift in Sources */,
@@ -555,6 +617,7 @@
 				042A2B81228D012F00353414 /* NavigationBar.swift in Sources */,
 				043CD9D62275316E0012F5AE /* PhotoEditingScrollView.swift in Sources */,
 				04A3AEF6227A8CE700F21229 /* UIBezierPathExtensions.swift in Sources */,
+				04ADD1562290CCC200E17445 /* AppEntry.swift in Sources */,
 				04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */,
 				041EFF192251AAFE0058D8EE /* UIViewControllerExtensions.swift in Sources */,
 				041EFF52225303430058D8EE /* PromptButton.swift in Sources */,
@@ -562,8 +625,10 @@
 				043CD9DD227548C20012F5AE /* SettingsTableView.swift in Sources */,
 				042A2B78228A5B6F00353414 /* PhotoExporter.swift in Sources */,
 				041EFF76225C3DF10058D8EE /* PhotoLibraryViewLayout.swift in Sources */,
+				04ADD15A2290D1C500E17445 /* AppLookupResponse.swift in Sources */,
 				042A2B89228D091000353414 /* PathRedaction.swift in Sources */,
 				049F292F22875B1300A335BE /* PrivacyViewController.swift in Sources */,
+				04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */,
 				04D68BC7225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift in Sources */,
 				041EFF5B2255A39D0058D8EE /* Fonts.swift in Sources */,
 				042A2B7E228CFEDB00353414 /* PhotoEditingNavigationController.swift in Sources */,
@@ -573,6 +638,7 @@
 				043CD9DF227548F30012F5AE /* SettingsTableViewCell.swift in Sources */,
 				042A2B83228D014900353414 /* Toolbar.swift in Sources */,
 				049F293322875E4D00A335BE /* ContactWebViewController.swift in Sources */,
+				04ADD1602290DA8E00E17445 /* AppEntryOpening.swift in Sources */,
 				04A3AEF8227A924D00F21229 /* CharacterObservation.swift in Sources */,
 				041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */,
 				041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */,
@@ -580,6 +646,7 @@
 				041EFF74225C3DD20058D8EE /* PhotoLibraryViewCell.swift in Sources */,
 				04D68BC5225EE2C000D09BBD /* GeometryExtensions.swift in Sources */,
 				043CD9CB226EB0830012F5AE /* TextRectangleDetectionOperation.swift in Sources */,
+				04ADD1582290CFF100E17445 /* AppListFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,6 +809,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 287EDDET2B;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Highlighter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -760,6 +831,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 287EDDET2B;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Highlighter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

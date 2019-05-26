@@ -4,7 +4,7 @@
 import Photos
 import UIKit
 
-class AppViewController: UIViewController, PhotoEditorPresenting {
+class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening {
     init() {
         super.init(nibName: nil, bundle: nil)
 
@@ -47,6 +47,13 @@ class AppViewController: UIViewController, PhotoEditorPresenting {
         if presentedViewController is SettingsNavigationController {
             dismiss(animated: true)
         }
+    }
+
+    // MARK: App Store
+
+    func openAppStore(displaying appEntry: AppEntry) {
+        guard let appStoreURL = appEntry.appStoreURL else { return }
+        UIApplication.shared.open(appStoreURL)
     }
 
     // MARK: Status Bar

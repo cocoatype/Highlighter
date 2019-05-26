@@ -7,6 +7,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
     init() {
         super.init(nibName: nil, bundle: nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(AppViewController.dismissSettingsViewController))
+
+        activeObserver = NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { [weak self] _ in
+            self?.deselectSelectedRows()
+        }
     }
 
     override func loadView() {
@@ -18,11 +22,34 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let tableView = (view as? SettingsTableView),
-          let selectedRowIndex = tableView.indexPathForSelectedRow
-        else { return }
+        refreshOtherAppsList()
+        deselectSelectedRows()
+    }
+
+    // MARK: User Interface
+
+    private func deselectSelectedRows() {
+        guard let tableView = tableView,
+            let selectedRowIndex = tableView.indexPathForSelectedRow
+            else { return }
 
         tableView.deselectRow(at: selectedRowIndex, animated: true)
+    }
+
+    // MARK: Other Apps
+
+    private func refreshOtherAppsList() {
+        AppListFetcher().fetchAppEntries { [weak self] appEntries, _ in
+            guard let appEntries = appEntries,
+              let contentProvider = self?.contentProvider
+            else { return }
+
+            contentProvider.otherAppEntries = appEntries
+
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView?.reloadSections(IndexSet(integer: 1), with: .automatic)
+            }
+        }
     }
 
     // MARK: Table View Delegate
@@ -37,7 +64,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
             sendResponderAction(#selector(SettingsNavigationController.presentAcknowledgementsViewController))
         case .contact:
             sendResponderAction(#selector(SettingsNavigationController.presentContactViewController))
-        case .otherApp: break // open App Store
+        case .otherApp(let appEntry):
+            appEntryOpener?.openAppStore(displaying: appEntry)
         case .privacy:
             sendResponderAction(#selector(SettingsNavigationController.presentPrivacyViewController))
         }
@@ -49,8 +77,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
 
     // MARK: Boilerplate
 
+    private var activeObserver: Any?
     private let contentProvider = SettingsContentProvider()
     private lazy var dataSource = SettingsTableViewDataSource(contentProvider: contentProvider)
+    private var tableView: SettingsTableView? { return view as? SettingsTableView }
+
+    deinit {
+        activeObserver.map(NotificationCenter.default.removeObserver)
+    }
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
