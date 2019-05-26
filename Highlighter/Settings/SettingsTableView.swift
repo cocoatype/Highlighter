@@ -11,6 +11,7 @@ class SettingsTableView: UITableView {
         separatorInset = .zero
 
         register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
+        register(SettingsAppEntryTableViewCell.self, forCellReuseIdentifier: SettingsAppEntryTableViewCell.identifier)
     }
 
     // MARK: Boilerplate
