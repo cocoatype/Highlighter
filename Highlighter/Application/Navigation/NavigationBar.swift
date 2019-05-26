@@ -11,7 +11,7 @@ class NavigationBar: UINavigationBar {
         isTranslucent = false
         tintColor = .white
         titleTextAttributes = [
-            .font: UIFont.appFont(forTextStyle: .headline),
+            .font: UIFont.navigationBarTitleFont,
             .foregroundColor: UIColor.white
         ]
     }

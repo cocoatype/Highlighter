@@ -327,20 +327,20 @@
 		048909EF2265716B0048E203 /* Photo Editing */ = {
 			isa = PBXGroup;
 			children = (
-				042A39AB22811F7A009C1C07 /* Redactions */,
-				048909F1226571AB0048E203 /* PhotoEditingViewController.swift */,
-				042A2B77228A5B6F00353414 /* PhotoExporter.swift */,
-				043CD9CD226EB0B20012F5AE /* Text Detection */,
-				047072922268134500FF20B6 /* PhotoEditingView.swift */,
+				042A2B84228D01BD00353414 /* HighlighterTool.swift */,
 				043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */,
-				042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */,
 				047072942268137900FF20B6 /* PhotoEditingImageView.swift */,
-				048909F3226573750048E203 /* PhotoEditorPresenting.swift */,
-				043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */,
+				042A2B7D228CFEDB00353414 /* PhotoEditingNavigationController.swift */,
 				043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */,
 				042A2B79228A642100353414 /* PhotoEditingProtectionAlertController.swift */,
-				042A2B7D228CFEDB00353414 /* PhotoEditingNavigationController.swift */,
-				042A2B84228D01BD00353414 /* HighlighterTool.swift */,
+				042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */,
+				043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */,
+				047072922268134500FF20B6 /* PhotoEditingView.swift */,
+				048909F1226571AB0048E203 /* PhotoEditingViewController.swift */,
+				048909F3226573750048E203 /* PhotoEditorPresenting.swift */,
+				042A2B77228A5B6F00353414 /* PhotoExporter.swift */,
+				042A39AB22811F7A009C1C07 /* Redactions */,
+				043CD9CD226EB0B20012F5AE /* Text Detection */,
 			);
 			path = "Photo Editing";
 			sourceTree = "<group>";

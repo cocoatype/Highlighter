@@ -10,8 +10,11 @@ class NavigationController: UINavigationController {
 
         let appearance = UIBarButtonItem.appearance()
         appearance.setTitleTextAttributes([
-            .font: UIFont.appFont(forTextStyle: .subheadline)
+            .font: UIFont.navigationBarButtonFont
         ], for: .normal)
+        appearance.setTitleTextAttributes([
+            .font: UIFont.navigationBarButtonFont
+        ], for: .highlighted)
     }
 
     // MARK: Status Bar
