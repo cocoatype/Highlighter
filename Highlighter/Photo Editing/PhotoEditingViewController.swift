@@ -5,8 +5,9 @@ import Photos
 import UIKit
 
 class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
-    init(asset: PHAsset) {
+    init(asset: PHAsset? = nil, image: UIImage? = nil) {
         self.asset = asset
+        self.image = image
         super.init(nibName: nil, bundle: nil)
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(AppViewController.dismissPhotoEditingViewController))
@@ -31,18 +32,16 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
         options.deliveryMode = .highQualityFormat
         options.isNetworkAccessAllowed = true
 
-        imageManager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: options) { [weak self] image, info in
-            let isDegraded = (info?[PHImageResultIsDegradedKey] as? NSNumber)?.boolValue ?? false
-            guard let image = image, isDegraded == false else { return }
+        if image != nil {
+            updateScrollView()
+        } else if let asset = asset {
+            imageManager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: options) { [weak self] image, info in
+                let isDegraded = (info?[PHImageResultIsDegradedKey] as? NSNumber)?.boolValue ?? false
+                guard let image = image, isDegraded == false else { return }
 
-            self?.textRectangleDetector.detectTextRectangles(in: image) { (textObservations) in
-                DispatchQueue.main.async { [weak self] in
-                    self?.photoScrollView?.textObservations = textObservations
+                DispatchQueue.main.async {
+                    self?.image = image
                 }
-            }
-
-            DispatchQueue.main.async { [weak self] in
-                self?.photoScrollView?.image = image
             }
         }
     }
@@ -118,9 +117,29 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
         return photoEditingView
     }
 
+    // MARK: Image
+
+    private var image: UIImage? {
+        didSet {
+            updateScrollView()
+        }
+    }
+
+    private func updateScrollView() {
+        guard let photoScrollView = photoScrollView else { return }
+        photoScrollView.image = image
+
+        guard let image = image else { return }
+        textRectangleDetector.detectTextRectangles(in: image) { (textObservations) in
+            DispatchQueue.main.async { [weak photoScrollView] in
+                photoScrollView?.textObservations = textObservations
+            }
+        }
+    }
+
     // MARK: Boilerplate
 
-    private let asset: PHAsset
+    private let asset: PHAsset?
     private let imageManager = PHImageManager()
     private let textRectangleDetector = TextRectangleDetector()
     private var photoScrollView: PhotoEditingScrollView? { return (view as? PhotoEditingScrollView) }
