@@ -41,6 +41,8 @@
 		042A2B89228D091000353414 /* PathRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B88228D091000353414 /* PathRedaction.swift */; };
 		042A39AD22811F87009C1C07 /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
 		042A39AF228125FA009C1C07 /* PhotoEditingRedactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */; };
+		042B7903229A38C0005B7A2A /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B7902229A38C0005B7A2A /* Defaults.swift */; };
+		042B7905229A3AC7005B7A2A /* AppRatingsPrompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */; };
 		043CD9C9226EB0400012F5AE /* TextRectangleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */; };
 		043CD9CB226EB0830012F5AE /* TextRectangleDetectionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */; };
 		043CD9CF226EB0C70012F5AE /* TextObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CE226EB0C70012F5AE /* TextObservation.swift */; };
@@ -123,6 +125,8 @@
 		042A2B88228D091000353414 /* PathRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathRedaction.swift; sourceTree = "<group>"; };
 		042A39AC22811F87009C1C07 /* Redaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redaction.swift; sourceTree = "<group>"; };
 		042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingRedactionView.swift; sourceTree = "<group>"; };
+		042B7902229A38C0005B7A2A /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRatingsPrompter.swift; sourceTree = "<group>"; };
 		043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRectangleDetector.swift; sourceTree = "<group>"; };
 		043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRectangleDetectionOperation.swift; sourceTree = "<group>"; };
 		043CD9CE226EB0C70012F5AE /* TextObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservation.swift; sourceTree = "<group>"; };
@@ -397,6 +401,8 @@
 				041EFEFA2251A9F30058D8EE /* AppViewController.swift */,
 				041EFF1A2251AB8D0058D8EE /* AppWindow.swift */,
 				042A2B7F228D012300353414 /* Navigation */,
+				042B7902229A38C0005B7A2A /* Defaults.swift */,
+				042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -524,6 +530,7 @@
 				042A39AF228125FA009C1C07 /* PhotoEditingRedactionView.swift in Sources */,
 				049F293522875F7E00A335BE /* ContactMailViewController.swift in Sources */,
 				043CD9CF226EB0C70012F5AE /* TextObservation.swift in Sources */,
+				042B7905229A3AC7005B7A2A /* AppRatingsPrompter.swift in Sources */,
 				047072932268134500FF20B6 /* PhotoEditingView.swift in Sources */,
 				043CD9E12275490E0012F5AE /* SettingsContentProvider.swift in Sources */,
 				041EFF6B225C36350058D8EE /* PhotoLibraryViewController.swift in Sources */,
@@ -567,6 +574,7 @@
 				041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */,
 				049F2928228755DB00A335BE /* SettingsNavigationController.swift in Sources */,
 				041EFF74225C3DD20058D8EE /* PhotoLibraryViewCell.swift in Sources */,
+				042B7903229A38C0005B7A2A /* Defaults.swift in Sources */,
 				04D68BC5225EE2C000D09BBD /* GeometryExtensions.swift in Sources */,
 				043CD9CB226EB0830012F5AE /* TextRectangleDetectionOperation.swift in Sources */,
 			);
