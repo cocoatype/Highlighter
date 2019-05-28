@@ -20,8 +20,7 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     }
 
     override func loadView() {
-        view = PhotoEditingScrollView()
-        photoScrollView?.delegate = self
+        view = photoEditingView
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -56,8 +55,8 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     // MARK: Sharing
 
     @objc func sharePhoto() {
-        guard let editingView = photoEditingView, let image = editingView.image else { return }
-        let photoExporter = PhotoExporter(image: image, redactions: editingView.redactions)
+        guard let image = photoEditingView.image else { return }
+        let photoExporter = PhotoExporter(image: image, redactions: photoEditingView.redactions)
         guard let exportedImage = photoExporter.exportedImage else { return }
 
         let activityController = UIActivityViewController(activityItems: [exportedImage], applicationActivities: nil)
@@ -73,12 +72,12 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     // MARK: Highlighters
 
     @objc func toggleHighlighterTool() {
-        guard let currentTool = photoEditingView?.highlighterTool else { return }
+        let currentTool = photoEditingView.highlighterTool
         let allTools = HighlighterTool.allCases
         let currentToolIndex = allTools.firstIndex(of: currentTool) ?? allTools.startIndex
         let nextToolIndex = (currentToolIndex + 1) % allTools.count
         let nextTool = allTools[nextToolIndex]
-        photoEditingView?.highlighterTool = nextTool
+        photoEditingView.highlighterTool = nextTool
         updateToolbarItems()
     }
 
@@ -91,7 +90,7 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
 
         let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
-        let highlighterToolIcon = photoEditingView?.highlighterTool.image
+        let highlighterToolIcon = photoEditingView.highlighterTool.image
         let highlighterToolItem = UIBarButtonItem(image: highlighterToolIcon, style: .plain, target: self, action: #selector(toggleHighlighterTool))
         setToolbarItems([undoToolItem, redoToolItem, spacerItem, highlighterToolItem], animated: animated)
     }
@@ -113,12 +112,6 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
         updateToolbarItems()
     }
 
-    // MARK: UIScrollViewDelegate
-
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return photoEditingView
-    }
-
     // MARK: Image
 
     private var image: UIImage? {
@@ -128,13 +121,12 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     }
 
     private func updateScrollView() {
-        guard let photoScrollView = photoScrollView else { return }
-        photoScrollView.image = image
+        photoEditingView.image = image
 
         guard let image = image else { return }
-        textRectangleDetector.detectTextRectangles(in: image) { (textObservations) in
-            DispatchQueue.main.async { [weak photoScrollView] in
-                photoScrollView?.textObservations = textObservations
+        textRectangleDetector.detectTextRectangles(in: image) { [weak self] textObservations in
+            DispatchQueue.main.async { [weak self] in
+                self?.photoEditingView.textObservations = textObservations
             }
         }
     }
@@ -144,8 +136,7 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     private let asset: PHAsset?
     private let imageManager = PHImageManager()
     private let textRectangleDetector = TextRectangleDetector()
-    private var photoScrollView: PhotoEditingScrollView? { return (view as? PhotoEditingScrollView) }
-    private var photoEditingView: PhotoEditingView? { return photoScrollView?.photoEditingView }
+    private let photoEditingView = PhotoEditingView()
     private var redactionChangeObserver: Any?
 
     deinit {

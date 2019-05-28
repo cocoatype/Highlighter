@@ -3,10 +3,10 @@
 
 import UIKit
 
-class PhotoEditingView: UIView {
+class PhotoEditingWorkspaceView: UIView {
     init() {
         imageView = PhotoEditingImageView()
-        visualizationView = PhotoEditingObservationVisualizationView()
+//        visualizationView = PhotoEditingObservationVisualizationView()
         redactionView = PhotoEditingRedactionView()
         brushStrokeView = PhotoEditingBrushStrokeView()
 
@@ -15,7 +15,7 @@ class PhotoEditingView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(imageView)
-        addSubview(visualizationView)
+//        addSubview(visualizationView)
         addSubview(redactionView)
         addSubview(brushStrokeView)
 
@@ -24,10 +24,10 @@ class PhotoEditingView: UIView {
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             imageView.widthAnchor.constraint(equalTo: widthAnchor),
             imageView.heightAnchor.constraint(equalTo: heightAnchor),
-            visualizationView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            visualizationView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            visualizationView.widthAnchor.constraint(equalTo: widthAnchor),
-            visualizationView.heightAnchor.constraint(equalTo: heightAnchor),
+//            visualizationView.centerXAnchor.constraint(equalTo: centerXAnchor),
+//            visualizationView.centerYAnchor.constraint(equalTo: centerYAnchor),
+//            visualizationView.widthAnchor.constraint(equalTo: widthAnchor),
+//            visualizationView.heightAnchor.constraint(equalTo: heightAnchor),
             redactionView.centerXAnchor.constraint(equalTo: centerXAnchor),
             redactionView.centerYAnchor.constraint(equalTo: centerYAnchor),
             redactionView.widthAnchor.constraint(equalTo: widthAnchor),
@@ -54,12 +54,12 @@ class PhotoEditingView: UIView {
         return redactionView.redactions
     }
 
-    var textObservations: [TextObservation]? {
-        get { return visualizationView.textObservations }
-        set(newTextObservations) {
-            visualizationView.textObservations = newTextObservations
-        }
-    }
+    var textObservations: [TextObservation]? //{
+//        get { return visualizationView.textObservations }
+//        set(newTextObservations) {
+//            visualizationView.textObservations = newTextObservations
+//        }
+//    }
 
     // MARK: Actions
 
@@ -91,7 +91,7 @@ class PhotoEditingView: UIView {
     // MARK: Boilerplate
 
     private let imageView: PhotoEditingImageView
-    private let visualizationView: PhotoEditingObservationVisualizationView
+//    private let visualizationView: PhotoEditingObservationVisualizationView
     private let redactionView: PhotoEditingRedactionView
     private let brushStrokeView: PhotoEditingBrushStrokeView
 

@@ -5,37 +5,38 @@ import UIKit
 
 class PhotoEditingScrollView: UIScrollView {
     init() {
-        photoEditingView = PhotoEditingView()
+        workspaceView = PhotoEditingWorkspaceView()
 
         super.init(frame: .zero)
         backgroundColor = .primary
+        translatesAutoresizingMaskIntoConstraints = false
 
-        addSubview(photoEditingView)
+        addSubview(workspaceView)
 
         panGestureRecognizer.minimumNumberOfTouches = 2
 
         NSLayoutConstraint.activate([
-            photoEditingView.centerXAnchor.constraint(equalTo: contentLayoutGuide.centerXAnchor),
-            photoEditingView.centerYAnchor.constraint(equalTo: contentLayoutGuide.centerYAnchor),
-            photoEditingView.widthAnchor.constraint(equalTo: contentLayoutGuide.widthAnchor),
-            photoEditingView.heightAnchor.constraint(equalTo: contentLayoutGuide.heightAnchor)
+            workspaceView.centerXAnchor.constraint(equalTo: contentLayoutGuide.centerXAnchor),
+            workspaceView.centerYAnchor.constraint(equalTo: contentLayoutGuide.centerYAnchor),
+            workspaceView.widthAnchor.constraint(equalTo: contentLayoutGuide.widthAnchor),
+            workspaceView.heightAnchor.constraint(equalTo: contentLayoutGuide.heightAnchor)
         ])
     }
 
-    private(set) var photoEditingView: PhotoEditingView
+    private(set) var workspaceView: PhotoEditingWorkspaceView
 
     var image: UIImage? {
-        get { return photoEditingView.image }
+        get { return workspaceView.image }
         set(newImage) {
-            photoEditingView.image = newImage
+            workspaceView.image = newImage
             updateZoomScale()
         }
     }
 
     var textObservations: [TextObservation]? {
-        get { return photoEditingView.textObservations }
+        get { return workspaceView.textObservations }
         set(newTextObservations) {
-            photoEditingView.textObservations = newTextObservations
+            workspaceView.textObservations = newTextObservations
         }
     }
 

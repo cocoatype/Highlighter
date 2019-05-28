@@ -11,6 +11,7 @@ class PhotoEditingObservationVisualizationView: SKView {
         backgroundColor = .clear
         isOpaque = false
         translatesAutoresizingMaskIntoConstraints = false
+        isUserInteractionEnabled = false
     }
 
     override func layoutSubviews() {
