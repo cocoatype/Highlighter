@@ -34,12 +34,20 @@ class PhotoEditingRedactionView: UIView {
     }
 
     func add(_ redaction: Redaction) {
-        add([redaction])
+        self.redactions.append(redaction)
+        setNeedsDisplay()
     }
 
     func add(_ redactions: [Redaction]) {
-        redactions.forEach { [unowned self] in self.redactions.append($0) }
+        self.redactions.append(contentsOf: redactions)
         setNeedsDisplay()
+    }
+
+    private func registerUndo(with existingRedactions: [Redaction]) {
+        undoManager?.registerUndo(withTarget: self, handler: { redactionView in
+            redactionView.redactions = existingRedactions
+            redactionView.setNeedsDisplay()
+        })
     }
 
     private func brushStamp(scaledToHeight height: CGFloat) -> UIImage {
@@ -60,9 +68,18 @@ class PhotoEditingRedactionView: UIView {
         return scaledImage
     }
 
+    // MARK: Notifications
+
+    static let redactionsDidChange = Notification.Name("PhotoEditingRedactionView.redactionsDidChange")
+
     // MARK: Boilerplate
 
-    private(set) var redactions = [Redaction]()
+    private(set) var redactions = [Redaction]() {
+        didSet(existingRedactions) {
+            registerUndo(with: existingRedactions)
+            NotificationCenter.default.post(name: PhotoEditingRedactionView.redactionsDidChange, object: self)
+        }
+    }
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

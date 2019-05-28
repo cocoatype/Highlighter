@@ -5,13 +5,18 @@ import Photos
 import UIKit
 
 class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
-    init(asset: PHAsset) {
+    init(asset: PHAsset? = nil, image: UIImage? = nil) {
         self.asset = asset
+        self.image = image
         super.init(nibName: nil, bundle: nil)
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(AppViewController.dismissPhotoEditingViewController))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(PhotoEditingViewController.sharePhoto))
         updateToolbarItems(animated: false)
+
+        redactionChangeObserver = NotificationCenter.default.addObserver(forName: PhotoEditingRedactionView.redactionsDidChange, object: nil, queue: .main, using: { [weak self] _ in
+            self?.updateToolbarItems()
+        })
     }
 
     override func loadView() {
@@ -27,18 +32,16 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
         options.deliveryMode = .highQualityFormat
         options.isNetworkAccessAllowed = true
 
-        imageManager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: options) { [weak self] image, info in
-            let isDegraded = (info?[PHImageResultIsDegradedKey] as? NSNumber)?.boolValue ?? false
-            guard let image = image, isDegraded == false else { return }
+        if image != nil {
+            updateScrollView()
+        } else if let asset = asset {
+            imageManager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: options) { [weak self] image, info in
+                let isDegraded = (info?[PHImageResultIsDegradedKey] as? NSNumber)?.boolValue ?? false
+                guard let image = image, isDegraded == false else { return }
 
-            self?.textRectangleDetector.detectTextRectangles(in: image) { (textObservations) in
-                DispatchQueue.main.async { [weak self] in
-                    self?.photoScrollView?.textObservations = textObservations
+                DispatchQueue.main.async {
+                    self?.image = image
                 }
-            }
-
-            DispatchQueue.main.async { [weak self] in
-                self?.photoScrollView?.image = image
             }
         }
     }
@@ -60,6 +63,8 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
         let activityController = UIActivityViewController(activityItems: [exportedImage], applicationActivities: nil)
         activityController.completionWithItemsHandler = { [weak self] _, completed, _, _ in
             self?.hasMadeEdits = false
+            Defaults.numberOfSaves = Defaults.numberOfSaves + 1
+            AppRatingsPrompter.displayRatingsPrompt()
         }
 
         present(activityController, animated: true)
@@ -78,9 +83,34 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     }
 
     private func updateToolbarItems(animated: Bool = true) {
-        guard let icon = photoEditingView?.highlighterTool.image else { return }
-        let highlighterToolItem = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(toggleHighlighterTool))
-        setToolbarItems([highlighterToolItem], animated: animated)
+        let undoToolItem = UIBarButtonItem(image: UIImage(named: "Undo"), style: .plain, target: self, action: #selector(PhotoEditingViewController.undo))
+        undoToolItem.isEnabled = editingUndoManager.canUndo
+
+        let redoToolItem = UIBarButtonItem(image: UIImage(named: "Redo"), style: .plain, target: self, action: #selector(PhotoEditingViewController.redo))
+        redoToolItem.isEnabled = editingUndoManager.canRedo
+
+        let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+
+        let highlighterToolIcon = photoEditingView?.highlighterTool.image
+        let highlighterToolItem = UIBarButtonItem(image: highlighterToolIcon, style: .plain, target: self, action: #selector(toggleHighlighterTool))
+        setToolbarItems([undoToolItem, redoToolItem, spacerItem, highlighterToolItem], animated: animated)
+    }
+
+    // MARK: Undo/Redo
+
+    let editingUndoManager = UndoManager()
+    override var undoManager: UndoManager? {
+        return editingUndoManager
+    }
+
+    @objc private func undo() {
+        editingUndoManager.undo()
+        updateToolbarItems()
+    }
+
+    @objc private func redo() {
+        editingUndoManager.redo()
+        updateToolbarItems()
     }
 
     // MARK: UIScrollViewDelegate
@@ -89,13 +119,38 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
         return photoEditingView
     }
 
+    // MARK: Image
+
+    private var image: UIImage? {
+        didSet {
+            updateScrollView()
+        }
+    }
+
+    private func updateScrollView() {
+        guard let photoScrollView = photoScrollView else { return }
+        photoScrollView.image = image
+
+        guard let image = image else { return }
+        textRectangleDetector.detectTextRectangles(in: image) { (textObservations) in
+            DispatchQueue.main.async { [weak photoScrollView] in
+                photoScrollView?.textObservations = textObservations
+            }
+        }
+    }
+
     // MARK: Boilerplate
 
-    private let asset: PHAsset
+    private let asset: PHAsset?
     private let imageManager = PHImageManager()
     private let textRectangleDetector = TextRectangleDetector()
     private var photoScrollView: PhotoEditingScrollView? { return (view as? PhotoEditingScrollView) }
     private var photoEditingView: PhotoEditingView? { return photoScrollView?.photoEditingView }
+    private var redactionChangeObserver: Any?
+
+    deinit {
+        redactionChangeObserver.map(NotificationCenter.default.removeObserver)
+    }
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

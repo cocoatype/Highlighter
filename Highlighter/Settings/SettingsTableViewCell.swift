@@ -31,30 +31,11 @@ class SettingsTableViewCell: UITableViewCell {
     }
 
     // MARK: Boilerplate
-
-    private let label = Label()
+    private let label = SettingsTableViewCellLabel()
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
         let className = String(describing: type(of: self))
         fatalError("\(className) does not implement init(coder:)")
-    }
-
-    private class Label: UILabel {
-        init() {
-            super.init(frame: .zero)
-
-            adjustsFontForContentSizeCategory = true
-            font = .appFont(forTextStyle: .footnote)
-            numberOfLines = 0
-            textColor = .white
-            translatesAutoresizingMaskIntoConstraints = false
-        }
-
-        @available(*, unavailable)
-        required init(coder: NSCoder) {
-            let className = String(describing: type(of: self))
-            fatalError("\(className) does not implement init(coder:)")
-        }
     }
 }
