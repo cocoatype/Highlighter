@@ -115,8 +115,11 @@ class TextObservationVisualizationLayer: CAShapeLayer {
 
         anchorPoint = .zero
         frame = textObservation.bounds * zoomScale
-        path = UIBezierPath(rect: bounds).cgPath
+        let pathRect = bounds.insetBy(dx: 3, dy: 3)
+        path = UIBezierPath(roundedRect: pathRect, cornerRadius: 3.0).cgPath
         fillColor = UIColor.black.cgColor
+        shadowOpacity = 1.0
+        shadowOffset = .zero
     }
 
     override init(layer: Any) {
