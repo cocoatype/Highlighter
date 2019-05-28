@@ -9,7 +9,17 @@ extension CGSize {
     }
 }
 
+extension CGPoint {
+    static func * (point: CGPoint, multiplier: CGFloat) -> CGPoint {
+        return CGPoint(x:point.x * multiplier, y: point.y * multiplier)
+    }
+}
+
 extension CGRect {
+    static func * (rect: CGRect, multiplier: CGFloat) -> CGRect {
+        return CGRect(x: rect.origin.x * multiplier, y: rect.origin.y * multiplier, width: rect.size.width * multiplier, height: rect.size.height * multiplier)
+    }
+
     var center: CGPoint {
         return CGPoint(x: midX, y: midY)
     }

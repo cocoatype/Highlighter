@@ -14,6 +14,23 @@ class PhotoEditingObservationVisualizationView: SKView {
         isUserInteractionEnabled = false
     }
 
+    var zoomScale = CGFloat(1) {
+        didSet {
+            scaleTextObservationLayers()
+        }
+    }
+
+    var contentOffset = CGPoint.zero {
+        didSet {
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            textObservationsLayer?.sublayerTransform = CATransform3DMakeTranslation(-contentOffset.x, -contentOffset.y, 0)
+            CATransaction.commit()
+        }
+    }
+
+    // MARK: View Lifecycle
+
     override func layoutSubviews() {
         super.layoutSubviews()
 
@@ -43,38 +60,81 @@ class PhotoEditingObservationVisualizationView: SKView {
         return (particleEmitterScene.children.first(where: { $0 is SKEmitterNode }) as? SKEmitterNode)
     }
 
-//    override func draw(_ rect: CGRect) {
-//        super.draw(rect)
-//
-//        guard let textObservations = textObservations else { return }
-//
-//        textObservations.forEach { observation in
-//            UIColor.red.withAlphaComponent(0.3).setFill()
-//            UIColor.red.setStroke()
-//
-//            let boundsPath = UIBezierPath(rect: observation.bounds)
-//            boundsPath.fill()
-//            boundsPath.stroke()
-//
-//            let baseColor = UIColor.blue
-//            baseColor.withAlphaComponent(0.3).setFill()
-//            baseColor.setStroke()
-//
-//            observation.characterObservations?.forEach { characterObservation in
-//                let boundsPath = UIBezierPath(rect: characterObservation.bounds)
-//                boundsPath.fill()
-//                boundsPath.stroke()
-//            }
-//        }
-//    }
-
     var textObservations: [TextObservation]? {
         didSet {
             setNeedsDisplay()
+            resetTextObservationLayers()
+        }
+    }
+
+    func resetTextObservationLayers() {
+        textObservationsLayer?.removeFromSuperlayer()
+
+        let newTextObservationsLayer = CALayer()
+        newTextObservationsLayer.frame = layer.bounds
+        newTextObservationsLayer.sublayerTransform = CATransform3DMakeTranslation(-contentOffset.x, -contentOffset.y, 0)
+        layer.addSublayer(newTextObservationsLayer)
+        textObservationsLayer = newTextObservationsLayer
+
+        textObservations?.forEach { observation in
+            let sublayer = TextObservationVisualizationLayer(textObservation: observation)
+            sublayer.zoomScale = zoomScale
+            newTextObservationsLayer.addSublayer(sublayer)
+        }
+    }
+
+    func scaleTextObservationLayers() {
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        textObservationsLayer?
+          .sublayers?
+          .compactMap { $0 as? TextObservationVisualizationLayer }
+          .forEach { $0.zoomScale = self.zoomScale }
+        CATransaction.commit()
+    }
+
+    // MARK: Boilerplate
+
+    private var textObservationsLayer: CALayer? {
+        didSet {
+            layer.mask = textObservationsLayer
+        }
+    }
+
+    @available(*, unavailable)
+    required init(coder: NSCoder) {
+        let className = String(describing: type(of: self))
+        fatalError("\(className) does not implement init(coder:)")
+    }
+}
+
+class TextObservationVisualizationLayer: CAShapeLayer {
+    init(textObservation: TextObservation) {
+        self.textObservation = textObservation
+        super.init()
+
+        anchorPoint = .zero
+        frame = textObservation.bounds * zoomScale
+        path = UIBezierPath(rect: bounds).cgPath
+        fillColor = UIColor.black.cgColor
+    }
+
+    override init(layer: Any) {
+        guard let otherLayer = layer as? TextObservationVisualizationLayer else { fatalError("Tried to create a copy of a different layer type: \(type(of: layer))") }
+        self.textObservation = otherLayer.textObservation
+        super.init(layer: layer)
+    }
+
+    var zoomScale = CGFloat(1.0) {
+        didSet {
+            frame = textObservation.bounds * zoomScale
+            path = UIBezierPath(rect: bounds).cgPath
         }
     }
 
     // MARK: Boilerplate
+
+    private let textObservation: TextObservation
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

@@ -70,6 +70,7 @@ class PhotoEditingScrollView: UIScrollView {
         let heightPadding = max(scrollSize.height - zoomedImageSize.height, 0) / 2
 
         contentInset = UIEdgeInsets(top: heightPadding, left: widthPadding, bottom: heightPadding, right: widthPadding)
+        delegate?.scrollViewDidZoom?(self)
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

@@ -32,6 +32,7 @@ class PhotoEditingView: UIView, UIScrollViewDelegate {
     var textObservations: [TextObservation]? {
         didSet {
             photoScrollView.textObservations = textObservations
+            visualizationView.textObservations = textObservations
         }
     }
 
@@ -48,6 +49,12 @@ class PhotoEditingView: UIView, UIScrollViewDelegate {
 
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return workspaceView
+    }
+
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        visualizationView.zoomScale = scrollView.zoomScale
+
+        visualizationView.contentOffset = scrollView.contentOffset
     }
 
     // MARK: Boilerplate
