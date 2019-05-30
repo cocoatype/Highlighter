@@ -38,7 +38,10 @@ class PhotoEditingView: UIView, UIScrollViewDelegate {
 
     var highlighterTool: HighlighterTool {
         get { return workspaceView.highlighterTool }
-        set(newTool) { workspaceView.highlighterTool = newTool }
+        set(newTool) {
+            workspaceView.highlighterTool = newTool
+            visualizationView.shouldShowVisualization = (newTool == .magic)
+        }
     }
 
     var redactions: [Redaction] {

@@ -12,6 +12,16 @@ class PhotoEditingObservationVisualizationView: SKView {
         isOpaque = false
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = false
+
+        reduceMotionObserver = NotificationCenter.default.addObserver(forName: UIAccessibility.reduceMotionStatusDidChangeNotification, object: nil, queue: .main) { [weak self] _ in
+            self?.refreshEmitterNode()
+        }
+    }
+
+    var shouldShowVisualization = true {
+        didSet {
+            refreshEmitterNode()
+        }
     }
 
     var zoomScale = CGFloat(1) {
@@ -52,6 +62,7 @@ class PhotoEditingObservationVisualizationView: SKView {
         let scene = SKScene(size: .zero)
         scene.backgroundColor = .clear
         guard let emitterNode = SKEmitterNode(fileNamed: PhotoEditingObservationVisualizationView.particleName) else { fatalError("Could not load particle emitter") }
+        emitterNode.particleBirthRate = 0
         scene.addChild(emitterNode)
         return scene
     }()
@@ -60,14 +71,24 @@ class PhotoEditingObservationVisualizationView: SKView {
         return (particleEmitterScene.children.first(where: { $0 is SKEmitterNode }) as? SKEmitterNode)
     }
 
+    private func refreshEmitterNode() {
+        let reduceMotionIsOff = UIAccessibility.isReduceMotionEnabled == false
+        let hasTextObservations = textObservations?.isEmpty == false
+        let shouldEmitParticles = shouldShowVisualization && hasTextObservations && reduceMotionIsOff
+        emitterNode?.particleBirthRate = shouldEmitParticles ? 400 : 0
+    }
+
+    // MARK: Text Observations
+
     var textObservations: [TextObservation]? {
         didSet {
             setNeedsDisplay()
             resetTextObservationLayers()
+            refreshEmitterNode()
         }
     }
 
-    func resetTextObservationLayers() {
+    private func resetTextObservationLayers() {
         textObservationsLayer?.removeFromSuperlayer()
 
         let newTextObservationsLayer = CALayer()
@@ -95,10 +116,16 @@ class PhotoEditingObservationVisualizationView: SKView {
 
     // MARK: Boilerplate
 
+    private var reduceMotionObserver: Any?
+
     private var textObservationsLayer: CALayer? {
         didSet {
             layer.mask = textObservationsLayer
         }
+    }
+
+    deinit {
+        reduceMotionObserver.map(NotificationCenter.default.removeObserver)
     }
 
     @available(*, unavailable)
