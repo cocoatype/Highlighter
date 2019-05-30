@@ -41,12 +41,12 @@
 		042A2B89228D091000353414 /* PathRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B88228D091000353414 /* PathRedaction.swift */; };
 		042A39AD22811F87009C1C07 /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
 		042A39AF228125FA009C1C07 /* PhotoEditingRedactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */; };
-		042B7903229A38C0005B7A2A /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B7902229A38C0005B7A2A /* Defaults.swift */; };
-		042B7905229A3AC7005B7A2A /* AppRatingsPrompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */; };
 		042B78FA229A2560005B7A2A /* SettingsAppEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B78F9229A2560005B7A2A /* SettingsAppEntryTableViewCell.swift */; };
 		042B78FC229A257E005B7A2A /* SettingsTableViewCellLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B78FB229A257E005B7A2A /* SettingsTableViewCellLabel.swift */; };
 		042B78FE229A259C005B7A2A /* SettingsTableViewCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B78FD229A259C005B7A2A /* SettingsTableViewCellImageView.swift */; };
 		042B7901229A29C9005B7A2A /* PhotoLibraryViewLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B7900229A29C9005B7A2A /* PhotoLibraryViewLayoutTests.swift */; };
+		042B7903229A38C0005B7A2A /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B7902229A38C0005B7A2A /* Defaults.swift */; };
+		042B7905229A3AC7005B7A2A /* AppRatingsPrompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */; };
 		043CD9C9226EB0400012F5AE /* TextRectangleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */; };
 		043CD9CB226EB0830012F5AE /* TextRectangleDetectionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */; };
 		043CD9CF226EB0C70012F5AE /* TextObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CE226EB0C70012F5AE /* TextObservation.swift */; };
@@ -63,6 +63,8 @@
 		047072952268137900FF20B6 /* PhotoEditingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072942268137900FF20B6 /* PhotoEditingImageView.swift */; };
 		048909F2226571AB0048E203 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F1226571AB0048E203 /* PhotoEditingViewController.swift */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
+		048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D134E229F7E5100427FE3 /* CallbackAction.swift */; };
+		048D1352229F7EAB00427FE3 /* CallbackActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D1351229F7EAB00427FE3 /* CallbackActionTests.swift */; };
 		049F2928228755DB00A335BE /* SettingsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F2927228755DB00A335BE /* SettingsNavigationController.swift */; };
 		049F292B22875ADD00A335BE /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F292A22875ADD00A335BE /* WebViewController.swift */; };
 		049F292D22875AFA00A335BE /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F292C22875AFA00A335BE /* AboutViewController.swift */; };
@@ -136,12 +138,12 @@
 		042A2B88228D091000353414 /* PathRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathRedaction.swift; sourceTree = "<group>"; };
 		042A39AC22811F87009C1C07 /* Redaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redaction.swift; sourceTree = "<group>"; };
 		042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingRedactionView.swift; sourceTree = "<group>"; };
-		042B7902229A38C0005B7A2A /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
-		042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRatingsPrompter.swift; sourceTree = "<group>"; };
 		042B78F9229A2560005B7A2A /* SettingsAppEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppEntryTableViewCell.swift; sourceTree = "<group>"; };
 		042B78FB229A257E005B7A2A /* SettingsTableViewCellLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCellLabel.swift; sourceTree = "<group>"; };
 		042B78FD229A259C005B7A2A /* SettingsTableViewCellImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCellImageView.swift; sourceTree = "<group>"; };
 		042B7900229A29C9005B7A2A /* PhotoLibraryViewLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewLayoutTests.swift; sourceTree = "<group>"; };
+		042B7902229A38C0005B7A2A /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRatingsPrompter.swift; sourceTree = "<group>"; };
 		043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRectangleDetector.swift; sourceTree = "<group>"; };
 		043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRectangleDetectionOperation.swift; sourceTree = "<group>"; };
 		043CD9CE226EB0C70012F5AE /* TextObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservation.swift; sourceTree = "<group>"; };
@@ -158,6 +160,8 @@
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
 		048909F3226573750048E203 /* PhotoEditorPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorPresenting.swift; sourceTree = "<group>"; };
+		048D134E229F7E5100427FE3 /* CallbackAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackAction.swift; sourceTree = "<group>"; };
+		048D1351229F7EAB00427FE3 /* CallbackActionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackActionTests.swift; sourceTree = "<group>"; };
 		049F2927228755DB00A335BE /* SettingsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
 		049F292A22875ADD00A335BE /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		049F292C22875AFA00A335BE /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 		041EFEF72251A9F30058D8EE /* Highlighter */ = {
 			isa = PBXGroup;
 			children = (
+				048D134D229F7E4400427FE3 /* Callback Actions */,
 				04D68BCF2262C41300D09BBD /* Application */,
 				04D68BC3225EE2A500D09BBD /* Extensions */,
 				048909EF2265716B0048E203 /* Photo Editing */,
@@ -237,6 +242,7 @@
 		041EFF0C2251A9F50058D8EE /* HighlighterTests */ = {
 			isa = PBXGroup;
 			children = (
+				048D1350229F7EA300427FE3 /* Callback Actions */,
 				04D68BD32262C52F00D09BBD /* Test Helpers */,
 				04D68BCD2262B9BF00D09BBD /* Photo Selection */,
 				041EFF0F2251A9F50058D8EE /* Info.plist */,
@@ -377,6 +383,22 @@
 				041EFF012251A9F50058D8EE /* LaunchScreen.storyboard */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		048D134D229F7E4400427FE3 /* Callback Actions */ = {
+			isa = PBXGroup;
+			children = (
+				048D134E229F7E5100427FE3 /* CallbackAction.swift */,
+			);
+			path = "Callback Actions";
+			sourceTree = "<group>";
+		};
+		048D1350229F7EA300427FE3 /* Callback Actions */ = {
+			isa = PBXGroup;
+			children = (
+				048D1351229F7EAB00427FE3 /* CallbackActionTests.swift */,
+			);
+			path = "Callback Actions";
 			sourceTree = "<group>";
 		};
 		049F292922875AC200A335BE /* Presented View Controllers */ = {
@@ -600,6 +622,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				043CD9D8227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift in Sources */,
+				048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */,
 				042A2B85228D01BD00353414 /* HighlighterTool.swift in Sources */,
 				042A2B7A228A642100353414 /* PhotoEditingProtectionAlertController.swift in Sources */,
 				043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */,
@@ -677,6 +700,7 @@
 				04D68BD52262C54600D09BBD /* MockPhotoPermissionsRequester.swift in Sources */,
 				042B7901229A29C9005B7A2A /* PhotoLibraryViewLayoutTests.swift in Sources */,
 				04D68BD22262C45700D09BBD /* PhotoSelectionViewControllerTests.swift in Sources */,
+				048D1352229F7EAB00427FE3 /* CallbackActionTests.swift in Sources */,
 				041EFF0E2251A9F50058D8EE /* IntroViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
