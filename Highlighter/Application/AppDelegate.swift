@@ -15,5 +15,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
-}
 
+    // MARK: URL Handling
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        guard let action = CallbackAction(url: url), let appViewController = appViewController else { return false }
+        switch action {
+        case .open(let image): appViewController.presentPhotoEditingViewController(for: image)
+        case .edit(let image, let successURL):
+            appViewController.presentPhotoEditingViewController(for: image) { editedImage in
+                guard let successURL = successURL,
+                  var callbackURLComponents = URLComponents(url: successURL, resolvingAgainstBaseURL: true),
+                  let imageData = image.pngData(),
+                  let imageEncodedString = imageData.base64EncodedString().addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                else { return }
+
+                callbackURLComponents.queryItems = [URLQueryItem(name: "imageData", value: imageEncodedString)]
+
+                guard let callbackURL = callbackURLComponents.url else { return }
+                UIApplication.shared.open(callbackURL)
+            }
+        }
+        return true
+    }
+
+    // MARK: Boilerplate
+    private var appViewController: AppViewController? { return window?.rootViewController as? AppViewController }
+}
