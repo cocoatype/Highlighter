@@ -55,10 +55,14 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
 
     // MARK: Sharing
 
-    @objc func sharePhoto() {
-        guard let image = photoEditingView.image else { return }
+    var imageForExport: UIImage? {
+        guard let image = photoEditingView.image else { return nil }
         let photoExporter = PhotoExporter(image: image, redactions: photoEditingView.redactions)
-        guard let exportedImage = photoExporter.exportedImage else { return }
+        return photoExporter.exportedImage
+    }
+
+    @objc func sharePhoto() {
+        guard let exportedImage = imageForExport else { return }
 
         let activityController = UIActivityViewController(activityItems: [exportedImage], applicationActivities: nil)
         activityController.completionWithItemsHandler = { [weak self] _, completed, _, _ in
