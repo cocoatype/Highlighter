@@ -5,9 +5,10 @@ import Photos
 import UIKit
 
 class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
-    init(asset: PHAsset? = nil, image: UIImage? = nil) {
+    init(asset: PHAsset? = nil, image: UIImage? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
         self.asset = asset
         self.image = image
+        self.completionHandler = completionHandler
         super.init(nibName: nil, bundle: nil)
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(AppViewController.dismissPhotoEditingViewController))
@@ -121,7 +122,7 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
 
     // MARK: Image
 
-    private var image: UIImage? {
+    private(set) var image: UIImage? {
         didSet {
             updateScrollView()
         }
@@ -140,6 +141,8 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     }
 
     // MARK: Boilerplate
+
+    let completionHandler: ((UIImage) -> Void)?
 
     private let asset: PHAsset?
     private let imageManager = PHImageManager()

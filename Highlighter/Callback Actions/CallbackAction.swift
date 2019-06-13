@@ -4,11 +4,11 @@
 import UIKit
 
 enum CallbackAction {
-    case edit(UIImage), open(UIImage)
+    case edit(UIImage, URL?), open(UIImage)
 
     var image: UIImage {
         switch self {
-        case .edit(let image): return image
+        case .edit(let image, _): return image
         case .open(let image): return image
         }
     }
@@ -25,7 +25,16 @@ enum CallbackAction {
             else { return nil }
 
         if url.path == "/edit" {
-            self = .edit(image)
+            let successURLItem = queryItems.first(where: { $0.name == "x-success" })
+            let successURLEncodedString = successURLItem?.value
+            let successURL: URL?
+            if let successURLString = successURLEncodedString?.removingPercentEncoding {
+                successURL = URL(string: successURLString)
+            } else {
+                successURL = nil
+            }
+
+            self = .edit(image, successURL)
         } else if url.path == "/open" {
             self = .open(image)
         } else {
