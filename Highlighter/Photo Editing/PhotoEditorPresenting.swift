@@ -6,7 +6,7 @@ import UIKit
 
 protocol PhotoEditorPresenting {
     func presentPhotoEditingViewController(for asset: PHAsset)
-    func presentPhotoEditingViewController(for image: UIImage)
+    func presentPhotoEditingViewController(for image: UIImage, completionHandler: ((UIImage) -> Void)?)
 }
 
 extension UIResponder {

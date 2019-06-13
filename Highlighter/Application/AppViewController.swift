@@ -18,8 +18,8 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         present(PhotoEditingNavigationController(asset: asset), animated: true)
     }
 
-    func presentPhotoEditingViewController(for image: UIImage) {
-        present(PhotoEditingNavigationController(image: image), animated: true)
+    func presentPhotoEditingViewController(for image: UIImage, completionHandler: ((UIImage) -> Void)? = nil) {
+        present(PhotoEditingNavigationController(image: image, completionHandler: completionHandler), animated: true)
     }
 
     @objc func dismissPhotoEditingViewController() {
@@ -27,7 +27,14 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
           let editingViewController = (presentedNavigationController.viewControllers.first as? PhotoEditingViewController)
         else { return }
 
-        guard editingViewController.hasMadeEdits else { dismiss(animated: true); return }
+        guard editingViewController.hasMadeEdits else {
+            if let image = editingViewController.image {
+                editingViewController.completionHandler?(image)
+            }
+
+            dismiss(animated: true)
+            return
+        }
 
         let alertController = PhotoEditingProtectionAlertController(appViewController: self)
         editingViewController.present(alertController, animated: true)
@@ -36,7 +43,10 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     @objc func destructivelyDismissPhotoEditingViewController() {
         if let presentedNavigationController = (presentedViewController as? NavigationController),
           let rootViewController = presentedNavigationController.viewControllers.first,
-          rootViewController is PhotoEditingViewController {
+          let photoEditingViewController = (rootViewController as? PhotoEditingViewController) {
+            if let image = photoEditingViewController.image {
+                photoEditingViewController.completionHandler?(image)
+            }
             dismiss(animated: true)
         }
     }

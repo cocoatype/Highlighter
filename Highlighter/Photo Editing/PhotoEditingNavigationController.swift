@@ -10,8 +10,8 @@ class PhotoEditingNavigationController: NavigationController {
         isToolbarHidden = false
     }
 
-    init(image: UIImage) {
-        super.init(rootViewController: PhotoEditingViewController(image: image))
+    init(image: UIImage, completionHandler: ((UIImage) -> Void)? = nil) {
+        super.init(rootViewController: PhotoEditingViewController(image: image, completionHandler: completionHandler))
         isToolbarHidden = false
     }
 
