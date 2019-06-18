@@ -47,10 +47,6 @@ class SettingsTableViewDataSource: NSObject, UITableViewDataSource {
         return settingsCell
     }
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return contentProvider.section(at: section).header
-    }
-
     // MARK: Boilerplate
 
     private var contentProvider: SettingsContentProvider

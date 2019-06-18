@@ -8,7 +8,7 @@ class SettingsTableViewCellLabel: UILabel {
         super.init(frame: .zero)
 
         adjustsFontForContentSizeCategory = true
-        font = .appFont(forTextStyle: .footnote)
+        font = .appFont(forTextStyle: .subheadline)
         numberOfLines = 0
         textColor = .white
         translatesAutoresizingMaskIntoConstraints = false

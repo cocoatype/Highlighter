@@ -26,7 +26,7 @@ class SettingsTableViewCellImageView: UIImageView {
     // MARK: Image Processing
 
     private static var imageProcessor: ImageProcessor {
-        return DownsamplingImageProcessor(size: CGSize(width: 32.0, height: 32.0)) >> RoundCornerImageProcessor(cornerRadius: 5.6)
+        return DownsamplingImageProcessor(size: CGSize(width: 32.0, height: 32.0)) >> RoundCornerImageProcessor(cornerRadius: 5.6, backgroundColor: UIColor.clear)
     }
 
     // MARK: Boilerplate
