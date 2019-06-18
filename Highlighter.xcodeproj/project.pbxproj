@@ -59,7 +59,9 @@
 		043CD9E12275490E0012F5AE /* SettingsContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E02275490E0012F5AE /* SettingsContentProvider.swift */; };
 		043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */; };
 		043CD9E52277EC910012F5AE /* PhotoEditingBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */; };
-		047072932268134500FF20B6 /* PhotoEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingView.swift */; };
+		0454C30522963937004FDBFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0454C30322963937004FDBFB /* Assets.xcassets */; };
+		0454C30622963937004FDBFB /* Magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0454C30422963937004FDBFB /* Magic.sks */; };
+		047072932268134500FF20B6 /* PhotoEditingWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */; };
 		047072952268137900FF20B6 /* PhotoEditingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072942268137900FF20B6 /* PhotoEditingImageView.swift */; };
 		048909F2226571AB0048E203 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F1226571AB0048E203 /* PhotoEditingViewController.swift */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
@@ -87,6 +89,7 @@
 		04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BCB2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift */; };
 		04D68BD22262C45700D09BBD /* PhotoSelectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BD12262C45700D09BBD /* PhotoSelectionViewControllerTests.swift */; };
 		04D68BD52262C54600D09BBD /* MockPhotoPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BD42262C54600D09BBD /* MockPhotoPermissionsRequester.swift */; };
+		04E192A7229CD38C006F0E56 /* PhotoEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,7 +159,9 @@
 		043CD9E02275490E0012F5AE /* SettingsContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContentProvider.swift; sourceTree = "<group>"; };
 		043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewDataSource.swift; sourceTree = "<group>"; };
 		043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingBrushStrokeView.swift; sourceTree = "<group>"; };
-		047072922268134500FF20B6 /* PhotoEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingView.swift; sourceTree = "<group>"; };
+		0454C30322963937004FDBFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0454C30422963937004FDBFB /* Magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Magic.sks; sourceTree = "<group>"; };
+		047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingWorkspaceView.swift; sourceTree = "<group>"; };
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
 		048909F3226573750048E203 /* PhotoEditorPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorPresenting.swift; sourceTree = "<group>"; };
@@ -184,6 +189,7 @@
 		04D68BCB2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPermissionsDeniedAlertController.swift; sourceTree = "<group>"; };
 		04D68BD12262C45700D09BBD /* PhotoSelectionViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectionViewControllerTests.swift; sourceTree = "<group>"; };
 		04D68BD42262C54600D09BBD /* MockPhotoPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPhotoPermissionsRequester.swift; sourceTree = "<group>"; };
+		04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,15 +362,10 @@
 		048909EF2265716B0048E203 /* Photo Editing */ = {
 			isa = PBXGroup;
 			children = (
+				04E192A5229CD367006F0E56 /* Editing View */,
 				042A2B84228D01BD00353414 /* HighlighterTool.swift */,
-				043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */,
-				047072942268137900FF20B6 /* PhotoEditingImageView.swift */,
 				042A2B7D228CFEDB00353414 /* PhotoEditingNavigationController.swift */,
-				043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */,
 				042A2B79228A642100353414 /* PhotoEditingProtectionAlertController.swift */,
-				042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */,
-				043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */,
-				047072922268134500FF20B6 /* PhotoEditingView.swift */,
 				048909F1226571AB0048E203 /* PhotoEditingViewController.swift */,
 				048909F3226573750048E203 /* PhotoEditorPresenting.swift */,
 				042A2B77228A5B6F00353414 /* PhotoExporter.swift */,
@@ -495,6 +496,30 @@
 			path = "Test Helpers";
 			sourceTree = "<group>";
 		};
+		04E192A4229CD34F006F0E56 /* Workspace */ = {
+			isa = PBXGroup;
+			children = (
+				043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */,
+				047072942268137900FF20B6 /* PhotoEditingImageView.swift */,
+				042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */,
+				047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */,
+			);
+			path = Workspace;
+			sourceTree = "<group>";
+		};
+		04E192A5229CD367006F0E56 /* Editing View */ = {
+			isa = PBXGroup;
+			children = (
+				0454C30322963937004FDBFB /* Assets.xcassets */,
+				0454C30422963937004FDBFB /* Magic.sks */,
+				043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */,
+				043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */,
+				04E192A4229CD34F006F0E56 /* Workspace */,
+				04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */,
+			);
+			path = "Editing View";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -580,7 +605,9 @@
 				041EFF582255A2FB0058D8EE /* Aleo-Bold.otf in Resources */,
 				041EFF592255A2FB0058D8EE /* Aleo-Regular.otf in Resources */,
 				041EFF032251A9F50058D8EE /* LaunchScreen.storyboard in Resources */,
+				0454C30622963937004FDBFB /* Magic.sks in Resources */,
 				041EFF4B225300030058D8EE /* Localizable.strings in Resources */,
+				0454C30522963937004FDBFB /* Assets.xcassets in Resources */,
 				041EFF002251A9F50058D8EE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,7 +662,7 @@
 				049F293522875F7E00A335BE /* ContactMailViewController.swift in Sources */,
 				043CD9CF226EB0C70012F5AE /* TextObservation.swift in Sources */,
 				042B7905229A3AC7005B7A2A /* AppRatingsPrompter.swift in Sources */,
-				047072932268134500FF20B6 /* PhotoEditingView.swift in Sources */,
+				047072932268134500FF20B6 /* PhotoEditingWorkspaceView.swift in Sources */,
 				043CD9E12275490E0012F5AE /* SettingsContentProvider.swift in Sources */,
 				041EFF6B225C36350058D8EE /* PhotoLibraryViewController.swift in Sources */,
 				043CD9DB22753D510012F5AE /* SettingsViewController.swift in Sources */,
@@ -672,6 +699,7 @@
 				04D68BC7225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift in Sources */,
 				041EFF5B2255A39D0058D8EE /* Fonts.swift in Sources */,
 				042A2B7E228CFEDB00353414 /* PhotoEditingNavigationController.swift in Sources */,
+				04E192A7229CD38C006F0E56 /* PhotoEditingView.swift in Sources */,
 				042A2B7C228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift in Sources */,
 				041EFF50225303120058D8EE /* PromptLabel.swift in Sources */,
 				043CD9D1226EB0F60012F5AE /* UIImageExtensions.swift in Sources */,

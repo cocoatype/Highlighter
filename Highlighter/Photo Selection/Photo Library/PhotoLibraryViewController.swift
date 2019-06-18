@@ -12,6 +12,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         let libraryView = PhotoLibraryView()
         libraryView.dataSource = dataSource
         libraryView.delegate = self
+        dataSource.libraryView = libraryView
 
         let dropInteraction = UIDropInteraction(delegate: self)
         libraryView.addInteraction(dropInteraction)
@@ -19,14 +20,15 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         view = libraryView
     }
 
+    @objc func reloadData() {
+        (view as? PhotoLibraryView)?.reloadData()
+    }
+
     // MARK: UIDropInteractionDelegate
 
     func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
-        print("can handle drop?")
         guard session.items.count == 1 else { return false }
         guard session.canLoadObjects(ofClass: UIImage.self) else { return false }
-
-        print("can handle drop!")
 
         return true
     }

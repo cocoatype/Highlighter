@@ -22,7 +22,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         present(PhotoEditingNavigationController(image: image, completionHandler: completionHandler), animated: true)
     }
 
-    @objc func dismissPhotoEditingViewController() {
+    @objc func dismissPhotoEditingViewController(_ sender: UIBarButtonItem) {
         guard let presentedNavigationController = (presentedViewController as? NavigationController),
           let editingViewController = (presentedNavigationController.viewControllers.first as? PhotoEditingViewController)
         else { return }
@@ -37,6 +37,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         }
 
         let alertController = PhotoEditingProtectionAlertController(appViewController: self)
+        alertController.barButtonItem = sender
         editingViewController.present(alertController, animated: true)
     }
 
@@ -49,6 +50,21 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
             }
             dismiss(animated: true)
         }
+    }
+
+    func dismissPhotoEditingViewControllerAfterSaving() {
+        guard let presentedNavigationController = (presentedViewController as? NavigationController),
+          let rootViewController = presentedNavigationController.viewControllers.first,
+          let photoEditingViewController = (rootViewController as? PhotoEditingViewController),
+          let image = photoEditingViewController.imageForExport 
+        else { return }
+
+        PHPhotoLibrary.shared().performChanges({
+            PHAssetChangeRequest.creationRequestForAsset(from: image)
+        }, completionHandler: { [weak self] success, error in
+            assert(success, "an error occurred saving changes: \(error?.localizedDescription ?? "no error")")
+            self?.dismiss(animated: true)
+        })
     }
 
     // MARK: Settings View Controller
