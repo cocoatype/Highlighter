@@ -23,7 +23,7 @@ class SettingsAppEntryTableViewCell: UITableViewCell {
             appIconView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             appIconView.widthAnchor.constraint(equalToConstant: 32),
             appIconView.heightAnchor.constraint(equalToConstant: 32),
-            label.leadingAnchor.constraint(equalTo: appIconView.trailingAnchor, constant: 15),
+            label.leadingAnchor.constraint(equalTo: appIconView.trailingAnchor, constant: 8),
             label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)

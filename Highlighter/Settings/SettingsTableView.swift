@@ -12,6 +12,7 @@ class SettingsTableView: UITableView {
 
         register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
         register(SettingsAppEntryTableViewCell.self, forCellReuseIdentifier: SettingsAppEntryTableViewCell.identifier)
+        register(SettingsTableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: SettingsTableViewHeaderFooterView.identifier)
     }
 
     // MARK: Boilerplate

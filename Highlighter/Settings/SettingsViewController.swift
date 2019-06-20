@@ -71,6 +71,20 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
         }
     }
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: SettingsTableViewHeaderFooterView.identifier) as? SettingsTableViewHeaderFooterView else { fatalError("Got incorrect header view type") }
+        headerView.text = contentProvider.section(at: section).header
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return SettingsTableViewHeaderLabel().font.lineHeight
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+
     private func sendResponderAction(_ selector: Selector) {
         UIApplication.shared.sendAction(selector, to: nil, from: self, for: nil)
     }
@@ -91,4 +105,56 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
         let className = String(describing: type(of: self))
         fatalError("\(className) does not implement init(coder:)")
     }
+}
+
+class SettingsTableViewHeaderFooterView: UITableViewHeaderFooterView {
+    static let identifier = "SettingsTableViewHeaderFooterView.identifier"
+
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+
+        translatesAutoresizingMaskIntoConstraints = false
+
+        contentView.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3.0),
+            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -3.0)
+        ])
+    }
+
+    var text: String? {
+        get { return label.text }
+        set(newText) {
+            label.text = newText
+        }
+    }
+
+    // MARK: Boilerplate
+    private let label = SettingsTableViewHeaderLabel()
+
+    @available(*, unavailable)
+    required init(coder: NSCoder) {
+        let className = String(describing: type(of: self))
+        fatalError("\(className) does not implement init(coder:)")
+    }
+}
+
+class SettingsTableViewHeaderLabel: UILabel {
+    init() {
+        super.init(frame: .zero)
+        font = .appFont(forTextStyle: .footnote)
+        textColor = .primaryExtraLight
+        translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    // MARK: Boilerplate
+
+    @available(*, unavailable)
+    required init(coder: NSCoder) {
+        let className = String(describing: type(of: self))
+        fatalError("\(className) does not implement init(coder:)")
+    }
+
 }
