@@ -91,7 +91,6 @@ class PhotoEditingWorkspaceView: UIView {
     // MARK: Boilerplate
 
     private let imageView: PhotoEditingImageView
-//    private let visualizationView: PhotoEditingObservationVisualizationView
     private let redactionView: PhotoEditingRedactionView
     private let brushStrokeView: PhotoEditingBrushStrokeView
 

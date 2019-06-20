@@ -12,16 +12,17 @@ struct CharacterObservationRedaction: Redaction {
             var siblingObservations = result[textObservationUUID] ?? []
             siblingObservations.append(characterObservation)
             result[textObservationUUID] = siblingObservations
-            }.values.map { siblingObservations in
-                siblingObservations.reduce(siblingObservations[0].bounds, { currentRect, characterObservation in
-                    currentRect.union(characterObservation.bounds)
-                })
-            }.map { rect in
-                let path = UIBezierPath()
-                path.lineWidth = rect.height
-                path.move(to: CGPoint(x: rect.minX, y: rect.midY))
-                path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
-                return path
+        }.values.map { siblingObservations in
+            siblingObservations.reduce(siblingObservations[0].bounds, { currentRect, characterObservation in
+                currentRect.union(characterObservation.bounds)
+            })
+        }.map { rect in
+            let path = UIBezierPath()
+            let width = rect.height
+            path.lineWidth = width
+            path.move(to: CGPoint(x: rect.minX + (width * 0.8), y: rect.midY))
+            path.addLine(to: CGPoint(x: rect.maxX - (width * 0.8), y: rect.midY))
+            return path
         }
     }
 
