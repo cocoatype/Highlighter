@@ -6,6 +6,8 @@
   Copyright © 2019 Cocoatype, LLC. All rights reserved.
 */
 
+"ContactMailViewController.emailSubject" = "Hello!";
+
 "IntroView.promptLabelText" = "Black Highlighter needs permission to edit your photos.";
 "IntroView.promptButtonTitle" = "Grant Access";
 
