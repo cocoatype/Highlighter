@@ -10,17 +10,12 @@ class PhotoEditingView: UIView, UIScrollViewDelegate {
 
         photoScrollView.delegate = self
         addSubview(photoScrollView)
-        addSubview(visualizationView)
 
         NSLayoutConstraint.activate([
             photoScrollView.widthAnchor.constraint(equalTo: widthAnchor),
             photoScrollView.heightAnchor.constraint(equalTo: heightAnchor),
             photoScrollView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            photoScrollView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            visualizationView.widthAnchor.constraint(equalTo: widthAnchor),
-            visualizationView.heightAnchor.constraint(equalTo: heightAnchor),
-            visualizationView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            visualizationView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            photoScrollView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 
@@ -32,7 +27,6 @@ class PhotoEditingView: UIView, UIScrollViewDelegate {
     var textObservations: [TextObservation]? {
         didSet {
             photoScrollView.textObservations = textObservations
-            visualizationView.textObservations = textObservations
         }
     }
 
@@ -40,7 +34,6 @@ class PhotoEditingView: UIView, UIScrollViewDelegate {
         get { return workspaceView.highlighterTool }
         set(newTool) {
             workspaceView.highlighterTool = newTool
-            visualizationView.shouldShowVisualization = (newTool == .magic)
         }
     }
 
@@ -54,16 +47,9 @@ class PhotoEditingView: UIView, UIScrollViewDelegate {
         return workspaceView
     }
 
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        visualizationView.zoomScale = scrollView.zoomScale
-
-        visualizationView.contentOffset = scrollView.contentOffset
-    }
-
     // MARK: Boilerplate
 
     private let photoScrollView = PhotoEditingScrollView()
-    private let visualizationView = PhotoEditingObservationVisualizationView()
     private var workspaceView: PhotoEditingWorkspaceView { return photoScrollView.workspaceView }
 
     @available(*, unavailable)

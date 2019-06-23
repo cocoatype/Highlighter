@@ -15,8 +15,6 @@ class PhotoEditingRedactionView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
 
-        UIColor.green.setStroke()
-
         redactions
           .flatMap { $0.paths }
           .map { $0.dashedPath }
@@ -41,6 +39,10 @@ class PhotoEditingRedactionView: UIView {
     func add(_ redactions: [Redaction]) {
         self.redactions.append(contentsOf: redactions)
         setNeedsDisplay()
+    }
+
+    func removeAllRedactions() {
+        self.redactions = []
     }
 
     private func registerUndo(with existingRedactions: [Redaction]) {
