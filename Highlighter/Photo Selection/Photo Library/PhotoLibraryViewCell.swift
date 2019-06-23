@@ -41,6 +41,7 @@ class PhotoLibraryViewCell: UICollectionViewCell {
             imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
 
+        isAccessibilityElement = true
         backgroundColor = .primaryDark
     }
 
