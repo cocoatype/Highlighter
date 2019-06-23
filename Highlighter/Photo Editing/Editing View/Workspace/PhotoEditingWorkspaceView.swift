@@ -6,7 +6,7 @@ import UIKit
 class PhotoEditingWorkspaceView: UIView {
     init() {
         imageView = PhotoEditingImageView()
-//        visualizationView = PhotoEditingObservationVisualizationView()
+        visualizationView = PhotoEditingObservationVisualizationView()
         redactionView = PhotoEditingRedactionView()
         brushStrokeView = PhotoEditingBrushStrokeView()
 
@@ -15,7 +15,7 @@ class PhotoEditingWorkspaceView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(imageView)
-//        addSubview(visualizationView)
+        addSubview(visualizationView)
         addSubview(redactionView)
         addSubview(brushStrokeView)
 
@@ -24,10 +24,10 @@ class PhotoEditingWorkspaceView: UIView {
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             imageView.widthAnchor.constraint(equalTo: widthAnchor),
             imageView.heightAnchor.constraint(equalTo: heightAnchor),
-//            visualizationView.centerXAnchor.constraint(equalTo: centerXAnchor),
-//            visualizationView.centerYAnchor.constraint(equalTo: centerYAnchor),
-//            visualizationView.widthAnchor.constraint(equalTo: widthAnchor),
-//            visualizationView.heightAnchor.constraint(equalTo: heightAnchor),
+            visualizationView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            visualizationView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            visualizationView.widthAnchor.constraint(equalTo: widthAnchor),
+            visualizationView.heightAnchor.constraint(equalTo: heightAnchor),
             redactionView.centerXAnchor.constraint(equalTo: centerXAnchor),
             redactionView.centerYAnchor.constraint(equalTo: centerYAnchor),
             redactionView.widthAnchor.constraint(equalTo: widthAnchor),
@@ -41,7 +41,11 @@ class PhotoEditingWorkspaceView: UIView {
         brushStrokeView.addTarget(self, action: #selector(handleStrokeCompletion), for: .touchUpInside)
     }
 
-    var highlighterTool = HighlighterTool.magic
+    var highlighterTool = HighlighterTool.magic {
+        didSet {
+            visualizationView.shouldShowVisualization = (highlighterTool == .magic)
+        }
+    }
 
     var image: UIImage? {
         get { return imageView.image }
@@ -54,12 +58,12 @@ class PhotoEditingWorkspaceView: UIView {
         return redactionView.redactions
     }
 
-    var textObservations: [TextObservation]? //{
-//        get { return visualizationView.textObservations }
-//        set(newTextObservations) {
-//            visualizationView.textObservations = newTextObservations
-//        }
-//    }
+    var textObservations: [TextObservation]? {
+        get { return visualizationView.textObservations }
+        set(newTextObservations) {
+            visualizationView.textObservations = newTextObservations
+        }
+    }
 
     // MARK: Actions
 
@@ -91,6 +95,7 @@ class PhotoEditingWorkspaceView: UIView {
     // MARK: Boilerplate
 
     private let imageView: PhotoEditingImageView
+    private let visualizationView: PhotoEditingObservationVisualizationView
     private let redactionView: PhotoEditingRedactionView
     private let brushStrokeView: PhotoEditingBrushStrokeView
 
