@@ -8,6 +8,8 @@ class PhotoLibraryView: UICollectionView {
         let layout = PhotoLibraryViewLayout()
         super.init(frame: .zero, collectionViewLayout: layout)
 
+        isAccessibilityElement = false
+
         register(PhotoLibraryViewCell.self, forCellWithReuseIdentifier: PhotoLibraryViewCell.identifier)
 
         backgroundColor = .primary

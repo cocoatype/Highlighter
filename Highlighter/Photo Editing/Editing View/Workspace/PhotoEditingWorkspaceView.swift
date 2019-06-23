@@ -11,6 +11,8 @@ class PhotoEditingWorkspaceView: UIView {
         brushStrokeView = PhotoEditingBrushStrokeView()
 
         super.init(frame: .zero)
+        isAccessibilityElement = true
+        accessibilityTraits = .allowsDirectInteraction
         backgroundColor = .primary
         translatesAutoresizingMaskIntoConstraints = false
 
