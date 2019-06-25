@@ -19,7 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: URL Handling
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        guard let action = CallbackAction(url: url), let appViewController = appViewController else { return false }
+        if let action = CallbackAction(url: url) {
+            return handleCallbackAction(action)
+        } else {
+            return openFile(at: url)
+        }
+    }
+
+    private func handleCallbackAction(_ action: CallbackAction) -> Bool {
+        guard let appViewController = appViewController else { return false }
         switch action {
         case .open(let image): appViewController.presentPhotoEditingViewController(for: image)
         case .edit(let image, let successURL):
@@ -36,7 +44,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 UIApplication.shared.open(callbackURL)
             }
         }
+
         return true
+    }
+
+    private func openFile(at url: URL) -> Bool {
+        guard let appViewController = appViewController else { return false }
+
+        do {
+            let imageData = try Data(contentsOf: url)
+            guard let image = UIImage(data: imageData) else { return false }
+
+            appViewController.presentPhotoEditingViewController(for: image)
+            return true
+        } catch {
+            return false
+        }
     }
 
     // MARK: Boilerplate

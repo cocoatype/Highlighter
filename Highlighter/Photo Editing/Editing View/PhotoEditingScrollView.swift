@@ -40,10 +40,17 @@ class PhotoEditingScrollView: UIScrollView {
         }
     }
 
+    // MARK: View Lifecycle
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        updateZoomScale()
+    }
+
     // MARK: Scaling
 
     private var minimumZoomScaleForCurrentImage: CGFloat {
-        guard let image = image else { return 1.0 }
+        guard let image = image, bounds.equalTo(.zero) == false else { return 1.0 }
         let imageSize = image.size * image.scale
         let imageBounds = CGRect(origin: .zero, size: imageSize)
         let zoomedBounds = imageBounds.fitting(rect: bounds).integral
