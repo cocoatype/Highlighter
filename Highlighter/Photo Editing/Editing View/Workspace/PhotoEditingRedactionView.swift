@@ -46,6 +46,8 @@ class PhotoEditingRedactionView: UIView {
     }
 
     private func registerUndo(with existingRedactions: [Redaction]) {
+        guard isUserInteractionEnabled == true else { return }
+
         undoManager?.registerUndo(withTarget: self, handler: { redactionView in
             redactionView.redactions = existingRedactions
             redactionView.setNeedsDisplay()
