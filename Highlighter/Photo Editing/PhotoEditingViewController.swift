@@ -65,6 +65,7 @@ class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
         guard let exportedImage = imageForExport else { return }
 
         let activityController = UIActivityViewController(activityItems: [exportedImage], applicationActivities: nil)
+        activityController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         activityController.completionWithItemsHandler = { [weak self] _, completed, _, _ in
             self?.hasMadeEdits = false
             Defaults.numberOfSaves = Defaults.numberOfSaves + 1
