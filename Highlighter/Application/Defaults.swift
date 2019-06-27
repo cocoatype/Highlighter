@@ -21,6 +21,7 @@ enum Defaults {
     // MARK: Boilerplate
 
     private static var userDefaults: UserDefaults {
+        #warning("Should be a shared app group user defaults")
         return UserDefaults.standard
     }
 }

@@ -75,7 +75,8 @@ class PhotoEditingWorkspaceView: UIView {
         case .manual: handleManualStrokeCompletion()
         }
 
-        UIApplication.shared.sendAction(#selector(PhotoEditingViewController.markHasMadeEdits), to: nil, from: self, for: nil)
+        #warning("Handle this in app, not extension")
+//        UIApplication.shared.sendAction(#selector(PhotoEditingViewController.markHasMadeEdits), to: nil, from: self, for: nil)
     }
 
     private func handleMagicStrokeCompletion() {
