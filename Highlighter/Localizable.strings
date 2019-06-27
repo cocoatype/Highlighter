@@ -1,0 +1,35 @@
+/* 
+  Localizable.strings
+  Highlighter
+
+  Created by Geoff Pado on 4/1/19.
+  Copyright © 2019 Cocoatype, LLC. All rights reserved.
+*/
+
+"ContactMailViewController.emailSubject" = "Hello!";
+
+"IntroView.promptLabelText" = "Black Highlighter needs permission to edit your photos.";
+"IntroView.promptButtonTitle" = "Grant Access";
+
+"PhotoEditingProtectionAlertController.cancelButtonTitle" = "Cancel";
+"PhotoEditingProtectionAlertController.deleteButtonTitle" = "Delete Changes";
+"PhotoEditingProtectionAlertController.saveButtonTitle" = "Save to Photos";
+
+"PhotoPermissionsDeniedAlertController.alertTitle" = "No Access to Your Photos";
+"PhotoPermissionsDeniedAlertController.alertMessage" = "Black Highlighter needs permission to edit your photos. Open Settings to grant access.";
+"PhotoPermissionsDeniedAlertController.actionButtonTitle" = "Open Settings";
+"PhotoPermissionsDeniedAlertController.cancelButtonTitle" = "Dismiss";
+
+"PhotoPermissionsRestrictedAlertController.alertTitle" = "Photos Access Restricted";
+"PhotoPermissionsRestrictedAlertController.alertMessage" = "Black Highlighter needs permission to edit your photos. However, restrictions on your device prevent that access. Ask whoever controls permissions for you to grant access to the photo library to Black Highlighter.";
+"PhotoPermissionsRestrictedAlertController.dismissButtonTitle" = "Dismiss";
+
+"PhotoSelectionViewController.navigationItemTitle" = "Photos";
+"PhotoSelectionViewController.settingsButtonAccessibilityLabel" = "Help";
+
+"SettingsContentProvider.Item.about" = "About Black Highlighter";
+"SettingsContentProvider.Item.acknowledgements" = "Acknowledgements";
+"SettingsContentProvider.Item.contact" = "Contact the Developer";
+"SettingsContentProvider.Item.privacy" = "Privacy Policy";
+
+"SettingsContentProvider.Section.otherApps.header" = "Other Apps by Cocoatype";
