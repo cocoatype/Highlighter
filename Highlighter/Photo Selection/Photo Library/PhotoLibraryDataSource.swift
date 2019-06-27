@@ -53,20 +53,23 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
                 guard let dataSource = self, let libraryView = dataSource.libraryView else { return }
 
                 if changes.hasIncrementalChanges {
-                    if let removed = changes.removedIndexes {
-                        libraryView.deleteItems(at: removed.map { IndexPath(item: $0, section:0) })
-                    }
-                    if let inserted = changes.insertedIndexes {
-                        libraryView.insertItems(at: inserted.map { IndexPath(item: $0, section:0) })
-                    }
-                    if let changed = changes.changedIndexes {
-                        libraryView.reloadItems(at: changed.map { IndexPath(item: $0, section:0) })
-                    }
+                    libraryView.performBatchUpdates({ [unowned libraryView, changes] in
+                        if let removed = changes.removedIndexes {
+                            libraryView.deleteItems(at: removed.map { IndexPath(item: $0, section:0) })
+                        }
+                        if let inserted = changes.insertedIndexes {
+                            libraryView.insertItems(at: inserted.map { IndexPath(item: $0, section:0) })
+                        }
+                        if let changed = changes.changedIndexes {
+                            libraryView.reloadItems(at: changed.map { IndexPath(item: $0, section:0) })
+                        }
 
-                    changes.enumerateMoves { fromIndex, toIndex in
-                        libraryView.moveItem(at: IndexPath(item: fromIndex, section: 0),
-                                                to: IndexPath(item: toIndex, section: 0))
-                    }
+                        changes.enumerateMoves { fromIndex, toIndex in
+                            libraryView.moveItem(at: IndexPath(item: fromIndex, section: 0),
+                                                 to: IndexPath(item: toIndex, section: 0))
+                        }
+                    }, completion: nil)
+
                 } else {
                     libraryView.reloadData()
                 }
