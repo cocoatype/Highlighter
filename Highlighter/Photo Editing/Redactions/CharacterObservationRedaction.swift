@@ -4,7 +4,8 @@
 import UIKit
 
 struct CharacterObservationRedaction: Redaction {
-    init(_ characterObservations: [CharacterObservation]) {
+    init?(_ characterObservations: [CharacterObservation]) {
+        guard characterObservations.count > 0 else { return nil }
         self.characterObservations = characterObservations
 
         self.paths = characterObservations.reduce(into: [UUID: [CharacterObservation]]()) { result, characterObservation in

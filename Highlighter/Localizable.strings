@@ -15,6 +15,9 @@
 "PhotoEditingProtectionAlertController.deleteButtonTitle" = "Delete Changes";
 "PhotoEditingProtectionAlertController.saveButtonTitle" = "Save to Photos";
 
+"PhotoEditingViewController.undoKeyCommandDiscoverabilityTitle" = "Undo Redaction";
+"PhotoEditingViewController.redoKeyCommandDiscoverabilityTitle" = "Redo Redaction";
+
 "PhotoPermissionsDeniedAlertController.alertTitle" = "No Access to Your Photos";
 "PhotoPermissionsDeniedAlertController.alertMessage" = "Black Highlighter needs permission to edit your photos. Open Settings to grant access.";
 "PhotoPermissionsDeniedAlertController.actionButtonTitle" = "Open Settings";
