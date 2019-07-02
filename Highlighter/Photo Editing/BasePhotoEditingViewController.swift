@@ -97,6 +97,11 @@ class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate {
 
     // MARK: Image
 
+    func load(_ image: UIImage) {
+        guard self.image == nil else { return }
+        self.image = image
+    }
+
     private(set) var image: UIImage? {
         didSet {
             updateScrollView()
@@ -126,6 +131,10 @@ class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate {
 
     deinit {
         redactionChangeObserver.map(NotificationCenter.default.removeObserver)
+    }
+
+    override convenience init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        self.init(asset: nil, image: nil, completionHandler: nil)
     }
 
     @available(*, unavailable)

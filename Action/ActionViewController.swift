@@ -1,44 +1,33 @@
 //  Created by Geoff Pado on 6/26/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
-import UIKit
 import MobileCoreServices
+import UIKit
 
 class ActionViewController: BasePhotoEditingViewController {
-
-    @IBOutlet weak var imageView: UIImageView!
-
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        // Get the item[s] we're handling from the extension context.
-        
-        // For example, look for an image and place it into an image view.
-        // Replace this with something appropriate for the type[s] your extension supports.
-        var imageFound = false
-        for item in self.extensionContext!.inputItems as! [NSExtensionItem] {
-            for provider in item.attachments! as! [NSItemProvider] {
-                if provider.hasItemConformingToTypeIdentifier(kUTTypeImage as String) {
-                    // This is an image. We'll load it, then place it in our image view.
-                    weak var weakImageView = self.imageView
-                    provider.loadItem(forTypeIdentifier: kUTTypeImage as String, options: nil, completionHandler: { (imageURL, error) in
-                        OperationQueue.main.addOperation {
-                            if let strongImageView = weakImageView {
-                                if let imageURL = imageURL as? URL {
-                                    strongImageView.image = UIImage(data: try! Data(contentsOf: imageURL))
-                                }
-                            }
-                        }
-                    })
-                    
-                    imageFound = true
-                    break
+
+        let imageTypeIdentifier = (kUTTypeImage as String)
+
+        let imageProvider = extensionContext?
+          .inputItems
+          .compactMap { $0 as? NSExtensionItem }
+          .flatMap { $0.attachments ?? [] }
+          .first(where: { $0.hasItemConformingToTypeIdentifier(imageTypeIdentifier) })
+
+        imageProvider?.loadItem(forTypeIdentifier: imageTypeIdentifier, options: nil) { [weak self] item, error in
+            do {
+                guard let imageURL = (item as? URL) else { throw (error ?? ActionError.imageURLNotFound)  }
+
+                let imageData = try Data(contentsOf: imageURL)
+                guard let image = UIImage(data: imageData) else { throw ActionError.invalidImageData }
+
+                DispatchQueue.main.async { [weak self] in
+                    self?.load(image)
                 }
-            }
-            
-            if (imageFound) {
-                // We only handle one image, so stop looking for more.
-                break
+            } catch {
+                dump(error)
             }
         }
     }
@@ -48,5 +37,9 @@ class ActionViewController: BasePhotoEditingViewController {
         // This template doesn't do anything, so we just echo the passed in items.
         self.extensionContext!.completeRequest(returningItems: self.extensionContext!.inputItems, completionHandler: nil)
     }
+}
 
+enum ActionError: Error {
+    case imageURLNotFound
+    case invalidImageData
 }

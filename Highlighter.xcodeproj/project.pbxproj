@@ -101,6 +101,8 @@
 		049F293122875D5B00A335BE /* AcknowledgementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F293022875D5B00A335BE /* AcknowledgementsViewController.swift */; };
 		049F293322875E4D00A335BE /* ContactWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F293222875E4D00A335BE /* ContactWebViewController.swift */; };
 		049F293522875F7E00A335BE /* ContactMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F293422875F7E00A335BE /* ContactMailViewController.swift */; };
+		049F92BF22CAF2A20090C9BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 049F92C122CAF2A20090C9BC /* InfoPlist.strings */; };
+		049F92C222CAF4D00090C9BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041EFEFF2251A9F50058D8EE /* Assets.xcassets */; };
 		04A3AEF6227A8CE700F21229 /* UIBezierPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */; };
 		04A3AEF8227A924D00F21229 /* CharacterObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF7227A924D00F21229 /* CharacterObservation.swift */; };
 		04ADD1562290CCC200E17445 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1552290CCC200E17445 /* AppEntry.swift */; };
@@ -228,6 +230,7 @@
 		049F293022875D5B00A335BE /* AcknowledgementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsViewController.swift; sourceTree = "<group>"; };
 		049F293222875E4D00A335BE /* ContactWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactWebViewController.swift; sourceTree = "<group>"; };
 		049F293422875F7E00A335BE /* ContactMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMailViewController.swift; sourceTree = "<group>"; };
+		049F92C022CAF2A20090C9BC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtensions.swift; sourceTree = "<group>"; };
 		04A3AEF7227A924D00F21229 /* CharacterObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterObservation.swift; sourceTree = "<group>"; };
 		04ADD1552290CCC200E17445 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
@@ -400,6 +403,7 @@
 				043911C422C461F000D4AE30 /* ActionViewController.swift */,
 				043911C622C461F000D4AE30 /* MainInterface.storyboard */,
 				043911C922C461F000D4AE30 /* Info.plist */,
+				049F92C122CAF2A20090C9BC /* InfoPlist.strings */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -722,6 +726,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				043911C322C461F000D4AE30 /* Media.xcassets in Resources */,
+				049F92BF22CAF2A20090C9BC /* InfoPlist.strings in Resources */,
+				049F92C222CAF4D00090C9BC /* Assets.xcassets in Resources */,
 				043911C822C461F000D4AE30 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -901,6 +907,14 @@
 				043911C722C461F000D4AE30 /* Base */,
 			);
 			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		049F92C122CAF2A20090C9BC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				049F92C022CAF2A20090C9BC /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
