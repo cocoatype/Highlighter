@@ -86,7 +86,9 @@ class PhotoEditingWorkspaceView: UIView {
             .flatMap { $0 }
             .filter { strokeBorderPath.contains($0.bounds.center) }
 
-        redactionView.add(CharacterObservationRedaction(redactedCharacterObservations))
+        if let newRedaction = CharacterObservationRedaction(redactedCharacterObservations) {
+            redactionView.add(newRedaction)
+        }
     }
 
     private func handleManualStrokeCompletion() {
