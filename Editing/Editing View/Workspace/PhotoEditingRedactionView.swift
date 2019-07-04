@@ -3,8 +3,8 @@
 
 import UIKit
 
-class PhotoEditingRedactionView: UIView {
-    init() {
+public class PhotoEditingRedactionView: UIView {
+    public init() {
         super.init(frame: .zero)
 
         backgroundColor = .clear
@@ -12,7 +12,7 @@ class PhotoEditingRedactionView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
     }
 
-    override func draw(_ rect: CGRect) {
+    public override func draw(_ rect: CGRect) {
         super.draw(rect)
 
         redactions
@@ -31,17 +31,17 @@ class PhotoEditingRedactionView: UIView {
         }
     }
 
-    func add(_ redaction: Redaction) {
+    public func add(_ redaction: Redaction) {
         self.redactions.append(redaction)
         setNeedsDisplay()
     }
 
-    func add(_ redactions: [Redaction]) {
+    public func add(_ redactions: [Redaction]) {
         self.redactions.append(contentsOf: redactions)
         setNeedsDisplay()
     }
 
-    func removeAllRedactions() {
+    public func removeAllRedactions() {
         self.redactions = []
     }
 
@@ -74,7 +74,7 @@ class PhotoEditingRedactionView: UIView {
 
     // MARK: Notifications
 
-    static let redactionsDidChange = Notification.Name("PhotoEditingRedactionView.redactionsDidChange")
+    public static let redactionsDidChange = Notification.Name("PhotoEditingRedactionView.redactionsDidChange")
 
     // MARK: Boilerplate
 

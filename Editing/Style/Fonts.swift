@@ -3,7 +3,7 @@
 
 import UIKit
 
-extension UIFont {
+public extension UIFont {
     class func appFont(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
         let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
         let fontMethod: ((UIFont.TextStyle) -> UIFont)

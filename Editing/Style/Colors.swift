@@ -3,7 +3,7 @@
 
 import UIKit
 
-extension UIColor {
+public extension UIColor {
     static let primaryExtraLight = UIColor(hexLiteral: 0x878787)
     static let primaryLight = UIColor(hexLiteral: 0x484848)
     static let primary = UIColor(hexLiteral: 0x212121)

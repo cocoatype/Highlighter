@@ -3,17 +3,13 @@
 
 import UIKit
 
-class NavigationBar: UINavigationBar {
+public class Toolbar: UIToolbar {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         barTintColor = .primaryDark
         isTranslucent = false
         tintColor = .white
-        titleTextAttributes = [
-            .font: UIFont.navigationBarTitleFont,
-            .foregroundColor: UIColor.white
-        ]
     }
 
     // MARK: Boilerplate
@@ -23,4 +19,5 @@ class NavigationBar: UINavigationBar {
         let className = String(describing: type(of: self))
         fatalError("\(className) does not implement init(coder:)")
     }
+
 }

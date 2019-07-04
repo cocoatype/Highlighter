@@ -3,6 +3,6 @@
 
 import UIKit
 
-protocol Redaction {
+public protocol Redaction {
     var paths: [UIBezierPath] { get }
 }

@@ -3,8 +3,8 @@
 
 import UIKit
 
-class TextRectangleDetector: NSObject {
-    func detectTextRectangles(in image: UIImage, completionHandler: (([TextObservation]?) -> Void)? = nil) {
+public class TextRectangleDetector: NSObject {
+    public func detectTextRectangles(in image: UIImage, completionHandler: (([TextObservation]?) -> Void)? = nil) {
         guard let detectionOperation = TextRectangleDetectionOperation(image: image) else {
             completionHandler?(nil)
             return

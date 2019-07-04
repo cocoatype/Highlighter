@@ -1,23 +1,18 @@
-//  Created by Geoff Pado on 5/15/19.
+//  Created by Geoff Pado on 4/17/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import UIKit
 
-class Toolbar: UIToolbar {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        barTintColor = .primaryDark
-        isTranslucent = false
-        tintColor = .white
+public class PhotoEditingImageView: UIImageView {
+    public init() {
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = false
+        contentMode = .center
     }
-
-    // MARK: Boilerplate
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
         let className = String(describing: type(of: self))
         fatalError("\(className) does not implement init(coder:)")
     }
-
 }

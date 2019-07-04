@@ -4,7 +4,7 @@
 import UIKit
 import Vision
 
-struct TextObservation: Equatable {
+public struct TextObservation: Equatable {
     init(_ textObservation: VNTextObservation, in image: UIImage) {
         let boundingBox = textObservation.boundingBox
         let imageSize = image.size * image.scale

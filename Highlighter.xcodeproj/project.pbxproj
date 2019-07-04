@@ -12,35 +12,21 @@
 		041EFF002251A9F50058D8EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041EFEFF2251A9F50058D8EE /* Assets.xcassets */; };
 		041EFF032251A9F50058D8EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF012251A9F50058D8EE /* LaunchScreen.storyboard */; };
 		041EFF0E2251A9F50058D8EE /* IntroViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF0D2251A9F50058D8EE /* IntroViewControllerTests.swift */; };
-		041EFF192251AAFE0058D8EE /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF182251AAFE0058D8EE /* UIViewControllerExtensions.swift */; };
 		041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF1A2251AB8D0058D8EE /* AppWindow.swift */; };
 		041EFF492252FAF50058D8EE /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF482252FAF50058D8EE /* IntroViewController.swift */; };
 		041EFF4B225300030058D8EE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF4A225300030058D8EE /* Localizable.strings */; };
 		041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF4D225302CC0058D8EE /* IntroView.swift */; };
 		041EFF50225303120058D8EE /* PromptLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF4F225303120058D8EE /* PromptLabel.swift */; };
 		041EFF52225303430058D8EE /* PromptButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF51225303430058D8EE /* PromptButton.swift */; };
-		041EFF552255A0B00058D8EE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF542255A0B00058D8EE /* Colors.swift */; };
-		041EFF582255A2FB0058D8EE /* Aleo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF562255A2ED0058D8EE /* Aleo-Bold.otf */; };
-		041EFF592255A2FB0058D8EE /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
-		041EFF5B2255A39D0058D8EE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF5A2255A39D0058D8EE /* Fonts.swift */; };
-		041EFF5D2255A85F0058D8EE /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF5C2255A85F0058D8EE /* NavigationController.swift */; };
 		041EFF6B225C36350058D8EE /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF6A225C36350058D8EE /* PhotoLibraryViewController.swift */; };
 		041EFF6E225C38800058D8EE /* PhotoSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF6D225C38800058D8EE /* PhotoSelectionViewController.swift */; };
 		041EFF70225C3D830058D8EE /* PhotoLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF6F225C3D830058D8EE /* PhotoLibraryView.swift */; };
 		041EFF72225C3DC00058D8EE /* PhotoLibraryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF71225C3DC00058D8EE /* PhotoLibraryDataSource.swift */; };
 		041EFF74225C3DD20058D8EE /* PhotoLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF73225C3DD20058D8EE /* PhotoLibraryViewCell.swift */; };
 		041EFF76225C3DF10058D8EE /* PhotoLibraryViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF75225C3DF10058D8EE /* PhotoLibraryViewLayout.swift */; };
-		042A2B78228A5B6F00353414 /* PhotoExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B77228A5B6F00353414 /* PhotoExporter.swift */; };
 		042A2B7A228A642100353414 /* PhotoEditingProtectionAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B79228A642100353414 /* PhotoEditingProtectionAlertController.swift */; };
 		042A2B7C228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B7B228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift */; };
 		042A2B7E228CFEDB00353414 /* PhotoEditingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B7D228CFEDB00353414 /* PhotoEditingNavigationController.swift */; };
-		042A2B81228D012F00353414 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B80228D012F00353414 /* NavigationBar.swift */; };
-		042A2B83228D014900353414 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B82228D014900353414 /* Toolbar.swift */; };
-		042A2B85228D01BD00353414 /* HighlighterTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B84228D01BD00353414 /* HighlighterTool.swift */; };
-		042A2B87228D08D800353414 /* CharacterObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B86228D08D800353414 /* CharacterObservationRedaction.swift */; };
-		042A2B89228D091000353414 /* PathRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B88228D091000353414 /* PathRedaction.swift */; };
-		042A39AD22811F87009C1C07 /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
-		042A39AF228125FA009C1C07 /* PhotoEditingRedactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */; };
 		042B78FA229A2560005B7A2A /* SettingsAppEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B78F9229A2560005B7A2A /* SettingsAppEntryTableViewCell.swift */; };
 		042B78FC229A257E005B7A2A /* SettingsTableViewCellLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B78FB229A257E005B7A2A /* SettingsTableViewCellLabel.swift */; };
 		042B78FE229A259C005B7A2A /* SettingsTableViewCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B78FD229A259C005B7A2A /* SettingsTableViewCellImageView.swift */; };
@@ -50,45 +36,12 @@
 		043911C322C461F000D4AE30 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 043911C222C461F000D4AE30 /* Media.xcassets */; };
 		043911C522C461F000D4AE30 /* ActionEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043911C422C461F000D4AE30 /* ActionEditingViewController.swift */; };
 		043911CC22C461F000D4AE30 /* Action.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 043911C022C461EE00D4AE30 /* Action.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		043911D122C4632000D4AE30 /* BasePhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F1226571AB0048E203 /* BasePhotoEditingViewController.swift */; };
-		043911D222C4634500D4AE30 /* TextRectangleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */; };
-		043911D322C4635100D4AE30 /* PhotoEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */; };
-		043911D422C4635C00D4AE30 /* TextObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CE226EB0C70012F5AE /* TextObservation.swift */; };
-		043911D522C4636800D4AE30 /* TextRectangleDetectionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */; };
-		043911D622C4636F00D4AE30 /* HighlighterTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B84228D01BD00353414 /* HighlighterTool.swift */; };
-		043911D722C4637400D4AE30 /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
-		043911D822C4637E00D4AE30 /* PhotoEditingWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */; };
-		043911D922C4638100D4AE30 /* PhotoEditingRedactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */; };
-		043911DA22C4638400D4AE30 /* PhotoEditingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072942268137900FF20B6 /* PhotoEditingImageView.swift */; };
-		043911DB22C4638700D4AE30 /* PhotoEditingBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */; };
-		043911DC22C4639200D4AE30 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF542255A0B00058D8EE /* Colors.swift */; };
-		043911DD22C463A900D4AE30 /* PhotoExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B77228A5B6F00353414 /* PhotoExporter.swift */; };
-		043911DF22C463E200D4AE30 /* PhotoEditingObservationVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */; };
-		043911E022C463EA00D4AE30 /* UIBezierPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */; };
-		043911E122C463EF00D4AE30 /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */; };
-		043911E222C463F800D4AE30 /* CharacterObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B86228D08D800353414 /* CharacterObservationRedaction.swift */; };
-		043911E322C463FB00D4AE30 /* PathRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B88228D091000353414 /* PathRedaction.swift */; };
-		043911E422C4640000D4AE30 /* CharacterObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF7227A924D00F21229 /* CharacterObservation.swift */; };
-		043911E522C4641700D4AE30 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */; };
-		043911E622C4642900D4AE30 /* PhotoEditingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */; };
 		043911E822C4658800D4AE30 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043911E722C4658800D4AE30 /* PhotoEditingViewController.swift */; };
-		043CD9C9226EB0400012F5AE /* TextRectangleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */; };
-		043CD9CB226EB0830012F5AE /* TextRectangleDetectionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */; };
-		043CD9CF226EB0C70012F5AE /* TextObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CE226EB0C70012F5AE /* TextObservation.swift */; };
-		043CD9D1226EB0F60012F5AE /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */; };
-		043CD9D62275316E0012F5AE /* PhotoEditingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */; };
-		043CD9D8227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */; };
 		043CD9DB22753D510012F5AE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DA22753D510012F5AE /* SettingsViewController.swift */; };
 		043CD9DD227548C20012F5AE /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DC227548C20012F5AE /* SettingsTableView.swift */; };
 		043CD9DF227548F30012F5AE /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DE227548F30012F5AE /* SettingsTableViewCell.swift */; };
 		043CD9E12275490E0012F5AE /* SettingsContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E02275490E0012F5AE /* SettingsContentProvider.swift */; };
 		043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */; };
-		043CD9E52277EC910012F5AE /* PhotoEditingBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */; };
-		0454C30522963937004FDBFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0454C30322963937004FDBFB /* Assets.xcassets */; };
-		0454C30622963937004FDBFB /* Magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0454C30422963937004FDBFB /* Magic.sks */; };
-		047072932268134500FF20B6 /* PhotoEditingWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */; };
-		047072952268137900FF20B6 /* PhotoEditingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072942268137900FF20B6 /* PhotoEditingImageView.swift */; };
-		048909F2226571AB0048E203 /* BasePhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F1226571AB0048E203 /* BasePhotoEditingViewController.swift */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
 		048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D134E229F7E5100427FE3 /* CallbackAction.swift */; };
 		048D1352229F7EAB00427FE3 /* CallbackActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D1351229F7EAB00427FE3 /* CallbackActionTests.swift */; };
@@ -102,18 +55,43 @@
 		049F92BF22CAF2A20090C9BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 049F92C122CAF2A20090C9BC /* InfoPlist.strings */; };
 		049F92C222CAF4D00090C9BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041EFEFF2251A9F50058D8EE /* Assets.xcassets */; };
 		049F92C422CAFA680090C9BC /* ActionNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F92C322CAFA680090C9BC /* ActionNavigationController.swift */; };
-		049F92C522CAFAA40090C9BC /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF5C2255A85F0058D8EE /* NavigationController.swift */; };
-		049F92C622CAFAED0090C9BC /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B80228D012F00353414 /* NavigationBar.swift */; };
-		049F92C722CAFAEF0090C9BC /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B82228D014900353414 /* Toolbar.swift */; };
 		049F92C922CAFC5D0090C9BC /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F92C822CAFC5D0090C9BC /* ActionViewController.swift */; };
-		049F92CA22CAFC860090C9BC /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF182251AAFE0058D8EE /* UIViewControllerExtensions.swift */; };
-		049F92CB22CAFCE60090C9BC /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF5A2255A39D0058D8EE /* Fonts.swift */; };
-		049F92CC22CAFD3C0090C9BC /* Aleo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF562255A2ED0058D8EE /* Aleo-Bold.otf */; };
-		049F92CD22CAFD3C0090C9BC /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
 		049F92CF22CD98110090C9BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 049F92CE22CD98110090C9BC /* Localizable.strings */; };
 		049F92D122CD9C350090C9BC /* ActionEditingDismissalAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F92D022CD9C350090C9BC /* ActionEditingDismissalAlertController.swift */; };
-		04A3AEF6227A8CE700F21229 /* UIBezierPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */; };
-		04A3AEF8227A924D00F21229 /* CharacterObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF7227A924D00F21229 /* CharacterObservation.swift */; };
+		049F92DB22CDA3DB0090C9BC /* Editing.h in Headers */ = {isa = PBXBuildFile; fileRef = 049F92D922CDA3DB0090C9BC /* Editing.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		049F92DE22CDA3DB0090C9BC /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
+		049F92DF22CDA3DB0090C9BC /* Editing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		049F92E422CDA3FF0090C9BC /* TextRectangleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */; };
+		049F92E522CDA3FF0090C9BC /* TextRectangleDetectionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */; };
+		049F92E622CDA3FF0090C9BC /* TextObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CE226EB0C70012F5AE /* TextObservation.swift */; };
+		049F92E722CDA3FF0090C9BC /* CharacterObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF7227A924D00F21229 /* CharacterObservation.swift */; };
+		049F92E822CDA43F0090C9BC /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF182251AAFE0058D8EE /* UIViewControllerExtensions.swift */; };
+		049F92E922CDA43F0090C9BC /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */; };
+		049F92EA22CDA43F0090C9BC /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */; };
+		049F92EB22CDA43F0090C9BC /* UIBezierPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */; };
+		049F92ED22CDA4B10090C9BC /* PhotoEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */; };
+		049F92EE22CDA4C10090C9BC /* PhotoEditingBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */; };
+		049F92EF22CDA4C10090C9BC /* PhotoEditingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072942268137900FF20B6 /* PhotoEditingImageView.swift */; };
+		049F92F022CDA4C10090C9BC /* PhotoEditingRedactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */; };
+		049F92F122CDA4C10090C9BC /* PhotoEditingWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */; };
+		049F92F222CDA4D50090C9BC /* HighlighterTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B84228D01BD00353414 /* HighlighterTool.swift */; };
+		049F92F322CDA4E40090C9BC /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
+		049F92F422CDA4E40090C9BC /* CharacterObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B86228D08D800353414 /* CharacterObservationRedaction.swift */; };
+		049F92F522CDA4E40090C9BC /* PathRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B88228D091000353414 /* PathRedaction.swift */; };
+		049F92F622CDA54B0090C9BC /* PhotoEditingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */; };
+		049F92F722CDA5690090C9BC /* PhotoEditingObservationVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */; };
+		049F92F822CDA59F0090C9BC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF542255A0B00058D8EE /* Colors.swift */; };
+		049F92FA22CDA5D90090C9BC /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B80228D012F00353414 /* NavigationBar.swift */; };
+		049F92FB22CDA5D90090C9BC /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B82228D014900353414 /* Toolbar.swift */; };
+		049F92FC22CDA6870090C9BC /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
+		049F92FD22CDA6C40090C9BC /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF5A2255A39D0058D8EE /* Fonts.swift */; };
+		049F930222CDA9110090C9BC /* BasePhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F1226571AB0048E203 /* BasePhotoEditingViewController.swift */; };
+		049F930322CDA9150090C9BC /* PhotoExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B77228A5B6F00353414 /* PhotoExporter.swift */; };
+		049F930422CDAA9D0090C9BC /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF5C2255A85F0058D8EE /* NavigationController.swift */; };
+		049F930722CDAB570090C9BC /* Aleo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF562255A2ED0058D8EE /* Aleo-Bold.otf */; };
+		049F930822CDAB570090C9BC /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
+		049F930922CDAB570090C9BC /* Aleo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF562255A2ED0058D8EE /* Aleo-Bold.otf */; };
+		049F930A22CDAB570090C9BC /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
 		04ADD1562290CCC200E17445 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1552290CCC200E17445 /* AppEntry.swift */; };
 		04ADD1582290CFF100E17445 /* AppListFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1572290CFF100E17445 /* AppListFetcher.swift */; };
 		04ADD15A2290D1C500E17445 /* AppLookupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1592290D1C500E17445 /* AppLookupResponse.swift */; };
@@ -121,13 +99,11 @@
 		04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15D2290D2D200E17445 /* AppDeveloperInfo.swift */; };
 		04ADD1602290DA8E00E17445 /* AppEntryOpening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15F2290DA8E00E17445 /* AppEntryOpening.swift */; };
 		04ADD1642290DE6800E17445 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ADD1632290DE6700E17445 /* Kingfisher.framework */; };
-		04D68BC5225EE2C000D09BBD /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */; };
 		04D68BC7225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC6225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift */; };
 		04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */; };
 		04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BCB2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift */; };
 		04D68BD22262C45700D09BBD /* PhotoSelectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BD12262C45700D09BBD /* PhotoSelectionViewControllerTests.swift */; };
 		04D68BD52262C54600D09BBD /* MockPhotoPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BD42262C54600D09BBD /* MockPhotoPermissionsRequester.swift */; };
-		04E192A7229CD38C006F0E56 /* PhotoEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +121,13 @@
 			remoteGlobalIDString = 043911BF22C461EE00D4AE30;
 			remoteInfo = Action;
 		};
+		049F92DC22CDA3DB0090C9BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 049F92D622CDA3DB0090C9BC;
+			remoteInfo = Editing;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -157,6 +140,17 @@
 				043911CC22C461F000D4AE30 /* Action.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		049F92E322CDA3DB0090C9BC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				049F92DF22CDA3DB0090C9BC /* Editing.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -223,8 +217,6 @@
 		043CD9E02275490E0012F5AE /* SettingsContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContentProvider.swift; sourceTree = "<group>"; };
 		043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewDataSource.swift; sourceTree = "<group>"; };
 		043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingBrushStrokeView.swift; sourceTree = "<group>"; };
-		0454C30322963937004FDBFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0454C30422963937004FDBFB /* Magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Magic.sks; sourceTree = "<group>"; };
 		047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingWorkspaceView.swift; sourceTree = "<group>"; };
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* BasePhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePhotoEditingViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +235,9 @@
 		049F92C822CAFC5D0090C9BC /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		049F92CE22CD98110090C9BC /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		049F92D022CD9C350090C9BC /* ActionEditingDismissalAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEditingDismissalAlertController.swift; sourceTree = "<group>"; };
+		049F92D722CDA3DB0090C9BC /* Editing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Editing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		049F92D922CDA3DB0090C9BC /* Editing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Editing.h; sourceTree = "<group>"; };
+		049F92DA22CDA3DB0090C9BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtensions.swift; sourceTree = "<group>"; };
 		04A3AEF7227A924D00F21229 /* CharacterObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterObservation.swift; sourceTree = "<group>"; };
 		04ADD1552290CCC200E17445 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
@@ -267,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04ADD1642290DE6800E17445 /* Kingfisher.framework in Frameworks */,
+				049F92DE22CDA3DB0090C9BC /* Editing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +274,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		043911BD22C461EE00D4AE30 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				049F92FC22CDA6870090C9BC /* Editing.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		049F92D422CDA3DB0090C9BC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -293,6 +297,7 @@
 				041EFEF72251A9F30058D8EE /* Highlighter */,
 				041EFF0C2251A9F50058D8EE /* HighlighterTests */,
 				043911C122C461F000D4AE30 /* Action */,
+				049F92D822CDA3DB0090C9BC /* Editing */,
 				041EFEF62251A9F30058D8EE /* Products */,
 				04ADD1622290DE6700E17445 /* Frameworks */,
 			);
@@ -304,6 +309,7 @@
 				041EFEF52251A9F30058D8EE /* Highlighter.app */,
 				041EFF092251A9F50058D8EE /* HighlighterTests.xctest */,
 				043911C022C461EE00D4AE30 /* Action.appex */,
+				049F92D722CDA3DB0090C9BC /* Editing.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -313,11 +319,9 @@
 			children = (
 				048D134D229F7E4400427FE3 /* Callback Actions */,
 				04D68BCF2262C41300D09BBD /* Application */,
-				04D68BC3225EE2A500D09BBD /* Extensions */,
 				048909EF2265716B0048E203 /* Photo Editing */,
 				041EFF6C225C38600058D8EE /* Photo Selection */,
 				043CD9D922753D450012F5AE /* Settings */,
-				041EFF532255A0930058D8EE /* Style */,
 				048909F0226571830048E203 /* Supporting Files */,
 			);
 			path = Highlighter;
@@ -455,15 +459,9 @@
 		048909EF2265716B0048E203 /* Photo Editing */ = {
 			isa = PBXGroup;
 			children = (
-				04E192A5229CD367006F0E56 /* Editing View */,
-				042A2B84228D01BD00353414 /* HighlighterTool.swift */,
 				042A2B7D228CFEDB00353414 /* PhotoEditingNavigationController.swift */,
 				042A2B79228A642100353414 /* PhotoEditingProtectionAlertController.swift */,
-				048909F1226571AB0048E203 /* BasePhotoEditingViewController.swift */,
 				048909F3226573750048E203 /* PhotoEditorPresenting.swift */,
-				042A2B77228A5B6F00353414 /* PhotoExporter.swift */,
-				042A39AB22811F7A009C1C07 /* Redactions */,
-				043CD9CD226EB0B20012F5AE /* Text Detection */,
 				043911E722C4658800D4AE30 /* PhotoEditingViewController.swift */,
 			);
 			path = "Photo Editing";
@@ -507,6 +505,35 @@
 				049F293422875F7E00A335BE /* ContactMailViewController.swift */,
 			);
 			path = "Presented View Controllers";
+			sourceTree = "<group>";
+		};
+		049F92D822CDA3DB0090C9BC /* Editing */ = {
+			isa = PBXGroup;
+			children = (
+				042A2B77228A5B6F00353414 /* PhotoExporter.swift */,
+				049F92D922CDA3DB0090C9BC /* Editing.h */,
+				049F92DA22CDA3DB0090C9BC /* Info.plist */,
+				042A2B84228D01BD00353414 /* HighlighterTool.swift */,
+				049F92EC22CDA48C0090C9BC /* Editing View */,
+				04D68BC3225EE2A500D09BBD /* Extensions */,
+				042A2B7F228D012300353414 /* Navigation */,
+				042A39AB22811F7A009C1C07 /* Redactions */,
+				041EFF532255A0930058D8EE /* Style */,
+				043CD9CD226EB0B20012F5AE /* Text Detection */,
+			);
+			path = Editing;
+			sourceTree = "<group>";
+		};
+		049F92EC22CDA48C0090C9BC /* Editing View */ = {
+			isa = PBXGroup;
+			children = (
+				048909F1226571AB0048E203 /* BasePhotoEditingViewController.swift */,
+				04E192A4229CD34F006F0E56 /* Workspace */,
+				04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */,
+				043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */,
+				043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */,
+			);
+			path = "Editing View";
 			sourceTree = "<group>";
 		};
 		04ADD1542290CBF300E17445 /* Other Apps */ = {
@@ -575,7 +602,6 @@
 				041EFEF82251A9F30058D8EE /* AppDelegate.swift */,
 				041EFEFA2251A9F30058D8EE /* AppViewController.swift */,
 				041EFF1A2251AB8D0058D8EE /* AppWindow.swift */,
-				042A2B7F228D012300353414 /* Navigation */,
 				042B7902229A38C0005B7A2A /* Defaults.swift */,
 				042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */,
 			);
@@ -601,20 +627,18 @@
 			path = Workspace;
 			sourceTree = "<group>";
 		};
-		04E192A5229CD367006F0E56 /* Editing View */ = {
-			isa = PBXGroup;
-			children = (
-				0454C30322963937004FDBFB /* Assets.xcassets */,
-				0454C30422963937004FDBFB /* Magic.sks */,
-				043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */,
-				043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */,
-				04E192A4229CD34F006F0E56 /* Workspace */,
-				04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */,
-			);
-			path = "Editing View";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		049F92D222CDA3DB0090C9BC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				049F92DB22CDA3DB0090C9BC /* Editing.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		041EFEF42251A9F30058D8EE /* Highlighter */ = {
@@ -626,11 +650,13 @@
 				041EFEF32251A9F30058D8EE /* Resources */,
 				04ADD1612290DDEB00E17445 /* Copy Carthage Frameworks */,
 				043911D022C461F000D4AE30 /* Embed App Extensions */,
+				049F92E322CDA3DB0090C9BC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				043911CB22C461F000D4AE30 /* PBXTargetDependency */,
+				049F92DD22CDA3DB0090C9BC /* PBXTargetDependency */,
 			);
 			name = Highlighter;
 			productName = Highlighter;
@@ -672,6 +698,24 @@
 			productReference = 043911C022C461EE00D4AE30 /* Action.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		049F92D622CDA3DB0090C9BC /* Editing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 049F92E022CDA3DB0090C9BC /* Build configuration list for PBXNativeTarget "Editing" */;
+			buildPhases = (
+				049F92D222CDA3DB0090C9BC /* Headers */,
+				049F92D322CDA3DB0090C9BC /* Sources */,
+				049F92D422CDA3DB0090C9BC /* Frameworks */,
+				049F92D522CDA3DB0090C9BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Editing;
+			productName = Editing;
+			productReference = 049F92D722CDA3DB0090C9BC /* Editing.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -692,6 +736,9 @@
 					043911BF22C461EE00D4AE30 = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
+					049F92D622CDA3DB0090C9BC = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
 				};
 			};
 			buildConfigurationList = 041EFEF02251A9F30058D8EE /* Build configuration list for PBXProject "Highlighter" */;
@@ -710,6 +757,7 @@
 				041EFEF42251A9F30058D8EE /* Highlighter */,
 				041EFF082251A9F50058D8EE /* HighlighterTests */,
 				043911BF22C461EE00D4AE30 /* Action */,
+				049F92D622CDA3DB0090C9BC /* Editing */,
 			);
 		};
 /* End PBXProject section */
@@ -719,13 +767,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				041EFF582255A2FB0058D8EE /* Aleo-Bold.otf in Resources */,
-				041EFF592255A2FB0058D8EE /* Aleo-Regular.otf in Resources */,
 				041EFF032251A9F50058D8EE /* LaunchScreen.storyboard in Resources */,
-				0454C30622963937004FDBFB /* Magic.sks in Resources */,
 				041EFF4B225300030058D8EE /* Localizable.strings in Resources */,
-				0454C30522963937004FDBFB /* Assets.xcassets in Resources */,
+				049F930A22CDAB570090C9BC /* Aleo-Regular.otf in Resources */,
 				041EFF002251A9F50058D8EE /* Assets.xcassets in Resources */,
+				049F930922CDAB570090C9BC /* Aleo-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,10 +788,17 @@
 			files = (
 				043911C322C461F000D4AE30 /* Media.xcassets in Resources */,
 				049F92CF22CD98110090C9BC /* Localizable.strings in Resources */,
+				049F930722CDAB570090C9BC /* Aleo-Bold.otf in Resources */,
 				049F92BF22CAF2A20090C9BC /* InfoPlist.strings in Resources */,
-				049F92CD22CAFD3C0090C9BC /* Aleo-Regular.otf in Resources */,
 				049F92C222CAF4D00090C9BC /* Assets.xcassets in Resources */,
-				049F92CC22CAFD3C0090C9BC /* Aleo-Bold.otf in Resources */,
+				049F930822CDAB570090C9BC /* Aleo-Regular.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		049F92D522CDA3DB0090C9BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,76 +831,50 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				043CD9D8227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift in Sources */,
 				048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */,
-				042A2B85228D01BD00353414 /* HighlighterTool.swift in Sources */,
 				042A2B7A228A642100353414 /* PhotoEditingProtectionAlertController.swift in Sources */,
 				043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */,
 				049F292D22875AFA00A335BE /* AboutViewController.swift in Sources */,
 				049F293122875D5B00A335BE /* AcknowledgementsViewController.swift in Sources */,
-				041EFF5D2255A85F0058D8EE /* NavigationController.swift in Sources */,
 				041EFF492252FAF50058D8EE /* IntroViewController.swift in Sources */,
-				047072952268137900FF20B6 /* PhotoEditingImageView.swift in Sources */,
-				042A39AF228125FA009C1C07 /* PhotoEditingRedactionView.swift in Sources */,
 				049F293522875F7E00A335BE /* ContactMailViewController.swift in Sources */,
-				043CD9CF226EB0C70012F5AE /* TextObservation.swift in Sources */,
 				042B7905229A3AC7005B7A2A /* AppRatingsPrompter.swift in Sources */,
-				047072932268134500FF20B6 /* PhotoEditingWorkspaceView.swift in Sources */,
 				043CD9E12275490E0012F5AE /* SettingsContentProvider.swift in Sources */,
 				041EFF6B225C36350058D8EE /* PhotoLibraryViewController.swift in Sources */,
 				043CD9DB22753D510012F5AE /* SettingsViewController.swift in Sources */,
 				041EFF70225C3D830058D8EE /* PhotoLibraryView.swift in Sources */,
-				043CD9E52277EC910012F5AE /* PhotoEditingBrushStrokeView.swift in Sources */,
 				043911E822C4658800D4AE30 /* PhotoEditingViewController.swift in Sources */,
-				043CD9C9226EB0400012F5AE /* TextRectangleDetector.swift in Sources */,
-				048909F2226571AB0048E203 /* BasePhotoEditingViewController.swift in Sources */,
-				041EFF552255A0B00058D8EE /* Colors.swift in Sources */,
 				041EFF72225C3DC00058D8EE /* PhotoLibraryDataSource.swift in Sources */,
 				04ADD15C2290D29400E17445 /* AppLookupResponseResult.swift in Sources */,
 				048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */,
 				041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */,
-				042A2B87228D08D800353414 /* CharacterObservationRedaction.swift in Sources */,
 				041EFF6E225C38800058D8EE /* PhotoSelectionViewController.swift in Sources */,
-				042A39AD22811F87009C1C07 /* Redaction.swift in Sources */,
 				049F292B22875ADD00A335BE /* WebViewController.swift in Sources */,
 				04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */,
-				042A2B81228D012F00353414 /* NavigationBar.swift in Sources */,
-				043CD9D62275316E0012F5AE /* PhotoEditingScrollView.swift in Sources */,
-				04A3AEF6227A8CE700F21229 /* UIBezierPathExtensions.swift in Sources */,
 				04ADD1562290CCC200E17445 /* AppEntry.swift in Sources */,
 				04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */,
-				041EFF192251AAFE0058D8EE /* UIViewControllerExtensions.swift in Sources */,
 				041EFF52225303430058D8EE /* PromptButton.swift in Sources */,
 				041EFEF92251A9F30058D8EE /* AppDelegate.swift in Sources */,
 				043CD9DD227548C20012F5AE /* SettingsTableView.swift in Sources */,
-				042A2B78228A5B6F00353414 /* PhotoExporter.swift in Sources */,
 				041EFF76225C3DF10058D8EE /* PhotoLibraryViewLayout.swift in Sources */,
 				04ADD15A2290D1C500E17445 /* AppLookupResponse.swift in Sources */,
-				042A2B89228D091000353414 /* PathRedaction.swift in Sources */,
 				049F292F22875B1300A335BE /* PrivacyViewController.swift in Sources */,
 				04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */,
 				042B78FA229A2560005B7A2A /* SettingsAppEntryTableViewCell.swift in Sources */,
 				04D68BC7225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift in Sources */,
-				041EFF5B2255A39D0058D8EE /* Fonts.swift in Sources */,
 				042A2B7E228CFEDB00353414 /* PhotoEditingNavigationController.swift in Sources */,
-				04E192A7229CD38C006F0E56 /* PhotoEditingView.swift in Sources */,
 				042A2B7C228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift in Sources */,
 				041EFF50225303120058D8EE /* PromptLabel.swift in Sources */,
-				043CD9D1226EB0F60012F5AE /* UIImageExtensions.swift in Sources */,
 				043CD9DF227548F30012F5AE /* SettingsTableViewCell.swift in Sources */,
 				042B78FE229A259C005B7A2A /* SettingsTableViewCellImageView.swift in Sources */,
-				042A2B83228D014900353414 /* Toolbar.swift in Sources */,
 				049F293322875E4D00A335BE /* ContactWebViewController.swift in Sources */,
 				04ADD1602290DA8E00E17445 /* AppEntryOpening.swift in Sources */,
-				04A3AEF8227A924D00F21229 /* CharacterObservation.swift in Sources */,
 				042B78FC229A257E005B7A2A /* SettingsTableViewCellLabel.swift in Sources */,
 				041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */,
 				041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */,
 				049F2928228755DB00A335BE /* SettingsNavigationController.swift in Sources */,
 				041EFF74225C3DD20058D8EE /* PhotoLibraryViewCell.swift in Sources */,
 				042B7903229A38C0005B7A2A /* Defaults.swift in Sources */,
-				04D68BC5225EE2C000D09BBD /* GeometryExtensions.swift in Sources */,
-				043CD9CB226EB0830012F5AE /* TextRectangleDetectionOperation.swift in Sources */,
 				04ADD1582290CFF100E17445 /* AppListFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -868,36 +895,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				043911DF22C463E200D4AE30 /* PhotoEditingObservationVisualizationView.swift in Sources */,
-				049F92C722CAFAEF0090C9BC /* Toolbar.swift in Sources */,
-				049F92C522CAFAA40090C9BC /* NavigationController.swift in Sources */,
 				049F92D122CD9C350090C9BC /* ActionEditingDismissalAlertController.swift in Sources */,
-				043911E522C4641700D4AE30 /* UIImageExtensions.swift in Sources */,
 				049F92C422CAFA680090C9BC /* ActionNavigationController.swift in Sources */,
-				043911E622C4642900D4AE30 /* PhotoEditingScrollView.swift in Sources */,
-				049F92C622CAFAED0090C9BC /* NavigationBar.swift in Sources */,
-				043911D922C4638100D4AE30 /* PhotoEditingRedactionView.swift in Sources */,
-				043911D122C4632000D4AE30 /* BasePhotoEditingViewController.swift in Sources */,
-				049F92CB22CAFCE60090C9BC /* Fonts.swift in Sources */,
-				043911D422C4635C00D4AE30 /* TextObservation.swift in Sources */,
-				043911D522C4636800D4AE30 /* TextRectangleDetectionOperation.swift in Sources */,
-				043911E122C463EF00D4AE30 /* GeometryExtensions.swift in Sources */,
-				043911D722C4637400D4AE30 /* Redaction.swift in Sources */,
-				043911E022C463EA00D4AE30 /* UIBezierPathExtensions.swift in Sources */,
 				049F92C922CAFC5D0090C9BC /* ActionViewController.swift in Sources */,
-				043911D222C4634500D4AE30 /* TextRectangleDetector.swift in Sources */,
-				043911DA22C4638400D4AE30 /* PhotoEditingImageView.swift in Sources */,
-				043911DB22C4638700D4AE30 /* PhotoEditingBrushStrokeView.swift in Sources */,
-				043911DC22C4639200D4AE30 /* Colors.swift in Sources */,
-				043911E422C4640000D4AE30 /* CharacterObservation.swift in Sources */,
-				049F92CA22CAFC860090C9BC /* UIViewControllerExtensions.swift in Sources */,
-				043911E222C463F800D4AE30 /* CharacterObservationRedaction.swift in Sources */,
-				043911D822C4637E00D4AE30 /* PhotoEditingWorkspaceView.swift in Sources */,
-				043911D322C4635100D4AE30 /* PhotoEditingView.swift in Sources */,
-				043911D622C4636F00D4AE30 /* HighlighterTool.swift in Sources */,
-				043911E322C463FB00D4AE30 /* PathRedaction.swift in Sources */,
 				043911C522C461F000D4AE30 /* ActionEditingViewController.swift in Sources */,
-				043911DD22C463A900D4AE30 /* PhotoExporter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		049F92D322CDA3DB0090C9BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				049F92F422CDA4E40090C9BC /* CharacterObservationRedaction.swift in Sources */,
+				049F92F822CDA59F0090C9BC /* Colors.swift in Sources */,
+				049F92F022CDA4C10090C9BC /* PhotoEditingRedactionView.swift in Sources */,
+				049F92F122CDA4C10090C9BC /* PhotoEditingWorkspaceView.swift in Sources */,
+				049F92F722CDA5690090C9BC /* PhotoEditingObservationVisualizationView.swift in Sources */,
+				049F92FA22CDA5D90090C9BC /* NavigationBar.swift in Sources */,
+				049F92F622CDA54B0090C9BC /* PhotoEditingScrollView.swift in Sources */,
+				049F92E522CDA3FF0090C9BC /* TextRectangleDetectionOperation.swift in Sources */,
+				049F92E622CDA3FF0090C9BC /* TextObservation.swift in Sources */,
+				049F92F522CDA4E40090C9BC /* PathRedaction.swift in Sources */,
+				049F92EA22CDA43F0090C9BC /* UIImageExtensions.swift in Sources */,
+				049F92F222CDA4D50090C9BC /* HighlighterTool.swift in Sources */,
+				049F92EE22CDA4C10090C9BC /* PhotoEditingBrushStrokeView.swift in Sources */,
+				049F92EB22CDA43F0090C9BC /* UIBezierPathExtensions.swift in Sources */,
+				049F92E822CDA43F0090C9BC /* UIViewControllerExtensions.swift in Sources */,
+				049F92FB22CDA5D90090C9BC /* Toolbar.swift in Sources */,
+				049F92FD22CDA6C40090C9BC /* Fonts.swift in Sources */,
+				049F92F322CDA4E40090C9BC /* Redaction.swift in Sources */,
+				049F930322CDA9150090C9BC /* PhotoExporter.swift in Sources */,
+				049F92EF22CDA4C10090C9BC /* PhotoEditingImageView.swift in Sources */,
+				049F92ED22CDA4B10090C9BC /* PhotoEditingView.swift in Sources */,
+				049F930422CDAA9D0090C9BC /* NavigationController.swift in Sources */,
+				049F92E722CDA3FF0090C9BC /* CharacterObservation.swift in Sources */,
+				049F92E422CDA3FF0090C9BC /* TextRectangleDetector.swift in Sources */,
+				049F92E922CDA43F0090C9BC /* GeometryExtensions.swift in Sources */,
+				049F930222CDA9110090C9BC /* BasePhotoEditingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -913,6 +947,11 @@
 			isa = PBXTargetDependency;
 			target = 043911BF22C461EE00D4AE30 /* Action */;
 			targetProxy = 043911CA22C461F000D4AE30 /* PBXContainerItemProxy */;
+		};
+		049F92DD22CDA3DB0090C9BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 049F92D622CDA3DB0090C9BC /* Editing */;
+			targetProxy = 049F92DC22CDA3DB0090C9BC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1187,6 +1226,58 @@
 			};
 			name = Release;
 		};
+		049F92E122CDA3DB0090C9BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 287EDDET2B;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Editing/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Editing;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		049F92E222CDA3DB0090C9BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 287EDDET2B;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Editing/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Editing;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1222,6 +1313,15 @@
 			buildConfigurations = (
 				043911CD22C461F000D4AE30 /* Debug */,
 				043911CE22C461F000D4AE30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		049F92E022CDA3DB0090C9BC /* Build configuration list for PBXNativeTarget "Editing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				049F92E122CDA3DB0090C9BC /* Debug */,
+				049F92E222CDA3DB0090C9BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

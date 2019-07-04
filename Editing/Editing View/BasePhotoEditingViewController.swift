@@ -4,8 +4,8 @@
 import Photos
 import UIKit
 
-class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate {
-    init(asset: PHAsset? = nil, image: UIImage? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
+open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate {
+    public init(asset: PHAsset? = nil, image: UIImage? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
         self.asset = asset
         self.image = image
         self.completionHandler = completionHandler
@@ -18,11 +18,11 @@ class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate {
         })
     }
 
-    override func loadView() {
+    open override func loadView() {
         view = photoEditingView
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         let options = PHImageRequestOptions()
@@ -46,7 +46,7 @@ class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate {
 
     // MARK: Sharing
 
-    var imageForExport: UIImage? {
+    public var imageForExport: UIImage? {
         guard let image = photoEditingView.image else { return nil }
         let photoExporter = PhotoExporter(image: image, redactions: photoEditingView.redactions)
         return photoExporter.exportedImage
@@ -81,7 +81,7 @@ class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     // MARK: Undo/Redo
 
     let editingUndoManager = UndoManager()
-    override var undoManager: UndoManager? {
+    open override var undoManager: UndoManager? {
         return editingUndoManager
     }
 
@@ -97,12 +97,12 @@ class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate {
 
     // MARK: Image
 
-    func load(_ image: UIImage) {
+    public func load(_ image: UIImage) {
         guard self.image == nil else { return }
         self.image = image
     }
 
-    private(set) var image: UIImage? {
+    private(set) public var image: UIImage? {
         didSet {
             updateScrollView()
         }
@@ -121,7 +121,7 @@ class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate {
 
     // MARK: Boilerplate
 
-    let completionHandler: ((UIImage) -> Void)?
+    public let completionHandler: ((UIImage) -> Void)?
 
     private let asset: PHAsset?
     private let imageManager = PHImageManager()
@@ -137,8 +137,7 @@ class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate {
         self.init(asset: nil, image: nil, completionHandler: nil)
     }
 
-    @available(*, unavailable)
-    required init(coder: NSCoder) {
+    public required init(coder: NSCoder) {
         let className = String(describing: type(of: self))
         fatalError("\(className) does not implement init(coder:)")
     }

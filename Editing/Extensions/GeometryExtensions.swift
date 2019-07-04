@@ -3,19 +3,19 @@
 
 import UIKit
 
-extension CGSize {
+public extension CGSize {
     static func * (size: CGSize, multiplier: CGFloat) -> CGSize {
         return CGSize(width: size.width * multiplier, height: size.height * multiplier)
     }
 }
 
-extension CGPoint {
+public extension CGPoint {
     static func * (point: CGPoint, multiplier: CGFloat) -> CGPoint {
         return CGPoint(x:point.x * multiplier, y: point.y * multiplier)
     }
 }
 
-extension CGRect {
+public extension CGRect {
     static func * (rect: CGRect, multiplier: CGFloat) -> CGRect {
         return CGRect(x: rect.origin.x * multiplier, y: rect.origin.y * multiplier, width: rect.size.width * multiplier, height: rect.size.height * multiplier)
     }

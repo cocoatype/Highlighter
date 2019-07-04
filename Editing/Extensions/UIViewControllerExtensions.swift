@@ -4,7 +4,7 @@
 import UIKit
 
 extension UIViewController {
-    func embed(_ newChild: UIViewController) {
+    public func embed(_ newChild: UIViewController) {
         if let existingChild = children.first {
             existingChild.willMove(toParent: nil)
             existingChild.view.removeFromSuperview()
@@ -26,7 +26,7 @@ extension UIViewController {
         ])
     }
 
-    func transition(to child: UIViewController, completion: ((Bool) -> Void)? = nil) {
+    public func transition(to child: UIViewController, completion: ((Bool) -> Void)? = nil) {
         let duration = 0.3
 
         let current = children.last

@@ -3,8 +3,8 @@
 
 import UIKit
 
-class NavigationController: UINavigationController {
-    override init(rootViewController: UIViewController) {
+open class NavigationController: UINavigationController {
+    public override init(rootViewController: UIViewController) {
         super.init(navigationBarClass: NavigationBar.self, toolbarClass: Toolbar.self)
         setViewControllers([rootViewController], animated: false)
 
@@ -19,17 +19,16 @@ class NavigationController: UINavigationController {
 
     // MARK: Status Bar
 
-    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-    override var childForStatusBarStyle: UIViewController? { return nil }
+    open override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    open override var childForStatusBarStyle: UIViewController? { return nil }
 
     // MARK: Boilerplate
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
     }
 
-    @available(*, unavailable)
-    required init(coder: NSCoder) {
+    public required init(coder: NSCoder) {
         let className = String(describing: type(of: self))
         fatalError("\(className) does not implement init(coder:)")
     }

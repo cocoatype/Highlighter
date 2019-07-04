@@ -3,8 +3,8 @@
 
 import UIKit
 
-class PhotoEditingView: UIView, UIScrollViewDelegate {
-    init() {
+public class PhotoEditingView: UIView, UIScrollViewDelegate {
+    public init() {
         super.init(frame: .zero)
         backgroundColor = .primary
 
@@ -19,31 +19,31 @@ class PhotoEditingView: UIView, UIScrollViewDelegate {
         ])
     }
 
-    var image: UIImage? {
+    public var image: UIImage? {
         get { return photoScrollView.image }
         set(newImage) { photoScrollView.image = newImage }
     }
 
-    var textObservations: [TextObservation]? {
+    public var textObservations: [TextObservation]? {
         didSet {
             photoScrollView.textObservations = textObservations
         }
     }
 
-    var highlighterTool: HighlighterTool {
+    public var highlighterTool: HighlighterTool {
         get { return workspaceView.highlighterTool }
         set(newTool) {
             workspaceView.highlighterTool = newTool
         }
     }
 
-    var redactions: [Redaction] {
+    public var redactions: [Redaction] {
         return workspaceView.redactions
     }
 
     // MARK: UIScrollViewDelegate
 
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return workspaceView
     }
 
