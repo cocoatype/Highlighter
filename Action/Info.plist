@@ -22,6 +22,8 @@
 	<string>1</string>
 	<key>NSExtension</key>
 	<dict>
+		<key>NSExtensionActionWantsFullScreenPresentation</key>
+		<true/>
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>NSExtensionActivationRule</key>
@@ -42,5 +44,10 @@
 		<key>NSExtensionPrincipalClass</key>
 		<string>Action.ActionViewController</string>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Aleo-Bold.otf</string>
+		<string>Aleo-Regular.otf</string>
+	</array>
 </dict>
 </plist>
