@@ -16,7 +16,7 @@ class PhotoEditingViewController: BasePhotoEditingViewController {
     // MARK: Edit Protection
 
     private(set) var hasMadeEdits = false
-    @objc func markHasMadeEdits() {
+    @objc override func markHasMadeEdits() {
         hasMadeEdits = true
     }
 

@@ -3,7 +3,7 @@
 
 import UIKit
 
-class PhotoEditingWorkspaceView: UIView {
+class PhotoEditingWorkspaceView: UIControl {
     init() {
         imageView = PhotoEditingImageView()
         visualizationView = PhotoEditingObservationVisualizationView()
@@ -75,8 +75,7 @@ class PhotoEditingWorkspaceView: UIView {
         case .manual: handleManualStrokeCompletion()
         }
 
-        #warning("Handle this in app, not extension")
-//        UIApplication.shared.sendAction(#selector(PhotoEditingViewController.markHasMadeEdits), to: nil, from: self, for: nil)
+        sendAction(#selector(BasePhotoEditingViewController.markHasMadeEdits), to: nil, for: nil)
     }
 
     private func handleMagicStrokeCompletion() {

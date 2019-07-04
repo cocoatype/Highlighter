@@ -44,6 +44,10 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
         }
     }
 
+    // MARK: Edit Protection
+
+    @objc open func markHasMadeEdits() {} // hook for responder chain
+
     // MARK: Sharing
 
     public var imageForExport: UIImage? {
