@@ -2,6 +2,7 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import MobileCoreServices
+import Photos
 import UIKit
 
 class ActionEditingViewController: BasePhotoEditingViewController {
@@ -38,7 +39,30 @@ class ActionEditingViewController: BasePhotoEditingViewController {
         }
     }
 
-    @objc private func done() {
+    @objc private func done(_ sender: UIBarButtonItem) {
+        let alertController = ActionEditingDismissalAlertController() { [weak self] response in
+            switch response {
+            case .delete:
+                self?.dismissActionExtension()
+            case .save:
+                guard let imageForExport = self?.imageForExport else { return }
+
+                PHPhotoLibrary.shared().performChanges({
+                    PHAssetChangeRequest.creationRequestForAsset(from: imageForExport)
+                }, completionHandler: { [weak self] success, error in
+                    assert(success, "an error occurred saving changes: \(error?.localizedDescription ?? "no error")")
+                    DispatchQueue.main.async {
+                        self?.dismissActionExtension()
+                    }
+                })
+            }
+        }
+
+        alertController.barButtonItem = sender
+        present(alertController, animated: true)
+    }
+
+    private func dismissActionExtension() {
         let items: [Any]
         if let imageForExport = imageForExport {
             let extensionItem = NSExtensionItem()

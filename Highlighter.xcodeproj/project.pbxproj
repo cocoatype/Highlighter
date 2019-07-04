@@ -110,6 +110,8 @@
 		049F92CB22CAFCE60090C9BC /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF5A2255A39D0058D8EE /* Fonts.swift */; };
 		049F92CC22CAFD3C0090C9BC /* Aleo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF562255A2ED0058D8EE /* Aleo-Bold.otf */; };
 		049F92CD22CAFD3C0090C9BC /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
+		049F92CF22CD98110090C9BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 049F92CE22CD98110090C9BC /* Localizable.strings */; };
+		049F92D122CD9C350090C9BC /* ActionEditingDismissalAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F92D022CD9C350090C9BC /* ActionEditingDismissalAlertController.swift */; };
 		04A3AEF6227A8CE700F21229 /* UIBezierPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */; };
 		04A3AEF8227A924D00F21229 /* CharacterObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF7227A924D00F21229 /* CharacterObservation.swift */; };
 		04ADD1562290CCC200E17445 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1552290CCC200E17445 /* AppEntry.swift */; };
@@ -239,6 +241,8 @@
 		049F92C022CAF2A20090C9BC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		049F92C322CAFA680090C9BC /* ActionNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionNavigationController.swift; sourceTree = "<group>"; };
 		049F92C822CAFC5D0090C9BC /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		049F92CE22CD98110090C9BC /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		049F92D022CD9C350090C9BC /* ActionEditingDismissalAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEditingDismissalAlertController.swift; sourceTree = "<group>"; };
 		04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtensions.swift; sourceTree = "<group>"; };
 		04A3AEF7227A924D00F21229 /* CharacterObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterObservation.swift; sourceTree = "<group>"; };
 		04ADD1552290CCC200E17445 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
@@ -413,6 +417,8 @@
 				049F92C122CAF2A20090C9BC /* InfoPlist.strings */,
 				049F92C322CAFA680090C9BC /* ActionNavigationController.swift */,
 				049F92C822CAFC5D0090C9BC /* ActionViewController.swift */,
+				049F92CE22CD98110090C9BC /* Localizable.strings */,
+				049F92D022CD9C350090C9BC /* ActionEditingDismissalAlertController.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -735,6 +741,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				043911C322C461F000D4AE30 /* Media.xcassets in Resources */,
+				049F92CF22CD98110090C9BC /* Localizable.strings in Resources */,
 				049F92BF22CAF2A20090C9BC /* InfoPlist.strings in Resources */,
 				049F92CD22CAFD3C0090C9BC /* Aleo-Regular.otf in Resources */,
 				049F92C222CAF4D00090C9BC /* Assets.xcassets in Resources */,
@@ -864,6 +871,7 @@
 				043911DF22C463E200D4AE30 /* PhotoEditingObservationVisualizationView.swift in Sources */,
 				049F92C722CAFAEF0090C9BC /* Toolbar.swift in Sources */,
 				049F92C522CAFAA40090C9BC /* NavigationController.swift in Sources */,
+				049F92D122CD9C350090C9BC /* ActionEditingDismissalAlertController.swift in Sources */,
 				043911E522C4641700D4AE30 /* UIImageExtensions.swift in Sources */,
 				049F92C422CAFA680090C9BC /* ActionNavigationController.swift in Sources */,
 				043911E622C4642900D4AE30 /* PhotoEditingScrollView.swift in Sources */,

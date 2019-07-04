@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Highlighter
+
+  Created by Geoff Pado on 7/3/19.
+  Copyright © 2019 Cocoatype, LLC. All rights reserved.
+*/
+
+"ActionEditingDismissalAlertController.cancelButtonTitle" = "Cancel";
+"ActionEditingDismissalAlertController.deleteButtonTitle" = "Delete Changes";
+"ActionEditingDismissalAlertController.saveButtonTitle" = "Save to Photos";
