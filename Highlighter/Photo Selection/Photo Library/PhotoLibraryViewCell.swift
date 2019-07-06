@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 4/8/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Editing
 import Photos
 import UIKit
 

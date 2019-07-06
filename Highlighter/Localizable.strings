@@ -6,6 +6,9 @@
   Copyright © 2019 Cocoatype, LLC. All rights reserved.
 */
 
+"BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle" = "Undo Redaction";
+"BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle" = "Redo Redaction";
+
 "ContactMailViewController.emailSubject" = "Hello!";
 
 "IntroView.promptLabelText" = "Black Highlighter needs permission to edit your photos.";
@@ -14,9 +17,6 @@
 "PhotoEditingProtectionAlertController.cancelButtonTitle" = "Cancel";
 "PhotoEditingProtectionAlertController.deleteButtonTitle" = "Delete Changes";
 "PhotoEditingProtectionAlertController.saveButtonTitle" = "Save to Photos";
-
-"PhotoEditingViewController.undoKeyCommandDiscoverabilityTitle" = "Undo Redaction";
-"PhotoEditingViewController.redoKeyCommandDiscoverabilityTitle" = "Redo Redaction";
 
 "PhotoPermissionsDeniedAlertController.alertTitle" = "No Access to Your Photos";
 "PhotoPermissionsDeniedAlertController.alertMessage" = "Black Highlighter needs permission to edit your photos. Open Settings to grant access.";

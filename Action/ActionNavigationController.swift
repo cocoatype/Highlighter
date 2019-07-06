@@ -5,14 +5,9 @@ import Editing
 import Photos
 import UIKit
 
-class PhotoEditingNavigationController: NavigationController {
-    init(asset: PHAsset) {
-        super.init(rootViewController: PhotoEditingViewController(asset: asset))
-        isToolbarHidden = false
-    }
-
-    init(image: UIImage, completionHandler: ((UIImage) -> Void)? = nil) {
-        super.init(rootViewController: PhotoEditingViewController(image: image, completionHandler: completionHandler))
+class ActionNavigationController: NavigationController {
+    init() {
+        super.init(rootViewController: ActionEditingViewController())
         isToolbarHidden = false
     }
 
