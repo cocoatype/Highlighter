@@ -80,6 +80,8 @@ public class PhotoEditingRedactionView: UIView {
 
     private(set) var redactions = [Redaction]() {
         didSet(existingRedactions) {
+            guard existingRedactions.count != redactions.count else { return }
+
             registerUndo(with: existingRedactions)
             NotificationCenter.default.post(name: PhotoEditingRedactionView.redactionsDidChange, object: self)
         }

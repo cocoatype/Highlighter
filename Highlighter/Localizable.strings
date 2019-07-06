@@ -6,6 +6,9 @@
   Copyright © 2019 Cocoatype, LLC. All rights reserved.
 */
 
+"BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle" = "Undo Redaction";
+"BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle" = "Redo Redaction";
+
 "ContactMailViewController.emailSubject" = "Hello!";
 
 "IntroView.promptLabelText" = "Black Highlighter needs permission to edit your photos.";

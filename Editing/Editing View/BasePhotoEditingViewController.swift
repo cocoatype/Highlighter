@@ -99,6 +99,15 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
         updateToolbarItems()
     }
 
+    // MARK: Key Commands
+
+    private let undoKeyCommand = UIKeyCommand(input: "z", modifierFlags: .command, action: #selector(BasePhotoEditingViewController.undo), discoverabilityTitle: BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle)
+    private let redoKeyCommand = UIKeyCommand(input: "z", modifierFlags: [.command, .shift], action: #selector(BasePhotoEditingViewController.redo), discoverabilityTitle: BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle)
+
+    open override var keyCommands: [UIKeyCommand]? {
+        return [undoKeyCommand, redoKeyCommand]
+    }
+
     // MARK: Image
 
     public func load(_ image: UIImage) {
@@ -126,6 +135,9 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
     // MARK: Boilerplate
 
     public let completionHandler: ((UIImage) -> Void)?
+
+    private static let undoKeyCommandDiscoverabilityTitle = NSLocalizedString("BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle", comment: "Discovery title for the undo key command")
+    private static let redoKeyCommandDiscoverabilityTitle = NSLocalizedString("BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle", comment: "Discovery title for the redo key command")
 
     private let asset: PHAsset?
     private let imageManager = PHImageManager()

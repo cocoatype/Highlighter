@@ -9,3 +9,6 @@
 "ActionEditingDismissalAlertController.cancelButtonTitle" = "Cancel";
 "ActionEditingDismissalAlertController.deleteButtonTitle" = "Delete Changes";
 "ActionEditingDismissalAlertController.saveButtonTitle" = "Save to Photos";
+
+"BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle" = "Undo Redaction";
+"BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle" = "Redo Redaction";
