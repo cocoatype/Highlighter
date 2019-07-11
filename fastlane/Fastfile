@@ -14,6 +14,10 @@ platform :ios do
       app_identifier: "com.cocoatype.Highlighter",
       filename: "app.mobileprovision",
       platform: "ios")
+    get_provisioning_profile(
+      app_identifier: "com.cocoatype.Highlighter.Action",
+      filename: "action.mobileprovision",
+      platform: "ios")
 
     # Update the Xcode project with the correct signing credentials
     disable_automatic_code_signing
@@ -21,6 +25,10 @@ platform :ios do
       build_configuration: "Release",
       target_filter: "Highlighter",
       profile: "./app.mobileprovision")
+    update_project_provisioning(
+      build_configuration: "Release",
+      target_filter: "Action",
+      profile: "./action.mobileprovision")
 
     # Set the build number to the number of Git commits
     build_number = sh "git log --oneline | wc -l"
