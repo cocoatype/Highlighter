@@ -3,7 +3,7 @@
 
 import UIKit
 
-class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UIDropInteractionDelegate {
+class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate {
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -12,6 +12,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         let libraryView = PhotoLibraryView()
         libraryView.dataSource = dataSource
         libraryView.delegate = self
+        libraryView.dragDelegate = self
         dataSource.libraryView = libraryView
 
         let dropInteraction = UIDropInteraction(delegate: self)
@@ -22,6 +23,21 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
 
     @objc func reloadData() {
         (view as? PhotoLibraryView)?.reloadData()
+    }
+
+    // MARK: UICollectionViewDragDelegate
+
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        guard #available(iOS 13.0, *) else { return [] }
+
+        let asset = dataSource.photo(at: indexPath)
+
+        let userActivity = EditingUserActivity(assetLocalIdentifier: asset.localIdentifier)
+        let dragItemProvider = NSItemProvider(object: userActivity)
+
+        let dragItem = UIDragItem(itemProvider: dragItemProvider)
+        dragItem.localObject = asset
+        return [dragItem]
     }
 
     // MARK: UIDropInteractionDelegate
@@ -48,7 +64,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let asset = dataSource.photo(at: indexPath)
-        photoEditorPresenter?.presentPhotoEditingViewController(for: asset)
+        photoEditorPresenter?.presentPhotoEditingViewController(for: asset, animated: true)
     }
 
     // MARK: Boilerplate

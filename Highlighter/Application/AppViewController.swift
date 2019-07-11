@@ -15,8 +15,8 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
 
     // MARK: Photo Editing View Controller
 
-    func presentPhotoEditingViewController(for asset: PHAsset) {
-        present(PhotoEditingNavigationController(asset: asset), animated: true)
+    func presentPhotoEditingViewController(for asset: PHAsset, animated: Bool = true) {
+        present(PhotoEditingNavigationController(asset: asset), animated: animated)
     }
 
     func presentPhotoEditingViewController(for image: UIImage, completionHandler: ((UIImage) -> Void)? = nil) {

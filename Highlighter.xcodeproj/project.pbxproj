@@ -104,6 +104,8 @@
 		04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BCB2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift */; };
 		04D68BD22262C45700D09BBD /* PhotoSelectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BD12262C45700D09BBD /* PhotoSelectionViewControllerTests.swift */; };
 		04D68BD52262C54600D09BBD /* MockPhotoPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BD42262C54600D09BBD /* MockPhotoPermissionsRequester.swift */; };
+		04EF55BA22D6DB9400C6600D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55B922D6DB9400C6600D /* SceneDelegate.swift */; };
+		04EF55BC22D6EBFA00C6600D /* EditingUserActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -254,6 +256,8 @@
 		04D68BD12262C45700D09BBD /* PhotoSelectionViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectionViewControllerTests.swift; sourceTree = "<group>"; };
 		04D68BD42262C54600D09BBD /* MockPhotoPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPhotoPermissionsRequester.swift; sourceTree = "<group>"; };
 		04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingView.swift; sourceTree = "<group>"; };
+		04EF55B922D6DB9400C6600D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserActivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +321,7 @@
 		041EFEF72251A9F30058D8EE /* Highlighter */ = {
 			isa = PBXGroup;
 			children = (
+				04EF55B822D6DB8500C6600D /* Scene */,
 				048D134D229F7E4400427FE3 /* Callback Actions */,
 				04D68BCF2262C41300D09BBD /* Application */,
 				048909EF2265716B0048E203 /* Photo Editing */,
@@ -627,6 +632,15 @@
 			path = Workspace;
 			sourceTree = "<group>";
 		};
+		04EF55B822D6DB8500C6600D /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				04EF55B922D6DB9400C6600D /* SceneDelegate.swift */,
+				04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -849,6 +863,7 @@
 				048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */,
 				041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */,
 				041EFF6E225C38800058D8EE /* PhotoSelectionViewController.swift in Sources */,
+				04EF55BC22D6EBFA00C6600D /* EditingUserActivity.swift in Sources */,
 				049F292B22875ADD00A335BE /* WebViewController.swift in Sources */,
 				04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */,
 				04ADD1562290CCC200E17445 /* AppEntry.swift in Sources */,
@@ -860,6 +875,7 @@
 				04ADD15A2290D1C500E17445 /* AppLookupResponse.swift in Sources */,
 				049F292F22875B1300A335BE /* PrivacyViewController.swift in Sources */,
 				04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */,
+				04EF55BA22D6DB9400C6600D /* SceneDelegate.swift in Sources */,
 				042B78FA229A2560005B7A2A /* SettingsAppEntryTableViewCell.swift in Sources */,
 				04D68BC7225EE2FD00D09BBD /* PhotoLibraryViewCellImageView.swift in Sources */,
 				042A2B7E228CFEDB00353414 /* PhotoEditingNavigationController.swift in Sources */,

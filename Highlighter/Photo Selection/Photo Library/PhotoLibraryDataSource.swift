@@ -33,6 +33,10 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
 
     private lazy var allPhotos: PHFetchResult<PHAsset> = self.fetchAllPhotos()
 
+    static func photo(withIdentifier identifier: String) -> PHAsset? {
+        return PHAsset.fetchAssets(withLocalIdentifiers: [identifier], options: nil).firstObject
+    }
+
     func photo(at indexPath: IndexPath) -> PHAsset {
         return allPhotos[indexPath.item]
     }

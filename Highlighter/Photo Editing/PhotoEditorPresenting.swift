@@ -5,7 +5,7 @@ import Photos
 import UIKit
 
 protocol PhotoEditorPresenting {
-    func presentPhotoEditingViewController(for asset: PHAsset)
+    func presentPhotoEditingViewController(for asset: PHAsset, animated: Bool)
     func presentPhotoEditingViewController(for image: UIImage, completionHandler: ((UIImage) -> Void)?)
 }
 
