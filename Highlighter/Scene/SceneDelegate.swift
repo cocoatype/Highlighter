@@ -11,8 +11,16 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         let window = AppWindow(scene: scene)
-        window.rootViewController = AppViewController()
+        let appViewController = AppViewController()
+        window.rootViewController = appViewController
         window.makeKeyAndVisible()
+
+        if let userActivity = connectionOptions.userActivities.first,
+          let localIdentifierObject = userActivity.userInfo?[EditingUserActivity.assetLocalIdentifierKey],
+          let localIdentifier = (localIdentifierObject as? String),
+          let asset = PhotoLibraryDataSource.photo(withIdentifier: localIdentifier) {
+            appViewController.presentPhotoEditingViewController(for: asset, animated: false)
+        }
 
         self.window = window
     }

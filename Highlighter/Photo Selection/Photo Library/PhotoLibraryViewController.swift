@@ -31,10 +31,9 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         guard #available(iOS 13.0, *) else { return [] }
 
         let asset = dataSource.photo(at: indexPath)
-        let dragItemProvider = NSItemProvider(object: (asset.localIdentifier as NSString))
 
-        let userActivity = EditingUserActivity()
-        dragItemProvider.registerObject(userActivity, visibility: .all)
+        let userActivity = EditingUserActivity(assetLocalIdentifier: asset.localIdentifier)
+        let dragItemProvider = NSItemProvider(object: userActivity)
 
         let dragItem = UIDragItem(itemProvider: dragItemProvider)
         dragItem.localObject = asset
@@ -65,7 +64,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let asset = dataSource.photo(at: indexPath)
-        photoEditorPresenter?.presentPhotoEditingViewController(for: asset)
+        photoEditorPresenter?.presentPhotoEditingViewController(for: asset, animated: true)
     }
 
     // MARK: Boilerplate
