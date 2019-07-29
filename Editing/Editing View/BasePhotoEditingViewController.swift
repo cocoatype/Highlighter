@@ -69,10 +69,10 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
     }
 
     private func updateToolbarItems(animated: Bool = true) {
-        let undoToolItem = UIBarButtonItem(image: UIImage(named: "Undo"), style: .plain, target: self, action: #selector(BasePhotoEditingViewController.undo))
+        let undoToolItem = UIBarButtonItem(image: Icons.undo, style: .plain, target: self, action: #selector(BasePhotoEditingViewController.undo))
         undoToolItem.isEnabled = editingUndoManager.canUndo
 
-        let redoToolItem = UIBarButtonItem(image: UIImage(named: "Redo"), style: .plain, target: self, action: #selector(BasePhotoEditingViewController.redo))
+        let redoToolItem = UIBarButtonItem(image: Icons.redo, style: .plain, target: self, action: #selector(BasePhotoEditingViewController.redo))
         redoToolItem.isEnabled = editingUndoManager.canRedo
 
         let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
