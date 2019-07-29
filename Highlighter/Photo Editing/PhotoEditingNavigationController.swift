@@ -9,11 +9,13 @@ class PhotoEditingNavigationController: NavigationController {
     init(asset: PHAsset) {
         super.init(rootViewController: PhotoEditingViewController(asset: asset))
         isToolbarHidden = false
+        modalPresentationStyle = .fullScreen
     }
 
     init(image: UIImage, completionHandler: ((UIImage) -> Void)? = nil) {
         super.init(rootViewController: PhotoEditingViewController(image: image, completionHandler: completionHandler))
         isToolbarHidden = false
+        modalPresentationStyle = .fullScreen
     }
 
     // MARK: Boilerplate
