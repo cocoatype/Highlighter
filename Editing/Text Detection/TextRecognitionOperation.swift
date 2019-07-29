@@ -14,7 +14,7 @@ class TextRecognitionOperation: Operation {
         super.init()
     }
 
-    var detectedTextResults: [VNRecognizedTextObservation]?
+    var recognizedTextResults: [VNRecognizedTextObservation]?
 
     override func start() {
         let imageRequest = VNRecognizeTextRequest { [weak self] request, error in
@@ -25,7 +25,7 @@ class TextRecognitionOperation: Operation {
                 return
             }
 
-            self?.detectedTextResults = textObservations
+            self?.recognizedTextResults = textObservations
             self?._finished = true
             self?._executing = false
         }

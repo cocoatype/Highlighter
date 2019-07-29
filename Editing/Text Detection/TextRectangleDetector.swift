@@ -18,19 +18,29 @@ public class TextRectangleDetector: NSObject {
 
         operationQueue.addOperation(detectionOperation)
 
-        if #available(iOSApplicationExtension 13.0, *), let recognitionOperation = TextRecognitionOperation(image: image) {
+    }
+
+    @available(iOS 13.0, *)
+    public func locateTextRectangles(forWordsIn wordList: [String], in image: UIImage, completionHandler: @escaping (([TextObservation]?) -> Void)) {
+        if let recognitionOperation = TextRecognitionOperation(image: image) {
             recognitionOperation.completionBlock = { [weak recognitionOperation] in
-                guard let recognizedTextObservations = recognitionOperation?.detectedTextResults else { return }
-                let appStrings = recognizedTextObservations.compactMap { observation -> VNRecognizedText? in
-                    guard let text = observation.topCandidates(1).first, text.string.contains("app") else { return nil }
+                let observations = recognitionOperation?.recognizedTextResults?.compactMap { result -> VNRecognizedText? in
+                    guard let text = result.topCandidates(1).first else { return nil }
+                    let recognizedString = text.string
+                    guard wordList.contains(where: { listedWord in
+                        recognizedString.contains(listedWord)
+                    }) else {
+                        return nil
+                    }
+
                     return text
-
-                }.compactMap { (text: VNRecognizedText) -> VNRectangleObservation? in
-                    guard let range = text.string.range(of: "app") else { return nil }
-                    return try? text.boundingBox(for: range)
-                }
-
-                dump(appStrings)
+                }.compactMap { text in
+                    return wordList.compactMap { word -> VNRectangleObservation? in
+                        guard let range = text.string.range(of: word) else { return nil }
+                        return try? text.boundingBox(for: range)
+                    }
+                }.flatMap { $0 }.map { TextObservation($0, in: image) }
+                completionHandler(observations)
             }
 
             operationQueue.addOperation(recognitionOperation)

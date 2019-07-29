@@ -108,6 +108,7 @@
 		04D68BD52262C54600D09BBD /* MockPhotoPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BD42262C54600D09BBD /* MockPhotoPermissionsRequester.swift */; };
 		04EF55BA22D6DB9400C6600D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55B922D6DB9400C6600D /* SceneDelegate.swift */; };
 		04EF55BC22D6EBFA00C6600D /* EditingUserActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */; };
+		04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -262,6 +263,7 @@
 		04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingView.swift; sourceTree = "<group>"; };
 		04EF55B922D6DB9400C6600D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserActivity.swift; sourceTree = "<group>"; };
+		04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservationRedaction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,6 +412,7 @@
 				042A39AC22811F87009C1C07 /* Redaction.swift */,
 				042A2B86228D08D800353414 /* CharacterObservationRedaction.swift */,
 				042A2B88228D091000353414 /* PathRedaction.swift */,
+				04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */,
 			);
 			path = Redactions;
 			sourceTree = "<group>";
@@ -947,6 +950,7 @@
 				049F92E822CDA43F0090C9BC /* UIViewControllerExtensions.swift in Sources */,
 				049F92FB22CDA5D90090C9BC /* Toolbar.swift in Sources */,
 				049F92FD22CDA6C40090C9BC /* Fonts.swift in Sources */,
+				04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */,
 				049F92F322CDA4E40090C9BC /* Redaction.swift in Sources */,
 				049F930322CDA9150090C9BC /* PhotoExporter.swift in Sources */,
 				049F92EF22CDA4C10090C9BC /* PhotoEditingImageView.swift in Sources */,
