@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041BEA3722EF75E800FF07C2 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3622EF75E800FF07C2 /* Icons.swift */; };
 		041EFEF92251A9F30058D8EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFEF82251A9F30058D8EE /* AppDelegate.swift */; };
 		041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFEFA2251A9F30058D8EE /* AppViewController.swift */; };
 		041EFF002251A9F50058D8EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041EFEFF2251A9F50058D8EE /* Assets.xcassets */; };
@@ -158,6 +159,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		041BEA3622EF75E800FF07C2 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		041EFEF52251A9F30058D8EE /* Highlighter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Highlighter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		041EFEF82251A9F30058D8EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		041EFEFA2251A9F30058D8EE /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */,
 				041EFF542255A0B00058D8EE /* Colors.swift */,
 				041EFF5A2255A39D0058D8EE /* Fonts.swift */,
+				041BEA3622EF75E800FF07C2 /* Icons.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -936,6 +939,7 @@
 				049F92F222CDA4D50090C9BC /* HighlighterTool.swift in Sources */,
 				049F92EE22CDA4C10090C9BC /* PhotoEditingBrushStrokeView.swift in Sources */,
 				049F92EB22CDA43F0090C9BC /* UIBezierPathExtensions.swift in Sources */,
+				041BEA3722EF75E800FF07C2 /* Icons.swift in Sources */,
 				049F92E822CDA43F0090C9BC /* UIViewControllerExtensions.swift in Sources */,
 				049F92FB22CDA5D90090C9BC /* Toolbar.swift in Sources */,
 				049F92FD22CDA6C40090C9BC /* Fonts.swift in Sources */,
