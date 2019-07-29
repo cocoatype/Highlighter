@@ -130,6 +130,15 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
                 self?.photoEditingView.textObservations = textObservations
             }
         }
+
+        if #available(iOS 13.0, *) {
+            let blacklist = ["Black", "Highlighter"]
+            textRectangleDetector.locateTextRectangles(forWordsIn: blacklist, in: image) { [weak self] recognizedTextObservations in
+                DispatchQueue.main.async {
+                    self?.photoEditingView.redact(recognizedTextObservations ?? [])
+                }
+            }
+        }
     }
 
     // MARK: Boilerplate
