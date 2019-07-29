@@ -8,7 +8,12 @@ class PhotoEditingWorkspaceView: UIControl {
         imageView = PhotoEditingImageView()
         visualizationView = PhotoEditingObservationVisualizationView()
         redactionView = PhotoEditingRedactionView()
-        brushStrokeView = PhotoEditingBrushStrokeView()
+
+        if #available(iOS 13.0, *) {
+            brushStrokeView = PhotoEditingCanvasBrushStrokeView()
+        } else {
+            brushStrokeView = PhotoEditingLegacyBrushStrokeView()
+        }
 
         super.init(frame: .zero)
         isAccessibilityElement = true
@@ -101,7 +106,7 @@ class PhotoEditingWorkspaceView: UIControl {
     private let imageView: PhotoEditingImageView
     private let visualizationView: PhotoEditingObservationVisualizationView
     private let redactionView: PhotoEditingRedactionView
-    private let brushStrokeView: PhotoEditingBrushStrokeView
+    private let brushStrokeView: UIControl & PhotoEditingBrushStrokeView
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

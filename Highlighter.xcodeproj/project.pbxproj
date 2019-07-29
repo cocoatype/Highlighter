@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041BEA3922EF7AB900FF07C2 /* PhotoEditingCanvasBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3822EF7AB900FF07C2 /* PhotoEditingCanvasBrushStrokeView.swift */; };
+		041BEA3B22EF7B2900FF07C2 /* PhotoEditingBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3A22EF7B2900FF07C2 /* PhotoEditingBrushStrokeView.swift */; };
+		041BEA3D22EF7DAB00FF07C2 /* PencilKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 041BEA3C22EF7DAB00FF07C2 /* PencilKit.framework */; };
 		041EFEF92251A9F30058D8EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFEF82251A9F30058D8EE /* AppDelegate.swift */; };
 		041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFEFA2251A9F30058D8EE /* AppViewController.swift */; };
 		041EFF002251A9F50058D8EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041EFEFF2251A9F50058D8EE /* Assets.xcassets */; };
@@ -70,7 +73,7 @@
 		049F92EA22CDA43F0090C9BC /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */; };
 		049F92EB22CDA43F0090C9BC /* UIBezierPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */; };
 		049F92ED22CDA4B10090C9BC /* PhotoEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */; };
-		049F92EE22CDA4C10090C9BC /* PhotoEditingBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */; };
+		049F92EE22CDA4C10090C9BC /* PhotoEditingLegacyBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E42277EC910012F5AE /* PhotoEditingLegacyBrushStrokeView.swift */; };
 		049F92EF22CDA4C10090C9BC /* PhotoEditingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072942268137900FF20B6 /* PhotoEditingImageView.swift */; };
 		049F92F022CDA4C10090C9BC /* PhotoEditingRedactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */; };
 		049F92F122CDA4C10090C9BC /* PhotoEditingWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */; };
@@ -158,6 +161,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		041BEA3822EF7AB900FF07C2 /* PhotoEditingCanvasBrushStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingCanvasBrushStrokeView.swift; sourceTree = "<group>"; };
+		041BEA3A22EF7B2900FF07C2 /* PhotoEditingBrushStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingBrushStrokeView.swift; sourceTree = "<group>"; };
+		041BEA3C22EF7DAB00FF07C2 /* PencilKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PencilKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/PencilKit.framework; sourceTree = DEVELOPER_DIR; };
 		041EFEF52251A9F30058D8EE /* Highlighter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Highlighter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		041EFEF82251A9F30058D8EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		041EFEFA2251A9F30058D8EE /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
@@ -218,7 +224,7 @@
 		043CD9DE227548F30012F5AE /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		043CD9E02275490E0012F5AE /* SettingsContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContentProvider.swift; sourceTree = "<group>"; };
 		043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewDataSource.swift; sourceTree = "<group>"; };
-		043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingBrushStrokeView.swift; sourceTree = "<group>"; };
+		043CD9E42277EC910012F5AE /* PhotoEditingLegacyBrushStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingLegacyBrushStrokeView.swift; sourceTree = "<group>"; };
 		047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingWorkspaceView.swift; sourceTree = "<group>"; };
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* BasePhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePhotoEditingViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +295,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041BEA3D22EF7DAB00FF07C2 /* PencilKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +564,7 @@
 		04ADD1622290DE6700E17445 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				041BEA3C22EF7DAB00FF07C2 /* PencilKit.framework */,
 				04ADD1632290DE6700E17445 /* Kingfisher.framework */,
 			);
 			name = Frameworks;
@@ -624,10 +632,12 @@
 		04E192A4229CD34F006F0E56 /* Workspace */ = {
 			isa = PBXGroup;
 			children = (
-				043CD9E42277EC910012F5AE /* PhotoEditingBrushStrokeView.swift */,
+				043CD9E42277EC910012F5AE /* PhotoEditingLegacyBrushStrokeView.swift */,
 				047072942268137900FF20B6 /* PhotoEditingImageView.swift */,
 				042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */,
 				047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */,
+				041BEA3822EF7AB900FF07C2 /* PhotoEditingCanvasBrushStrokeView.swift */,
+				041BEA3A22EF7B2900FF07C2 /* PhotoEditingBrushStrokeView.swift */,
 			);
 			path = Workspace;
 			sourceTree = "<group>";
@@ -925,16 +935,18 @@
 				049F92F422CDA4E40090C9BC /* CharacterObservationRedaction.swift in Sources */,
 				049F92F822CDA59F0090C9BC /* Colors.swift in Sources */,
 				049F92F022CDA4C10090C9BC /* PhotoEditingRedactionView.swift in Sources */,
+				041BEA3B22EF7B2900FF07C2 /* PhotoEditingBrushStrokeView.swift in Sources */,
 				049F92F122CDA4C10090C9BC /* PhotoEditingWorkspaceView.swift in Sources */,
 				049F92F722CDA5690090C9BC /* PhotoEditingObservationVisualizationView.swift in Sources */,
 				049F92FA22CDA5D90090C9BC /* NavigationBar.swift in Sources */,
 				049F92F622CDA54B0090C9BC /* PhotoEditingScrollView.swift in Sources */,
 				049F92E522CDA3FF0090C9BC /* TextRectangleDetectionOperation.swift in Sources */,
 				049F92E622CDA3FF0090C9BC /* TextObservation.swift in Sources */,
+				041BEA3922EF7AB900FF07C2 /* PhotoEditingCanvasBrushStrokeView.swift in Sources */,
 				049F92F522CDA4E40090C9BC /* PathRedaction.swift in Sources */,
 				049F92EA22CDA43F0090C9BC /* UIImageExtensions.swift in Sources */,
 				049F92F222CDA4D50090C9BC /* HighlighterTool.swift in Sources */,
-				049F92EE22CDA4C10090C9BC /* PhotoEditingBrushStrokeView.swift in Sources */,
+				049F92EE22CDA4C10090C9BC /* PhotoEditingLegacyBrushStrokeView.swift in Sources */,
 				049F92EB22CDA43F0090C9BC /* UIBezierPathExtensions.swift in Sources */,
 				049F92E822CDA43F0090C9BC /* UIViewControllerExtensions.swift in Sources */,
 				049F92FB22CDA5D90090C9BC /* Toolbar.swift in Sources */,
