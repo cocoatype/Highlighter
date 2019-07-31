@@ -69,10 +69,10 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
     }
 
     private func updateToolbarItems(animated: Bool = true) {
-        let undoToolItem = UIBarButtonItem(image: UIImage(named: "Undo"), style: .plain, target: self, action: #selector(BasePhotoEditingViewController.undo))
+        let undoToolItem = UIBarButtonItem(image: Icons.undo, style: .plain, target: self, action: #selector(BasePhotoEditingViewController.undo))
         undoToolItem.isEnabled = editingUndoManager.canUndo
 
-        let redoToolItem = UIBarButtonItem(image: UIImage(named: "Redo"), style: .plain, target: self, action: #selector(BasePhotoEditingViewController.redo))
+        let redoToolItem = UIBarButtonItem(image: Icons.redo, style: .plain, target: self, action: #selector(BasePhotoEditingViewController.redo))
         redoToolItem.isEnabled = editingUndoManager.canRedo
 
         let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -128,6 +128,15 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
         textRectangleDetector.detectTextRectangles(in: image) { [weak self] textObservations in
             DispatchQueue.main.async { [weak self] in
                 self?.photoEditingView.textObservations = textObservations
+            }
+        }
+
+        if #available(iOS 13.0, *) {
+            let blacklist = ["Black", "Highlighter"]
+            textRectangleDetector.locateTextRectangles(forWordsIn: blacklist, in: image) { [weak self] recognizedTextObservations in
+                DispatchQueue.main.async {
+                    self?.photoEditingView.redact(recognizedTextObservations ?? [])
+                }
             }
         }
     }

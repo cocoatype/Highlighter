@@ -41,6 +41,10 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
         return workspaceView.redactions
     }
 
+    func redact(_ observations: [TextObservation]) {
+        observations.forEach { [unowned self] in self.workspaceView.redact($0) }
+    }
+
     // MARK: UIScrollViewDelegate
 
     public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
