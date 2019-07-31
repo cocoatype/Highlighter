@@ -76,6 +76,10 @@ class PhotoEditingWorkspaceView: UIControl {
         }
     }
 
+    func scrollViewDidZoom(to zoomScale: CGFloat) {
+        brushStrokeView.updateTool(currentZoomScale: zoomScale)
+    }
+
     // MARK: Actions
 
     @objc func handleStrokeCompletion() {

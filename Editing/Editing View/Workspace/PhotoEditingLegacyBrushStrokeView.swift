@@ -19,6 +19,10 @@ class PhotoEditingLegacyBrushStrokeView: UIControl, PhotoEditingBrushStrokeView 
         currentPath.stroke()
     }
 
+    func updateTool(currentZoomScale: CGFloat) {
+        // do nothing
+    }
+
     // MARK: Touch Handling
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

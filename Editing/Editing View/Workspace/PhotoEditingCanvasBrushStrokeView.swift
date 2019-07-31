@@ -23,6 +23,10 @@ class PhotoEditingCanvasBrushStrokeView: UIControl, PhotoEditingBrushStrokeView,
 
     var currentPath: UIBezierPath?
 
+    func updateTool(currentZoomScale: CGFloat) {
+        canvasView.updateTool(currentZoomScale: currentZoomScale)
+    }
+
     // MARK: Boilerplate
 
     private let canvasView = PhotoEditingCanvasView()
@@ -41,11 +45,21 @@ class PhotoEditingCanvasView: PKCanvasView {
         allowsFingerDrawing = true
         backgroundColor = .clear
         isOpaque = false
-        tool = PKInkingTool(.marker, color: .black, width: 10)
+        tool = PKInkingTool(.marker, color: .black, width: PhotoEditingCanvasView.standardLineWidth)
         translatesAutoresizingMaskIntoConstraints = false
     }
 
+    func updateTool(currentZoomScale: CGFloat) {
+        tool = PKInkingTool(.marker, color: .black, width: adjustedLineWidth(forZoomScale: currentZoomScale))
+    }
+
+    private func adjustedLineWidth(forZoomScale zoomScale: CGFloat) -> CGFloat {
+        return PhotoEditingCanvasView.standardLineWidth * pow(zoomScale, -1.0)
+    }
+
     // MARK: Boilerplate
+
+    private static let standardLineWidth = CGFloat(10.0)
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

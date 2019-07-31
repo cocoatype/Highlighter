@@ -5,4 +5,5 @@ import Foundation
 
 protocol PhotoEditingBrushStrokeView {
     var currentPath: UIBezierPath? { get }
+    func updateTool(currentZoomScale: CGFloat)
 }
