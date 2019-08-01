@@ -21,45 +21,61 @@ class PhotoEditingCanvasBrushStrokeView: UIControl, PhotoEditingBrushStrokeView,
         ])
     }
 
-    var currentPath: UIBezierPath?
-
     func updateTool(currentZoomScale: CGFloat) {
         canvasView.updateTool(currentZoomScale: currentZoomScale)
+    }
+
+    // MARK: PKCanvasViewDelegate
+
+    private var canvasViewIsDirty = false
+
+    func canvasViewDidBeginUsingTool(_ canvasView: PKCanvasView) {
+        canvasViewIsDirty = true
+    }
+
+    func canvasViewDidEndUsingTool(_ canvasView: PKCanvasView) {
+        guard canvasViewIsDirty else { return }
+        canvasViewIsDirty = false
+        canvasView.drawing = PKDrawing()
+    }
+
+    // MARK: Path Manipulation
+
+    private(set) var currentPath: UIBezierPath?
+
+    private func newPath() -> UIBezierPath {
+        let newPath = UIBezierPath()
+        newPath.lineCapStyle = .round
+        newPath.lineJoinStyle = .round
+        newPath.lineWidth = canvasView.currentLineWidth
+        return newPath
+    }
+
+    // MARK: Touch Handling
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        currentPath = newPath()
+        currentPath?.move(to: touch.location(in: self))
+    }
+
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        currentPath?.addLine(to: touch.location(in: self))
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        sendActions(for: .touchUpInside)
+        currentPath = nil
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        currentPath = nil
     }
 
     // MARK: Boilerplate
 
     private let canvasView = PhotoEditingCanvasView()
-
-    @available(*, unavailable)
-    required init(coder: NSCoder) {
-        let className = String(describing: type(of: self))
-        fatalError("\(className) does not implement init(coder:)")
-    }
-}
-
-@available(iOS 13.0, *)
-class PhotoEditingCanvasView: PKCanvasView {
-    init() {
-        super.init(frame: .zero)
-        allowsFingerDrawing = true
-        backgroundColor = .clear
-        isOpaque = false
-        tool = PKInkingTool(.marker, color: .black, width: PhotoEditingCanvasView.standardLineWidth)
-        translatesAutoresizingMaskIntoConstraints = false
-    }
-
-    func updateTool(currentZoomScale: CGFloat) {
-        tool = PKInkingTool(.marker, color: .black, width: adjustedLineWidth(forZoomScale: currentZoomScale))
-    }
-
-    private func adjustedLineWidth(forZoomScale zoomScale: CGFloat) -> CGFloat {
-        return PhotoEditingCanvasView.standardLineWidth * pow(zoomScale, -1.0)
-    }
-
-    // MARK: Boilerplate
-
-    private static let standardLineWidth = CGFloat(10.0)
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

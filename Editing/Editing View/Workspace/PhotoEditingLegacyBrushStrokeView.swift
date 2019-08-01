@@ -66,8 +66,6 @@ class PhotoEditingLegacyBrushStrokeView: UIControl, PhotoEditingBrushStrokeView 
         return PhotoEditingLegacyBrushStrokeView.standardLineWidth * pow(scrollView.zoomScale, -1.0)
     }
 
-    // MARK: Canvas View
-
     // MARK: Boilerplate
 
     private static let standardLineWidth = CGFloat(10.0)
