@@ -63,20 +63,20 @@
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<true/>
 		<key>UISceneConfigurations</key>
 		<dict>
 			<key>UIWindowSceneSessionRoleApplication</key>
 			<array>
 				<dict>
-					<key>UISceneDelegateClassName</key>
-					<string>Highlighter.SceneDelegate</string>
 					<key>UISceneConfigurationName</key>
 					<string>Highlighter</string>
+					<key>UISceneDelegateClassName</key>
+					<string>Highlighter.SceneDelegate</string>
 				</dict>
 			</array>
 		</dict>
-		<key>UIApplicationSupportsMultipleScenes</key>
-		<true/>
 	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -99,5 +99,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>

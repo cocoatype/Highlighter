@@ -51,6 +51,11 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
         return workspaceView
     }
 
+    public func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        guard scrollView == photoScrollView else { return }
+        workspaceView.scrollViewDidZoom(to: scrollView.zoomScale)
+    }
+
     // MARK: Boilerplate
 
     private let photoScrollView = PhotoEditingScrollView()
