@@ -22,7 +22,7 @@ public enum Icons {
 
     public static var help: UIImage? {
         if #available(iOS 13.0, *) {
-            return UIImage(systemName: "questionmark.circle")
+            return UIImage(systemName: "gear")
         }
 
         return UIImage(named: "Help")

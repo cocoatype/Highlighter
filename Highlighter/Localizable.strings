@@ -32,7 +32,10 @@
 
 "SettingsContentProvider.Item.about" = "About Black Highlighter";
 "SettingsContentProvider.Item.acknowledgements" = "Acknowledgements";
+"SettingsContentProvider.Item.autoRedactions" = "Auto-Hidden Words";
 "SettingsContentProvider.Item.contact" = "Contact the Developer";
 "SettingsContentProvider.Item.privacy" = "Privacy Policy";
 
 "SettingsContentProvider.Section.otherApps.header" = "Other Apps by Cocoatype";
+
+"SettingsViewController.navigationTitle" = "Settings";

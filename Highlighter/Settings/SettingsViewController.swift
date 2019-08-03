@@ -7,6 +7,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
     init() {
         super.init(nibName: nil, bundle: nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(AppViewController.dismissSettingsViewController))
+        navigationItem.title = SettingsViewController.navigationTitle
 
         activeObserver = NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { [weak self] _ in
             self?.deselectSelectedRows()
@@ -47,7 +48,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
             contentProvider.otherAppEntries = appEntries
 
             DispatchQueue.main.async { [weak self] in
-                self?.tableView?.reloadSections(IndexSet(integer: 1), with: .automatic)
+                guard let otherAppsSectionIndex = contentProvider.sectionIndex(for: .otherApps(appEntries)) else { return }
+                self?.tableView?.reloadSections(IndexSet(integer: otherAppsSectionIndex), with: .automatic)
             }
         }
     }
@@ -62,6 +64,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
             sendResponderAction(#selector(SettingsNavigationController.presentAboutViewController))
         case .acknowledgements:
             sendResponderAction(#selector(SettingsNavigationController.presentAcknowledgementsViewController))
+        case .autoRedactions:
+        sendResponderAction(#selector(SettingsNavigationController.presentAutoRedactionsEditViewController))
         case .contact:
             sendResponderAction(#selector(SettingsNavigationController.presentContactViewController))
         case .otherApp(let appEntry):
@@ -90,6 +94,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
     }
 
     // MARK: Boilerplate
+
+    private static let navigationTitle = NSLocalizedString("SettingsViewController.navigationTitle", comment: "Navigation title for the settings view controller")
 
     private var activeObserver: Any?
     private let contentProvider = SettingsContentProvider()

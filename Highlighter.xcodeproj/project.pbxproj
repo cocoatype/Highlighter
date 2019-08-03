@@ -113,6 +113,7 @@
 		04EF55BC22D6EBFA00C6600D /* EditingUserActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */; };
 		04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */; };
 		04FF8DB122F261B3008CF0E9 /* PhotoEditingCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */; };
+		04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,6 +273,7 @@
 		04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserActivity.swift; sourceTree = "<group>"; };
 		04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservationRedaction.swift; sourceTree = "<group>"; };
 		04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingCanvasView.swift; sourceTree = "<group>"; };
+		04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -520,12 +522,13 @@
 		049F292922875AC200A335BE /* Presented View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				049F292A22875ADD00A335BE /* WebViewController.swift */,
 				049F292C22875AFA00A335BE /* AboutViewController.swift */,
-				049F292E22875B1300A335BE /* PrivacyViewController.swift */,
 				049F293022875D5B00A335BE /* AcknowledgementsViewController.swift */,
-				049F293222875E4D00A335BE /* ContactWebViewController.swift */,
 				049F293422875F7E00A335BE /* ContactMailViewController.swift */,
+				049F293222875E4D00A335BE /* ContactWebViewController.swift */,
+				049F292E22875B1300A335BE /* PrivacyViewController.swift */,
+				049F292A22875ADD00A335BE /* WebViewController.swift */,
+				04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */,
 			);
 			path = "Presented View Controllers";
 			sourceTree = "<group>";
@@ -910,6 +913,7 @@
 				042B78FC229A257E005B7A2A /* SettingsTableViewCellLabel.swift in Sources */,
 				041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */,
 				041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */,
+				04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */,
 				049F2928228755DB00A335BE /* SettingsNavigationController.swift in Sources */,
 				041EFF74225C3DD20058D8EE /* PhotoLibraryViewCell.swift in Sources */,
 				042B7903229A38C0005B7A2A /* Defaults.swift in Sources */,

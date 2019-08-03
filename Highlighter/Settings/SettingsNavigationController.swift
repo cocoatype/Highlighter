@@ -22,6 +22,11 @@ class SettingsNavigationController: NavigationController {
         present(acknowledgementsViewController, animated: true)
     }
 
+    @objc func presentAutoRedactionsEditViewController() {
+        pushViewController(AutoRedactionsEditViewController(), animated: true)
+//        present(AutoRedactionsEditViewController(), animated: true)
+    }
+
     @objc func presentContactViewController() {
         if ContactMailViewController.canBePresented {
             let contactViewController = ContactMailViewController()
