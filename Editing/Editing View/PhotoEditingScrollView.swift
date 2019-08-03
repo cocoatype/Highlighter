@@ -33,7 +33,7 @@ class PhotoEditingScrollView: UIScrollView {
         }
     }
 
-    var textObservations: [TextObservation]? {
+    var textObservations: [TextRectangleObservation]? {
         get { return workspaceView.textObservations }
         set(newTextObservations) {
             workspaceView.textObservations = newTextObservations

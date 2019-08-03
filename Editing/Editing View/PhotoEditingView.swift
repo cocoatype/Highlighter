@@ -24,7 +24,7 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
         set(newImage) { photoScrollView.image = newImage }
     }
 
-    public var textObservations: [TextObservation]? {
+    public var textObservations: [TextRectangleObservation]? {
         didSet {
             photoScrollView.textObservations = textObservations
         }
@@ -41,7 +41,7 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
         return workspaceView.redactions
     }
 
-    func redact(_ observations: [TextObservation]) {
+    func redact<ObservationType: TextObservation>(_ observations: [ObservationType]) {
         observations.forEach { [unowned self] in self.workspaceView.redact($0) }
     }
 
