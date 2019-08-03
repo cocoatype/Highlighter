@@ -65,11 +65,11 @@ class PhotoEditingWorkspaceView: UIControl {
         return redactionView.redactions
     }
 
-    func redact(_ textObservation: TextObservation) {
+    func redact<ObservationType: TextObservation>(_ textObservation: ObservationType) {
         redactionView.add(TextObservationRedaction(textObservation))
     }
 
-    var textObservations: [TextObservation]? {
+    var textObservations: [TextRectangleObservation]? {
         get { return visualizationView.textObservations }
         set(newTextObservations) {
             visualizationView.textObservations = newTextObservations

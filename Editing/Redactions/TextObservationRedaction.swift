@@ -4,7 +4,7 @@
 import UIKit
 
 struct TextObservationRedaction: Redaction {
-    init(_ textObservation: TextObservation) {
+    init<ObservationType: TextObservation>(_ textObservation: ObservationType) {
         let rect = textObservation.bounds
         let path = UIBezierPath()
         let width = rect.height
