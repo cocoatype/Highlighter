@@ -119,6 +119,7 @@
 		04FF8DBB22F57B09008CF0E9 /* AutoRedactionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DBA22F57B09008CF0E9 /* AutoRedactionsTableViewCell.swift */; };
 		04FF8DBD22F57B3A008CF0E9 /* AutoRedactionsAdditionAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DBC22F57B3A008CF0E9 /* AutoRedactionsAdditionAlertController.swift */; };
 		04FF8DE322F6DF2C008CF0E9 /* PageCountAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DE222F6DF2C008CF0E9 /* PageCountAlertFactory.swift */; };
+		04FF8DE122F6D698008CF0E9 /* WordObservationAccessibilityElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DE022F6D698008CF0E9 /* WordObservationAccessibilityElement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -284,6 +285,7 @@
 		04FF8DBA22F57B09008CF0E9 /* AutoRedactionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsTableViewCell.swift; sourceTree = "<group>"; };
 		04FF8DBC22F57B3A008CF0E9 /* AutoRedactionsAdditionAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsAdditionAlertController.swift; sourceTree = "<group>"; };
 		04FF8DE222F6DF2C008CF0E9 /* PageCountAlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCountAlertFactory.swift; sourceTree = "<group>"; };
+		04FF8DE022F6D698008CF0E9 /* WordObservationAccessibilityElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordObservationAccessibilityElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -470,6 +472,7 @@
 				043CD9CE226EB0C70012F5AE /* TextObservation.swift */,
 				04A3AEF7227A924D00F21229 /* CharacterObservation.swift */,
 				041BEA3E22EF879700FF07C2 /* TextRecognitionOperation.swift */,
+				04FF8DE022F6D698008CF0E9 /* WordObservationAccessibilityElement.swift */,
 			);
 			path = "Text Detection";
 			sourceTree = "<group>";
@@ -995,6 +998,7 @@
 				041BEA3722EF75E800FF07C2 /* Icons.swift in Sources */,
 				049F92E822CDA43F0090C9BC /* UIViewControllerExtensions.swift in Sources */,
 				049F92FB22CDA5D90090C9BC /* Toolbar.swift in Sources */,
+				04FF8DE122F6D698008CF0E9 /* WordObservationAccessibilityElement.swift in Sources */,
 				049F92FD22CDA6C40090C9BC /* Fonts.swift in Sources */,
 				04FF8DB422F57570008CF0E9 /* Defaults.swift in Sources */,
 				04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */,

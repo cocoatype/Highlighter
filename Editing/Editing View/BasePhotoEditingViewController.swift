@@ -142,6 +142,7 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
 
                 DispatchQueue.main.async {
                     self?.photoEditingView.redact(matchingObservations)
+                    self?.photoEditingView.wordObservations = observations
                 }
             }
         }
