@@ -132,10 +132,13 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
         }
 
         if #available(iOS 13.0, *) {
-            let blacklist = ["Black", "Highlighter"]
             textRectangleDetector.detectWords(in: image) { [weak self] recognizedTextObservations in
                 guard let observations = recognizedTextObservations else { return }
-                let matchingObservations = observations.filter { blacklist.contains($0.string) }
+                let matchingObservations = observations.filter { observation in
+                    Defaults.autoRedactionsWordList.contains(where: { wordListString in
+                        wordListString.compare(observation.string, options: [.caseInsensitive, .diacriticInsensitive]) == .orderedSame
+                    })
+                }
 
                 DispatchQueue.main.async {
                     self?.photoEditingView.redact(matchingObservations)

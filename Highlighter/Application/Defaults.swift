@@ -3,8 +3,8 @@
 
 import Foundation
 
-enum Defaults {
-    static var numberOfSaves: Int {
+public enum Defaults {
+    public static var numberOfSaves: Int {
         get {
             return Defaults.userDefaults.integer(forKey: Keys.numberOfSaves)
         }
@@ -14,8 +14,20 @@ enum Defaults {
         }
     }
 
+    public static var autoRedactionsWordList: [String] {
+        get {
+            guard let storedArray = Defaults.userDefaults.array(forKey: Keys.autoRedactionsWordList) else { return [] }
+            return storedArray.compactMap { $0 as? String }
+        }
+
+        set(newWordList) {
+            Defaults.userDefaults.set(newWordList, forKey: Keys.autoRedactionsWordList)
+        }
+    }
+
     private enum Keys {
         static let numberOfSaves = "Defaults.Keys.numberOfSaves"
+        static let autoRedactionsWordList = "Defaults.Keys.autoRedactionsWordList"
     }
 
     // MARK: Boilerplate
