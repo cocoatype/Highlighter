@@ -4,8 +4,9 @@
 import Editing
 import Photos
 import UIKit
+import VisionKit
 
-class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening {
+class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening, VNDocumentCameraViewControllerDelegate {
     init() {
         super.init(nibName: nil, bundle: nil)
 
@@ -66,6 +67,26 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
             assert(success, "an error occurred saving changes: \(error?.localizedDescription ?? "no error")")
             self?.dismiss(animated: true)
         })
+    }
+
+    // MARK: Document Scanner
+
+    @available(iOS 13.0, *)
+    @objc func presentDocumentCameraViewController() {
+        let cameraViewController = VNDocumentCameraViewController()
+        cameraViewController.delegate = self
+        present(cameraViewController, animated: true)
+    }
+
+    @available(iOS 13.0, *)
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+        guard let presentedViewController = presentedViewController, presentedViewController == controller else { return }
+
+        dismiss(animated: true) { [weak self] in
+            guard scan.pageCount > 0 else { return }
+            let pageImage = scan.imageOfPage(at: 0)
+            self?.presentPhotoEditingViewController(for: pageImage)
+        }
     }
 
     // MARK: Settings View Controller
