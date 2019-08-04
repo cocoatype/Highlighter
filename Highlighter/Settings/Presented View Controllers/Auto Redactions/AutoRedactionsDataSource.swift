@@ -4,7 +4,7 @@
 import Editing
 import UIKit
 
-class AutoRedactionsDataSource: NSObject, UITableViewDataSource {
+class AutoRedactionsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return wordList.count
     }
@@ -18,4 +18,26 @@ class AutoRedactionsDataSource: NSObject, UITableViewDataSource {
     }
 
     private var wordList: [String] { return Defaults.autoRedactionsWordList }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .destructive, title: AutoRedactionsDataSource.deleteActionTitle) { [weak self] _, _, handler in
+            guard var newWordList = self?.wordList else {
+                handler(false)
+                return
+            }
+
+            newWordList.remove(at: indexPath.row)
+            Defaults.autoRedactionsWordList = newWordList
+
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+
+            handler(true)
+        }
+
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+
+    // MARK: Localized Strings
+
+    private static let deleteActionTitle = NSLocalizedString("AutoRedactionsDataSource.deleteActionTitle", comment: "Title for the delete action on the auto redactions word list")
 }

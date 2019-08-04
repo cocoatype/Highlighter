@@ -23,7 +23,7 @@ class AutoRedactionsAdditionDialogFactory: NSObject {
 
     // MARK: Localized Strings
 
-    private static let addButtonTitle = NSLocalizedString("AutoRedactionsAdditionAlertController.addButtonTitle", comment: "Title for the add button on the auto redactions addition dialog")
-    private static let placeholder = NSLocalizedString("AutoRedactionsAdditionAlertController.placeholder", comment: "Placeholder for the auto redactions addition dialog")
-    private static let dialogTitle = NSLocalizedString("AutoRedactionsAdditionAlertController.dialogTitle", comment: "Title for the auto redactions addition dialog")
+    private static let addButtonTitle = NSLocalizedString("AutoRedactionsAdditionDialogFactory.addButtonTitle", comment: "Title for the add button on the auto redactions addition dialog")
+    private static let placeholder = NSLocalizedString("AutoRedactionsAdditionDialogFactory.placeholder", comment: "Placeholder for the auto redactions addition dialog")
+    private static let dialogTitle = NSLocalizedString("AutoRedactionsAdditionDialogFactory.dialogTitle", comment: "Title for the auto redactions addition dialog")
 }

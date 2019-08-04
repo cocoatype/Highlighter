@@ -4,17 +4,18 @@
 import Editing
 import UIKit
 
-class AutoRedactionsEditViewController: UIViewController {
+class AutoRedactionsEditViewController: UIViewController, UITableViewDelegate {
     init() {
         super.init(nibName: nil, bundle: nil)
 
         let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewWord))
-        navigationItem.rightBarButtonItem = addButtonItem
+        navigationItem.rightBarButtonItems = [addButtonItem]
     }
 
     override func loadView() {
         let editView = AutoRedactionsEditView()
         editView.dataSource = dataSource
+        editView.delegate = dataSource
         view = editView
     }
 
