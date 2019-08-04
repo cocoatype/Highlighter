@@ -30,6 +30,14 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
         }
     }
 
+    var wordObservations: [WordObservation]? {
+        didSet {
+            workspaceView.accessibilityElements = wordObservations?.compactMap { observation in
+                WordObservationAccessibilityElement(observation, in: workspaceView)
+            }
+        }
+    }
+
     public var highlighterTool: HighlighterTool {
         get { return workspaceView.highlighterTool }
         set(newTool) {
