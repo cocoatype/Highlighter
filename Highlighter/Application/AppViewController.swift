@@ -78,6 +78,13 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         present(cameraViewController, animated: true)
     }
 
+    private func presentPageCountAlert(beforeEditing image: UIImage) {
+        let alert = PageCountAlertFactory.alert { [weak self] in
+            self?.presentPhotoEditingViewController(for: image)
+        }
+        present(alert, animated: true)
+    }
+
     @available(iOS 13.0, *)
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
         guard let presentedViewController = presentedViewController, presentedViewController == controller else { return }
@@ -85,7 +92,12 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         dismiss(animated: true) { [weak self] in
             guard scan.pageCount > 0 else { return }
             let pageImage = scan.imageOfPage(at: 0)
-            self?.presentPhotoEditingViewController(for: pageImage)
+
+            if scan.pageCount > 1 {
+                self?.presentPageCountAlert(beforeEditing: pageImage)
+            } else {
+                self?.presentPhotoEditingViewController(for: pageImage)
+            }
         }
     }
 

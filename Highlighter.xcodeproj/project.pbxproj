@@ -118,6 +118,7 @@
 		04FF8DB922F57AD9008CF0E9 /* AutoRedactionsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB822F57AD9008CF0E9 /* AutoRedactionsDataSource.swift */; };
 		04FF8DBB22F57B09008CF0E9 /* AutoRedactionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DBA22F57B09008CF0E9 /* AutoRedactionsTableViewCell.swift */; };
 		04FF8DBD22F57B3A008CF0E9 /* AutoRedactionsAdditionAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DBC22F57B3A008CF0E9 /* AutoRedactionsAdditionAlertController.swift */; };
+		04FF8DE322F6DF2C008CF0E9 /* PageCountAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DE222F6DF2C008CF0E9 /* PageCountAlertFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -282,6 +283,7 @@
 		04FF8DB822F57AD9008CF0E9 /* AutoRedactionsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsDataSource.swift; sourceTree = "<group>"; };
 		04FF8DBA22F57B09008CF0E9 /* AutoRedactionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsTableViewCell.swift; sourceTree = "<group>"; };
 		04FF8DBC22F57B3A008CF0E9 /* AutoRedactionsAdditionAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsAdditionAlertController.swift; sourceTree = "<group>"; };
+		04FF8DE222F6DF2C008CF0E9 /* PageCountAlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCountAlertFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -411,6 +413,7 @@
 				041EFF69225C36130058D8EE /* Photo Library */,
 				041EFF6D225C38800058D8EE /* PhotoSelectionViewController.swift */,
 				04D68BCA2262B34600D09BBD /* Photo Permissions */,
+				04FF8DE222F6DF2C008CF0E9 /* PageCountAlertFactory.swift */,
 			);
 			path = "Photo Selection";
 			sourceTree = "<group>";
@@ -902,6 +905,7 @@
 				041EFF6B225C36350058D8EE /* PhotoLibraryViewController.swift in Sources */,
 				043CD9DB22753D510012F5AE /* SettingsViewController.swift in Sources */,
 				041EFF70225C3D830058D8EE /* PhotoLibraryView.swift in Sources */,
+				04FF8DE322F6DF2C008CF0E9 /* PageCountAlertFactory.swift in Sources */,
 				043911E822C4658800D4AE30 /* PhotoEditingViewController.swift in Sources */,
 				041EFF72225C3DC00058D8EE /* PhotoLibraryDataSource.swift in Sources */,
 				04ADD15C2290D29400E17445 /* AppLookupResponseResult.swift in Sources */,
