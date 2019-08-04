@@ -19,8 +19,8 @@ class AutoRedactionsEditViewController: UIViewController {
     }
 
     @objc private func addNewWord() {
-        let newWordDialog = AutoRedactionsAdditionAlertController { string in
-            guard let string = string else { return }
+        let newWordDialog = AutoRedactionsAdditionDialogFactory.newDialog { string in
+            guard let string = string, string.isEmpty == false else { return }
             var existingWordList = Defaults.autoRedactionsWordList
             existingWordList.append(string)
             Defaults.autoRedactionsWordList = existingWordList
