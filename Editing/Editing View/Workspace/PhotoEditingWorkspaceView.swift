@@ -16,8 +16,7 @@ class PhotoEditingWorkspaceView: UIControl {
         }
 
         super.init(frame: .zero)
-        isAccessibilityElement = true
-        accessibilityTraits = .allowsDirectInteraction
+        isAccessibilityElement = false
         backgroundColor = .primary
         translatesAutoresizingMaskIntoConstraints = false
 
@@ -107,6 +106,13 @@ class PhotoEditingWorkspaceView: UIControl {
     private func handleManualStrokeCompletion() {
         guard let strokePath = brushStrokeView.currentPath else { return }
         redactionView.add(PathRedaction(strokePath))
+    }
+
+    // MARK: Accessibility
+
+    override func accessibilityActivate() -> Bool {
+        print("activate")
+        return true
     }
 
     // MARK: Boilerplate
