@@ -41,9 +41,14 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
         return allPhotos[indexPath.item]
     }
 
+    var lastItemIndexPath: IndexPath {
+        let lastItemIndex = allPhotos.count - 1
+        return IndexPath(row: lastItemIndex, section: 0)
+    }
+
     private func fetchAllPhotos() -> PHFetchResult<PHAsset> {
         let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         return PHAsset.fetchAssets(with: fetchOptions)
     }
 

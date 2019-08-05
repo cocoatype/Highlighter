@@ -21,8 +21,13 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         view = libraryView
     }
 
-    @objc func reloadData() {
-        (view as? PhotoLibraryView)?.reloadData()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if libraryView?.contentOffset == .zero {
+            libraryView?.layoutIfNeeded()
+            libraryView?.scrollToItem(at: dataSource.lastItemIndexPath, at: .bottom, animated: false)
+        }
     }
 
     // MARK: UICollectionViewDragDelegate
@@ -70,6 +75,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
     // MARK: Boilerplate
 
     private let dataSource = PhotoLibraryDataSource()
+    private var libraryView: PhotoLibraryView? { return view as? PhotoLibraryView }
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
