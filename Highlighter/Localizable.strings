@@ -28,6 +28,8 @@
 "PhotoEditingProtectionAlertController.deleteButtonTitle" = "Delete Changes";
 "PhotoEditingProtectionAlertController.saveButtonTitle" = "Save to Photos";
 
+"PhotoLibraryViewDocumentScannerCell.defaultAccessibilityLabel" = "Scan Document";
+
 "PhotoPermissionsDeniedAlertController.alertTitle" = "No Access to Your Photos";
 "PhotoPermissionsDeniedAlertController.alertMessage" = "Black Highlighter needs permission to edit your photos. Open Settings to grant access.";
 "PhotoPermissionsDeniedAlertController.actionButtonTitle" = "Open Settings";
