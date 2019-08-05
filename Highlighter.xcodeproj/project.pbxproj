@@ -10,7 +10,7 @@
 		041BEA3722EF75E800FF07C2 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3622EF75E800FF07C2 /* Icons.swift */; };
 		041BEA3922EF7AB900FF07C2 /* PhotoEditingCanvasBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3822EF7AB900FF07C2 /* PhotoEditingCanvasBrushStrokeView.swift */; };
 		041BEA3B22EF7B2900FF07C2 /* PhotoEditingBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3A22EF7B2900FF07C2 /* PhotoEditingBrushStrokeView.swift */; };
-		041BEA3D22EF7DAB00FF07C2 /* PencilKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 041BEA3C22EF7DAB00FF07C2 /* PencilKit.framework */; };
+		041BEA3D22EF7DAB00FF07C2 /* PencilKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 041BEA3C22EF7DAB00FF07C2 /* PencilKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		041BEA3F22EF879700FF07C2 /* TextRecognitionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3E22EF879700FF07C2 /* TextRecognitionOperation.swift */; };
 		041EFEF92251A9F30058D8EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFEF82251A9F30058D8EE /* AppDelegate.swift */; };
 		041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFEFA2251A9F30058D8EE /* AppViewController.swift */; };
