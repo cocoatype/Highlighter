@@ -33,3 +33,4 @@ beta:
   only:
     - master
     - /^release\/(.*)$/
+    - /^future\/(.*)$/
