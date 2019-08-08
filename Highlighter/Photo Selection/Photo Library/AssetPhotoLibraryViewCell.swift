@@ -5,8 +5,8 @@ import Editing
 import Photos
 import UIKit
 
-class PhotoLibraryViewCell: UICollectionViewCell {
-    static let identifier = "PhotoLibraryViewCell.identifier"
+class AssetPhotoLibraryViewCell: UICollectionViewCell {
+    static let identifier = "AssetPhotoLibraryViewCell.identifier"
 
     var asset: PHAsset? {
         didSet {
@@ -30,7 +30,7 @@ class PhotoLibraryViewCell: UICollectionViewCell {
     }
 
     override init(frame: CGRect) {
-        imageView = PhotoLibraryViewCellImageView()
+        imageView = AssetPhotoLibraryViewCellImageView()
 
         super.init(frame: .zero)
 

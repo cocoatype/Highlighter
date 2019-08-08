@@ -52,6 +52,8 @@
 	<false/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Black Highlighter accesses your photo library to open photos for redaction and to save redacted photos.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Black Highlighter accesses your camera to scan documents for redaction.</string>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>com.cocoatype.Highlighter.editing</string>

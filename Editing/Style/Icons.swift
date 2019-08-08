@@ -4,6 +4,9 @@
 import UIKit
 
 public enum Icons {
+    @available(iOS 13.0, *)
+    public static let scanDocument = UIImage(systemName: "doc.text.viewfinder")
+
     static var undo: UIImage? {
         if #available(iOS 13.0, *) {
             return UIImage(systemName: "arrow.uturn.left")

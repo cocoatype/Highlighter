@@ -11,6 +11,7 @@ class PhotoSelectionViewController: UIViewController {
 
         navigationItem.title = PhotoSelectionViewController.navigationItemTitle
         navigationItem.rightBarButtonItem = settingsBarButtonItem
+
         embed(initialViewController)
     }
 
@@ -34,6 +35,13 @@ class PhotoSelectionViewController: UIViewController {
 
     private lazy var settingsBarButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(image: Icons.help, style: .plain, target: nil, action: #selector(AppViewController.presentSettingsViewController))
+        barButtonItem.accessibilityLabel = PhotoSelectionViewController.settingsButtonAccessibilityLabel
+        return barButtonItem
+    }()
+
+    @available(iOS 13.0, *)
+    private lazy var documentScanBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(image: Icons.scanDocument, style: .plain, target: nil, action: #selector(AppViewController.presentDocumentCameraViewController))
         barButtonItem.accessibilityLabel = PhotoSelectionViewController.settingsButtonAccessibilityLabel
         return barButtonItem
     }()

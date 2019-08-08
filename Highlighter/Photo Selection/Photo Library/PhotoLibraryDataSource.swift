@@ -15,18 +15,36 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
     // MARK: Data Source
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allPhotos.count
+        if #available(iOS 13.0, *) {
+            return allPhotos.count + 1
+        } else {
+            return allPhotos.count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoLibraryViewCell.identifier, for: indexPath)
-        guard let photoCell = cell as? PhotoLibraryViewCell else {
+        guard indexPath.row < allPhotos.count else {
+            return documentScannerCell(for: collectionView, at: indexPath)
+        }
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssetPhotoLibraryViewCell.identifier, for: indexPath)
+        guard let photoCell = cell as? AssetPhotoLibraryViewCell else {
             fatalError("Got incorrect type of cell for photo picker: \(String(describing: type(of: cell)))")
         }
 
         photoCell.asset = allPhotos[indexPath.item]
 
         return cell
+    }
+
+    // MARK: Document Scanning
+
+    private func documentScannerCell(for collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
+        guard #available(iOS 13.0, *) else {
+            fatalError("Tried to display a document scanner cell on iOS version prior to iOS 13.0")
+        }
+
+        return collectionView.dequeueReusableCell(withReuseIdentifier: DocumentScannerPhotoLibraryViewCell.identifier, for: indexPath)
     }
 
     // MARK: Photos
@@ -37,13 +55,21 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
         return PHAsset.fetchAssets(withLocalIdentifiers: [identifier], options: nil).firstObject
     }
 
-    func photo(at indexPath: IndexPath) -> PHAsset {
-        return allPhotos[indexPath.item]
+    func item(at indexPath: IndexPath) -> PhotoLibraryItem {
+        let index = indexPath.item
+        guard index < allPhotos.count else { return .documentScan }
+
+        return .asset(allPhotos[indexPath.item])
+    }
+
+    var lastItemIndexPath: IndexPath {
+        let lastItemIndex = allPhotos.count - 1
+        return IndexPath(row: lastItemIndex, section: 0)
     }
 
     private func fetchAllPhotos() -> PHFetchResult<PHAsset> {
         let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         return PHAsset.fetchAssets(with: fetchOptions)
     }
 
@@ -80,4 +106,9 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
             }
         }
     }
+}
+
+enum PhotoLibraryItem {
+    case asset(PHAsset)
+    case documentScan
 }

@@ -3,7 +3,7 @@
 
 import UIKit
 
-class PhotoLibraryViewCellImageView: UIImageView {
+class AssetPhotoLibraryViewCellImageView: UIImageView {
     init() {
         super.init(frame: .zero)
 
