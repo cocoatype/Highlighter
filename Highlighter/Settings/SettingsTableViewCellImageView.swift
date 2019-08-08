@@ -10,6 +10,14 @@ class SettingsTableViewCellImageView: UIImageView {
         translatesAutoresizingMaskIntoConstraints = false
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let maskLayer = CAShapeLayer()
+        maskLayer.fillColor = UIColor.black.cgColor
+        maskLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 5.6).cgPath
+        layer.mask = maskLayer
+    }
+
     var iconURL: URL? {
         didSet {
             guard let iconURL = iconURL else { kf.cancelDownloadTask(); return }
@@ -26,7 +34,7 @@ class SettingsTableViewCellImageView: UIImageView {
     // MARK: Image Processing
 
     private static var imageProcessor: ImageProcessor {
-        return DownsamplingImageProcessor(size: CGSize(width: 32.0, height: 32.0)) >> RoundCornerImageProcessor(cornerRadius: 5.6, backgroundColor: UIColor.clear)
+        return DownsamplingImageProcessor(size: CGSize(width: 32.0, height: 32.0))
     }
 
     // MARK: Boilerplate

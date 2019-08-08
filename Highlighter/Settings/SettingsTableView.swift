@@ -7,7 +7,7 @@ class SettingsTableView: UITableView {
     init() {
         super.init(frame: .zero, style: .grouped)
         backgroundColor = .primary
-        separatorColor = .primaryExtraLight
+        separatorColor = .tableViewSeparator
         separatorInset = .zero
 
         register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
