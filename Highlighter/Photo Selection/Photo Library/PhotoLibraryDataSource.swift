@@ -55,8 +55,11 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
         return PHAsset.fetchAssets(withLocalIdentifiers: [identifier], options: nil).firstObject
     }
 
-    func photo(at indexPath: IndexPath) -> PHAsset {
-        return allPhotos[indexPath.item]
+    func item(at indexPath: IndexPath) -> PhotoLibraryItem {
+        let index = indexPath.item
+        guard index < allPhotos.count else { return .documentScan }
+
+        return .asset(allPhotos[indexPath.item])
     }
 
     var lastItemIndexPath: IndexPath {
@@ -103,4 +106,9 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
             }
         }
     }
+}
+
+enum PhotoLibraryItem {
+    case asset(PHAsset)
+    case documentScan
 }

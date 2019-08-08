@@ -35,7 +35,8 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         guard #available(iOS 13.0, *) else { return [] }
 
-        let asset = dataSource.photo(at: indexPath)
+        let item = dataSource.item(at: indexPath)
+        guard case .asset(let asset) = item else { return [] }
 
         let userActivity = EditingUserActivity(assetLocalIdentifier: asset.localIdentifier)
         let dragItemProvider = NSItemProvider(object: userActivity)
@@ -68,8 +69,13 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
     // MARK: UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let asset = dataSource.photo(at: indexPath)
-        photoEditorPresenter?.presentPhotoEditingViewController(for: asset, animated: true)
+        switch dataSource.item(at: indexPath) {
+        case .asset(let asset):
+            photoEditorPresenter?.presentPhotoEditingViewController(for: asset, animated: true)
+        case .documentScan:
+            guard #available(iOS 13.0, *) else { break }
+            documentScannerPresenter?.presentDocumentCameraViewController()
+        }
     }
 
     // MARK: Boilerplate

@@ -6,7 +6,7 @@ import Photos
 import UIKit
 import VisionKit
 
-class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening, VNDocumentCameraViewControllerDelegate {
+class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening, VNDocumentCameraViewControllerDelegate, DocumentScannerPresenting {
     init() {
         super.init(nibName: nil, bundle: nil)
 

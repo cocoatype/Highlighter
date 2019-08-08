@@ -10,13 +10,7 @@ class PhotoSelectionViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
 
         navigationItem.title = PhotoSelectionViewController.navigationItemTitle
-
-        var barButtonItems = [settingsBarButtonItem]
-        if #available(iOS 13.0, *) {
-            barButtonItems.append(documentScanBarButtonItem)
-        }
-
-        navigationItem.rightBarButtonItems = barButtonItems
+        navigationItem.rightBarButtonItem = settingsBarButtonItem
 
         embed(initialViewController)
     }

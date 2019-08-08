@@ -45,7 +45,6 @@ public extension UIFont {
         }
 
         return appFont
-
     }
 
     private static func standardFontSize(for textStyle: UIFont.TextStyle) -> CGFloat {
