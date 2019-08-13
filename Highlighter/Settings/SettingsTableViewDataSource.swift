@@ -3,7 +3,7 @@
 
 import UIKit
 
-class SettingsTableViewDataSource: NSObject, UITableViewDataSource {
+class SettingsTableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     init(contentProvider: SettingsContentProvider) {
         self.contentProvider = contentProvider
         super.init()
@@ -27,6 +27,26 @@ class SettingsTableViewDataSource: NSObject, UITableViewDataSource {
 
         cell.item = item
         return cell
+    }
+
+    // MARK: Table View Delegate
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        contentProvider.item(at: indexPath).performSelectedAction(tableView)
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: SettingsTableViewHeaderFooterView.identifier) as? SettingsTableViewHeaderFooterView else { fatalError("Got incorrect header view type") }
+        headerView.text = contentProvider.section(at: section).header
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return SettingsTableViewHeaderFooterLabel().font.lineHeight
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
     }
 
     // MARK: Boilerplate

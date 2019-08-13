@@ -4,4 +4,5 @@
 protocol SettingsContentItem {
     var cellIdentifier: String { get }
     var title: String { get }
+    func performSelectedAction(_ sender: Any)
 }

@@ -4,7 +4,10 @@
 import Foundation
 
 class SettingsContentProvider: NSObject {
-    var otherAppEntries = [AppEntry]()
+    init(otherAppEntries: [AppEntry] = []) {
+        self.otherAppEntries = otherAppEntries
+        super.init()
+    }
 
     // MARK: Data
 
@@ -27,6 +30,29 @@ class SettingsContentProvider: NSObject {
     func item(at indexPath: IndexPath) -> SettingsContentItem {
         return sections[indexPath.section].items[indexPath.row]
     }
+
+    // MARK: Other Apps
+
+    private var otherAppEntries: [AppEntry] {
+        didSet {
+            guard let otherAppsSectionIndex = sectionIndex(for: OtherAppsSection.self) else { return }
+            NotificationCenter.default.post(name: SettingsContentProvider.didChangeContent, object: self, userInfo: [
+                SettingsContentProvider.sectionIndexSetKey: IndexSet(integer: otherAppsSectionIndex)
+            ])
+        }
+    }
+
+    private func refreshOtherAppsList() {
+        guard otherAppEntries.isEmpty else { return }
+        AppListFetcher().fetchAppEntries { [weak self] appEntries, _ in
+            self?.otherAppEntries = appEntries ?? []
+        }
+    }
+
+    // MARK: Notifications
+
+    static let didChangeContent = Notification.Name("SettingsContentProvider.didChangeContent")
+    static let sectionIndexSetKey = "SettingsContentProvider.sectionIndexSetKey"
 
     // MARK: Boilerplate
 
