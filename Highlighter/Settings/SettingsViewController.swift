@@ -48,7 +48,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
             contentProvider.otherAppEntries = appEntries
 
             DispatchQueue.main.async { [weak self] in
-                guard let otherAppsSectionIndex = contentProvider.sectionIndex(for: .otherApps(appEntries)) else { return }
+                guard let otherAppsSectionIndex = contentProvider.sectionIndex(for: OtherAppsSection.self) else { return }
                 self?.tableView?.reloadSections(IndexSet(integer: otherAppsSectionIndex), with: .automatic)
             }
         }
@@ -60,18 +60,19 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
         let item = contentProvider.item(at: indexPath)
 
         switch item {
-        case .about:
+        case is AboutItem:
             sendResponderAction(#selector(SettingsNavigationController.presentAboutViewController))
-        case .acknowledgements:
+        case is AcknowledgementsItem:
             sendResponderAction(#selector(SettingsNavigationController.presentAcknowledgementsViewController))
-        case .autoRedactions:
+        case is AutoRedactionsItem:
         sendResponderAction(#selector(SettingsNavigationController.presentAutoRedactionsEditViewController))
-        case .contact:
+        case is ContactItem:
             sendResponderAction(#selector(SettingsNavigationController.presentContactViewController))
-        case .otherApp(let appEntry):
-            appEntryOpener?.openAppStore(displaying: appEntry)
-        case .privacy:
+        case let appItem as OtherAppItem:
+            appEntryOpener?.openAppStore(displaying: appItem.appEntry)
+        case is PrivacyItem:
             sendResponderAction(#selector(SettingsNavigationController.presentPrivacyViewController))
+        default: break
         }
     }
 
@@ -82,7 +83,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return SettingsTableViewHeaderLabel().font.lineHeight
+        return SettingsTableViewHeaderFooterLabel().font.lineHeight
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -111,56 +112,4 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
         let className = String(describing: type(of: self))
         fatalError("\(className) does not implement init(coder:)")
     }
-}
-
-class SettingsTableViewHeaderFooterView: UITableViewHeaderFooterView {
-    static let identifier = "SettingsTableViewHeaderFooterView.identifier"
-
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
-
-        translatesAutoresizingMaskIntoConstraints = false
-
-        contentView.addSubview(label)
-        NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3.0),
-            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -3.0)
-        ])
-    }
-
-    var text: String? {
-        get { return label.text }
-        set(newText) {
-            label.text = newText
-        }
-    }
-
-    // MARK: Boilerplate
-    private let label = SettingsTableViewHeaderLabel()
-
-    @available(*, unavailable)
-    required init(coder: NSCoder) {
-        let className = String(describing: type(of: self))
-        fatalError("\(className) does not implement init(coder:)")
-    }
-}
-
-class SettingsTableViewHeaderLabel: UILabel {
-    init() {
-        super.init(frame: .zero)
-        font = .appFont(forTextStyle: .footnote)
-        textColor = .primaryExtraLight
-        translatesAutoresizingMaskIntoConstraints = false
-    }
-
-    // MARK: Boilerplate
-
-    @available(*, unavailable)
-    required init(coder: NSCoder) {
-        let className = String(describing: type(of: self))
-        fatalError("\(className) does not implement init(coder:)")
-    }
-
 }

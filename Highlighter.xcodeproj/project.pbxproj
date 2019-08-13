@@ -46,8 +46,7 @@
 		043911E822C4658800D4AE30 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043911E722C4658800D4AE30 /* PhotoEditingViewController.swift */; };
 		043CD9DB22753D510012F5AE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DA22753D510012F5AE /* SettingsViewController.swift */; };
 		043CD9DD227548C20012F5AE /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DC227548C20012F5AE /* SettingsTableView.swift */; };
-		043CD9DF227548F30012F5AE /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DE227548F30012F5AE /* SettingsTableViewCell.swift */; };
-		043CD9E12275490E0012F5AE /* SettingsContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E02275490E0012F5AE /* SettingsContentProvider.swift */; };
+		043CD9DF227548F30012F5AE /* SettingsStandardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DE227548F30012F5AE /* SettingsStandardTableViewCell.swift */; };
 		043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
 		048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D134E229F7E5100427FE3 /* CallbackAction.swift */; };
@@ -116,6 +115,21 @@
 		04F3C7A52300206A00445A8D /* Purchaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7A42300206A00445A8D /* Purchaser.swift */; };
 		04F3C7A72300968500445A8D /* ReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7A62300968500445A8D /* ReceiptValidator.swift */; };
 		04F3C7A9230099BC00445A8D /* PurchaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7A8230099BC00445A8D /* PurchaseState.swift */; };
+		04F3C7AC230187F200445A8D /* SettingsContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7AB230187F200445A8D /* SettingsContentProvider.swift */; };
+		04F3C7AE2301A2D100445A8D /* SettingsContentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7AD2301A2D100445A8D /* SettingsContentSection.swift */; };
+		04F3C7B02301A31900445A8D /* SettingsContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7AF2301A31900445A8D /* SettingsContentItem.swift */; };
+		04F3C7B22301A3CF00445A8D /* StandardContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7B12301A3CF00445A8D /* StandardContentItem.swift */; };
+		04F3C7BA2301A47E00445A8D /* OtherAppsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7B92301A47E00445A8D /* OtherAppsSection.swift */; };
+		04F3C7BC2301A4C200445A8D /* OtherAppItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7BB2301A4C200445A8D /* OtherAppItem.swift */; };
+		04F3C7BE2301A4FD00445A8D /* AboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7BD2301A4FD00445A8D /* AboutSection.swift */; };
+		04F3C7C02301A52A00445A8D /* AboutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7BF2301A52A00445A8D /* AboutItem.swift */; };
+		04F3C7C22301A55E00445A8D /* AcknowledgementsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7C12301A55D00445A8D /* AcknowledgementsItem.swift */; };
+		04F3C7C42301A58C00445A8D /* ContactItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7C32301A58C00445A8D /* ContactItem.swift */; };
+		04F3C7C62301A5C300445A8D /* PrivacyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7C52301A5C300445A8D /* PrivacyItem.swift */; };
+		04F3C7C82301A5E900445A8D /* AutoRedactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7C72301A5E900445A8D /* AutoRedactions.swift */; };
+		04F3C7CA2301A62200445A8D /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7C92301A62200445A8D /* SettingsSection.swift */; };
+		04F3C7CD2302F0B100445A8D /* SettingsTableHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7CC2302F0B100445A8D /* SettingsTableHeaderFooterView.swift */; };
+		04F3C7CF2302F0E600445A8D /* SettingsTableViewHeaderFooterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7CE2302F0E600445A8D /* SettingsTableViewHeaderFooterLabel.swift */; };
 		04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */; };
 		04FF8DB122F261B3008CF0E9 /* PhotoEditingCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */; };
 		04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */; };
@@ -243,8 +257,7 @@
 		043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingObservationVisualizationView.swift; sourceTree = "<group>"; };
 		043CD9DA22753D510012F5AE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		043CD9DC227548C20012F5AE /* SettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
-		043CD9DE227548F30012F5AE /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
-		043CD9E02275490E0012F5AE /* SettingsContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContentProvider.swift; sourceTree = "<group>"; };
+		043CD9DE227548F30012F5AE /* SettingsStandardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStandardTableViewCell.swift; sourceTree = "<group>"; };
 		043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewDataSource.swift; sourceTree = "<group>"; };
 		043CD9E42277EC910012F5AE /* PhotoEditingLegacyBrushStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingLegacyBrushStrokeView.swift; sourceTree = "<group>"; };
 		047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingWorkspaceView.swift; sourceTree = "<group>"; };
@@ -289,6 +302,21 @@
 		04F3C7A42300206A00445A8D /* Purchaser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchaser.swift; sourceTree = "<group>"; };
 		04F3C7A62300968500445A8D /* ReceiptValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptValidator.swift; sourceTree = "<group>"; };
 		04F3C7A8230099BC00445A8D /* PurchaseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseState.swift; sourceTree = "<group>"; };
+		04F3C7AB230187F200445A8D /* SettingsContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContentProvider.swift; sourceTree = "<group>"; };
+		04F3C7AD2301A2D100445A8D /* SettingsContentSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContentSection.swift; sourceTree = "<group>"; };
+		04F3C7AF2301A31900445A8D /* SettingsContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContentItem.swift; sourceTree = "<group>"; };
+		04F3C7B12301A3CF00445A8D /* StandardContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardContentItem.swift; sourceTree = "<group>"; };
+		04F3C7B92301A47E00445A8D /* OtherAppsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherAppsSection.swift; sourceTree = "<group>"; };
+		04F3C7BB2301A4C200445A8D /* OtherAppItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherAppItem.swift; sourceTree = "<group>"; };
+		04F3C7BD2301A4FD00445A8D /* AboutSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSection.swift; sourceTree = "<group>"; };
+		04F3C7BF2301A52A00445A8D /* AboutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutItem.swift; sourceTree = "<group>"; };
+		04F3C7C12301A55D00445A8D /* AcknowledgementsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsItem.swift; sourceTree = "<group>"; };
+		04F3C7C32301A58C00445A8D /* ContactItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactItem.swift; sourceTree = "<group>"; };
+		04F3C7C52301A5C300445A8D /* PrivacyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyItem.swift; sourceTree = "<group>"; };
+		04F3C7C72301A5E900445A8D /* AutoRedactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactions.swift; sourceTree = "<group>"; };
+		04F3C7C92301A62200445A8D /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		04F3C7CC2302F0B100445A8D /* SettingsTableHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableHeaderFooterView.swift; sourceTree = "<group>"; };
+		04F3C7CE2302F0E600445A8D /* SettingsTableViewHeaderFooterLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewHeaderFooterLabel.swift; sourceTree = "<group>"; };
 		04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservationRedaction.swift; sourceTree = "<group>"; };
 		04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingCanvasView.swift; sourceTree = "<group>"; };
 		04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEditViewController.swift; sourceTree = "<group>"; };
@@ -495,17 +523,16 @@
 		043CD9D922753D450012F5AE /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				04F3C7AA230187D800445A8D /* Content Provider */,
 				04ADD1542290CBF300E17445 /* Other Apps */,
 				049F292922875AC200A335BE /* Presented View Controllers */,
 				043CD9DA22753D510012F5AE /* SettingsViewController.swift */,
 				043CD9DC227548C20012F5AE /* SettingsTableView.swift */,
-				043CD9DE227548F30012F5AE /* SettingsTableViewCell.swift */,
-				042B78F9229A2560005B7A2A /* SettingsAppEntryTableViewCell.swift */,
-				042B78FB229A257E005B7A2A /* SettingsTableViewCellLabel.swift */,
-				042B78FD229A259C005B7A2A /* SettingsTableViewCellImageView.swift */,
-				043CD9E02275490E0012F5AE /* SettingsContentProvider.swift */,
+				04F3C7CB2302ED9000445A8D /* Table View Cells */,
 				043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */,
 				049F2927228755DB00A335BE /* SettingsNavigationController.swift */,
+				04F3C7CC2302F0B100445A8D /* SettingsTableHeaderFooterView.swift */,
+				04F3C7CE2302F0E600445A8D /* SettingsTableViewHeaderFooterLabel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -704,6 +731,61 @@
 				04F3C7A62300968500445A8D /* ReceiptValidator.swift */,
 			);
 			path = Purchasing;
+			sourceTree = "<group>";
+		};
+		04F3C7AA230187D800445A8D /* Content Provider */ = {
+			isa = PBXGroup;
+			children = (
+				04F3C7B82301A46C00445A8D /* Other Apps Section */,
+				04F3C7B72301A43F00445A8D /* Settings Section */,
+				04F3C7B32301A40400445A8D /* About Section */,
+				04F3C7AB230187F200445A8D /* SettingsContentProvider.swift */,
+				04F3C7AD2301A2D100445A8D /* SettingsContentSection.swift */,
+				04F3C7B12301A3CF00445A8D /* StandardContentItem.swift */,
+				04F3C7AF2301A31900445A8D /* SettingsContentItem.swift */,
+			);
+			path = "Content Provider";
+			sourceTree = "<group>";
+		};
+		04F3C7B32301A40400445A8D /* About Section */ = {
+			isa = PBXGroup;
+			children = (
+				04F3C7BD2301A4FD00445A8D /* AboutSection.swift */,
+				04F3C7BF2301A52A00445A8D /* AboutItem.swift */,
+				04F3C7C12301A55D00445A8D /* AcknowledgementsItem.swift */,
+				04F3C7C32301A58C00445A8D /* ContactItem.swift */,
+				04F3C7C52301A5C300445A8D /* PrivacyItem.swift */,
+			);
+			path = "About Section";
+			sourceTree = "<group>";
+		};
+		04F3C7B72301A43F00445A8D /* Settings Section */ = {
+			isa = PBXGroup;
+			children = (
+				04F3C7C72301A5E900445A8D /* AutoRedactions.swift */,
+				04F3C7C92301A62200445A8D /* SettingsSection.swift */,
+			);
+			path = "Settings Section";
+			sourceTree = "<group>";
+		};
+		04F3C7B82301A46C00445A8D /* Other Apps Section */ = {
+			isa = PBXGroup;
+			children = (
+				04F3C7B92301A47E00445A8D /* OtherAppsSection.swift */,
+				04F3C7BB2301A4C200445A8D /* OtherAppItem.swift */,
+			);
+			path = "Other Apps Section";
+			sourceTree = "<group>";
+		};
+		04F3C7CB2302ED9000445A8D /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				043CD9DE227548F30012F5AE /* SettingsStandardTableViewCell.swift */,
+				042B78F9229A2560005B7A2A /* SettingsAppEntryTableViewCell.swift */,
+				042B78FB229A257E005B7A2A /* SettingsTableViewCellLabel.swift */,
+				042B78FD229A259C005B7A2A /* SettingsTableViewCellImageView.swift */,
+			);
+			path = "Table View Cells";
 			sourceTree = "<group>";
 		};
 		04FF8DB522F57A52008CF0E9 /* Auto Redactions */ = {
@@ -922,19 +1004,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F3C7AC230187F200445A8D /* SettingsContentProvider.swift in Sources */,
 				0431E0CF22F830BB00DC85C4 /* DocumentScannerPhotoLibraryViewCellIconView.swift in Sources */,
 				048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */,
 				042A2B7A228A642100353414 /* PhotoEditingProtectionAlertController.swift in Sources */,
+				04F3C7B22301A3CF00445A8D /* StandardContentItem.swift in Sources */,
+				04F3C7C62301A5C300445A8D /* PrivacyItem.swift in Sources */,
 				043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */,
 				049F292D22875AFA00A335BE /* AboutViewController.swift in Sources */,
+				04F3C7C02301A52A00445A8D /* AboutItem.swift in Sources */,
 				049F293122875D5B00A335BE /* AcknowledgementsViewController.swift in Sources */,
+				04F3C7BA2301A47E00445A8D /* OtherAppsSection.swift in Sources */,
 				041EFF492252FAF50058D8EE /* IntroViewController.swift in Sources */,
+				04F3C7AE2301A2D100445A8D /* SettingsContentSection.swift in Sources */,
 				04F3C7A72300968500445A8D /* ReceiptValidator.swift in Sources */,
 				04F3C7A52300206A00445A8D /* Purchaser.swift in Sources */,
+				04F3C7CF2302F0E600445A8D /* SettingsTableViewHeaderFooterLabel.swift in Sources */,
+				04F3C7CD2302F0B100445A8D /* SettingsTableHeaderFooterView.swift in Sources */,
 				0431E0CD22F826E900DC85C4 /* DocumentScannerPhotoLibraryViewCell.swift in Sources */,
 				049F293522875F7E00A335BE /* ContactMailViewController.swift in Sources */,
+				04F3C7BC2301A4C200445A8D /* OtherAppItem.swift in Sources */,
 				042B7905229A3AC7005B7A2A /* AppRatingsPrompter.swift in Sources */,
-				043CD9E12275490E0012F5AE /* SettingsContentProvider.swift in Sources */,
 				0431E0D322F85F0B00DC85C4 /* DocumentScannerPresenting.swift in Sources */,
 				041EFF6B225C36350058D8EE /* PhotoLibraryViewController.swift in Sources */,
 				043CD9DB22753D510012F5AE /* SettingsViewController.swift in Sources */,
@@ -944,10 +1034,13 @@
 				041EFF72225C3DC00058D8EE /* PhotoLibraryDataSource.swift in Sources */,
 				04ADD15C2290D29400E17445 /* AppLookupResponseResult.swift in Sources */,
 				048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */,
+				04F3C7CA2301A62200445A8D /* SettingsSection.swift in Sources */,
+				04F3C7C22301A55E00445A8D /* AcknowledgementsItem.swift in Sources */,
 				041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */,
 				041EFF6E225C38800058D8EE /* PhotoSelectionViewController.swift in Sources */,
 				04EF55BC22D6EBFA00C6600D /* EditingUserActivity.swift in Sources */,
 				049F292B22875ADD00A335BE /* WebViewController.swift in Sources */,
+				04F3C7B02301A31900445A8D /* SettingsContentItem.swift in Sources */,
 				04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */,
 				04ADD1562290CCC200E17445 /* AppEntry.swift in Sources */,
 				04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */,
@@ -967,17 +1060,20 @@
 				042A2B7E228CFEDB00353414 /* PhotoEditingNavigationController.swift in Sources */,
 				042A2B7C228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift in Sources */,
 				041EFF50225303120058D8EE /* PromptLabel.swift in Sources */,
-				043CD9DF227548F30012F5AE /* SettingsTableViewCell.swift in Sources */,
+				043CD9DF227548F30012F5AE /* SettingsStandardTableViewCell.swift in Sources */,
+				04F3C7C42301A58C00445A8D /* ContactItem.swift in Sources */,
 				042B78FE229A259C005B7A2A /* SettingsTableViewCellImageView.swift in Sources */,
 				049F293322875E4D00A335BE /* ContactWebViewController.swift in Sources */,
 				04ADD1602290DA8E00E17445 /* AppEntryOpening.swift in Sources */,
 				042B78FC229A257E005B7A2A /* SettingsTableViewCellLabel.swift in Sources */,
 				04FF8DB722F57AA1008CF0E9 /* AutoRedactionsEditView.swift in Sources */,
 				041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */,
+				04F3C7C82301A5E900445A8D /* AutoRedactions.swift in Sources */,
 				04F3C7A9230099BC00445A8D /* PurchaseState.swift in Sources */,
 				041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */,
 				04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */,
 				049F2928228755DB00A335BE /* SettingsNavigationController.swift in Sources */,
+				04F3C7BE2301A4FD00445A8D /* AboutSection.swift in Sources */,
 				041EFF74225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift in Sources */,
 				04ADD1582290CFF100E17445 /* AppListFetcher.swift in Sources */,
 			);
