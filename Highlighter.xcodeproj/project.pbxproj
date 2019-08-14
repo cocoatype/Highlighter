@@ -130,6 +130,11 @@
 		04F3C7CA2301A62200445A8D /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7C92301A62200445A8D /* SettingsSection.swift */; };
 		04F3C7CD2302F0B100445A8D /* SettingsTableHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7CC2302F0B100445A8D /* SettingsTableHeaderFooterView.swift */; };
 		04F3C7CF2302F0E600445A8D /* SettingsTableViewHeaderFooterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7CE2302F0E600445A8D /* SettingsTableViewHeaderFooterLabel.swift */; };
+		04F3C7D22304375E00445A8D /* SettingsPurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7D12304375E00445A8D /* SettingsPurchaseTableViewCell.swift */; };
+		04F3C7D52304437900445A8D /* PurchaseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7D42304437900445A8D /* PurchaseSection.swift */; };
+		04F3C7D7230443BD00445A8D /* PurchaseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7D6230443BD00445A8D /* PurchaseItem.swift */; };
+		04F3C7D9230449AB00445A8D /* SettingsPurchaseTableViewCellTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7D8230449AB00445A8D /* SettingsPurchaseTableViewCellTitleLabel.swift */; };
+		04F3C7DB230449D800445A8D /* SettingsPurchaseTableViewCellSubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7DA230449D800445A8D /* SettingsPurchaseTableViewCellSubtitleLabel.swift */; };
 		04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */; };
 		04FF8DB122F261B3008CF0E9 /* PhotoEditingCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */; };
 		04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */; };
@@ -317,6 +322,11 @@
 		04F3C7C92301A62200445A8D /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		04F3C7CC2302F0B100445A8D /* SettingsTableHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableHeaderFooterView.swift; sourceTree = "<group>"; };
 		04F3C7CE2302F0E600445A8D /* SettingsTableViewHeaderFooterLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewHeaderFooterLabel.swift; sourceTree = "<group>"; };
+		04F3C7D12304375E00445A8D /* SettingsPurchaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPurchaseTableViewCell.swift; sourceTree = "<group>"; };
+		04F3C7D42304437900445A8D /* PurchaseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseSection.swift; sourceTree = "<group>"; };
+		04F3C7D6230443BD00445A8D /* PurchaseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseItem.swift; sourceTree = "<group>"; };
+		04F3C7D8230449AB00445A8D /* SettingsPurchaseTableViewCellTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPurchaseTableViewCellTitleLabel.swift; sourceTree = "<group>"; };
+		04F3C7DA230449D800445A8D /* SettingsPurchaseTableViewCellSubtitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPurchaseTableViewCellSubtitleLabel.swift; sourceTree = "<group>"; };
 		04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservationRedaction.swift; sourceTree = "<group>"; };
 		04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingCanvasView.swift; sourceTree = "<group>"; };
 		04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEditViewController.swift; sourceTree = "<group>"; };
@@ -736,6 +746,7 @@
 		04F3C7AA230187D800445A8D /* Content Provider */ = {
 			isa = PBXGroup;
 			children = (
+				04F3C7D32304435200445A8D /* Purchase Section */,
 				04F3C7B82301A46C00445A8D /* Other Apps Section */,
 				04F3C7B72301A43F00445A8D /* Settings Section */,
 				04F3C7B32301A40400445A8D /* About Section */,
@@ -784,8 +795,20 @@
 				042B78F9229A2560005B7A2A /* SettingsAppEntryTableViewCell.swift */,
 				042B78FB229A257E005B7A2A /* SettingsTableViewCellLabel.swift */,
 				042B78FD229A259C005B7A2A /* SettingsTableViewCellImageView.swift */,
+				04F3C7D12304375E00445A8D /* SettingsPurchaseTableViewCell.swift */,
+				04F3C7D8230449AB00445A8D /* SettingsPurchaseTableViewCellTitleLabel.swift */,
+				04F3C7DA230449D800445A8D /* SettingsPurchaseTableViewCellSubtitleLabel.swift */,
 			);
 			path = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		04F3C7D32304435200445A8D /* Purchase Section */ = {
+			isa = PBXGroup;
+			children = (
+				04F3C7D42304437900445A8D /* PurchaseSection.swift */,
+				04F3C7D6230443BD00445A8D /* PurchaseItem.swift */,
+			);
+			path = "Purchase Section";
 			sourceTree = "<group>";
 		};
 		04FF8DB522F57A52008CF0E9 /* Auto Redactions */ = {
@@ -1012,6 +1035,7 @@
 				04F3C7C62301A5C300445A8D /* PrivacyItem.swift in Sources */,
 				043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */,
 				049F292D22875AFA00A335BE /* AboutViewController.swift in Sources */,
+				04F3C7D52304437900445A8D /* PurchaseSection.swift in Sources */,
 				04F3C7C02301A52A00445A8D /* AboutItem.swift in Sources */,
 				049F293122875D5B00A335BE /* AcknowledgementsViewController.swift in Sources */,
 				04F3C7BA2301A47E00445A8D /* OtherAppsSection.swift in Sources */,
@@ -1021,6 +1045,7 @@
 				04F3C7A52300206A00445A8D /* Purchaser.swift in Sources */,
 				04F3C7CF2302F0E600445A8D /* SettingsTableViewHeaderFooterLabel.swift in Sources */,
 				04F3C7CD2302F0B100445A8D /* SettingsTableHeaderFooterView.swift in Sources */,
+				04F3C7D22304375E00445A8D /* SettingsPurchaseTableViewCell.swift in Sources */,
 				0431E0CD22F826E900DC85C4 /* DocumentScannerPhotoLibraryViewCell.swift in Sources */,
 				049F293522875F7E00A335BE /* ContactMailViewController.swift in Sources */,
 				04F3C7BC2301A4C200445A8D /* OtherAppItem.swift in Sources */,
@@ -1032,6 +1057,7 @@
 				04FF8DE322F6DF2C008CF0E9 /* PageCountAlertFactory.swift in Sources */,
 				043911E822C4658800D4AE30 /* PhotoEditingViewController.swift in Sources */,
 				041EFF72225C3DC00058D8EE /* PhotoLibraryDataSource.swift in Sources */,
+				04F3C7DB230449D800445A8D /* SettingsPurchaseTableViewCellSubtitleLabel.swift in Sources */,
 				04ADD15C2290D29400E17445 /* AppLookupResponseResult.swift in Sources */,
 				048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */,
 				04F3C7CA2301A62200445A8D /* SettingsSection.swift in Sources */,
@@ -1049,6 +1075,7 @@
 				043CD9DD227548C20012F5AE /* SettingsTableView.swift in Sources */,
 				041EFF76225C3DF10058D8EE /* PhotoLibraryViewLayout.swift in Sources */,
 				04FF8DBD22F57B3A008CF0E9 /* AutoRedactionsAdditionAlertController.swift in Sources */,
+				04F3C7D7230443BD00445A8D /* PurchaseItem.swift in Sources */,
 				04ADD15A2290D1C500E17445 /* AppLookupResponse.swift in Sources */,
 				049F292F22875B1300A335BE /* PrivacyViewController.swift in Sources */,
 				04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */,
@@ -1074,6 +1101,7 @@
 				04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */,
 				049F2928228755DB00A335BE /* SettingsNavigationController.swift in Sources */,
 				04F3C7BE2301A4FD00445A8D /* AboutSection.swift in Sources */,
+				04F3C7D9230449AB00445A8D /* SettingsPurchaseTableViewCellTitleLabel.swift in Sources */,
 				041EFF74225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift in Sources */,
 				04ADD1582290CFF100E17445 /* AppListFetcher.swift in Sources */,
 			);

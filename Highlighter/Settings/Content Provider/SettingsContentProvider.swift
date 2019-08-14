@@ -7,6 +7,7 @@ class SettingsContentProvider: NSObject {
     init(otherAppEntries: [AppEntry] = []) {
         self.otherAppEntries = otherAppEntries
         super.init()
+        refreshOtherAppsList()
     }
 
     // MARK: Data
@@ -56,11 +57,24 @@ class SettingsContentProvider: NSObject {
 
     // MARK: Boilerplate
 
+    private let purchaser = Purchaser()
+
     private var sections: [SettingsContentSection] {
-        return [
-            SettingsSection(),
+        var sections = [SettingsContentSection]()
+
+        switch purchaser.state {
+        case .purchased:
+            sections.append(SettingsSection())
+        case .loading, .readyForPurchase, .purchasing, .unknown:
+            sections.append(PurchaseSection())
+        case .unavailable: break
+        }
+
+        sections.append(contentsOf: ([
             AboutSection(),
             OtherAppsSection(otherApps: otherAppEntries)
-        ]
+        ] as [SettingsContentSection]))
+
+        return sections
     }
 }

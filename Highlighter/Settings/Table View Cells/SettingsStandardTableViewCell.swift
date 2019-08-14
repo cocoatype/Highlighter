@@ -35,6 +35,7 @@ class SettingsStandardTableViewCell: UITableViewCell, SettingsContentTableViewCe
     }
 
     // MARK: Boilerplate
+
     private let label = SettingsTableViewCellLabel()
 
     @available(*, unavailable)

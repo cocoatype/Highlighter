@@ -42,6 +42,10 @@
 "PhotoSelectionViewController.navigationItemTitle" = "Photos";
 "PhotoSelectionViewController.settingsButtonAccessibilityLabel" = "Help";
 
+"PurchaseItem.title" = "Ultra Highlighter";
+"PurchaseItem.subtitleWithoutProduct" = "Enhanced Features — $2.99";
+"PurchaseItem.subtitleWithProduct" = "Enhanced Features — %@";
+
 "SettingsContentProvider.Item.about" = "About Black Highlighter";
 "SettingsContentProvider.Item.acknowledgements" = "Acknowledgements";
 "SettingsContentProvider.Item.autoRedactions" = "Auto-Hidden Words";
