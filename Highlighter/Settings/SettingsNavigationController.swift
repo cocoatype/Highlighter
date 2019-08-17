@@ -47,6 +47,10 @@ class SettingsNavigationController: NavigationController {
         present(privacyViewController, animated: true)
     }
 
+    @objc func presentPurchaseMarketingViewController() {
+        pushViewController(PurchaseMarketingViewController(), animated: true)
+    }
+
     // MARK: Boilerplate
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {

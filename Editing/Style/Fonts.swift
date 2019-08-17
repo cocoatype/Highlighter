@@ -7,9 +7,10 @@ public extension UIFont {
     class func appFont(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
         let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
         let fontMethod: ((UIFont.TextStyle) -> UIFont)
-        if textStyle == .headline {
+        switch textStyle {
+        case .headline, .title2:
             fontMethod = boldFont(for:)
-        } else {
+        default:
             fontMethod = regularFont(for:)
         }
 
