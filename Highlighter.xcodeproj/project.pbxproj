@@ -104,7 +104,6 @@
 		04ADD15C2290D29400E17445 /* AppLookupResponseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15B2290D29400E17445 /* AppLookupResponseResult.swift */; };
 		04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15D2290D2D200E17445 /* AppDeveloperInfo.swift */; };
 		04ADD1602290DA8E00E17445 /* AppEntryOpening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15F2290DA8E00E17445 /* AppEntryOpening.swift */; };
-		04ADD1642290DE6800E17445 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ADD1632290DE6700E17445 /* Kingfisher.framework */; };
 		04D68BC7225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC6225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift */; };
 		04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */; };
 		04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BCB2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift */; };
@@ -147,6 +146,11 @@
 		04F3C7EF2308E8ED00445A8D /* PaymentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7EE2308E8ED00445A8D /* PaymentOperation.swift */; };
 		04F3C7F12308E91600445A8D /* FetchProductOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7F02308E91600445A8D /* FetchProductOperation.swift */; };
 		04F3C7F32308F37400445A8D /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7F22308F37400445A8D /* AsyncOperation.swift */; };
+		04F3C7F5230921A100445A8D /* OpenSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C7F4230921A100445A8D /* OpenSSL.framework */; };
+		04F3C7F6230921A100445A8D /* OpenSSL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C7F4230921A100445A8D /* OpenSSL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		04F3C7F7230921A700445A8D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ADD1632290DE6700E17445 /* Kingfisher.framework */; };
+		04F3C7F8230921A700445A8D /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04ADD1632290DE6700E17445 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		04F3C7FA2309282600445A8D /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 04F3C7F92309282600445A8D /* AppleIncRootCertificate.cer */; };
 		04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */; };
 		04FF8DB122F261B3008CF0E9 /* PhotoEditingCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */; };
 		04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */; };
@@ -201,7 +205,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				04F3C7F6230921A100445A8D /* OpenSSL.framework in Embed Frameworks */,
 				049F92DF22CDA3DB0090C9BC /* Editing.framework in Embed Frameworks */,
+				04F3C7F8230921A700445A8D /* Kingfisher.framework in Embed Frameworks */,
 				04F3C7E023044C5000445A8D /* BonMot.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -351,6 +357,8 @@
 		04F3C7EE2308E8ED00445A8D /* PaymentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOperation.swift; sourceTree = "<group>"; };
 		04F3C7F02308E91600445A8D /* FetchProductOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProductOperation.swift; sourceTree = "<group>"; };
 		04F3C7F22308F37400445A8D /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		04F3C7F4230921A100445A8D /* OpenSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenSSL.framework; path = Carthage/Build/iOS/OpenSSL.framework; sourceTree = "<group>"; };
+		04F3C7F92309282600445A8D /* AppleIncRootCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleIncRootCertificate.cer; sourceTree = "<group>"; };
 		04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservationRedaction.swift; sourceTree = "<group>"; };
 		04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingCanvasView.swift; sourceTree = "<group>"; };
 		04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEditViewController.swift; sourceTree = "<group>"; };
@@ -367,8 +375,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04ADD1642290DE6800E17445 /* Kingfisher.framework in Frameworks */,
+				04F3C7F5230921A100445A8D /* OpenSSL.framework in Frameworks */,
 				04F3C7DF23044C5000445A8D /* BonMot.framework in Frameworks */,
+				04F3C7F7230921A700445A8D /* Kingfisher.framework in Frameworks */,
 				049F92DE22CDA3DB0090C9BC /* Editing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,6 +596,7 @@
 		048909F0226571830048E203 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				04F3C7F92309282600445A8D /* AppleIncRootCertificate.cer */,
 				041EFF042251A9F50058D8EE /* Info.plist */,
 				041EFF4A225300030058D8EE /* Localizable.strings */,
 				041EFEFF2251A9F50058D8EE /* Assets.xcassets */,
@@ -671,6 +681,7 @@
 		04ADD1622290DE6700E17445 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04F3C7F4230921A100445A8D /* OpenSSL.framework */,
 				04F3C7DE23044C5000445A8D /* BonMot.framework */,
 				041BEA3C22EF7DAB00FF07C2 /* PencilKit.framework */,
 				04ADD1632290DE6700E17445 /* Kingfisher.framework */,
@@ -1011,6 +1022,7 @@
 				041EFF4B225300030058D8EE /* Localizable.strings in Resources */,
 				049F930A22CDAB570090C9BC /* Aleo-Regular.otf in Resources */,
 				041EFF002251A9F50058D8EE /* Assets.xcassets in Resources */,
+				04F3C7FA2309282600445A8D /* AppleIncRootCertificate.cer in Resources */,
 				049F930922CDAB570090C9BC /* Aleo-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
