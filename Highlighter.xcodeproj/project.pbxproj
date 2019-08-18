@@ -146,6 +146,7 @@
 		04F3C7ED2308E81400445A8D /* PurchaseOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7EC2308E81400445A8D /* PurchaseOperationQueue.swift */; };
 		04F3C7EF2308E8ED00445A8D /* PaymentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7EE2308E8ED00445A8D /* PaymentOperation.swift */; };
 		04F3C7F12308E91600445A8D /* FetchProductOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7F02308E91600445A8D /* FetchProductOperation.swift */; };
+		04F3C7F32308F37400445A8D /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7F22308F37400445A8D /* AsyncOperation.swift */; };
 		04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */; };
 		04FF8DB122F261B3008CF0E9 /* PhotoEditingCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */; };
 		04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */; };
@@ -349,6 +350,7 @@
 		04F3C7EC2308E81400445A8D /* PurchaseOperationQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseOperationQueue.swift; sourceTree = "<group>"; };
 		04F3C7EE2308E8ED00445A8D /* PaymentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOperation.swift; sourceTree = "<group>"; };
 		04F3C7F02308E91600445A8D /* FetchProductOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProductOperation.swift; sourceTree = "<group>"; };
+		04F3C7F22308F37400445A8D /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservationRedaction.swift; sourceTree = "<group>"; };
 		04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingCanvasView.swift; sourceTree = "<group>"; };
 		04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEditViewController.swift; sourceTree = "<group>"; };
@@ -723,6 +725,7 @@
 				041EFF1A2251AB8D0058D8EE /* AppWindow.swift */,
 				042B7902229A38C0005B7A2A /* Defaults.swift */,
 				042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */,
+				04F3C7F22308F37400445A8D /* AsyncOperation.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1135,6 +1138,7 @@
 				04F3C7F12308E91600445A8D /* FetchProductOperation.swift in Sources */,
 				042A2B7E228CFEDB00353414 /* PhotoEditingNavigationController.swift in Sources */,
 				042A2B7C228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift in Sources */,
+				04F3C7F32308F37400445A8D /* AsyncOperation.swift in Sources */,
 				041EFF50225303120058D8EE /* PromptLabel.swift in Sources */,
 				043CD9DF227548F30012F5AE /* SettingsStandardTableViewCell.swift in Sources */,
 				04F3C7C42301A58C00445A8D /* ContactItem.swift in Sources */,

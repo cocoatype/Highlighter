@@ -4,9 +4,7 @@
 import Foundation
 import StoreKit
 
-class FetchProductOperation: Operation, SKProductsRequestDelegate {
-    var result: Result<SKProduct, Error>?
-
+class FetchProductOperation: AsyncOperation<SKProduct, Error>, SKProductsRequestDelegate {
     init(identifier: String) {
         self.identifier = identifier
     }
@@ -37,40 +35,4 @@ class FetchProductOperation: Operation, SKProductsRequestDelegate {
     // MARK: Boilerplate
 
     private let identifier: String
-
-    override var isAsynchronous: Bool { return true }
-
-    private var _executing = false {
-        willSet {
-            willChangeValue(for: \.isExecuting)
-        }
-
-        didSet {
-            didChangeValue(for: \.isExecuting)
-        }
-    }
-    override var isExecuting: Bool { return _executing }
-
-    private var _finished = false {
-        willSet {
-            willChangeValue(for: \.isFinished)
-        }
-
-        didSet {
-            didChangeValue(for: \.isFinished)
-        }
-    }
-    override var isFinished: Bool { return _finished }
-
-    private func succeed(_ product: SKProduct) {
-        result = .success(product)
-        _finished = true
-        _executing = false
-    }
-
-    private func fail(_ error: Error) {
-        result = .failure(error)
-        _finished = true
-        _executing = false
-    }
 }

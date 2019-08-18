@@ -4,9 +4,7 @@
 import Foundation
 import StoreKit
 
-class PurchaseOperation: Operation {
-    var result: Result<Void, Error>?
-
+class PurchaseOperation: AsyncOperation<Void, Error> {
     init(target: PurchaseOperationTarget) {
         self.target = target
     }
@@ -58,40 +56,4 @@ class PurchaseOperation: Operation {
 
     private let operationQueue = PurchaseOperationQueue()
     private let target: PurchaseOperationTarget
-
-    override var isAsynchronous: Bool { return true }
-
-    private var _executing = false {
-        willSet {
-            willChangeValue(for: \.isExecuting)
-        }
-
-        didSet {
-            didChangeValue(for: \.isExecuting)
-        }
-    }
-    override var isExecuting: Bool { return _executing }
-
-    private var _finished = false {
-        willSet {
-            willChangeValue(for: \.isFinished)
-        }
-
-        didSet {
-            didChangeValue(for: \.isFinished)
-        }
-    }
-    override var isFinished: Bool { return _finished }
-
-    private func succeed() {
-        result = .success(())
-        _finished = true
-        _executing = false
-    }
-
-    private func fail(_ error: Error) {
-        result = .failure(error)
-        _finished = true
-        _executing = false
-    }
 }
