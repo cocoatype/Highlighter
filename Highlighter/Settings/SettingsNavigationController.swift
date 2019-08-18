@@ -6,7 +6,8 @@ import UIKit
 
 class SettingsNavigationController: NavigationController {
     init() {
-        super.init(rootViewController: SettingsViewController())
+        let settingsViewController = SettingsViewController(purchaser: purchaser)
+        super.init(rootViewController: settingsViewController)
         modalPresentationStyle = .formSheet
     }
 
@@ -24,7 +25,6 @@ class SettingsNavigationController: NavigationController {
 
     @objc func presentAutoRedactionsEditViewController() {
         pushViewController(AutoRedactionsEditViewController(), animated: true)
-//        present(AutoRedactionsEditViewController(), animated: true)
     }
 
     @objc func presentContactViewController() {
@@ -48,7 +48,19 @@ class SettingsNavigationController: NavigationController {
         present(privacyViewController, animated: true)
     }
 
+    @objc func presentPurchaseMarketingViewController() {
+        pushViewController(PurchaseMarketingViewController(), animated: true)
+    }
+
+    // MARK: Purchasing
+
+    @objc func startPurchase() {
+        purchaser.purchaseUnlock()
+    }
+
     // MARK: Boilerplate
+
+    private let purchaser = Purchaser()
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)

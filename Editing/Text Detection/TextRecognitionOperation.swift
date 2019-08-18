@@ -74,5 +74,4 @@ class TextRecognitionOperation: Operation {
         }
     }
     override var isFinished: Bool { return _finished }
-
 }
