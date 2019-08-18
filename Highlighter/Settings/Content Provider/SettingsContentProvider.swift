@@ -4,8 +4,9 @@
 import Foundation
 
 class SettingsContentProvider: NSObject {
-    init(otherAppEntries: [AppEntry] = []) {
+    init(purchaser: Purchaser, otherAppEntries: [AppEntry] = []) {
         self.otherAppEntries = otherAppEntries
+        self.purchaser = purchaser
         super.init()
         refreshOtherAppsList()
     }
@@ -57,7 +58,7 @@ class SettingsContentProvider: NSObject {
 
     // MARK: Boilerplate
 
-    private let purchaser = Purchaser()
+    private let purchaser: Purchaser
 
     private var sections: [SettingsContentSection] {
         var sections = [SettingsContentSection]()

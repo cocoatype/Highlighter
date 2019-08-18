@@ -11,8 +11,8 @@ class PurchaseMarketingView: UIView {
         addSubview(label)
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: topAnchor, constant: 20.0),
-            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15.0),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15.0)
+            label.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor)
         ])
     }
 

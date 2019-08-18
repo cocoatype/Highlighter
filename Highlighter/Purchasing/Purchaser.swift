@@ -23,13 +23,20 @@ class Purchaser: NSObject, SKPaymentTransactionObserver, SKProductsRequestDelega
         }
     }
 
-    func purchase(_ product: SKProduct) {
-        let payment = SKPayment(product: product)
-        SKPaymentQueue.default().add(payment)
+    func purchaseUnlock() {
+        guard case .readyForPurchase(product: let product) = state else { return }
+        purchase(product)
     }
 
     func restorePreviousPurchase() {
         SKPaymentQueue.default().restoreCompletedTransactions()
+    }
+
+    // MARK: Communication
+
+    private func purchase(_ product: SKProduct) {
+        let payment = SKPayment(product: product)
+        SKPaymentQueue.default().add(payment)
     }
 
     private func fetchProducts() {

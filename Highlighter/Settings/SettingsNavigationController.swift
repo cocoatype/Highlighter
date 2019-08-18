@@ -6,7 +6,8 @@ import UIKit
 
 class SettingsNavigationController: NavigationController {
     init() {
-        super.init(rootViewController: SettingsViewController())
+        let settingsViewController = SettingsViewController(purchaser: purchaser)
+        super.init(rootViewController: settingsViewController)
         modalPresentationStyle = .formSheet
     }
 
@@ -51,7 +52,15 @@ class SettingsNavigationController: NavigationController {
         pushViewController(PurchaseMarketingViewController(), animated: true)
     }
 
+    // MARK: Purchasing
+
+    @objc func startPurchase() {
+        purchaser.purchaseUnlock()
+    }
+
     // MARK: Boilerplate
+
+    private let purchaser = Purchaser()
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)

@@ -4,7 +4,8 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    init() {
+    init(purchaser: Purchaser) {
+        self.purchaser = purchaser
         super.init(nibName: nil, bundle: nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(AppViewController.dismissSettingsViewController))
         navigationItem.title = SettingsViewController.navigationTitle
@@ -51,8 +52,9 @@ class SettingsViewController: UIViewController {
 
     private var activeObserver: Any?
     private var sectionsObserver: Any?
-    private let contentProvider = SettingsContentProvider()
+    private lazy var contentProvider = SettingsContentProvider(purchaser: purchaser)
     private lazy var dataSource = SettingsTableViewDataSource(contentProvider: contentProvider)
+    private let purchaser: Purchaser
     private var tableView: SettingsTableView? { return view as? SettingsTableView }
 
     deinit {
