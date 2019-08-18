@@ -2,6 +2,7 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Foundation
+import Receipts
 import StoreKit
 
 class Purchaser: NSObject {
@@ -68,7 +69,7 @@ class Purchaser: NSObject {
     // MARK: Receipt Checking
 
     private var hasUserPurchasedUnlock: Bool {
-        return ReceiptValidator().unlockPurchaseStatus == .valid
+        return (try? ReceiptValidator.validatedAppReceipt()) != nil
     }
 
     // MARK: Notifications
