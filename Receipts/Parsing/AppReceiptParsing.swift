@@ -5,18 +5,7 @@ import Foundation
 import OpenSSL
 
 extension AppReceipt {
-
     init(startingAt cursor: inout UnsafePointer<UInt8>, payloadLength: Int) throws {
-        let endOfPayload = cursor.advanced(by: payloadLength)
-
-        var type = Int32(0)
-        var xclass = Int32(0)
-        var length = 0
-
-        ASN1_get_object(&(cursor.optional), &length, &type, &xclass, payloadLength)
-
-        guard type == V_ASN1_SET else { throw ReceiptParserError.malformedReceipt }
-
         var bundleIdentifier: String?
         var bundleIdentifierData: Data?
         var appVersion: String?
@@ -27,11 +16,20 @@ extension AppReceipt {
         var receiptCreationDate: Date?
         var expirationDate: Date?
 
+        let endOfPayload = cursor.advanced(by: payloadLength)
+
+        var type = Int32(0)
+        var xclass = Int32(0)
+        var length = 0
+
+        ASN1_get_object(&(cursor.optional), &length, &type, &xclass, payloadLength)
+        guard type == V_ASN1_SET else { throw ReceiptParserError.malformedReceipt }
+
         while cursor < endOfPayload {
             ASN1_get_object(&(cursor.optional), &length, &type, &xclass, cursor.distance(to: endOfPayload))
             guard type == V_ASN1_SEQUENCE else { throw ReceiptParserError.malformedReceipt }
 
-            let attributeType = ReceiptAttributeType(startingAt: &(cursor.optional), length: cursor.distance(to: endOfPayload))
+            let attributeType = AppReceiptAttributeType(startingAt: &(cursor.optional), length: cursor.distance(to: endOfPayload))
             guard Int(startingAt: &(cursor.optional), length: cursor.distance(to: endOfPayload)) != nil else { throw ReceiptParserError.malformedReceipt }
 
             ASN1_get_object(&(cursor.optional), &length, &type, &xclass, cursor.distance(to: endOfPayload))

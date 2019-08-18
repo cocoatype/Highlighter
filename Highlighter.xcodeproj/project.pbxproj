@@ -165,7 +165,8 @@
 		04F3C8222309EA2C00445A8D /* PurchaseReceiptParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C8212309EA2C00445A8D /* PurchaseReceiptParsing.swift */; };
 		04F3C8242309EBDF00445A8D /* ReceiptParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C8232309EBDF00445A8D /* ReceiptParser.swift */; };
 		04F3C8262309EBFD00445A8D /* ReceiptParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C8252309EBFD00445A8D /* ReceiptParserError.swift */; };
-		04F3C8282309ED1400445A8D /* ReceiptAttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C8272309ED1400445A8D /* ReceiptAttributeType.swift */; };
+		04F3C8282309ED1400445A8D /* AppReceiptAttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C8272309ED1400445A8D /* AppReceiptAttributeType.swift */; };
+		04F3C82C2309F3F500445A8D /* PurchaseReceiptAttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C82B2309F3F500445A8D /* PurchaseReceiptAttributeType.swift */; };
 		04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */; };
 		04FF8DB122F261B3008CF0E9 /* PhotoEditingCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */; };
 		04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */; };
@@ -395,7 +396,8 @@
 		04F3C8212309EA2C00445A8D /* PurchaseReceiptParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReceiptParsing.swift; sourceTree = "<group>"; };
 		04F3C8232309EBDF00445A8D /* ReceiptParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptParser.swift; sourceTree = "<group>"; };
 		04F3C8252309EBFD00445A8D /* ReceiptParserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptParserError.swift; sourceTree = "<group>"; };
-		04F3C8272309ED1400445A8D /* ReceiptAttributeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptAttributeType.swift; sourceTree = "<group>"; };
+		04F3C8272309ED1400445A8D /* AppReceiptAttributeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReceiptAttributeType.swift; sourceTree = "<group>"; };
+		04F3C82B2309F3F500445A8D /* PurchaseReceiptAttributeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReceiptAttributeType.swift; sourceTree = "<group>"; };
 		04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservationRedaction.swift; sourceTree = "<group>"; };
 		04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingCanvasView.swift; sourceTree = "<group>"; };
 		04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEditViewController.swift; sourceTree = "<group>"; };
@@ -927,12 +929,13 @@
 				04F3C7FE2309E80100445A8D /* AppReceipt.swift */,
 				04F3C8182309E92900445A8D /* PointerExtensions.swift */,
 				04F3C8162309E90900445A8D /* PurchaseReceipt.swift */,
-				04F3C8272309ED1400445A8D /* ReceiptAttributeType.swift */,
+				04F3C8272309ED1400445A8D /* AppReceiptAttributeType.swift */,
 				04F3C8232309EBDF00445A8D /* ReceiptParser.swift */,
 				04F3C8252309EBFD00445A8D /* ReceiptParserError.swift */,
 				04F3C7A62300968500445A8D /* ReceiptValidator.swift */,
 				04F3C82A2309EDC100445A8D /* Parsing */,
 				04F3C8292309ED9D00445A8D /* Supporting Files */,
+				04F3C82B2309F3F500445A8D /* PurchaseReceiptAttributeType.swift */,
 			);
 			path = Receipts;
 			sourceTree = "<group>";
@@ -1373,9 +1376,10 @@
 				04F3C81E2309E99100445A8D /* DateParsing.swift in Sources */,
 				04F3C8202309E9AB00445A8D /* StringParsing.swift in Sources */,
 				04F3C8262309EBFD00445A8D /* ReceiptParserError.swift in Sources */,
-				04F3C8282309ED1400445A8D /* ReceiptAttributeType.swift in Sources */,
+				04F3C8282309ED1400445A8D /* AppReceiptAttributeType.swift in Sources */,
 				04F3C81C2309E96300445A8D /* IntParsing.swift in Sources */,
 				04F3C8222309EA2C00445A8D /* PurchaseReceiptParsing.swift in Sources */,
+				04F3C82C2309F3F500445A8D /* PurchaseReceiptAttributeType.swift in Sources */,
 				04F3C8112309E8BB00445A8D /* AppReceipt.swift in Sources */,
 				04F3C8242309EBDF00445A8D /* ReceiptParser.swift in Sources */,
 				04F3C81A2309E94900445A8D /* ReceiptValidator.swift in Sources */,

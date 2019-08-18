@@ -3,7 +3,7 @@
 
 import OpenSSL
 
-enum ReceiptAttributeType {
+enum AppReceiptAttributeType {
     case bundleIdentifier
     case appVersion
     case opaqueValue

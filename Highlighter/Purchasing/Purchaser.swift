@@ -69,7 +69,12 @@ class Purchaser: NSObject {
     // MARK: Receipt Checking
 
     private var hasUserPurchasedUnlock: Bool {
-        return (try? ReceiptValidator.validatedAppReceipt()) != nil
+        do {
+            let receipt = try ReceiptValidator.validatedAppReceipt()
+            return receipt.purchaseReceipts.contains(where: { $0.productIdentifier == Purchaser.productIdentifier })
+        } catch {
+            return false
+        }
     }
 
     // MARK: Notifications
