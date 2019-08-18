@@ -135,7 +135,6 @@
 		04F3C7DB230449D800445A8D /* SettingsPurchaseTableViewCellSubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7DA230449D800445A8D /* SettingsPurchaseTableViewCellSubtitleLabel.swift */; };
 		04F3C7DD23044A9900445A8D /* PurchaseMarketingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7DC23044A9900445A8D /* PurchaseMarketingViewController.swift */; };
 		04F3C7DF23044C5000445A8D /* BonMot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C7DE23044C5000445A8D /* BonMot.framework */; };
-		04F3C7E023044C5000445A8D /* BonMot.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C7DE23044C5000445A8D /* BonMot.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04F3C7E323089ACA00445A8D /* PurchaseMarketingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7E223089ACA00445A8D /* PurchaseMarketingView.swift */; };
 		04F3C7E523089B1700445A8D /* PurchaseMarketingViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7E423089B1700445A8D /* PurchaseMarketingViewLabel.swift */; };
 		04F3C7E72308DD8F00445A8D /* PurchaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7E62308DD8F00445A8D /* PurchaseOperation.swift */; };
@@ -146,9 +145,7 @@
 		04F3C7F12308E91600445A8D /* FetchProductOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7F02308E91600445A8D /* FetchProductOperation.swift */; };
 		04F3C7F32308F37400445A8D /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7F22308F37400445A8D /* AsyncOperation.swift */; };
 		04F3C7F5230921A100445A8D /* OpenSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C7F4230921A100445A8D /* OpenSSL.framework */; };
-		04F3C7F6230921A100445A8D /* OpenSSL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C7F4230921A100445A8D /* OpenSSL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04F3C7F7230921A700445A8D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ADD1632290DE6700E17445 /* Kingfisher.framework */; };
-		04F3C7F8230921A700445A8D /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04ADD1632290DE6700E17445 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04F3C7FA2309282600445A8D /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 04F3C7F92309282600445A8D /* AppleIncRootCertificate.cer */; };
 		04F3C8092309E8A800445A8D /* Receipts.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C8072309E8A800445A8D /* Receipts.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04F3C80C2309E8A800445A8D /* Receipts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C8052309E8A800445A8D /* Receipts.framework */; };
@@ -228,11 +225,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				04F3C7F6230921A100445A8D /* OpenSSL.framework in Embed Frameworks */,
 				049F92DF22CDA3DB0090C9BC /* Editing.framework in Embed Frameworks */,
 				04F3C80D2309E8A800445A8D /* Receipts.framework in Embed Frameworks */,
-				04F3C7F8230921A700445A8D /* Kingfisher.framework in Embed Frameworks */,
-				04F3C7E023044C5000445A8D /* BonMot.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1199,6 +1193,8 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BonMot.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/OpenSSL.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputFileListPaths = (
