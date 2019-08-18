@@ -4,7 +4,7 @@
 import Foundation
 import StoreKit
 
-class PaymentOperation: AsyncOperation<Void, Error>, SKPaymentTransactionObserver {
+class PaymentOperation: AsyncOperation<SKPaymentTransaction, Error>, SKPaymentTransactionObserver {
     init(product: SKProduct) {
         self.product = product
     }
@@ -23,9 +23,12 @@ class PaymentOperation: AsyncOperation<Void, Error>, SKPaymentTransactionObserve
         guard let relevantTransaction = transactions.first(where: { $0.payment.productIdentifier == product.productIdentifier }) else { return }
         switch relevantTransaction.transactionState {
         case .purchasing, .deferred: break // still working on it
-        case .purchased, .restored: succeed()
+        case .purchased, .restored:
+            succeed(relevantTransaction)
+            queue.finishTransaction(relevantTransaction)
         case .failed: fail(relevantTransaction.error ?? PurchaseOperationError.unknown)
-        @unknown default: fail(PurchaseOperationError.unknown)
+        @unknown default:
+            fail(PurchaseOperationError.unknown)
         }
     }
 

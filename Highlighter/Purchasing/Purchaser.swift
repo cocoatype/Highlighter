@@ -4,8 +4,8 @@
 import Foundation
 import StoreKit
 
-class Purchaser: NSObject, SKPaymentTransactionObserver, SKProductsRequestDelegate {
-    private(set) var state = PurchaseState.unknown {
+class Purchaser: NSObject {
+    private(set) var state = PurchaseState.loading {
         didSet {
             NotificationCenter.default.post(name: Purchaser.stateDidChange, object: self)
         }
@@ -13,71 +13,62 @@ class Purchaser: NSObject, SKPaymentTransactionObserver, SKProductsRequestDelega
 
     override init() {
         super.init()
-        SKPaymentQueue.default().add(self)
 
         if hasUserPurchasedUnlock {
             state = .purchased
         } else {
-            state = .loading
             fetchProducts()
         }
     }
 
+    // MARK: Operations
+
+    private func reset() {
+        state = .loading
+        fetchProducts()
+    }
+
     func purchaseUnlock() {
-        guard case .readyForPurchase(product: let product) = state else { return }
-        purchase(product)
+        switch state {
+        case .loading:
+            purchase(.identifier(Purchaser.productIdentifier))
+        case .readyForPurchase(product: let product):
+            purchase(.product(product))
+        case .purchasing, .purchased, .unavailable: return
+        }
     }
 
-    func restorePreviousPurchase() {
-        SKPaymentQueue.default().restoreCompletedTransactions()
-    }
+    private func purchase(_ target: PurchaseOperationTarget) {
+        let purchaseOperation = PurchaseOperation(target: target)
+        let finalizeOperation = BlockOperation { [weak self, weak purchaseOperation] in
+            switch purchaseOperation?.result {
+            case .success?: self?.state = .purchased
+            case .none, .failure?: self?.reset()
+            }
+        }
+        finalizeOperation.addDependency(purchaseOperation)
 
-    // MARK: Communication
-
-    private func purchase(_ product: SKProduct) {
-        let payment = SKPayment(product: product)
-        SKPaymentQueue.default().add(payment)
+        operationQueue.addOperations([purchaseOperation, finalizeOperation], waitUntilFinished: false)
+        state = .purchasing(operation: purchaseOperation)
     }
 
     private func fetchProducts() {
-        guard SKPaymentQueue.canMakePayments() else { state = .unavailable; return }
+        let fetchOperation = FetchProductOperation(identifier: Purchaser.productIdentifier)
+        let handleProductOperation = BlockOperation { [weak self, weak fetchOperation] in
+            switch fetchOperation?.result {
+            case .success(let product)?: self?.state = .readyForPurchase(product: product)
+            case .none, .failure?: self?.reset()
+            }
+        }
+        handleProductOperation.addDependency(fetchOperation)
 
-        let productsRequest = SKProductsRequest(productIdentifiers: [Purchaser.productIdentifier])
-        productsRequest.delegate = self
-        productsRequest.start()
+        operationQueue.addOperations([fetchOperation, handleProductOperation], waitUntilFinished: false)
     }
 
     // MARK: Receipt Checking
 
     private var hasUserPurchasedUnlock: Bool {
         return ReceiptValidator().unlockPurchaseStatus == .valid
-    }
-
-    // MARK: SKProductsRequestDelegate
-
-    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        guard let unlockProduct = response.products.first(where: { $0.productIdentifier == Purchaser.productIdentifier }) else { return }
-        state = .readyForPurchase(product: unlockProduct)
-    }
-
-    func request(_ request: SKRequest, didFailWithError error: Error) {}
-
-    // MARK: SKPaymentTransactionObserver
-
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        guard let transaction = transactions.first else { return }
-        switch transaction.transactionState {
-        case .purchasing, .deferred:
-            state = .purchasing(transaction: transaction)
-        case .purchased, .restored:
-            state = .purchased
-            queue.finishTransaction(transaction)
-        case .failed: fallthrough
-        @unknown default:
-            state = .loading
-            fetchProducts()
-            queue.finishTransaction(transaction)
-        }
     }
 
     // MARK: Notifications
@@ -87,4 +78,5 @@ class Purchaser: NSObject, SKPaymentTransactionObserver, SKProductsRequestDelega
     // MARK: Boilerplate
 
     private static let productIdentifier = "com.cocoatype.Highlighter.unlock"
+    private let operationQueue = PurchaseOperationQueue()
 }

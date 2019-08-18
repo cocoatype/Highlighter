@@ -5,10 +5,9 @@ import Foundation
 import StoreKit
 
 enum PurchaseState {
-    case unknown
     case loading
     case readyForPurchase(product: SKProduct)
-    case purchasing(transaction: SKPaymentTransaction)
+    case purchasing(operation: PurchaseOperation)
     case purchased
     case unavailable
 }
