@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		041BEA3722EF75E800FF07C2 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3622EF75E800FF07C2 /* Icons.swift */; };
-		041BEA3922EF7AB900FF07C2 /* PhotoEditingCanvasBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3822EF7AB900FF07C2 /* PhotoEditingCanvasBrushStrokeView.swift */; };
-		041BEA3B22EF7B2900FF07C2 /* PhotoEditingBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3A22EF7B2900FF07C2 /* PhotoEditingBrushStrokeView.swift */; };
 		041BEA3F22EF879700FF07C2 /* TextRecognitionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3E22EF879700FF07C2 /* TextRecognitionOperation.swift */; };
 		041EFEF92251A9F30058D8EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFEF82251A9F30058D8EE /* AppDelegate.swift */; };
 		041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFEFA2251A9F30058D8EE /* AppViewController.swift */; };
@@ -78,7 +76,6 @@
 		049F92EE22CDA4C10090C9BC /* PhotoEditingLegacyBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E42277EC910012F5AE /* PhotoEditingLegacyBrushStrokeView.swift */; };
 		049F92EF22CDA4C10090C9BC /* PhotoEditingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072942268137900FF20B6 /* PhotoEditingImageView.swift */; };
 		049F92F022CDA4C10090C9BC /* PhotoEditingRedactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */; };
-		049F92F122CDA4C10090C9BC /* PhotoEditingWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */; };
 		049F92F222CDA4D50090C9BC /* HighlighterTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B84228D01BD00353414 /* HighlighterTool.swift */; };
 		049F92F322CDA4E40090C9BC /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
 		049F92F422CDA4E40090C9BC /* CharacterObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B86228D08D800353414 /* CharacterObservationRedaction.swift */; };
@@ -163,9 +160,16 @@
 		04F3C8262309EBFD00445A8D /* ReceiptParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C8252309EBFD00445A8D /* ReceiptParserError.swift */; };
 		04F3C8282309ED1400445A8D /* AppReceiptAttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C8272309ED1400445A8D /* AppReceiptAttributeType.swift */; };
 		04F3C82C2309F3F500445A8D /* PurchaseReceiptAttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C82B2309F3F500445A8D /* PurchaseReceiptAttributeType.swift */; };
-		04F3C832230B957400445A8D /* PencilKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C831230B957400445A8D /* PencilKit.framework */; };
+		04F3C84D230BC1E100445A8D /* Canvas.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C84B230BC1E100445A8D /* Canvas.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04F3C856230BC1F000445A8D /* PhotoEditingWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */; };
+		04F3C857230BC1F300445A8D /* PhotoEditingCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */; };
+		04F3C858230BC1F300445A8D /* PhotoEditingCanvasBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3822EF7AB900FF07C2 /* PhotoEditingCanvasBrushStrokeView.swift */; };
+		04F3C85A230BC20E00445A8D /* PencilKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C859230BC20E00445A8D /* PencilKit.framework */; };
+		04F3C85C230BC38600445A8D /* Canvas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C849230BC1E100445A8D /* Canvas.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		04F3C85D230BC38600445A8D /* Canvas.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C849230BC1E100445A8D /* Canvas.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		04F3C864230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04F3C865230BCBDE00445A8D /* PhotoEditingBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */; };
-		04FF8DB122F261B3008CF0E9 /* PhotoEditingCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */; };
 		04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */; };
 		04FF8DB422F57570008CF0E9 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B7902229A38C0005B7A2A /* Defaults.swift */; };
 		04FF8DB722F57AA1008CF0E9 /* AutoRedactionsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB622F57AA1008CF0E9 /* AutoRedactionsEditView.swift */; };
@@ -205,6 +209,13 @@
 			remoteGlobalIDString = 04F3C8042309E8A800445A8D;
 			remoteInfo = Receipts;
 		};
+		04F3C84E230BC1E100445A8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04F3C848230BC1E100445A8D;
+			remoteInfo = Canvas;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -225,6 +236,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				04F3C85D230BC38600445A8D /* Canvas.framework in Embed Frameworks */,
 				049F92DF22CDA3DB0090C9BC /* Editing.framework in Embed Frameworks */,
 				04F3C80D2309E8A800445A8D /* Receipts.framework in Embed Frameworks */,
 			);
@@ -391,8 +403,11 @@
 		04F3C8252309EBFD00445A8D /* ReceiptParserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptParserError.swift; sourceTree = "<group>"; };
 		04F3C8272309ED1400445A8D /* AppReceiptAttributeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReceiptAttributeType.swift; sourceTree = "<group>"; };
 		04F3C82B2309F3F500445A8D /* PurchaseReceiptAttributeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReceiptAttributeType.swift; sourceTree = "<group>"; };
-		04F3C82F230B954000445A8D /* PencilKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PencilKit.framework; path = System/Library/Frameworks/PencilKit.framework; sourceTree = SDKROOT; };
-		04F3C831230B957400445A8D /* PencilKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PencilKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/PencilKit.framework; sourceTree = DEVELOPER_DIR; };
+		04F3C849230BC1E100445A8D /* Canvas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Canvas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F3C84B230BC1E100445A8D /* Canvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Canvas.h; sourceTree = "<group>"; };
+		04F3C84C230BC1E100445A8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04F3C859230BC20E00445A8D /* PencilKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PencilKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/PencilKit.framework; sourceTree = DEVELOPER_DIR; };
+		04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingBrushStrokeView.h; sourceTree = "<group>"; };
 		04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservationRedaction.swift; sourceTree = "<group>"; };
 		04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingCanvasView.swift; sourceTree = "<group>"; };
 		04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEditViewController.swift; sourceTree = "<group>"; };
@@ -409,6 +424,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F3C85C230BC38600445A8D /* Canvas.framework in Frameworks */,
 				04F3C7F5230921A100445A8D /* OpenSSL.framework in Frameworks */,
 				04F3C7DF23044C5000445A8D /* BonMot.framework in Frameworks */,
 				04F3C80C2309E8A800445A8D /* Receipts.framework in Frameworks */,
@@ -436,7 +452,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04F3C832230B957400445A8D /* PencilKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +460,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				04F3C8132309E8E900445A8D /* OpenSSL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F3C846230BC1E100445A8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04F3C85A230BC20E00445A8D /* PencilKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +482,7 @@
 				043911C122C461F000D4AE30 /* Action */,
 				049F92D822CDA3DB0090C9BC /* Editing */,
 				04F3C8062309E8A800445A8D /* Receipts */,
+				04F3C84A230BC1E100445A8D /* Canvas */,
 				041EFEF62251A9F30058D8EE /* Products */,
 				04ADD1622290DE6700E17445 /* Frameworks */,
 			);
@@ -472,6 +496,7 @@
 				043911C022C461EE00D4AE30 /* Action.appex */,
 				049F92D722CDA3DB0090C9BC /* Editing.framework */,
 				04F3C8052309E8A800445A8D /* Receipts.framework */,
+				04F3C849230BC1E100445A8D /* Canvas.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -726,8 +751,7 @@
 		04ADD1622290DE6700E17445 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				04F3C82F230B954000445A8D /* PencilKit.framework */,
-				04F3C831230B957400445A8D /* PencilKit.framework */,
+				04F3C859230BC20E00445A8D /* PencilKit.framework */,
 				04F3C7F4230921A100445A8D /* OpenSSL.framework */,
 				04F3C7DE23044C5000445A8D /* BonMot.framework */,
 				04ADD1632290DE6700E17445 /* Kingfisher.framework */,
@@ -802,9 +826,8 @@
 				047072942268137900FF20B6 /* PhotoEditingImageView.swift */,
 				042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */,
 				047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */,
-				041BEA3822EF7AB900FF07C2 /* PhotoEditingCanvasBrushStrokeView.swift */,
-				04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */,
 				041BEA3A22EF7B2900FF07C2 /* PhotoEditingBrushStrokeView.swift */,
+				04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */,
 			);
 			path = Workspace;
 			sourceTree = "<group>";
@@ -957,6 +980,17 @@
 			path = Parsing;
 			sourceTree = "<group>";
 		};
+		04F3C84A230BC1E100445A8D /* Canvas */ = {
+			isa = PBXGroup;
+			children = (
+				041BEA3822EF7AB900FF07C2 /* PhotoEditingCanvasBrushStrokeView.swift */,
+				04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */,
+				04F3C84B230BC1E100445A8D /* Canvas.h */,
+				04F3C84C230BC1E100445A8D /* Info.plist */,
+			);
+			path = Canvas;
+			sourceTree = "<group>";
+		};
 		04FF8DB522F57A52008CF0E9 /* Auto Redactions */ = {
 			isa = PBXGroup;
 			children = (
@@ -976,6 +1010,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F3C864230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h in Headers */,
 				049F92DB22CDA3DB0090C9BC /* Editing.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -985,6 +1020,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				04F3C8092309E8A800445A8D /* Receipts.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F3C844230BC1E100445A8D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04F3C865230BCBDE00445A8D /* PhotoEditingBrushStrokeView.h in Headers */,
+				04F3C84D230BC1E100445A8D /* Canvas.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1008,6 +1052,7 @@
 				043911CB22C461F000D4AE30 /* PBXTargetDependency */,
 				049F92DD22CDA3DB0090C9BC /* PBXTargetDependency */,
 				04F3C80B2309E8A800445A8D /* PBXTargetDependency */,
+				04F3C84F230BC1E100445A8D /* PBXTargetDependency */,
 			);
 			name = Highlighter;
 			productName = Highlighter;
@@ -1085,6 +1130,24 @@
 			productReference = 04F3C8052309E8A800445A8D /* Receipts.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		04F3C848230BC1E100445A8D /* Canvas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04F3C854230BC1E100445A8D /* Build configuration list for PBXNativeTarget "Canvas" */;
+			buildPhases = (
+				04F3C844230BC1E100445A8D /* Headers */,
+				04F3C845230BC1E100445A8D /* Sources */,
+				04F3C846230BC1E100445A8D /* Frameworks */,
+				04F3C847230BC1E100445A8D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Canvas;
+			productName = Canvas;
+			productReference = 04F3C849230BC1E100445A8D /* Canvas.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1107,8 +1170,12 @@
 					};
 					049F92D622CDA3DB0090C9BC = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1100;
 					};
 					04F3C8042309E8A800445A8D = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					04F3C848230BC1E100445A8D = {
 						CreatedOnToolsVersion = 11.0;
 					};
 				};
@@ -1131,6 +1198,7 @@
 				043911BF22C461EE00D4AE30 /* Action */,
 				049F92D622CDA3DB0090C9BC /* Editing */,
 				04F3C8042309E8A800445A8D /* Receipts */,
+				04F3C848230BC1E100445A8D /* Canvas */,
 			);
 		};
 /* End PBXProject section */
@@ -1177,6 +1245,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		04F3C8032309E8A800445A8D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F3C847230BC1E100445A8D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1333,15 +1408,12 @@
 				049F92F422CDA4E40090C9BC /* CharacterObservationRedaction.swift in Sources */,
 				049F92F822CDA59F0090C9BC /* Colors.swift in Sources */,
 				049F92F022CDA4C10090C9BC /* PhotoEditingRedactionView.swift in Sources */,
-				041BEA3B22EF7B2900FF07C2 /* PhotoEditingBrushStrokeView.swift in Sources */,
-				049F92F122CDA4C10090C9BC /* PhotoEditingWorkspaceView.swift in Sources */,
 				041BEA3F22EF879700FF07C2 /* TextRecognitionOperation.swift in Sources */,
 				049F92F722CDA5690090C9BC /* PhotoEditingObservationVisualizationView.swift in Sources */,
 				049F92FA22CDA5D90090C9BC /* NavigationBar.swift in Sources */,
 				049F92F622CDA54B0090C9BC /* PhotoEditingScrollView.swift in Sources */,
 				049F92E522CDA3FF0090C9BC /* TextRectangleDetectionOperation.swift in Sources */,
 				049F92E622CDA3FF0090C9BC /* TextObservation.swift in Sources */,
-				041BEA3922EF7AB900FF07C2 /* PhotoEditingCanvasBrushStrokeView.swift in Sources */,
 				049F92F522CDA4E40090C9BC /* PathRedaction.swift in Sources */,
 				049F92EA22CDA43F0090C9BC /* UIImageExtensions.swift in Sources */,
 				049F92F222CDA4D50090C9BC /* HighlighterTool.swift in Sources */,
@@ -1360,9 +1432,9 @@
 				049F92ED22CDA4B10090C9BC /* PhotoEditingView.swift in Sources */,
 				049F930422CDAA9D0090C9BC /* NavigationController.swift in Sources */,
 				049F92E722CDA3FF0090C9BC /* CharacterObservation.swift in Sources */,
-				04FF8DB122F261B3008CF0E9 /* PhotoEditingCanvasView.swift in Sources */,
 				049F92E422CDA3FF0090C9BC /* TextRectangleDetector.swift in Sources */,
 				049F92E922CDA43F0090C9BC /* GeometryExtensions.swift in Sources */,
+				04F3C856230BC1F000445A8D /* PhotoEditingWorkspaceView.swift in Sources */,
 				049F930222CDA9110090C9BC /* BasePhotoEditingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1384,6 +1456,15 @@
 				04F3C8122309E8BB00445A8D /* AppReceiptParsing.swift in Sources */,
 				04F3C8172309E90900445A8D /* PurchaseReceipt.swift in Sources */,
 				04F3C8192309E92900445A8D /* PointerExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F3C845230BC1E100445A8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04F3C857230BC1F300445A8D /* PhotoEditingCanvasView.swift in Sources */,
+				04F3C858230BC1F300445A8D /* PhotoEditingCanvasBrushStrokeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1409,6 +1490,11 @@
 			isa = PBXTargetDependency;
 			target = 04F3C8042309E8A800445A8D /* Receipts */;
 			targetProxy = 04F3C80A2309E8A800445A8D /* PBXContainerItemProxy */;
+		};
+		04F3C84F230BC1E100445A8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04F3C848230BC1E100445A8D /* Canvas */;
+			targetProxy = 04F3C84E230BC1E100445A8D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1689,6 +1775,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -1707,6 +1794,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Editing;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSION_INFO_PREFIX = "";
@@ -1717,6 +1805,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -1801,6 +1890,60 @@
 			};
 			name = Release;
 		};
+		04F3C852230BC1E100445A8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 287EDDET2B;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Canvas/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Canvas;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		04F3C853230BC1E100445A8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 287EDDET2B;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Canvas/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Canvas;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1854,6 +1997,15 @@
 			buildConfigurations = (
 				04F3C80F2309E8A800445A8D /* Debug */,
 				04F3C8102309E8A800445A8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04F3C854230BC1E100445A8D /* Build configuration list for PBXNativeTarget "Canvas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F3C852230BC1E100445A8D /* Debug */,
+				04F3C853230BC1E100445A8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
