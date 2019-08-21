@@ -3,6 +3,7 @@
 
 import Photos
 import UIKit
+import VisionKit
 
 class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibraryChangeObserver {
     override init() {
@@ -15,7 +16,7 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
     // MARK: Data Source
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if #available(iOS 13.0, *) {
+        if shouldShowDocumentScannerCell {
             return allPhotos.count + 1
         } else {
             return allPhotos.count
@@ -38,6 +39,11 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
     }
 
     // MARK: Document Scanning
+
+    private var shouldShowDocumentScannerCell: Bool {
+        guard #available(iOS 13.0, *) else { return false }
+        return VNDocumentCameraViewController.isSupported
+    }
 
     private func documentScannerCell(for collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
         guard #available(iOS 13.0, *) else {
