@@ -31,6 +31,8 @@ class AutoRedactionsDataSource: NSObject, UITableViewDataSource, UITableViewDele
 
             tableView.deleteRows(at: [indexPath], with: .automatic)
 
+            (tableView as? AutoRedactionsListView)?.handleDeletion()
+
             handler(true)
         }
 

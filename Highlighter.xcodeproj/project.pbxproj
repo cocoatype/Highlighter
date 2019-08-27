@@ -105,6 +105,9 @@
 		04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BCB2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift */; };
 		04D68BD22262C45700D09BBD /* PhotoSelectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BD12262C45700D09BBD /* PhotoSelectionViewControllerTests.swift */; };
 		04D68BD52262C54600D09BBD /* MockPhotoPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BD42262C54600D09BBD /* MockPhotoPermissionsRequester.swift */; };
+		04DBC83C2314D1C20004F7DB /* AutoRedactionsEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBC83B2314D1C20004F7DB /* AutoRedactionsEmptyViewController.swift */; };
+		04DBC83E2314D1D90004F7DB /* AutoRedactionsEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBC83D2314D1D90004F7DB /* AutoRedactionsEmptyView.swift */; };
+		04DBC8402314D2080004F7DB /* AutoRedactionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBC83F2314D2080004F7DB /* AutoRedactionsListViewController.swift */; };
 		04EF55BA22D6DB9400C6600D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55B922D6DB9400C6600D /* SceneDelegate.swift */; };
 		04EF55BC22D6EBFA00C6600D /* EditingUserActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */; };
 		04F3C7A52300206A00445A8D /* Purchaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7A42300206A00445A8D /* Purchaser.swift */; };
@@ -172,7 +175,7 @@
 		04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */; };
 		04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */; };
 		04FF8DB422F57570008CF0E9 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B7902229A38C0005B7A2A /* Defaults.swift */; };
-		04FF8DB722F57AA1008CF0E9 /* AutoRedactionsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB622F57AA1008CF0E9 /* AutoRedactionsEditView.swift */; };
+		04FF8DB722F57AA1008CF0E9 /* AutoRedactionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB622F57AA1008CF0E9 /* AutoRedactionsListView.swift */; };
 		04FF8DB922F57AD9008CF0E9 /* AutoRedactionsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB822F57AD9008CF0E9 /* AutoRedactionsDataSource.swift */; };
 		04FF8DBB22F57B09008CF0E9 /* AutoRedactionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DBA22F57B09008CF0E9 /* AutoRedactionsTableViewCell.swift */; };
 		04FF8DBD22F57B3A008CF0E9 /* AutoRedactionsAdditionAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DBC22F57B3A008CF0E9 /* AutoRedactionsAdditionAlertController.swift */; };
@@ -349,6 +352,9 @@
 		04D68BCB2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPermissionsDeniedAlertController.swift; sourceTree = "<group>"; };
 		04D68BD12262C45700D09BBD /* PhotoSelectionViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectionViewControllerTests.swift; sourceTree = "<group>"; };
 		04D68BD42262C54600D09BBD /* MockPhotoPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPhotoPermissionsRequester.swift; sourceTree = "<group>"; };
+		04DBC83B2314D1C20004F7DB /* AutoRedactionsEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEmptyViewController.swift; sourceTree = "<group>"; };
+		04DBC83D2314D1D90004F7DB /* AutoRedactionsEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEmptyView.swift; sourceTree = "<group>"; };
+		04DBC83F2314D2080004F7DB /* AutoRedactionsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsListViewController.swift; sourceTree = "<group>"; };
 		04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingView.swift; sourceTree = "<group>"; };
 		04EF55B922D6DB9400C6600D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserActivity.swift; sourceTree = "<group>"; };
@@ -411,7 +417,7 @@
 		04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservationRedaction.swift; sourceTree = "<group>"; };
 		04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingCanvasView.swift; sourceTree = "<group>"; };
 		04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEditViewController.swift; sourceTree = "<group>"; };
-		04FF8DB622F57AA1008CF0E9 /* AutoRedactionsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEditView.swift; sourceTree = "<group>"; };
+		04FF8DB622F57AA1008CF0E9 /* AutoRedactionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsListView.swift; sourceTree = "<group>"; };
 		04FF8DB822F57AD9008CF0E9 /* AutoRedactionsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsDataSource.swift; sourceTree = "<group>"; };
 		04FF8DBA22F57B09008CF0E9 /* AutoRedactionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsTableViewCell.swift; sourceTree = "<group>"; };
 		04FF8DBC22F57B3A008CF0E9 /* AutoRedactionsAdditionAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsAdditionAlertController.swift; sourceTree = "<group>"; };
@@ -995,10 +1001,13 @@
 			isa = PBXGroup;
 			children = (
 				04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */,
-				04FF8DB622F57AA1008CF0E9 /* AutoRedactionsEditView.swift */,
+				04FF8DB622F57AA1008CF0E9 /* AutoRedactionsListView.swift */,
 				04FF8DB822F57AD9008CF0E9 /* AutoRedactionsDataSource.swift */,
 				04FF8DBA22F57B09008CF0E9 /* AutoRedactionsTableViewCell.swift */,
 				04FF8DBC22F57B3A008CF0E9 /* AutoRedactionsAdditionAlertController.swift */,
+				04DBC83B2314D1C20004F7DB /* AutoRedactionsEmptyViewController.swift */,
+				04DBC83D2314D1D90004F7DB /* AutoRedactionsEmptyView.swift */,
+				04DBC83F2314D2080004F7DB /* AutoRedactionsListViewController.swift */,
 			);
 			path = "Auto Redactions";
 			sourceTree = "<group>";
@@ -1296,6 +1305,7 @@
 				04F3C7B22301A3CF00445A8D /* StandardContentItem.swift in Sources */,
 				04F3C7C62301A5C300445A8D /* PrivacyItem.swift in Sources */,
 				043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */,
+				04DBC83E2314D1D90004F7DB /* AutoRedactionsEmptyView.swift in Sources */,
 				049F292D22875AFA00A335BE /* AboutViewController.swift in Sources */,
 				04F3C7D52304437900445A8D /* PurchaseSection.swift in Sources */,
 				04F3C7C02301A52A00445A8D /* AboutItem.swift in Sources */,
@@ -1347,11 +1357,13 @@
 				04ADD15A2290D1C500E17445 /* AppLookupResponse.swift in Sources */,
 				049F292F22875B1300A335BE /* PrivacyViewController.swift in Sources */,
 				04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */,
+				04DBC83C2314D1C20004F7DB /* AutoRedactionsEmptyViewController.swift in Sources */,
 				04EF55BA22D6DB9400C6600D /* SceneDelegate.swift in Sources */,
 				042B78FA229A2560005B7A2A /* SettingsAppEntryTableViewCell.swift in Sources */,
 				04FF8DBB22F57B09008CF0E9 /* AutoRedactionsTableViewCell.swift in Sources */,
 				04D68BC7225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift in Sources */,
 				04FF8DB922F57AD9008CF0E9 /* AutoRedactionsDataSource.swift in Sources */,
+				04DBC8402314D2080004F7DB /* AutoRedactionsListViewController.swift in Sources */,
 				04F3C7F12308E91600445A8D /* FetchProductOperation.swift in Sources */,
 				042A2B7E228CFEDB00353414 /* PhotoEditingNavigationController.swift in Sources */,
 				042A2B7C228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift in Sources */,
@@ -1363,7 +1375,7 @@
 				049F293322875E4D00A335BE /* ContactWebViewController.swift in Sources */,
 				04ADD1602290DA8E00E17445 /* AppEntryOpening.swift in Sources */,
 				042B78FC229A257E005B7A2A /* SettingsTableViewCellLabel.swift in Sources */,
-				04FF8DB722F57AA1008CF0E9 /* AutoRedactionsEditView.swift in Sources */,
+				04FF8DB722F57AA1008CF0E9 /* AutoRedactionsListView.swift in Sources */,
 				041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */,
 				04F3C7C82301A5E900445A8D /* AutoRedactions.swift in Sources */,
 				04F3C7A9230099BC00445A8D /* PurchaseState.swift in Sources */,

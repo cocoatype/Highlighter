@@ -3,7 +3,7 @@
 
 import UIKit
 
-class AutoRedactionsEditView: UITableView {
+class AutoRedactionsListView: UITableView {
     init() {
         super.init(frame: .zero, style: .grouped)
         backgroundColor = .primary
@@ -12,6 +12,10 @@ class AutoRedactionsEditView: UITableView {
         indicatorStyle = .white
 
         register(AutoRedactionsTableViewCell.self, forCellReuseIdentifier: AutoRedactionsTableViewCell.identifier)
+    }
+
+    func handleDeletion() {
+        UIApplication.shared.sendAction(#selector(AutoRedactionsEditViewController.reloadRedactionsView), to: nil, from: self, for: nil)
     }
 
     // MARK: Boilerplate

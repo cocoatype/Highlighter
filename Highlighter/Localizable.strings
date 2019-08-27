@@ -12,6 +12,11 @@
 
 "AutoRedactionsDataSource.deleteActionTitle" = "Delete";
 
+"AutoRedactionsEditViewController.navigationTitle" = "Auto-Hidden Words";
+
+"AutoRedactionsEmptyView.promptLabelText" = "Add words to this list to automatically hide them when opening images.";
+"AutoRedactionsEmptyView.promptButtonTitle" = "Add Word";
+
 "BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle" = "Undo Redaction";
 "BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle" = "Redo Redaction";
 
