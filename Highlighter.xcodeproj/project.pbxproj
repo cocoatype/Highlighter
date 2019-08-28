@@ -94,6 +94,10 @@
 		049F930822CDAB570090C9BC /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
 		049F930922CDAB570090C9BC /* Aleo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF562255A2ED0058D8EE /* Aleo-Bold.otf */; };
 		049F930A22CDAB570090C9BC /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
+		04A8A5ED2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EB2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h */; };
+		04A8A5EE2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */; };
+		04A8A5F1231659BA006CE411 /* PhotoEditingCanvasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */; };
+		04A8A5F2231659BA006CE411 /* PhotoEditingCanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5F0231659BA006CE411 /* PhotoEditingCanvasView.m */; };
 		04ADD1562290CCC200E17445 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1552290CCC200E17445 /* AppEntry.swift */; };
 		04ADD1582290CFF100E17445 /* AppListFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1572290CFF100E17445 /* AppListFetcher.swift */; };
 		04ADD15A2290D1C500E17445 /* AppLookupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1592290D1C500E17445 /* AppLookupResponse.swift */; };
@@ -165,9 +169,6 @@
 		04F3C82C2309F3F500445A8D /* PurchaseReceiptAttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C82B2309F3F500445A8D /* PurchaseReceiptAttributeType.swift */; };
 		04F3C84D230BC1E100445A8D /* Canvas.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C84B230BC1E100445A8D /* Canvas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04F3C856230BC1F000445A8D /* PhotoEditingWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */; };
-		04F3C857230BC1F300445A8D /* PhotoEditingCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */; };
-		04F3C858230BC1F300445A8D /* PhotoEditingCanvasBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3822EF7AB900FF07C2 /* PhotoEditingCanvasBrushStrokeView.swift */; };
-		04F3C85A230BC20E00445A8D /* PencilKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C859230BC20E00445A8D /* PencilKit.framework */; };
 		04F3C85C230BC38600445A8D /* Canvas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C849230BC1E100445A8D /* Canvas.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		04F3C85D230BC38600445A8D /* Canvas.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C849230BC1E100445A8D /* Canvas.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04F3C864230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -250,7 +251,6 @@
 
 /* Begin PBXFileReference section */
 		041BEA3622EF75E800FF07C2 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
-		041BEA3822EF7AB900FF07C2 /* PhotoEditingCanvasBrushStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingCanvasBrushStrokeView.swift; sourceTree = "<group>"; };
 		041BEA3A22EF7B2900FF07C2 /* PhotoEditingBrushStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingBrushStrokeView.swift; sourceTree = "<group>"; };
 		041BEA3E22EF879700FF07C2 /* TextRecognitionOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionOperation.swift; sourceTree = "<group>"; };
 		041EFEF52251A9F30058D8EE /* Highlighter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Highlighter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -339,6 +339,10 @@
 		049F92DA22CDA3DB0090C9BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtensions.swift; sourceTree = "<group>"; };
 		04A3AEF7227A924D00F21229 /* CharacterObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterObservation.swift; sourceTree = "<group>"; };
+		04A8A5EB2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingCanvasBrushStrokeView.h; sourceTree = "<group>"; };
+		04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoEditingCanvasBrushStrokeView.m; sourceTree = "<group>"; };
+		04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingCanvasView.h; sourceTree = "<group>"; };
+		04A8A5F0231659BA006CE411 /* PhotoEditingCanvasView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoEditingCanvasView.m; sourceTree = "<group>"; };
 		04ADD1552290CCC200E17445 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
 		04ADD1572290CFF100E17445 /* AppListFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListFetcher.swift; sourceTree = "<group>"; };
 		04ADD1592290D1C500E17445 /* AppLookupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLookupResponse.swift; sourceTree = "<group>"; };
@@ -415,7 +419,6 @@
 		04F3C859230BC20E00445A8D /* PencilKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PencilKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/PencilKit.framework; sourceTree = DEVELOPER_DIR; };
 		04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingBrushStrokeView.h; sourceTree = "<group>"; };
 		04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservationRedaction.swift; sourceTree = "<group>"; };
-		04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingCanvasView.swift; sourceTree = "<group>"; };
 		04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEditViewController.swift; sourceTree = "<group>"; };
 		04FF8DB622F57AA1008CF0E9 /* AutoRedactionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsListView.swift; sourceTree = "<group>"; };
 		04FF8DB822F57AD9008CF0E9 /* AutoRedactionsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsDataSource.swift; sourceTree = "<group>"; };
@@ -473,7 +476,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04F3C85A230BC20E00445A8D /* PencilKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -989,10 +991,12 @@
 		04F3C84A230BC1E100445A8D /* Canvas */ = {
 			isa = PBXGroup;
 			children = (
-				041BEA3822EF7AB900FF07C2 /* PhotoEditingCanvasBrushStrokeView.swift */,
-				04FF8DB022F261B3008CF0E9 /* PhotoEditingCanvasView.swift */,
 				04F3C84B230BC1E100445A8D /* Canvas.h */,
 				04F3C84C230BC1E100445A8D /* Info.plist */,
+				04A8A5EB2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h */,
+				04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */,
+				04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */,
+				04A8A5F0231659BA006CE411 /* PhotoEditingCanvasView.m */,
 			);
 			path = Canvas;
 			sourceTree = "<group>";
@@ -1037,7 +1041,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04F3C865230BCBDE00445A8D /* PhotoEditingBrushStrokeView.h in Headers */,
+				04A8A5ED2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h in Headers */,
 				04F3C84D230BC1E100445A8D /* Canvas.h in Headers */,
+				04A8A5F1231659BA006CE411 /* PhotoEditingCanvasView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1186,6 +1192,7 @@
 					};
 					04F3C848230BC1E100445A8D = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
 					};
 				};
 			};
@@ -1475,8 +1482,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04F3C857230BC1F300445A8D /* PhotoEditingCanvasView.swift in Sources */,
-				04F3C858230BC1F300445A8D /* PhotoEditingCanvasBrushStrokeView.swift in Sources */,
+				04A8A5F2231659BA006CE411 /* PhotoEditingCanvasView.m in Sources */,
+				04A8A5EE2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1906,6 +1913,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 287EDDET2B;
@@ -1920,9 +1928,14 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					PencilKit,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Canvas;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSION_INFO_PREFIX = "";
@@ -1933,6 +1946,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 287EDDET2B;
@@ -1946,6 +1960,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					PencilKit,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Canvas;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
