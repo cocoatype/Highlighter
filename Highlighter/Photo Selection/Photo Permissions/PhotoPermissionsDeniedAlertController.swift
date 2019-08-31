@@ -4,8 +4,8 @@
 import UIKit
 
 class PhotoPermissionsDeniedAlertFactory: NSObject {
-    static func alert() -> UIAlertController {
-        let alertController = UIAlertController(title: PhotoPermissionsDeniedAlertFactory.alertTitle, message: PhotoPermissionsDeniedAlertFactory.alertMessage, preferredStyle: .alert)
+    static func alert() -> PhotoPermissionsDeniedAlertController {
+        let alertController = PhotoPermissionsDeniedAlertController(title: PhotoPermissionsDeniedAlertFactory.alertTitle, message: PhotoPermissionsDeniedAlertFactory.alertMessage, preferredStyle: .alert)
 
         alertController.addAction(settingsAction)
 
@@ -25,3 +25,5 @@ class PhotoPermissionsDeniedAlertFactory: NSObject {
     private static let actionButtonTitle = NSLocalizedString("PhotoPermissionsDeniedAlertController.actionButtonTitle", comment: "Title for the settings button on the photo permissions denied alert")
     private static let cancelButtonTitle = NSLocalizedString("PhotoPermissionsDeniedAlertController.cancelButtonTitle", comment: "Title for the cancel button on the photo permissions denied alert")
 }
+
+class PhotoPermissionsDeniedAlertController: UIAlertController {}

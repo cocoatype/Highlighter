@@ -4,8 +4,8 @@
 import UIKit
 
 class PhotoPermissionsRestrictedAlertFactory: NSObject {
-    static func alert() -> UIAlertController {
-        let alertController = UIAlertController(title: PhotoPermissionsRestrictedAlertFactory.alertTitle, message: PhotoPermissionsRestrictedAlertFactory.alertMessage, preferredStyle: .alert)
+    static func alert() -> PhotoPermissionsRestrictedAlertController {
+        let alertController = PhotoPermissionsRestrictedAlertController(title: PhotoPermissionsRestrictedAlertFactory.alertTitle, message: PhotoPermissionsRestrictedAlertFactory.alertMessage, preferredStyle: .alert)
 
         alertController.addAction(dismissAction)
 
@@ -20,3 +20,5 @@ class PhotoPermissionsRestrictedAlertFactory: NSObject {
     private static let alertMessage = NSLocalizedString("PhotoPermissionsRestrictedAlertController.alertMessage", comment: "Message for the photo permissions restricted alert")
     private static let dismissButtonTitle = NSLocalizedString("PhotoPermissionsRestrictedAlertController.dismissButtonTitle", comment: "Title for the cancel button on the photo permissions restricted alert")
 }
+
+class PhotoPermissionsRestrictedAlertController: UIAlertController {}
