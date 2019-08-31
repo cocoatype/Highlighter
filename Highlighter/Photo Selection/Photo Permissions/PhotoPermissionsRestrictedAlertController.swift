@@ -3,29 +3,22 @@
 
 import UIKit
 
-class PhotoPermissionsRestrictedAlertController: UIAlertController {
-    init() {
-        super.init(nibName: nil, bundle: nil)
+class PhotoPermissionsRestrictedAlertFactory: NSObject {
+    static func alert() -> PhotoPermissionsRestrictedAlertController {
+        let alertController = PhotoPermissionsRestrictedAlertController(title: PhotoPermissionsRestrictedAlertFactory.alertTitle, message: PhotoPermissionsRestrictedAlertFactory.alertMessage, preferredStyle: .alert)
 
-        title = PhotoPermissionsRestrictedAlertController.alertTitle
-        message = PhotoPermissionsRestrictedAlertController.alertMessage
+        alertController.addAction(dismissAction)
 
-        addAction(dismissAction)
+        return alertController
     }
 
-    private let dismissAction = UIAlertAction(title: PhotoPermissionsRestrictedAlertController.dismissButtonTitle, style: .cancel, handler: nil)
+    private static let dismissAction = UIAlertAction(title: PhotoPermissionsRestrictedAlertFactory.dismissButtonTitle, style: .cancel, handler: nil)
 
-    // MARK: Boilerplate
-
-    override var preferredStyle: UIAlertController.Style { return .alert }
+    // MARK: Localized Strings
 
     private static let alertTitle = NSLocalizedString("PhotoPermissionsRestrictedAlertController.alertTitle", comment: "Title for the photo permissions restricted alert")
     private static let alertMessage = NSLocalizedString("PhotoPermissionsRestrictedAlertController.alertMessage", comment: "Message for the photo permissions restricted alert")
     private static let dismissButtonTitle = NSLocalizedString("PhotoPermissionsRestrictedAlertController.dismissButtonTitle", comment: "Title for the cancel button on the photo permissions restricted alert")
-
-    @available(*, unavailable)
-    required init(coder: NSCoder) {
-        let className = String(describing: type(of: self))
-        fatalError("\(className) does not implement init(coder:)")
-    }
 }
+
+class PhotoPermissionsRestrictedAlertController: UIAlertController {}
