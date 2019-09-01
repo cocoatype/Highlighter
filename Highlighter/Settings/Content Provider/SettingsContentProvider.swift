@@ -66,7 +66,7 @@ class SettingsContentProvider: NSObject {
         switch purchaser.state {
         case .purchased:
             sections.append(SettingsSection())
-        case .loading, .readyForPurchase, .purchasing:
+        case .loading, .readyForPurchase, .purchasing, .restoring:
             sections.append(PurchaseSection())
         case .unavailable: break
         }

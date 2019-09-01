@@ -18,7 +18,7 @@ class PurchaseMarketingViewController: UIViewController {
 
     // MARK: Restore
 
-    private let restoreButton = UIBarButtonItem(title: PurchaseMarketingViewController.restoreButtonTitle, style: .plain, target: nil, action: nil)
+    private let restoreButton = UIBarButtonItem(title: PurchaseMarketingViewController.restoreButtonTitle, style: .plain, target: nil, action: #selector(SettingsNavigationController.startRestore))
 
     // MARK: Boilerplate
 

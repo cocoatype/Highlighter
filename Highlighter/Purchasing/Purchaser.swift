@@ -3,7 +3,6 @@
 
 import Foundation
 import Receipts
-import StoreKit
 
 class Purchaser: NSObject {
     private(set) var state = PurchaseState.loading {
@@ -35,7 +34,7 @@ class Purchaser: NSObject {
             purchase(.identifier(Purchaser.productIdentifier))
         case .readyForPurchase(product: let product):
             purchase(.product(product))
-        case .purchasing, .purchased, .unavailable: return
+        case .purchasing, .purchased, .restoring, .unavailable: return
         }
     }
 
@@ -66,12 +65,25 @@ class Purchaser: NSObject {
         operationQueue.addOperations([fetchOperation, handleProductOperation], waitUntilFinished: false)
     }
 
+    func restorePurchases() {
+        let restoreOperation = RestoreOperation()
+        let handleRestoreOperation = BlockOperation { [weak self, weak restoreOperation] in
+            switch restoreOperation?.result {
+            case .success?: self?.state = .purchased
+            case .none, .failure?: self?.reset()
+            }
+        }
+        handleRestoreOperation.addDependency(restoreOperation)
+
+        operationQueue.addOperations([restoreOperation, handleRestoreOperation], waitUntilFinished: false)
+        state = .restoring(operation: restoreOperation)
+    }
+
     // MARK: Receipt Checking
 
     private var hasUserPurchasedUnlock: Bool {
         do {
-            let receipt = try ReceiptValidator.validatedAppReceipt()
-            return receipt.purchaseReceipts.contains(where: { $0.productIdentifier == Purchaser.productIdentifier })
+            return try ReceiptValidator.validatedAppReceipt().purchaseReceipts.contains(where: { $0.productIdentifier == Purchaser.productIdentifier })
         } catch {
             return false
         }
