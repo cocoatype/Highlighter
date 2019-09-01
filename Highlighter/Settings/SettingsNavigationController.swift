@@ -9,6 +9,10 @@ class SettingsNavigationController: NavigationController {
         let settingsViewController = SettingsViewController(purchaser: purchaser)
         super.init(rootViewController: settingsViewController)
         modalPresentationStyle = .formSheet
+        purchaserObservation = NotificationCenter.default.addObserver(forName: Purchaser.stateDidChange, object: nil, queue: .main, using: { [weak self] _ in
+            guard let purchaser = self?.purchaser, case .purchased = purchaser.state else { return }
+            self?.purchaseDidSucceed()
+        })
     }
 
     // MARK: Navigation
@@ -62,9 +66,20 @@ class SettingsNavigationController: NavigationController {
         purchaser.restorePurchases()
     }
 
+    private func purchaseDidSucceed() {
+        popToRootViewController(animated: true)
+        settingsViewController?.refreshPurchaseSection()
+    }
+
     // MARK: Boilerplate
 
     private let purchaser = Purchaser()
+    private var purchaserObservation: Any?
+    private var settingsViewController: SettingsViewController? { return viewControllers.first as? SettingsViewController }
+
+    deinit {
+        purchaserObservation.map(NotificationCenter.default.removeObserver)
+    }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
