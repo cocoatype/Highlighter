@@ -58,6 +58,10 @@ class SettingsNavigationController: NavigationController {
         purchaser.purchaseUnlock()
     }
 
+    @objc func startRestore() {
+        purchaser.restorePurchases()
+    }
+
     // MARK: Boilerplate
 
     private let purchaser = Purchaser()
