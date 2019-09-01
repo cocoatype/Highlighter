@@ -9,6 +9,7 @@ class AutoRedactionsTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         backgroundColor = .tableViewCellBackground
+        selectionStyle = .none
 
         label.text = "Hello, world!"
 
