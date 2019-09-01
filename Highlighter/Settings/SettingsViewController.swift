@@ -36,6 +36,10 @@ class SettingsViewController: UIViewController {
         deselectSelectedRows()
     }
 
+    func refreshPurchaseSection() {
+        tableView?.reloadData()
+    }
+
     // MARK: User Interface
 
     private func deselectSelectedRows() {
