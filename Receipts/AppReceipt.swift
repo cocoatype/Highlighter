@@ -10,7 +10,7 @@ public struct AppReceipt {
     let opaqueValue: Data
     let sha1Hash: Data
     public let purchaseReceipts: [PurchaseReceipt]
-    let originalAppVersion: String
+    public let originalAppVersion: String
     let receiptCreationDate: Date
     let expirationDate: Date?
 
@@ -34,5 +34,9 @@ public struct AppReceipt {
         self.originalAppVersion = originalAppVersion
         self.receiptCreationDate = receiptCreationDate
         self.expirationDate = expirationDate
+    }
+
+    public func containsPurchase(withIdentifier identifier: String) -> Bool {
+        return purchaseReceipts.contains(where: { $0.productIdentifier == identifier })
     }
 }

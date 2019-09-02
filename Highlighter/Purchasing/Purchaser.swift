@@ -2,7 +2,6 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Foundation
-import Receipts
 
 class Purchaser: NSObject {
     private(set) var state = PurchaseState.loading {
@@ -14,7 +13,7 @@ class Purchaser: NSObject {
     override init() {
         super.init()
 
-        if hasUserPurchasedUnlock {
+        if PurchaseValidator.hasUserPurchasedProduct(withIdentifier: Purchaser.productIdentifier) {
             state = .purchased
         } else {
             fetchProducts()
@@ -77,16 +76,6 @@ class Purchaser: NSObject {
 
         operationQueue.addOperations([restoreOperation, handleRestoreOperation], waitUntilFinished: false)
         state = .restoring(operation: restoreOperation)
-    }
-
-    // MARK: Receipt Checking
-
-    private var hasUserPurchasedUnlock: Bool {
-        do {
-            return try ReceiptValidator.validatedAppReceipt().purchaseReceipts.contains(where: { $0.productIdentifier == Purchaser.productIdentifier })
-        } catch {
-            return false
-        }
     }
 
     // MARK: Notifications
