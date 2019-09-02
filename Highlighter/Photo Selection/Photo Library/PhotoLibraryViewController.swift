@@ -6,6 +6,10 @@ import UIKit
 class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate {
     init() {
         super.init(nibName: nil, bundle: nil)
+        NotificationCenter.default.addObserver(forName: Purchaser.stateDidChange, object: nil, queue: .main) { [weak self] notification in
+            guard let purchaser = notification.object as? Purchaser, case .purchased = purchaser.state else { return }
+            self?.libraryView?.reloadData()
+        }
     }
 
     override func loadView() {
@@ -82,6 +86,11 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
 
     private let dataSource = PhotoLibraryDataSource()
     private var libraryView: PhotoLibraryView? { return view as? PhotoLibraryView }
+    private var purchaseStateObserver: Any?
+
+    deinit {
+        purchaseStateObserver.map(NotificationCenter.default.removeObserver)
+    }
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

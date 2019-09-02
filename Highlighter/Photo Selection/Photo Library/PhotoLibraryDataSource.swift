@@ -42,6 +42,7 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
 
     private var shouldShowDocumentScannerCell: Bool {
         guard #available(iOS 13.0, *) else { return false }
+        guard case .purchased = Purchaser().state else { return false }
         return VNDocumentCameraViewController.isSupported
     }
 
