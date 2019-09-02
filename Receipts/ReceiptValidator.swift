@@ -3,13 +3,17 @@
 
 import Foundation
 import OpenSSL
+import UIKit
 
 public class ReceiptValidator {
     public static func validatedAppReceipt() throws -> AppReceipt {
         let receiptData = try Data(contentsOf: ReceiptValidator.receiptURL)
         guard let container = decrypt(receiptData) else { throw ReceiptParserError.invalidReceipt }
         guard validate(container) else { throw ReceiptParserError.invalidReceipt }
-        return try parse(container)
+        let receipt = try parse(container)
+
+        try checkHash(for: receipt)
+        return receipt
     }
 
     private static func decrypt(_ data: Data) -> UnsafeMutablePointer<PKCS7>? {
@@ -41,6 +45,33 @@ public class ReceiptValidator {
 
         let result = PKCS7_verify(container, nil, certificateStore, nil, nil, 0)
         return result == 1
+    }
+
+    private static func checkHash(for receipt: AppReceipt) throws {
+        let receiptHashData = receipt.sha1Hash
+
+        guard var deviceIdentifier = UIDevice.current.identifierForVendor?.uuid else { return }
+        let rawDeviceIdentifierPointer = withUnsafePointer(to: &deviceIdentifier) { UnsafeRawPointer($0) }
+        let deviceIdentifierData = Data(bytes: rawDeviceIdentifierPointer, count: 16)
+
+        var computedHash = [UInt8](repeating: 0, count: 20)
+        var context = SHA_CTX()
+
+        func update(_ context: UnsafeMutablePointer<SHA_CTX>, with data: Data) throws {
+            try data.withUnsafeBytes { bufferPointer in
+                guard let pointer = bufferPointer.baseAddress else { throw ReceiptParserError.invalidReceipt }
+                SHA1_Update(context, pointer, data.count)
+            }
+        }
+
+        SHA1_Init(&context)
+        try update(&context, with: deviceIdentifierData)
+        try update(&context, with: receipt.opaqueValue)
+        try update(&context, with: receipt.bundleIdentifierData)
+        SHA1_Final(&computedHash, &context)
+
+        let computedHashData = Data(bytes: &computedHash, count: 20)
+        guard computedHashData == receipt.sha1Hash else { throw ReceiptParserError.invalidReceipt }
     }
 
     private static func parse(_ container: UnsafeMutablePointer<PKCS7>) throws -> AppReceipt {

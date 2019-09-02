@@ -38,18 +38,19 @@ extension AppReceipt {
 
             switch attributeType {
             case .bundleIdentifier?:
-                var start = cursor.optional
-                bundleIdentifierData = Data(bytes: &start, count: length)
-                bundleIdentifier = String(startingAt: &start, length: length)
+                var stringStart = cursor.optional
+                let dataStart = cursor
+                bundleIdentifierData = Data(bytes: UnsafeRawPointer(dataStart), count: length)
+                bundleIdentifier = String(startingAt: &stringStart, length: length)
             case .appVersion?:
                 var start = cursor.optional
                 appVersion = String(startingAt: &start, length: length)
             case .opaqueValue?:
-                var start = cursor.optional
-                opaqueValue = Data(bytes: &start, count: length)
+                let start = cursor
+                opaqueValue = Data(bytes: UnsafeRawPointer(start), count: length)
             case .sha1Hash?:
-                var start = cursor.optional
-                sha1Hash = Data(bytes: &start, count: length)
+                let start = cursor
+                sha1Hash = Data(bytes: UnsafeRawPointer(start), count: length)
             case .purchaseReceipt?:
                 var start = cursor.optional
                 try purchaseReceipts.append(PurchaseReceipt(startingAt: &start, payloadLength: length))
