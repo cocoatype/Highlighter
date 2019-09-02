@@ -47,6 +47,8 @@
 		043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */; };
 		046EA9A7231BCCC7003BFC4D /* RestoreOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
+		04899D75231CEAED002BC1D8 /* PurchaseValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04899D74231CEAED002BC1D8 /* PurchaseValidator.swift */; };
+		04899D78231CEC4F002BC1D8 /* PurchaseValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04899D77231CEC4F002BC1D8 /* PurchaseValidatorTests.swift */; };
 		048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D134E229F7E5100427FE3 /* CallbackAction.swift */; };
 		048D1352229F7EAB00427FE3 /* CallbackActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D1351229F7EAB00427FE3 /* CallbackActionTests.swift */; };
 		049F2928228755DB00A335BE /* SettingsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F2927228755DB00A335BE /* SettingsNavigationController.swift */; };
@@ -322,6 +324,8 @@
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* BasePhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePhotoEditingViewController.swift; sourceTree = "<group>"; };
 		048909F3226573750048E203 /* PhotoEditorPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorPresenting.swift; sourceTree = "<group>"; };
+		04899D74231CEAED002BC1D8 /* PurchaseValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseValidator.swift; sourceTree = "<group>"; };
+		04899D77231CEC4F002BC1D8 /* PurchaseValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseValidatorTests.swift; sourceTree = "<group>"; };
 		048D134E229F7E5100427FE3 /* CallbackAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackAction.swift; sourceTree = "<group>"; };
 		048D1351229F7EAB00427FE3 /* CallbackActionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackActionTests.swift; sourceTree = "<group>"; };
 		049F2927228755DB00A335BE /* SettingsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
@@ -529,6 +533,7 @@
 		041EFF0C2251A9F50058D8EE /* HighlighterTests */ = {
 			isa = PBXGroup;
 			children = (
+				04899D76231CEC3C002BC1D8 /* Purchasing */,
 				048D1350229F7EA300427FE3 /* Callback Actions */,
 				04D68BD32262C52F00D09BBD /* Test Helpers */,
 				04D68BCD2262B9BF00D09BBD /* Photo Selection */,
@@ -683,6 +688,14 @@
 				041EFF012251A9F50058D8EE /* LaunchScreen.storyboard */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04899D76231CEC3C002BC1D8 /* Purchasing */ = {
+			isa = PBXGroup;
+			children = (
+				04899D77231CEC4F002BC1D8 /* PurchaseValidatorTests.swift */,
+			);
+			path = Purchasing;
 			sourceTree = "<group>";
 		};
 		048D134D229F7E4400427FE3 /* Callback Actions */ = {
@@ -864,6 +877,7 @@
 				04F3C7EE2308E8ED00445A8D /* PaymentOperation.swift */,
 				04F3C7F02308E91600445A8D /* FetchProductOperation.swift */,
 				046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */,
+				04899D74231CEAED002BC1D8 /* PurchaseValidator.swift */,
 			);
 			path = Purchasing;
 			sourceTree = "<group>";
@@ -1322,6 +1336,7 @@
 				049F293122875D5B00A335BE /* AcknowledgementsViewController.swift in Sources */,
 				04F3C7EF2308E8ED00445A8D /* PaymentOperation.swift in Sources */,
 				04F3C7BA2301A47E00445A8D /* OtherAppsSection.swift in Sources */,
+				04899D75231CEAED002BC1D8 /* PurchaseValidator.swift in Sources */,
 				041EFF492252FAF50058D8EE /* IntroViewController.swift in Sources */,
 				04F3C7AE2301A2D100445A8D /* SettingsContentSection.swift in Sources */,
 				04F3C7A52300206A00445A8D /* Purchaser.swift in Sources */,
@@ -1410,6 +1425,7 @@
 				04D68BD22262C45700D09BBD /* PhotoSelectionViewControllerTests.swift in Sources */,
 				048D1352229F7EAB00427FE3 /* CallbackActionTests.swift in Sources */,
 				041EFF0E2251A9F50058D8EE /* IntroViewControllerTests.swift in Sources */,
+				04899D78231CEC4F002BC1D8 /* PurchaseValidatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
