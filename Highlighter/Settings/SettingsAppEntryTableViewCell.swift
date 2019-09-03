@@ -27,7 +27,7 @@ class SettingsAppEntryTableViewCell: UITableViewCell {
             label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
-            ])
+        ])
     }
 
     var appEntry: AppEntry? {
