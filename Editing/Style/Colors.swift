@@ -9,7 +9,7 @@ public extension UIColor {
     static let primary = UIColor(hexLiteral: 0x212121)
     static let primaryDark = UIColor(hexLiteral: 0x1b1b1b)
     static let tableViewCellBackground = UIColor(hexLiteral: 0x2c2c2c)
-    static let webControlTint = UIColor(named: "Web Tint Color")
+    static let controlTint = UIColor(named: "Web Tint Color")
 
     convenience init(hexLiteral hex: Int) {
         let red = CGFloat((hex & 0xFF0000) >> 16)

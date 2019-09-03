@@ -6,6 +6,7 @@ import UIKit
 class AutoRedactionsAdditionDialogFactory: NSObject {
     static func newDialog(completionHandler: @escaping ((String?) -> Void)) -> UIAlertController {
         let alertController = UIAlertController(title: AutoRedactionsAdditionDialogFactory.dialogTitle, message: nil, preferredStyle: .alert)
+        alertController.view.tintColor = .controlTint
 
         let addWordAction = UIAlertAction(title: AutoRedactionsAdditionDialogFactory.addButtonTitle, style: .default) { [weak alertController] _ in
             completionHandler(alertController?.textFields?.first?.text)

@@ -6,6 +6,7 @@ import UIKit
 class PageCountAlertFactory: NSObject {
     static func alert(completionHandler: @escaping (() -> Void)) -> UIAlertController {
         let alertController = UIAlertController(title: PageCountAlertFactory.alertTitle, message: PageCountAlertFactory.alertMessage, preferredStyle: .alert)
+        alertController.view.tintColor = .controlTint
         alertController.addAction(UIAlertAction(title: PageCountAlertFactory.dismissButtonTitle, style: .default) { _ in
             completionHandler()
         })

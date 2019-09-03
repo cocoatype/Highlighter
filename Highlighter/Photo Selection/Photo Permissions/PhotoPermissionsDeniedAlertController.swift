@@ -6,6 +6,7 @@ import UIKit
 class PhotoPermissionsDeniedAlertFactory: NSObject {
     static func alert() -> PhotoPermissionsDeniedAlertController {
         let alertController = PhotoPermissionsDeniedAlertController(title: PhotoPermissionsDeniedAlertFactory.alertTitle, message: PhotoPermissionsDeniedAlertFactory.alertMessage, preferredStyle: .alert)
+        alertController.view.tintColor = .controlTint
 
         alertController.addAction(settingsAction)
 

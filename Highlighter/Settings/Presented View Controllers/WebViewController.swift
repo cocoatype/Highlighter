@@ -13,7 +13,7 @@ class WebViewController: SFSafariViewController {
     }
 
     private func updateControlTintColor() {
-        preferredControlTintColor = .webControlTint
+        preferredControlTintColor = .controlTint
     }
 
     private var isDarkMode: Bool { return traitCollection.userInterfaceStyle == .dark }
