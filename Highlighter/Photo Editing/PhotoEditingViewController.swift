@@ -11,6 +11,8 @@ class PhotoEditingViewController: BasePhotoEditingViewController {
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(AppViewController.dismissPhotoEditingViewController))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(PhotoEditingViewController.sharePhoto))
+
+        userActivity = EditingUserActivity()
     }
 
     // MARK: Edit Protection

@@ -115,8 +115,8 @@
 		04DBC83C2314D1C20004F7DB /* AutoRedactionsEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBC83B2314D1C20004F7DB /* AutoRedactionsEmptyViewController.swift */; };
 		04DBC83E2314D1D90004F7DB /* AutoRedactionsEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBC83D2314D1D90004F7DB /* AutoRedactionsEmptyView.swift */; };
 		04DBC8402314D2080004F7DB /* AutoRedactionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBC83F2314D2080004F7DB /* AutoRedactionsListViewController.swift */; };
+		04DBC841231E0F040004F7DB /* EditingUserActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */; };
 		04EF55BA22D6DB9400C6600D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55B922D6DB9400C6600D /* SceneDelegate.swift */; };
-		04EF55BC22D6EBFA00C6600D /* EditingUserActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */; };
 		04F3C7A52300206A00445A8D /* Purchaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7A42300206A00445A8D /* Purchaser.swift */; };
 		04F3C7A9230099BC00445A8D /* PurchaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7A8230099BC00445A8D /* PurchaseState.swift */; };
 		04F3C7AC230187F200445A8D /* SettingsContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7AB230187F200445A8D /* SettingsContentProvider.swift */; };
@@ -1362,7 +1362,6 @@
 				04F3C7C22301A55E00445A8D /* AcknowledgementsItem.swift in Sources */,
 				041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */,
 				041EFF6E225C38800058D8EE /* PhotoSelectionViewController.swift in Sources */,
-				04EF55BC22D6EBFA00C6600D /* EditingUserActivity.swift in Sources */,
 				04F3C7EB2308E7F200445A8D /* PurchaseOperationError.swift in Sources */,
 				04F3C7E72308DD8F00445A8D /* PurchaseOperation.swift in Sources */,
 				04F3C7E523089B1700445A8D /* PurchaseMarketingViewLabel.swift in Sources */,
@@ -1448,6 +1447,7 @@
 				049F92F822CDA59F0090C9BC /* Colors.swift in Sources */,
 				049F92F022CDA4C10090C9BC /* PhotoEditingRedactionView.swift in Sources */,
 				041BEA3F22EF879700FF07C2 /* TextRecognitionOperation.swift in Sources */,
+				04DBC841231E0F040004F7DB /* EditingUserActivity.swift in Sources */,
 				049F92F722CDA5690090C9BC /* PhotoEditingObservationVisualizationView.swift in Sources */,
 				049F92FA22CDA5D90090C9BC /* NavigationBar.swift in Sources */,
 				049F92F622CDA54B0090C9BC /* PhotoEditingScrollView.swift in Sources */,

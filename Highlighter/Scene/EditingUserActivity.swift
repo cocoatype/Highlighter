@@ -3,16 +3,33 @@
 
 import UIKit
 
-class EditingUserActivity: NSUserActivity {
-    init(assetLocalIdentifier: String) {
+public class EditingUserActivity: NSUserActivity {
+    public init() {
         super.init(activityType: EditingUserActivity.defaultActivityType)
         title = EditingUserActivity.activityTitle
-        userInfo = [EditingUserActivity.assetLocalIdentifierKey: assetLocalIdentifier]
+    }
+
+    public convenience init(assetLocalIdentifier: String) {
+        self.init()
+        self.assetLocalIdentifier = assetLocalIdentifier
+    }
+
+    public var assetLocalIdentifier: String? {
+        didSet { needsSave = true }
+    }
+
+    public override var userInfo: [AnyHashable : Any]? {
+        get {
+            var userInfo = [AnyHashable: Any]()
+            userInfo[EditingUserActivity.assetLocalIdentifierKey] = assetLocalIdentifier
+            return userInfo
+        }
+        set {}
     }
 
     // MARK: Boilerplate
 
-    static let assetLocalIdentifierKey = "EditingUserActivity.assetLocalIdentifierKey"
+    public static let assetLocalIdentifierKey = "EditingUserActivity.assetLocalIdentifierKey"
 
     private static let defaultActivityType = "com.cocoatype.Highlighter.editing"
     private static let activityTitle = NSLocalizedString("EditingUserActivity.activityTitle", comment: "Title for the editing user activity")

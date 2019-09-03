@@ -148,6 +148,13 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
         }
     }
 
+    // MARK: User Activity
+
+    open override func updateUserActivityState(_ activity: NSUserActivity) {
+        guard let editingActivity = (activity as? EditingUserActivity) else { return }
+        editingActivity.assetLocalIdentifier = asset?.localIdentifier
+    }
+
     // MARK: Boilerplate
 
     public let completionHandler: ((UIImage) -> Void)?
