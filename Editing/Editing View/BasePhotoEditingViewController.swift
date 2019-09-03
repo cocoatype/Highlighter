@@ -5,12 +5,13 @@ import Photos
 import UIKit
 
 open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate {
-    public init(asset: PHAsset? = nil, image: UIImage? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
+    public init(asset: PHAsset? = nil, image: UIImage? = nil, redactions: [Redaction]? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
         self.asset = asset
         self.image = image
         self.completionHandler = completionHandler
         super.init(nibName: nil, bundle: nil)
 
+        photoEditingView.add(redactions ?? [])
         updateToolbarItems(animated: false)
 
         redactionChangeObserver = NotificationCenter.default.addObserver(forName: PhotoEditingRedactionView.redactionsDidChange, object: nil, queue: .main, using: { [weak self] _ in
@@ -153,6 +154,7 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
     open override func updateUserActivityState(_ activity: NSUserActivity) {
         guard let editingActivity = (activity as? EditingUserActivity) else { return }
         editingActivity.assetLocalIdentifier = asset?.localIdentifier
+        editingActivity.redactions = photoEditingView.redactions
     }
 
     // MARK: Boilerplate

@@ -116,6 +116,7 @@
 		04DBC83E2314D1D90004F7DB /* AutoRedactionsEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBC83D2314D1D90004F7DB /* AutoRedactionsEmptyView.swift */; };
 		04DBC8402314D2080004F7DB /* AutoRedactionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBC83F2314D2080004F7DB /* AutoRedactionsListViewController.swift */; };
 		04DBC841231E0F040004F7DB /* EditingUserActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */; };
+		04DBC843231E2AEC0004F7DB /* RestoredRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBC842231E2AEC0004F7DB /* RestoredRedaction.swift */; };
 		04EF55BA22D6DB9400C6600D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55B922D6DB9400C6600D /* SceneDelegate.swift */; };
 		04F3C7A52300206A00445A8D /* Purchaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7A42300206A00445A8D /* Purchaser.swift */; };
 		04F3C7A9230099BC00445A8D /* PurchaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7A8230099BC00445A8D /* PurchaseState.swift */; };
@@ -365,6 +366,7 @@
 		04DBC83B2314D1C20004F7DB /* AutoRedactionsEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEmptyViewController.swift; sourceTree = "<group>"; };
 		04DBC83D2314D1D90004F7DB /* AutoRedactionsEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEmptyView.swift; sourceTree = "<group>"; };
 		04DBC83F2314D2080004F7DB /* AutoRedactionsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsListViewController.swift; sourceTree = "<group>"; };
+		04DBC842231E2AEC0004F7DB /* RestoredRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoredRedaction.swift; sourceTree = "<group>"; };
 		04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingView.swift; sourceTree = "<group>"; };
 		04EF55B922D6DB9400C6600D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserActivity.swift; sourceTree = "<group>"; };
@@ -609,6 +611,7 @@
 				042A2B86228D08D800353414 /* CharacterObservationRedaction.swift */,
 				042A2B88228D091000353414 /* PathRedaction.swift */,
 				04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */,
+				04DBC842231E2AEC0004F7DB /* RestoredRedaction.swift */,
 			);
 			path = Redactions;
 			sourceTree = "<group>";
@@ -1456,6 +1459,7 @@
 				049F92F522CDA4E40090C9BC /* PathRedaction.swift in Sources */,
 				049F92EA22CDA43F0090C9BC /* UIImageExtensions.swift in Sources */,
 				049F92F222CDA4D50090C9BC /* HighlighterTool.swift in Sources */,
+				04DBC843231E2AEC0004F7DB /* RestoredRedaction.swift in Sources */,
 				049F92EE22CDA4C10090C9BC /* PhotoEditingLegacyBrushStrokeView.swift in Sources */,
 				049F92EB22CDA43F0090C9BC /* UIBezierPathExtensions.swift in Sources */,
 				041BEA3722EF75E800FF07C2 /* Icons.swift in Sources */,

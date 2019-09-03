@@ -20,10 +20,10 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         let dragActivity = connectionOptions.userActivities.first
 
         if let userActivity = restorationActivity ?? dragActivity,
-          let localIdentifierObject = userActivity.userInfo?[EditingUserActivity.assetLocalIdentifierKey],
-          let localIdentifier = (localIdentifierObject as? String),
+          let editingActivity = EditingUserActivity(userActivity: userActivity),
+          let localIdentifier = editingActivity.assetLocalIdentifier,
           let asset = PhotoLibraryDataSource.photo(withIdentifier: localIdentifier) {
-            appViewController.presentPhotoEditingViewController(for: asset, animated: false)
+            appViewController.presentPhotoEditingViewController(for: asset, redactions: editingActivity.redactions, animated: false)
         }
 
         self.window = window

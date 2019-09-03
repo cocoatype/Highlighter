@@ -69,6 +69,10 @@ class PhotoEditingWorkspaceView: UIControl {
         return redactionView.redactions
     }
 
+    func add(_ redactions: [Redaction]) {
+        redactionView.add(redactions)
+    }
+
     func redact<ObservationType: TextObservation>(_ textObservation: ObservationType) {
         redactionView.add(TextObservationRedaction(textObservation))
     }
