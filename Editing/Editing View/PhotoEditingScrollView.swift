@@ -59,9 +59,10 @@ class PhotoEditingScrollView: UIScrollView {
     }
 
     private func updateZoomScale() {
+        let oldMinimumZoomScale = minimumZoomScale
         minimumZoomScale = minimumZoomScaleForCurrentImage
 
-        if zoomScale == 1.0 {
+        if zoomScale == oldMinimumZoomScale {
             zoomScale = minimumZoomScaleForCurrentImage
         }
 
