@@ -7,6 +7,7 @@ class PhotoEditingProtectionAlertController: UIAlertController {
     init(appViewController: AppViewController) {
         self.appViewController = appViewController
         super.init(nibName: nil, bundle: nil)
+        view.tintColor = .controlTint
 
         addAction(saveAction)
         addAction(deleteAction)

@@ -7,6 +7,7 @@ class ActionEditingDismissalAlertController: UIAlertController {
     init(completionHandler: @escaping ((Response) -> Void)) {
         self.completionHandler = completionHandler
         super.init(nibName: nil, bundle: nil)
+        view.tintColor = .controlTint
 
         addAction(saveAction)
         addAction(deleteAction)
