@@ -8,6 +8,7 @@ public class PhotoEditingRedactionView: UIView {
         super.init(frame: .zero)
 
         backgroundColor = .clear
+        contentMode = .redraw
         isOpaque = false
         translatesAutoresizingMaskIntoConstraints = false
     }
@@ -20,7 +21,7 @@ public class PhotoEditingRedactionView: UIView {
           .map { $0.dashedPath }
           .forEach { path in
             let brushStampImage = brushStamp(scaledToHeight: path.lineWidth)
-            path.forEachPoint{ point in
+            path.forEachPoint { point in
                 guard let context = UIGraphicsGetCurrentContext() else { return }
                 context.saveGState()
                 defer { context.restoreGState() }

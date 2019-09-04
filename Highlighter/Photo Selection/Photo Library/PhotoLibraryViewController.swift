@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 4/8/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Editing
 import UIKit
 
 class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate {
@@ -75,7 +76,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch dataSource.item(at: indexPath) {
         case .asset(let asset):
-            photoEditorPresenter?.presentPhotoEditingViewController(for: asset, animated: true)
+            photoEditorPresenter?.presentPhotoEditingViewController(for: asset, redactions: nil, animated: true)
         case .documentScan:
             guard #available(iOS 13.0, *) else { break }
             documentScannerPresenter?.presentDocumentCameraViewController()

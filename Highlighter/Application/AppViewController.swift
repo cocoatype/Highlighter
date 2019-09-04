@@ -14,10 +14,14 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         embed(navigationController)
     }
 
+    var stateRestorationActivity: NSUserActivity? {
+        return photoEditingViewController?.userActivity
+    }
+
     // MARK: Photo Editing View Controller
 
-    func presentPhotoEditingViewController(for asset: PHAsset, animated: Bool = true) {
-        present(PhotoEditingNavigationController(asset: asset), animated: animated)
+    func presentPhotoEditingViewController(for asset: PHAsset, redactions: [Redaction]? = nil, animated: Bool = true) {
+        present(PhotoEditingNavigationController(asset: asset, redactions: redactions), animated: animated)
     }
 
     func presentPhotoEditingViewController(for image: UIImage, completionHandler: ((UIImage) -> Void)? = nil) {
@@ -25,13 +29,11 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     }
 
     @objc func dismissPhotoEditingViewController(_ sender: UIBarButtonItem) {
-        guard let presentedNavigationController = (presentedViewController as? NavigationController),
-          let editingViewController = (presentedNavigationController.viewControllers.first as? PhotoEditingViewController)
-        else { return }
+        guard let photoEditingViewController = photoEditingViewController else { return }
 
-        guard editingViewController.hasMadeEdits else {
-            if let image = editingViewController.image {
-                editingViewController.completionHandler?(image)
+        guard photoEditingViewController.hasMadeEdits else {
+            if let image = photoEditingViewController.image {
+                photoEditingViewController.completionHandler?(image)
             }
 
             dismiss(animated: true)
@@ -40,13 +42,11 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
 
         let alertController = PhotoEditingProtectionAlertController(appViewController: self)
         alertController.barButtonItem = sender
-        editingViewController.present(alertController, animated: true)
+        photoEditingViewController.present(alertController, animated: true)
     }
 
     @objc func destructivelyDismissPhotoEditingViewController() {
-        if let presentedNavigationController = (presentedViewController as? NavigationController),
-          let rootViewController = presentedNavigationController.viewControllers.first,
-          let photoEditingViewController = (rootViewController as? PhotoEditingViewController) {
+        if let photoEditingViewController = photoEditingViewController {
             if let image = photoEditingViewController.image {
                 photoEditingViewController.completionHandler?(image)
             }
@@ -55,9 +55,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     }
 
     func dismissPhotoEditingViewControllerAfterSaving() {
-        guard let presentedNavigationController = (presentedViewController as? NavigationController),
-          let rootViewController = presentedNavigationController.viewControllers.first,
-          let photoEditingViewController = (rootViewController as? PhotoEditingViewController),
+        guard let photoEditingViewController = photoEditingViewController,
           let image = photoEditingViewController.imageForExport 
         else { return }
 
@@ -67,6 +65,10 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
             assert(success, "an error occurred saving changes: \(error?.localizedDescription ?? "no error")")
             self?.dismiss(animated: true)
         })
+    }
+
+    private var photoEditingViewController: PhotoEditingViewController? {
+        return ((presentedViewController as? NavigationController)?.viewControllers.first as? PhotoEditingViewController)
     }
 
     // MARK: Document Scanner
