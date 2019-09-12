@@ -10,7 +10,6 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
         isUserInteractionEnabled = false
 
         layer.mask = animationLayer
-        animationLayer.position.x = -animationOffsetDistance
     }
 
     var shouldShowVisualization = true {
@@ -19,11 +18,13 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
         }
     }
 
-    // MARK: View lifecycle
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        updateAnimationLayer()
+    override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        animationLayer.frame = layer.bounds
+        animationLayer.position.x = layer.bounds.width / -2.0
+        CATransaction.commit()
     }
 
     // MARK: Animation
@@ -33,8 +34,8 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
 
         let black = UIColor.black.withAlphaComponent(0.7).cgColor
         let clear = UIColor.clear.cgColor
-        animationLayer.colors = [clear, black, clear]
-        animationLayer.locations = [0, 0.5, 1]
+        animationLayer.colors = [clear, black, black, clear]
+        animationLayer.locations = [0, 0.1, 0.9, 1]
         animationLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
         animationLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         animationLayer.shouldRasterize = true
@@ -42,31 +43,25 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
     }()
 
     private var animationRect: CGRect {
-        return CGRect(origin: .zero, size: CGSize(width: 128.0, height: bounds.height))
-    }
-
-    private func updateAnimationLayer() {
-        animationLayer.bounds = animationRect
-        animationLayer.position.y = animationRect.midY
+        return CGRect(origin: .zero, size: CGSize(width: bounds.width, height: bounds.height))
     }
 
     private var animationOffsetDistance: CGFloat {
-        return animationRect.width
+//        return 0
+        return (animationRect.width / 2.0)
     }
 
     private func animateVisualization() {
         guard shouldShowVisualization && UIAccessibility.isReduceMotionEnabled == false else { return }
 
-        CATransaction.begin()
-        CATransaction.setDisableActions(true)
-        animationLayer.position.x = -animationOffsetDistance
-        CATransaction.commit()
+        let slideAnimation = CABasicAnimation(keyPath: "position.x")
+        slideAnimation.fromValue = layer.bounds.width / -2.0
+        slideAnimation.toValue = layer.bounds.width * 1.5
+        slideAnimation.duration = 1.0
 
-        CATransaction.begin()
-        CATransaction.setAnimationDuration(1.5)
-        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: .linear))
-        animationLayer.position.x = bounds.width + animationOffsetDistance
-        CATransaction.commit()
+        self.animationLayer.position = CGPoint(x: self.layer.bounds.width * 1.5, y: self.layer.bounds.midY)
+
+        animationLayer.add(slideAnimation, forKey: "position.x")
     }
 
     // MARK: Text Observations

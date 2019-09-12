@@ -15,8 +15,8 @@ class SettingsTableViewHeaderFooterView: UITableViewHeaderFooterView {
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
             label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3.0),
-            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -3.0)
+            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5.0),
+            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5.0)
         ])
     }
 
