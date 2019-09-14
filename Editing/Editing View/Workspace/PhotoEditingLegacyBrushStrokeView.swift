@@ -7,6 +7,7 @@ class PhotoEditingLegacyBrushStrokeView: UIControl, PhotoEditingBrushStrokeView 
     init() {
         super.init(frame: .zero)
         backgroundColor = .clear
+        isMultipleTouchEnabled = true
         isOpaque = false
         translatesAutoresizingMaskIntoConstraints = false
     }
@@ -26,14 +27,14 @@ class PhotoEditingLegacyBrushStrokeView: UIControl, PhotoEditingBrushStrokeView 
     // MARK: Touch Handling
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
+        guard let touch = touches.first, touches.count == 1 else { super.touchesBegan(touches, with: event); return }
         currentPath = newPath()
         currentPath?.move(to: touch.location(in: self))
         setNeedsDisplay()
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
+        guard let touch = touches.first else { super.touchesMoved(touches, with: event); return }
         currentPath?.addLine(to: touch.location(in: self))
         setNeedsDisplay()
     }

@@ -9,6 +9,8 @@ class PhotoEditingScrollView: UIScrollView {
 
         super.init(frame: .zero)
         backgroundColor = .primary
+        showsHorizontalScrollIndicator = false
+        showsVerticalScrollIndicator = false
         translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(workspaceView)

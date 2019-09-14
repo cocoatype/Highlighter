@@ -19,6 +19,6 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>NSPrincipalClass</key>
-	<string>Canvas.PhotoEditingCanvasBrushStrokeView</string>
+	<string>PhotoEditingCanvasBrushStrokeView</string>
 </dict>
 </plist>

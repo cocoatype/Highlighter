@@ -11,7 +11,7 @@ class PhotoEditingWorkspaceView: UIControl {
 
         if #available(iOS 13.0, *) {
             // thanks i hate it
-            if let canvasBundle = Bundle(identifier: "com.cocoatype.Highlighter.Canvas"), let canvasViewType = (canvasBundle .principalClass as? NSObject.Type), let canvasView = (canvasViewType.init() as? UIControl & PhotoEditingBrushStrokeView) {
+            if let canvasBundle = Bundle(identifier: "com.cocoatype.Highlighter.Canvas"), let canvasViewType = (canvasBundle.principalClass as? NSObject.Type), let canvasView = (canvasViewType.init() as? UIControl & PhotoEditingBrushStrokeView) {
                 brushStrokeView = canvasView
             } else {
                 brushStrokeView = PhotoEditingLegacyBrushStrokeView()
