@@ -6,6 +6,7 @@ import UIKit
 class PhotoEditingLegacyBrushStrokeView: UIControl, PhotoEditingBrushStrokeView {
     init() {
         super.init(frame: .zero)
+        accessibilityIgnoresInvertColors = true
         backgroundColor = .clear
         isMultipleTouchEnabled = true
         isOpaque = false

@@ -7,6 +7,7 @@ class AssetPhotoLibraryViewCellImageView: UIImageView {
     init() {
         super.init(frame: .zero)
 
+        accessibilityIgnoresInvertColors = true
         clipsToBounds = true
         contentMode = .scaleAspectFill
         translatesAutoresizingMaskIntoConstraints = false

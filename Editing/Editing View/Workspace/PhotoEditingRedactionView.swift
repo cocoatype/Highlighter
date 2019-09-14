@@ -7,6 +7,7 @@ public class PhotoEditingRedactionView: UIView {
     public init() {
         super.init(frame: .zero)
 
+        accessibilityIgnoresInvertColors = true
         backgroundColor = .clear
         contentMode = .redraw
         isOpaque = false
