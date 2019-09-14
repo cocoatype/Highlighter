@@ -7,6 +7,7 @@ import UIKit
 class SettingsTableViewCellImageView: UIImageView {
     init() {
         super.init(frame: .zero)
+        accessibilityIgnoresInvertColors = true
         translatesAutoresizingMaskIntoConstraints = false
     }
 

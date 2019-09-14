@@ -11,6 +11,7 @@
 - (instancetype)init
 {
     if ((self = [super initWithFrame:CGRectZero])) {
+        self.accessibilityIgnoresInvertColors = YES;
         self.allowsFingerDrawing = YES;
         self.backgroundColor = [UIColor clearColor];
         self.opaque = NO;
