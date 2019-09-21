@@ -63,12 +63,14 @@ class SettingsContentProvider: NSObject {
     private var sections: [SettingsContentSection] {
         var sections = [SettingsContentSection]()
 
-        switch purchaser.state {
-        case .purchased:
-            sections.append(SettingsSection())
-        case .loading, .readyForPurchase, .purchasing, .restoring:
-            sections.append(PurchaseSection())
-        case .unavailable: break
+        if #available(iOS 13.0, *) {
+            switch purchaser.state {
+            case .purchased:
+                sections.append(SettingsSection())
+            case .loading, .readyForPurchase, .purchasing, .restoring:
+                sections.append(PurchaseSection())
+            case .unavailable: break
+            }
         }
 
         sections.append(contentsOf: ([
