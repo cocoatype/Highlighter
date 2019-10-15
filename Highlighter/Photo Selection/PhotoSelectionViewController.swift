@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 4/8/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Editing
 import UIKit
 
 class PhotoSelectionViewController: UIViewController {
@@ -10,6 +11,7 @@ class PhotoSelectionViewController: UIViewController {
 
         navigationItem.title = PhotoSelectionViewController.navigationItemTitle
         navigationItem.rightBarButtonItem = settingsBarButtonItem
+
         embed(initialViewController)
     }
 
@@ -32,7 +34,14 @@ class PhotoSelectionViewController: UIViewController {
     private var permissionsRequester: PhotoPermissionsRequester
 
     private lazy var settingsBarButtonItem: UIBarButtonItem = {
-        let barButtonItem = UIBarButtonItem(image: UIImage(named: "Help"), style: .plain, target: nil, action: #selector(AppViewController.presentSettingsViewController))
+        let barButtonItem = UIBarButtonItem(image: Icons.help, style: .plain, target: nil, action: #selector(AppViewController.presentSettingsViewController))
+        barButtonItem.accessibilityLabel = PhotoSelectionViewController.settingsButtonAccessibilityLabel
+        return barButtonItem
+    }()
+
+    @available(iOS 13.0, *)
+    private lazy var documentScanBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(image: Icons.scanDocument, style: .plain, target: nil, action: #selector(AppViewController.presentDocumentCameraViewController))
         barButtonItem.accessibilityLabel = PhotoSelectionViewController.settingsButtonAccessibilityLabel
         return barButtonItem
     }()

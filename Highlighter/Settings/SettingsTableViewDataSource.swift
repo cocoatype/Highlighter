@@ -3,7 +3,7 @@
 
 import UIKit
 
-class SettingsTableViewDataSource: NSObject, UITableViewDataSource {
+class SettingsTableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     init(contentProvider: SettingsContentProvider) {
         self.contentProvider = contentProvider
         super.init()
@@ -21,30 +21,32 @@ class SettingsTableViewDataSource: NSObject, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = contentProvider.item(at: indexPath)
-
-        switch item {
-        case .otherApp(let appEntry):
-            return appEntryCell(for: appEntry, at: indexPath, in: tableView)
-        default:
-            return itemCell(for: item, at: indexPath, in: tableView)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier, for: indexPath) as? SettingsContentTableViewCell else {
+            fatalError("Settings table view cell is not a SettingsContentTableViewCell: \(item.cellIdentifier)")
         }
+
+        cell.item = item
+        return cell
     }
 
-    private func appEntryCell(for appEntry: AppEntry, at indexPath: IndexPath, in tableView: UITableView) -> SettingsAppEntryTableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SettingsAppEntryTableViewCell.identifier, for: indexPath)
-        guard let appEntryCell = (cell as? SettingsAppEntryTableViewCell) else { fatalError("Settings table view cell is not a SettingsAppEntryTableViewCell") }
+    // MARK: Table View Delegate
 
-        appEntryCell.appEntry = appEntry
-        return appEntryCell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        contentProvider.item(at: indexPath).performSelectedAction(tableView)
     }
 
-    private func itemCell(for item: SettingsContentProvider.Item, at indexPath: IndexPath, in tableView: UITableView) -> SettingsTableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.identifier, for: indexPath)
-        guard let settingsCell = (cell as? SettingsTableViewCell) else { fatalError("Settings table view cell is not a SettingsTableViewCell") }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: SettingsTableViewHeaderFooterView.identifier) as? SettingsTableViewHeaderFooterView else { fatalError("Got incorrect header view type") }
+        headerView.text = contentProvider.section(at: section).header
+        return headerView
+    }
 
-        settingsCell.item = item
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return SettingsTableViewHeaderFooterLabel().font.lineHeight
+    }
 
-        return settingsCell
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
     }
 
     // MARK: Boilerplate

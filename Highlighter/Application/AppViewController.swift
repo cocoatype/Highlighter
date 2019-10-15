@@ -4,8 +4,9 @@
 import Editing
 import Photos
 import UIKit
+import VisionKit
 
-class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening {
+class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening, VNDocumentCameraViewControllerDelegate, DocumentScannerPresenting {
     init() {
         super.init(nibName: nil, bundle: nil)
 
@@ -13,10 +14,14 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         embed(navigationController)
     }
 
+    var stateRestorationActivity: NSUserActivity? {
+        return photoEditingViewController?.userActivity
+    }
+
     // MARK: Photo Editing View Controller
 
-    func presentPhotoEditingViewController(for asset: PHAsset) {
-        present(PhotoEditingNavigationController(asset: asset), animated: true)
+    func presentPhotoEditingViewController(for asset: PHAsset, redactions: [Redaction]? = nil, animated: Bool = true) {
+        present(PhotoEditingNavigationController(asset: asset, redactions: redactions), animated: animated)
     }
 
     func presentPhotoEditingViewController(for image: UIImage, completionHandler: ((UIImage) -> Void)? = nil) {
@@ -24,13 +29,11 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     }
 
     @objc func dismissPhotoEditingViewController(_ sender: UIBarButtonItem) {
-        guard let presentedNavigationController = (presentedViewController as? NavigationController),
-          let editingViewController = (presentedNavigationController.viewControllers.first as? PhotoEditingViewController)
-        else { return }
+        guard let photoEditingViewController = photoEditingViewController else { return }
 
-        guard editingViewController.hasMadeEdits else {
-            if let image = editingViewController.image {
-                editingViewController.completionHandler?(image)
+        guard photoEditingViewController.hasMadeEdits else {
+            if let image = photoEditingViewController.image {
+                photoEditingViewController.completionHandler?(image)
             }
 
             dismiss(animated: true)
@@ -39,13 +42,11 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
 
         let alertController = PhotoEditingProtectionAlertController(appViewController: self)
         alertController.barButtonItem = sender
-        editingViewController.present(alertController, animated: true)
+        photoEditingViewController.present(alertController, animated: true)
     }
 
     @objc func destructivelyDismissPhotoEditingViewController() {
-        if let presentedNavigationController = (presentedViewController as? NavigationController),
-          let rootViewController = presentedNavigationController.viewControllers.first,
-          let photoEditingViewController = (rootViewController as? PhotoEditingViewController) {
+        if let photoEditingViewController = photoEditingViewController {
             if let image = photoEditingViewController.image {
                 photoEditingViewController.completionHandler?(image)
             }
@@ -54,9 +55,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     }
 
     func dismissPhotoEditingViewControllerAfterSaving() {
-        guard let presentedNavigationController = (presentedViewController as? NavigationController),
-          let rootViewController = presentedNavigationController.viewControllers.first,
-          let photoEditingViewController = (rootViewController as? PhotoEditingViewController),
+        guard let photoEditingViewController = photoEditingViewController,
           let image = photoEditingViewController.imageForExport 
         else { return }
 
@@ -66,6 +65,42 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
             assert(success, "an error occurred saving changes: \(error?.localizedDescription ?? "no error")")
             self?.dismiss(animated: true)
         })
+    }
+
+    private var photoEditingViewController: PhotoEditingViewController? {
+        return ((presentedViewController as? NavigationController)?.viewControllers.first as? PhotoEditingViewController)
+    }
+
+    // MARK: Document Scanner
+
+    @available(iOS 13.0, *)
+    @objc func presentDocumentCameraViewController() {
+        let cameraViewController = VNDocumentCameraViewController()
+        cameraViewController.delegate = self
+        present(cameraViewController, animated: true)
+    }
+
+    private func presentPageCountAlert(beforeEditing image: UIImage) {
+        let alert = PageCountAlertFactory.alert { [weak self] in
+            self?.presentPhotoEditingViewController(for: image)
+        }
+        present(alert, animated: true)
+    }
+
+    @available(iOS 13.0, *)
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+        guard let presentedViewController = presentedViewController, presentedViewController == controller else { return }
+
+        dismiss(animated: true) { [weak self] in
+            guard scan.pageCount > 0 else { return }
+            let pageImage = scan.imageOfPage(at: 0)
+
+            if scan.pageCount > 1 {
+                self?.presentPageCountAlert(beforeEditing: pageImage)
+            } else {
+                self?.presentPhotoEditingViewController(for: pageImage)
+            }
+        }
     }
 
     // MARK: Settings View Controller

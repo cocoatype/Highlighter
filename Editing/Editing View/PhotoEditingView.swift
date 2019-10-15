@@ -24,9 +24,17 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
         set(newImage) { photoScrollView.image = newImage }
     }
 
-    public var textObservations: [TextObservation]? {
+    public var textObservations: [TextRectangleObservation]? {
         didSet {
             photoScrollView.textObservations = textObservations
+        }
+    }
+
+    var wordObservations: [WordObservation]? {
+        didSet {
+            workspaceView.accessibilityElements = wordObservations?.compactMap { observation in
+                WordObservationAccessibilityElement(observation, in: workspaceView)
+            }
         }
     }
 
@@ -41,10 +49,23 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
         return workspaceView.redactions
     }
 
+    public func add(_ redactions: [Redaction]) {
+        workspaceView.add(redactions)
+    }
+
+    func redact<ObservationType: TextObservation>(_ observations: [ObservationType]) {
+        observations.forEach { [unowned self] in self.workspaceView.redact($0) }
+    }
+
     // MARK: UIScrollViewDelegate
 
     public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return workspaceView
+    }
+
+    public func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        guard scrollView == photoScrollView else { return }
+        workspaceView.scrollViewDidZoom(to: scrollView.zoomScale)
     }
 
     // MARK: Boilerplate

@@ -66,17 +66,18 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
 
     // MARK: Text Observations
 
-    var textObservations: [TextObservation]? {
+    var textObservations: [TextRectangleObservation]? {
         didSet {
             removeAllRedactions()
             defer { setNeedsDisplay() }
 
             guard let textObservations = textObservations else { return }
 
-            add(textObservations.compactMap { textObservation -> CharacterObservationRedaction? in
+            let characterObservationRedactions = textObservations.compactMap { textObservation -> CharacterObservationRedaction? in
                 guard let characterObservations = textObservation.characterObservations else { return nil }
                 return CharacterObservationRedaction(characterObservations)
-            })
+            }
+            add(characterObservationRedactions)
 
             setNeedsDisplay()
             animateVisualization()

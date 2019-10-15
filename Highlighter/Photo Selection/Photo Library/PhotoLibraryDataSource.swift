@@ -3,6 +3,7 @@
 
 import Photos
 import UIKit
+import VisionKit
 
 class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibraryChangeObserver {
     override init() {
@@ -15,12 +16,20 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
     // MARK: Data Source
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allPhotos.count
+        if shouldShowDocumentScannerCell {
+            return allPhotos.count + 1
+        } else {
+            return allPhotos.count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoLibraryViewCell.identifier, for: indexPath)
-        guard let photoCell = cell as? PhotoLibraryViewCell else {
+        guard indexPath.row < allPhotos.count else {
+            return documentScannerCell(for: collectionView, at: indexPath)
+        }
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssetPhotoLibraryViewCell.identifier, for: indexPath)
+        guard let photoCell = cell as? AssetPhotoLibraryViewCell else {
             fatalError("Got incorrect type of cell for photo picker: \(String(describing: type(of: cell)))")
         }
 
@@ -29,17 +38,45 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
         return cell
     }
 
+    // MARK: Document Scanning
+
+    private var shouldShowDocumentScannerCell: Bool {
+        guard #available(iOS 13.0, *) else { return false }
+        guard case .purchased = Purchaser().state else { return false }
+        return VNDocumentCameraViewController.isSupported
+    }
+
+    private func documentScannerCell(for collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
+        guard #available(iOS 13.0, *) else {
+            fatalError("Tried to display a document scanner cell on iOS version prior to iOS 13.0")
+        }
+
+        return collectionView.dequeueReusableCell(withReuseIdentifier: DocumentScannerPhotoLibraryViewCell.identifier, for: indexPath)
+    }
+
     // MARK: Photos
 
     private lazy var allPhotos: PHFetchResult<PHAsset> = self.fetchAllPhotos()
 
-    func photo(at indexPath: IndexPath) -> PHAsset {
-        return allPhotos[indexPath.item]
+    static func photo(withIdentifier identifier: String) -> PHAsset? {
+        return PHAsset.fetchAssets(withLocalIdentifiers: [identifier], options: nil).firstObject
+    }
+
+    func item(at indexPath: IndexPath) -> PhotoLibraryItem {
+        let index = indexPath.item
+        guard index < allPhotos.count else { return .documentScan }
+
+        return .asset(allPhotos[indexPath.item])
+    }
+
+    var lastItemIndexPath: IndexPath {
+        let lastItemIndex = allPhotos.count - 1
+        return IndexPath(row: lastItemIndex, section: 0)
     }
 
     private func fetchAllPhotos() -> PHFetchResult<PHAsset> {
         let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         return PHAsset.fetchAssets(with: fetchOptions)
     }
 
@@ -76,4 +113,9 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
             }
         }
     }
+}
+
+enum PhotoLibraryItem {
+    case asset(PHAsset)
+    case documentScan
 }

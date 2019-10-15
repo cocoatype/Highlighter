@@ -14,7 +14,21 @@ public class NavigationBar: UINavigationBar {
             .font: UIFont.navigationBarTitleFont,
             .foregroundColor: UIColor.white
         ]
+
+        if #available(iOS 13.0, *) {
+            standardAppearance.titleTextAttributes = titleTextAttributes ?? [:]
+            standardAppearance.backButtonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+            standardAppearance.backButtonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+            standardAppearance.doneButtonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+            standardAppearance.doneButtonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+        }
     }
+
+    // MARK: Bar Button Appearance
+
+    static let buttonTitleTextAttributes = [
+        NSAttributedString.Key.font: UIFont.navigationBarButtonFont
+    ]
 
     // MARK: Boilerplate
 

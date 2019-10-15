@@ -6,14 +6,16 @@ import Photos
 import UIKit
 
 class PhotoEditingNavigationController: NavigationController {
-    init(asset: PHAsset) {
-        super.init(rootViewController: PhotoEditingViewController(asset: asset))
+    init(asset: PHAsset, redactions: [Redaction]?) {
+        super.init(rootViewController: PhotoEditingViewController(asset: asset, redactions: redactions))
         isToolbarHidden = false
+        modalPresentationStyle = .fullScreen
     }
 
     init(image: UIImage, completionHandler: ((UIImage) -> Void)? = nil) {
         super.init(rootViewController: PhotoEditingViewController(image: image, completionHandler: completionHandler))
         isToolbarHidden = false
+        modalPresentationStyle = .fullScreen
     }
 
     // MARK: Boilerplate

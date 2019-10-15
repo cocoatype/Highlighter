@@ -12,6 +12,7 @@ extension UIViewController {
         }
 
         guard let newChildView = newChild.view else { return }
+        newChildView.frame = view.bounds
         newChildView.translatesAutoresizingMaskIntoConstraints = false
 
         addChild(newChild)

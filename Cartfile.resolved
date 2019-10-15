@@ -1,1 +1,3 @@
-github "onevcat/Kingfisher" "5.5.0"
+github "Rightpoint/BonMot" "5.4.1"
+github "krzyzanowskim/OpenSSL" "1.0.218"
+github "onevcat/Kingfisher" "5.7.1"

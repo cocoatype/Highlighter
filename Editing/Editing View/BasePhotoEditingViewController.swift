@@ -5,12 +5,13 @@ import Photos
 import UIKit
 
 open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate {
-    public init(asset: PHAsset? = nil, image: UIImage? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
+    public init(asset: PHAsset? = nil, image: UIImage? = nil, redactions: [Redaction]? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
         self.asset = asset
         self.image = image
         self.completionHandler = completionHandler
         super.init(nibName: nil, bundle: nil)
 
+        photoEditingView.add(redactions ?? [])
         updateToolbarItems(animated: false)
 
         redactionChangeObserver = NotificationCenter.default.addObserver(forName: PhotoEditingRedactionView.redactionsDidChange, object: nil, queue: .main, using: { [weak self] _ in
@@ -69,10 +70,10 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
     }
 
     private func updateToolbarItems(animated: Bool = true) {
-        let undoToolItem = UIBarButtonItem(image: UIImage(named: "Undo"), style: .plain, target: self, action: #selector(BasePhotoEditingViewController.undo))
+        let undoToolItem = UIBarButtonItem(image: Icons.undo, style: .plain, target: self, action: #selector(BasePhotoEditingViewController.undo))
         undoToolItem.isEnabled = editingUndoManager.canUndo
 
-        let redoToolItem = UIBarButtonItem(image: UIImage(named: "Redo"), style: .plain, target: self, action: #selector(BasePhotoEditingViewController.redo))
+        let redoToolItem = UIBarButtonItem(image: Icons.redo, style: .plain, target: self, action: #selector(BasePhotoEditingViewController.redo))
         redoToolItem.isEnabled = editingUndoManager.canRedo
 
         let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -130,6 +131,30 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
                 self?.photoEditingView.textObservations = textObservations
             }
         }
+
+        if #available(iOS 13.0, *) {
+            textRectangleDetector.detectWords(in: image) { [weak self] recognizedTextObservations in
+                guard let observations = recognizedTextObservations else { return }
+                let matchingObservations = observations.filter { observation in
+                    Defaults.autoRedactionsWordList.contains(where: { wordListString in
+                        wordListString.compare(observation.string, options: [.caseInsensitive, .diacriticInsensitive]) == .orderedSame
+                    })
+                }
+
+                DispatchQueue.main.async {
+                    self?.photoEditingView.redact(matchingObservations)
+                    self?.photoEditingView.wordObservations = observations
+                }
+            }
+        }
+    }
+
+    // MARK: User Activity
+
+    open override func updateUserActivityState(_ activity: NSUserActivity) {
+        guard let editingActivity = (activity as? EditingUserActivity) else { return }
+        editingActivity.assetLocalIdentifier = asset?.localIdentifier
+        editingActivity.redactions = photoEditingView.redactions
     }
 
     // MARK: Boilerplate

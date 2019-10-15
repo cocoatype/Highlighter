@@ -4,21 +4,34 @@
 import UIKit
 import Vision
 
-public struct TextObservation: Equatable {
+public protocol TextObservation: Equatable {
+    var bounds: CGRect { get }
+}
+
+public struct TextRectangleObservation: TextObservation {
     init(_ textObservation: VNTextObservation, in image: UIImage) {
         let boundingBox = textObservation.boundingBox
         let imageSize = image.size * image.scale
         self.bounds = CGRect.flippedRect(from: boundingBox, scaledTo: imageSize)
 
-        let observationUUID = textObservation.uuid
-        self.uuid = observationUUID
-
-        self.characterObservations = textObservation.characterBoxes?.map {
-            CharacterObservation(bounds: CGRect.flippedRect(from: $0.boundingBox, scaledTo: imageSize), textObservationUUID: observationUUID)
+        let characterObservations = textObservation.characterBoxes?.map {
+            CharacterObservation(bounds: CGRect.flippedRect(from: $0.boundingBox, scaledTo: imageSize), textObservationUUID: textObservation.uuid)
         }
+
+        self.characterObservations = characterObservations
     }
 
-    let bounds: CGRect
+    public let bounds: CGRect
     let characterObservations: [CharacterObservation]?
-    let uuid: UUID
+}
+
+public struct WordObservation: TextObservation {
+    init(bounds: CGRect, string: String, in image: UIImage) {
+        let imageSize = image.size * image.scale
+        self.bounds = CGRect.flippedRect(from: bounds, scaledTo: imageSize)
+        self.string = string
+    }
+
+    public let bounds: CGRect
+    public let string: String
 }

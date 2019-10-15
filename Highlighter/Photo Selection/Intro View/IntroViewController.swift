@@ -19,9 +19,9 @@ class IntroViewController: UIViewController {
             case .authorized:
                 UIApplication.shared.sendAction(#selector(PhotoSelectionViewController.showPhotoLibrary), to: nil, from: self, for: nil)
             case .restricted:
-                self?.present(PhotoPermissionsRestrictedAlertController(), animated: true)
+                self?.present(PhotoPermissionsRestrictedAlertFactory.alert(), animated: true)
             case .denied:
-                self?.present(PhotoPermissionsDeniedAlertController(), animated: true)
+                self?.present(PhotoPermissionsDeniedAlertFactory.alert(), animated: true)
             case .notDetermined:
                 fallthrough
             @unknown default:

@@ -6,6 +6,17 @@
   Copyright © 2019 Cocoatype, LLC. All rights reserved.
 */
 
+"AutoRedactionsAdditionDialogFactory.addButtonTitle" = "Add Word";
+"AutoRedactionsAdditionDialogFactory.placeholder" = "Hidden Word";
+"AutoRedactionsAdditionDialogFactory.dialogTitle" = "Auto-Hide Word";
+
+"AutoRedactionsDataSource.deleteActionTitle" = "Delete";
+
+"AutoRedactionsEditViewController.navigationTitle" = "Auto-Hidden Words";
+
+"AutoRedactionsEmptyView.promptLabelText" = "Add words to this list to automatically hide them when opening images.";
+"AutoRedactionsEmptyView.promptButtonTitle" = "Add Word";
+
 "BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle" = "Undo Redaction";
 "BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle" = "Redo Redaction";
 
@@ -14,9 +25,15 @@
 "IntroView.promptLabelText" = "Black Highlighter needs permission to edit your photos.";
 "IntroView.promptButtonTitle" = "Grant Access";
 
+"PageCountAlertFactory.alertTitle" = "Too Many Pages";
+"PageCountAlertFactory.alertMessage" = "Highlighter only supports editing one page at a time. Only the first page of your scan will appear.";
+"PageCountAlertFactory.dismissButtonTitle" = "Okay";
+
 "PhotoEditingProtectionAlertController.cancelButtonTitle" = "Cancel";
 "PhotoEditingProtectionAlertController.deleteButtonTitle" = "Delete Changes";
 "PhotoEditingProtectionAlertController.saveButtonTitle" = "Save to Photos";
+
+"PhotoLibraryViewDocumentScannerCell.defaultAccessibilityLabel" = "Scan Document";
 
 "PhotoPermissionsDeniedAlertController.alertTitle" = "No Access to Your Photos";
 "PhotoPermissionsDeniedAlertController.alertMessage" = "Black Highlighter needs permission to edit your photos. Open Settings to grant access.";
@@ -30,9 +47,23 @@
 "PhotoSelectionViewController.navigationItemTitle" = "Photos";
 "PhotoSelectionViewController.settingsButtonAccessibilityLabel" = "Help";
 
+"PurchaseItem.title" = "Ultra Highlighter";
+"PurchaseItem.subtitleWithoutProduct" = "Enhanced Features — $2.99";
+"PurchaseItem.subtitleWithProduct" = "Enhanced Features — %@";
+
+"PurchaseMarketingView.marketingText" = "<header>Auto-Hide Words</header>\nGot words you never want to share? We’ll go ahead and hide them for you, right when you open the image.\n<header>Document Scanning</header>\nSometimes the stuff you want to share is in the real world. Bring them in to the virtual with high-quality document scanning.\n<header>Support Development</header>\nBlack Highlighter is a one-man show. Your support helps keep updates to Black Highlighter coming!";
+"PurchaseMarketingView.purchaseButtonTitleWithoutProduct" = "Purchase for $2.99";
+"PurchaseMarketingView.purchaseButtonTitleWithProduct" = "Purchase for %@";
+
+"PurchaseMarketingViewController.navigationTitle" = "Ultra Highlighter";
+"PurchaseMarketingViewController.restoreButtonTitle" = "Restore";
+
 "SettingsContentProvider.Item.about" = "About Black Highlighter";
 "SettingsContentProvider.Item.acknowledgements" = "Acknowledgements";
+"SettingsContentProvider.Item.autoRedactions" = "Auto-Hidden Words";
 "SettingsContentProvider.Item.contact" = "Contact the Developer";
 "SettingsContentProvider.Item.privacy" = "Privacy Policy";
 
 "SettingsContentProvider.Section.otherApps.header" = "Other Apps by Cocoatype";
+
+"SettingsViewController.navigationTitle" = "Settings";

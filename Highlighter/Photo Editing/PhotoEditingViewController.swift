@@ -6,11 +6,13 @@ import Photos
 import UIKit
 
 class PhotoEditingViewController: BasePhotoEditingViewController {
-    override init(asset: PHAsset? = nil, image: UIImage? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
-        super.init(asset: asset, image: image, completionHandler: completionHandler)
+    override init(asset: PHAsset? = nil, image: UIImage? = nil, redactions: [Redaction]? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
+        super.init(asset: asset, image: image, redactions: redactions, completionHandler: completionHandler)
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(AppViewController.dismissPhotoEditingViewController))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(PhotoEditingViewController.sharePhoto))
+
+        userActivity = EditingUserActivity()
     }
 
     // MARK: Edit Protection

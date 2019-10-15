@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -25,12 +27,10 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
-	<key>CFBundleDisplayName</key>
-	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>19.3</string>
+	<string>19.4</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -52,11 +52,34 @@
 	<false/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Black Highlighter accesses your photo library to open photos for redaction and to save redacted photos.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Black Highlighter accesses your camera to scan documents for redaction.</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>com.cocoatype.Highlighter.editing</string>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Aleo-Bold.otf</string>
 		<string>Aleo-Regular.otf</string>
 	</array>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<true/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Highlighter</string>
+					<key>UISceneDelegateClassName</key>
+					<string>Highlighter.SceneDelegate</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

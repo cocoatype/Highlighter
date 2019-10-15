@@ -9,6 +9,8 @@ class PhotoEditingScrollView: UIScrollView {
 
         super.init(frame: .zero)
         backgroundColor = .primary
+        showsHorizontalScrollIndicator = false
+        showsVerticalScrollIndicator = false
         translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(workspaceView)
@@ -33,7 +35,7 @@ class PhotoEditingScrollView: UIScrollView {
         }
     }
 
-    var textObservations: [TextObservation]? {
+    var textObservations: [TextRectangleObservation]? {
         get { return workspaceView.textObservations }
         set(newTextObservations) {
             workspaceView.textObservations = newTextObservations
@@ -59,9 +61,10 @@ class PhotoEditingScrollView: UIScrollView {
     }
 
     private func updateZoomScale() {
+        let oldMinimumZoomScale = minimumZoomScale
         minimumZoomScale = minimumZoomScaleForCurrentImage
 
-        if zoomScale == 1.0 {
+        if zoomScale == oldMinimumZoomScale {
             zoomScale = minimumZoomScaleForCurrentImage
         }
 

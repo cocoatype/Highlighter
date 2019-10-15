@@ -7,7 +7,14 @@ class WebViewController: SFSafariViewController {
     init(url: URL) {
         let configuration = SFSafariViewController.Configuration()
         super.init(url: url, configuration: configuration)
-        preferredControlTintColor = .primary
+
         modalPresentationStyle = .currentContext
+        updateControlTintColor()
     }
+
+    private func updateControlTintColor() {
+        preferredControlTintColor = .controlTint
+    }
+
+    private var isDarkMode: Bool { return traitCollection.userInterfaceStyle == .dark }
 }

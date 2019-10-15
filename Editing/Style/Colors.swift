@@ -9,6 +9,7 @@ public extension UIColor {
     static let primary = UIColor(hexLiteral: 0x212121)
     static let primaryDark = UIColor(hexLiteral: 0x1b1b1b)
 
+    static let controlTint = UIColor(named: "Web Tint Color")
     static let tableViewCellBackground = UIColor(hexLiteral: 0x2c2c2c)
     static let tableViewSeparator = UIColor(hexLiteral: 0x878787)
 

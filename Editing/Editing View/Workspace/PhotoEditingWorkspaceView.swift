@@ -8,11 +8,20 @@ class PhotoEditingWorkspaceView: UIControl {
         imageView = PhotoEditingImageView()
         visualizationView = PhotoEditingObservationVisualizationView()
         redactionView = PhotoEditingRedactionView()
-        brushStrokeView = PhotoEditingBrushStrokeView()
+
+        if #available(iOS 13.0, *) {
+            // thanks i hate it
+            if let canvasBundle = Bundle(identifier: "com.cocoatype.Highlighter.Canvas"), let canvasViewType = (canvasBundle.principalClass as? NSObject.Type), let canvasView = (canvasViewType.init() as? UIControl & PhotoEditingBrushStrokeView) {
+                brushStrokeView = canvasView
+            } else {
+                brushStrokeView = PhotoEditingLegacyBrushStrokeView()
+            }
+        } else {
+            brushStrokeView = PhotoEditingLegacyBrushStrokeView()
+        }
 
         super.init(frame: .zero)
-        isAccessibilityElement = true
-        accessibilityTraits = .allowsDirectInteraction
+        isAccessibilityElement = false
         backgroundColor = .primary
         translatesAutoresizingMaskIntoConstraints = false
 
@@ -60,11 +69,23 @@ class PhotoEditingWorkspaceView: UIControl {
         return redactionView.redactions
     }
 
-    var textObservations: [TextObservation]? {
+    func add(_ redactions: [Redaction]) {
+        redactionView.add(redactions)
+    }
+
+    func redact<ObservationType: TextObservation>(_ textObservation: ObservationType) {
+        redactionView.add(TextObservationRedaction(textObservation))
+    }
+
+    var textObservations: [TextRectangleObservation]? {
         get { return visualizationView.textObservations }
         set(newTextObservations) {
             visualizationView.textObservations = newTextObservations
         }
+    }
+
+    func scrollViewDidZoom(to zoomScale: CGFloat) {
+        brushStrokeView.updateTool(currentZoomScale: zoomScale)
     }
 
     // MARK: Actions
@@ -96,12 +117,19 @@ class PhotoEditingWorkspaceView: UIControl {
         redactionView.add(PathRedaction(strokePath))
     }
 
+    // MARK: Accessibility
+
+    override func accessibilityActivate() -> Bool {
+        print("activate")
+        return true
+    }
+
     // MARK: Boilerplate
 
     private let imageView: PhotoEditingImageView
     private let visualizationView: PhotoEditingObservationVisualizationView
     private let redactionView: PhotoEditingRedactionView
-    private let brushStrokeView: PhotoEditingBrushStrokeView
+    private let brushStrokeView: UIControl & PhotoEditingBrushStrokeView
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

@@ -10,8 +10,9 @@ class SettingsTableView: UITableView {
         separatorColor = .tableViewSeparator
         separatorInset = .zero
 
-        register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
+        register(SettingsStandardTableViewCell.self, forCellReuseIdentifier: SettingsStandardTableViewCell.identifier)
         register(SettingsAppEntryTableViewCell.self, forCellReuseIdentifier: SettingsAppEntryTableViewCell.identifier)
+        register(SettingsPurchaseTableViewCell.self, forCellReuseIdentifier: SettingsPurchaseTableViewCell.identifier)
         register(SettingsTableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: SettingsTableViewHeaderFooterView.identifier)
     }
 

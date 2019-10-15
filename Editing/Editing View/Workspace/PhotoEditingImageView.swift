@@ -6,6 +6,7 @@ import UIKit
 public class PhotoEditingImageView: UIImageView {
     public init() {
         super.init(frame: .zero)
+        accessibilityIgnoresInvertColors = true
         translatesAutoresizingMaskIntoConstraints = false
         contentMode = .center
     }
