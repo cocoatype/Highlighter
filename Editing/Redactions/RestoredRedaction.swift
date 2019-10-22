@@ -3,6 +3,6 @@
 
 import UIKit
 
-struct RestoredRedaction: Redaction {
-    var paths: [UIBezierPath]
+public struct RestoredRedaction: Redaction {
+    public var paths: [UIBezierPath]
 }

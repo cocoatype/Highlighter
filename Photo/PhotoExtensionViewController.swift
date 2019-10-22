@@ -3,6 +3,7 @@
 
 import Editing
 import Foundation
+import MobileCoreServices
 import Photos
 import PhotosUI
 
@@ -12,28 +13,62 @@ class PhotoExtensionViewController: UIViewController, PHContentEditingController
         embed(PhotoLoadingViewController())
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        dump(view.safeAreaInsets)
-        dump(view.layoutMarginsGuide)
-    }
-
     // MARK: PHContentEditingController
 
     func canHandle(_ adjustmentData: PHAdjustmentData) -> Bool { return false }
 
     func startContentEditing(with contentEditingInput: PHContentEditingInput, placeholderImage: UIImage) {
+        input = contentEditingInput
         guard let displayImage = contentEditingInput.displaySizeImage else { return }
         transition(to: PhotoNavigationController(image: displayImage))
     }
 
-    func finishContentEditing(completionHandler: @escaping (PHContentEditingOutput?) -> Void) {}
+    func finishContentEditing(completionHandler: @escaping (PHContentEditingOutput?) -> Void) {
+        guard let input = input,
+          let outputImage = editingViewController?.imageForExport,
+          let outputData = imageOutputData(from: outputImage, typeIdentifier: input.uniformTypeIdentifier)
+        else {
+            completionHandler(nil)
+            return
+        }
+
+        do {
+            let output = PHContentEditingOutput(contentEditingInput: input)
+
+            let redactions = editingViewController?.redactions ?? []
+            let serializedRedactions = redactions.map(RedactionSerializer.dataRepresentation(of:))
+            let adjustmentData = try JSONEncoder().encode(serializedRedactions)
+
+            output.adjustmentData = PHAdjustmentData(formatIdentifier: Self.formatIdentifier, formatVersion: "1", data: adjustmentData)
+            try outputData.write(to: output.renderedContentURL)
+            completionHandler(output)
+        } catch {
+            completionHandler(nil)
+            return
+        }
+    }
 
     func cancelContentEditing() {}
 
-    var shouldShowCancelConfirmation: Bool { return true }
+    var shouldShowCancelConfirmation: Bool { return editingViewController?.hasMadeEdits ?? false }
+
+    // MARK: Image Output
+
+    private func imageOutputData(from image: UIImage, typeIdentifier: String?) -> Data? {
+        if let typeIdentifier = typeIdentifier, typeIdentifier == (kUTTypePNG as String) {
+            return image.pngData()
+        } else {
+            return image.jpegData(compressionQuality: 0.9)
+        }
+    }
 
     // MARK: Boilerplate
+
+    private static let formatIdentifier = "com.cocoatype.Highlighter.redactionsFormat"
+
+    private var editingViewController: PhotoEditingViewController? { return children.compactMap { $0 as? PhotoNavigationController }.first?.viewControllers.first as? PhotoEditingViewController }
+
+    private var input: PHContentEditingInput?
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

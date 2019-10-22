@@ -7,4 +7,10 @@ import Photos
 import PhotosUI
 
 class PhotoEditingViewController: BasePhotoEditingViewController {
+    // MARK: Edit Protection
+
+    private(set) var hasMadeEdits = false
+    @objc override func markHasMadeEdits() {
+        hasMadeEdits = true
+    }
 }
