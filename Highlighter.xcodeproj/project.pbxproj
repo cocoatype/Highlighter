@@ -1418,8 +1418,6 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/BonMot.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/OpenSSL.framework",
 			);
 			name = "Copy Carthage Frameworks";
