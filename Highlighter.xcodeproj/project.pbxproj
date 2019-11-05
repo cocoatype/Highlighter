@@ -154,7 +154,6 @@
 		04F3C7D9230449AB00445A8D /* SettingsPurchaseTableViewCellTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7D8230449AB00445A8D /* SettingsPurchaseTableViewCellTitleLabel.swift */; };
 		04F3C7DB230449D800445A8D /* SettingsPurchaseTableViewCellSubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7DA230449D800445A8D /* SettingsPurchaseTableViewCellSubtitleLabel.swift */; };
 		04F3C7DD23044A9900445A8D /* PurchaseMarketingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7DC23044A9900445A8D /* PurchaseMarketingViewController.swift */; };
-		04F3C7DF23044C5000445A8D /* BonMot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C7DE23044C5000445A8D /* BonMot.framework */; };
 		04F3C7E323089ACA00445A8D /* PurchaseMarketingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7E223089ACA00445A8D /* PurchaseMarketingView.swift */; };
 		04F3C7E523089B1700445A8D /* PurchaseMarketingViewTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7E423089B1700445A8D /* PurchaseMarketingViewTextLabel.swift */; };
 		04F3C7E72308DD8F00445A8D /* PurchaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7E62308DD8F00445A8D /* PurchaseOperation.swift */; };
@@ -488,7 +487,6 @@
 			files = (
 				04F3C85C230BC38600445A8D /* Canvas.framework in Frameworks */,
 				04F3C7F5230921A100445A8D /* OpenSSL.framework in Frameworks */,
-				04F3C7DF23044C5000445A8D /* BonMot.framework in Frameworks */,
 				04F3C80C2309E8A800445A8D /* Receipts.framework in Frameworks */,
 				049F92DE22CDA3DB0090C9BC /* Editing.framework in Frameworks */,
 			);
