@@ -13,7 +13,7 @@ platform :ios do
     get_provisioning_profile(
       app_identifier: "com.cocoatype.Highlighter",
       filename: "app.mobileprovision",
-      platform: "ios"
+      platform: "ios")
     get_provisioning_profile(
       app_identifier: "com.cocoatype.Highlighter.Action",
       filename: "action.mobileprovision",
