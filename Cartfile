@@ -1,3 +1,1 @@
 github "krzyzanowskim/OpenSSL"
-github "onevcat/Kingfisher" ~> 5.0
-github "Rightpoint/BonMot"

@@ -55,6 +55,9 @@
 		04431E5A2355749C009FA1F6 /* Aleo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF562255A2ED0058D8EE /* Aleo-Bold.otf */; };
 		04431E5B2355749F009FA1F6 /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
 		04431E5E2358117B009FA1F6 /* RedactionSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04431E5C23581116009FA1F6 /* RedactionSerializer.swift */; };
+		0445AA592371208B00EB2A7B /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA582371208B00EB2A7B /* ImageDownloader.swift */; };
+		0445AA5B237130CC00EB2A7B /* PurchaseMarketingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA5A237130CC00EB2A7B /* PurchaseMarketingStackView.swift */; };
+		0445AA5D237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA5C237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift */; };
 		046EA9A7231BCCC7003BFC4D /* RestoreOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
 		04899D75231CEAED002BC1D8 /* PurchaseValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04899D74231CEAED002BC1D8 /* PurchaseValidator.swift */; };
@@ -151,9 +154,8 @@
 		04F3C7D9230449AB00445A8D /* SettingsPurchaseTableViewCellTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7D8230449AB00445A8D /* SettingsPurchaseTableViewCellTitleLabel.swift */; };
 		04F3C7DB230449D800445A8D /* SettingsPurchaseTableViewCellSubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7DA230449D800445A8D /* SettingsPurchaseTableViewCellSubtitleLabel.swift */; };
 		04F3C7DD23044A9900445A8D /* PurchaseMarketingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7DC23044A9900445A8D /* PurchaseMarketingViewController.swift */; };
-		04F3C7DF23044C5000445A8D /* BonMot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C7DE23044C5000445A8D /* BonMot.framework */; };
 		04F3C7E323089ACA00445A8D /* PurchaseMarketingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7E223089ACA00445A8D /* PurchaseMarketingView.swift */; };
-		04F3C7E523089B1700445A8D /* PurchaseMarketingViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7E423089B1700445A8D /* PurchaseMarketingViewLabel.swift */; };
+		04F3C7E523089B1700445A8D /* PurchaseMarketingViewTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7E423089B1700445A8D /* PurchaseMarketingViewTextLabel.swift */; };
 		04F3C7E72308DD8F00445A8D /* PurchaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7E62308DD8F00445A8D /* PurchaseOperation.swift */; };
 		04F3C7E92308E7CB00445A8D /* PurchaseOperationTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7E82308E7CB00445A8D /* PurchaseOperationTarget.swift */; };
 		04F3C7EB2308E7F200445A8D /* PurchaseOperationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7EA2308E7F200445A8D /* PurchaseOperationError.swift */; };
@@ -162,7 +164,6 @@
 		04F3C7F12308E91600445A8D /* FetchProductOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7F02308E91600445A8D /* FetchProductOperation.swift */; };
 		04F3C7F32308F37400445A8D /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7F22308F37400445A8D /* AsyncOperation.swift */; };
 		04F3C7F5230921A100445A8D /* OpenSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C7F4230921A100445A8D /* OpenSSL.framework */; };
-		04F3C7F7230921A700445A8D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ADD1632290DE6700E17445 /* Kingfisher.framework */; };
 		04F3C7FA2309282600445A8D /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 04F3C7F92309282600445A8D /* AppleIncRootCertificate.cer */; };
 		04F3C8092309E8A800445A8D /* Receipts.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C8072309E8A800445A8D /* Receipts.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04F3C80C2309E8A800445A8D /* Receipts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C8052309E8A800445A8D /* Receipts.framework */; };
@@ -360,6 +361,9 @@
 		04431E5023556106009FA1F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04431E5823556AC2009FA1F6 /* PhotoExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExtensionViewController.swift; sourceTree = "<group>"; };
 		04431E5C23581116009FA1F6 /* RedactionSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactionSerializer.swift; sourceTree = "<group>"; };
+		0445AA582371208B00EB2A7B /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		0445AA5A237130CC00EB2A7B /* PurchaseMarketingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingStackView.swift; sourceTree = "<group>"; };
+		0445AA5C237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingViewHeaderLabel.swift; sourceTree = "<group>"; };
 		046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreOperation.swift; sourceTree = "<group>"; };
 		047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingWorkspaceView.swift; sourceTree = "<group>"; };
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
@@ -436,7 +440,7 @@
 		04F3C7DC23044A9900445A8D /* PurchaseMarketingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingViewController.swift; sourceTree = "<group>"; };
 		04F3C7DE23044C5000445A8D /* BonMot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BonMot.framework; path = Carthage/Build/iOS/BonMot.framework; sourceTree = "<group>"; };
 		04F3C7E223089ACA00445A8D /* PurchaseMarketingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingView.swift; sourceTree = "<group>"; };
-		04F3C7E423089B1700445A8D /* PurchaseMarketingViewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingViewLabel.swift; sourceTree = "<group>"; };
+		04F3C7E423089B1700445A8D /* PurchaseMarketingViewTextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingViewTextLabel.swift; sourceTree = "<group>"; };
 		04F3C7E62308DD8F00445A8D /* PurchaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseOperation.swift; sourceTree = "<group>"; };
 		04F3C7E82308E7CB00445A8D /* PurchaseOperationTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseOperationTarget.swift; sourceTree = "<group>"; };
 		04F3C7EA2308E7F200445A8D /* PurchaseOperationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseOperationError.swift; sourceTree = "<group>"; };
@@ -483,9 +487,7 @@
 			files = (
 				04F3C85C230BC38600445A8D /* Canvas.framework in Frameworks */,
 				04F3C7F5230921A100445A8D /* OpenSSL.framework in Frameworks */,
-				04F3C7DF23044C5000445A8D /* BonMot.framework in Frameworks */,
 				04F3C80C2309E8A800445A8D /* Receipts.framework in Frameworks */,
-				04F3C7F7230921A700445A8D /* Kingfisher.framework in Frameworks */,
 				049F92DE22CDA3DB0090C9BC /* Editing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -571,6 +573,7 @@
 		041EFEF72251A9F30058D8EE /* Highlighter */ = {
 			isa = PBXGroup;
 			children = (
+				0445AA572371207000EB2A7B /* Image Downloading */,
 				04F3C7A32300204B00445A8D /* Purchasing */,
 				04D68BCF2262C41300D09BBD /* Application */,
 				048D134D229F7E4400427FE3 /* Callback Actions */,
@@ -730,6 +733,14 @@
 				04431E5823556AC2009FA1F6 /* PhotoExtensionViewController.swift */,
 			);
 			path = Photo;
+			sourceTree = "<group>";
+		};
+		0445AA572371207000EB2A7B /* Image Downloading */ = {
+			isa = PBXGroup;
+			children = (
+				0445AA582371208B00EB2A7B /* ImageDownloader.swift */,
+			);
+			path = "Image Downloading";
 			sourceTree = "<group>";
 		};
 		048909EF2265716B0048E203 /* Photo Editing */ = {
@@ -1023,7 +1034,9 @@
 			children = (
 				04F3C7DC23044A9900445A8D /* PurchaseMarketingViewController.swift */,
 				04F3C7E223089ACA00445A8D /* PurchaseMarketingView.swift */,
-				04F3C7E423089B1700445A8D /* PurchaseMarketingViewLabel.swift */,
+				04F3C7E423089B1700445A8D /* PurchaseMarketingViewTextLabel.swift */,
+				0445AA5A237130CC00EB2A7B /* PurchaseMarketingStackView.swift */,
+				0445AA5C237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift */,
 			);
 			path = "Purchase Marketing";
 			sourceTree = "<group>";
@@ -1405,8 +1418,6 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/BonMot.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/OpenSSL.framework",
 			);
 			name = "Copy Carthage Frameworks";
@@ -1427,6 +1438,7 @@
 			files = (
 				04F3C7AC230187F200445A8D /* SettingsContentProvider.swift in Sources */,
 				0431E0CF22F830BB00DC85C4 /* DocumentScannerPhotoLibraryViewCellIconView.swift in Sources */,
+				0445AA592371208B00EB2A7B /* ImageDownloader.swift in Sources */,
 				048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */,
 				042A2B7A228A642100353414 /* PhotoEditingProtectionAlertController.swift in Sources */,
 				04F3C7B22301A3CF00445A8D /* StandardContentItem.swift in Sources */,
@@ -1434,6 +1446,7 @@
 				043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */,
 				04DBC83E2314D1D90004F7DB /* AutoRedactionsEmptyView.swift in Sources */,
 				049F292D22875AFA00A335BE /* AboutViewController.swift in Sources */,
+				0445AA5B237130CC00EB2A7B /* PurchaseMarketingStackView.swift in Sources */,
 				04F3C7D52304437900445A8D /* PurchaseSection.swift in Sources */,
 				04F3C7C02301A52A00445A8D /* AboutItem.swift in Sources */,
 				049F293122875D5B00A335BE /* AcknowledgementsViewController.swift in Sources */,
@@ -1467,7 +1480,7 @@
 				041EFF6E225C38800058D8EE /* PhotoSelectionViewController.swift in Sources */,
 				04F3C7EB2308E7F200445A8D /* PurchaseOperationError.swift in Sources */,
 				04F3C7E72308DD8F00445A8D /* PurchaseOperation.swift in Sources */,
-				04F3C7E523089B1700445A8D /* PurchaseMarketingViewLabel.swift in Sources */,
+				04F3C7E523089B1700445A8D /* PurchaseMarketingViewTextLabel.swift in Sources */,
 				049F292B22875ADD00A335BE /* WebViewController.swift in Sources */,
 				046EA9A7231BCCC7003BFC4D /* RestoreOperation.swift in Sources */,
 				04F3C7B02301A31900445A8D /* SettingsContentItem.swift in Sources */,
@@ -1505,6 +1518,7 @@
 				042B78FC229A257E005B7A2A /* SettingsTableViewCellLabel.swift in Sources */,
 				04FF8DB722F57AA1008CF0E9 /* AutoRedactionsListView.swift in Sources */,
 				041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */,
+				0445AA5D237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift in Sources */,
 				04F3C7C82301A5E900445A8D /* AutoRedactions.swift in Sources */,
 				04F3C7A9230099BC00445A8D /* PurchaseState.swift in Sources */,
 				041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */,

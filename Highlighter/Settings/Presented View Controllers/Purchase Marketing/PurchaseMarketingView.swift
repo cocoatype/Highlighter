@@ -10,25 +10,46 @@ class PurchaseMarketingView: UIView {
 
         purchaseButton.addTarget(nil, action: #selector(SettingsNavigationController.startPurchase), for: .primaryActionTriggered)
 
-        addSubview(label)
-        addSubview(purchaseButton)
+        addSubview(stackView)
+        stackView.addArrangedSubviews([
+            autoRedactionsHeaderLabel,
+            autoRedactionsTextLabel,
+            documentScanningHeaderLabel,
+            documentScanningTextLabel,
+            supportDevelopmentHeaderLabel,
+            supportDevelopmentTextLabel,
+            purchaseButton
+        ])
+        stackView.setCustomSpacing(4.0, after: autoRedactionsHeaderLabel)
+        stackView.setCustomSpacing(4.0, after: documentScanningHeaderLabel)
+        stackView.setCustomSpacing(4.0, after: supportDevelopmentHeaderLabel)
 
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: topAnchor, constant: 20.0),
-            label.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor),
-            purchaseButton.leadingAnchor.constraint(equalTo: label.leadingAnchor),
-            purchaseButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 26.0)
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 20.0),
+            stackView.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor)
         ])
     }
 
     // MARK: Boilerplate
 
-    private static let marketingText = NSLocalizedString("PurchaseMarketingView.marketingText", comment: "Marketing text for the purchase marketing view")
+    private static let autoRedactionsHeader = NSLocalizedString("PurchaseMarketingView.autoRedactionsHeader", comment: "Marketing text for the purchase marketing view")
+    private static let autoRedactionsText = NSLocalizedString("PurchaseMarketingView.autoRedactionsText", comment: "Marketing text for the purchase marketing view")
+    private static let documentScanningHeader = NSLocalizedString("PurchaseMarketingView.documentScanningHeader", comment: "Marketing text for the purchase marketing view")
+    private static let documentScanningText = NSLocalizedString("PurchaseMarketingView.documentScanningText", comment: "Marketing text for the purchase marketing view")
+    private static let supportDevelopmentHeader = NSLocalizedString("PurchaseMarketingView.supportDevelopmentHeader", comment: "Marketing text for the purchase marketing view")
+    private static let supportDevelopmentText = NSLocalizedString("PurchaseMarketingView.supportDevelopmentText", comment: "Marketing text for the purchase marketing view")
+
     private static let purchaseButtonTitle = NSLocalizedString("PurchaseMarketingView.purchaseButtonTitleWithoutProduct", comment: "Title for the purchase button on the purchase marketing view")
 
-    private let label = PurchaseMarketingViewLabel(text: PurchaseMarketingView.marketingText)
+    private let autoRedactionsHeaderLabel = PurchaseMarketingViewHeaderLabel(text: autoRedactionsHeader)
+    private let autoRedactionsTextLabel = PurchaseMarketingViewTextLabel(text: autoRedactionsText)
+    private let documentScanningHeaderLabel = PurchaseMarketingViewHeaderLabel(text: documentScanningHeader)
+    private let documentScanningTextLabel = PurchaseMarketingViewTextLabel(text: documentScanningText)
+    private let supportDevelopmentHeaderLabel = PurchaseMarketingViewHeaderLabel(text: supportDevelopmentHeader)
+    private let supportDevelopmentTextLabel = PurchaseMarketingViewTextLabel(text: supportDevelopmentText)
     private let purchaseButton = PromptButton(title: PurchaseMarketingView.purchaseButtonTitle)
+    private let stackView = PurchaseMarketingStackView()
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
