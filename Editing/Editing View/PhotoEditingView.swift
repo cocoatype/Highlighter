@@ -12,10 +12,10 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
         addSubview(photoScrollView)
 
         NSLayoutConstraint.activate([
-            photoScrollView.widthAnchor.constraint(equalTo: widthAnchor),
-            photoScrollView.heightAnchor.constraint(equalTo: heightAnchor),
-            photoScrollView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            photoScrollView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            photoScrollView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor),
+            photoScrollView.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor),
+            photoScrollView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            photoScrollView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor)
         ])
     }
 

@@ -45,6 +45,16 @@
 		043CD9DD227548C20012F5AE /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DC227548C20012F5AE /* SettingsTableView.swift */; };
 		043CD9DF227548F30012F5AE /* SettingsStandardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DE227548F30012F5AE /* SettingsStandardTableViewCell.swift */; };
 		043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */; };
+		04431E4723556106009FA1F6 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04431E4623556106009FA1F6 /* PhotosUI.framework */; };
+		04431E4923556106009FA1F6 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04431E4823556106009FA1F6 /* Photos.framework */; };
+		04431E4C23556106009FA1F6 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04431E4B23556106009FA1F6 /* PhotoEditingViewController.swift */; };
+		04431E4F23556106009FA1F6 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04431E4D23556106009FA1F6 /* MainInterface.storyboard */; };
+		04431E5323556106009FA1F6 /* Photo.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 04431E4523556106009FA1F6 /* Photo.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		04431E5723556A3D009FA1F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041EFEFF2251A9F50058D8EE /* Assets.xcassets */; };
+		04431E5923556AC2009FA1F6 /* PhotoExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04431E5823556AC2009FA1F6 /* PhotoExtensionViewController.swift */; };
+		04431E5A2355749C009FA1F6 /* Aleo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF562255A2ED0058D8EE /* Aleo-Bold.otf */; };
+		04431E5B2355749F009FA1F6 /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
+		04431E5E2358117B009FA1F6 /* RedactionSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04431E5C23581116009FA1F6 /* RedactionSerializer.swift */; };
 		046EA9A7231BCCC7003BFC4D /* RestoreOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
 		04899D75231CEAED002BC1D8 /* PurchaseValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04899D74231CEAED002BC1D8 /* PurchaseValidator.swift */; };
@@ -203,6 +213,27 @@
 			remoteGlobalIDString = 043911BF22C461EE00D4AE30;
 			remoteInfo = Action;
 		};
+		04431E5123556106009FA1F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04431E4423556106009FA1F6;
+			remoteInfo = Photo;
+		};
+		0445AA532371148200EB2A7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 049F92D622CDA3DB0090C9BC;
+			remoteInfo = Editing;
+		};
+		0445AA552371148800EB2A7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 049F92D622CDA3DB0090C9BC;
+			remoteInfo = Editing;
+		};
 		049F92DC22CDA3DB0090C9BC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
@@ -234,6 +265,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				043911CC22C461F000D4AE30 /* Action.appex in Embed App Extensions */,
+				04431E5323556106009FA1F6 /* Photo.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +352,14 @@
 		043CD9DE227548F30012F5AE /* SettingsStandardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStandardTableViewCell.swift; sourceTree = "<group>"; };
 		043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewDataSource.swift; sourceTree = "<group>"; };
 		043CD9E42277EC910012F5AE /* PhotoEditingLegacyBrushStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingLegacyBrushStrokeView.swift; sourceTree = "<group>"; };
+		04431E4523556106009FA1F6 /* Photo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Photo.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		04431E4623556106009FA1F6 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		04431E4823556106009FA1F6 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		04431E4B23556106009FA1F6 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
+		04431E4E23556106009FA1F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		04431E5023556106009FA1F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04431E5823556AC2009FA1F6 /* PhotoExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExtensionViewController.swift; sourceTree = "<group>"; };
+		04431E5C23581116009FA1F6 /* RedactionSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactionSerializer.swift; sourceTree = "<group>"; };
 		046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreOperation.swift; sourceTree = "<group>"; };
 		047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingWorkspaceView.swift; sourceTree = "<group>"; };
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
@@ -465,6 +505,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04431E4223556106009FA1F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04431E4723556106009FA1F6 /* PhotosUI.framework in Frameworks */,
+				04431E4923556106009FA1F6 /* Photos.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		049F92D422CDA3DB0090C9BC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -499,6 +548,7 @@
 				049F92D822CDA3DB0090C9BC /* Editing */,
 				04F3C8062309E8A800445A8D /* Receipts */,
 				04F3C84A230BC1E100445A8D /* Canvas */,
+				04431E4A23556106009FA1F6 /* Photo */,
 				041EFEF62251A9F30058D8EE /* Products */,
 				04ADD1622290DE6700E17445 /* Frameworks */,
 			);
@@ -513,6 +563,7 @@
 				049F92D722CDA3DB0090C9BC /* Editing.framework */,
 				04F3C8052309E8A800445A8D /* Receipts.framework */,
 				04F3C849230BC1E100445A8D /* Canvas.framework */,
+				04431E4523556106009FA1F6 /* Photo.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -607,6 +658,7 @@
 		042A39AB22811F7A009C1C07 /* Redactions */ = {
 			isa = PBXGroup;
 			children = (
+				04431E5C23581116009FA1F6 /* RedactionSerializer.swift */,
 				042A39AC22811F87009C1C07 /* Redaction.swift */,
 				042A2B86228D08D800353414 /* CharacterObservationRedaction.swift */,
 				042A2B88228D091000353414 /* PathRedaction.swift */,
@@ -667,6 +719,17 @@
 				04F3C7CB2302ED9000445A8D /* Table View Cells */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		04431E4A23556106009FA1F6 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				04431E4B23556106009FA1F6 /* PhotoEditingViewController.swift */,
+				04431E4D23556106009FA1F6 /* MainInterface.storyboard */,
+				04431E5023556106009FA1F6 /* Info.plist */,
+				04431E5823556AC2009FA1F6 /* PhotoExtensionViewController.swift */,
+			);
+			path = Photo;
 			sourceTree = "<group>";
 		};
 		048909EF2265716B0048E203 /* Photo Editing */ = {
@@ -781,6 +844,8 @@
 				04F3C7F4230921A100445A8D /* OpenSSL.framework */,
 				04F3C7DE23044C5000445A8D /* BonMot.framework */,
 				04ADD1632290DE6700E17445 /* Kingfisher.framework */,
+				04431E4623556106009FA1F6 /* PhotosUI.framework */,
+				04431E4823556106009FA1F6 /* Photos.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1088,6 +1153,7 @@
 				049F92DD22CDA3DB0090C9BC /* PBXTargetDependency */,
 				04F3C80B2309E8A800445A8D /* PBXTargetDependency */,
 				04F3C84F230BC1E100445A8D /* PBXTargetDependency */,
+				04431E5223556106009FA1F6 /* PBXTargetDependency */,
 			);
 			name = Highlighter;
 			productName = Highlighter;
@@ -1123,10 +1189,29 @@
 			buildRules = (
 			);
 			dependencies = (
+				0445AA542371148200EB2A7B /* PBXTargetDependency */,
 			);
 			name = Action;
 			productName = Action;
 			productReference = 043911C022C461EE00D4AE30 /* Action.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		04431E4423556106009FA1F6 /* Photo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04431E5623556106009FA1F6 /* Build configuration list for PBXNativeTarget "Photo" */;
+			buildPhases = (
+				04431E4123556106009FA1F6 /* Sources */,
+				04431E4223556106009FA1F6 /* Frameworks */,
+				04431E4323556106009FA1F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0445AA562371148800EB2A7B /* PBXTargetDependency */,
+			);
+			name = Photo;
+			productName = Photo;
+			productReference = 04431E4523556106009FA1F6 /* Photo.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		049F92D622CDA3DB0090C9BC /* Editing */ = {
@@ -1189,7 +1274,7 @@
 		041EFEED2251A9F30058D8EE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Cocoatype, LLC";
 				TargetAttributes = {
@@ -1202,6 +1287,9 @@
 					};
 					043911BF22C461EE00D4AE30 = {
 						CreatedOnToolsVersion = 10.2.1;
+					};
+					04431E4423556106009FA1F6 = {
+						CreatedOnToolsVersion = 11.0;
 					};
 					049F92D622CDA3DB0090C9BC = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -1235,6 +1323,7 @@
 				049F92D622CDA3DB0090C9BC /* Editing */,
 				04F3C8042309E8A800445A8D /* Receipts */,
 				04F3C848230BC1E100445A8D /* Canvas */,
+				04431E4423556106009FA1F6 /* Photo */,
 			);
 		};
 /* End PBXProject section */
@@ -1270,6 +1359,17 @@
 				049F92BF22CAF2A20090C9BC /* InfoPlist.strings in Resources */,
 				049F92C222CAF4D00090C9BC /* Assets.xcassets in Resources */,
 				049F930822CDAB570090C9BC /* Aleo-Regular.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04431E4323556106009FA1F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04431E5A2355749C009FA1F6 /* Aleo-Bold.otf in Resources */,
+				04431E5723556A3D009FA1F6 /* Assets.xcassets in Resources */,
+				04431E4F23556106009FA1F6 /* MainInterface.storyboard in Resources */,
+				04431E5B2355749F009FA1F6 /* Aleo-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1442,6 +1542,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04431E4123556106009FA1F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04431E4C23556106009FA1F6 /* PhotoEditingViewController.swift in Sources */,
+				04431E5923556AC2009FA1F6 /* PhotoExtensionViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		049F92D322CDA3DB0090C9BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1467,6 +1576,7 @@
 				049F92FB22CDA5D90090C9BC /* Toolbar.swift in Sources */,
 				04FF8DE122F6D698008CF0E9 /* WordObservationAccessibilityElement.swift in Sources */,
 				049F92FD22CDA6C40090C9BC /* Fonts.swift in Sources */,
+				04431E5E2358117B009FA1F6 /* RedactionSerializer.swift in Sources */,
 				04FF8DB422F57570008CF0E9 /* Defaults.swift in Sources */,
 				04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */,
 				049F92F322CDA4E40090C9BC /* Redaction.swift in Sources */,
@@ -1524,6 +1634,21 @@
 			target = 043911BF22C461EE00D4AE30 /* Action */;
 			targetProxy = 043911CA22C461F000D4AE30 /* PBXContainerItemProxy */;
 		};
+		04431E5223556106009FA1F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04431E4423556106009FA1F6 /* Photo */;
+			targetProxy = 04431E5123556106009FA1F6 /* PBXContainerItemProxy */;
+		};
+		0445AA542371148200EB2A7B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 049F92D622CDA3DB0090C9BC /* Editing */;
+			targetProxy = 0445AA532371148200EB2A7B /* PBXContainerItemProxy */;
+		};
+		0445AA562371148800EB2A7B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 049F92D622CDA3DB0090C9BC /* Editing */;
+			targetProxy = 0445AA552371148800EB2A7B /* PBXContainerItemProxy */;
+		};
 		049F92DD22CDA3DB0090C9BC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 049F92D622CDA3DB0090C9BC /* Editing */;
@@ -1548,6 +1673,14 @@
 				041EFF022251A9F50058D8EE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		04431E4D23556106009FA1F6 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04431E4E23556106009FA1F6 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 		049F92C122CAF2A20090C9BC /* InfoPlist.strings */ = {
@@ -1614,7 +1747,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1672,7 +1805,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1695,7 +1828,6 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Highlighter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1719,7 +1851,6 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Highlighter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1814,6 +1945,44 @@
 			};
 			name = Release;
 		};
+		04431E5423556106009FA1F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 287EDDET2B;
+				INFOPLIST_FILE = Photo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Photo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04431E5523556106009FA1F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 287EDDET2B;
+				INFOPLIST_FILE = Photo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Photo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		049F92E122CDA3DB0090C9BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1828,7 +1997,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Editing/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1858,7 +2026,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Editing/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1888,7 +2055,6 @@
 				);
 				INFOPLIST_FILE = Receipts/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1918,7 +2084,6 @@
 				);
 				INFOPLIST_FILE = Receipts/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2033,6 +2198,15 @@
 			buildConfigurations = (
 				043911CD22C461F000D4AE30 /* Debug */,
 				043911CE22C461F000D4AE30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04431E5623556106009FA1F6 /* Build configuration list for PBXNativeTarget "Photo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04431E5423556106009FA1F6 /* Debug */,
+				04431E5523556106009FA1F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
