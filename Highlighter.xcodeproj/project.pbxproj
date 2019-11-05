@@ -55,6 +55,7 @@
 		04431E5A2355749C009FA1F6 /* Aleo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF562255A2ED0058D8EE /* Aleo-Bold.otf */; };
 		04431E5B2355749F009FA1F6 /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
 		04431E5E2358117B009FA1F6 /* RedactionSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04431E5C23581116009FA1F6 /* RedactionSerializer.swift */; };
+		0445AA592371208B00EB2A7B /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA582371208B00EB2A7B /* ImageDownloader.swift */; };
 		046EA9A7231BCCC7003BFC4D /* RestoreOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
 		04899D75231CEAED002BC1D8 /* PurchaseValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04899D74231CEAED002BC1D8 /* PurchaseValidator.swift */; };
@@ -360,6 +361,7 @@
 		04431E5023556106009FA1F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04431E5823556AC2009FA1F6 /* PhotoExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExtensionViewController.swift; sourceTree = "<group>"; };
 		04431E5C23581116009FA1F6 /* RedactionSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactionSerializer.swift; sourceTree = "<group>"; };
+		0445AA582371208B00EB2A7B /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreOperation.swift; sourceTree = "<group>"; };
 		047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingWorkspaceView.swift; sourceTree = "<group>"; };
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
@@ -571,6 +573,7 @@
 		041EFEF72251A9F30058D8EE /* Highlighter */ = {
 			isa = PBXGroup;
 			children = (
+				0445AA572371207000EB2A7B /* Image Downloading */,
 				04F3C7A32300204B00445A8D /* Purchasing */,
 				04D68BCF2262C41300D09BBD /* Application */,
 				048D134D229F7E4400427FE3 /* Callback Actions */,
@@ -730,6 +733,14 @@
 				04431E5823556AC2009FA1F6 /* PhotoExtensionViewController.swift */,
 			);
 			path = Photo;
+			sourceTree = "<group>";
+		};
+		0445AA572371207000EB2A7B /* Image Downloading */ = {
+			isa = PBXGroup;
+			children = (
+				0445AA582371208B00EB2A7B /* ImageDownloader.swift */,
+			);
+			path = "Image Downloading";
 			sourceTree = "<group>";
 		};
 		048909EF2265716B0048E203 /* Photo Editing */ = {
@@ -1427,6 +1438,7 @@
 			files = (
 				04F3C7AC230187F200445A8D /* SettingsContentProvider.swift in Sources */,
 				0431E0CF22F830BB00DC85C4 /* DocumentScannerPhotoLibraryViewCellIconView.swift in Sources */,
+				0445AA592371208B00EB2A7B /* ImageDownloader.swift in Sources */,
 				048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */,
 				042A2B7A228A642100353414 /* PhotoEditingProtectionAlertController.swift in Sources */,
 				04F3C7B22301A3CF00445A8D /* StandardContentItem.swift in Sources */,
