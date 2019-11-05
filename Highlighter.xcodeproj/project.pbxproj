@@ -220,6 +220,20 @@
 			remoteGlobalIDString = 04431E4423556106009FA1F6;
 			remoteInfo = Photo;
 		};
+		0445AA532371148200EB2A7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 049F92D622CDA3DB0090C9BC;
+			remoteInfo = Editing;
+		};
+		0445AA552371148800EB2A7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 049F92D622CDA3DB0090C9BC;
+			remoteInfo = Editing;
+		};
 		049F92DC22CDA3DB0090C9BC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
@@ -1175,6 +1189,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0445AA542371148200EB2A7B /* PBXTargetDependency */,
 			);
 			name = Action;
 			productName = Action;
@@ -1192,6 +1207,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0445AA562371148800EB2A7B /* PBXTargetDependency */,
 			);
 			name = Photo;
 			productName = Photo;
@@ -1622,6 +1638,16 @@
 			isa = PBXTargetDependency;
 			target = 04431E4423556106009FA1F6 /* Photo */;
 			targetProxy = 04431E5123556106009FA1F6 /* PBXContainerItemProxy */;
+		};
+		0445AA542371148200EB2A7B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 049F92D622CDA3DB0090C9BC /* Editing */;
+			targetProxy = 0445AA532371148200EB2A7B /* PBXContainerItemProxy */;
+		};
+		0445AA562371148800EB2A7B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 049F92D622CDA3DB0090C9BC /* Editing */;
+			targetProxy = 0445AA552371148800EB2A7B /* PBXContainerItemProxy */;
 		};
 		049F92DD22CDA3DB0090C9BC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
