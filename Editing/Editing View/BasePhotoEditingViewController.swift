@@ -160,6 +160,7 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
     // MARK: Boilerplate
 
     public let completionHandler: ((UIImage) -> Void)?
+    public var redactions: [Redaction] { return photoEditingView.redactions }
 
     private static let undoKeyCommandDiscoverabilityTitle = NSLocalizedString("BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle", comment: "Discovery title for the undo key command")
     private static let redoKeyCommandDiscoverabilityTitle = NSLocalizedString("BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle", comment: "Discovery title for the redo key command")

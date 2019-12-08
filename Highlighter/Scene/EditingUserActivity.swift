@@ -16,7 +16,7 @@ public class EditingUserActivity: NSUserActivity {
 
         let assetLocalIdentifier = (userActivity.userInfo?[EditingUserActivity.assetLocalIdentifierKey] as? String)
         let redactionsData = (userActivity.userInfo?[EditingUserActivity.redactionsKey] as? [[Data]])
-        let redactions = redactionsData?.compactMap(EditingUserActivity.redaction(from:))
+        let redactions = redactionsData?.compactMap(RedactionSerializer.redaction(from:))
 
         self.init(assetLocalIdentifier: assetLocalIdentifier, redactions: redactions)
         title = userActivity.title
@@ -29,24 +29,11 @@ public class EditingUserActivity: NSUserActivity {
         get {
             var userInfo = [AnyHashable: Any]()
             userInfo[EditingUserActivity.assetLocalIdentifierKey] = assetLocalIdentifier
-            userInfo[EditingUserActivity.redactionsKey] = redactions?.map(EditingUserActivity.dataRepresentation(of:))
+            userInfo[EditingUserActivity.redactionsKey] = redactions?.map(RedactionSerializer.dataRepresentation(of:))
 
             return userInfo
         }
         set {}
-    }
-
-    // MARK: Redaction Serialization
-
-    private static func dataRepresentation(of redaction: Redaction) -> [Data] {
-        return redaction.paths.compactMap { try? NSKeyedArchiver.archivedData(withRootObject: $0, requiringSecureCoding: true) }
-    }
-
-    private static func redaction(from dataRepresentation: [Data]) -> RestoredRedaction? {
-        do {
-            let paths = try dataRepresentation.compactMap { try NSKeyedUnarchiver.unarchivedObject(ofClass: UIBezierPath.self, from: $0) }
-            return RestoredRedaction(paths: paths)
-        } catch { return nil }
     }
 
     // MARK: Boilerplate

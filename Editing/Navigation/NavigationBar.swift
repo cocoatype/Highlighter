@@ -6,21 +6,24 @@ import UIKit
 public class NavigationBar: UINavigationBar {
     public override init(frame: CGRect) {
         super.init(frame: frame)
-
-        barTintColor = .primaryDark
-        isTranslucent = false
         tintColor = .white
-        titleTextAttributes = [
-            .font: UIFont.navigationBarTitleFont,
-            .foregroundColor: UIColor.white
-        ]
 
         if #available(iOS 13.0, *) {
-            standardAppearance.titleTextAttributes = titleTextAttributes ?? [:]
-            standardAppearance.backButtonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
-            standardAppearance.backButtonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
-            standardAppearance.doneButtonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
-            standardAppearance.doneButtonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .primaryDark
+            appearance.titleTextAttributes = NavigationBar.titleTextAttributes
+            appearance.backButtonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+            appearance.backButtonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+            appearance.doneButtonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+            appearance.doneButtonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+            appearance.doneButtonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+            appearance.doneButtonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+            standardAppearance = appearance
+        } else {
+            barTintColor = .primaryDark
+            isTranslucent = false
+            titleTextAttributes = NavigationBar.titleTextAttributes
         }
     }
 
@@ -28,6 +31,11 @@ public class NavigationBar: UINavigationBar {
 
     static let buttonTitleTextAttributes = [
         NSAttributedString.Key.font: UIFont.navigationBarButtonFont
+    ]
+
+    static let titleTextAttributes = [
+        NSAttributedString.Key.font: UIFont.navigationBarTitleFont,
+        .foregroundColor: UIColor.white
     ]
 
     // MARK: Boilerplate
