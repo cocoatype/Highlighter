@@ -19,11 +19,15 @@ extension UIBezierPath {
     }
 
     func forEachPoint(_ function: @escaping ((CGPoint) -> Void)) {
-        let cgPath = self.cgPath
+        cgPath.forEachPoint(function)
+    }
+}
 
+extension CGPath {
+    func forEachPoint(_ function: @escaping ((CGPoint) -> Void)) {
         withUnsafePointer(to: function) { functionPointer in
             let rawFunctionPointer = UnsafeMutableRawPointer(mutating: functionPointer)
-            cgPath.apply(info: rawFunctionPointer) { functionPointer, elementPointer in
+            apply(info: rawFunctionPointer) { functionPointer, elementPointer in
                 let function = functionPointer?.assumingMemoryBound(to: ((CGPoint) -> Void).self).pointee
                 let element = elementPointer.pointee
                 let elementType = element.type
