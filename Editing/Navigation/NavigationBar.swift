@@ -17,9 +17,11 @@ public class NavigationBar: UINavigationBar {
             appearance.backButtonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
             appearance.doneButtonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
             appearance.doneButtonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
-            appearance.doneButtonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
-            appearance.doneButtonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+            appearance.buttonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+            appearance.buttonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
             standardAppearance = appearance
+
+            isTranslucent = false
         } else {
             barTintColor = .primaryDark
             isTranslucent = false
