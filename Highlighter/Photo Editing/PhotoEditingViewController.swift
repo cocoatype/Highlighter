@@ -25,17 +25,21 @@ class PhotoEditingViewController: BasePhotoEditingViewController {
     // MARK: Sharing
 
     @objc func sharePhoto() {
-        guard let exportedImage = imageForExport else { return }
+        exportImage { [weak self] image in
+            guard let exportedImage = image else { return }
 
-        let activityController = UIActivityViewController(activityItems: [exportedImage], applicationActivities: nil)
-        activityController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-        activityController.completionWithItemsHandler = { [weak self] _, completed, _, _ in
-            self?.hasMadeEdits = false
-            Defaults.numberOfSaves = Defaults.numberOfSaves + 1
-            AppRatingsPrompter.displayRatingsPrompt()
+            let activityController = UIActivityViewController(activityItems: [exportedImage], applicationActivities: nil)
+            activityController.completionWithItemsHandler = { [weak self] _, completed, _, _ in
+                self?.hasMadeEdits = false
+                Defaults.numberOfSaves = Defaults.numberOfSaves + 1
+                AppRatingsPrompter.displayRatingsPrompt()
+            }
+
+            DispatchQueue.main.async { [weak self] in
+                activityController.popoverPresentationController?.barButtonItem = self?.navigationItem.rightBarButtonItem
+                self?.present(activityController, animated: true)
+            }
         }
-
-        present(activityController, animated: true)
     }
 
     // MARK: Boilerplate

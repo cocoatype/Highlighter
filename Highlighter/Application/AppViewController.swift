@@ -55,16 +55,18 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     }
 
     func dismissPhotoEditingViewControllerAfterSaving() {
-        guard let photoEditingViewController = photoEditingViewController,
-          let image = photoEditingViewController.imageForExport 
-        else { return }
+        guard let photoEditingViewController = photoEditingViewController else { return }
 
-        PHPhotoLibrary.shared().performChanges({
-            PHAssetChangeRequest.creationRequestForAsset(from: image)
-        }, completionHandler: { [weak self] success, error in
-            assert(success, "an error occurred saving changes: \(error?.localizedDescription ?? "no error")")
-            self?.dismiss(animated: true)
-        })
+        photoEditingViewController.exportImage { [weak self] image in
+            guard let image = image else { return }
+
+            PHPhotoLibrary.shared().performChanges({
+                PHAssetChangeRequest.creationRequestForAsset(from: image)
+            }, completionHandler: { [weak self] success, error in
+                assert(success, "an error occurred saving changes: \(error?.localizedDescription ?? "no error")")
+                self?.dismiss(animated: true)
+            })
+        }
     }
 
     private var photoEditingViewController: PhotoEditingViewController? {

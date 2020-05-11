@@ -46,16 +46,18 @@ class ActionEditingViewController: BasePhotoEditingViewController {
             case .delete:
                 self?.dismissActionExtension()
             case .save:
-                guard let imageForExport = self?.imageForExport else { return }
+                self?.exportImage { image in
+                    guard let imageForExport = image else { return }
 
-                PHPhotoLibrary.shared().performChanges({
-                    PHAssetChangeRequest.creationRequestForAsset(from: imageForExport)
-                }, completionHandler: { [weak self] success, error in
-                    assert(success, "an error occurred saving changes: \(error?.localizedDescription ?? "no error")")
-                    DispatchQueue.main.async {
-                        self?.dismissActionExtension()
-                    }
-                })
+                    PHPhotoLibrary.shared().performChanges({
+                        PHAssetChangeRequest.creationRequestForAsset(from: imageForExport)
+                    }, completionHandler: { [weak self] success, error in
+                        assert(success, "an error occurred saving changes: \(error?.localizedDescription ?? "no error")")
+                        DispatchQueue.main.async {
+                            self?.dismissActionExtension()
+                        }
+                    })
+                }
             }
         }
 
@@ -64,17 +66,19 @@ class ActionEditingViewController: BasePhotoEditingViewController {
     }
 
     private func dismissActionExtension() {
-        let items: [Any]
-        if let imageForExport = imageForExport {
-            let extensionItem = NSExtensionItem()
-            let itemProvider = NSItemProvider(item: imageForExport, typeIdentifier: (kUTTypeImage as String))
-            extensionItem.attachments = [itemProvider]
-            items = [extensionItem]
-        } else {
-            items = []
-        }
+        exportImage { image in
+            let items: [Any]
+            if let imageForExport = image {
+                let extensionItem = NSExtensionItem()
+                let itemProvider = NSItemProvider(item: imageForExport, typeIdentifier: (kUTTypeImage as String))
+                extensionItem.attachments = [itemProvider]
+                items = [extensionItem]
+            } else {
+                items = []
+            }
 
-        self.extensionContext?.completeRequest(returningItems: items, completionHandler: nil)
+            self.extensionContext?.completeRequest(returningItems: items, completionHandler: nil)
+        }
     }
 }
 
