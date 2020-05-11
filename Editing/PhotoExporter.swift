@@ -52,8 +52,7 @@ class PhotoExportOperation: Operation {
         let imageSize = sourceImage.size * sourceImage.scale
 
         UIGraphicsBeginImageContextWithOptions(imageSize, true, 1)
-        let transform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: 0, y: imageSize.height * -1)
-        UIGraphicsGetCurrentContext()?.concatenate(transform)
+        let context = UIGraphicsGetCurrentContext()
         defer { UIGraphicsEndImageContext() }
 
         var tileRect = CGRect.zero
@@ -68,6 +67,12 @@ class PhotoExportOperation: Operation {
 
         let overlappingTileRect = CGRect(x: tileRect.minX, y: tileRect.minY, width: tileRect.width, height: tileRect.height + Self.seamOverlap)
 
+        // draw tiles of source image
+        context?.saveGState()
+
+        let transform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: 0, y: imageSize.height * -1)
+        context?.concatenate(transform)
+
         for y in 0..<iterationCount {
             autoreleasepool {
                 NSLog("iteration %d of %d", y, iterationCount)
@@ -80,16 +85,56 @@ class PhotoExportOperation: Operation {
                 }
 
                 if let imageRef = sourceImage.cgImage?.cropping(to: currentTileRect) {
-                    UIGraphicsGetCurrentContext()?.draw(imageRef, in: currentTileRect)
+                    context?.draw(imageRef, in: currentTileRect)
                 }
             }
         }
 
+        context?.restoreGState()
+
+        // draw redactions
+        let paths = redactions
+          .flatMap { $0.paths }
+          .map { $0.dashedPath }
+
+        paths.forEach { path in
+            let stampImage = brushStamp(scaledToHeight: path.lineWidth)
+            path.forEachPoint { point in
+                guard let context = context else { return }
+                context.saveGState()
+                defer { context.restoreGState() }
+
+                context.translateBy(x: stampImage.size.width * -0.5, y: stampImage.size.height * -0.5)
+                stampImage.draw(at: point)
+            }
+        }
+
+        // return result
         if let image = UIGraphicsGetImageFromCurrentImageContext() {
             result = .success(image)
         } else {
             result = .failure(NSError(domain: "unknown", code: 0, userInfo: nil))
         }
+    }
+
+    // MARK: Brush Stamp
+
+    private func brushStamp(scaledToHeight height: CGFloat) -> UIImage {
+        guard let standardImage = UIImage(named: "Brush") else { fatalError("Unable to load brush stamp image") }
+
+        let brushScale = height / standardImage.size.height
+        let scaledBrushSize = standardImage.size * brushScale
+
+        UIGraphicsBeginImageContext(scaledBrushSize)
+        defer { UIGraphicsEndImageContext() }
+
+        guard let context = UIGraphicsGetCurrentContext() else { fatalError("Unable to create brush scaling image context") }
+        context.scaleBy(x: brushScale, y: brushScale)
+
+        standardImage.draw(at: .zero)
+
+        guard let scaledImage = UIGraphicsGetImageFromCurrentImageContext() else { fatalError("Unable to get scaled brush image from context") }
+        return scaledImage
     }
 
     // MARK: Boilerplate
