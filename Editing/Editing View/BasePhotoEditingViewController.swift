@@ -51,11 +51,20 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
 
     // MARK: Sharing
 
-    public var imageForExport: UIImage? {
-        guard let image = photoEditingView.image else { return nil }
-        let photoExporter = PhotoExporter(image: image, redactions: photoEditingView.redactions)
-        return photoExporter.exportedImage
+    public func exportImage(completionHandler: @escaping ((UIImage?) -> Void)) {
+        guard let image = photoEditingView.image else { return completionHandler(nil) }
+        PhotoExporter.export(image, redactions: photoEditingView.redactions) { result in
+            switch result {
+            case .success(let image): completionHandler(image)
+            case .failure: completionHandler(nil)
+            }
+        }
     }
+//    public var imageForExport: UIImage? {
+//        guard let image = photoEditingView.image else { return nil }
+//        let photoExporter = PhotoExporter(image: image, redactions: photoEditingView.redactions)
+//        return photoExporter.exportedImage
+//    }
 
     // MARK: Highlighters
 

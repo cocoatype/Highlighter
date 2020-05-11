@@ -25,7 +25,8 @@ class PhotoExtensionViewController: UIViewController, PHContentEditingController
 
     func finishContentEditing(completionHandler: @escaping (PHContentEditingOutput?) -> Void) {
         guard let input = input,
-          let outputImage = editingViewController?.imageForExport,
+            let outputImage = UIImage?.none,
+//          let outputImage = editingViewController?.imageForExport,
           let outputData = imageOutputData(from: outputImage, typeIdentifier: input.uniformTypeIdentifier)
         else {
             completionHandler(nil)
