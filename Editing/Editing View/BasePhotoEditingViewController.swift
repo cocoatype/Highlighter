@@ -60,11 +60,6 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
             }
         }
     }
-//    public var imageForExport: UIImage? {
-//        guard let image = photoEditingView.image else { return nil }
-//        let photoExporter = PhotoExporter(image: image, redactions: photoEditingView.redactions)
-//        return photoExporter.exportedImage
-//    }
 
     // MARK: Highlighters
 

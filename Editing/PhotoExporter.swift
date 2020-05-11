@@ -19,17 +19,6 @@ class PhotoExporter: NSObject {
         operationQueue.addOperations([exportOperation, callbackOperation], waitUntilFinished: false)
     }
 
-//    var exportedImage: UIImage? {
-//        let imageBounds = imageView.bounds
-//        UIGraphicsBeginImageContextWithOptions(imageBounds.size, true, 1)
-//        defer { UIGraphicsEndImageContext() }
-//
-//        imageView.drawHierarchy(in: imageBounds, afterScreenUpdates: true)
-//        redactionView.drawHierarchy(in: imageBounds, afterScreenUpdates: true)
-//
-//        return UIGraphicsGetImageFromCurrentImageContext()
-//    }
-
     // MARK: Boilerplate
 
     private static let operationQueue = OperationQueue()

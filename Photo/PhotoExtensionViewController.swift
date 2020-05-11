@@ -24,28 +24,26 @@ class PhotoExtensionViewController: UIViewController, PHContentEditingController
     }
 
     func finishContentEditing(completionHandler: @escaping (PHContentEditingOutput?) -> Void) {
-        guard let input = input,
-            let outputImage = UIImage?.none,
-//          let outputImage = editingViewController?.imageForExport,
-          let outputData = imageOutputData(from: outputImage, typeIdentifier: input.uniformTypeIdentifier)
-        else {
-            completionHandler(nil)
-            return
-        }
+        editingViewController?.exportImage { [weak self] image in
+            guard let input = self?.input,
+              let outputImage = image,
+              let outputData = self?.imageOutputData(from: outputImage, typeIdentifier: input.uniformTypeIdentifier)
+            else { return completionHandler(nil) }
 
-        do {
-            let output = PHContentEditingOutput(contentEditingInput: input)
+            do {
+                let output = PHContentEditingOutput(contentEditingInput: input)
 
-            let redactions = editingViewController?.redactions ?? []
-            let serializedRedactions = redactions.map(RedactionSerializer.dataRepresentation(of:))
-            let adjustmentData = try JSONEncoder().encode(serializedRedactions)
+                let redactions = self?.editingViewController?.redactions ?? []
+                let serializedRedactions = redactions.map(RedactionSerializer.dataRepresentation(of:))
+                let adjustmentData = try JSONEncoder().encode(serializedRedactions)
 
-            output.adjustmentData = PHAdjustmentData(formatIdentifier: Self.formatIdentifier, formatVersion: "1", data: adjustmentData)
-            try outputData.write(to: output.renderedContentURL)
-            completionHandler(output)
-        } catch {
-            completionHandler(nil)
-            return
+                output.adjustmentData = PHAdjustmentData(formatIdentifier: Self.formatIdentifier, formatVersion: "1", data: adjustmentData)
+                try outputData.write(to: output.renderedContentURL)
+                completionHandler(output)
+            } catch {
+                completionHandler(nil)
+                return
+            }
         }
     }
 

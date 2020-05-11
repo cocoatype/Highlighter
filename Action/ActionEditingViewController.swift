@@ -66,17 +66,19 @@ class ActionEditingViewController: BasePhotoEditingViewController {
     }
 
     private func dismissActionExtension() {
-//        let items: [Any]
-//        if let imageForExport = imageForExport {
-//            let extensionItem = NSExtensionItem()
-//            let itemProvider = NSItemProvider(item: imageForExport, typeIdentifier: (kUTTypeImage as String))
-//            extensionItem.attachments = [itemProvider]
-//            items = [extensionItem]
-//        } else {
-//            items = []
-//        }
-//
-//        self.extensionContext?.completeRequest(returningItems: items, completionHandler: nil)
+        exportImage { image in
+            let items: [Any]
+            if let imageForExport = image {
+                let extensionItem = NSExtensionItem()
+                let itemProvider = NSItemProvider(item: imageForExport, typeIdentifier: (kUTTypeImage as String))
+                extensionItem.attachments = [itemProvider]
+                items = [extensionItem]
+            } else {
+                items = []
+            }
+
+            self.extensionContext?.completeRequest(returningItems: items, completionHandler: nil)
+        }
     }
 }
 
