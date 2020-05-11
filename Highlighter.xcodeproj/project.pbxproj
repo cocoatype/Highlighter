@@ -45,6 +45,7 @@
 		043CD9DD227548C20012F5AE /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DC227548C20012F5AE /* SettingsTableView.swift */; };
 		043CD9DF227548F30012F5AE /* SettingsStandardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DE227548F30012F5AE /* SettingsStandardTableViewCell.swift */; };
 		043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */; };
+		044074BF23BE9BCD00D3CB99 /* RedactionPathLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044074BE23BE9BCD00D3CB99 /* RedactionPathLayer.swift */; };
 		04431E4723556106009FA1F6 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04431E4623556106009FA1F6 /* PhotosUI.framework */; };
 		04431E4923556106009FA1F6 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04431E4823556106009FA1F6 /* Photos.framework */; };
 		04431E4C23556106009FA1F6 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04431E4B23556106009FA1F6 /* PhotoEditingViewController.swift */; };
@@ -353,6 +354,7 @@
 		043CD9DE227548F30012F5AE /* SettingsStandardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStandardTableViewCell.swift; sourceTree = "<group>"; };
 		043CD9E2227549330012F5AE /* SettingsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewDataSource.swift; sourceTree = "<group>"; };
 		043CD9E42277EC910012F5AE /* PhotoEditingLegacyBrushStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingLegacyBrushStrokeView.swift; sourceTree = "<group>"; };
+		044074BE23BE9BCD00D3CB99 /* RedactionPathLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactionPathLayer.swift; sourceTree = "<group>"; };
 		04431E4523556106009FA1F6 /* Photo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Photo.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		04431E4623556106009FA1F6 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		04431E4823556106009FA1F6 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
@@ -930,6 +932,7 @@
 				047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */,
 				041BEA3A22EF7B2900FF07C2 /* PhotoEditingBrushStrokeView.swift */,
 				04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */,
+				044074BE23BE9BCD00D3CB99 /* RedactionPathLayer.swift */,
 			);
 			path = Workspace;
 			sourceTree = "<group>";
@@ -1590,6 +1593,7 @@
 				049F92FB22CDA5D90090C9BC /* Toolbar.swift in Sources */,
 				04FF8DE122F6D698008CF0E9 /* WordObservationAccessibilityElement.swift in Sources */,
 				049F92FD22CDA6C40090C9BC /* Fonts.swift in Sources */,
+				044074BF23BE9BCD00D3CB99 /* RedactionPathLayer.swift in Sources */,
 				04431E5E2358117B009FA1F6 /* RedactionSerializer.swift in Sources */,
 				04FF8DB422F57570008CF0E9 /* Defaults.swift in Sources */,
 				04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */,
