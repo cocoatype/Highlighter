@@ -30,4 +30,30 @@ public enum Icons {
 
         return UIImage(named: "Help")
     }
+
+    // MARK: Collections
+
+    public static var favoritesCollection: UIImage? {
+        if #available(iOS 13.0, *) {
+            return UIImage(systemName: "suit.heart")
+        }
+
+        return nil
+    }
+
+    public static var recentsCollection: UIImage? {
+        if #available(iOS 13.0, *) {
+            return UIImage(systemName: "clock")
+        }
+
+        return nil
+    }
+
+    public static var screenshotsCollection: UIImage? {
+        if #available(iOS 13.0, *) {
+            return UIImage(systemName: "camera.viewfinder")
+        }
+
+        return nil
+    }
 }

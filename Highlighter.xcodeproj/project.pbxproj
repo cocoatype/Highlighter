@@ -59,6 +59,12 @@
 		0445AA592371208B00EB2A7B /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA582371208B00EB2A7B /* ImageDownloader.swift */; };
 		0445AA5B237130CC00EB2A7B /* PurchaseMarketingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA5A237130CC00EB2A7B /* PurchaseMarketingStackView.swift */; };
 		0445AA5D237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA5C237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift */; };
+		046BEC212470E38300FBECD7 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC202470E38300FBECD7 /* AlbumsViewController.swift */; };
+		046BEC242470EBAC00FBECD7 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC232470EBAC00FBECD7 /* Collection.swift */; };
+		046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC252470F87200FBECD7 /* CollectionType.swift */; };
+		046BEC282470F89B00FBECD7 /* CollectionsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC272470F89B00FBECD7 /* CollectionsDataSource.swift */; };
+		046BEC2A2470F8BE00FBECD7 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC292470F8BE00FBECD7 /* CollectionTableViewCell.swift */; };
+		046BEC2C2470F8E500FBECD7 /* AlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC2B2470F8E500FBECD7 /* AlbumsView.swift */; };
 		046EA9A7231BCCC7003BFC4D /* RestoreOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
 		04899D75231CEAED002BC1D8 /* PurchaseValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04899D74231CEAED002BC1D8 /* PurchaseValidator.swift */; };
@@ -366,6 +372,12 @@
 		0445AA582371208B00EB2A7B /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		0445AA5A237130CC00EB2A7B /* PurchaseMarketingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingStackView.swift; sourceTree = "<group>"; };
 		0445AA5C237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingViewHeaderLabel.swift; sourceTree = "<group>"; };
+		046BEC202470E38300FBECD7 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
+		046BEC232470EBAC00FBECD7 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		046BEC252470F87200FBECD7 /* CollectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionType.swift; sourceTree = "<group>"; };
+		046BEC272470F89B00FBECD7 /* CollectionsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsDataSource.swift; sourceTree = "<group>"; };
+		046BEC292470F8BE00FBECD7 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
+		046BEC2B2470F8E500FBECD7 /* AlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsView.swift; sourceTree = "<group>"; };
 		046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreOperation.swift; sourceTree = "<group>"; };
 		047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingWorkspaceView.swift; sourceTree = "<group>"; };
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
@@ -626,6 +638,7 @@
 		041EFF69225C36130058D8EE /* Photo Library */ = {
 			isa = PBXGroup;
 			children = (
+				046BEC222470EB9800FBECD7 /* Collections */,
 				041EFF73225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift */,
 				04D68BC6225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift */,
 				0431E0CC22F826E900DC85C4 /* DocumentScannerPhotoLibraryViewCell.swift */,
@@ -641,6 +654,7 @@
 		041EFF6C225C38600058D8EE /* Photo Selection */ = {
 			isa = PBXGroup;
 			children = (
+				046BEC1F2470E36800FBECD7 /* Albums */,
 				041EFF4C225302B90058D8EE /* Intro View */,
 				041EFF69225C36130058D8EE /* Photo Library */,
 				041EFF6D225C38800058D8EE /* PhotoSelectionViewController.swift */,
@@ -743,6 +757,26 @@
 				0445AA582371208B00EB2A7B /* ImageDownloader.swift */,
 			);
 			path = "Image Downloading";
+			sourceTree = "<group>";
+		};
+		046BEC1F2470E36800FBECD7 /* Albums */ = {
+			isa = PBXGroup;
+			children = (
+				046BEC202470E38300FBECD7 /* AlbumsViewController.swift */,
+				046BEC2B2470F8E500FBECD7 /* AlbumsView.swift */,
+			);
+			path = Albums;
+			sourceTree = "<group>";
+		};
+		046BEC222470EB9800FBECD7 /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				046BEC232470EBAC00FBECD7 /* Collection.swift */,
+				046BEC252470F87200FBECD7 /* CollectionType.swift */,
+				046BEC272470F89B00FBECD7 /* CollectionsDataSource.swift */,
+				046BEC292470F8BE00FBECD7 /* CollectionTableViewCell.swift */,
+			);
+			path = Collections;
 			sourceTree = "<group>";
 		};
 		048909EF2265716B0048E203 /* Photo Editing */ = {
@@ -1445,6 +1479,7 @@
 				048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */,
 				042A2B7A228A642100353414 /* PhotoEditingProtectionAlertController.swift in Sources */,
 				04F3C7B22301A3CF00445A8D /* StandardContentItem.swift in Sources */,
+				046BEC212470E38300FBECD7 /* AlbumsViewController.swift in Sources */,
 				04F3C7C62301A5C300445A8D /* PrivacyItem.swift in Sources */,
 				043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */,
 				04DBC83E2314D1D90004F7DB /* AutoRedactionsEmptyView.swift in Sources */,
@@ -1464,8 +1499,10 @@
 				04F3C7D22304375E00445A8D /* SettingsPurchaseTableViewCell.swift in Sources */,
 				0431E0CD22F826E900DC85C4 /* DocumentScannerPhotoLibraryViewCell.swift in Sources */,
 				049F293522875F7E00A335BE /* ContactMailViewController.swift in Sources */,
+				046BEC242470EBAC00FBECD7 /* Collection.swift in Sources */,
 				04F3C7BC2301A4C200445A8D /* OtherAppItem.swift in Sources */,
 				042B7905229A3AC7005B7A2A /* AppRatingsPrompter.swift in Sources */,
+				046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */,
 				0431E0D322F85F0B00DC85C4 /* DocumentScannerPresenting.swift in Sources */,
 				041EFF6B225C36350058D8EE /* PhotoLibraryViewController.swift in Sources */,
 				043CD9DB22753D510012F5AE /* SettingsViewController.swift in Sources */,
@@ -1485,6 +1522,7 @@
 				04F3C7E72308DD8F00445A8D /* PurchaseOperation.swift in Sources */,
 				04F3C7E523089B1700445A8D /* PurchaseMarketingViewTextLabel.swift in Sources */,
 				049F292B22875ADD00A335BE /* WebViewController.swift in Sources */,
+				046BEC282470F89B00FBECD7 /* CollectionsDataSource.swift in Sources */,
 				046EA9A7231BCCC7003BFC4D /* RestoreOperation.swift in Sources */,
 				04F3C7B02301A31900445A8D /* SettingsContentItem.swift in Sources */,
 				04F3C7ED2308E81400445A8D /* PurchaseOperationQueue.swift in Sources */,
@@ -1500,6 +1538,7 @@
 				04F3C7DD23044A9900445A8D /* PurchaseMarketingViewController.swift in Sources */,
 				04ADD15A2290D1C500E17445 /* AppLookupResponse.swift in Sources */,
 				049F292F22875B1300A335BE /* PrivacyViewController.swift in Sources */,
+				046BEC2C2470F8E500FBECD7 /* AlbumsView.swift in Sources */,
 				04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */,
 				04DBC83C2314D1C20004F7DB /* AutoRedactionsEmptyViewController.swift in Sources */,
 				04EF55BA22D6DB9400C6600D /* SceneDelegate.swift in Sources */,
@@ -1508,6 +1547,7 @@
 				04D68BC7225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift in Sources */,
 				04FF8DB922F57AD9008CF0E9 /* AutoRedactionsDataSource.swift in Sources */,
 				04DBC8402314D2080004F7DB /* AutoRedactionsListViewController.swift in Sources */,
+				046BEC2A2470F8BE00FBECD7 /* CollectionTableViewCell.swift in Sources */,
 				04F3C7F12308E91600445A8D /* FetchProductOperation.swift in Sources */,
 				042A2B7E228CFEDB00353414 /* PhotoEditingNavigationController.swift in Sources */,
 				042A2B7C228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift in Sources */,
