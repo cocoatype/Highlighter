@@ -21,7 +21,7 @@
 		041EFF50225303120058D8EE /* PromptLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF4F225303120058D8EE /* PromptLabel.swift */; };
 		041EFF52225303430058D8EE /* PromptButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF51225303430058D8EE /* PromptButton.swift */; };
 		041EFF6B225C36350058D8EE /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF6A225C36350058D8EE /* PhotoLibraryViewController.swift */; };
-		041EFF6E225C38800058D8EE /* PhotoSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF6D225C38800058D8EE /* PhotoSelectionViewController.swift */; };
+		041EFF6E225C38800058D8EE /* PhotoSelectionNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF6D225C38800058D8EE /* PhotoSelectionNavigationController.swift */; };
 		041EFF70225C3D830058D8EE /* PhotoLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF6F225C3D830058D8EE /* PhotoLibraryView.swift */; };
 		041EFF72225C3DC00058D8EE /* PhotoLibraryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF71225C3DC00058D8EE /* PhotoLibraryDataSource.swift */; };
 		041EFF74225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF73225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift */; };
@@ -65,6 +65,8 @@
 		046BEC282470F89B00FBECD7 /* CollectionsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC272470F89B00FBECD7 /* CollectionsDataSource.swift */; };
 		046BEC2A2470F8BE00FBECD7 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC292470F8BE00FBECD7 /* CollectionTableViewCell.swift */; };
 		046BEC2C2470F8E500FBECD7 /* AlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC2B2470F8E500FBECD7 /* AlbumsView.swift */; };
+		046BEC2E2471013900FBECD7 /* SettingsBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC2D2471013900FBECD7 /* SettingsBarButtonItem.swift */; };
+		046BEC30247102AC00FBECD7 /* AlbumsBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC2F247102AC00FBECD7 /* AlbumsBarButtonItem.swift */; };
 		046EA9A7231BCCC7003BFC4D /* RestoreOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
 		04899D75231CEAED002BC1D8 /* PurchaseValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04899D74231CEAED002BC1D8 /* PurchaseValidator.swift */; };
@@ -319,7 +321,7 @@
 		041EFF5A2255A39D0058D8EE /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		041EFF5C2255A85F0058D8EE /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		041EFF6A225C36350058D8EE /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
-		041EFF6D225C38800058D8EE /* PhotoSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectionViewController.swift; sourceTree = "<group>"; };
+		041EFF6D225C38800058D8EE /* PhotoSelectionNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectionNavigationController.swift; sourceTree = "<group>"; };
 		041EFF6F225C3D830058D8EE /* PhotoLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryView.swift; sourceTree = "<group>"; };
 		041EFF71225C3DC00058D8EE /* PhotoLibraryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryDataSource.swift; sourceTree = "<group>"; };
 		041EFF73225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPhotoLibraryViewCell.swift; sourceTree = "<group>"; };
@@ -378,6 +380,8 @@
 		046BEC272470F89B00FBECD7 /* CollectionsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsDataSource.swift; sourceTree = "<group>"; };
 		046BEC292470F8BE00FBECD7 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		046BEC2B2470F8E500FBECD7 /* AlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsView.swift; sourceTree = "<group>"; };
+		046BEC2D2471013900FBECD7 /* SettingsBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBarButtonItem.swift; sourceTree = "<group>"; };
+		046BEC2F247102AC00FBECD7 /* AlbumsBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsBarButtonItem.swift; sourceTree = "<group>"; };
 		046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreOperation.swift; sourceTree = "<group>"; };
 		047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingWorkspaceView.swift; sourceTree = "<group>"; };
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
@@ -657,9 +661,10 @@
 				046BEC1F2470E36800FBECD7 /* Albums */,
 				041EFF4C225302B90058D8EE /* Intro View */,
 				041EFF69225C36130058D8EE /* Photo Library */,
-				041EFF6D225C38800058D8EE /* PhotoSelectionViewController.swift */,
+				041EFF6D225C38800058D8EE /* PhotoSelectionNavigationController.swift */,
 				04D68BCA2262B34600D09BBD /* Photo Permissions */,
 				04FF8DE222F6DF2C008CF0E9 /* PageCountAlertFactory.swift */,
+				046BEC2D2471013900FBECD7 /* SettingsBarButtonItem.swift */,
 			);
 			path = "Photo Selection";
 			sourceTree = "<group>";
@@ -764,6 +769,7 @@
 			children = (
 				046BEC202470E38300FBECD7 /* AlbumsViewController.swift */,
 				046BEC2B2470F8E500FBECD7 /* AlbumsView.swift */,
+				046BEC2F247102AC00FBECD7 /* AlbumsBarButtonItem.swift */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -1503,6 +1509,7 @@
 				04F3C7BC2301A4C200445A8D /* OtherAppItem.swift in Sources */,
 				042B7905229A3AC7005B7A2A /* AppRatingsPrompter.swift in Sources */,
 				046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */,
+				046BEC30247102AC00FBECD7 /* AlbumsBarButtonItem.swift in Sources */,
 				0431E0D322F85F0B00DC85C4 /* DocumentScannerPresenting.swift in Sources */,
 				041EFF6B225C36350058D8EE /* PhotoLibraryViewController.swift in Sources */,
 				043CD9DB22753D510012F5AE /* SettingsViewController.swift in Sources */,
@@ -1517,7 +1524,7 @@
 				04F3C7CA2301A62200445A8D /* SettingsSection.swift in Sources */,
 				04F3C7C22301A55E00445A8D /* AcknowledgementsItem.swift in Sources */,
 				041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */,
-				041EFF6E225C38800058D8EE /* PhotoSelectionViewController.swift in Sources */,
+				041EFF6E225C38800058D8EE /* PhotoSelectionNavigationController.swift in Sources */,
 				04F3C7EB2308E7F200445A8D /* PurchaseOperationError.swift in Sources */,
 				04F3C7E72308DD8F00445A8D /* PurchaseOperation.swift in Sources */,
 				04F3C7E523089B1700445A8D /* PurchaseMarketingViewTextLabel.swift in Sources */,
@@ -1540,6 +1547,7 @@
 				049F292F22875B1300A335BE /* PrivacyViewController.swift in Sources */,
 				046BEC2C2470F8E500FBECD7 /* AlbumsView.swift in Sources */,
 				04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */,
+				046BEC2E2471013900FBECD7 /* SettingsBarButtonItem.swift in Sources */,
 				04DBC83C2314D1C20004F7DB /* AutoRedactionsEmptyViewController.swift in Sources */,
 				04EF55BA22D6DB9400C6600D /* SceneDelegate.swift in Sources */,
 				042B78FA229A2560005B7A2A /* SettingsAppEntryTableViewCell.swift in Sources */,
@@ -1886,6 +1894,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Highlighter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1909,6 +1918,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Highlighter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

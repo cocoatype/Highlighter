@@ -6,6 +6,8 @@
   Copyright © 2019 Cocoatype, LLC. All rights reserved.
 */
 
+"AlbumsBarButtonItem.standardAccessibilityLabel" = "Albums";
+
 "AutoRedactionsAdditionDialogFactory.addButtonTitle" = "Add Word";
 "AutoRedactionsAdditionDialogFactory.placeholder" = "Hidden Word";
 "AutoRedactionsAdditionDialogFactory.dialogTitle" = "Auto-Hide Word";

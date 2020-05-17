@@ -7,6 +7,7 @@ class IntroViewController: UIViewController {
     init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
         self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
+        navigationItem.rightBarButtonItem = SettingsBarButtonItem.standard
     }
 
     override func loadView() {
@@ -17,7 +18,7 @@ class IntroViewController: UIViewController {
         permissionsRequester.requestAuthorization { [weak self] status in
             switch status {
             case .authorized:
-                UIApplication.shared.sendAction(#selector(PhotoSelectionViewController.showPhotoLibrary), to: nil, from: self, for: nil)
+                UIApplication.shared.sendAction(#selector(PhotoSelectionNavigationController.showPhotoLibrary), to: nil, from: self, for: nil)
             case .restricted:
                 self?.present(PhotoPermissionsRestrictedAlertFactory.alert(), animated: true)
             case .denied:

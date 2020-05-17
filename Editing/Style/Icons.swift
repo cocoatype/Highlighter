@@ -31,6 +31,14 @@ public enum Icons {
         return UIImage(named: "Help")
     }
 
+    public static var albums: UIImage? {
+        if #available(iOS 13.0, *) {
+            return UIImage(systemName: "rectangle.stack")
+        }
+
+        return nil
+    }
+
     // MARK: Collections
 
     public static var favoritesCollection: UIImage? {

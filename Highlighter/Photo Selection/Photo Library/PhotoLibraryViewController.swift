@@ -7,6 +7,9 @@ import UIKit
 class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate {
     init() {
         super.init(nibName: nil, bundle: nil)
+        navigationItem.title = Self.navigationItemTitle
+        navigationItem.leftBarButtonItem = AlbumsBarButtonItem.standard
+        navigationItem.rightBarButtonItem = SettingsBarButtonItem.standard
         NotificationCenter.default.addObserver(forName: Purchaser.stateDidChange, object: nil, queue: .main) { [weak self] notification in
             guard let purchaser = notification.object as? Purchaser, case .purchased = purchaser.state else { return }
             self?.libraryView?.reloadData()
@@ -84,6 +87,8 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
     }
 
     // MARK: Boilerplate
+
+    private static let navigationItemTitle = NSLocalizedString("PhotoSelectionViewController.navigationItemTitle", comment: "Navigation title for the photo selector")
 
     private let dataSource = PhotoLibraryDataSource()
     private var libraryView: PhotoLibraryView? { return view as? PhotoLibraryView }

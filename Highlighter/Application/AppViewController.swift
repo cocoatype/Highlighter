@@ -10,7 +10,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     init() {
         super.init(nibName: nil, bundle: nil)
 
-        let navigationController = NavigationController(rootViewController: PhotoSelectionViewController())
+        let navigationController = PhotoSelectionNavigationController()
         embed(navigationController)
     }
 
