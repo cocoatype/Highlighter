@@ -7,11 +7,20 @@ import UIKit
 import VisionKit
 
 class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening, VNDocumentCameraViewControllerDelegate, DocumentScannerPresenting {
-    init() {
+    init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
         super.init(nibName: nil, bundle: nil)
 
-        let navigationController = PhotoSelectionNavigationController()
-        embed(navigationController)
+        let initialViewController: UIViewController
+        switch permissionsRequester.authorizationStatus() {
+        case .authorized: initialViewController = PhotoSelectionNavigationController()
+        default: initialViewController = IntroViewController()
+        }
+
+        embed(initialViewController)
+    }
+
+    @objc func showPhotoLibrary() {
+        transition(to: PhotoSelectionNavigationController())
     }
 
     var stateRestorationActivity: NSUserActivity? {

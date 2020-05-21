@@ -18,7 +18,7 @@ class IntroViewController: UIViewController {
         permissionsRequester.requestAuthorization { [weak self] status in
             switch status {
             case .authorized:
-                UIApplication.shared.sendAction(#selector(PhotoSelectionNavigationController.showPhotoLibrary), to: nil, from: self, for: nil)
+                UIApplication.shared.sendAction(#selector(AppViewController.showPhotoLibrary), to: nil, from: self, for: nil)
             case .restricted:
                 self?.present(PhotoPermissionsRestrictedAlertFactory.alert(), animated: true)
             case .denied:
