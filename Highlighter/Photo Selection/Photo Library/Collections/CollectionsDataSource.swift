@@ -5,7 +5,7 @@ import UIKit
 
 class CollectionsDataSource: NSObject, UITableViewDataSource {
     lazy var allCollections: [Collection] = {
-        return [CollectionType.recents, .screenshots, .userAlbum, .favorites]
+        return [CollectionType.library, .screenshots, .userAlbum, .favorites]
           .map { $0.fetchResult }
           .flatMap { $0.objects(at: IndexSet(integersIn: 0..<$0.count)) }
           .map(Collection.init)

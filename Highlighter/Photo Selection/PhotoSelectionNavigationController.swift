@@ -27,6 +27,17 @@ class PhotoSelectionNavigationController: NavigationController {
         popViewController(animated: true)
     }
 
+    @objc func showCollection(_ sender: Any, for event: CollectionEvent) {
+        // get collection
+        let collection = event.collection
+
+        // create a photo library view controller for that collection
+        let viewController = PhotoLibraryViewController(collection: collection)
+
+        // push library view controller
+        pushViewController(viewController, animated: true)
+    }
+
     // MARK: Boilerplate
 
     private var permissionsRequester: PhotoPermissionsRequester

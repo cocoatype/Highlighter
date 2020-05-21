@@ -6,8 +6,11 @@ import UIKit
 import VisionKit
 
 class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibraryChangeObserver {
-    override init() {
+    private let collection: Collection
+    init(_ collection: Collection) {
+        self.collection = collection
         super.init()
+
         PHPhotoLibrary.shared().register(self)
     }
 
@@ -75,9 +78,7 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
     }
 
     private func fetchAllPhotos() -> PHFetchResult<PHAsset> {
-        let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-        return PHAsset.fetchAssets(with: fetchOptions)
+        return collection.assets
     }
 
     // MARK: Photo Library Changes

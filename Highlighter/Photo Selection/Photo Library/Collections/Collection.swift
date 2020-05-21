@@ -6,12 +6,16 @@ import Photos
 import UIKit
 
 struct Collection {
-    var assets: PHFetchResult<PHAsset> { return PHAsset.fetchAssets(in: assetCollection, options: nil) }
+    var assets: PHFetchResult<PHAsset> {
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        return PHAsset.fetchAssets(in: assetCollection, options: fetchOptions)
+    }
     var assetCount: Int { return assets.count }
     var icon: UIImage? {
         switch assetCollection.assetCollectionSubtype {
         case .smartAlbumFavorites: return Icons.favoritesCollection
-        case .smartAlbumRecentlyAdded: return Icons.recentsCollection
+        case .smartAlbumRecentlyAdded, .smartAlbumUserLibrary: return Icons.recentsCollection
         case .smartAlbumScreenshots: return Icons.screenshotsCollection
         default: return nil // key asset
         }

@@ -4,13 +4,22 @@
 import Photos
 import UIKit
 
-class AlbumsViewController: UIViewController {
+class AlbumsViewController: UIViewController, UITableViewDelegate {
     init() {
         super.init(nibName: nil, bundle: nil)
     }
 
     override func loadView() {
+        albumsView.delegate = self
         view = albumsView
+    }
+
+    // MARK: UITableViewDelegate
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let collection = albumsDataSource.allCollections[indexPath.row]
+        let event = CollectionEvent(collection)
+        UIApplication.shared.sendAction(#selector(PhotoSelectionNavigationController.showCollection(_:for:)), to: nil, from: self, for: event)
     }
 
     // MARK: Boilerplate

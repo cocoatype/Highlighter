@@ -5,8 +5,10 @@ import Editing
 import UIKit
 
 class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate {
-    init() {
+    init(collection: Collection = CollectionType.library.defaultCollection) {
+        self.dataSource = PhotoLibraryDataSource(collection)
         super.init(nibName: nil, bundle: nil)
+
         navigationItem.title = Self.navigationItemTitle
         navigationItem.leftBarButtonItem = AlbumsBarButtonItem.standard
         navigationItem.rightBarButtonItem = SettingsBarButtonItem.standard
@@ -90,7 +92,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
 
     private static let navigationItemTitle = NSLocalizedString("PhotoSelectionViewController.navigationItemTitle", comment: "Navigation title for the photo selector")
 
-    private let dataSource = PhotoLibraryDataSource()
+    private let dataSource: PhotoLibraryDataSource
     private var libraryView: PhotoLibraryView? { return view as? PhotoLibraryView }
     private var purchaseStateObserver: Any?
 
