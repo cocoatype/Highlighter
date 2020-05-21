@@ -8,12 +8,15 @@ class PhotoSelectionNavigationController: NavigationController {
     init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
         self.permissionsRequester = permissionsRequester
 
-        let initialViewController: UIViewController
+        let initialViewControllers: [UIViewController]
         switch permissionsRequester.authorizationStatus() {
-        case .authorized: initialViewController = PhotoLibraryViewController()
-        default: initialViewController = IntroViewController()
+        case .authorized: initialViewControllers = [AlbumsViewController(), PhotoLibraryViewController()]
+        default: initialViewControllers = [IntroViewController()]
         }
+
+        guard let initialViewController = initialViewControllers.first else { fatalError("Attempted to create navigation controller with no root view controller") }
         super.init(rootViewController: initialViewController)
+        setViewControllers(initialViewControllers, animated: false)
     }
 
     @objc func showPhotoLibrary() {
