@@ -12,7 +12,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
 
         let initialViewController: UIViewController
         switch permissionsRequester.authorizationStatus() {
-        case .authorized: initialViewController = PhotoSelectionNavigationController()
+        case .authorized: initialViewController = PhotoSelectionSplitViewController()
         default: initialViewController = IntroViewController()
         }
 
@@ -20,7 +20,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     }
 
     @objc func showPhotoLibrary() {
-        transition(to: PhotoSelectionNavigationController())
+        transition(to: PhotoSelectionSplitViewController())
     }
 
     var stateRestorationActivity: NSUserActivity? {

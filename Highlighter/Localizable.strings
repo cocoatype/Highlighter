@@ -8,6 +8,8 @@
 
 "AlbumsBarButtonItem.standardAccessibilityLabel" = "Albums";
 
+"AlbumsViewController.navigationTitle" = "Albums";
+
 "AutoRedactionsAdditionDialogFactory.addButtonTitle" = "Add Word";
 "AutoRedactionsAdditionDialogFactory.placeholder" = "Hidden Word";
 "AutoRedactionsAdditionDialogFactory.dialogTitle" = "Auto-Hide Word";

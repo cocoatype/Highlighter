@@ -30,3 +30,25 @@ class PhotoSelectionNavigationController: NavigationController {
         fatalError("\(className) does not implement init(coder:)")
     }
 }
+
+class PhotoSelectionSplitViewController: UISplitViewController {
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        let albumsNavigationController = NavigationController(rootViewController: AlbumsViewController())
+        let libraryViewController = NavigationController(rootViewController: PhotoLibraryViewController())
+        viewControllers = [albumsNavigationController, libraryViewController]
+    }
+
+    @objc func showCollection(_ sender: Any, for event: CollectionEvent) {
+        let collection = event.collection
+        let viewController = PhotoLibraryViewController(collection: collection)
+        showDetailViewController(viewController, sender: sender)
+    }
+
+    // MARK: Boilerplate
+
+    @available(*, unavailable)
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) is not implemented")
+    }
+}
