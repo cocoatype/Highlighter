@@ -6,7 +6,11 @@ import UIKit
 
 class PhotoSelectionNavigationController: NavigationController {
     init() {
-        let initialViewControllers = [AlbumsViewController(), PhotoLibraryViewController()]
+        let albumsViewController = AlbumsViewController()
+        let libraryViewController = PhotoLibraryViewController()
+        libraryViewController.navigationItem.leftBarButtonItem = AlbumsBarButtonItem.navigationButton
+        let initialViewControllers = [albumsViewController, libraryViewController]
+
         guard let initialViewController = initialViewControllers.first else { fatalError("Attempted to create navigation controller with no root view controller") }
         super.init(rootViewController: initialViewController)
         setViewControllers(initialViewControllers, animated: false)
@@ -19,6 +23,7 @@ class PhotoSelectionNavigationController: NavigationController {
     @objc func showCollection(_ sender: Any, for event: CollectionEvent) {
         let collection = event.collection
         let viewController = PhotoLibraryViewController(collection: collection)
+        viewController.navigationItem.leftBarButtonItem = AlbumsBarButtonItem.navigationButton
         pushViewController(viewController, animated: true)
     }
 

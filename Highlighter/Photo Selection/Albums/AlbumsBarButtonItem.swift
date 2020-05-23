@@ -11,6 +11,12 @@ class AlbumsBarButtonItem: UIBarButtonItem {
         return standard
     }
 
+    static var navigationButton: AlbumsBarButtonItem {
+        let standard = AlbumsBarButtonItem(image: Icons.albums, style: .plain, target: nil, action: #selector(PhotoSelectionNavigationController.showAlbums))
+        standard.accessibilityLabel = Self.standardAccessibilityLabel
+        return standard
+    }
+
     private static let standardAccessibilityLabel = NSLocalizedString("AlbumsBarButtonItem.standardAccessibilityLabel", comment: "Accessibility label for the button to get to albums")
 
     // MARK: Hiding
