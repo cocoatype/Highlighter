@@ -8,19 +8,23 @@ import VisionKit
 
 class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening, VNDocumentCameraViewControllerDelegate, DocumentScannerPresenting {
     init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
+        self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
 
-        let initialViewController: UIViewController
-        switch permissionsRequester.authorizationStatus() {
-        case .authorized: initialViewController = PhotoSelectionSplitViewController()
-        default: initialViewController = IntroViewController()
-        }
-
-        embed(initialViewController)
+        embed(preferredViewController)
     }
 
     @objc func showPhotoLibrary() {
         transition(to: PhotoSelectionSplitViewController())
+    }
+
+    private let permissionsRequester: PhotoPermissionsRequester
+    private var preferredViewController: UIViewController {
+        switch permissionsRequester.authorizationStatus() {
+        case .authorized where traitCollection.horizontalSizeClass == .regular: return PhotoSelectionSplitViewController()
+        case .authorized: return PhotoSelectionNavigationController()
+        default: return IntroViewController()
+        }
     }
 
     var stateRestorationActivity: NSUserActivity? {

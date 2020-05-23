@@ -35,14 +35,20 @@ class PhotoSelectionSplitViewController: UISplitViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         let albumsNavigationController = NavigationController(rootViewController: AlbumsViewController())
-        let libraryViewController = NavigationController(rootViewController: PhotoLibraryViewController())
-        viewControllers = [albumsNavigationController, libraryViewController]
+
+        let libraryViewController = PhotoLibraryViewController()
+        libraryViewController.navigationItem.leftBarButtonItem = displayModeButtonItem
+        let libraryNavigationController = NavigationController(rootViewController: libraryViewController)
+
+        viewControllers = [albumsNavigationController, libraryNavigationController]
     }
 
     @objc func showCollection(_ sender: Any, for event: CollectionEvent) {
         let collection = event.collection
         let viewController = PhotoLibraryViewController(collection: collection)
-        showDetailViewController(viewController, sender: sender)
+        viewController.navigationItem.leftBarButtonItem = displayModeButtonItem
+        let navigationController = NavigationController(rootViewController: viewController)
+        showDetailViewController(navigationController, sender: sender)
     }
 
     // MARK: Boilerplate
