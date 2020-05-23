@@ -9,7 +9,8 @@ class AlbumsView: UITableView {
         backgroundColor = .primary
         self.dataSource = dataSource
 
-        register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
+        register(SystemCollectionTableViewCell.self, forCellReuseIdentifier: SystemCollectionTableViewCell.identifier)
+        register(UserCollectionTableViewCell.self, forCellReuseIdentifier: UserCollectionTableViewCell.identifier)
     }
 
     // MARK: Boilerplate

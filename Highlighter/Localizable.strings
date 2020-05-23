@@ -24,6 +24,8 @@
 "BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle" = "Undo Redaction";
 "BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle" = "Redo Redaction";
 
+"CollectionsDataSource.userAlbumsHeader" = "My Albums";
+
 "ContactMailViewController.emailSubject" = "Hello!";
 
 "IntroView.promptLabelText" = "Black Highlighter needs permission to edit your photos.";

@@ -33,6 +33,18 @@ class CollectionsDataSource: NSObject, UITableViewDataSource {
         return collections(forSection: indexPath.section)[indexPath.row]
     }
 
+    private func dequeueTableViewCell(for tableView: UITableView, at indexPath: IndexPath) -> (UITableViewCell & CollectionTableViewCell) {
+        let cellType: CollectionTableViewCell.Type
+        switch indexPath.section {
+        case 0: cellType = SystemCollectionTableViewCell.self
+        case 1: cellType = UserCollectionTableViewCell.self
+        default: fatalError()
+        }
+
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellType.identifier, for: indexPath) as? (UITableViewCell & CollectionTableViewCell) else { fatalError("Cell was not a collection cell") }
+        return cell
+    }
+
     // MARK: UITableViewDataSource
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -44,8 +56,17 @@ class CollectionsDataSource: NSObject, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as? CollectionTableViewCell else { fatalError("Cell was not a collection cell") }
+        var cell = dequeueTableViewCell(for: tableView, at: indexPath)
         cell.collection = collection(at: indexPath)
         return cell
     }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard section == 1 else { return nil }
+        return Self.userAlbumsHeader
+    }
+
+    // MARK: Localizable Strings
+
+    private static let userAlbumsHeader = NSLocalizedString("CollectionsDataSource.userAlbumsHeader", comment: "Header for the user albums section in the albums list")
 }

@@ -17,7 +17,7 @@ struct Collection {
         case .smartAlbumFavorites: return Icons.favoritesCollection
         case .smartAlbumRecentlyAdded, .smartAlbumUserLibrary: return Icons.recentsCollection
         case .smartAlbumScreenshots: return Icons.screenshotsCollection
-        default: return nil // key asset
+        default: return nil
         }
     }
     var keyAssets: PHFetchResult<PHAsset>
