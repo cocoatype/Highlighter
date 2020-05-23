@@ -5,13 +5,22 @@ import Editing
 import UIKit
 
 class AlbumsBarButtonItem: UIBarButtonItem {
-    static var standard: SettingsBarButtonItem {
-        let standard = SettingsBarButtonItem(image: Icons.albums, style: .plain, target: nil, action: #selector(PhotoSelectionNavigationController.showAlbums))
+    static func create(from button: UIBarButtonItem) -> AlbumsBarButtonItem {
+        let standard = AlbumsBarButtonItem(image: Icons.albums, style: .plain, target: button.target, action: button.action)
         standard.accessibilityLabel = Self.standardAccessibilityLabel
         return standard
     }
 
     private static let standardAccessibilityLabel = NSLocalizedString("AlbumsBarButtonItem.standardAccessibilityLabel", comment: "Accessibility label for the button to get to albums")
+
+    // MARK: Hiding
+
+    var isHidden: Bool = false {
+        didSet {
+            isEnabled = isHidden == false
+            tintColor = isHidden ? .clear : .white
+        }
+    }
 
     // MARK: Boilerplate
 

@@ -31,13 +31,15 @@ class PhotoSelectionNavigationController: NavigationController {
     }
 }
 
-class PhotoSelectionSplitViewController: UISplitViewController {
+class PhotoSelectionSplitViewController: UISplitViewController, UISplitViewControllerDelegate {
     init() {
         super.init(nibName: nil, bundle: nil)
         let albumsNavigationController = NavigationController(rootViewController: AlbumsViewController())
+        albumsBarButtonItem = AlbumsBarButtonItem.create(from: displayModeButtonItem)
+        delegate = self
 
         let libraryViewController = PhotoLibraryViewController()
-        libraryViewController.navigationItem.leftBarButtonItem = displayModeButtonItem
+        libraryViewController.navigationItem.leftBarButtonItem = albumsBarButtonItem
         let libraryNavigationController = NavigationController(rootViewController: libraryViewController)
 
         viewControllers = [albumsNavigationController, libraryNavigationController]
@@ -46,12 +48,26 @@ class PhotoSelectionSplitViewController: UISplitViewController {
     @objc func showCollection(_ sender: Any, for event: CollectionEvent) {
         let collection = event.collection
         let viewController = PhotoLibraryViewController(collection: collection)
-        viewController.navigationItem.leftBarButtonItem = displayModeButtonItem
+        viewController.navigationItem.leftBarButtonItem = albumsBarButtonItem
         let navigationController = NavigationController(rootViewController: viewController)
         showDetailViewController(navigationController, sender: sender)
     }
 
+    // MARK: Delegate
+
+    func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewController.DisplayMode) {
+        switch displayMode {
+        case .allVisible: albumsBarButtonItem?.isHidden = true
+        case .automatic: break
+        case .primaryHidden: albumsBarButtonItem?.isHidden = false
+        case .primaryOverlay: albumsBarButtonItem?.isHidden = true
+        @unknown default: break
+        }
+    }
+
     // MARK: Boilerplate
+
+    private var albumsBarButtonItem: AlbumsBarButtonItem?
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
