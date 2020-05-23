@@ -18,7 +18,7 @@ class AlbumsViewController: UIViewController, UITableViewDelegate {
     // MARK: UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let collection = albumsDataSource.allCollections[indexPath.row]
+        let collection = albumsDataSource.collection(at: indexPath)
         let event = CollectionEvent(collection)
         UIApplication.shared.sendAction(#selector(PhotoSelectionSplitViewController.showCollection(_:for:)), to: nil, from: self, for: event)
     }
