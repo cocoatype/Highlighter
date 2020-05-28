@@ -23,6 +23,27 @@ class AlbumsViewController: UIViewController, UITableViewDelegate {
         UIApplication.shared.sendAction(#selector(PhotoSelectionSplitViewController.showCollection(_:for:)), to: nil, from: self, for: event)
     }
 
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return section == 1 ? 36 : 0
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 1 ? UITableView.automaticDimension : 0
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard section == 1 else { return nil }
+        return tableView.dequeueReusableHeaderFooterView(withIdentifier: AlbumsHeaderView.identifier)
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.001 // to hide remaining cells
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView(frame: .zero)
+    }
+
     // MARK: Boilerplate
 
     private static let navigationTitle = NSLocalizedString("AlbumsViewController.navigationTitle", comment: "Navigation title for the albums list")
