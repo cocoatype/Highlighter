@@ -26,12 +26,14 @@ public struct TextRectangleObservation: TextObservation {
 }
 
 public struct WordObservation: TextObservation {
-    init(bounds: CGRect, string: String, in image: UIImage) {
+    init(bounds: CGRect, string: String, in image: UIImage, textObservationUUID: UUID) {
         let imageSize = image.size * image.scale
         self.bounds = CGRect.flippedRect(from: bounds, scaledTo: imageSize)
         self.string = string
+        self.textObservationUUID = textObservationUUID
     }
 
     public let bounds: CGRect
     public let string: String
+    public let textObservationUUID: UUID
 }

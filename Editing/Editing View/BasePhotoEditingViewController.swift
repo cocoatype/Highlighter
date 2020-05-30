@@ -139,14 +139,34 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
         if #available(iOS 13.0, *) {
             textRectangleDetector.detectWords(in: image) { [weak self] recognizedTextObservations in
                 guard let observations = recognizedTextObservations else { return }
-                let matchingObservations = observations.filter { observation in
+
+                let fullTextString = observations.map { $0.string }.joined(separator: " ")
+                let tagger = NSLinguisticTagger(tagSchemes: [.nameType], options: 0)
+                tagger.string = fullTextString
+                let range = NSRange(location: 0, length: fullTextString.utf16.count)
+                let options: NSLinguisticTagger.Options = [.omitPunctuation, .omitWhitespace]
+                let tags = [NSLinguisticTag.personalName]
+
+                var taggedWordList = [String]()
+                tagger.enumerateTags(in: range, unit: .word, scheme: .nameType, options: options) { (tag, tokenRange, _) in
+                    guard let tag = tag, tags.contains(tag) else { return }
+                    let name = (fullTextString as NSString).substring(with: tokenRange)
+                    taggedWordList.append(name)
+                }
+
+                let autoRedactedObservations = observations.filter { observation in
                     Defaults.autoRedactionsWordList.contains(where: { wordListString in
                         wordListString.compare(observation.string, options: [.caseInsensitive, .diacriticInsensitive]) == .orderedSame
                     })
                 }
 
+                let taggedObservations = observations.filter { observation in
+                    taggedWordList.contains(observation.string)
+                }
+
                 DispatchQueue.main.async {
-                    self?.photoEditingView.redact(matchingObservations)
+                    self?.photoEditingView.redact(autoRedactedObservations, joinSiblings: false)
+                    self?.photoEditingView.redact(taggedObservations, joinSiblings: true)
                     self?.photoEditingView.wordObservations = observations
                 }
             }

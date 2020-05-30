@@ -53,8 +53,9 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
         workspaceView.add(redactions)
     }
 
-    func redact<ObservationType: TextObservation>(_ observations: [ObservationType]) {
-        observations.forEach { [unowned self] in self.workspaceView.redact($0) }
+    func redact<ObservationType: TextObservation>(_ observations: [ObservationType], joinSiblings: Bool) {
+        self.workspaceView.redact(observations, joinSiblings: joinSiblings)
+//        observations.forEach { [unowned self] in self.workspaceView.redact($0, joinSiblings: joinSiblings) }
     }
 
     // MARK: UIScrollViewDelegate

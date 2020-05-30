@@ -73,6 +73,14 @@ class PhotoEditingWorkspaceView: UIControl {
         redactionView.add(redactions)
     }
 
+    func redact<ObservationType: TextObservation>(_ observations: [ObservationType], joinSiblings: Bool) {
+        if joinSiblings, let wordObservations = (observations as? [WordObservation]) {
+            redactionView.add(WordObservationRedaction(wordObservations))
+        } else {
+            observations.forEach { redact($0) }
+        }
+    }
+
     func redact<ObservationType: TextObservation>(_ textObservation: ObservationType) {
         redactionView.add(TextObservationRedaction(textObservation))
     }
