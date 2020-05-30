@@ -12,6 +12,7 @@ class AlbumsViewController: UIViewController, UITableViewDelegate {
 
     override func loadView() {
         albumsView.delegate = self
+        albumsView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .top)
         view = albumsView
     }
 
