@@ -141,18 +141,9 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
                 guard let observations = recognizedTextObservations else { return }
 
                 let fullTextString = observations.map { $0.string }.joined(separator: " ")
-                let tagger = NSLinguisticTagger(tagSchemes: [.nameType], options: 0)
-                tagger.string = fullTextString
-                let range = NSRange(location: 0, length: fullTextString.utf16.count)
-                let options: NSLinguisticTagger.Options = [.omitPunctuation, .omitWhitespace]
-                let tags = [NSLinguisticTag.personalName]
-
-                var taggedWordList = [String]()
-                tagger.enumerateTags(in: range, unit: .word, scheme: .nameType, options: options) { (tag, tokenRange, _) in
-                    guard let tag = tag, tags.contains(tag) else { return }
-                    let name = (fullTextString as NSString).substring(with: tokenRange)
-                    taggedWordList.append(name)
-                }
+                let nameList = StringTagger.detectNames(in: fullTextString)
+                let addressList = StringTagger.detectAddresses(in: fullTextString)
+                let taggedWordList = nameList + addressList
 
                 let autoRedactedObservations = observations.filter { observation in
                     Defaults.autoRedactionsWordList.contains(where: { wordListString in
