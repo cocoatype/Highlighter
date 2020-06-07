@@ -5,7 +5,8 @@ import UIKit
 
 class AlbumsView: UITableView {
     init(dataSource: CollectionsDataSource) {
-        super.init(frame: .zero, style: .plain)
+        let bounds = UIScreen.main.bounds // this is to fix a bug with cell layout on iOS 12
+        super.init(frame: bounds, style: .plain)
         backgroundColor = .primary
         separatorColor = .primaryLight
         separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)

@@ -29,6 +29,10 @@ class PhotoSelectionNavigationController: NavigationController {
 
     // MARK: Boilerplate
 
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nil, bundle: nil)
+    }
+
     @available(*, unavailable)
     required init(coder: NSCoder) {
         let className = String(describing: type(of: self))

@@ -36,7 +36,7 @@ public enum Icons {
             return UIImage(systemName: "rectangle.stack")
         }
 
-        return nil
+        return UIImage(named: "Albums")
     }
 
     // MARK: Collections
@@ -46,7 +46,7 @@ public enum Icons {
             return UIImage(systemName: "suit.heart")
         }
 
-        return nil
+        return UIImage(named: "Favorites Album")
     }
 
     public static var recentsCollection: UIImage? {
@@ -54,7 +54,7 @@ public enum Icons {
             return UIImage(systemName: "clock")
         }
 
-        return nil
+        return UIImage(named: "Recents Album")
     }
 
     public static var screenshotsCollection: UIImage? {
@@ -62,6 +62,6 @@ public enum Icons {
             return UIImage(systemName: "camera.viewfinder")
         }
 
-        return nil
+        return UIImage(named: "Screenshots Album")
     }
 }

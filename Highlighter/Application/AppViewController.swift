@@ -15,7 +15,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     }
 
     @objc func showPhotoLibrary() {
-        transition(to: PhotoSelectionSplitViewController())
+        transition(to: preferredViewController)
     }
 
     private let permissionsRequester: PhotoPermissionsRequester

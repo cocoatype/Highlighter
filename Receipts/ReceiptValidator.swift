@@ -48,8 +48,6 @@ public class ReceiptValidator {
     }
 
     private static func checkHash(for receipt: AppReceipt) throws {
-        let receiptHashData = receipt.sha1Hash
-
         guard var deviceIdentifier = UIDevice.current.identifierForVendor?.uuid else { return }
         let rawDeviceIdentifierPointer = withUnsafePointer(to: &deviceIdentifier) { UnsafeRawPointer($0) }
         let deviceIdentifierData = Data(bytes: rawDeviceIdentifierPointer, count: 16)

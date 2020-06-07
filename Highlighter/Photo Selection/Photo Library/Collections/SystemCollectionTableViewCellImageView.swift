@@ -7,10 +7,15 @@ class SystemCollectionTableViewCellImageView: UIImageView {
     init() {
         super.init(frame: .zero)
         contentMode = .center
-        preferredSymbolConfiguration = UIImage.SymbolConfiguration(textStyle: .body, scale: .large)
         tintColor = .white
         translatesAutoresizingMaskIntoConstraints = false
+
+        if #available(iOS 13.0, *) {
+            preferredSymbolConfiguration = UIImage.SymbolConfiguration(textStyle: .body, scale: .large)
+        }
     }
+
+    override var intrinsicContentSize: CGSize { return CGSize(width: 36, height: 36) }
 
     // MARK: Boilerplate
 
