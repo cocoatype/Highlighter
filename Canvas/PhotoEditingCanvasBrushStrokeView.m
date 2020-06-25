@@ -48,7 +48,13 @@
 }
 
 - (void)canvasViewDidEndUsingTool:(PKCanvasView *)canvasView {
+}
+
+- (void)canvasViewDrawingDidChange:(PKCanvasView *)canvasView {
     if (self.canvasViewIsDirty == false) { return; }
+
+    self.currentPath = [self pathFromDrawing:self.canvasView.drawing];
+    [self sendActionsForControlEvents:UIControlEventTouchUpInside];
 
     self.canvasViewIsDirty = false;
     self.canvasView.drawing = [PKDrawing new];
@@ -64,29 +70,41 @@
     return newPath;
 }
 
+- (UIBezierPath *)pathFromDrawing:(PKDrawing *)drawing {
+    NSArray<PKStroke *> *strokes = [drawing strokes];
+    PKStroke *currentStroke = [strokes lastObject];
+    PKStrokePath *strokePath = [currentStroke path];
+    UIBezierPath *bezierPath = [self newPath];
+    [bezierPath moveToPoint:[strokePath interpolatedLocationAt:0]];
+    for (NSUInteger i = 1; i < [strokePath count]; i++) {
+        [bezierPath addLineToPoint:[strokePath interpolatedLocationAt:i]];
+    }
+    return bezierPath;
+}
+
 #pragma mark Touch Handling
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    if (touch == nil) { return; }
-
-    self.currentPath = [self newPath];
-    [self.currentPath moveToPoint:[touch locationInView:self]];
-}
-
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    if (touch == nil) { return; }
-    [self.currentPath addLineToPoint:[touch locationInView:self]];
-}
-
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self sendActionsForControlEvents:UIControlEventTouchUpInside];
-    self.currentPath = nil;
-}
-
-- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    self.currentPath = nil;
-}
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    UITouch *touch = [touches anyObject];
+//    if (touch == nil) { return; }
+//
+//    self.currentPath = [self newPath];
+//    [self.currentPath moveToPoint:[touch locationInView:self]];
+//}
+//
+//- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    UITouch *touch = [touches anyObject];
+//    if (touch == nil) { return; }
+//    [self.currentPath addLineToPoint:[touch locationInView:self]];
+//}
+//
+//- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    [self sendActionsForControlEvents:UIControlEventTouchUpInside];
+//    self.currentPath = nil;
+//}
+//
+//- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    self.currentPath = nil;
+//}
 
 @end
