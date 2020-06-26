@@ -79,7 +79,13 @@ public class ReceiptValidator {
     // MARK: Boilerplate
 
     private static let appleCertificateData: Data = {
-        guard let dataURL = Bundle.main.url(forResource: "AppleIncRootCertificate", withExtension: "cer"), let data = try? Data(contentsOf: dataURL) else {
+        #if DEBUG
+        let certificateFileName = "StoreKitTestCertificate"
+        #else
+        let certificateFileName = "AppleIncRootCertificate"
+        #endif
+
+        guard let dataURL = Bundle.main.url(forResource: certificateFileName, withExtension: "cer"), let data = try? Data(contentsOf: dataURL) else {
             fatalError("Error locating Apple root certificate data")
         }
 

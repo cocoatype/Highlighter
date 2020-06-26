@@ -1,0 +1,33 @@
+{
+  "products" : [
+    {
+      "displayPrice" : "12.99",
+      "familyShareable" : false,
+      "internalID" : "D29E3F0E",
+      "localizations" : [
+        {
+          "description" : "Unlock the power of the Ultra Highlighter!",
+          "displayName" : "Ultra Highlighter",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.cocoatype.Highlighter.unlock",
+      "referenceName" : "Ultra Highlighter",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_askToBuyEnabled" : false,
+    "_billingIssuesEnabled" : true,
+    "_failTransactionsEnabled" : false,
+    "_storefront" : "USA",
+    "_storeKitError" : 0
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 0
+  }
+}

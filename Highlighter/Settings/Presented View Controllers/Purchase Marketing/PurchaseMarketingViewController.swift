@@ -1,10 +1,12 @@
 //  Created by Geoff Pado on 8/14/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import StoreKit
 import UIKit
 
 class PurchaseMarketingViewController: UIViewController {
-    init() {
+    init(product: SKProduct? = nil) {
+        self.product = product
         super.init(nibName: nil, bundle: nil)
 
         navigationItem.rightBarButtonItem = restoreButton
@@ -13,7 +15,7 @@ class PurchaseMarketingViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
-        view = PurchaseMarketingView()
+        view = PurchaseMarketingView(product: product)
     }
 
     // MARK: Restore
@@ -24,6 +26,8 @@ class PurchaseMarketingViewController: UIViewController {
 
     private static let navigationTitle = NSLocalizedString("PurchaseMarketingViewController.navigationTitle", comment: "Navigation title for the purchase marketing view")
     private static let restoreButtonTitle = NSLocalizedString("PurchaseMarketingViewController.restoreButtonTitle", comment: "Restore button title for the purchase marketing view")
+
+    private let product: SKProduct?
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

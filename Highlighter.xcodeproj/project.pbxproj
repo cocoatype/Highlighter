@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04171B7E24A5392E006923AC /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 04171B7D24A5392E006923AC /* StoreKitTestCertificate.cer */; };
 		041BEA3722EF75E800FF07C2 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3622EF75E800FF07C2 /* Icons.swift */; };
 		041BEA3F22EF879700FF07C2 /* TextRecognitionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3E22EF879700FF07C2 /* TextRecognitionOperation.swift */; };
 		041EFEF92251A9F30058D8EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFEF82251A9F30058D8EE /* AppDelegate.swift */; };
@@ -304,6 +305,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		04171B7C24A52EC2006923AC /* PurchaseConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = PurchaseConfiguration.storekit; sourceTree = "<group>"; };
+		04171B7D24A5392E006923AC /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		041BEA3622EF75E800FF07C2 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		041BEA3A22EF7B2900FF07C2 /* PhotoEditingBrushStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingBrushStrokeView.swift; sourceTree = "<group>"; };
 		041BEA3E22EF879700FF07C2 /* TextRecognitionOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionOperation.swift; sourceTree = "<group>"; };
@@ -829,6 +832,8 @@
 				041EFF4A225300030058D8EE /* Localizable.strings */,
 				041EFEFF2251A9F50058D8EE /* Assets.xcassets */,
 				041EFF012251A9F50058D8EE /* LaunchScreen.storyboard */,
+				04171B7C24A52EC2006923AC /* PurchaseConfiguration.storekit */,
+				04171B7D24A5392E006923AC /* StoreKitTestCertificate.cer */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1414,6 +1419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				041EFF032251A9F50058D8EE /* LaunchScreen.storyboard in Resources */,
+				04171B7E24A5392E006923AC /* StoreKitTestCertificate.cer in Resources */,
 				041EFF4B225300030058D8EE /* Localizable.strings in Resources */,
 				049F930A22CDAB570090C9BC /* Aleo-Regular.otf in Resources */,
 				041EFF002251A9F50058D8EE /* Assets.xcassets in Resources */,

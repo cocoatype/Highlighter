@@ -1,10 +1,12 @@
 //  Created by Geoff Pado on 8/17/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import StoreKit
 import UIKit
 
 class PurchaseMarketingView: UIView {
-    init() {
+    init(product: SKProduct?) {
+        self.product = product
         super.init(frame: .zero)
         backgroundColor = .primary
 
@@ -31,16 +33,42 @@ class PurchaseMarketingView: UIView {
         ])
     }
 
+    // MARK: Purchase Button
+
+    private lazy var purchaseButton = PromptButton(title: purchaseButtonTitle)
+
+    private var purchaseButtonTitle: String {
+        guard let price = localizedProductPrice else { return Self.purchaseButtonTitleWithoutProduct }
+        return String(format: Self.purchaseButtonTitleWithProduct, price)
+    }
+
+    private var localizedProductPrice: String? {
+        guard let product = product else { return nil }
+
+        if product.priceLocale != Self.priceFormatter.locale {
+            Self.priceFormatter.locale = product.priceLocale
+        }
+
+        return Self.priceFormatter.string(from: product.price)
+    }
+
+    private static let priceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.formatterBehavior = .behavior10_4
+        formatter.numberStyle = .currency
+        return formatter
+    }()
+
     // MARK: Boilerplate
 
     private static let autoRedactionsHeader = NSLocalizedString("PurchaseMarketingView.autoRedactionsHeader", comment: "Marketing text for the purchase marketing view")
     private static let autoRedactionsText = NSLocalizedString("PurchaseMarketingView.autoRedactionsText", comment: "Marketing text for the purchase marketing view")
     private static let documentScanningHeader = NSLocalizedString("PurchaseMarketingView.documentScanningHeader", comment: "Marketing text for the purchase marketing view")
     private static let documentScanningText = NSLocalizedString("PurchaseMarketingView.documentScanningText", comment: "Marketing text for the purchase marketing view")
+    private static let purchaseButtonTitleWithProduct = NSLocalizedString("PurchaseMarketingView.purchaseButtonTitleWithProduct", comment: "Title for the purchase button on the purchase marketing view")
+    private static let purchaseButtonTitleWithoutProduct = NSLocalizedString("PurchaseMarketingView.purchaseButtonTitleWithoutProduct", comment: "Title for the purchase button on the purchase marketing view")
     private static let supportDevelopmentHeader = NSLocalizedString("PurchaseMarketingView.supportDevelopmentHeader", comment: "Marketing text for the purchase marketing view")
     private static let supportDevelopmentText = NSLocalizedString("PurchaseMarketingView.supportDevelopmentText", comment: "Marketing text for the purchase marketing view")
-
-    private static let purchaseButtonTitle = NSLocalizedString("PurchaseMarketingView.purchaseButtonTitleWithoutProduct", comment: "Title for the purchase button on the purchase marketing view")
 
     private let autoRedactionsHeaderLabel = PurchaseMarketingViewHeaderLabel(text: autoRedactionsHeader)
     private let autoRedactionsTextLabel = PurchaseMarketingViewTextLabel(text: autoRedactionsText)
@@ -48,8 +76,9 @@ class PurchaseMarketingView: UIView {
     private let documentScanningTextLabel = PurchaseMarketingViewTextLabel(text: documentScanningText)
     private let supportDevelopmentHeaderLabel = PurchaseMarketingViewHeaderLabel(text: supportDevelopmentHeader)
     private let supportDevelopmentTextLabel = PurchaseMarketingViewTextLabel(text: supportDevelopmentText)
-    private let purchaseButton = PromptButton(title: PurchaseMarketingView.purchaseButtonTitle)
     private let stackView = PurchaseMarketingStackView()
+
+    private let product: SKProduct?
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

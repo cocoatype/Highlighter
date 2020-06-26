@@ -10,8 +10,12 @@ class SettingsNavigationController: NavigationController {
         super.init(rootViewController: settingsViewController)
         modalPresentationStyle = .formSheet
         purchaserObservation = NotificationCenter.default.addObserver(forName: Purchaser.stateDidChange, object: nil, queue: .main, using: { [weak self] _ in
-            guard let purchaser = self?.purchaser, case .purchased = purchaser.state else { return }
-            self?.purchaseDidSucceed()
+            guard let purchaser = self?.purchaser else { return }
+            if case .purchased = purchaser.state {
+                self?.purchaseDidSucceed()
+            }
+
+            self?.purchaseStateDidChange()
         })
     }
 
@@ -53,7 +57,11 @@ class SettingsNavigationController: NavigationController {
     }
 
     @objc func presentPurchaseMarketingViewController() {
-        pushViewController(PurchaseMarketingViewController(), animated: true)
+        if case let PurchaseState.readyForPurchase(product: product) = purchaser.state {
+            pushViewController(PurchaseMarketingViewController(product: product), animated: true)
+        } else {
+            pushViewController(PurchaseMarketingViewController(product: nil), animated: true)
+        }
     }
 
     // MARK: Purchasing
@@ -66,9 +74,12 @@ class SettingsNavigationController: NavigationController {
         purchaser.restorePurchases()
     }
 
+    private func purchaseStateDidChange() {
+        settingsViewController?.refreshPurchaseSection()
+    }
+
     private func purchaseDidSucceed() {
         popToRootViewController(animated: true)
-        settingsViewController?.refreshPurchaseSection()
     }
 
     // MARK: Boilerplate

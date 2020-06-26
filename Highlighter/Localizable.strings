@@ -54,7 +54,7 @@
 "PhotoSelectionViewController.settingsButtonAccessibilityLabel" = "Help";
 
 "PurchaseItem.title" = "Ultra Highlighter";
-"PurchaseItem.subtitleWithoutProduct" = "Enhanced Features — $2.99";
+"PurchaseItem.subtitleWithoutProduct" = "Enhanced Features";
 "PurchaseItem.subtitleWithProduct" = "Enhanced Features — %@";
 
 "PurchaseMarketingView.autoRedactionsHeader" = "Auto-Hide Words";
@@ -63,7 +63,7 @@
 "PurchaseMarketingView.documentScanningText" = "Sometimes the stuff you want to share is in the real world. Bring them in to the virtual with high-quality document scanning.";
 "PurchaseMarketingView.supportDevelopmentHeader" = "Support Development";
 "PurchaseMarketingView.supportDevelopmentText" = "Black Highlighter is a one-man show. Your support helps keep updates to Black Highlighter coming!";
-"PurchaseMarketingView.purchaseButtonTitleWithoutProduct" = "Purchase for $2.99";
+"PurchaseMarketingView.purchaseButtonTitleWithoutProduct" = "Purchase";
 "PurchaseMarketingView.purchaseButtonTitleWithProduct" = "Purchase for %@";
 
 "PurchaseMarketingViewController.navigationTitle" = "Ultra Highlighter";
