@@ -2,6 +2,9 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Foundation
+
+#if true //targetEnvironment(macCatalyst)
+#else
 import Receipts
 
 struct PurchaseValidator {
@@ -19,3 +22,4 @@ struct PurchaseValidator {
 
     private static let freeProductCutoff = 200 // arbitrary build in between 19.3 and 19.4
 }
+#endif

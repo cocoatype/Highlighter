@@ -18,6 +18,11 @@ class SettingsNavigationController: NavigationController {
             self?.purchaseStateDidChange()
         })
     }
+    
+    override var next: UIResponder? {
+        guard parent == nil else { return super.next }
+        return presentingViewController
+    }
 
     // MARK: Navigation
 

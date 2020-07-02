@@ -49,7 +49,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
-	<false/>
+	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Black Highlighter accesses your photo library to open photos for redaction and to save redacted photos.</string>
 	<key>NSCameraUsageDescription</key>

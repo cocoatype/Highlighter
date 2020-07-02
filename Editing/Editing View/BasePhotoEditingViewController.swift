@@ -75,10 +75,10 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
 
     private func updateToolbarItems(animated: Bool = true) {
         let undoToolItem = UIBarButtonItem(image: Icons.undo, style: .plain, target: self, action: #selector(BasePhotoEditingViewController.undo))
-        undoToolItem.isEnabled = editingUndoManager.canUndo
+        undoToolItem.isEnabled = undoManager?.canUndo ?? false
 
         let redoToolItem = UIBarButtonItem(image: Icons.redo, style: .plain, target: self, action: #selector(BasePhotoEditingViewController.redo))
-        redoToolItem.isEnabled = editingUndoManager.canRedo
+        redoToolItem.isEnabled = undoManager?.canRedo ?? false
 
         let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
@@ -89,28 +89,41 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
 
     // MARK: Undo/Redo
 
-    let editingUndoManager = UndoManager()
-    open override var undoManager: UndoManager? {
-        return editingUndoManager
-    }
+//    let editingUndoManager = UndoManager()
+//    open override var undoManager: UndoManager? {
+//        return editingUndoManager
+//    }
 
-    @objc private func undo() {
-        editingUndoManager.undo()
+    @objc private func undo(_ sender: Any) {
+        undoManager?.undo()
         updateToolbarItems()
     }
 
-    @objc private func redo() {
-        editingUndoManager.redo()
+    @objc private func redo(_ sender: Any) {
+        undoManager?.redo()
         updateToolbarItems()
     }
 
     // MARK: Key Commands
 
-    private let undoKeyCommand = UIKeyCommand(input: "z", modifierFlags: .command, action: #selector(BasePhotoEditingViewController.undo), discoverabilityTitle: BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle)
-    private let redoKeyCommand = UIKeyCommand(input: "z", modifierFlags: [.command, .shift], action: #selector(BasePhotoEditingViewController.redo), discoverabilityTitle: BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle)
-
+    #if targetEnvironment(macCatalyst)
+    #else
+    private let legacyUndoKeyCommand = UIKeyCommand(input: "z", modifierFlags: .command, action: #selector(BasePhotoEditingViewController.undo), discoverabilityTitle: BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle)
+    private let legacyRedoKeyCommand = UIKeyCommand(input: "z", modifierFlags: [.command, .shift], action: #selector(BasePhotoEditingViewController.redo), discoverabilityTitle: BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle)
+    
     open override var keyCommands: [UIKeyCommand]? {
-        return [undoKeyCommand, redoKeyCommand]
+        return [legacyUndoKeyCommand, legacyRedoKeyCommand]
+    }
+    #endif
+    
+    open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(undo(_:)) {
+            return undoManager?.canUndo ?? false
+        } else if action == #selector(redo(_:)) {
+            return undoManager?.canRedo ?? false
+        }
+
+        return super.canPerformAction(action, withSender: sender)
     }
 
     // MARK: Image

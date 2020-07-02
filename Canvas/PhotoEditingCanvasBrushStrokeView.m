@@ -8,7 +8,7 @@
 @interface PhotoEditingCanvasBrushStrokeView ()
 
 @property (nonatomic, strong) PhotoEditingCanvasView *canvasView;
-@property (nonatomic) BOOL canvasViewIsDirty;
+@property (nonatomic) BOOL canvasViewIsResetting;
 @property (nonatomic, nullable, strong) UIBezierPath *currentPath;
 
 @end
@@ -19,8 +19,7 @@
 
 - (instancetype)init {
     if ((self = [super initWithFrame:CGRectZero])) {
-        self.canvasViewIsDirty = NO;
-        self.translatesAutoresizingMaskIntoConstraints = false;
+        self.translatesAutoresizingMaskIntoConstraints = NO;
 
         self.canvasView = [[PhotoEditingCanvasView alloc] init];
         self.canvasView.delegate = self;
@@ -43,21 +42,15 @@
 
 #pragma mark PKCanvasViewDelegate
 
-- (void)canvasViewDidBeginUsingTool:(PKCanvasView *)canvasView {
-    self.canvasViewIsDirty = YES;
-}
-
-- (void)canvasViewDidEndUsingTool:(PKCanvasView *)canvasView {
-}
-
 - (void)canvasViewDrawingDidChange:(PKCanvasView *)canvasView {
-    if (self.canvasViewIsDirty == false) { return; }
+    if (self.canvasViewIsResetting) { return; }
 
     self.currentPath = [self pathFromDrawing:self.canvasView.drawing];
     [self sendActionsForControlEvents:UIControlEventTouchUpInside];
 
-    self.canvasViewIsDirty = false;
+    self.canvasViewIsResetting = YES;
     self.canvasView.drawing = [PKDrawing new];
+    self.canvasViewIsResetting = NO;
 }
 
 #pragma mark Path Manipulation
