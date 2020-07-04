@@ -1,29 +1,55 @@
-//  Created by Geoff Pado on 4/8/19.
-//  Copyright © 2019 Cocoatype, LLC. All rights reserved.
+//  Created by Geoff Pado on 7/1/20.
+//  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
-import UIKit
+import Photos
+import SwiftUI
 
-class PhotoLibraryView: UICollectionView {
-    init() {
-        let layout = PhotoLibraryViewLayout()
-        super.init(frame: .zero, collectionViewLayout: layout)
-
-        isAccessibilityElement = false
-
-        register(AssetPhotoLibraryViewCell.self, forCellWithReuseIdentifier: AssetPhotoLibraryViewCell.identifier)
-
-        if #available(iOS 13.0, *) {
-            register(DocumentScannerPhotoLibraryViewCell.self, forCellWithReuseIdentifier: DocumentScannerPhotoLibraryViewCell.identifier)
+@available(iOS 14.0, *)
+struct PhotoLibraryView: View {
+    init(dataSource: LibraryDataSource) {
+        self.dataSource = dataSource
+    }
+    
+    @ViewBuilder
+    private func itemView(for item: PhotoLibraryItem) -> some View {
+        switch item {
+        case .asset(let asset): AssetButton(asset)
+        case .documentScan: DocumentScanButton()
         }
+    }
+    
+    private let gridItem: GridItem = {
+        var item = GridItem(.adaptive(minimum: 126, maximum: .infinity))
+        item.spacing = 1
+        return item
+    }()
 
-        backgroundColor = .primary
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: [gridItem, gridItem, gridItem, gridItem], spacing: 1) {
+                ForEach((0..<dataSource.itemsCount), id: \.self) {
+                    itemView(for: dataSource.item(at: $0)).aspectRatio(contentMode: .fill)
+                }
+            }
+        }
+    }
+    
+    // MARK: Boilerplate
+    
+    private var dataSource: LibraryDataSource
+}
+
+@available(iOS 14.0, *)
+struct PhotoLibraryView_Previews: PreviewProvider {
+    struct PreviewLibraryDataSource: LibraryDataSource {
+        var itemsCount: Int { 10 }
+        func item(at index: Int) -> PhotoLibraryItem {
+            if index < itemsCount - 1 { return .asset(PHAsset()) }
+            return .documentScan
+        }
     }
 
-    // MARK: Boilerplate
-
-    @available(*, unavailable)
-    required init(coder: NSCoder) {
-        let className = String(describing: type(of: self))
-        fatalError("\(className) does not implement init(coder:)")
+    static var previews: some View {
+        PhotoLibraryView(dataSource: PreviewLibraryDataSource())
     }
 }

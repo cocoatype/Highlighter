@@ -7,7 +7,7 @@ import UIKit
 class PhotoSelectionNavigationController: NavigationController {
     init() {
         let albumsViewController = AlbumsViewController()
-        let libraryViewController = PhotoLibraryViewController()
+        let libraryViewController = Self.newLibraryViewController()
         libraryViewController.navigationItem.leftBarButtonItem = AlbumsBarButtonItem.navigationButton
         let initialViewControllers = [albumsViewController, libraryViewController]
 
@@ -22,9 +22,19 @@ class PhotoSelectionNavigationController: NavigationController {
 
     @objc func showCollection(_ sender: Any, for event: CollectionEvent) {
         let collection = event.collection
-        let viewController = PhotoLibraryViewController(collection: collection)
+        let viewController = Self.newLibraryViewController(collection: collection)
         viewController.navigationItem.leftBarButtonItem = AlbumsBarButtonItem.navigationButton
         pushViewController(viewController, animated: true)
+    }
+    
+    // MARK: Photo Library
+    
+    private static func newLibraryViewController(collection: Collection = CollectionType.library.defaultCollection) -> UIViewController {
+        if #available(iOS 14.0, *) {
+            return PhotoLibraryViewController(collection: collection)
+        } else {
+            return LegacyPhotoLibraryViewController(collection: collection)
+        }
     }
 
     // MARK: Boilerplate
@@ -47,7 +57,7 @@ class PhotoSelectionSplitViewController: UISplitViewController, UISplitViewContr
         albumsBarButtonItem = AlbumsBarButtonItem.create(from: displayModeButtonItem)
         delegate = self
 
-        let libraryViewController = PhotoLibraryViewController()
+        let libraryViewController = Self.newLibraryViewController()
         libraryViewController.navigationItem.leftBarButtonItem = albumsBarButtonItem
         let libraryNavigationController = NavigationController(rootViewController: libraryViewController)
 
@@ -56,10 +66,20 @@ class PhotoSelectionSplitViewController: UISplitViewController, UISplitViewContr
 
     @objc func showCollection(_ sender: Any, for event: CollectionEvent) {
         let collection = event.collection
-        let viewController = PhotoLibraryViewController(collection: collection)
+        let viewController = Self.newLibraryViewController(collection: collection)
         viewController.navigationItem.leftBarButtonItem = albumsBarButtonItem
         let navigationController = NavigationController(rootViewController: viewController)
         showDetailViewController(navigationController, sender: sender)
+    }
+    
+    // MARK: Photo Library
+    
+    private static func newLibraryViewController(collection: Collection = CollectionType.library.defaultCollection) -> UIViewController {
+        if #available(iOS 14.0, *) {
+            return PhotoLibraryViewController(collection: collection)
+        } else {
+            return LegacyPhotoLibraryViewController(collection: collection)
+        }
     }
 
     // MARK: Delegate
