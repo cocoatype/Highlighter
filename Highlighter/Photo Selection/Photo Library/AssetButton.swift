@@ -6,31 +6,37 @@ import SwiftUI
 
 @available(iOS 14.0, *)
 struct AssetButton: View {
-    init(_ asset: PHAsset) { self.init(Asset(asset)) }
-    init(_ asset: Asset) {
+    init(_ asset: PHAsset, action: ((Asset) -> Void)? = nil) { self.init(Asset(asset), action: action) }
+    init(_ asset: Asset, action: ((Asset) -> Void)? = nil) {
         self.asset = asset
+        self.action = action
     }
 
     @ViewBuilder
     var body: some View {
         GeometryReader { proxy in
-            if let image = asset.image {
-                Image(uiImage: image).resizable().aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/).frame(width: proxy.size.width, height: proxy.size.height).clipped()
-            } else {
-                Color.gray
+            Button(action: {
+                action?(asset)
+            }) {
+                if let image = asset.image {
+                    Image(uiImage: image).renderingMode(.original).resizable().aspectRatio(contentMode: .fill).frame(width: proxy.size.width, height: proxy.size.height).clipped()
+                } else {
+                    Color.gray
+                }
             }
-        }
+        }.buttonStyle(BorderlessButtonStyle())
     }
     
     @ObservedObject private var asset: Asset
+    private let action: ((Asset) -> Void)?
 }
 
 @available(iOS 14.0, *)
 class Asset: ObservableObject {
     @Published var image: UIImage?
-    private var asset: PHAsset
+    let photoAsset: PHAsset
     init(_ asset: PHAsset) {
-        self.asset = asset
+        self.photoAsset = asset
         
         fetchImage { [weak self] fetchedImage in
             self?.image = fetchedImage
@@ -42,7 +48,7 @@ class Asset: ObservableObject {
     static let imageManager = PHImageManager.default()
 
     func fetchImage(completionHandler: @escaping ((UIImage?) -> Void)) {
-        Self.imageManager.requestImage(for: asset, targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight), contentMode: .aspectFill, options: nil) { image, _ in
+        Self.imageManager.requestImage(for: photoAsset, targetSize: CGSize(width: photoAsset.pixelWidth, height: photoAsset.pixelHeight), contentMode: .aspectFill, options: nil) { image, _ in
             completionHandler(image)
         }
     }

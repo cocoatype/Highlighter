@@ -9,6 +9,10 @@ class PhotoLibraryViewController: UIHostingController<PhotoLibraryView> {
     init(collection: Collection) {
         let dataSource = PhotoLibraryDataSource(collection)
         super.init(rootView: PhotoLibraryView(dataSource: dataSource))
+
+        rootView.action = { [weak self] asset in
+            self?.photoEditorPresenter?.presentPhotoEditingViewController(for: asset.photoAsset, redactions: nil, animated: true)
+        }
     }
     
     // MARK: Boilerplate
