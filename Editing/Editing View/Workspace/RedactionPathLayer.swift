@@ -4,7 +4,8 @@
 import Foundation
 
 class RedactionPathLayer: CALayer {
-    init(path: UIBezierPath, brushWidth: CGFloat) {
+    init(path: UIBezierPath) {
+        let brushWidth = path.lineWidth
         let pathBounds = path.strokeBorderPath.bounds.insetBy(dx: -brushWidth, dy: 0)
         path.apply(CGAffineTransform(translationX: -pathBounds.origin.x, y: -pathBounds.origin.y))
 

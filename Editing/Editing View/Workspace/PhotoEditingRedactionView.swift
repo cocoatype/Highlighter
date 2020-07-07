@@ -39,9 +39,9 @@ public class PhotoEditingRedactionView: UIView {
 
     private func updateDisplay() {
         layer.sublayers = redactions
-          .flatMap { $0.paths }
-          .map { $0.dashedPath }
-          .map { RedactionPathLayer(path: $0, brushWidth: $0.lineWidth) }
+          .flatMap(\.paths)
+          .map(\.dashedPath)
+          .map(RedactionPathLayer.init(path:))
     }
 
     // MARK: Notifications
