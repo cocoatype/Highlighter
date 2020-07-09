@@ -4,9 +4,11 @@
 import UIKit
 
 struct PathRedaction: Redaction {
-    init(_ path: UIBezierPath) {
+    init(_ path: UIBezierPath, color: UIColor) {
         self.paths = [path]
+        self.color = color
     }
 
+    let color: UIColor
     let paths: [UIBezierPath]
 }

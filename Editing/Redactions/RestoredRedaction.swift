@@ -4,5 +4,6 @@
 import UIKit
 
 public struct RestoredRedaction: Redaction {
+    public var color: UIColor
     public var paths: [UIBezierPath]
 }

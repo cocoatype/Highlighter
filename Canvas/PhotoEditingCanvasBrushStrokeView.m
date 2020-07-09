@@ -36,6 +36,14 @@
     return self;
 }
 
+- (UIColor *)color {
+    return self.canvasView.color;
+}
+
+- (void)setColor:(UIColor *)color {
+    self.canvasView.color = color;
+}
+
 - (void)updateToolWithCurrentZoomScale:(CGFloat)currentZoomScale {
     [self.canvasView updateToolWithCurrentZoomScale:currentZoomScale];
 }

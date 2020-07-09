@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PhotoEditingCanvasView : PKCanvasView
 
+@property (nonatomic, nonnull) UIColor *color;
 @property (nonatomic) CGFloat currentLineWidth;
 
 - (void)updateToolWithCurrentZoomScale:(CGFloat)currentZoomScale;

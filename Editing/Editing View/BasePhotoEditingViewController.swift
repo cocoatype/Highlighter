@@ -4,7 +4,7 @@
 import Photos
 import UIKit
 
-open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate {
+open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate, UIColorPickerViewControllerDelegate {
     public init(asset: PHAsset? = nil, image: UIImage? = nil, redactions: [Redaction]? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
         self.asset = asset
         self.image = image
@@ -84,15 +84,22 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
 
         let highlighterToolIcon = photoEditingView.highlighterTool.image
         let highlighterToolItem = UIBarButtonItem(image: highlighterToolIcon, style: .plain, target: self, action: #selector(toggleHighlighterTool))
-        setToolbarItems([undoToolItem, redoToolItem, spacerItem, highlighterToolItem], animated: animated)
+
+        if #available(iOS 14.0, *) {
+            let colorWell = UIColorWell(frame: .zero, primaryAction: UIAction(title: "Display Color Picker", handler: { [weak self] action in
+                guard let colorWell = action.sender as? UIColorWell, let color = colorWell.selectedColor else { return }
+                self?.photoEditingView.color = color
+            }))
+            colorWell.supportsAlpha = false
+            colorWell.selectedColor = photoEditingView.color
+            let colorPickerToolItem = UIBarButtonItem(customView: colorWell)
+            setToolbarItems([undoToolItem, redoToolItem, spacerItem, colorPickerToolItem, highlighterToolItem], animated: animated)
+        } else {
+            setToolbarItems([undoToolItem, redoToolItem, spacerItem, highlighterToolItem], animated: animated)
+        }
     }
 
     // MARK: Undo/Redo
-
-//    let editingUndoManager = UndoManager()
-//    open override var undoManager: UndoManager? {
-//        return editingUndoManager
-//    }
 
     @objc private func undo(_ sender: Any) {
         undoManager?.undo()

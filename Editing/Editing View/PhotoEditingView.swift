@@ -19,6 +19,11 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
         ])
     }
 
+    public var color: UIColor {
+        get { return workspaceView.color }
+        set(newColor) { workspaceView.color = newColor }
+    }
+
     public var image: UIImage? {
         get { return photoScrollView.image }
         set(newImage) { photoScrollView.image = newImage }

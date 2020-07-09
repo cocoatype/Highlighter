@@ -12,7 +12,8 @@ public class RedactionSerializer: NSObject {
     public static func redaction(from dataRepresentation: [Data]) -> RestoredRedaction? {
         do {
             let paths = try dataRepresentation.compactMap { try NSKeyedUnarchiver.unarchivedObject(ofClass: UIBezierPath.self, from: $0) }
-            return RestoredRedaction(paths: paths)
+            #warning("TODO (#111): Add restoration of colors")
+            return RestoredRedaction(color: .black, paths: paths)
         } catch { return nil }
     }
 }
