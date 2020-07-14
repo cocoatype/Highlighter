@@ -15,10 +15,13 @@ public class EditingUserActivity: NSUserActivity {
         guard userActivity.activityType == EditingUserActivity.defaultActivityType else { return nil }
 
         let assetLocalIdentifier = (userActivity.userInfo?[EditingUserActivity.assetLocalIdentifierKey] as? String)
-        let redactionsData = (userActivity.userInfo?[EditingUserActivity.redactionsKey] as? [[Data]])
+        let redactionsData = (userActivity.userInfo?[EditingUserActivity.redactionsKey2] as? [Data])
         let redactions = redactionsData?.compactMap(RedactionSerializer.redaction(from:))
 
-        self.init(assetLocalIdentifier: assetLocalIdentifier, redactions: redactions)
+        let legacyRedactionsData = (userActivity.userInfo?[EditingUserActivity.redactionsKey] as? [[Data]])
+        let legacyRedactions = legacyRedactionsData?.compactMap(RedactionSerializer.redaction(fromLegacyData:))
+
+        self.init(assetLocalIdentifier: assetLocalIdentifier, redactions: redactions ?? legacyRedactions)
         title = userActivity.title
     }
 
@@ -29,7 +32,9 @@ public class EditingUserActivity: NSUserActivity {
         get {
             var userInfo = [AnyHashable: Any]()
             userInfo[EditingUserActivity.assetLocalIdentifierKey] = assetLocalIdentifier
-            userInfo[EditingUserActivity.redactionsKey] = redactions?.map(RedactionSerializer.dataRepresentation(of:))
+            if let redactionsData = redactions?.map(RedactionSerializer.dataRepresentation(of:)) {
+                userInfo[EditingUserActivity.redactionsKey2] = redactionsData
+            }
 
             return userInfo
         }
@@ -39,6 +44,7 @@ public class EditingUserActivity: NSUserActivity {
     // MARK: Boilerplate
 
     public static let assetLocalIdentifierKey = "EditingUserActivity.assetLocalIdentifierKey"
+    public static let redactionsKey2 = "EditingUserActivity.redactionsKey2"
     public static let redactionsKey = "EditingUserActivity.redactionsKey"
 
     private static let defaultActivityType = "com.cocoatype.Highlighter.editing"

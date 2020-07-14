@@ -86,17 +86,25 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
         let highlighterToolItem = UIBarButtonItem(image: highlighterToolIcon, style: .plain, target: self, action: #selector(toggleHighlighterTool))
 
         if #available(iOS 14.0, *) {
-            let colorWell = UIColorWell(frame: .zero, primaryAction: UIAction(title: "Display Color Picker", handler: { [weak self] action in
-                guard let colorWell = action.sender as? UIColorWell, let color = colorWell.selectedColor else { return }
-                self?.photoEditingView.color = color
-            }))
-            colorWell.supportsAlpha = false
-            colorWell.selectedColor = photoEditingView.color
-            let colorPickerToolItem = UIBarButtonItem(customView: colorWell)
+            let colorPickerToolItem = UIBarButtonItem(image: UIImage(systemName: "paintpalette"), style: .plain, target: self, action: #selector(showColorPicker))
             setToolbarItems([undoToolItem, redoToolItem, spacerItem, colorPickerToolItem, highlighterToolItem], animated: animated)
         } else {
             setToolbarItems([undoToolItem, redoToolItem, spacerItem, highlighterToolItem], animated: animated)
         }
+    }
+
+    // MARK: Color Picker
+
+    @available(iOS 14.0, *)
+    @objc private func showColorPicker(_ sender: Any) {
+        let picker = ColorPickerViewController.init()
+        picker.delegate = self
+        present(picker, animated: true, completion: nil)
+    }
+
+    @available(iOS 14.0, *)
+    public func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+        photoEditingView.color = viewController.selectedColor
     }
 
     // MARK: Undo/Redo

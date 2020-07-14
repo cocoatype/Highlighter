@@ -4,7 +4,6 @@
 import UIKit
 
 class PhotoExporter: NSObject {
-
     static func export(_ image: UIImage, redactions: [Redaction], completionHandler: @escaping ((Result<UIImage, Error>) -> Void)) {
         let exportOperation = PhotoExportOperation(image: image, redactions: redactions)
         let callbackOperation = BlockOperation {
@@ -82,12 +81,15 @@ class PhotoExportOperation: Operation {
         context?.restoreGState()
 
         // draw redactions
-        let paths = redactions
-          .flatMap { $0.paths }
-          .map { $0.dashedPath }
+        let drawings = redactions.flatMap { redaction -> [(path: UIBezierPath, color: UIColor)] in
+            return redaction.paths
+              .map(\.dashedPath)
+              .map { (path: $0, color: redaction.color) }
+        }
 
-        paths.forEach { path in
-            let stampImage = brushStamp(scaledToHeight: path.lineWidth)
+        drawings.forEach { drawing in
+            let (path, color) = drawing
+            let stampImage = BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
             path.forEachPoint { point in
                 guard let context = context else { return }
                 context.saveGState()
@@ -104,26 +106,6 @@ class PhotoExportOperation: Operation {
         } else {
             result = .failure(NSError(domain: "unknown", code: 0, userInfo: nil))
         }
-    }
-
-    // MARK: Brush Stamp
-
-    private func brushStamp(scaledToHeight height: CGFloat) -> UIImage {
-        guard let standardImage = UIImage(named: "Brush") else { fatalError("Unable to load brush stamp image") }
-
-        let brushScale = height / standardImage.size.height
-        let scaledBrushSize = standardImage.size * brushScale
-
-        UIGraphicsBeginImageContext(scaledBrushSize)
-        defer { UIGraphicsEndImageContext() }
-
-        guard let context = UIGraphicsGetCurrentContext() else { fatalError("Unable to create brush scaling image context") }
-        context.scaleBy(x: brushScale, y: brushScale)
-
-        standardImage.draw(at: .zero)
-
-        guard let scaledImage = UIGraphicsGetImageFromCurrentImageContext() else { fatalError("Unable to get scaled brush image from context") }
-        return scaledImage
     }
 
     // MARK: Boilerplate
