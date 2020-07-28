@@ -19,6 +19,8 @@ public extension UIFont {
         return fontMetrics.scaledFont(for: standardFont)
     }
 
+    // MARK: Font Styles
+
     class var navigationBarLargeTitleFont: UIFont {
         return boldFont(for: .largeTitle)
     }
@@ -54,6 +56,31 @@ public extension UIFont {
     }
 
     fileprivate static func standardFontSize(for textStyle: UIFont.TextStyle) -> CGFloat {
+        #if targetEnvironment(macCatalyst)
+        return macStandardFontSize(for: textStyle)
+        #else
+        return mobileStandardFontSize(for: textStyle)
+        #endif
+    }
+
+    private static func macStandardFontSize(for textStyle: UIFont.TextStyle) -> CGFloat {
+        switch textStyle {
+        case .largeTitle: return 26.0
+        case .title1: return 22.0
+        case .title2: return 17.0
+        case .title3: return 15.0
+        case .headline: return 13.0
+        case .body: return 13.0
+        case .callout: return 12.0
+        case .subheadline: return 11.0
+        case .footnote: return 10.0
+        case .caption1: return 10.0
+        case .caption2: return 10.0
+        default: return macStandardFontSize(for: .body)
+        }
+    }
+
+    private static func mobileStandardFontSize(for textStyle: UIFont.TextStyle) -> CGFloat {
         switch textStyle {
         case .largeTitle: return 34.0
         case .title1: return 28.0
@@ -66,7 +93,7 @@ public extension UIFont {
         case .footnote: return 13.0
         case .caption1: return 12.0
         case .caption2: return 11.0
-        default: return 17.0
+        default: return mobileStandardFontSize(for: .body)
         }
     }
 }
@@ -85,6 +112,12 @@ extension Font {
 
         let fontSize = UIFont.standardFontSize(for: textStyle)
         return Font.custom(fontName, size: fontSize, relativeTo: textStyle.swiftUI)
+    }
+
+    // MARK: Text Styles
+
+    public static var sidebarItem: Font {
+        return app(textStyle: .body)
     }
 }
 

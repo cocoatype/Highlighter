@@ -51,7 +51,7 @@ struct AlbumsRow: View {
             Label(
                 title: { Text(collection.title ?? "") },
                 icon: { Image(uiImage: collection.icon ?? UIImage()).foregroundColor(.white) }
-            ).font(Font.app(textStyle: .body))
+            ).font(.sidebarItem)
             .foregroundColor(.white)
             .id(collection.identifier)
             .tag(collection.identifier)
