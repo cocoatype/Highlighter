@@ -2,104 +2,57 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Editing
+import SwiftUI
 import UIKit
 
-class PhotoSelectionNavigationController: NavigationController {
+class PhotoSelectionViewController: UIHostingController<PhotoSelection> {
     init() {
-        let albumsViewController = AlbumsViewController()
-        let libraryViewController = Self.newLibraryViewController()
-        libraryViewController.navigationItem.leftBarButtonItem = AlbumsBarButtonItem.navigationButton
-        let initialViewControllers = [albumsViewController, libraryViewController]
+        UITableView.appearance().backgroundColor = .primary
+        UITableViewCell.appearance().selectionStyle = .none
+        UICollectionView.appearance().backgroundColor = .primary
+        UINavigationBar.appearance().scrollEdgeAppearance = NavigationBarAppearance()
+        UIBarButtonItem.appearance().tintColor = .white
 
-        guard let initialViewController = initialViewControllers.first else { fatalError("Attempted to create navigation controller with no root view controller") }
-        super.init(rootViewController: initialViewController)
-        setViewControllers(initialViewControllers, animated: false)
-    }
+        let albumsDataSource = CollectionsDataSource()
+        self.albumsDataSource = albumsDataSource
 
-    @objc func showAlbums() {
-        popViewController(animated: true)
-    }
-
-    @objc func showCollection(_ sender: Any, for event: CollectionEvent) {
-        let collection = event.collection
-        let viewController = Self.newLibraryViewController(collection: collection)
-        viewController.navigationItem.leftBarButtonItem = AlbumsBarButtonItem.navigationButton
-        pushViewController(viewController, animated: true)
-    }
-    
-    // MARK: Photo Library
-    
-    private static func newLibraryViewController(collection: Collection = CollectionType.library.defaultCollection) -> UIViewController {
-        if #available(iOS 14.0, *) {
-            return PhotoLibraryViewController(collection: collection)
-        } else {
-            return LegacyPhotoLibraryViewController(collection: collection)
-        }
+        super.init(rootView: PhotoSelection(data: albumsDataSource.collectionsData))
     }
 
     // MARK: Boilerplate
 
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nil, bundle: nil)
-    }
+    private let albumsDataSource: CollectionsDataSource
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        let className = String(describing: type(of: self))
-        fatalError("\(className) does not implement init(coder:)")
+        let typeName = NSStringFromClass(type(of: self))
+        fatalError("\(typeName) does not implement init(coder:)")
     }
 }
 
-class PhotoSelectionSplitViewController: UISplitViewController, UISplitViewControllerDelegate {
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        let albumsNavigationController = NavigationController(rootViewController: AlbumsViewController())
-        albumsBarButtonItem = AlbumsBarButtonItem.create(from: displayModeButtonItem)
-        delegate = self
-
-        let libraryViewController = Self.newLibraryViewController()
-        libraryViewController.navigationItem.leftBarButtonItem = albumsBarButtonItem
-        let libraryNavigationController = NavigationController(rootViewController: libraryViewController)
-
-        viewControllers = [albumsNavigationController, libraryNavigationController]
+struct PhotoSelection: View {
+    init(data: [CollectionSection]) {
+        self.collectionsData = data
     }
 
-    @objc func showCollection(_ sender: Any, for event: CollectionEvent) {
-        let collection = event.collection
-        let viewController = Self.newLibraryViewController(collection: collection)
-        viewController.navigationItem.leftBarButtonItem = albumsBarButtonItem
-        let navigationController = NavigationController(rootViewController: viewController)
-        showDetailViewController(navigationController, sender: sender)
-    }
-    
-    // MARK: Photo Library
-    
-    private static func newLibraryViewController(collection: Collection = CollectionType.library.defaultCollection) -> UIViewController {
-        if #available(iOS 14.0, *) {
-            return PhotoLibraryViewController(collection: collection)
-        } else {
-            return LegacyPhotoLibraryViewController(collection: collection)
-        }
+    var body: some View {
+        NavigationView {
+            AlbumsList(data: collectionsData)
+            PhotoLibraryView(dataSource: PhotoLibraryDataSource(initialCollection)).navigationBarTitleDisplayMode(.inline)
+        }.accentColor(.primaryLight)
     }
 
-    // MARK: Delegate
-
-    func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewController.DisplayMode) {
-        switch displayMode {
-        case .allVisible: albumsBarButtonItem?.isHidden = true
-        case .automatic: break
-        case .primaryHidden: albumsBarButtonItem?.isHidden = false
-        case .primaryOverlay: albumsBarButtonItem?.isHidden = true
-        @unknown default: break
-        }
+    private var initialCollection: Collection {
+        guard let firstCollection = collectionsData.first?.collections.first else { return EmptyCollection() }
+        return firstCollection
     }
 
-    // MARK: Boilerplate
+    private let collectionsData: [CollectionSection]
+}
 
-    private var albumsBarButtonItem: AlbumsBarButtonItem?
-
-    @available(*, unavailable)
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) is not implemented")
+struct PhotoSelection_Previews: PreviewProvider {
+    static var previews: some View {
+        PhotoSelection(data: AlbumsList_Previews.fakeData)
+            .previewDevice("iPad Pro (9.7-inch)")
     }
 }

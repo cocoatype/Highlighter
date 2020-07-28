@@ -6,11 +6,13 @@ import UIKit
 class AppWindow: UIWindow {
     init() {
         super.init(frame: UIScreen.main.bounds)
+        isOpaque = false
     }
 
     @available(iOS 13.0, *)
     init(scene: UIWindowScene) {
         super.init(frame: scene.coordinateSpace.bounds)
+        isOpaque = false
         windowScene = scene
     }
 

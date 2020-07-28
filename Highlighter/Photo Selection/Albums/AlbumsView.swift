@@ -24,3 +24,53 @@ class AlbumsView: UITableView {
         fatalError("init(coder:) is not implemented")
     }
 }
+
+class AlbumsSidebarView: UICollectionView {
+    init(dataSource: CollectionsDataSource) {
+        let layout = AlbumsSidebarLayout()
+        super.init(frame: .zero, collectionViewLayout: layout)
+        backgroundColor = .primary
+        self.dataSource = dataSource
+
+        register(AlbumsSidebarCell.self, forCellWithReuseIdentifier: AlbumsSidebarCell.identifier)
+    }
+
+    @available(*, unavailable)
+    required init(coder: NSCoder) {
+        let typeName = NSStringFromClass(type(of: self))
+        fatalError("\(typeName) does not implement init(coder:)")
+    }
+}
+
+class AlbumsSidebarCell: UICollectionViewListCell {
+    static let identifier = "AlbumsSidebarCell.identifier"
+}
+
+class AlbumsSidebarLayout: UICollectionViewCompositionalLayout {
+    init(void: Void = ()) {
+        super.init { _, environment -> NSCollectionLayoutSection? in
+            return NSCollectionLayoutSection.albumsSidebar(layoutEnvironment: environment)
+        }
+    }
+
+    @available(*, unavailable)
+    required init(coder: NSCoder) {
+        let typeName = NSStringFromClass(type(of: self))
+        fatalError("\(typeName) does not implement init(coder:)")
+    }
+}
+
+extension UICollectionLayoutListConfiguration {
+    static var albumsSidebar: UICollectionLayoutListConfiguration = {
+        let configuration = UICollectionLayoutListConfiguration(appearance: .sidebar)
+        return configuration
+    }()
+}
+
+extension NSCollectionLayoutSection {
+    static func albumsSidebar(layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
+        return NSCollectionLayoutSection.list(using: .albumsSidebar, layoutEnvironment: layoutEnvironment)
+    }
+}
+
+

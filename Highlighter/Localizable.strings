@@ -24,7 +24,8 @@
 "BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle" = "Undo Redaction";
 "BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle" = "Redo Redaction";
 
-"CollectionsDataSource.userAlbumsHeader" = "My Albums";
+"CollectionsDataSource.userAlbumsHeader" = "Albums";
+"CollectionsDataSource.smartAlbumsHeader" = "Library";
 
 "ContactMailViewController.emailSubject" = "Hello!";
 

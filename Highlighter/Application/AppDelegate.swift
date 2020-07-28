@@ -16,6 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        if options.userActivities.contains(where: { $0.activityType == "com.cocoatype.Highlighter.settings"} ) {
+            let settingsConfiguration = UISceneConfiguration(name: "Settings", sessionRole: .windowApplication)
+            return settingsConfiguration
+        } else {
+            let appConfiguration = UISceneConfiguration(name: "Highlighter", sessionRole: .windowApplication)
+            return appConfiguration
+        }
+    }
+
     // MARK: URL Handling
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -60,6 +70,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             return false
         }
+    }
+
+    // MARK: Menu
+
+    override func buildMenu(with builder: UIMenuBuilder) {
+        guard builder.system == .main else { return }
+
+
+//        let privacyPolicy = UIMenuItem(title: "Privacy Policy", action: #selector(AppViewController.presentSettingsViewController))
+        let privacyPolicy = UICommand(title: "Privacy Policy", action: #selector(AppViewController.displayPrivacyPolicy))
+        let helpMenu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [privacyPolicy])
+        builder.insertChild(helpMenu, atStartOfMenu: .help)
+//        helpMenu
+//        builder
     }
 
     // MARK: Boilerplate

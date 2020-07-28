@@ -11,6 +11,8 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
 
+        view.isOpaque = false
+        view.backgroundColor = .clear
         embed(preferredViewController)
     }
 
@@ -21,8 +23,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     private let permissionsRequester: PhotoPermissionsRequester
     private var preferredViewController: UIViewController {
         switch permissionsRequester.authorizationStatus() {
-        case .authorized where traitCollection.horizontalSizeClass == .regular: return PhotoSelectionSplitViewController()
-        case .authorized: return PhotoSelectionNavigationController()
+        case .authorized: return PhotoSelectionViewController()
         default: return IntroViewController()
         }
     }
@@ -54,7 +55,10 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         }
 
         let alertController = PhotoEditingProtectionAlertController(appViewController: self)
+        #if targetEnvironment(macCatalyst)
+        #else
         alertController.barButtonItem = sender
+        #endif
         photoEditingViewController.present(alertController, animated: true)
     }
 
@@ -118,10 +122,18 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         }
     }
 
+    // MARK: Menu Items
+
+    @objc func displayPrivacyPolicy() {
+        UIApplication.shared.open(URL(string: "https://blackhighlighter.app/privacy")!, options: [:], completionHandler: nil)
+    }
+
     // MARK: Settings View Controller
 
     @objc func presentSettingsViewController() {
-        present(SettingsNavigationController(), animated: true)
+        let activity = NSUserActivity(activityType: "com.cocoatype.Highlighter.settings")
+        UIApplication.shared.requestSceneSessionActivation(nil, userActivity: activity, options: nil, errorHandler: nil)
+//        present(SettingsNavigationController(), animated: true)
     }
 
     @objc func dismissSettingsViewController() {

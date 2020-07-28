@@ -13,9 +13,14 @@ class PhotoLibraryViewController: UIHostingController<PhotoLibraryView> {
         rootView.action = { [weak self] asset in
             self?.photoEditorPresenter?.presentPhotoEditingViewController(for: asset.photoAsset, redactions: nil, animated: true)
         }
+
+        navigationItem.title = Self.navigationItemTitle
+        navigationItem.rightBarButtonItem = SettingsBarButtonItem.standard
     }
     
     // MARK: Boilerplate
+
+    private static let navigationItemTitle = NSLocalizedString("PhotoSelectionViewController.navigationItemTitle", comment: "Navigation title for the photo selector")
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

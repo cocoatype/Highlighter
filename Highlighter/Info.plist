@@ -77,6 +77,12 @@
 					<key>UISceneDelegateClassName</key>
 					<string>Highlighter.SceneDelegate</string>
 				</dict>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Settings</string>
+					<key>UISceneDelegateClassName</key>
+					<string>Highlighter.SettingsSceneDelegate</string>
+				</dict>
 			</array>
 		</dict>
 	</dict>

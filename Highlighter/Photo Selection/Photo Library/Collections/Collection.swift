@@ -5,7 +5,18 @@ import Editing
 import Photos
 import UIKit
 
-struct Collection {
+struct CollectionSection {
+    let title: String
+    let collections: [Collection]
+}
+
+protocol Collection {
+    var title: String? { get }
+    var icon: UIImage? { get }
+    var identifier: String { get }
+}
+
+struct AssetCollection: Collection {
     var assets: PHFetchResult<PHAsset> {
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
@@ -17,11 +28,12 @@ struct Collection {
         case .smartAlbumFavorites: return Icons.favoritesCollection
         case .smartAlbumRecentlyAdded, .smartAlbumUserLibrary: return Icons.recentsCollection
         case .smartAlbumScreenshots: return Icons.screenshotsCollection
-        default: return nil
+        default: return Icons.standardCollection
         }
     }
     var keyAssets: PHFetchResult<PHAsset>
     { return PHAsset.fetchKeyAssets(in: assetCollection, options: nil) ?? PHFetchResult<PHAsset>() }
+    var identifier: String { return assetCollection.localIdentifier }
     var title: String? { return assetCollection.localizedTitle }
 
     init(_ assetCollection: PHAssetCollection) {
@@ -29,4 +41,10 @@ struct Collection {
     }
 
     private let assetCollection: PHAssetCollection
+}
+
+struct EmptyCollection: Collection {
+    var title: String? { nil }
+    var icon: UIImage? { nil }
+    var identifier: String { "" }
 }

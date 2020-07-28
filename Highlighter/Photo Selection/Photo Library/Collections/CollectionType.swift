@@ -34,9 +34,9 @@ enum CollectionType {
     var defaultCollection: Collection {
         guard let defaultCollection = fetchResult.firstObject else {
             assertionFailure("Did not return a default collection for type: \(self)")
-            return Collection(PHAssetCollection())
+            return AssetCollection(PHAssetCollection())
         }
 
-        return Collection(defaultCollection)
+        return AssetCollection(defaultCollection)
     }
 }

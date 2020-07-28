@@ -3,7 +3,7 @@
 
 import UIKit
 
-class CollectionsDataSource: NSObject, UITableViewDataSource {
+class CollectionsDataSource: NSObject, UITableViewDataSource, UICollectionViewDataSource {
     lazy var smartCollections: [Collection] = {
         return allCollections(types: [CollectionType.library, .screenshots, .favorites])
     }()
@@ -16,7 +16,7 @@ class CollectionsDataSource: NSObject, UITableViewDataSource {
         return types
           .map { $0.fetchResult }
           .flatMap { $0.objects(at: IndexSet(integersIn: 0..<$0.count)) }
-          .map(Collection.init)
+          .map(AssetCollection.init)
     }
 
     // MARK: Data Access
@@ -45,6 +45,33 @@ class CollectionsDataSource: NSObject, UITableViewDataSource {
         return cell
     }
 
+    // MARK: SwiftUI Data Source
+
+    var collectionsData: [CollectionSection] {[
+        CollectionSection(title: Self.smartAlbumsHeader, collections: smartCollections),
+        CollectionSection(title: Self.userAlbumsHeader, collections: userCollections)
+    ]}
+
+    // MARK: UICollectionViewDataSource
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return collections(forSection: section).count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumsSidebarCell.identifier, for: indexPath) as? AlbumsSidebarCell else { fatalError("Incorrect cell type for identifier: \(AlbumsSidebarCell.identifier)") }
+
+        var configuration = UIListContentConfiguration.sidebarCell()
+        configuration.text = collection(at: indexPath).title
+        cell.contentConfiguration = configuration
+
+        return cell
+    }
+
     // MARK: UITableViewDataSource
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -68,5 +95,6 @@ class CollectionsDataSource: NSObject, UITableViewDataSource {
 
     // MARK: Localizable Strings
 
+    private static let smartAlbumsHeader = NSLocalizedString("CollectionsDataSource.smartAlbumsHeader", comment: "Header for the smart albums section in the albums list")
     private static let userAlbumsHeader = NSLocalizedString("CollectionsDataSource.userAlbumsHeader", comment: "Header for the user albums section in the albums list")
 }

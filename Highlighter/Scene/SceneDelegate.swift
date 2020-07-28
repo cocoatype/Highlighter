@@ -34,3 +34,18 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         return appViewController.stateRestorationActivity
     }
 }
+
+class SettingsSceneDelegate: NSObject, UIWindowSceneDelegate {
+    var window: UIWindow?
+
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        guard let scene = (scene as? UIWindowScene) else { return }
+
+        let window = AppWindow(scene: scene)
+        let settingsViewController = SettingsNavigationController()
+        window.rootViewController = settingsViewController
+        window.makeKeyAndVisible()
+
+        self.window = window
+    }
+}

@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 7/1/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+import Editing
 import Photos
 import SwiftUI
 
@@ -33,7 +34,7 @@ struct PhotoLibraryView: View {
                     itemView(for: dataSource.item(at: $0)).aspectRatio(contentMode: .fill)
                 }
             }
-        }
+        }.background(Color.appPrimary)
     }
     
     // MARK: Boilerplate

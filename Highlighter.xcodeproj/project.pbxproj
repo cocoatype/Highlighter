@@ -62,7 +62,7 @@
 		0445AA592371208B00EB2A7B /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA582371208B00EB2A7B /* ImageDownloader.swift */; };
 		0445AA5B237130CC00EB2A7B /* PurchaseMarketingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA5A237130CC00EB2A7B /* PurchaseMarketingStackView.swift */; };
 		0445AA5D237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA5C237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift */; };
-		046BEC212470E38300FBECD7 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC202470E38300FBECD7 /* AlbumsViewController.swift */; };
+		046BEC212470E38300FBECD7 /* LegacyAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC202470E38300FBECD7 /* LegacyAlbumsViewController.swift */; };
 		046BEC242470EBAC00FBECD7 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC232470EBAC00FBECD7 /* Collection.swift */; };
 		046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC252470F87200FBECD7 /* CollectionType.swift */; };
 		046BEC282470F89B00FBECD7 /* CollectionsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC272470F89B00FBECD7 /* CollectionsDataSource.swift */; };
@@ -87,6 +87,8 @@
 		04899D78231CEC4F002BC1D8 /* PurchaseValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04899D77231CEC4F002BC1D8 /* PurchaseValidatorTests.swift */; };
 		048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D134E229F7E5100427FE3 /* CallbackAction.swift */; };
 		048D1352229F7EAB00427FE3 /* CallbackActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D1351229F7EAB00427FE3 /* CallbackActionTests.swift */; };
+		049E1EB224BFEEE7009DE20D /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E1EB124BFEEE7009DE20D /* AlbumsViewController.swift */; };
+		049E1EB424BFEF09009DE20D /* AlbumsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E1EB324BFEF09009DE20D /* AlbumsList.swift */; };
 		049F2928228755DB00A335BE /* SettingsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F2927228755DB00A335BE /* SettingsNavigationController.swift */; };
 		049F292B22875ADD00A335BE /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F292A22875ADD00A335BE /* WebViewController.swift */; };
 		049F292D22875AFA00A335BE /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F292C22875AFA00A335BE /* AboutViewController.swift */; };
@@ -236,13 +238,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 043911BF22C461EE00D4AE30;
 			remoteInfo = Action;
-		};
-		04431E5123556106009FA1F6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 04431E4423556106009FA1F6;
-			remoteInfo = Photo;
 		};
 		0445AA532371148200EB2A7B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -394,7 +389,7 @@
 		0445AA582371208B00EB2A7B /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		0445AA5A237130CC00EB2A7B /* PurchaseMarketingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingStackView.swift; sourceTree = "<group>"; };
 		0445AA5C237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingViewHeaderLabel.swift; sourceTree = "<group>"; };
-		046BEC202470E38300FBECD7 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
+		046BEC202470E38300FBECD7 /* LegacyAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyAlbumsViewController.swift; sourceTree = "<group>"; };
 		046BEC232470EBAC00FBECD7 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		046BEC252470F87200FBECD7 /* CollectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionType.swift; sourceTree = "<group>"; };
 		046BEC272470F89B00FBECD7 /* CollectionsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsDataSource.swift; sourceTree = "<group>"; };
@@ -421,6 +416,8 @@
 		04899D77231CEC4F002BC1D8 /* PurchaseValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseValidatorTests.swift; sourceTree = "<group>"; };
 		048D134E229F7E5100427FE3 /* CallbackAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackAction.swift; sourceTree = "<group>"; };
 		048D1351229F7EAB00427FE3 /* CallbackActionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackActionTests.swift; sourceTree = "<group>"; };
+		049E1EB124BFEEE7009DE20D /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
+		049E1EB324BFEF09009DE20D /* AlbumsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsList.swift; sourceTree = "<group>"; };
 		049F2927228755DB00A335BE /* SettingsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
 		049F292A22875ADD00A335BE /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		049F292C22875AFA00A335BE /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -802,11 +799,13 @@
 		046BEC1F2470E36800FBECD7 /* Albums */ = {
 			isa = PBXGroup;
 			children = (
-				046BEC202470E38300FBECD7 /* AlbumsViewController.swift */,
+				046BEC202470E38300FBECD7 /* LegacyAlbumsViewController.swift */,
 				046C4066247F60780069E8FB /* AlbumsHeaderView.swift */,
 				046C4068247F60930069E8FB /* AlbumsHeaderLabel.swift */,
 				046BEC2B2470F8E500FBECD7 /* AlbumsView.swift */,
 				046BEC2F247102AC00FBECD7 /* AlbumsBarButtonItem.swift */,
+				049E1EB124BFEEE7009DE20D /* AlbumsViewController.swift */,
+				049E1EB324BFEF09009DE20D /* AlbumsList.swift */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -1264,7 +1263,6 @@
 				049F92DD22CDA3DB0090C9BC /* PBXTargetDependency */,
 				04F3C80B2309E8A800445A8D /* PBXTargetDependency */,
 				04F3C84F230BC1E100445A8D /* PBXTargetDependency */,
-				04431E5223556106009FA1F6 /* PBXTargetDependency */,
 			);
 			name = Highlighter;
 			productName = Highlighter;
@@ -1541,7 +1539,7 @@
 				048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */,
 				042A2B7A228A642100353414 /* PhotoEditingProtectionAlertController.swift in Sources */,
 				04F3C7B22301A3CF00445A8D /* StandardContentItem.swift in Sources */,
-				046BEC212470E38300FBECD7 /* AlbumsViewController.swift in Sources */,
+				046BEC212470E38300FBECD7 /* LegacyAlbumsViewController.swift in Sources */,
 				04F3C7C62301A5C300445A8D /* PrivacyItem.swift in Sources */,
 				043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */,
 				04DBC83E2314D1D90004F7DB /* AutoRedactionsEmptyView.swift in Sources */,
@@ -1607,6 +1605,7 @@
 				04F3C7D7230443BD00445A8D /* PurchaseItem.swift in Sources */,
 				04F3C7DD23044A9900445A8D /* PurchaseMarketingViewController.swift in Sources */,
 				04ADD15A2290D1C500E17445 /* AppLookupResponse.swift in Sources */,
+				049E1EB424BFEF09009DE20D /* AlbumsList.swift in Sources */,
 				049F292F22875B1300A335BE /* PrivacyViewController.swift in Sources */,
 				046C4063247F5BB10069E8FB /* SystemCollectionTableViewCellImageView.swift in Sources */,
 				046BEC2C2470F8E500FBECD7 /* AlbumsView.swift in Sources */,
@@ -1621,6 +1620,7 @@
 				04FF8DB922F57AD9008CF0E9 /* AutoRedactionsDataSource.swift in Sources */,
 				04DBC8402314D2080004F7DB /* AutoRedactionsListViewController.swift in Sources */,
 				046BEC2A2470F8BE00FBECD7 /* CollectionTableViewCell.swift in Sources */,
+				049E1EB224BFEEE7009DE20D /* AlbumsViewController.swift in Sources */,
 				04F3C7F12308E91600445A8D /* FetchProductOperation.swift in Sources */,
 				042A2B7E228CFEDB00353414 /* PhotoEditingNavigationController.swift in Sources */,
 				042A2B7C228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift in Sources */,
@@ -1767,12 +1767,6 @@
 			isa = PBXTargetDependency;
 			target = 043911BF22C461EE00D4AE30 /* Action */;
 			targetProxy = 043911CA22C461F000D4AE30 /* PBXContainerItemProxy */;
-		};
-		04431E5223556106009FA1F6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			platformFilter = ios;
-			target = 04431E4423556106009FA1F6 /* Photo */;
-			targetProxy = 04431E5123556106009FA1F6 /* PBXContainerItemProxy */;
 		};
 		0445AA542371148200EB2A7B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1965,7 +1959,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Highlighter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1992,7 +1986,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Highlighter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2056,7 +2050,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 287EDDET2B;
 				INFOPLIST_FILE = Action/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2080,7 +2074,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 287EDDET2B;
 				INFOPLIST_FILE = Action/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2101,7 +2095,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 287EDDET2B;
 				INFOPLIST_FILE = Photo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2122,7 +2116,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 287EDDET2B;
 				INFOPLIST_FILE = Photo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2151,7 +2145,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Editing/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2181,7 +2175,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Editing/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2211,7 +2205,7 @@
 				);
 				INFOPLIST_FILE = Receipts/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2242,7 +2236,7 @@
 				);
 				INFOPLIST_FILE = Receipts/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
