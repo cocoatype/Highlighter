@@ -6,20 +6,18 @@ import SwiftUI
 
 @available(iOS 14.0, *)
 struct AssetButton: View {
-    init(_ asset: PHAsset, action: ((Asset) -> Void)? = nil) { self.init(Asset(asset), action: action) }
-    init(_ asset: Asset, action: ((Asset) -> Void)? = nil) {
+    init(_ asset: PHAsset) { self.init(Asset(asset)) }
+    init(_ asset: Asset) {
         self.asset = asset
-        self.action = action
     }
 
     @ViewBuilder
     var body: some View {
         GeometryReader { proxy in
-            Button(action: {
-                action?(asset)
-            }) {
+            let destination = PhotoAssetEditingContainer(asset: asset.photoAsset)
+            NavigationLink(destination: destination) {
                 if let image = asset.image {
-                    Image(uiImage: image).renderingMode(.original).resizable().aspectRatio(contentMode: .fill).frame(width: proxy.size.width, height: proxy.size.height).clipped()
+                    AssetImage(image, size: proxy.size)
                 } else {
                     Color.gray
                 }
@@ -28,30 +26,6 @@ struct AssetButton: View {
     }
     
     @ObservedObject private var asset: Asset
-    private let action: ((Asset) -> Void)?
-}
-
-@available(iOS 14.0, *)
-class Asset: ObservableObject {
-    @Published var image: UIImage?
-    let photoAsset: PHAsset
-    init(_ asset: PHAsset) {
-        self.photoAsset = asset
-        
-        fetchImage { [weak self] fetchedImage in
-            self?.image = fetchedImage
-        }
-    }
-    
-    // MARK: Image Loading
-
-    static let imageManager = PHImageManager.default()
-
-    func fetchImage(completionHandler: @escaping ((UIImage?) -> Void)) {
-        Self.imageManager.requestImage(for: photoAsset, targetSize: CGSize(width: photoAsset.pixelWidth, height: photoAsset.pixelHeight), contentMode: .aspectFill, options: nil) { image, _ in
-            completionHandler(image)
-        }
-    }
 }
 
 @available(iOS 14.0, *)

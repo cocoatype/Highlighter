@@ -7,8 +7,6 @@ import SwiftUI
 
 @available(iOS 14.0, *)
 struct PhotoLibraryView: View {
-    var action: ((Asset) -> Void)? = nil
-
     init(dataSource: LibraryDataSource) {
         self.dataSource = dataSource
     }
@@ -16,7 +14,7 @@ struct PhotoLibraryView: View {
     @ViewBuilder
     private func itemView(for item: PhotoLibraryItem) -> some View {
         switch item {
-        case .asset(let asset): AssetButton(asset, action: action)
+        case .asset(let asset): AssetButton(asset)
         case .documentScan: DocumentScanButton()
         }
     }

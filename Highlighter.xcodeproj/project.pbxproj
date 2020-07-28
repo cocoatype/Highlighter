@@ -87,6 +87,9 @@
 		04899D78231CEC4F002BC1D8 /* PurchaseValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04899D77231CEC4F002BC1D8 /* PurchaseValidatorTests.swift */; };
 		048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D134E229F7E5100427FE3 /* CallbackAction.swift */; };
 		048D1352229F7EAB00427FE3 /* CallbackActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D1351229F7EAB00427FE3 /* CallbackActionTests.swift */; };
+		04920C1524CFCCD000BA3232 /* AssetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04920C1424CFCCD000BA3232 /* AssetImage.swift */; };
+		04920C1724CFCD3500BA3232 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04920C1624CFCD3500BA3232 /* Asset.swift */; };
+		04920C1924CFD02F00BA3232 /* PhotoAssetEditingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04920C1824CFD02F00BA3232 /* PhotoAssetEditingContainer.swift */; };
 		049E1EB224BFEEE7009DE20D /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E1EB124BFEEE7009DE20D /* AlbumsViewController.swift */; };
 		049E1EB424BFEF09009DE20D /* AlbumsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E1EB324BFEF09009DE20D /* AlbumsList.swift */; };
 		049F2928228755DB00A335BE /* SettingsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F2927228755DB00A335BE /* SettingsNavigationController.swift */; };
@@ -416,6 +419,9 @@
 		04899D77231CEC4F002BC1D8 /* PurchaseValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseValidatorTests.swift; sourceTree = "<group>"; };
 		048D134E229F7E5100427FE3 /* CallbackAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackAction.swift; sourceTree = "<group>"; };
 		048D1351229F7EAB00427FE3 /* CallbackActionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackActionTests.swift; sourceTree = "<group>"; };
+		04920C1424CFCCD000BA3232 /* AssetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetImage.swift; sourceTree = "<group>"; };
+		04920C1624CFCD3500BA3232 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		04920C1824CFD02F00BA3232 /* PhotoAssetEditingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAssetEditingContainer.swift; sourceTree = "<group>"; };
 		049E1EB124BFEEE7009DE20D /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		049E1EB324BFEF09009DE20D /* AlbumsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsList.swift; sourceTree = "<group>"; };
 		049F2927228755DB00A335BE /* SettingsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
@@ -682,6 +688,8 @@
 				0489081924AD7A32005DDEF3 /* PhotoLibraryView.swift */,
 				0401CDF724AD89220011A9BF /* DocumentScanButton.swift */,
 				0401CDF924AD8EF50011A9BF /* AssetButton.swift */,
+				04920C1424CFCCD000BA3232 /* AssetImage.swift */,
+				04920C1624CFCD3500BA3232 /* Asset.swift */,
 			);
 			path = "Photo Library";
 			sourceTree = "<group>";
@@ -845,6 +853,7 @@
 				048909F3226573750048E203 /* PhotoEditorPresenting.swift */,
 				0431E0D222F85F0B00DC85C4 /* DocumentScannerPresenting.swift */,
 				043911E722C4658800D4AE30 /* PhotoEditingViewController.swift */,
+				04920C1824CFD02F00BA3232 /* PhotoAssetEditingContainer.swift */,
 			);
 			path = "Photo Editing";
 			sourceTree = "<group>";
@@ -1533,6 +1542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04920C1924CFD02F00BA3232 /* PhotoAssetEditingContainer.swift in Sources */,
 				04F3C7AC230187F200445A8D /* SettingsContentProvider.swift in Sources */,
 				0431E0CF22F830BB00DC85C4 /* DocumentScannerPhotoLibraryViewCellIconView.swift in Sources */,
 				0445AA592371208B00EB2A7B /* ImageDownloader.swift in Sources */,
@@ -1560,6 +1570,7 @@
 				04F3C7CD2302F0B100445A8D /* SettingsTableHeaderFooterView.swift in Sources */,
 				04F3C7D22304375E00445A8D /* SettingsPurchaseTableViewCell.swift in Sources */,
 				0431E0CD22F826E900DC85C4 /* DocumentScannerPhotoLibraryViewCell.swift in Sources */,
+				04920C1724CFCD3500BA3232 /* Asset.swift in Sources */,
 				049F293522875F7E00A335BE /* ContactMailViewController.swift in Sources */,
 				046BEC242470EBAC00FBECD7 /* Collection.swift in Sources */,
 				04F3C7BC2301A4C200445A8D /* OtherAppItem.swift in Sources */,
@@ -1571,6 +1582,7 @@
 				041EFF6B225C36350058D8EE /* LegacyPhotoLibraryViewController.swift in Sources */,
 				043CD9DB22753D510012F5AE /* SettingsViewController.swift in Sources */,
 				041EFF70225C3D830058D8EE /* LegacyPhotoLibraryView.swift in Sources */,
+				04920C1524CFCCD000BA3232 /* AssetImage.swift in Sources */,
 				04FF8DE322F6DF2C008CF0E9 /* PageCountAlertFactory.swift in Sources */,
 				043911E822C4658800D4AE30 /* PhotoEditingViewController.swift in Sources */,
 				041EFF72225C3DC00058D8EE /* PhotoLibraryDataSource.swift in Sources */,
