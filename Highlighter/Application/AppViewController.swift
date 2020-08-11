@@ -122,12 +122,6 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         }
     }
 
-    // MARK: Menu Items
-
-    @objc func displayPrivacyPolicy() {
-        UIApplication.shared.open(URL(string: "https://blackhighlighter.app/privacy")!, options: [:], completionHandler: nil)
-    }
-
     // MARK: Settings View Controller
 
     @objc func presentSettingsViewController() {

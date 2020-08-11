@@ -4,8 +4,12 @@
 import Foundation
 
 class PrivacyViewController: WebViewController {
+    static var url: URL {
+        guard let privacyURL = URL(string: "https://highlighter.cocoatype.com/privacy") else { fatalError("Invalid URL for privacy policy") }
+        return privacyURL
+    }
+    
     init?() {
-        guard let privacyURL = URL(string: "https://highlighter.cocoatype.com/privacy") else { return nil }
-        super.init(url: privacyURL)
+        super.init(url: Self.url)
     }
 }

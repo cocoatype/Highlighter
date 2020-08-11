@@ -4,8 +4,12 @@
 import Foundation
 
 class AcknowledgementsViewController: WebViewController {
+    static var url: URL {
+        guard let privacyURL = URL(string: "https://highlighter.cocoatype.com/acknowledgements") else { fatalError("Invalid URL for privacy policy") }
+        return privacyURL
+    }
+
     init?() {
-        guard let acknowledgementsURL = URL(string: "https://highlighter.cocoatype.com/acknowledgements") else { return nil }
-        super.init(url: acknowledgementsURL)
+        super.init(url: Self.url)
     }
 }

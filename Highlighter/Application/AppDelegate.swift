@@ -86,13 +86,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ])
         builder.insertSibling(saveMenu, afterMenu: .close)
 
-
-//        let privacyPolicy = UIMenuItem(title: "Privacy Policy", action: #selector(AppViewController.presentSettingsViewController))
-        let privacyPolicy = UICommand(title: "Privacy Policy", action: #selector(AppViewController.displayPrivacyPolicy))
-        let helpMenu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [privacyPolicy])
+        let about = UICommand(title: Self.aboutMenuItemTitle, action: #selector(Self.displayAbout))
+        let privacyPolicy = UICommand(title: Self.privacyMenuItemTitle, action: #selector(Self.displayPrivacyPolicy))
+        let acknowledgements = UICommand(title: Self.acknowledgementsMenuItemTitle, action: #selector(Self.displayAcknowledgements))
+        let contact = UICommand(title: Self.contactMenuItemTitle, action: #selector(Self.initiateContact))
+        let helpMenu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [about, privacyPolicy, acknowledgements, contact])
         builder.insertChild(helpMenu, atStartOfMenu: .help)
-//        helpMenu
-//        builder
+    }
+
+    private static let privacyMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.privacy", comment: "Privacy menu item title")
+    @objc private func displayPrivacyPolicy() {
+        UIApplication.shared.open(PrivacyViewController.url, options: [:], completionHandler: nil)
+    }
+
+    private static let aboutMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.about", comment: "About menu item title")
+    @objc private func displayAbout() {
+        UIApplication.shared.open(AboutViewController.url, options: [:], completionHandler: nil)
+    }
+
+    private static let acknowledgementsMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.acknowledgements", comment: "Acknowledgements menu item title")
+    @objc private func displayAcknowledgements() {
+        UIApplication.shared.open(AcknowledgementsViewController.url, options: [:], completionHandler: nil)
+    }
+
+    private static let contactMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.contact", comment: "Contact menu item title")
+    @objc private func initiateContact() {
+        UIApplication.shared.open(ContactMailViewController.mailtoURL, options: [:], completionHandler: nil)
     }
 
     // MARK: Boilerplate
