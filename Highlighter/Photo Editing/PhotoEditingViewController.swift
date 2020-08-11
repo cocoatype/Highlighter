@@ -15,6 +15,13 @@ class PhotoEditingViewController: BasePhotoEditingViewController {
         userActivity = EditingUserActivity()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        becomeFirstResponder()
+    }
+
+    override var canBecomeFirstResponder: Bool { return true }
+
     // MARK: Edit Protection
 
     private(set) var hasMadeEdits = false
@@ -24,7 +31,7 @@ class PhotoEditingViewController: BasePhotoEditingViewController {
 
     // MARK: Sharing
 
-    @objc func sharePhoto() {
+    @objc func sharePhoto(_ sender: Any) {
         exportImage { [weak self] image in
             guard let exportedImage = image else { return }
 
@@ -40,6 +47,45 @@ class PhotoEditingViewController: BasePhotoEditingViewController {
                 self?.present(activityController, animated: true)
             }
         }
+    }
+
+    private var imageType: UTType? {
+        guard let imageTypeString = image?.cgImage?.utType
+        else { return nil }
+
+        return UTType(imageTypeString as String)
+    }
+
+    @objc func save(_ sender: Any) {
+        guard let exportURL = view.window?.windowScene?.titlebar?.representedURL, let imageType = imageType else { return }
+
+        exportImage { [weak self] image in
+            let data: Data?
+
+            switch imageType {
+            case .jpeg:
+                data = image?.jpegData(compressionQuality: 0.9)
+            case .png: fallthrough
+            default:
+                data = image?.pngData()
+            }
+
+            guard let exportData = data else { return }
+            do {
+                try exportData.write(to: exportURL)
+                self?.hasMadeEdits = false
+            } catch {}
+        }
+    }
+
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(save(_:)) {
+            guard let imageType = imageType else { return false }
+            guard hasMadeEdits == true else { return false }
+            return [UTType.png, .jpeg].contains(imageType)
+        }
+
+        return super.canPerformAction(action, withSender: sender)
     }
 
     // MARK: Boilerplate

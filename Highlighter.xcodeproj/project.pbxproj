@@ -79,6 +79,9 @@
 		046C4067247F60780069E8FB /* AlbumsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C4066247F60780069E8FB /* AlbumsHeaderView.swift */; };
 		046C4069247F60930069E8FB /* AlbumsHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C4068247F60930069E8FB /* AlbumsHeaderLabel.swift */; };
 		046EA9A7231BCCC7003BFC4D /* RestoreOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */; };
+		0470163224D8FD7F0080DC52 /* DesktopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470163124D8FD7F0080DC52 /* DesktopViewController.swift */; };
+		0470163424D906420080DC52 /* DesktopSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470163324D906420080DC52 /* DesktopSceneDelegate.swift */; };
+		0470163724D906820080DC52 /* ShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470163624D906820080DC52 /* ShareItem.swift */; };
 		0489081724AD796D005DDEF3 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489081624AD796D005DDEF3 /* PhotoLibraryViewController.swift */; };
 		0489081A24AD7A32005DDEF3 /* PhotoLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489081924AD7A32005DDEF3 /* PhotoLibraryView.swift */; };
 		0489081B24AD7B17005DDEF3 /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
@@ -409,6 +412,9 @@
 		046C4066247F60780069E8FB /* AlbumsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsHeaderView.swift; sourceTree = "<group>"; };
 		046C4068247F60930069E8FB /* AlbumsHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsHeaderLabel.swift; sourceTree = "<group>"; };
 		046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreOperation.swift; sourceTree = "<group>"; };
+		0470163124D8FD7F0080DC52 /* DesktopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopViewController.swift; sourceTree = "<group>"; };
+		0470163324D906420080DC52 /* DesktopSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSceneDelegate.swift; sourceTree = "<group>"; };
+		0470163624D906820080DC52 /* ShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareItem.swift; sourceTree = "<group>"; };
 		047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingWorkspaceView.swift; sourceTree = "<group>"; };
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
 		0489081624AD796D005DDEF3 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
@@ -625,6 +631,7 @@
 		041EFEF72251A9F30058D8EE /* Highlighter */ = {
 			isa = PBXGroup;
 			children = (
+				0470163024D8FD660080DC52 /* Desktop */,
 				0439D78224A687B1001BB6A0 /* Highlighter.entitlements */,
 				0445AA572371207000EB2A7B /* Image Downloading */,
 				04F3C7A32300204B00445A8D /* Purchasing */,
@@ -833,6 +840,23 @@
 				046C4064247F5BCA0069E8FB /* UserCollectionTableViewCellImageView.swift */,
 			);
 			path = Collections;
+			sourceTree = "<group>";
+		};
+		0470163024D8FD660080DC52 /* Desktop */ = {
+			isa = PBXGroup;
+			children = (
+				0470163524D9066F0080DC52 /* Toolbar Items */,
+				0470163124D8FD7F0080DC52 /* DesktopViewController.swift */,
+			);
+			path = Desktop;
+			sourceTree = "<group>";
+		};
+		0470163524D9066F0080DC52 /* Toolbar Items */ = {
+			isa = PBXGroup;
+			children = (
+				0470163624D906820080DC52 /* ShareItem.swift */,
+			);
+			path = "Toolbar Items";
 			sourceTree = "<group>";
 		};
 		0489081824AD797E005DDEF3 /* Legacy */ = {
@@ -1045,6 +1069,7 @@
 			children = (
 				04EF55B922D6DB9400C6600D /* SceneDelegate.swift */,
 				04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */,
+				0470163324D906420080DC52 /* DesktopSceneDelegate.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -1555,6 +1580,7 @@
 				04DBC83E2314D1D90004F7DB /* AutoRedactionsEmptyView.swift in Sources */,
 				049F292D22875AFA00A335BE /* AboutViewController.swift in Sources */,
 				0445AA5B237130CC00EB2A7B /* PurchaseMarketingStackView.swift in Sources */,
+				0470163224D8FD7F0080DC52 /* DesktopViewController.swift in Sources */,
 				04F3C7D52304437900445A8D /* PurchaseSection.swift in Sources */,
 				04F3C7C02301A52A00445A8D /* AboutItem.swift in Sources */,
 				046C405F247F5B690069E8FB /* UserCollectionTableViewCell.swift in Sources */,
@@ -1578,6 +1604,7 @@
 				042B7905229A3AC7005B7A2A /* AppRatingsPrompter.swift in Sources */,
 				046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */,
 				046BEC30247102AC00FBECD7 /* AlbumsBarButtonItem.swift in Sources */,
+				0470163724D906820080DC52 /* ShareItem.swift in Sources */,
 				0431E0D322F85F0B00DC85C4 /* DocumentScannerPresenting.swift in Sources */,
 				041EFF6B225C36350058D8EE /* LegacyPhotoLibraryViewController.swift in Sources */,
 				043CD9DB22753D510012F5AE /* SettingsViewController.swift in Sources */,
@@ -1629,6 +1656,7 @@
 				042B78FA229A2560005B7A2A /* SettingsAppEntryTableViewCell.swift in Sources */,
 				04FF8DBB22F57B09008CF0E9 /* AutoRedactionsTableViewCell.swift in Sources */,
 				04D68BC7225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift in Sources */,
+				0470163424D906420080DC52 /* DesktopSceneDelegate.swift in Sources */,
 				04FF8DB922F57AD9008CF0E9 /* AutoRedactionsDataSource.swift in Sources */,
 				04DBC8402314D2080004F7DB /* AutoRedactionsListViewController.swift in Sources */,
 				046BEC2A2470F8BE00FBECD7 /* CollectionTableViewCell.swift in Sources */,

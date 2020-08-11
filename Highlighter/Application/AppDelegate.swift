@@ -21,8 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let settingsConfiguration = UISceneConfiguration(name: "Settings", sessionRole: .windowApplication)
             return settingsConfiguration
         } else {
+            #if targetEnvironment(macCatalyst)
+            return UISceneConfiguration(name: "Desktop", sessionRole: .windowApplication)
+            #else
             let appConfiguration = UISceneConfiguration(name: "Highlighter", sessionRole: .windowApplication)
             return appConfiguration
+            #endif
         }
     }
 
@@ -76,6 +80,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     override func buildMenu(with builder: UIMenuBuilder) {
         guard builder.system == .main else { return }
+
+        let saveMenu = UIMenu(title: "", options: [.displayInline], children: [
+            UIKeyCommand(title: "Save", action: #selector(PhotoEditingViewController.save(_:)), input: "S", modifierFlags: [.command])
+        ])
+        builder.insertSibling(saveMenu, afterMenu: .close)
 
 
 //        let privacyPolicy = UIMenuItem(title: "Privacy Policy", action: #selector(AppViewController.presentSettingsViewController))

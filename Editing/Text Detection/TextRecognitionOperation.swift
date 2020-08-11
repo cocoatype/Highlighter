@@ -17,6 +17,10 @@ class TextRecognitionOperation: Operation {
     var recognizedTextResults: [VNRecognizedTextObservation]?
 
     override func start() {
+        #if targetEnvironment(macCatalyst)
+        _finished = true
+        _executing = false
+        #else
         let imageRequest = VNRecognizeTextRequest { [weak self] request, error in
             guard let textObservations = (request.results as? [VNRecognizedTextObservation]) else {
                 TextRectangleDetectionOperation.log("error getting text rectangles: \(error?.localizedDescription ?? "(null)")", type: .error)
@@ -38,6 +42,7 @@ class TextRecognitionOperation: Operation {
             _finished = true
             _executing = false
         }
+        #endif
     }
 
     // MARK: Logging
