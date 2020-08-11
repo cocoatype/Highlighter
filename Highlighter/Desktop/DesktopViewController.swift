@@ -3,6 +3,7 @@
 
 import UIKit
 
+#if targetEnvironment(macCatalyst)
 class DesktopViewController: UIViewController, UIDocumentPickerDelegate {
     var editingViewController: PhotoEditingViewController? { children.first as? PhotoEditingViewController }
 
@@ -63,3 +64,4 @@ class DesktopView: UIView {
         fatalError("\(typeName) does not implement init(coder:)")
     }
 }
+#endif

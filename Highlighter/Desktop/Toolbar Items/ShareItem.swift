@@ -5,6 +5,7 @@ import Editing
 import UIKit
 import UniformTypeIdentifiers
 
+#if targetEnvironment(macCatalyst)
 class ShareItem: NSSharingServicePickerToolbarItem, UIActivityItemsConfigurationReading {
     static let identifier = NSToolbarItem.Identifier("ShareItem.identifier")
 
@@ -72,3 +73,4 @@ class ToolPickerItem: NSMenuToolbarItem {
 protocol ToolPickerItemDelegate: class {
     var highlighterTool: HighlighterTool { get }
 }
+#endif

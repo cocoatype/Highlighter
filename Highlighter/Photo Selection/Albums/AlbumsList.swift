@@ -39,6 +39,7 @@ struct AlbumsSectionHeader: View {
     }
 }
 
+@available(iOS 14.0, *)
 struct AlbumsRow: View {
     private let collection: Collection
     init(_ collection: Collection) {

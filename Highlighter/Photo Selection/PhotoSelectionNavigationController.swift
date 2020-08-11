@@ -5,6 +5,7 @@ import Editing
 import SwiftUI
 import UIKit
 
+@available(iOS 14.0, *)
 class PhotoSelectionViewController: UIHostingController<PhotoSelection> {
     init() {
         UITableView.appearance().backgroundColor = .primary
@@ -30,6 +31,7 @@ class PhotoSelectionViewController: UIHostingController<PhotoSelection> {
     }
 }
 
+@available(iOS 14.0, *)
 struct PhotoSelection: View {
     init(data: [CollectionSection]) {
         self.collectionsData = data
@@ -50,6 +52,7 @@ struct PhotoSelection: View {
     private let collectionsData: [CollectionSection]
 }
 
+@available(iOS 14.0, *)
 struct PhotoSelection_Previews: PreviewProvider {
     static var previews: some View {
         PhotoSelection(data: AlbumsList_Previews.fakeData)

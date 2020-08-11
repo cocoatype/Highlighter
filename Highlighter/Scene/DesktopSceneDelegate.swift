@@ -4,6 +4,7 @@
 import Editing
 import UIKit
 
+#if targetEnvironment(macCatalyst)
 class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, ShareItemDelegate, ToolPickerItemDelegate {
     var window: UIWindow?
 
@@ -63,3 +64,4 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
     private var desktopViewController: DesktopViewController? { window?.rootViewController as? DesktopViewController }
     private var editingViewController: PhotoEditingViewController? { desktopViewController?.editingViewController }
 }
+#endif

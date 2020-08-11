@@ -78,6 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: Menu
 
+    #if targetEnvironment(macCatalyst)
     override func buildMenu(with builder: UIMenuBuilder) {
         guard builder.system == .main else { return }
 
@@ -93,6 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let helpMenu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [about, privacyPolicy, acknowledgements, contact])
         builder.insertChild(helpMenu, atStartOfMenu: .help)
     }
+    #endif
 
     private static let privacyMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.privacy", comment: "Privacy menu item title")
     @objc private func displayPrivacyPolicy() {

@@ -3,7 +3,7 @@
 
 import UIKit
 
-class CollectionsDataSource: NSObject, UITableViewDataSource, UICollectionViewDataSource {
+class CollectionsDataSource: NSObject, UITableViewDataSource {
     lazy var smartCollections: [Collection] = {
         return allCollections(types: [CollectionType.library, .screenshots, .favorites])
     }()
@@ -51,26 +51,6 @@ class CollectionsDataSource: NSObject, UITableViewDataSource, UICollectionViewDa
         CollectionSection(title: Self.smartAlbumsHeader, collections: smartCollections),
         CollectionSection(title: Self.userAlbumsHeader, collections: userCollections)
     ]}
-
-    // MARK: UICollectionViewDataSource
-
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
-    }
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collections(forSection: section).count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumsSidebarCell.identifier, for: indexPath) as? AlbumsSidebarCell else { fatalError("Incorrect cell type for identifier: \(AlbumsSidebarCell.identifier)") }
-
-        var configuration = UIListContentConfiguration.sidebarCell()
-        configuration.text = collection(at: indexPath).title
-        cell.contentConfiguration = configuration
-
-        return cell
-    }
 
     // MARK: UITableViewDataSource
 

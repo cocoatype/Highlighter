@@ -11,8 +11,6 @@ class AlbumsViewController: UIHostingController<AlbumsList> {
 
         let albumsList = AlbumsList(data: albumsDataSource.collectionsData)
         super.init(rootView: albumsList)
-
-//        let binding =
     }
 
     // MARK: Boilerplate

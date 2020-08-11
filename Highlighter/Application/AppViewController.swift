@@ -23,7 +23,12 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     private let permissionsRequester: PhotoPermissionsRequester
     private var preferredViewController: UIViewController {
         switch permissionsRequester.authorizationStatus() {
-        case .authorized: return PhotoSelectionViewController()
+        case .authorized:
+            if #available(iOS 14.0, *) {
+                return PhotoSelectionViewController()
+            } else {
+                return NavigationController(rootViewController: LegacyPhotoLibraryViewController())
+            }
         default: return IntroViewController()
         }
     }

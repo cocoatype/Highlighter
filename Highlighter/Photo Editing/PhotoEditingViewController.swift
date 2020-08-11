@@ -49,41 +49,12 @@ class PhotoEditingViewController: BasePhotoEditingViewController {
         }
     }
 
-    private var imageType: UTType? {
-        guard let imageTypeString = image?.cgImage?.utType
-        else { return nil }
-
-        return UTType(imageTypeString as String)
-    }
-
-    @objc func save(_ sender: Any) {
-        guard let exportURL = view.window?.windowScene?.titlebar?.representedURL, let imageType = imageType else { return }
-
-        exportImage { [weak self] image in
-            let data: Data?
-
-            switch imageType {
-            case .jpeg:
-                data = image?.jpegData(compressionQuality: 0.9)
-            case .png: fallthrough
-            default:
-                data = image?.pngData()
-            }
-
-            guard let exportData = data else { return }
-            do {
-                try exportData.write(to: exportURL)
-                self?.hasMadeEdits = false
-            } catch {}
-        }
-    }
-
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        #if targetEnvironment(macCatalyst)
         if action == #selector(save(_:)) {
-            guard let imageType = imageType else { return false }
-            guard hasMadeEdits == true else { return false }
-            return [UTType.png, .jpeg].contains(imageType)
+            return self.canSave
         }
+        #endif
 
         return super.canPerformAction(action, withSender: sender)
     }
