@@ -37,6 +37,11 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         editingViewController?.exportImage(completionHandler: completionHandler)
     }
 
+    func didExportImage() {
+        Defaults.numberOfSaves = Defaults.numberOfSaves + 1
+        AppRatingsPrompter.displayRatingsPrompt(in: window?.windowScene)
+    }
+
     // MARK: ToolPickerItemDelegate
 
     var highlighterTool: HighlighterTool { return editingViewController?.highlighterTool ?? .magic }

@@ -42,7 +42,7 @@
 		0431E0D322F85F0B00DC85C4 /* DocumentScannerPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431E0D222F85F0B00DC85C4 /* DocumentScannerPresenting.swift */; };
 		043911C322C461F000D4AE30 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 043911C222C461F000D4AE30 /* Media.xcassets */; };
 		043911C522C461F000D4AE30 /* ActionEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043911C422C461F000D4AE30 /* ActionEditingViewController.swift */; };
-		043911CC22C461F000D4AE30 /* Action.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 043911C022C461EE00D4AE30 /* Action.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		043911CC22C461F000D4AE30 /* Action.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 043911C022C461EE00D4AE30 /* Action.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		043911E822C4658800D4AE30 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043911E722C4658800D4AE30 /* PhotoEditingViewController.swift */; };
 		043CD9DB22753D510012F5AE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DA22753D510012F5AE /* SettingsViewController.swift */; };
 		043CD9DD227548C20012F5AE /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DC227548C20012F5AE /* SettingsTableView.swift */; };
@@ -1801,6 +1801,7 @@
 		};
 		043911CB22C461F000D4AE30 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 043911BF22C461EE00D4AE30 /* Action */;
 			targetProxy = 043911CA22C461F000D4AE30 /* PBXContainerItemProxy */;
 		};
@@ -2182,6 +2183,7 @@
 				INFOPLIST_FILE = Editing/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2212,6 +2214,7 @@
 				INFOPLIST_FILE = Editing/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

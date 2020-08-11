@@ -2,6 +2,7 @@
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
 import UIKit
+import UniformTypeIdentifiers
 
 #if targetEnvironment(macCatalyst)
 extension PhotoEditingViewController {
@@ -29,7 +30,7 @@ extension PhotoEditingViewController {
             guard let exportData = data else { return }
             do {
                 try exportData.write(to: exportURL)
-                self?.hasMadeEdits = false
+                self?.clearHasMadeEdits()
             } catch {}
         }
     }

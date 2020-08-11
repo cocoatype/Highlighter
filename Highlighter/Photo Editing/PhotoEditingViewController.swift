@@ -29,6 +29,10 @@ class PhotoEditingViewController: BasePhotoEditingViewController {
         hasMadeEdits = true
     }
 
+    func clearHasMadeEdits() {
+        hasMadeEdits = false
+    }
+
     // MARK: Sharing
 
     @objc func sharePhoto(_ sender: Any) {
@@ -39,7 +43,7 @@ class PhotoEditingViewController: BasePhotoEditingViewController {
             activityController.completionWithItemsHandler = { [weak self] _, completed, _, _ in
                 self?.hasMadeEdits = false
                 Defaults.numberOfSaves = Defaults.numberOfSaves + 1
-                AppRatingsPrompter.displayRatingsPrompt()
+                AppRatingsPrompter.displayRatingsPrompt(in: self?.view.window?.windowScene)
             }
 
             DispatchQueue.main.async { [weak self] in

@@ -31,9 +31,7 @@ class ShareItem: NSSharingServicePickerToolbarItem, UIActivityItemsConfiguration
                 guard let completionHandler = completionHandler else { return }
                 guard let imageData = image?.pngData() else { return completionHandler(nil, nil) }
                 completionHandler((imageData as NSData), nil)
-
-                Defaults.numberOfSaves = Defaults.numberOfSaves + 1
-                AppRatingsPrompter.displayRatingsPrompt()
+                self?.delegate?.didExportImage()
             }
         }
 
@@ -44,6 +42,7 @@ class ShareItem: NSSharingServicePickerToolbarItem, UIActivityItemsConfiguration
 protocol ShareItemDelegate: class {
     var canExportImage: Bool { get }
     func exportImage(_ completionHandler: @escaping ((UIImage?) -> Void))
+    func didExportImage()
 }
 
 class ToolPickerItem: NSMenuToolbarItem {
