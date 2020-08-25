@@ -14,8 +14,7 @@ struct AssetButton: View {
     @ViewBuilder
     var body: some View {
         GeometryReader { proxy in
-            let destination = PhotoAssetEditingContainer(asset: asset.photoAsset)
-            NavigationLink(destination: destination) {
+            Button(action: { navigationWrapper.presentEditor(for: asset.photoAsset) }) {
                 if let image = asset.image {
                     AssetImage(image, size: proxy.size)
                 } else {
@@ -26,6 +25,7 @@ struct AssetButton: View {
     }
     
     @ObservedObject private var asset: Asset
+    @EnvironmentObject private var navigationWrapper: NavigationWrapper
 }
 
 @available(iOS 14.0, *)

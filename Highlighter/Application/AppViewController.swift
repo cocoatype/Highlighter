@@ -6,7 +6,7 @@ import Photos
 import UIKit
 import VisionKit
 
-class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening, VNDocumentCameraViewControllerDelegate, DocumentScannerPresenting {
+class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening, VNDocumentCameraViewControllerDelegate, DocumentScannerPresenting, SettingsPresenting {
     init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
         self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
@@ -25,7 +25,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         switch permissionsRequester.authorizationStatus() {
         case .authorized:
             if #available(iOS 14.0, *) {
-                return PhotoSelectionViewController()
+                return PhotoSelection.hostingController(presenter: self)
             } else {
                 return NavigationController(rootViewController: LegacyPhotoLibraryViewController())
             }
@@ -130,9 +130,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     // MARK: Settings View Controller
 
     @objc func presentSettingsViewController() {
-        let activity = NSUserActivity(activityType: "com.cocoatype.Highlighter.settings")
-        UIApplication.shared.requestSceneSessionActivation(nil, userActivity: activity, options: nil, errorHandler: nil)
-//        present(SettingsNavigationController(), animated: true)
+        present(SettingsNavigationController(), animated: true)
     }
 
     @objc func dismissSettingsViewController() {

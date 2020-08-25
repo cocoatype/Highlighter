@@ -32,7 +32,7 @@ struct PhotoLibraryView: View {
                     itemView(for: dataSource.item(at: $0)).aspectRatio(contentMode: .fill)
                 }
             }
-        }.background(Color.appPrimary)
+        }.background(Color.appPrimary).navigationBarTitleDisplayMode(.inline).navigationBarItems(trailing: SettingsButton())
     }
     
     // MARK: Boilerplate
