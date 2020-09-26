@@ -93,8 +93,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let contact = UICommand(title: Self.contactMenuItemTitle, action: #selector(Self.initiateContact))
         let helpMenu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [about, privacyPolicy, acknowledgements, contact])
         builder.insertChild(helpMenu, atStartOfMenu: .help)
+
+        let preferencesMenu = UIMenu(title: "Preferences", identifier: .preferences, options: .displayInline, children: [
+            UIKeyCommand(title: "Preferences…", action: #selector(Self.displayPreferences), input: ",", modifierFlags: [.command])
+        ])
+        builder.insertSibling(preferencesMenu, afterMenu: .about)
     }
     #endif
+
+    @objc private func displayPreferences() {
+        let activity = NSUserActivity(activityType: "com.cocoatype.Highlighter.settings")
+        UIApplication.shared.requestSceneSessionActivation(nil, userActivity: activity, options: nil, errorHandler: nil)
+    }
 
     private static let privacyMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.privacy", comment: "Privacy menu item title")
     @objc private func displayPrivacyPolicy() {

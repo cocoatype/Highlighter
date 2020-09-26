@@ -42,7 +42,7 @@ class SettingsSceneDelegate: NSObject, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         let window = AppWindow(scene: scene)
-        let settingsViewController = SettingsNavigationController()
+        let settingsViewController = DesktopSettingsViewController()
         window.rootViewController = settingsViewController
         window.makeKeyAndVisible()
 

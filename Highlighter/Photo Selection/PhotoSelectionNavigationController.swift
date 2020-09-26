@@ -45,6 +45,7 @@ struct PhotoSelection: View {
         UITableViewCell.appearance().selectionStyle = .none
         UICollectionView.appearance().backgroundColor = .primary
         UINavigationBar.appearance().scrollEdgeAppearance = NavigationBarAppearance()
+        UINavigationBar.appearance().standardAppearance = NavigationBarAppearance()
         UIBarButtonItem.appearance().tintColor = .white
 
         let albumsDataSource = CollectionsDataSource()

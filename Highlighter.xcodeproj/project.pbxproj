@@ -141,6 +141,7 @@
 		049F930822CDAB570090C9BC /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
 		049F930922CDAB570090C9BC /* Aleo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF562255A2ED0058D8EE /* Aleo-Bold.otf */; };
 		049F930A22CDAB570090C9BC /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
+		04A606E1251C471F007A2B82 /* DesktopSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A606E0251C471F007A2B82 /* DesktopSettingsViewController.swift */; };
 		04A8A5ED2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EB2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h */; };
 		04A8A5EE2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */; };
 		04A8A5F1231659BA006CE411 /* PhotoEditingCanvasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */; };
@@ -447,6 +448,7 @@
 		049F92DA22CDA3DB0090C9BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtensions.swift; sourceTree = "<group>"; };
 		04A3AEF7227A924D00F21229 /* CharacterObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterObservation.swift; sourceTree = "<group>"; };
+		04A606E0251C471F007A2B82 /* DesktopSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsViewController.swift; sourceTree = "<group>"; };
 		04A8A5EB2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingCanvasBrushStrokeView.h; sourceTree = "<group>"; };
 		04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoEditingCanvasBrushStrokeView.m; sourceTree = "<group>"; };
 		04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingCanvasView.h; sourceTree = "<group>"; };
@@ -780,6 +782,7 @@
 		043CD9D922753D450012F5AE /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				04A606DF251C470E007A2B82 /* Desktop */,
 				049F2927228755DB00A335BE /* SettingsNavigationController.swift */,
 				04F3C7CC2302F0B100445A8D /* SettingsTableHeaderFooterView.swift */,
 				043CD9DC227548C20012F5AE /* SettingsTableView.swift */,
@@ -962,6 +965,14 @@
 				043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */,
 			);
 			path = "Editing View";
+			sourceTree = "<group>";
+		};
+		04A606DF251C470E007A2B82 /* Desktop */ = {
+			isa = PBXGroup;
+			children = (
+				04A606E0251C471F007A2B82 /* DesktopSettingsViewController.swift */,
+			);
+			path = Desktop;
 			sourceTree = "<group>";
 		};
 		04ADD1542290CBF300E17445 /* Other Apps */ = {
@@ -1621,6 +1632,7 @@
 				041EFF6E225C38800058D8EE /* PhotoSelectionNavigationController.swift in Sources */,
 				0491831524E4D87A004251B1 /* SettingsButton.swift in Sources */,
 				046C405B24761E8A0069E8FB /* CollectionEvent.swift in Sources */,
+				04A606E1251C471F007A2B82 /* DesktopSettingsViewController.swift in Sources */,
 				04F3C7EB2308E7F200445A8D /* PurchaseOperationError.swift in Sources */,
 				04F3C7E72308DD8F00445A8D /* PurchaseOperation.swift in Sources */,
 				04F3C7E523089B1700445A8D /* PurchaseMarketingViewTextLabel.swift in Sources */,
