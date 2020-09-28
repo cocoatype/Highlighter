@@ -81,7 +81,7 @@
 					<key>UISceneConfigurationName</key>
 					<string>Settings</string>
 					<key>UISceneDelegateClassName</key>
-					<string>Highlighter.SettingsSceneDelegate</string>
+					<string>Highlighter.DesktopSettingsSceneDelegate</string>
 				</dict>
 				<dict>
 					<key>UISceneConfigurationName</key>

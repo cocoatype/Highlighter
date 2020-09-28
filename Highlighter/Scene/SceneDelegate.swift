@@ -35,11 +35,13 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     }
 }
 
-class SettingsSceneDelegate: NSObject, UIWindowSceneDelegate {
+class DesktopSettingsSceneDelegate: NSObject, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
+
+        scene.sizeRestrictions?.maximumSize = CGSize(width: 500, height: 640)
 
         let window = AppWindow(scene: scene)
         let settingsViewController = DesktopSettingsViewController()
