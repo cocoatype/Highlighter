@@ -52,21 +52,35 @@ class ToolPickerItem: NSMenuToolbarItem {
     init(delegate: ToolPickerItemDelegate) {
         self.delegate = delegate
         super.init(itemIdentifier: Self.identifier)
-        image = UIImage(systemName: "highlighter")
-        label = NSLocalizedString("ToolPickerItem.label", comment: "Label for the share toolbar item")
+        image = selectedToolImage
+        label = Self.itemLabel
         itemMenu = currentMenu
     }
 
     private var currentMenu: UIMenu {
-        UIMenu(title: "Tools", children: [
-            UICommand(title: "Magic Highlighter", image: UIImage(systemName: "highlighter"), action: #selector(BasePhotoEditingViewController.selectMagicHighlighter), state: (delegate.highlighterTool == .magic ? .on : .off)),
-            UICommand(title: "Manual Highlighter", image: UIImage(systemName: "highlighter"), action: #selector(BasePhotoEditingViewController.selectManualHighlighter), state: (delegate.highlighterTool == .manual ? .on : .off))
+        UIMenu(title: Self.menuTitle, children: [
+            UICommand(title: Self.magicToolItem, image: UIImage(named: "highlighter.magic"), action: #selector(BasePhotoEditingViewController.selectMagicHighlighter), state: (delegate.highlighterTool == .magic ? .on : .off)),
+            UICommand(title: Self.manualToolItem, image: UIImage(systemName: "highlighter"), action: #selector(BasePhotoEditingViewController.selectManualHighlighter), state: (delegate.highlighterTool == .manual ? .on : .off))
         ])
     }
 
+    private var selectedToolImage: UIImage? {
+        switch delegate.highlighterTool {
+        case .magic: return UIImage(named: "highlighter.magic")?.applyingSymbolConfiguration(.init(scale: .large))
+        case .manual: return UIImage(systemName: "highlighter")?.applyingSymbolConfiguration(.init(scale: .large))
+        }
+    }
+
     override func validate() {
+        image = selectedToolImage
         itemMenu = currentMenu
     }
+
+    // MARK: Boilerplate
+    private static let itemLabel = NSLocalizedString("ToolPickerItem.itemLabel", comment: "Label for the tools toolbar item")
+    private static let menuTitle = NSLocalizedString("ToolPickerItem.menuTitle", comment: "Title for the tools toolbar menu")
+    private static let magicToolItem = NSLocalizedString("ToolPickerItem.magicToolItem", comment: "Menu item for the magic highlighter tool")
+    private static let manualToolItem = NSLocalizedString("ToolPickerItem.manualToolItem", comment: "Menu item for the manual highlighter tool")
 }
 
 protocol ToolPickerItemDelegate: class {

@@ -5,24 +5,32 @@ import SwiftUI
 
 @available(iOS 14.0, *)
 struct AlbumsList: View {
-    @State var selectedCollectionIdentifier: String?
+    @State private var selectedCollectionIdentifier: String?
+    var navigationWrapper = NavigationWrapper.empty
     let data: [CollectionSection]
     init(data: [CollectionSection]) {
         self.data = data
+
+        let recentsIdentifier = data.flatMap { $0.collections }
+            .compactMap { $0 as? AssetCollection }
+            .first(where: { $0.assetCollectionSubtype == .smartAlbumUserLibrary })?
+            .identifier
+        _selectedCollectionIdentifier = State(initialValue: recentsIdentifier)
     }
 
     var body: some View {
-        List(selection: $selectedCollectionIdentifier) {
+        return List(selection: $selectedCollectionIdentifier) {
             ForEach(data, id: \.title) { section in
                 Section(header: AlbumsSectionHeader(section.title)) {
                     ForEach(section.collections, id: \.identifier) { collection in
-                        AlbumsRow(collection)
+                        AlbumsRow(collection, selection: $selectedCollectionIdentifier)
                     }
                 }.accentColor(.white)
             }
         }
         .listStyle(SidebarListStyle())
         .navigationTitle("Photos")
+        .environmentObject(navigationWrapper)
     }
 }
 
@@ -41,14 +49,17 @@ struct AlbumsSectionHeader: View {
 
 @available(iOS 14.0, *)
 struct AlbumsRow: View {
+    let selection: Binding<String?>
     private let collection: Collection
-    init(_ collection: Collection) {
+    init(_ collection: Collection, selection: Binding<String?>) {
         self.collection = collection
+        self.selection = selection
     }
 
     var body: some View {
+        print(collection.identifier)
         let destination = PhotoLibraryView(dataSource: PhotoLibraryDataSource(collection))
-        NavigationLink(destination: destination) {
+        return NavigationLink(destination: destination, tag: collection.identifier, selection: selection) {
             Label(
                 title: { Text(collection.title ?? "") },
                 icon: { Image(uiImage: collection.icon ?? UIImage()).foregroundColor(.white) }
@@ -72,7 +83,7 @@ struct AlbumsList_Previews: PreviewProvider {
     ]
 
     static var previews: some View {
-        AlbumsRow(fakeData[0].collections[0])
+        AlbumsRow(fakeData[0].collections[0], selection: .constant(nil))
             .preferredColorScheme(.dark)
     }
 }

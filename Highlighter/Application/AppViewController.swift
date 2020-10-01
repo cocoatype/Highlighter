@@ -11,6 +11,8 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
 
+        setupAppearance()
+
         view.isOpaque = false
         view.backgroundColor = .clear
         embed(preferredViewController)
@@ -25,7 +27,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         switch permissionsRequester.authorizationStatus() {
         case .authorized:
             if #available(iOS 14.0, *) {
-                return PhotoSelection.hostingController(presenter: self)
+                return SplitViewController(primaryViewController: AlbumsViewController(), secondaryViewController: LegacyPhotoLibraryViewController())
             } else {
                 return NavigationController(rootViewController: LegacyPhotoLibraryViewController())
             }
@@ -151,6 +153,15 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     override var childForStatusBarStyle: UIViewController? { return children.first }
 
     // MARK: Boilerplate
+
+    private func setupAppearance() {
+        UITableView.appearance().backgroundColor = .primary
+        UITableViewCell.appearance().selectionStyle = .none
+        UICollectionView.appearance().backgroundColor = .primary
+        UINavigationBar.appearance().scrollEdgeAppearance = NavigationBarAppearance()
+        UINavigationBar.appearance().standardAppearance = NavigationBarAppearance()
+        UIBarButtonItem.appearance().tintColor = .white
+    }
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

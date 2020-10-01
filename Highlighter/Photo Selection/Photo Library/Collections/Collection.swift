@@ -23,6 +23,7 @@ struct AssetCollection: Collection {
         return PHAsset.fetchAssets(in: assetCollection, options: fetchOptions)
     }
     var assetCount: Int { return assets.count }
+    var assetCollectionSubtype: PHAssetCollectionSubtype { assetCollection.assetCollectionSubtype }
     var icon: UIImage? {
         switch assetCollection.assetCollectionSubtype {
         case .smartAlbumFavorites: return Icons.favoritesCollection

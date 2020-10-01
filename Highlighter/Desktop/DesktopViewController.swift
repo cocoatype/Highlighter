@@ -37,7 +37,10 @@ class DesktopViewController: UIViewController, UIDocumentPickerDelegate {
         validateAllToolbarItems()
     }
 
-    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {}
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        guard let session = windowScene?.session else { return }
+        UIApplication.shared.requestSceneSessionDestruction(session, options: nil)
+    }
 
     // MARK: Boilerplate
 

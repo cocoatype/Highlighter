@@ -14,7 +14,7 @@ class Purchaser: NSObject {
         super.init()
 
         #if true //targetEnvironment(macCatalyst)
-        state = .purchased
+        state = .loading
         #else
         if PurchaseValidator.hasUserPurchasedProduct(withIdentifier: Purchaser.productIdentifier) {
             state = .purchased

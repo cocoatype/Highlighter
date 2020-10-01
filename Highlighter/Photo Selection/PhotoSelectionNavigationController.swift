@@ -12,19 +12,35 @@ class NavigationWrapper: NSObject, ObservableObject {
         self.navigationObject = navigationObject
     }
 
+    static let empty = NavigationWrapper()
+
+    private override init() {
+        self.navigationObject = nil
+    }
+
     func presentSettings() {
-        navigationObject.presentSettingsViewController()
+        navigationObject?.presentSettingsViewController()
     }
 
     func presentEditor(for asset: PHAsset) {
-        navigationObject.presentPhotoEditingViewController(for: asset, redactions: nil, animated: true)
+        navigationObject?.presentPhotoEditingViewController(for: asset, redactions: nil, animated: true)
     }
 
     func presentDocumentScanner() {
-        navigationObject.presentDocumentCameraViewController()
+        navigationObject?.presentDocumentCameraViewController()
     }
 
-    private let navigationObject: NavigationObject
+    private let navigationObject: NavigationObject?
+}
+
+extension UIResponder {
+    var navigationObject: NavigationWrapper.NavigationObject? {
+        if let navigationObject = (self as? NavigationWrapper.NavigationObject) {
+            return navigationObject
+        }
+
+        return next?.navigationObject
+    }
 }
 
 @available(iOS 14.0, *)
@@ -36,7 +52,6 @@ struct PhotoSelection: View {
     var body: some View {
         NavigationView {
             AlbumsList(data: collectionsData)
-            PhotoLibraryView(dataSource: PhotoLibraryDataSource(initialCollection))
         }.accentColor(.primaryLight)
     }
 

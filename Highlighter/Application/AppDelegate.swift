@@ -8,10 +8,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let window = AppWindow()
-        window.rootViewController = AppViewController()
-        window.makeKeyAndVisible()
-        self.window = window
+        if #available(iOS 13.0, *) {
+        } else {
+            let window = AppWindow()
+            window.rootViewController = AppViewController()
+            window.makeKeyAndVisible()
+            self.window = window
+        }
 
         return true
     }
@@ -103,7 +106,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     @objc private func displayPreferences() {
         let activity = NSUserActivity(activityType: "com.cocoatype.Highlighter.settings")
-        UIApplication.shared.requestSceneSessionActivation(nil, userActivity: activity, options: nil, errorHandler: nil)
+        let existingScene = UIApplication.shared.openSessions.first(where: { $0.configuration.delegateClass == DesktopSettingsSceneDelegate.self })
+        UIApplication.shared.requestSceneSessionActivation(existingScene, userActivity: activity, options: nil, errorHandler: nil)
     }
 
     private static let privacyMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.privacy", comment: "Privacy menu item title")

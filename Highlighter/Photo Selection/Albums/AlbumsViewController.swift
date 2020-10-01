@@ -9,8 +9,13 @@ class AlbumsViewController: UIHostingController<AlbumsList> {
         let albumsDataSource = CollectionsDataSource()
         self.albumsDataSource = albumsDataSource
 
-        let albumsList = AlbumsList(data: albumsDataSource.collectionsData)
+        var albumsList = AlbumsList(data: albumsDataSource.collectionsData)
         super.init(rootView: albumsList)
+
+        if let navigationObject = navigationObject {
+            albumsList.navigationWrapper = NavigationWrapper(navigationObject: navigationObject)
+            self.rootView = albumsList
+        }
     }
 
     // MARK: Boilerplate

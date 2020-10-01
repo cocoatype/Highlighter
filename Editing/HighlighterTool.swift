@@ -7,10 +7,17 @@ public enum HighlighterTool: CaseIterable {
     case magic
     case manual
 
-    public var image: UIImage {
-        switch self {
-        case .magic: return #imageLiteral(resourceName: "Magic Highlighter")
-        case .manual: return #imageLiteral(resourceName: "Standard Highlighter.png")
+    public var image: UIImage? {
+        if #available(iOS 14.0, *) {
+            switch self {
+            case .magic: return UIImage(named: "highlighter.magic")
+            case .manual: return UIImage(systemName: "highlighter")
+            }
+        } else {
+            switch self {
+            case .magic: return #imageLiteral(resourceName: "Magic Highlighter")
+            case .manual: return #imageLiteral(resourceName: "Standard Highlighter.png")
+            }
         }
     }
 }

@@ -79,6 +79,13 @@
 		0470163224D8FD7F0080DC52 /* DesktopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470163124D8FD7F0080DC52 /* DesktopViewController.swift */; };
 		0470163424D906420080DC52 /* DesktopSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470163324D906420080DC52 /* DesktopSceneDelegate.swift */; };
 		0470163724D906820080DC52 /* ShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470163624D906820080DC52 /* ShareItem.swift */; };
+		0482C79B25218D090013B69E /* DesktopAutoRedactionsViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C79A25218D090013B69E /* DesktopAutoRedactionsViewDelegate.swift */; };
+		0482C79D25218D400013B69E /* DesktopAutoRedactionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C79C25218D400013B69E /* DesktopAutoRedactionsListView.swift */; };
+		0482C79F25218D600013B69E /* DesktopSettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C79E25218D600013B69E /* DesktopSettingsTableView.swift */; };
+		0482C7A125218D860013B69E /* AlternatingRowTableViewBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C7A025218D860013B69E /* AlternatingRowTableViewBackgroundView.swift */; };
+		0482C7A325218DB40013B69E /* DesktopSettingsAddRemoveControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C7A225218DB40013B69E /* DesktopSettingsAddRemoveControl.swift */; };
+		0482C7A525218E080013B69E /* DesktopSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C7A425218E080013B69E /* DesktopSettingsTableViewCell.swift */; };
+		0482C7A72522CEB00013B69E /* DesktopSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C7A62522CEB00013B69E /* DesktopSettingsViewController.swift */; };
 		0489081724AD796D005DDEF3 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489081624AD796D005DDEF3 /* PhotoLibraryViewController.swift */; };
 		0489081A24AD7A32005DDEF3 /* PhotoLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489081924AD7A32005DDEF3 /* PhotoLibraryView.swift */; };
 		0489081B24AD7B17005DDEF3 /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
@@ -141,7 +148,7 @@
 		049F930822CDAB570090C9BC /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
 		049F930922CDAB570090C9BC /* Aleo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF562255A2ED0058D8EE /* Aleo-Bold.otf */; };
 		049F930A22CDAB570090C9BC /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
-		04A606E1251C471F007A2B82 /* DesktopSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A606E0251C471F007A2B82 /* DesktopSettingsViewController.swift */; };
+		04A606E1251C471F007A2B82 /* DesktopAutoRedactionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A606E0251C471F007A2B82 /* DesktopAutoRedactionsListViewController.swift */; };
 		04A8A5ED2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EB2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h */; };
 		04A8A5EE2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */; };
 		04A8A5F1231659BA006CE411 /* PhotoEditingCanvasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */; };
@@ -220,6 +227,7 @@
 		04F3C85D230BC38600445A8D /* Canvas.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C849230BC1E100445A8D /* Canvas.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04F3C864230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04F3C865230BCBDE00445A8D /* PhotoEditingBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04FDEA5625257B1900F94CA9 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDEA5525257B1900F94CA9 /* SplitViewController.swift */; };
 		04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */; };
 		04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */; };
 		04FF8DB422F57570008CF0E9 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B7902229A38C0005B7A2A /* Defaults.swift */; };
@@ -415,6 +423,13 @@
 		0470163624D906820080DC52 /* ShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareItem.swift; sourceTree = "<group>"; };
 		047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingWorkspaceView.swift; sourceTree = "<group>"; };
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
+		0482C79A25218D090013B69E /* DesktopAutoRedactionsViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopAutoRedactionsViewDelegate.swift; sourceTree = "<group>"; };
+		0482C79C25218D400013B69E /* DesktopAutoRedactionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopAutoRedactionsListView.swift; sourceTree = "<group>"; };
+		0482C79E25218D600013B69E /* DesktopSettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsTableView.swift; sourceTree = "<group>"; };
+		0482C7A025218D860013B69E /* AlternatingRowTableViewBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternatingRowTableViewBackgroundView.swift; sourceTree = "<group>"; };
+		0482C7A225218DB40013B69E /* DesktopSettingsAddRemoveControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsAddRemoveControl.swift; sourceTree = "<group>"; };
+		0482C7A425218E080013B69E /* DesktopSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		0482C7A62522CEB00013B69E /* DesktopSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsViewController.swift; sourceTree = "<group>"; };
 		0489081624AD796D005DDEF3 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		0489081924AD7A32005DDEF3 /* PhotoLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryView.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* BasePhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePhotoEditingViewController.swift; sourceTree = "<group>"; };
@@ -448,7 +463,7 @@
 		049F92DA22CDA3DB0090C9BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtensions.swift; sourceTree = "<group>"; };
 		04A3AEF7227A924D00F21229 /* CharacterObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterObservation.swift; sourceTree = "<group>"; };
-		04A606E0251C471F007A2B82 /* DesktopSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsViewController.swift; sourceTree = "<group>"; };
+		04A606E0251C471F007A2B82 /* DesktopAutoRedactionsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopAutoRedactionsListViewController.swift; sourceTree = "<group>"; };
 		04A8A5EB2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingCanvasBrushStrokeView.h; sourceTree = "<group>"; };
 		04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoEditingCanvasBrushStrokeView.m; sourceTree = "<group>"; };
 		04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingCanvasView.h; sourceTree = "<group>"; };
@@ -529,6 +544,7 @@
 		04F3C84C230BC1E100445A8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04F3C859230BC20E00445A8D /* PencilKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PencilKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/PencilKit.framework; sourceTree = DEVELOPER_DIR; };
 		04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingBrushStrokeView.h; sourceTree = "<group>"; };
+		04FDEA5525257B1900F94CA9 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservationRedaction.swift; sourceTree = "<group>"; };
 		04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEditViewController.swift; sourceTree = "<group>"; };
 		04FF8DB622F57AA1008CF0E9 /* AutoRedactionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsListView.swift; sourceTree = "<group>"; };
@@ -725,6 +741,7 @@
 				041EFF5C2255A85F0058D8EE /* NavigationController.swift */,
 				042A2B80228D012F00353414 /* NavigationBar.swift */,
 				042A2B82228D014900353414 /* Toolbar.swift */,
+				04FDEA5525257B1900F94CA9 /* SplitViewController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -970,7 +987,14 @@
 		04A606DF251C470E007A2B82 /* Desktop */ = {
 			isa = PBXGroup;
 			children = (
-				04A606E0251C471F007A2B82 /* DesktopSettingsViewController.swift */,
+				04A606E0251C471F007A2B82 /* DesktopAutoRedactionsListViewController.swift */,
+				0482C79A25218D090013B69E /* DesktopAutoRedactionsViewDelegate.swift */,
+				0482C79C25218D400013B69E /* DesktopAutoRedactionsListView.swift */,
+				0482C79E25218D600013B69E /* DesktopSettingsTableView.swift */,
+				0482C7A025218D860013B69E /* AlternatingRowTableViewBackgroundView.swift */,
+				0482C7A225218DB40013B69E /* DesktopSettingsAddRemoveControl.swift */,
+				0482C7A425218E080013B69E /* DesktopSettingsTableViewCell.swift */,
+				0482C7A62522CEB00013B69E /* DesktopSettingsViewController.swift */,
 			);
 			path = Desktop;
 			sourceTree = "<group>";
@@ -1580,6 +1604,7 @@
 			files = (
 				04920C1924CFD02F00BA3232 /* PhotoAssetEditingContainer.swift in Sources */,
 				04F3C7AC230187F200445A8D /* SettingsContentProvider.swift in Sources */,
+				0482C79D25218D400013B69E /* DesktopAutoRedactionsListView.swift in Sources */,
 				0431E0CF22F830BB00DC85C4 /* DocumentScannerPhotoLibraryViewCellIconView.swift in Sources */,
 				0445AA592371208B00EB2A7B /* ImageDownloader.swift in Sources */,
 				048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */,
@@ -1587,6 +1612,7 @@
 				04F3C7B22301A3CF00445A8D /* StandardContentItem.swift in Sources */,
 				04F3C7C62301A5C300445A8D /* PrivacyItem.swift in Sources */,
 				043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */,
+				0482C7A72522CEB00013B69E /* DesktopSettingsViewController.swift in Sources */,
 				04DBC83E2314D1D90004F7DB /* AutoRedactionsEmptyView.swift in Sources */,
 				049F292D22875AFA00A335BE /* AboutViewController.swift in Sources */,
 				0445AA5B237130CC00EB2A7B /* PurchaseMarketingStackView.swift in Sources */,
@@ -1595,7 +1621,9 @@
 				04F3C7C02301A52A00445A8D /* AboutItem.swift in Sources */,
 				046C405F247F5B690069E8FB /* UserCollectionTableViewCell.swift in Sources */,
 				049F293122875D5B00A335BE /* AcknowledgementsViewController.swift in Sources */,
+				0482C79F25218D600013B69E /* DesktopSettingsTableView.swift in Sources */,
 				04F3C7EF2308E8ED00445A8D /* PaymentOperation.swift in Sources */,
+				0482C7A325218DB40013B69E /* DesktopSettingsAddRemoveControl.swift in Sources */,
 				04F3C7BA2301A47E00445A8D /* OtherAppsSection.swift in Sources */,
 				04899D75231CEAED002BC1D8 /* PurchaseValidator.swift in Sources */,
 				0401CDF824AD89220011A9BF /* DocumentScanButton.swift in Sources */,
@@ -1632,7 +1660,7 @@
 				041EFF6E225C38800058D8EE /* PhotoSelectionNavigationController.swift in Sources */,
 				0491831524E4D87A004251B1 /* SettingsButton.swift in Sources */,
 				046C405B24761E8A0069E8FB /* CollectionEvent.swift in Sources */,
-				04A606E1251C471F007A2B82 /* DesktopSettingsViewController.swift in Sources */,
+				04A606E1251C471F007A2B82 /* DesktopAutoRedactionsListViewController.swift in Sources */,
 				04F3C7EB2308E7F200445A8D /* PurchaseOperationError.swift in Sources */,
 				04F3C7E72308DD8F00445A8D /* PurchaseOperation.swift in Sources */,
 				04F3C7E523089B1700445A8D /* PurchaseMarketingViewTextLabel.swift in Sources */,
@@ -1651,15 +1679,18 @@
 				046C4065247F5BCA0069E8FB /* UserCollectionTableViewCellImageView.swift in Sources */,
 				043CD9DD227548C20012F5AE /* SettingsTableView.swift in Sources */,
 				041EFF76225C3DF10058D8EE /* PhotoLibraryViewLayout.swift in Sources */,
+				0482C7A125218D860013B69E /* AlternatingRowTableViewBackgroundView.swift in Sources */,
 				04FF8DBD22F57B3A008CF0E9 /* AutoRedactionsAdditionAlertController.swift in Sources */,
 				04F3C7D7230443BD00445A8D /* PurchaseItem.swift in Sources */,
 				0491831724E4DA72004251B1 /* SettingsPresenting.swift in Sources */,
 				04F3C7DD23044A9900445A8D /* PurchaseMarketingViewController.swift in Sources */,
 				04ADD15A2290D1C500E17445 /* AppLookupResponse.swift in Sources */,
 				049E1EB424BFEF09009DE20D /* AlbumsList.swift in Sources */,
+				0482C79B25218D090013B69E /* DesktopAutoRedactionsViewDelegate.swift in Sources */,
 				049F292F22875B1300A335BE /* PrivacyViewController.swift in Sources */,
 				046C4063247F5BB10069E8FB /* SystemCollectionTableViewCellImageView.swift in Sources */,
 				04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */,
+				0482C7A525218E080013B69E /* DesktopSettingsTableViewCell.swift in Sources */,
 				0489081A24AD7A32005DDEF3 /* PhotoLibraryView.swift in Sources */,
 				046BEC2E2471013900FBECD7 /* SettingsBarButtonItem.swift in Sources */,
 				04DBC83C2314D1C20004F7DB /* AutoRedactionsEmptyViewController.swift in Sources */,
@@ -1763,6 +1794,7 @@
 				049F92FD22CDA6C40090C9BC /* Fonts.swift in Sources */,
 				044074BF23BE9BCD00D3CB99 /* RedactionPathLayer.swift in Sources */,
 				04431E5E2358117B009FA1F6 /* RedactionSerializer.swift in Sources */,
+				04FDEA5625257B1900F94CA9 /* SplitViewController.swift in Sources */,
 				04FF8DB422F57570008CF0E9 /* Defaults.swift in Sources */,
 				04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */,
 				049F92F322CDA4E40090C9BC /* Redaction.swift in Sources */,
