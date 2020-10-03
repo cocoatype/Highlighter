@@ -118,11 +118,11 @@
 # define HEADER_SSL3_H
 
 # ifndef OPENSSL_NO_COMP
-#  include <OpenSSL/comp.h>
+#  include <openssl/comp.h>
 # endif
-# include <OpenSSL/buffer.h>
-# include <OpenSSL/evp.h>
-# include <OpenSSL/ssl.h>
+# include <openssl/buffer.h>
+# include <openssl/evp.h>
+# include <openssl/ssl.h>
 
 #ifdef  __cplusplus
 extern "C" {

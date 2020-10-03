@@ -1,7 +1,6 @@
 framework module OpenSSL {
-    umbrella header "OpenSSL.h"
-    header "shim.h"
+  umbrella header "OpenSSL.h"
 
-    export *
-    module * { export * }
+  export *
+  module * { export * }
 }

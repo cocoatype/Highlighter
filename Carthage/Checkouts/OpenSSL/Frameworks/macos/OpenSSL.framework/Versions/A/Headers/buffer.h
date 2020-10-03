@@ -59,7 +59,7 @@
 #ifndef HEADER_BUFFER_H
 # define HEADER_BUFFER_H
 
-# include <OpenSSL/ossl_typ.h>
+# include <openssl/ossl_typ.h>
 
 #ifdef  __cplusplus
 extern "C" {

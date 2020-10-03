@@ -59,9 +59,9 @@
 #ifndef HEADER_X509V3_H
 # define HEADER_X509V3_H
 
-# include <OpenSSL/bio.h>
-# include <OpenSSL/x509.h>
-# include <OpenSSL/conf.h>
+# include <openssl/bio.h>
+# include <openssl/x509.h>
+# include <openssl/conf.h>
 
 #ifdef __cplusplus
 extern "C" {

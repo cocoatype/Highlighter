@@ -60,19 +60,19 @@
 # define HEADER_ENVELOPE_H
 
 # ifdef OPENSSL_ALGORITHM_DEFINES
-#  include <OpenSSL/opensslconf.h>
+#  include <openssl/opensslconf.h>
 # else
 #  define OPENSSL_ALGORITHM_DEFINES
-#  include <OpenSSL/opensslconf.h>
+#  include <openssl/opensslconf.h>
 #  undef OPENSSL_ALGORITHM_DEFINES
 # endif
 
-# include <OpenSSL/ossl_typ.h>
+# include <openssl/ossl_typ.h>
 
-# include <OpenSSL/symhacks.h>
+# include <openssl/symhacks.h>
 
 # ifndef OPENSSL_NO_BIO
-#  include <OpenSSL/bio.h>
+#  include <openssl/bio.h>
 # endif
 
 /*-
@@ -91,7 +91,7 @@
 /* Default PKCS#5 iteration count */
 # define PKCS5_DEFAULT_ITER              2048
 
-# include <OpenSSL/objects.h>
+# include <openssl/objects.h>
 
 # define EVP_PK_RSA      0x0001
 # define EVP_PK_DSA      0x0002

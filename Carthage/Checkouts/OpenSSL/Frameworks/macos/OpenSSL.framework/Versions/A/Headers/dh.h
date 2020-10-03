@@ -59,18 +59,18 @@
 #ifndef HEADER_DH_H
 # define HEADER_DH_H
 
-# include <OpenSSL/e_os2.h>
+# include <openssl/e_os2.h>
 
 # ifdef OPENSSL_NO_DH
 #  error DH is disabled.
 # endif
 
 # ifndef OPENSSL_NO_BIO
-#  include <OpenSSL/bio.h>
+#  include <openssl/bio.h>
 # endif
-# include <OpenSSL/ossl_typ.h>
+# include <openssl/ossl_typ.h>
 # ifndef OPENSSL_NO_DEPRECATED
-#  include <OpenSSL/bn.h>
+#  include <openssl/bn.h>
 # endif
 
 # ifndef OPENSSL_DH_MAX_MODULUS_BITS

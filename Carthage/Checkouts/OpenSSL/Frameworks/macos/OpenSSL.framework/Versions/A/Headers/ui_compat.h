@@ -60,8 +60,8 @@
 #ifndef HEADER_UI_COMPAT_H
 # define HEADER_UI_COMPAT_H
 
-# include <OpenSSL/opensslconf.h>
-# include <OpenSSL/ui.h>
+# include <openssl/opensslconf.h>
+# include <openssl/ui.h>
 
 #ifdef  __cplusplus
 extern "C" {

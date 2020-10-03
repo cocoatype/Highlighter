@@ -64,49 +64,49 @@
 #ifndef HEADER_X509_H
 # define HEADER_X509_H
 
-# include <OpenSSL/e_os2.h>
-# include <OpenSSL/symhacks.h>
+# include <openssl/e_os2.h>
+# include <openssl/symhacks.h>
 # ifndef OPENSSL_NO_BUFFER
-#  include <OpenSSL/buffer.h>
+#  include <openssl/buffer.h>
 # endif
 # ifndef OPENSSL_NO_EVP
-#  include <OpenSSL/evp.h>
+#  include <openssl/evp.h>
 # endif
 # ifndef OPENSSL_NO_BIO
-#  include <OpenSSL/bio.h>
+#  include <openssl/bio.h>
 # endif
-# include <OpenSSL/stack.h>
-# include <OpenSSL/asn1.h>
-# include <OpenSSL/safestack.h>
+# include <openssl/stack.h>
+# include <openssl/asn1.h>
+# include <openssl/safestack.h>
 
 # ifndef OPENSSL_NO_EC
-#  include <OpenSSL/ec.h>
+#  include <openssl/ec.h>
 # endif
 
 # ifndef OPENSSL_NO_ECDSA
-#  include <OpenSSL/ecdsa.h>
+#  include <openssl/ecdsa.h>
 # endif
 
 # ifndef OPENSSL_NO_ECDH
-#  include <OpenSSL/ecdh.h>
+#  include <openssl/ecdh.h>
 # endif
 
 # ifndef OPENSSL_NO_DEPRECATED
 #  ifndef OPENSSL_NO_RSA
-#   include <OpenSSL/rsa.h>
+#   include <openssl/rsa.h>
 #  endif
 #  ifndef OPENSSL_NO_DSA
-#   include <OpenSSL/dsa.h>
+#   include <openssl/dsa.h>
 #  endif
 #  ifndef OPENSSL_NO_DH
-#   include <OpenSSL/dh.h>
+#   include <openssl/dh.h>
 #  endif
 # endif
 
 # ifndef OPENSSL_NO_SHA
-#  include <OpenSSL/sha.h>
+#  include <openssl/sha.h>
 # endif
-# include <OpenSSL/ossl_typ.h>
+# include <openssl/ossl_typ.h>
 
 #ifdef  __cplusplus
 extern "C" {
@@ -578,8 +578,8 @@ struct pkcs8_priv_key_info_st {
 }
 #endif
 
-# include <OpenSSL/x509_vfy.h>
-# include <OpenSSL/pkcs7.h>
+# include <openssl/x509_vfy.h>
+# include <openssl/pkcs7.h>
 
 #ifdef  __cplusplus
 extern "C" {

@@ -59,15 +59,15 @@
 #ifndef HEADER_RSA_H
 # define HEADER_RSA_H
 
-# include <OpenSSL/asn1.h>
+# include <openssl/asn1.h>
 
 # ifndef OPENSSL_NO_BIO
-#  include <OpenSSL/bio.h>
+#  include <openssl/bio.h>
 # endif
-# include <OpenSSL/crypto.h>
-# include <OpenSSL/ossl_typ.h>
+# include <openssl/crypto.h>
+# include <openssl/ossl_typ.h>
 # ifndef OPENSSL_NO_DEPRECATED
-#  include <OpenSSL/bn.h>
+#  include <openssl/bn.h>
 # endif
 
 # ifdef OPENSSL_NO_RSA
