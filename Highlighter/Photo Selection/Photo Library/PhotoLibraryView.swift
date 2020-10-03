@@ -7,6 +7,7 @@ import SwiftUI
 
 @available(iOS 14.0, *)
 struct PhotoLibraryView: View {
+    var navigationWrapper = NavigationWrapper.empty
     init(dataSource: LibraryDataSource) {
         self.dataSource = dataSource
     }
@@ -32,7 +33,10 @@ struct PhotoLibraryView: View {
                     itemView(for: dataSource.item(at: $0)).aspectRatio(contentMode: .fill)
                 }
             }
-        }.background(Color.appPrimary).navigationBarTitleDisplayMode(.inline).navigationBarItems(trailing: SettingsButton())
+        }.background(Color.appPrimary)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: SettingsButton())
+        .environmentObject(navigationWrapper)
     }
     
     // MARK: Boilerplate

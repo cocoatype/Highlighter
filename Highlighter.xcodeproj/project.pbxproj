@@ -153,6 +153,7 @@
 		04A8A5EE2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */; };
 		04A8A5F1231659BA006CE411 /* PhotoEditingCanvasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */; };
 		04A8A5F2231659BA006CE411 /* PhotoEditingCanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5F0231659BA006CE411 /* PhotoEditingCanvasView.m */; };
+		04ABC8DD2528207400F5BA6A /* CollectionPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABC8DC2528207400F5BA6A /* CollectionPresenting.swift */; };
 		04ADD1562290CCC200E17445 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1552290CCC200E17445 /* AppEntry.swift */; };
 		04ADD1582290CFF100E17445 /* AppListFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1572290CFF100E17445 /* AppListFetcher.swift */; };
 		04ADD15A2290D1C500E17445 /* AppLookupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1592290D1C500E17445 /* AppLookupResponse.swift */; };
@@ -468,6 +469,7 @@
 		04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoEditingCanvasBrushStrokeView.m; sourceTree = "<group>"; };
 		04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingCanvasView.h; sourceTree = "<group>"; };
 		04A8A5F0231659BA006CE411 /* PhotoEditingCanvasView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoEditingCanvasView.m; sourceTree = "<group>"; };
+		04ABC8DC2528207400F5BA6A /* CollectionPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPresenting.swift; sourceTree = "<group>"; };
 		04ADD1552290CCC200E17445 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
 		04ADD1572290CFF100E17445 /* AppListFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListFetcher.swift; sourceTree = "<group>"; };
 		04ADD1592290D1C500E17445 /* AppLookupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLookupResponse.swift; sourceTree = "<group>"; };
@@ -731,6 +733,7 @@
 				04D68BCA2262B34600D09BBD /* Photo Permissions */,
 				04FF8DE222F6DF2C008CF0E9 /* PageCountAlertFactory.swift */,
 				046BEC2D2471013900FBECD7 /* SettingsBarButtonItem.swift */,
+				04ABC8DC2528207400F5BA6A /* CollectionPresenting.swift */,
 			);
 			path = "Photo Selection";
 			sourceTree = "<group>";
@@ -1628,6 +1631,7 @@
 				04899D75231CEAED002BC1D8 /* PurchaseValidator.swift in Sources */,
 				0401CDF824AD89220011A9BF /* DocumentScanButton.swift in Sources */,
 				041EFF492252FAF50058D8EE /* IntroViewController.swift in Sources */,
+				04ABC8DD2528207400F5BA6A /* CollectionPresenting.swift in Sources */,
 				04F3C7AE2301A2D100445A8D /* SettingsContentSection.swift in Sources */,
 				04F3C7A52300206A00445A8D /* Purchaser.swift in Sources */,
 				04F3C7CF2302F0E600445A8D /* SettingsTableViewHeaderFooterLabel.swift in Sources */,

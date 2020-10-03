@@ -10,12 +10,6 @@ struct AlbumsList: View {
     let data: [CollectionSection]
     init(data: [CollectionSection]) {
         self.data = data
-
-        let recentsIdentifier = data.flatMap { $0.collections }
-            .compactMap { $0 as? AssetCollection }
-            .first(where: { $0.assetCollectionSubtype == .smartAlbumUserLibrary })?
-            .identifier
-        _selectedCollectionIdentifier = State(initialValue: recentsIdentifier)
     }
 
     var body: some View {
@@ -57,9 +51,9 @@ struct AlbumsRow: View {
     }
 
     var body: some View {
-        print(collection.identifier)
-        let destination = PhotoLibraryView(dataSource: PhotoLibraryDataSource(collection))
-        return NavigationLink(destination: destination, tag: collection.identifier, selection: selection) {
+        Button {
+            navigationWrapper.present(collection)
+        } label: {
             Label(
                 title: { Text(collection.title ?? "") },
                 icon: { Image(uiImage: collection.icon ?? UIImage()).foregroundColor(.white) }
@@ -68,7 +62,13 @@ struct AlbumsRow: View {
             .id(collection.identifier)
             .tag(collection.identifier)
         }
+
+//        let destination = PhotoLibraryView(dataSource: PhotoLibraryDataSource(collection))
+//        return NavigationLink(destination: destination, tag: collection.identifier, selection: selection) {
+//        }
     }
+
+    @EnvironmentObject private var navigationWrapper: NavigationWrapper
 }
 
 @available(iOS 14.0, *)

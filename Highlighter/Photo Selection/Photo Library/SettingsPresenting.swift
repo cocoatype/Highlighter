@@ -6,3 +6,13 @@ import UIKit
 protocol SettingsPresenting {
     func presentSettingsViewController()
 }
+
+extension UIResponder {
+    var settingsPresenter: SettingsPresenting? {
+        if let settingsPresenter = (self as? SettingsPresenting) {
+            return settingsPresenter
+        }
+
+        return next?.settingsPresenter
+    }
+}

@@ -6,7 +6,7 @@ import Photos
 import UIKit
 import VisionKit
 
-class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening, VNDocumentCameraViewControllerDelegate, DocumentScannerPresenting, SettingsPresenting {
+class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening, VNDocumentCameraViewControllerDelegate, DocumentScannerPresenting, SettingsPresenting, CollectionPresenting {
     init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
         self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
@@ -27,7 +27,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         switch permissionsRequester.authorizationStatus() {
         case .authorized:
             if #available(iOS 14.0, *) {
-                return SplitViewController(primaryViewController: AlbumsViewController(), secondaryViewController: LegacyPhotoLibraryViewController())
+                return SplitViewController(primaryViewController: AlbumsViewController(), secondaryViewController: PhotoLibraryViewController(collection: CollectionType.library.defaultCollection))
             } else {
                 return NavigationController(rootViewController: LegacyPhotoLibraryViewController())
             }
@@ -37,6 +37,14 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
 
     var stateRestorationActivity: NSUserActivity? {
         return photoEditingViewController?.userActivity
+    }
+
+    // MARK: Collections
+
+    func present(_ collection: Collection) {
+        guard #available(iOS 14.0, *), let splitViewController = children.first(where: { $0 is SplitViewController }) as? SplitViewController, let photoLibraryViewController = splitViewController.viewController(for: .secondary) as? PhotoLibraryViewController else { return }
+        photoLibraryViewController.collection = collection
+        splitViewController.show(.secondary)
     }
 
     // MARK: Photo Editing View Controller

@@ -6,8 +6,9 @@ import Editing
 import SwiftUI
 import UIKit
 
+@available(iOS 14.0, *)
 class NavigationWrapper: NSObject, ObservableObject {
-    typealias NavigationObject = (SettingsPresenting & PhotoEditorPresenting & DocumentScannerPresenting)
+    typealias NavigationObject = (SettingsPresenting & PhotoEditorPresenting & DocumentScannerPresenting & CollectionPresenting)
     init(navigationObject: NavigationObject) {
         self.navigationObject = navigationObject
     }
@@ -30,9 +31,14 @@ class NavigationWrapper: NSObject, ObservableObject {
         navigationObject?.presentDocumentCameraViewController()
     }
 
+    func present(_ collection: Collection) {
+        navigationObject?.present(collection)
+    }
+
     private let navigationObject: NavigationObject?
 }
 
+@available(iOS 14.0, *)
 extension UIResponder {
     var navigationObject: NavigationWrapper.NavigationObject? {
         if let navigationObject = (self as? NavigationWrapper.NavigationObject) {
