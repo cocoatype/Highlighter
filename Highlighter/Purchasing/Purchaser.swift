@@ -13,15 +13,11 @@ class Purchaser: NSObject {
     override init() {
         super.init()
 
-        #if true //targetEnvironment(macCatalyst)
-        state = .loading
-        #else
         if PurchaseValidator.hasUserPurchasedProduct(withIdentifier: Purchaser.productIdentifier) {
             state = .purchased
         } else {
             fetchProducts()
         }
-        #endif
     }
 
     // MARK: Operations

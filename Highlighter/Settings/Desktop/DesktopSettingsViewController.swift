@@ -18,6 +18,24 @@ class DesktopSettingsViewController: UIViewController {
         }
     }
 
+    // MARK: Purchasing
+
+    @objc func startPurchase() {
+        purchaser.purchaseUnlock()
+    }
+
+    @objc func startRestore() {
+        purchaser.restorePurchases()
+    }
+
+    private func purchaseStateDidChange() {
+//        settingsViewController?.refreshPurchaseSection()
+    }
+
+    private func purchaseDidSucceed() {
+//        popToRootViewController(animated: true)
+    }
+
     // MARK: Boilerplate
 
     private let purchaser = Purchaser()

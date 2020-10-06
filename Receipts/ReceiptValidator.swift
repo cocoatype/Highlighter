@@ -41,7 +41,7 @@ public class ReceiptValidator {
         let certificateStore = X509_STORE_new()
         X509_STORE_add_cert(certificateStore, appleCertificate)
 
-        OpenSSL_add_all_digests()
+        OPENSSL_init_crypto(UInt64(OPENSSL_INIT_ADD_ALL_DIGESTS), nil)
 
         let result = PKCS7_verify(container, nil, certificateStore, nil, nil, 0)
         return result == 1

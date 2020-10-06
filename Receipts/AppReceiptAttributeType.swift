@@ -14,14 +14,7 @@ enum AppReceiptAttributeType {
     case expirationDate
 
     init?(startingAt intPointer: inout UnsafePointer<UInt8>?, length: Int) {
-        var type = Int32(0)
-        var xclass = Int32(0)
-        var intLength = 0
-
-        ASN1_get_object(&intPointer, &intLength, &type, &xclass, length)
-
-        guard type == V_ASN1_INTEGER else { return nil }
-        let integer = c2i_ASN1_INTEGER(nil, &intPointer, intLength)
+        let integer = d2i_ASN1_INTEGER(nil, &intPointer, length)
         let result = ASN1_INTEGER_get(integer)
         ASN1_INTEGER_free(integer)
 

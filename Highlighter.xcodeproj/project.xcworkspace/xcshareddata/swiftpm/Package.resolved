@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "OpenSSL",
+        "repositoryURL": "git@git.pado.name:highlighter/openssl.git",
+        "state": {
+          "branch": "master",
+          "revision": "fbbf99790ec228c3403e87dbf4f6701b571ed52c",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

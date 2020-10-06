@@ -62,6 +62,8 @@
 		0445AA592371208B00EB2A7B /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA582371208B00EB2A7B /* ImageDownloader.swift */; };
 		0445AA5B237130CC00EB2A7B /* PurchaseMarketingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA5A237130CC00EB2A7B /* PurchaseMarketingStackView.swift */; };
 		0445AA5D237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA5C237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift */; };
+		045DB1692529553A0033CFE8 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 045DB1682529553A0033CFE8 /* OpenSSL */; };
+		045DB16B2529555C0033CFE8 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 045DB16A2529555C0033CFE8 /* OpenSSL */; };
 		046BEC242470EBAC00FBECD7 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC232470EBAC00FBECD7 /* Collection.swift */; };
 		046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC252470F87200FBECD7 /* CollectionType.swift */; };
 		046BEC282470F89B00FBECD7 /* CollectionsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC272470F89B00FBECD7 /* CollectionsDataSource.swift */; };
@@ -203,14 +205,12 @@
 		04F3C7EF2308E8ED00445A8D /* PaymentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7EE2308E8ED00445A8D /* PaymentOperation.swift */; };
 		04F3C7F12308E91600445A8D /* FetchProductOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7F02308E91600445A8D /* FetchProductOperation.swift */; };
 		04F3C7F32308F37400445A8D /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7F22308F37400445A8D /* AsyncOperation.swift */; };
-		04F3C7F5230921A100445A8D /* OpenSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C7F4230921A100445A8D /* OpenSSL.framework */; platformFilter = ios; };
 		04F3C7FA2309282600445A8D /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 04F3C7F92309282600445A8D /* AppleIncRootCertificate.cer */; };
 		04F3C8092309E8A800445A8D /* Receipts.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C8072309E8A800445A8D /* Receipts.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04F3C80C2309E8A800445A8D /* Receipts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C8052309E8A800445A8D /* Receipts.framework */; platformFilter = ios; };
 		04F3C80D2309E8A800445A8D /* Receipts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C8052309E8A800445A8D /* Receipts.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04F3C8112309E8BB00445A8D /* AppReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7FE2309E80100445A8D /* AppReceipt.swift */; };
 		04F3C8122309E8BB00445A8D /* AppReceiptParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7FC2309E7F400445A8D /* AppReceiptParsing.swift */; };
-		04F3C8132309E8E900445A8D /* OpenSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C7F4230921A100445A8D /* OpenSSL.framework */; platformFilter = ios; };
 		04F3C8172309E90900445A8D /* PurchaseReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C8162309E90900445A8D /* PurchaseReceipt.swift */; };
 		04F3C8192309E92900445A8D /* PointerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C8182309E92900445A8D /* PointerExtensions.swift */; };
 		04F3C81A2309E94900445A8D /* ReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7A62300968500445A8D /* ReceiptValidator.swift */; };
@@ -476,7 +476,6 @@
 		04ADD15B2290D29400E17445 /* AppLookupResponseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLookupResponseResult.swift; sourceTree = "<group>"; };
 		04ADD15D2290D2D200E17445 /* AppDeveloperInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeveloperInfo.swift; sourceTree = "<group>"; };
 		04ADD15F2290DA8E00E17445 /* AppEntryOpening.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntryOpening.swift; sourceTree = "<group>"; };
-		04ADD1632290DE6700E17445 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
 		04D68BC6225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPhotoLibraryViewCellImageView.swift; sourceTree = "<group>"; };
 		04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPermissionsRequester.swift; sourceTree = "<group>"; };
@@ -514,7 +513,6 @@
 		04F3C7D8230449AB00445A8D /* SettingsPurchaseTableViewCellTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPurchaseTableViewCellTitleLabel.swift; sourceTree = "<group>"; };
 		04F3C7DA230449D800445A8D /* SettingsPurchaseTableViewCellSubtitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPurchaseTableViewCellSubtitleLabel.swift; sourceTree = "<group>"; };
 		04F3C7DC23044A9900445A8D /* PurchaseMarketingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingViewController.swift; sourceTree = "<group>"; };
-		04F3C7DE23044C5000445A8D /* BonMot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BonMot.framework; path = Carthage/Build/iOS/BonMot.framework; sourceTree = "<group>"; };
 		04F3C7E223089ACA00445A8D /* PurchaseMarketingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingView.swift; sourceTree = "<group>"; };
 		04F3C7E423089B1700445A8D /* PurchaseMarketingViewTextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingViewTextLabel.swift; sourceTree = "<group>"; };
 		04F3C7E62308DD8F00445A8D /* PurchaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseOperation.swift; sourceTree = "<group>"; };
@@ -524,7 +522,6 @@
 		04F3C7EE2308E8ED00445A8D /* PaymentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOperation.swift; sourceTree = "<group>"; };
 		04F3C7F02308E91600445A8D /* FetchProductOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProductOperation.swift; sourceTree = "<group>"; };
 		04F3C7F22308F37400445A8D /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
-		04F3C7F4230921A100445A8D /* OpenSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenSSL.framework; path = Carthage/Build/iOS/OpenSSL.framework; sourceTree = "<group>"; };
 		04F3C7F92309282600445A8D /* AppleIncRootCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleIncRootCertificate.cer; sourceTree = "<group>"; };
 		04F3C7FC2309E7F400445A8D /* AppReceiptParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReceiptParsing.swift; sourceTree = "<group>"; };
 		04F3C7FE2309E80100445A8D /* AppReceipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReceipt.swift; sourceTree = "<group>"; };
@@ -563,9 +560,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04F3C85C230BC38600445A8D /* Canvas.framework in Frameworks */,
-				04F3C7F5230921A100445A8D /* OpenSSL.framework in Frameworks */,
 				04F3C80C2309E8A800445A8D /* Receipts.framework in Frameworks */,
 				049F92DE22CDA3DB0090C9BC /* Editing.framework in Frameworks */,
+				045DB1692529553A0033CFE8 /* OpenSSL in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,7 +602,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04F3C8132309E8E900445A8D /* OpenSSL.framework in Frameworks */,
+				045DB16B2529555C0033CFE8 /* OpenSSL in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1019,9 +1016,6 @@
 			isa = PBXGroup;
 			children = (
 				04F3C859230BC20E00445A8D /* PencilKit.framework */,
-				04F3C7F4230921A100445A8D /* OpenSSL.framework */,
-				04F3C7DE23044C5000445A8D /* BonMot.framework */,
-				04ADD1632290DE6700E17445 /* Kingfisher.framework */,
 				04431E4623556106009FA1F6 /* PhotosUI.framework */,
 				04431E4823556106009FA1F6 /* Photos.framework */,
 			);
@@ -1324,7 +1318,6 @@
 				041EFEF12251A9F30058D8EE /* Sources */,
 				041EFEF22251A9F30058D8EE /* Frameworks */,
 				041EFEF32251A9F30058D8EE /* Resources */,
-				04ADD1612290DDEB00E17445 /* Copy Carthage Frameworks */,
 				043911D022C461F000D4AE30 /* Embed App Extensions */,
 				049F92E322CDA3DB0090C9BC /* Embed Frameworks */,
 			);
@@ -1337,6 +1330,9 @@
 				04F3C84F230BC1E100445A8D /* PBXTargetDependency */,
 			);
 			name = Highlighter;
+			packageProductDependencies = (
+				045DB1682529553A0033CFE8 /* OpenSSL */,
+			);
 			productName = Highlighter;
 			productReference = 041EFEF52251A9F30058D8EE /* Highlighter.app */;
 			productType = "com.apple.product-type.application";
@@ -1425,8 +1421,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				04ABC8EA25293F1600F5BA6A /* PBXTargetDependency */,
 			);
 			name = Receipts;
+			packageProductDependencies = (
+				045DB16A2529555C0033CFE8 /* OpenSSL */,
+			);
 			productName = Receipts;
 			productReference = 04F3C8052309E8A800445A8D /* Receipts.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1494,6 +1494,9 @@
 				Base,
 			);
 			mainGroup = 041EFEEC2251A9F30058D8EE;
+			packageReferences = (
+				045DB1672529553A0033CFE8 /* XCRemoteSwiftPackageReference "openssl" */,
+			);
 			productRefGroup = 041EFEF62251A9F30058D8EE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1577,28 +1580,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		04ADD1612290DDEB00E17445 /* Copy Carthage Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/OpenSSL.framework",
-			);
-			name = "Copy Carthage Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		041EFEF12251A9F30058D8EE /* Sources */ = {
@@ -1872,6 +1853,10 @@
 			target = 049F92D622CDA3DB0090C9BC /* Editing */;
 			targetProxy = 049F92DC22CDA3DB0090C9BC /* PBXContainerItemProxy */;
 		};
+		04ABC8EA25293F1600F5BA6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 04ABC8E925293F1600F5BA6A /* OpenSSL */;
+		};
 		04F3C80B2309E8A800445A8D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
@@ -2054,6 +2039,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -2081,6 +2067,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -2290,10 +2277,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Receipts/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2302,12 +2286,14 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Receipts;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
@@ -2321,10 +2307,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Receipts/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2333,12 +2316,14 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Receipts;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
@@ -2484,6 +2469,34 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		045DB1672529553A0033CFE8 /* XCRemoteSwiftPackageReference "openssl" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@git.pado.name:highlighter/openssl.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		045DB1682529553A0033CFE8 /* OpenSSL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 045DB1672529553A0033CFE8 /* XCRemoteSwiftPackageReference "openssl" */;
+			productName = OpenSSL;
+		};
+		045DB16A2529555C0033CFE8 /* OpenSSL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 045DB1672529553A0033CFE8 /* XCRemoteSwiftPackageReference "openssl" */;
+			productName = OpenSSL;
+		};
+		04ABC8E925293F1600F5BA6A /* OpenSSL */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = OpenSSL;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 041EFEED2251A9F30058D8EE /* Project object */;
 }
