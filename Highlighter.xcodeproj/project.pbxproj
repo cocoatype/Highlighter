@@ -207,8 +207,8 @@
 		04F3C7F32308F37400445A8D /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7F22308F37400445A8D /* AsyncOperation.swift */; };
 		04F3C7FA2309282600445A8D /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 04F3C7F92309282600445A8D /* AppleIncRootCertificate.cer */; };
 		04F3C8092309E8A800445A8D /* Receipts.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C8072309E8A800445A8D /* Receipts.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04F3C80C2309E8A800445A8D /* Receipts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C8052309E8A800445A8D /* Receipts.framework */; platformFilter = ios; };
-		04F3C80D2309E8A800445A8D /* Receipts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C8052309E8A800445A8D /* Receipts.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		04F3C80C2309E8A800445A8D /* Receipts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C8052309E8A800445A8D /* Receipts.framework */; };
+		04F3C80D2309E8A800445A8D /* Receipts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C8052309E8A800445A8D /* Receipts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04F3C8112309E8BB00445A8D /* AppReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7FE2309E80100445A8D /* AppReceipt.swift */; };
 		04F3C8122309E8BB00445A8D /* AppReceiptParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7FC2309E7F400445A8D /* AppReceiptParsing.swift */; };
 		04F3C8172309E90900445A8D /* PurchaseReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C8162309E90900445A8D /* PurchaseReceipt.swift */; };
@@ -1859,7 +1859,6 @@
 		};
 		04F3C80B2309E8A800445A8D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = 04F3C8042309E8A800445A8D /* Receipts */;
 			targetProxy = 04F3C80A2309E8A800445A8D /* PBXContainerItemProxy */;
 		};

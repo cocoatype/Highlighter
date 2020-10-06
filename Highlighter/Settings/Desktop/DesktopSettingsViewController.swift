@@ -8,6 +8,14 @@ class DesktopSettingsViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
 
         embed(preferredViewController)
+
+        purchaserObservation = NotificationCenter.default.addObserver(forName: Purchaser.stateDidChange, object: nil, queue: .main, using: { [weak self] _ in
+            self?.purchaseStateDidChange()
+        })
+    }
+
+    deinit {
+        purchaserObservation.map(NotificationCenter.default.removeObserver)
     }
 
     private var preferredViewController: UIViewController {
@@ -29,16 +37,13 @@ class DesktopSettingsViewController: UIViewController {
     }
 
     private func purchaseStateDidChange() {
-//        settingsViewController?.refreshPurchaseSection()
-    }
-
-    private func purchaseDidSucceed() {
-//        popToRootViewController(animated: true)
+        embed(preferredViewController)
     }
 
     // MARK: Boilerplate
 
     private let purchaser = Purchaser()
+    private var purchaserObservation: Any?
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

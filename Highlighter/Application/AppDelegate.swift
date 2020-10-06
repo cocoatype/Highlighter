@@ -16,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window = window
         }
 
+        #if targetEnvironment(macCatalyst)
+        
+        #endif
+
         return true
     }
 
