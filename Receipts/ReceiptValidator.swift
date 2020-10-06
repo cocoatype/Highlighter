@@ -2,7 +2,9 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Foundation
+#if canImport(IOKit)
 import IOKit
+#endif
 import OpenSSL
 import UIKit
 

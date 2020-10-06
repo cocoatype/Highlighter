@@ -62,7 +62,6 @@
 		0445AA592371208B00EB2A7B /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA582371208B00EB2A7B /* ImageDownloader.swift */; };
 		0445AA5B237130CC00EB2A7B /* PurchaseMarketingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA5A237130CC00EB2A7B /* PurchaseMarketingStackView.swift */; };
 		0445AA5D237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA5C237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift */; };
-		045DB1692529553A0033CFE8 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 045DB1682529553A0033CFE8 /* OpenSSL */; };
 		045DB16B2529555C0033CFE8 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 045DB16A2529555C0033CFE8 /* OpenSSL */; };
 		046BEC242470EBAC00FBECD7 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC232470EBAC00FBECD7 /* Collection.swift */; };
 		046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC252470F87200FBECD7 /* CollectionType.swift */; };
@@ -228,6 +227,7 @@
 		04F3C85D230BC38600445A8D /* Canvas.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C849230BC1E100445A8D /* Canvas.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04F3C864230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04F3C865230BCBDE00445A8D /* PhotoEditingBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04F824CB252C7F740079E974 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 04F824CA252C7F740079E974 /* OpenSSL */; };
 		04FDEA5625257B1900F94CA9 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDEA5525257B1900F94CA9 /* SplitViewController.swift */; };
 		04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */; };
 		04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */; };
@@ -562,7 +562,7 @@
 				04F3C85C230BC38600445A8D /* Canvas.framework in Frameworks */,
 				04F3C80C2309E8A800445A8D /* Receipts.framework in Frameworks */,
 				049F92DE22CDA3DB0090C9BC /* Editing.framework in Frameworks */,
-				045DB1692529553A0033CFE8 /* OpenSSL in Frameworks */,
+				04F824CB252C7F740079E974 /* OpenSSL in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1331,7 +1331,7 @@
 			);
 			name = Highlighter;
 			packageProductDependencies = (
-				045DB1682529553A0033CFE8 /* OpenSSL */,
+				04F824CA252C7F740079E974 /* OpenSSL */,
 			);
 			productName = Highlighter;
 			productReference = 041EFEF52251A9F30058D8EE /* Highlighter.app */;
@@ -2027,10 +2027,8 @@
 				CODE_SIGN_ENTITLEMENTS = Highlighter/Highlighter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 287EDDET2B;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$SYMROOT/../../SourcePackages/checkouts/openssl/libcrypto.xcframework/ios-arm64/Headers/**";
 				INFOPLIST_FILE = Highlighter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
@@ -2055,10 +2053,8 @@
 				CODE_SIGN_ENTITLEMENTS = Highlighter/Highlighter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 287EDDET2B;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$SYMROOT/../../SourcePackages/checkouts/openssl/libcrypto.xcframework/ios-arm64/Headers/**";
 				INFOPLIST_FILE = Highlighter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
@@ -2082,6 +2078,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 287EDDET2B;
+				HEADER_SEARCH_PATHS = "$SYMROOT/../../SourcePackages/checkouts/openssl/libcrypto.xcframework/ios-arm64/Headers";
 				INFOPLIST_FILE = HighlighterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2103,6 +2100,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 287EDDET2B;
+				HEADER_SEARCH_PATHS = "$SYMROOT/../../SourcePackages/checkouts/openssl/libcrypto.xcframework/ios-arm64/Headers";
 				INFOPLIST_FILE = HighlighterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2277,6 +2275,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$SYMROOT/../../SourcePackages/checkouts/openssl/libcrypto.xcframework/ios-arm64/Headers/**";
 				INFOPLIST_FILE = Receipts/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2307,6 +2306,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$SYMROOT/../../SourcePackages/checkouts/openssl/libcrypto.xcframework/ios-arm64/Headers/**";
 				INFOPLIST_FILE = Receipts/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2481,11 +2481,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		045DB1682529553A0033CFE8 /* OpenSSL */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 045DB1672529553A0033CFE8 /* XCRemoteSwiftPackageReference "openssl" */;
-			productName = OpenSSL;
-		};
 		045DB16A2529555C0033CFE8 /* OpenSSL */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 045DB1672529553A0033CFE8 /* XCRemoteSwiftPackageReference "openssl" */;
@@ -2493,6 +2488,11 @@
 		};
 		04ABC8E925293F1600F5BA6A /* OpenSSL */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = OpenSSL;
+		};
+		04F824CA252C7F740079E974 /* OpenSSL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 045DB1672529553A0033CFE8 /* XCRemoteSwiftPackageReference "openssl" */;
 			productName = OpenSSL;
 		};
 /* End XCSwiftPackageProductDependency section */
