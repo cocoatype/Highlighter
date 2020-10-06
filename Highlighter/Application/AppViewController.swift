@@ -6,16 +6,45 @@ import Photos
 import UIKit
 import VisionKit
 
-class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening, VNDocumentCameraViewControllerDelegate, DocumentScannerPresenting {
-    init() {
+class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening, VNDocumentCameraViewControllerDelegate, DocumentScannerPresenting, SettingsPresenting, CollectionPresenting {
+    init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
+        self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
 
-        let navigationController = NavigationController(rootViewController: PhotoSelectionViewController())
-        embed(navigationController)
+        setupAppearance()
+
+        view.isOpaque = false
+        view.backgroundColor = .clear
+        embed(preferredViewController)
+    }
+
+    @objc func showPhotoLibrary() {
+        transition(to: preferredViewController)
+    }
+
+    private let permissionsRequester: PhotoPermissionsRequester
+    private var preferredViewController: UIViewController {
+        switch permissionsRequester.authorizationStatus() {
+        case .authorized:
+            if #available(iOS 14.0, *) {
+                return SplitViewController(primaryViewController: AlbumsViewController(), secondaryViewController: PhotoLibraryViewController(collection: CollectionType.library.defaultCollection))
+            } else {
+                return NavigationController(rootViewController: LegacyPhotoLibraryViewController())
+            }
+        default: return IntroViewController()
+        }
     }
 
     var stateRestorationActivity: NSUserActivity? {
         return photoEditingViewController?.userActivity
+    }
+
+    // MARK: Collections
+
+    func present(_ collection: Collection) {
+        guard #available(iOS 14.0, *), let splitViewController = children.first(where: { $0 is SplitViewController }) as? SplitViewController, let photoLibraryViewController = splitViewController.viewController(for: .secondary) as? PhotoLibraryViewController else { return }
+        photoLibraryViewController.collection = collection
+        splitViewController.show(.secondary)
     }
 
     // MARK: Photo Editing View Controller
@@ -41,7 +70,10 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         }
 
         let alertController = PhotoEditingProtectionAlertController(appViewController: self)
+        #if targetEnvironment(macCatalyst)
+        #else
         alertController.barButtonItem = sender
+        #endif
         photoEditingViewController.present(alertController, animated: true)
     }
 
@@ -129,6 +161,15 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     override var childForStatusBarStyle: UIViewController? { return children.first }
 
     // MARK: Boilerplate
+
+    private func setupAppearance() {
+        UITableView.appearance().backgroundColor = .primary
+        UITableViewCell.appearance().selectionStyle = .none
+        UICollectionView.appearance().backgroundColor = .primary
+        UINavigationBar.appearance().scrollEdgeAppearance = NavigationBarAppearance()
+        UINavigationBar.appearance().standardAppearance = NavigationBarAppearance()
+        UIBarButtonItem.appearance().tintColor = .white
+    }
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

@@ -31,7 +31,13 @@ class PhotoEditingProtectionAlertController: UIAlertController {
 
     // MARK: Boilerplate
 
-    override var preferredStyle: UIAlertController.Style { return .actionSheet }
+    override var preferredStyle: UIAlertController.Style {
+        #if targetEnvironment(macCatalyst)
+        return .alert
+        #else
+        return .actionSheet
+        #endif
+    }
     weak var appViewController: AppViewController?
 
     private static let cancelButtonTitle = NSLocalizedString("PhotoEditingProtectionAlertController.cancelButtonTitle", comment: "Title for the cancel button on the photo permissions denied alert")

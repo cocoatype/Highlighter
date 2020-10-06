@@ -9,18 +9,7 @@ public class NavigationBar: UINavigationBar {
         tintColor = .white
 
         if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = .primaryDark
-            appearance.titleTextAttributes = NavigationBar.titleTextAttributes
-            appearance.backButtonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
-            appearance.backButtonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
-            appearance.doneButtonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
-            appearance.doneButtonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
-            appearance.buttonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
-            appearance.buttonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
-            standardAppearance = appearance
-
+            standardAppearance = NavigationBarAppearance()
             isTranslucent = false
         } else {
             barTintColor = .primaryDark
@@ -30,6 +19,10 @@ public class NavigationBar: UINavigationBar {
     }
 
     // MARK: Bar Button Appearance
+
+    static let largeTitleTextAttributes = [
+        NSAttributedString.Key.font: UIFont.navigationBarLargeTitleFont
+    ]
 
     static let buttonTitleTextAttributes = [
         NSAttributedString.Key.font: UIFont.navigationBarButtonFont
@@ -46,5 +39,31 @@ public class NavigationBar: UINavigationBar {
     required init(coder: NSCoder) {
         let className = String(describing: type(of: self))
         fatalError("\(className) does not implement init(coder:)")
+    }
+}
+
+public class NavigationBarAppearance: UINavigationBarAppearance {
+    public override init(idiom: UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom) {
+        super.init(idiom: idiom)
+        configureWithOpaqueBackground()
+        backgroundColor = .primaryDark
+        largeTitleTextAttributes = NavigationBar.largeTitleTextAttributes
+        titleTextAttributes = NavigationBar.titleTextAttributes
+        backButtonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+        backButtonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+        doneButtonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+        doneButtonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+        buttonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+        buttonAppearance.highlighted.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
+    }
+
+    public override init(barAppearance: UIBarAppearance) {
+        super.init(barAppearance: barAppearance)
+    }
+
+    @available(*, unavailable)
+    required init(coder: NSCoder) {
+        let typeName = NSStringFromClass(type(of: self))
+        fatalError("\(typeName) does not implement init(coder:)")
     }
 }

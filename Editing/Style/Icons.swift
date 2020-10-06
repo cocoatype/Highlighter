@@ -30,4 +30,46 @@ public enum Icons {
 
         return UIImage(named: "Help")
     }
+
+    public static var albums: UIImage? {
+        if #available(iOS 13.0, *) {
+            return UIImage(systemName: "rectangle.stack")
+        }
+
+        return UIImage(named: "Albums")
+    }
+
+    // MARK: Collections
+
+    public static var favoritesCollection: UIImage? {
+        if #available(iOS 13.0, *) {
+            return UIImage(systemName: "suit.heart")?.withRenderingMode(.alwaysTemplate)
+        }
+
+        return UIImage(named: "Favorites Album")
+    }
+
+    public static var recentsCollection: UIImage? {
+        if #available(iOS 13.0, *) {
+            return UIImage(systemName: "clock")?.withRenderingMode(.alwaysTemplate)
+        }
+
+        return UIImage(named: "Recents Album")
+    }
+
+    public static var screenshotsCollection: UIImage? {
+        if #available(iOS 13.0, *) {
+            return UIImage(systemName: "camera.viewfinder")?.withRenderingMode(.alwaysTemplate)
+        }
+
+        return UIImage(named: "Screenshots Album")
+    }
+
+    public static var standardCollection: UIImage? {
+        if #available(iOS 13.0, *) {
+            return UIImage(systemName: "rectangle.stack")?.withRenderingMode(.alwaysTemplate)
+        }
+
+        return UIImage(named: "Screenshots Album")
+    }
 }

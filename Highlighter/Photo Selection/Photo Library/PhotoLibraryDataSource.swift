@@ -2,29 +2,34 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Photos
+import SwiftUI
 import UIKit
 import VisionKit
 
-class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibraryChangeObserver {
-    override init() {
+protocol LibraryDataSource {
+    var itemsCount: Int { get }
+    func item(at index: Int) -> PhotoLibraryItem
+}
+
+class PhotoLibraryDataSource: NSObject, LibraryDataSource, PHPhotoLibraryChangeObserver, UICollectionViewDataSource {
+    private let collection: Collection
+    init(_ collection: Collection) {
+        self.collection = collection
         super.init()
+
         PHPhotoLibrary.shared().register(self)
     }
 
-    weak var libraryView: PhotoLibraryView?
+    weak var libraryView: LegacyPhotoLibraryView?
 
     // MARK: Data Source
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if shouldShowDocumentScannerCell {
-            return allPhotos.count + 1
-        } else {
-            return allPhotos.count
-        }
+        return itemsCount
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard indexPath.row < allPhotos.count else {
+        guard indexPath.row < photosCount else {
             return documentScannerCell(for: collectionView, at: indexPath)
         }
 
@@ -57,27 +62,36 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
     // MARK: Photos
 
     private lazy var allPhotos: PHFetchResult<PHAsset> = self.fetchAllPhotos()
+    private var photosCount: Int { return allPhotos.count }
+    var itemsCount: Int {
+        if shouldShowDocumentScannerCell {
+            return photosCount + 1
+        } else {
+            return photosCount
+        }
+    }
 
     static func photo(withIdentifier identifier: String) -> PHAsset? {
         return PHAsset.fetchAssets(withLocalIdentifiers: [identifier], options: nil).firstObject
     }
 
+    func item(at index: Int) -> PhotoLibraryItem {
+        guard index < photosCount else { return .documentScan }
+        return .asset(allPhotos[index])
+    }
+    
     func item(at indexPath: IndexPath) -> PhotoLibraryItem {
-        let index = indexPath.item
-        guard index < allPhotos.count else { return .documentScan }
-
-        return .asset(allPhotos[indexPath.item])
+        return item(at: indexPath.item)
     }
 
     var lastItemIndexPath: IndexPath {
-        let lastItemIndex = allPhotos.count - 1
+        let lastItemIndex = photosCount - 1
         return IndexPath(row: lastItemIndex, section: 0)
     }
 
     private func fetchAllPhotos() -> PHFetchResult<PHAsset> {
-        let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-        return PHAsset.fetchAssets(with: fetchOptions)
+        guard let collection = collection as? AssetCollection else { return PHFetchResult<PHAsset>() }
+        return collection.assets
     }
 
     // MARK: Photo Library Changes
@@ -113,6 +127,11 @@ class PhotoLibraryDataSource: NSObject, UICollectionViewDataSource, PHPhotoLibra
             }
         }
     }
+}
+
+@available(iOS 14.0, *)
+extension PhotoLibraryDataSource: ObservableObject {
+    
 }
 
 enum PhotoLibraryItem {

@@ -8,12 +8,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let window = AppWindow()
-        window.rootViewController = AppViewController()
-        window.makeKeyAndVisible()
-        self.window = window
+        if #available(iOS 13.0, *) {
+        } else {
+            let window = AppWindow()
+            window.rootViewController = AppViewController()
+            window.makeKeyAndVisible()
+            self.window = window
+        }
+
+        #if targetEnvironment(macCatalyst)
+        
+        #endif
 
         return true
+    }
+
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        if options.userActivities.contains(where: { $0.activityType == "com.cocoatype.Highlighter.settings"} ) {
+            let settingsConfiguration = UISceneConfiguration(name: "Settings", sessionRole: .windowApplication)
+            return settingsConfiguration
+        } else {
+            #if targetEnvironment(macCatalyst)
+            return UISceneConfiguration(name: "Desktop", sessionRole: .windowApplication)
+            #else
+            let appConfiguration = UISceneConfiguration(name: "Highlighter", sessionRole: .windowApplication)
+            return appConfiguration
+            #endif
+        }
     }
 
     // MARK: URL Handling
@@ -60,6 +81,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             return false
         }
+    }
+
+    // MARK: Menu
+
+    #if targetEnvironment(macCatalyst)
+    override func buildMenu(with builder: UIMenuBuilder) {
+        guard builder.system == .main else { return }
+
+        let saveMenu = UIMenu(title: "", options: [.displayInline], children: [
+            UIKeyCommand(title: "Save", action: #selector(PhotoEditingViewController.save(_:)), input: "S", modifierFlags: [.command])
+        ])
+        builder.insertSibling(saveMenu, afterMenu: .close)
+
+        let about = UICommand(title: Self.aboutMenuItemTitle, action: #selector(Self.displayAbout))
+        let privacyPolicy = UICommand(title: Self.privacyMenuItemTitle, action: #selector(Self.displayPrivacyPolicy))
+        let acknowledgements = UICommand(title: Self.acknowledgementsMenuItemTitle, action: #selector(Self.displayAcknowledgements))
+        let contact = UICommand(title: Self.contactMenuItemTitle, action: #selector(Self.initiateContact))
+        let helpMenu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [about, privacyPolicy, acknowledgements, contact])
+        builder.insertChild(helpMenu, atStartOfMenu: .help)
+
+        let preferencesMenu = UIMenu(title: "Preferences", identifier: .preferences, options: .displayInline, children: [
+            UIKeyCommand(title: "Preferences…", action: #selector(Self.displayPreferences), input: ",", modifierFlags: [.command])
+        ])
+        builder.insertSibling(preferencesMenu, afterMenu: .about)
+    }
+    #endif
+
+    @objc private func displayPreferences() {
+        let activity = NSUserActivity(activityType: "com.cocoatype.Highlighter.settings")
+        let existingScene = UIApplication.shared.openSessions.first(where: { $0.configuration.delegateClass == DesktopSettingsSceneDelegate.self })
+        UIApplication.shared.requestSceneSessionActivation(existingScene, userActivity: activity, options: nil, errorHandler: nil)
+    }
+
+    private static let privacyMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.privacy", comment: "Privacy menu item title")
+    @objc private func displayPrivacyPolicy() {
+        UIApplication.shared.open(PrivacyViewController.url, options: [:], completionHandler: nil)
+    }
+
+    private static let aboutMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.about", comment: "About menu item title")
+    @objc private func displayAbout() {
+        UIApplication.shared.open(AboutViewController.url, options: [:], completionHandler: nil)
+    }
+
+    private static let acknowledgementsMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.acknowledgements", comment: "Acknowledgements menu item title")
+    @objc private func displayAcknowledgements() {
+        UIApplication.shared.open(AcknowledgementsViewController.url, options: [:], completionHandler: nil)
+    }
+
+    private static let contactMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.contact", comment: "Contact menu item title")
+    @objc private func initiateContact() {
+        UIApplication.shared.open(ContactMailViewController.mailtoURL, options: [:], completionHandler: nil)
     }
 
     // MARK: Boilerplate

@@ -6,6 +6,10 @@
   Copyright © 2019 Cocoatype, LLC. All rights reserved.
 */
 
+"AlbumsBarButtonItem.standardAccessibilityLabel" = "Albums";
+
+"AlbumsViewController.navigationTitle" = "Albums";
+
 "AutoRedactionsAdditionDialogFactory.addButtonTitle" = "Add Word";
 "AutoRedactionsAdditionDialogFactory.placeholder" = "Hidden Word";
 "AutoRedactionsAdditionDialogFactory.dialogTitle" = "Auto-Hide Word";
@@ -20,7 +24,14 @@
 "BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle" = "Undo Redaction";
 "BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle" = "Redo Redaction";
 
+"CollectionsDataSource.userAlbumsHeader" = "Albums";
+"CollectionsDataSource.smartAlbumsHeader" = "Library";
+
 "ContactMailViewController.emailSubject" = "Hello!";
+
+"DesktopSettingsSceneDelegate.windowTitle" = "Preferences";
+
+"DesktopSettingsView.wordListLabel" = "Auto-Hidden Words";
 
 "IntroView.promptLabelText" = "Black Highlighter needs permission to edit your photos.";
 "IntroView.promptButtonTitle" = "Grant Access";
@@ -48,7 +59,7 @@
 "PhotoSelectionViewController.settingsButtonAccessibilityLabel" = "Help";
 
 "PurchaseItem.title" = "Ultra Highlighter";
-"PurchaseItem.subtitleWithoutProduct" = "Enhanced Features — $2.99";
+"PurchaseItem.subtitleWithoutProduct" = "Enhanced Features";
 "PurchaseItem.subtitleWithProduct" = "Enhanced Features — %@";
 
 "PurchaseMarketingView.autoRedactionsHeader" = "Auto-Hide Words";
@@ -57,7 +68,7 @@
 "PurchaseMarketingView.documentScanningText" = "Sometimes the stuff you want to share is in the real world. Bring them in to the virtual with high-quality document scanning.";
 "PurchaseMarketingView.supportDevelopmentHeader" = "Support Development";
 "PurchaseMarketingView.supportDevelopmentText" = "Black Highlighter is a one-man show. Your support helps keep updates to Black Highlighter coming!";
-"PurchaseMarketingView.purchaseButtonTitleWithoutProduct" = "Purchase for $2.99";
+"PurchaseMarketingView.purchaseButtonTitleWithoutProduct" = "Purchase";
 "PurchaseMarketingView.purchaseButtonTitleWithProduct" = "Purchase for %@";
 
 "PurchaseMarketingViewController.navigationTitle" = "Ultra Highlighter";
@@ -72,3 +83,10 @@
 "SettingsContentProvider.Section.otherApps.header" = "Other Apps by Cocoatype";
 
 "SettingsViewController.navigationTitle" = "Settings";
+
+"ShareItem.label" = "Share";
+
+"ToolPickerItem.itemLabel" = "Tools";
+"ToolPickerItem.menuTitle" = "Tools";
+"ToolPickerItem.magicToolItem" = "Magic Highlighter";
+"ToolPickerItem.manualToolItem" = "Manual Highlighter";

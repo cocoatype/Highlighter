@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 4/3/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import SwiftUI
 import UIKit
 
 public extension UIColor {
@@ -23,4 +24,12 @@ public extension UIColor {
                   blue: blue / 255,
                   alpha: 1.0)
     }
+}
+
+@available(iOS 14.0, *)
+public extension Color {
+    static let primaryExtraLight = Color(.primaryExtraLight)
+    static let primaryLight = Color(.primaryLight)
+    static let appPrimary = Color(.primary)
+    static let primaryDark = Color(.primaryDark)
 }

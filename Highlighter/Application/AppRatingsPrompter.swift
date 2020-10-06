@@ -6,9 +6,14 @@ import Foundation
 import StoreKit
 
 class AppRatingsPrompter: NSObject {
-    static func displayRatingsPrompt() {
+    static func displayRatingsPrompt(in windowScene: UIWindowScene?) {
+        guard let windowScene = windowScene else { return }
         if triggeringNumberOfSaves.contains(Defaults.numberOfSaves) {
-            SKStoreReviewController.requestReview()
+            if #available(iOS 14.0, *) {
+                SKStoreReviewController.requestReview(in: windowScene)
+            } else {
+                SKStoreReviewController.requestReview()
+            }
         }
     }
 

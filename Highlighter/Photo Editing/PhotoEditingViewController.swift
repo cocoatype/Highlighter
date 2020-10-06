@@ -15,6 +15,13 @@ class PhotoEditingViewController: BasePhotoEditingViewController {
         userActivity = EditingUserActivity()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        becomeFirstResponder()
+    }
+
+    override var canBecomeFirstResponder: Bool { return true }
+
     // MARK: Edit Protection
 
     private(set) var hasMadeEdits = false
@@ -22,9 +29,13 @@ class PhotoEditingViewController: BasePhotoEditingViewController {
         hasMadeEdits = true
     }
 
+    func clearHasMadeEdits() {
+        hasMadeEdits = false
+    }
+
     // MARK: Sharing
 
-    @objc func sharePhoto() {
+    @objc func sharePhoto(_ sender: Any) {
         exportImage { [weak self] image in
             guard let exportedImage = image else { return }
 
@@ -32,7 +43,7 @@ class PhotoEditingViewController: BasePhotoEditingViewController {
             activityController.completionWithItemsHandler = { [weak self] _, completed, _, _ in
                 self?.hasMadeEdits = false
                 Defaults.numberOfSaves = Defaults.numberOfSaves + 1
-                AppRatingsPrompter.displayRatingsPrompt()
+                AppRatingsPrompter.displayRatingsPrompt(in: self?.view.window?.windowScene)
             }
 
             DispatchQueue.main.async { [weak self] in
@@ -40,6 +51,16 @@ class PhotoEditingViewController: BasePhotoEditingViewController {
                 self?.present(activityController, animated: true)
             }
         }
+    }
+
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        #if targetEnvironment(macCatalyst)
+        if action == #selector(save(_:)) {
+            return self.canSave
+        }
+        #endif
+
+        return super.canPerformAction(action, withSender: sender)
     }
 
     // MARK: Boilerplate

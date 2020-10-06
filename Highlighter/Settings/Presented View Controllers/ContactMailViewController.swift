@@ -59,6 +59,11 @@ class ContactMailViewController: MFMailComposeViewController, MFMailComposeViewC
 
     // MARK: Boilerplate
 
+    static var mailtoURL: URL {
+        guard let mailtoURL = URL(string: "mailto:\(emailToAddress)") else { fatalError("Invalid mailto address") }
+        return mailtoURL
+    }
+
     @available(*, unavailable)
     required init(coder: NSCoder) {
         let className = String(describing: type(of: self))
