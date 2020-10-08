@@ -86,7 +86,6 @@
         }
         return bezierPath;
     } else {
-        NSAssert(false, @"Should not be run on iOS 13");
         return [self newPath];
     }
 }
@@ -94,6 +93,8 @@
 #pragma mark Touch Handling
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    if (@available(iOS 14.0, *)) { return; }
+
     UITouch *touch = [touches anyObject];
     if (touch == nil) { return; }
 
@@ -102,9 +103,24 @@
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    if (@available(iOS 14.0, *)) { return; }
+
     UITouch *touch = [touches anyObject];
     if (touch == nil) { return; }
     [self.currentPath addLineToPoint:[touch locationInView:self]];
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    if (@available(iOS 14.0, *)) { return; }
+
+    [self sendActionsForControlEvents:UIControlEventTouchUpInside];
+    self.currentPath = nil;
+}
+
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    if (@available(iOS 14.0, *)) { return; }
+
+    self.currentPath = nil;
 }
 
 @end

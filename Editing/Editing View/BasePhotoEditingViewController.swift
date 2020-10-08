@@ -63,6 +63,8 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
 
     // MARK: Highlighters
 
+    public var highlighterTool: HighlighterTool { return photoEditingView.highlighterTool }
+
     @objc func toggleHighlighterTool() {
         let currentTool = photoEditingView.highlighterTool
         let allTools = HighlighterTool.allCases
@@ -71,6 +73,14 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
         let nextTool = allTools[nextToolIndex]
         photoEditingView.highlighterTool = nextTool
         updateToolbarItems()
+    }
+
+    @objc public func selectMagicHighlighter() {
+        photoEditingView.highlighterTool = .magic
+    }
+
+    @objc public func selectManualHighlighter() {
+        photoEditingView.highlighterTool = .manual
     }
 
     private func updateToolbarItems(animated: Bool = true) {

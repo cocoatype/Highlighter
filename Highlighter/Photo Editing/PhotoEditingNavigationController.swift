@@ -3,6 +3,7 @@
 
 import Editing
 import Photos
+import SwiftUI
 import UIKit
 
 class PhotoEditingNavigationController: NavigationController {

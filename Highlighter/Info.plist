@@ -50,10 +50,10 @@
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Black Highlighter accesses your photo library to open photos for redaction and to save redacted photos.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Black Highlighter accesses your camera to scan documents for redaction.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Black Highlighter accesses your photo library to open photos for redaction and to save redacted photos.</string>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>com.cocoatype.Highlighter.editing</string>
@@ -76,6 +76,18 @@
 					<string>Highlighter</string>
 					<key>UISceneDelegateClassName</key>
 					<string>Highlighter.SceneDelegate</string>
+				</dict>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Settings</string>
+					<key>UISceneDelegateClassName</key>
+					<string>Highlighter.DesktopSettingsSceneDelegate</string>
+				</dict>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Desktop</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_NAME).DesktopSceneDelegate</string>
 				</dict>
 			</array>
 		</dict>

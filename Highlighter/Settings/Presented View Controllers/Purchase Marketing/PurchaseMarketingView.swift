@@ -15,19 +15,28 @@ class PurchaseMarketingView: UIView {
         addSubview(stackView)
         stackView.addArrangedSubviews([
             autoRedactionsHeaderLabel,
-            autoRedactionsTextLabel,
+            autoRedactionsTextLabel
+        ])
+
+        #if !targetEnvironment(macCatalyst)
+        stackView.addArrangedSubviews([
             documentScanningHeaderLabel,
-            documentScanningTextLabel,
+            documentScanningTextLabel
+        ])
+        #endif
+
+        stackView.addArrangedSubviews([
             supportDevelopmentHeaderLabel,
             supportDevelopmentTextLabel,
             purchaseButton
         ])
+
         stackView.setCustomSpacing(4.0, after: autoRedactionsHeaderLabel)
         stackView.setCustomSpacing(4.0, after: documentScanningHeaderLabel)
         stackView.setCustomSpacing(4.0, after: supportDevelopmentHeaderLabel)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 20.0),
+            stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20.0),
             stackView.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor)
         ])

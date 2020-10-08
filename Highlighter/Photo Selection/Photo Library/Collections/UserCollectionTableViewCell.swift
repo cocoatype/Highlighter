@@ -35,7 +35,7 @@ class UserCollectionTableViewCell: UITableViewCell, CollectionTableViewCell {
     var collection: Collection? {
         didSet {
             label.text = collection?.title
-            asset = collection?.keyAssets.firstObject
+            asset = (collection as? AssetCollection)?.keyAssets.firstObject
         }
     }
 

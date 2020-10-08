@@ -16,7 +16,7 @@ class CollectionsDataSource: NSObject, UITableViewDataSource {
         return types
           .map { $0.fetchResult }
           .flatMap { $0.objects(at: IndexSet(integersIn: 0..<$0.count)) }
-          .map(Collection.init)
+          .map(AssetCollection.init)
     }
 
     // MARK: Data Access
@@ -45,6 +45,13 @@ class CollectionsDataSource: NSObject, UITableViewDataSource {
         return cell
     }
 
+    // MARK: SwiftUI Data Source
+
+    var collectionsData: [CollectionSection] {[
+        CollectionSection(title: Self.smartAlbumsHeader, collections: smartCollections),
+        CollectionSection(title: Self.userAlbumsHeader, collections: userCollections)
+    ]}
+
     // MARK: UITableViewDataSource
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -68,5 +75,6 @@ class CollectionsDataSource: NSObject, UITableViewDataSource {
 
     // MARK: Localizable Strings
 
+    private static let smartAlbumsHeader = NSLocalizedString("CollectionsDataSource.smartAlbumsHeader", comment: "Header for the smart albums section in the albums list")
     private static let userAlbumsHeader = NSLocalizedString("CollectionsDataSource.userAlbumsHeader", comment: "Header for the user albums section in the albums list")
 }

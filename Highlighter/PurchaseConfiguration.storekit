@@ -1,7 +1,7 @@
 {
   "products" : [
     {
-      "displayPrice" : "12.99",
+      "displayPrice" : "2.99",
       "familyShareable" : false,
       "internalID" : "D29E3F0E",
       "localizations" : [
@@ -18,7 +18,7 @@
   ],
   "settings" : {
     "_askToBuyEnabled" : false,
-    "_billingIssuesEnabled" : true,
+    "_billingIssuesEnabled" : false,
     "_failTransactionsEnabled" : false,
     "_storefront" : "USA",
     "_storeKitError" : 0

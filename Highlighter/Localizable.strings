@@ -24,9 +24,14 @@
 "BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle" = "Undo Redaction";
 "BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle" = "Redo Redaction";
 
-"CollectionsDataSource.userAlbumsHeader" = "My Albums";
+"CollectionsDataSource.userAlbumsHeader" = "Albums";
+"CollectionsDataSource.smartAlbumsHeader" = "Library";
 
 "ContactMailViewController.emailSubject" = "Hello!";
+
+"DesktopSettingsSceneDelegate.windowTitle" = "Preferences";
+
+"DesktopSettingsView.wordListLabel" = "Auto-Hidden Words";
 
 "IntroView.promptLabelText" = "Black Highlighter needs permission to edit your photos.";
 "IntroView.promptButtonTitle" = "Grant Access";
@@ -78,3 +83,10 @@
 "SettingsContentProvider.Section.otherApps.header" = "Other Apps by Cocoatype";
 
 "SettingsViewController.navigationTitle" = "Settings";
+
+"ShareItem.label" = "Share";
+
+"ToolPickerItem.itemLabel" = "Tools";
+"ToolPickerItem.menuTitle" = "Tools";
+"ToolPickerItem.magicToolItem" = "Magic Highlighter";
+"ToolPickerItem.manualToolItem" = "Manual Highlighter";

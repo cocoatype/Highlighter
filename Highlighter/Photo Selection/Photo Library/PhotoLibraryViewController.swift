@@ -1,107 +1,64 @@
-//  Created by Geoff Pado on 4/8/19.
-//  Copyright © 2019 Cocoatype, LLC. All rights reserved.
+//  Created by Geoff Pado on 7/1/20.
+//  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
 import Editing
+import Photos
+import SwiftUI
 import UIKit
 
-class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate {
-    init(collection: Collection = CollectionType.library.defaultCollection) {
-        self.dataSource = PhotoLibraryDataSource(collection)
-        super.init(nibName: nil, bundle: nil)
+@available(iOS 14.0, *)
+class PhotoLibraryViewController: UIHostingController<PhotoLibraryView>, NavigationWrapper.NavigationObject {
+    init(collection: Collection) {
+        self.collection = collection
+        let dataSource = PhotoLibraryDataSource(collection)
+        var libraryView = PhotoLibraryView(dataSource: dataSource)
+        super.init(rootView: libraryView)
+
+        libraryView.navigationWrapper = NavigationWrapper(navigationObject: self)
+        rootView = libraryView
 
         navigationItem.title = Self.navigationItemTitle
         navigationItem.rightBarButtonItem = SettingsBarButtonItem.standard
-        NotificationCenter.default.addObserver(forName: Purchaser.stateDidChange, object: nil, queue: .main) { [weak self] notification in
-            guard let purchaser = notification.object as? Purchaser, case .purchased = purchaser.state else { return }
-            self?.libraryView?.reloadData()
+    }
+
+    var collection: Collection {
+        didSet {
+            let dataSource = PhotoLibraryDataSource(collection)
+            var libraryView = PhotoLibraryView(dataSource: dataSource)
+            libraryView.navigationWrapper = NavigationWrapper(navigationObject: self)
+            rootView = libraryView
         }
     }
 
-    override func loadView() {
-        let libraryView = PhotoLibraryView()
-        libraryView.dataSource = dataSource
-        libraryView.delegate = self
-        libraryView.dragDelegate = self
-        dataSource.libraryView = libraryView
+    // MARK: NavigationObject
 
-        let dropInteraction = UIDropInteraction(delegate: self)
-        libraryView.addInteraction(dropInteraction)
-
-        view = libraryView
+    func presentSettingsViewController() {
+        next?.settingsPresenter?.presentSettingsViewController()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        if libraryView?.contentOffset == .zero {
-            libraryView?.layoutIfNeeded()
-            libraryView?.scrollToItem(at: dataSource.lastItemIndexPath, at: .bottom, animated: false)
-        }
+    func presentPhotoEditingViewController(for asset: PHAsset, redactions: [Redaction]?, animated: Bool) {
+        next?.photoEditorPresenter?.presentPhotoEditingViewController(for: asset, redactions: redactions, animated: animated)
     }
 
-    // MARK: UICollectionViewDragDelegate
-
-    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        guard #available(iOS 13.0, *) else { return [] }
-
-        let item = dataSource.item(at: indexPath)
-        guard case .asset(let asset) = item else { return [] }
-
-        let userActivity = EditingUserActivity(assetLocalIdentifier: asset.localIdentifier)
-        let dragItemProvider = NSItemProvider(object: userActivity)
-
-        let dragItem = UIDragItem(itemProvider: dragItemProvider)
-        dragItem.localObject = asset
-        return [dragItem]
+    func presentPhotoEditingViewController(for image: UIImage, completionHandler: ((UIImage) -> Void)?) {
+        next?.photoEditorPresenter?.presentPhotoEditingViewController(for: image, completionHandler: completionHandler)
     }
 
-    // MARK: UIDropInteractionDelegate
-
-    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
-        guard session.items.count == 1 else { return false }
-        guard session.canLoadObjects(ofClass: UIImage.self) else { return false }
-
-        return true
+    func presentDocumentCameraViewController() {
+        next?.documentScannerPresenter?.presentDocumentCameraViewController()
     }
 
-    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
-        return UIDropProposal(operation: .copy)
-    }
-
-    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
-        session.loadObjects(ofClass: UIImage.self) { [weak self] dropItems in
-            guard let image = (dropItems.first as? UIImage) else { return }
-            self?.photoEditorPresenter?.presentPhotoEditingViewController(for: image, completionHandler: nil)
-        }
-    }
-
-    // MARK: UICollectionViewDelegate
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch dataSource.item(at: indexPath) {
-        case .asset(let asset):
-            photoEditorPresenter?.presentPhotoEditingViewController(for: asset, redactions: nil, animated: true)
-        case .documentScan:
-            guard #available(iOS 13.0, *) else { break }
-            documentScannerPresenter?.presentDocumentCameraViewController()
-        }
+    func present(_ collection: Collection) {
+        next?.collectionPresenter?.present(collection)
     }
 
     // MARK: Boilerplate
 
     private static let navigationItemTitle = NSLocalizedString("PhotoSelectionViewController.navigationItemTitle", comment: "Navigation title for the photo selector")
 
-    private let dataSource: PhotoLibraryDataSource
-    private var libraryView: PhotoLibraryView? { return view as? PhotoLibraryView }
-    private var purchaseStateObserver: Any?
-
-    deinit {
-        purchaseStateObserver.map(NotificationCenter.default.removeObserver)
-    }
-
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        let className = String(describing: type(of: self))
-        fatalError("\(className) does not implement init(coder:)")
+        let typeName = NSStringFromClass(type(of: self))
+        fatalError("\(typeName) does not implement init(coder:)")
     }
 }
