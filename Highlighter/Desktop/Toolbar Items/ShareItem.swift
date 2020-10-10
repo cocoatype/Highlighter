@@ -86,4 +86,28 @@ class ToolPickerItem: NSMenuToolbarItem {
 protocol ToolPickerItemDelegate: class {
     var highlighterTool: HighlighterTool { get }
 }
+
+class ColorPickerItem: NSToolbarItem {
+    static let identifier = NSToolbarItem.Identifier("ColorPickerItem.identifier")
+    let delegate: ColorPickerItemDelegate
+
+    init(delegate: ColorPickerItemDelegate) {
+        self.delegate = delegate
+        super.init(itemIdentifier: Self.identifier)
+        image = UIImage(systemName: "paintpalette")?.applyingSymbolConfiguration(.init(scale: .large))
+        label = Self.itemLabel
+
+        target = delegate
+        action = #selector(ColorPickerItemDelegate.displayColorPicker)
+    }
+
+    // MARK: Boilerplate
+    private static let itemLabel = NSLocalizedString("ColorPickerItem.itemLabel", comment: "Label for the color picker toolbar item")
+}
+
+@objc protocol ColorPickerItemDelegate: class {
+    var currentColor: UIColor { get }
+    @objc func displayColorPicker(_ sender: NSToolbarItem)
+}
+
 #endif

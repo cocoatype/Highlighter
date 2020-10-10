@@ -10,6 +10,7 @@ class ColorPickerViewController: UIColorPickerViewController {
         overrideUserInterfaceStyle = .dark
         supportsAlpha = false
         view.tintColor = .white
+        modalPresentationStyle = .popover
     }
 
     @available(*, unavailable)

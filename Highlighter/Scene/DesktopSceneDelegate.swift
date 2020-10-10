@@ -5,7 +5,7 @@ import Editing
 import UIKit
 
 #if targetEnvironment(macCatalyst)
-class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, ShareItemDelegate, ToolPickerItemDelegate {
+class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, ShareItemDelegate, ToolPickerItemDelegate, ColorPickerItemDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -46,20 +46,29 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
 
     var highlighterTool: HighlighterTool { return editingViewController?.highlighterTool ?? .magic }
 
+    // MARK: ColorPickerItemDelegate
+
+    var currentColor: UIColor { return .black }
+
+    @objc func displayColorPicker(_ sender: NSToolbarItem) {
+        editingViewController?.showColorPicker(self)
+    }
+
     // MARK: NSToolbarDelegate
 
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        [ToolPickerItem.identifier, ShareItem.identifier]
+        [ColorPickerItem.identifier, ToolPickerItem.identifier, ShareItem.identifier]
     }
 
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        [ToolPickerItem.identifier, ShareItem.identifier]
+        [ColorPickerItem.identifier, ToolPickerItem.identifier, ShareItem.identifier]
     }
 
     func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
         switch itemIdentifier {
         case ToolPickerItem.identifier: return ToolPickerItem(delegate: self)
         case ShareItem.identifier: return ShareItem(delegate: self)
+        case ColorPickerItem.identifier: return ColorPickerItem(delegate: self)
         default: return nil
         }
     }

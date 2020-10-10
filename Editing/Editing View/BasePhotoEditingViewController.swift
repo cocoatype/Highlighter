@@ -106,10 +106,19 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
     // MARK: Color Picker
 
     @available(iOS 14.0, *)
-    @objc private func showColorPicker(_ sender: Any) {
-        let picker = ColorPickerViewController.init()
-        picker.delegate = self
-        present(picker, animated: true, completion: nil)
+    @objc public func showColorPicker(_ sender: Any) {
+        if traitCollection.userInterfaceIdiom == .mac {
+            ColorPanel.shared.makeKeyAndOrderFront(sender)
+            colorObserver = NotificationCenter.default.addObserver(forName: ColorPanel.colorDidChangeNotification, object: nil, queue: .main, using: { [weak self] notification in
+                guard let colorPanel = notification.object as? ColorPanel else { return }
+                self?.photoEditingView.color = colorPanel.color
+            })
+        } else if let toolbarItem = toolbarItems?.first(where: { $0.action == #selector(showColorPicker(_:)) }) {
+            let picker = ColorPickerViewController()
+            picker.delegate = self
+            picker.popoverPresentationController?.barButtonItem = toolbarItem
+            present(picker, animated: true, completion: nil)
+        }
     }
 
     @available(iOS 14.0, *)
@@ -208,12 +217,14 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
     private static let redoKeyCommandDiscoverabilityTitle = NSLocalizedString("BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle", comment: "Discovery title for the redo key command")
 
     private let asset: PHAsset?
+    private var colorObserver: Any?
     private let imageManager = PHImageManager()
     private let textRectangleDetector = TextRectangleDetector()
     private let photoEditingView = PhotoEditingView()
     private var redactionChangeObserver: Any?
 
     deinit {
+        colorObserver.map(NotificationCenter.default.removeObserver)
         redactionChangeObserver.map(NotificationCenter.default.removeObserver)
     }
 
