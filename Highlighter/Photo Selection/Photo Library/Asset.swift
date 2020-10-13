@@ -21,7 +21,11 @@ class Asset: ObservableObject {
     static let imageManager = PHImageManager.default()
 
     func fetchImage(completionHandler: @escaping ((UIImage?) -> Void)) {
-        Self.imageManager.requestImage(for: photoAsset, targetSize: CGSize(width: photoAsset.pixelWidth, height: photoAsset.pixelHeight), contentMode: .aspectFill, options: nil) { image, _ in
+        let options = PHImageRequestOptions()
+        options.isNetworkAccessAllowed = true
+        options.deliveryMode = .opportunistic
+
+        Self.imageManager.requestImage(for: photoAsset, targetSize: CGSize(width: photoAsset.pixelWidth, height: photoAsset.pixelHeight), contentMode: .aspectFill, options: options) { image, _ in
             completionHandler(image)
         }
     }

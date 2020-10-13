@@ -11,34 +11,15 @@ struct PhotoLibraryView: View {
     init(dataSource: LibraryDataSource) {
         self.dataSource = dataSource
     }
-    
-    @ViewBuilder
-    private func itemView(for item: PhotoLibraryItem) -> some View {
-        switch item {
-        case .asset(let asset): AssetButton(asset)
-        case .documentScan: DocumentScanButton()
-        }
-    }
-    
-    private let gridItem: GridItem = {
-        var item = GridItem(.adaptive(minimum: 126, maximum: .infinity))
-        item.spacing = 1
-        return item
-    }()
 
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: [gridItem, gridItem, gridItem, gridItem], spacing: 1) {
-                ForEach((0..<dataSource.itemsCount), id: \.self) {
-                    itemView(for: dataSource.item(at: $0)).aspectRatio(contentMode: .fill)
-                }
-            }
-        }.background(Color.appPrimary.ignoresSafeArea())
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing: SettingsButton())
-        .environmentObject(navigationWrapper)
+        PhotoLibraryScrollView(dataSource: dataSource)
+            .background(Color.appPrimary.ignoresSafeArea())
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: SettingsButton())
+            .environmentObject(navigationWrapper)
     }
-    
+
     // MARK: Boilerplate
     
     private var dataSource: LibraryDataSource

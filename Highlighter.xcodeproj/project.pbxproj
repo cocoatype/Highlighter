@@ -101,6 +101,7 @@
 		04920C1724CFCD3500BA3232 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04920C1624CFCD3500BA3232 /* Asset.swift */; };
 		04920C1924CFD02F00BA3232 /* PhotoAssetEditingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04920C1824CFD02F00BA3232 /* PhotoAssetEditingContainer.swift */; };
 		04953B5824E2405500877800 /* PhotoEditingViewController+Desktop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04953B5724E2405500877800 /* PhotoEditingViewController+Desktop.swift */; };
+		0495B57B25354C3200B2DF0B /* PhotoLibraryScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0495B57A25354C3200B2DF0B /* PhotoLibraryScrollView.swift */; };
 		049E1EB224BFEEE7009DE20D /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E1EB124BFEEE7009DE20D /* AlbumsViewController.swift */; };
 		049E1EB424BFEF09009DE20D /* AlbumsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E1EB324BFEF09009DE20D /* AlbumsList.swift */; };
 		049F2928228755DB00A335BE /* SettingsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F2927228755DB00A335BE /* SettingsNavigationController.swift */; };
@@ -445,6 +446,7 @@
 		04920C1624CFCD3500BA3232 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		04920C1824CFD02F00BA3232 /* PhotoAssetEditingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAssetEditingContainer.swift; sourceTree = "<group>"; };
 		04953B5724E2405500877800 /* PhotoEditingViewController+Desktop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditingViewController+Desktop.swift"; sourceTree = "<group>"; };
+		0495B57A25354C3200B2DF0B /* PhotoLibraryScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryScrollView.swift; sourceTree = "<group>"; };
 		049E1EB124BFEEE7009DE20D /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		049E1EB324BFEF09009DE20D /* AlbumsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsList.swift; sourceTree = "<group>"; };
 		049F2927228755DB00A335BE /* SettingsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
@@ -716,6 +718,7 @@
 				04920C1624CFCD3500BA3232 /* Asset.swift */,
 				0491831424E4D87A004251B1 /* SettingsButton.swift */,
 				0491831624E4DA72004251B1 /* SettingsPresenting.swift */,
+				0495B57A25354C3200B2DF0B /* PhotoLibraryScrollView.swift */,
 			);
 			path = "Photo Library";
 			sourceTree = "<group>";
@@ -1660,6 +1663,7 @@
 				04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */,
 				041EFF52225303430058D8EE /* PromptButton.swift in Sources */,
 				0489081724AD796D005DDEF3 /* PhotoLibraryViewController.swift in Sources */,
+				0495B57B25354C3200B2DF0B /* PhotoLibraryScrollView.swift in Sources */,
 				041EFEF92251A9F30058D8EE /* AppDelegate.swift in Sources */,
 				046C4065247F5BCA0069E8FB /* UserCollectionTableViewCellImageView.swift in Sources */,
 				043CD9DD227548C20012F5AE /* SettingsTableView.swift in Sources */,
