@@ -158,7 +158,8 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
 
     // MARK: Status Bar
 
-    override var childForStatusBarStyle: UIViewController? { return children.first }
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    override var childForStatusBarStyle: UIViewController? { return nil }
 
     // MARK: Boilerplate
 
