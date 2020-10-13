@@ -16,8 +16,15 @@ class ColorPanel: NSObject {
     }
 
     var color: UIColor {
-        guard let value = underlyingPanel.value(forKeyPath: "color"), let color = value as? UIColor else { return UIColor() }
-        return color
+        get {
+            guard let value = underlyingPanel.value(forKeyPath: "color"),
+                  let color = value as? UIColor else { return .black }
+            return color
+        }
+
+        set(newColor) {
+            underlyingPanel.setValue(newColor, forKey: "color")
+        }
     }
 
     // MARK: Boilerplate

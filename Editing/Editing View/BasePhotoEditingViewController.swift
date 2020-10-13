@@ -17,6 +17,14 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
         redactionChangeObserver = NotificationCenter.default.addObserver(forName: PhotoEditingRedactionView.redactionsDidChange, object: nil, queue: .main, using: { [weak self] _ in
             self?.updateToolbarItems()
         })
+
+        #if targetEnvironment(macCatalyst)
+        ColorPanel.shared.color = .black
+        colorObserver = NotificationCenter.default.addObserver(forName: ColorPanel.colorDidChangeNotification, object: nil, queue: .main, using: { [weak self] notification in
+            guard let colorPanel = notification.object as? ColorPanel else { return }
+            self?.photoEditingView.color = colorPanel.color
+        })
+        #endif
     }
 
     open override func loadView() {
@@ -109,10 +117,6 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
     @objc public func showColorPicker(_ sender: Any) {
         if traitCollection.userInterfaceIdiom == .mac {
             ColorPanel.shared.makeKeyAndOrderFront(sender)
-            colorObserver = NotificationCenter.default.addObserver(forName: ColorPanel.colorDidChangeNotification, object: nil, queue: .main, using: { [weak self] notification in
-                guard let colorPanel = notification.object as? ColorPanel else { return }
-                self?.photoEditingView.color = colorPanel.color
-            })
         } else if let toolbarItem = toolbarItems?.first(where: { $0.action == #selector(showColorPicker(_:)) }) {
             let picker = ColorPickerViewController()
             picker.delegate = self
