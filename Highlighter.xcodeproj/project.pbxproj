@@ -324,7 +324,7 @@
 /* Begin PBXFileReference section */
 		0401CDF724AD89220011A9BF /* DocumentScanButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScanButton.swift; sourceTree = "<group>"; };
 		0401CDF924AD8EF50011A9BF /* AssetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetButton.swift; sourceTree = "<group>"; };
-		04171B7C24A52EC2006923AC /* PurchaseConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = PurchaseConfiguration.storekit; sourceTree = "<group>"; };
+		04171B7C24A52EC2006923AC /* PurchaseConfigurationOriginal.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = PurchaseConfigurationOriginal.storekit; sourceTree = "<group>"; };
 		04171B7D24A5392E006923AC /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		041BEA3622EF75E800FF07C2 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		041BEA3A22EF7B2900FF07C2 /* PhotoEditingBrushStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingBrushStrokeView.swift; sourceTree = "<group>"; };
@@ -545,6 +545,7 @@
 		04F3C84C230BC1E100445A8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04F3C859230BC20E00445A8D /* PencilKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PencilKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/PencilKit.framework; sourceTree = DEVELOPER_DIR; };
 		04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingBrushStrokeView.h; sourceTree = "<group>"; };
+		04F7AAB42537E5AA0024D3B4 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		04FDEA5525257B1900F94CA9 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservationRedaction.swift; sourceTree = "<group>"; };
 		04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEditViewController.swift; sourceTree = "<group>"; };
@@ -913,8 +914,9 @@
 				041EFF4A225300030058D8EE /* Localizable.strings */,
 				041EFEFF2251A9F50058D8EE /* Assets.xcassets */,
 				041EFF012251A9F50058D8EE /* LaunchScreen.storyboard */,
-				04171B7C24A52EC2006923AC /* PurchaseConfiguration.storekit */,
+				04171B7C24A52EC2006923AC /* PurchaseConfigurationOriginal.storekit */,
 				04171B7D24A5392E006923AC /* StoreKitTestCertificate.cer */,
+				04F7AAB42537E5AA0024D3B4 /* Configuration.storekit */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

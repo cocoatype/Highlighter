@@ -10,9 +10,11 @@ public struct AppReceipt {
     let opaqueValue: Data
     let sha1Hash: Data
     public let purchaseReceipts: [PurchaseReceipt]
-    public let originalAppVersion: String
-    let receiptCreationDate: Date
+    let originalAppVersion: String?
+    let receiptCreationDate: Date?
     let expirationDate: Date?
+
+    public var purchaseVersion: String { return originalAppVersion ?? appVersion }
 
     init(bundleIdentifier: String?, bundleIdentifierData: Data?, appVersion: String?, opaqueValue: Data?, sha1Hash: Data?, purchaseReceipts: [PurchaseReceipt], originalAppVersion: String?, receiptCreationDate: Date?, expirationDate: Date?) throws {
         guard
@@ -20,9 +22,7 @@ public struct AppReceipt {
           let bundleIdentifierData = bundleIdentifierData,
           let appVersion = appVersion,
           let opaqueValue = opaqueValue,
-          let sha1Hash = sha1Hash,
-          let originalAppVersion = originalAppVersion,
-          let receiptCreationDate = receiptCreationDate
+          let sha1Hash = sha1Hash
         else { throw ReceiptParserError.incompleteData } // checking required values
 
         self.bundleIdentifier = bundleIdentifier
