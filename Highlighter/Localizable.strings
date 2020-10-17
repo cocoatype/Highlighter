@@ -33,8 +33,10 @@
 
 "DesktopSettingsView.wordListLabel" = "Auto-Hidden Words";
 
-"IntroView.promptLabelText" = "Black Highlighter needs permission to edit your photos.";
-"IntroView.promptButtonTitle" = "Grant Access";
+"IntroView.permissionLabelText" = "Black Highlighter needs permission to edit your photos.";
+"IntroView.permissionButtonTitle" = "Grant Access";
+"IntroView.importLabelText" = "Or, select a single photo.";
+"IntroView.importButtonTitle" = "Select Photo";
 
 "PageCountAlertFactory.alertTitle" = "Too Many Pages";
 "PageCountAlertFactory.alertMessage" = "Highlighter only supports editing one page at a time. Only the first page of your scan will appear.";

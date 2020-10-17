@@ -19,8 +19,6 @@ public class ReceiptValidator {
         #endif
 
         let receiptData = try Data(contentsOf: receiptURL)
-        print(receiptData.base64EncodedString())
-
         let container = try decrypt(receiptData)
         // TODO (#121): Fix receipt validation
 //        try validate(container)

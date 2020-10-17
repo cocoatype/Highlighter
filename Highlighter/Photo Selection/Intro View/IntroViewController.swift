@@ -1,17 +1,28 @@
 //  Created by Geoff Pado on 4/1/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import PhotosUI
+import SwiftUI
 import UIKit
 
-class IntroViewController: UIViewController {
+class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
     init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
         self.permissionsRequester = permissionsRequester
-        super.init(nibName: nil, bundle: nil)
-        navigationItem.rightBarButtonItem = SettingsBarButtonItem.standard
+        super.init(rootView: IntroView())
+
+        let introView: IntroView
+        if #available(iOS 14.0, *) {
+            introView = IntroView(permissionAction: requestPermission, importAction: importPhoto)
+        } else {
+            introView = IntroView(permissionAction: requestPermission)
+        }
+
+        self.rootView = introView
     }
 
-    override func loadView() {
-        self.view = IntroView()
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        view.backgroundColor = .primary
     }
 
     @objc func requestPermission() {
@@ -31,9 +42,33 @@ class IntroViewController: UIViewController {
         }
     }
 
+    @available(iOS 14.0, *)
+    @objc func importPhoto() {
+        present(photoPicker.pickerViewController, animated: true)
+    }
+
+    // MARK: PhotoPickerDelegate
+
+    @available(iOS 14.0, *)
+    func picker(_ picker: PhotoPicker, didSelectImage image: UIImage?) {
+        DispatchQueue.main.async { [weak self] in
+            self?.dismiss(animated: true)
+
+            guard let image = image else { return }
+            self?.photoEditorPresenter?.presentPhotoEditingViewController(for: image, completionHandler: nil)
+        }
+    }
+
     // MARK: Boilerplate
 
     private let permissionsRequester: PhotoPermissionsRequester
+
+    @available(iOS 14.0, *)
+    private lazy var photoPicker: PhotoPicker = {
+        let picker = PhotoPicker()
+        picker.delegate = self
+        return picker
+    }()
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
