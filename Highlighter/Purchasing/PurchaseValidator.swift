@@ -8,7 +8,7 @@ struct PurchaseValidator {
     static func hasUserPurchasedProduct(withIdentifier identifier: String, receiptFetchingMethod: (() throws -> AppReceipt) = ReceiptValidator.validatedAppReceipt) -> Bool {
         do {
             let receipt = try receiptFetchingMethod()
-            let originalPurchaseVersion = Int(receipt.originalAppVersion) ?? Int.max
+            let originalPurchaseVersion = Int(receipt.purchaseVersion) ?? Int.max
             let earnedFreeProduct = originalPurchaseVersion < PurchaseValidator.freeProductCutoff
             let purchasedProduct = receipt.containsPurchase(withIdentifier: identifier)
             return earnedFreeProduct || purchasedProduct

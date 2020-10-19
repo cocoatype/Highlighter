@@ -84,6 +84,7 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
         case .documentScan:
             guard #available(iOS 13.0, *) else { break }
             documentScannerPresenter?.presentDocumentCameraViewController()
+        case .limitedLibrary: break
         }
     }
 

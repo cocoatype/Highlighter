@@ -5,7 +5,11 @@ import Photos
 
 class PhotoPermissionsRequester: NSObject {
     func authorizationStatus() -> PHAuthorizationStatus {
-        return PHPhotoLibrary.authorizationStatus()
+        if #available(iOS 14.0, *) {
+            return PHPhotoLibrary.authorizationStatus(for: .readWrite)
+        } else {
+            return PHPhotoLibrary.authorizationStatus()
+        }
     }
 
     func requestAuthorization(_ handler: @escaping (PHAuthorizationStatus) -> Void) {

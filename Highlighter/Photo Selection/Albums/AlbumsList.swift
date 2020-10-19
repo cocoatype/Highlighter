@@ -37,7 +37,7 @@ struct AlbumsSectionHeader: View {
     }
 
     var body: some View {
-        Text(text).font(Font.app(textStyle: .title3))
+        Text(text).font(Font.app(textStyle: .title3)).foregroundColor(.white)
     }
 }
 

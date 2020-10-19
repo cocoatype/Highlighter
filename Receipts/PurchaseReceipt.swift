@@ -7,24 +7,20 @@ public struct PurchaseReceipt {
     let quantity: Int
     public let productIdentifier: String
     let transactionIdentifier: String
-    let originalTransactionIdentifier: String
-    let purchaseDate: Date
-    let originalPurchaseDate: Date
+    let originalTransactionIdentifier: String?
+    let purchaseDate: Date?
+    let originalPurchaseDate: Date?
     let subscriptionExpirationDate: Date?
     let cancellationDate: Date?
     let webOrderLineItemId: Int?
 
     init(quantity: Int?, productIdentifier: String?, transactionIdentifier: String?, originalTransactionIdentifier: String?, purchaseDate: Date?, originalPurchaseDate: Date?, subscriptionExpirationDate: Date?, cancellationDate: Date?, webOrderLineItemId: Int?) throws {
         guard
-          let quantity = quantity,
           let productIdentifier = productIdentifier,
-          let transactionIdentifier = transactionIdentifier,
-          let originalTransactionIdentifier = originalTransactionIdentifier,
-          let purchaseDate = purchaseDate,
-          let originalPurchaseDate = originalPurchaseDate
+          let transactionIdentifier = transactionIdentifier
         else { throw ReceiptParserError.incompleteData }
 
-        self.quantity = quantity
+        self.quantity = quantity ?? 1
         self.productIdentifier = productIdentifier
         self.transactionIdentifier = transactionIdentifier
         self.originalTransactionIdentifier = originalTransactionIdentifier

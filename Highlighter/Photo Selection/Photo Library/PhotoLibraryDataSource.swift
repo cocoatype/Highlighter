@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 4/8/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Combine
 import Photos
 import SwiftUI
 import UIKit
@@ -61,14 +62,25 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, PHPhotoLibraryChangeO
 
     // MARK: Photos
 
+    private let permissionsRequester = PhotoPermissionsRequester()
+
     private lazy var allPhotos: PHFetchResult<PHAsset> = self.fetchAllPhotos()
     private var photosCount: Int { return allPhotos.count }
-    var itemsCount: Int {
+    var itemsCount: Int { photosCount + extraItems.count }
+    var itemsCountPublisher = CurrentValueSubject<Int, Never>(0)
+
+    var extraItems: [PhotoLibraryItem] {
+        var extraItems = [PhotoLibraryItem]()
+
         if shouldShowDocumentScannerCell {
-            return photosCount + 1
-        } else {
-            return photosCount
+            extraItems.append(.documentScan)
         }
+
+        if #available(iOS 14.0, *), permissionsRequester.authorizationStatus() == .limited {
+            extraItems.append(.limitedLibrary)
+        }
+
+        return extraItems
     }
 
     static func photo(withIdentifier identifier: String) -> PHAsset? {
@@ -76,7 +88,7 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, PHPhotoLibraryChangeO
     }
 
     func item(at index: Int) -> PhotoLibraryItem {
-        guard index < photosCount else { return .documentScan }
+        guard index < photosCount else { return extraItems[index - photosCount] }
         return .asset(allPhotos[index])
     }
     
@@ -91,7 +103,9 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, PHPhotoLibraryChangeO
 
     private func fetchAllPhotos() -> PHFetchResult<PHAsset> {
         guard let collection = collection as? AssetCollection else { return PHFetchResult<PHAsset>() }
-        return collection.assets
+        let assets = collection.assets
+        itemsCountPublisher.send(assets.count + extraItems.count)
+        return assets
     }
 
     // MARK: Photo Library Changes
@@ -101,7 +115,10 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, PHPhotoLibraryChangeO
             allPhotos = changes.fetchResultAfterChanges
 
             DispatchQueue.main.async { [weak self] in
-                guard let dataSource = self, let libraryView = dataSource.libraryView else { return }
+                guard let dataSource = self else { return }
+                dataSource.itemsCountPublisher.send(dataSource.itemsCount)
+
+                guard let libraryView = dataSource.libraryView else { return }
 
                 if changes.hasIncrementalChanges {
                     libraryView.performBatchUpdates({ [unowned libraryView, changes] in
@@ -120,7 +137,6 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, PHPhotoLibraryChangeO
                                                  to: IndexPath(item: toIndex, section: 0))
                         }
                     }, completion: nil)
-
                 } else {
                     libraryView.reloadData()
                 }
@@ -137,4 +153,5 @@ extension PhotoLibraryDataSource: ObservableObject {
 enum PhotoLibraryItem {
     case asset(PHAsset)
     case documentScan
+    case limitedLibrary
 }

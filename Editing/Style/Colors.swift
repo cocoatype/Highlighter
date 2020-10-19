@@ -26,7 +26,6 @@ public extension UIColor {
     }
 }
 
-@available(iOS 14.0, *)
 public extension Color {
     static let primaryExtraLight = Color(.primaryExtraLight)
     static let primaryLight = Color(.primaryLight)

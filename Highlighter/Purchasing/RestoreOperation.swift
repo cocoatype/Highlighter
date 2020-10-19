@@ -15,10 +15,10 @@ class RestoreOperation: AsyncOperation<Void, Error>, SKPaymentTransactionObserve
 
     // MARK: SKPaymentTransactionObserver
 
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {} // required, but we don't need to do anything
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {} // TODO (#120): store count of transactions, show alert if none appear
 
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        succeed()
+        succeed() // TODO (#120): if no transactions, fail with no transactions error
     }
 
     func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
