@@ -12,19 +12,18 @@ class Purchaser: NSObject {
 
     override init() {
         super.init()
-
-        if PurchaseValidator.hasUserPurchasedProduct(withIdentifier: Purchaser.productIdentifier) {
-            state = .purchased
-        } else {
-            fetchProducts()
-        }
+        reset()
     }
 
     // MARK: Operations
 
     private func reset() {
-        state = .loading
-        fetchProducts()
+        if PurchaseValidator.hasUserPurchasedProduct(withIdentifier: Purchaser.productIdentifier) {
+            state = .purchased
+        } else {
+            state = .loading
+            fetchProducts()
+        }
     }
 
     func purchaseUnlock() {
@@ -66,11 +65,8 @@ class Purchaser: NSObject {
 
     func restorePurchases() {
         let restoreOperation = RestoreOperation()
-        let handleRestoreOperation = BlockOperation { [weak self, weak restoreOperation] in
-            switch restoreOperation?.result {
-            case .success?: self?.state = .purchased
-            case .none, .failure?: self?.reset()
-            }
+        let handleRestoreOperation = BlockOperation { [weak self] in
+            self?.reset()
         }
         handleRestoreOperation.addDependency(restoreOperation)
 

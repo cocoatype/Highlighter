@@ -8,53 +8,34 @@ import SwiftUI
 @available(iOS 14.0, *)
 struct PhotoLibraryView: View {
     var navigationWrapper = NavigationWrapper.empty
-    init(dataSource: LibraryDataSource) {
+    init(dataSource: PhotoLibraryDataSource) {
         self.dataSource = dataSource
     }
-    
-    @ViewBuilder
-    private func itemView(for item: PhotoLibraryItem) -> some View {
-        switch item {
-        case .asset(let asset): AssetButton(asset)
-        case .documentScan: DocumentScanButton()
-        }
-    }
-    
-    private let gridItem: GridItem = {
-        var item = GridItem(.adaptive(minimum: 126, maximum: .infinity))
-        item.spacing = 1
-        return item
-    }()
 
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: [gridItem, gridItem, gridItem, gridItem], spacing: 1) {
-                ForEach((0..<dataSource.itemsCount), id: \.self) {
-                    itemView(for: dataSource.item(at: $0)).aspectRatio(contentMode: .fill)
-                }
-            }
-        }.background(Color.appPrimary)
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing: SettingsButton())
-        .environmentObject(navigationWrapper)
+        PhotoLibraryScrollView(dataSource: dataSource)
+            .background(Color.appPrimary.ignoresSafeArea())
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: SettingsButton())
+            .environmentObject(navigationWrapper)
     }
-    
+
     // MARK: Boilerplate
     
-    private var dataSource: LibraryDataSource
+    private var dataSource: PhotoLibraryDataSource
 }
 
-@available(iOS 14.0, *)
-struct PhotoLibraryView_Previews: PreviewProvider {
-    struct PreviewLibraryDataSource: LibraryDataSource {
-        var itemsCount: Int { 10 }
-        func item(at index: Int) -> PhotoLibraryItem {
-            if index < itemsCount - 1 { return .asset(PHAsset()) }
-            return .documentScan
-        }
-    }
-
-    static var previews: some View {
-        PhotoLibraryView(dataSource: PreviewLibraryDataSource())
-    }
-}
+//@available(iOS 14.0, *)
+//struct PhotoLibraryView_Previews: PreviewProvider {
+//    struct PreviewLibraryDataSource: LibraryDataSource {
+//        var itemsCount: Int { 10 }
+//        func item(at index: Int) -> PhotoLibraryItem {
+//            if index < itemsCount - 1 { return .asset(PHAsset()) }
+//            return .documentScan
+//        }
+//    }
+//
+//    static var previews: some View {
+//        PhotoLibraryView(dataSource: PreviewLibraryDataSource())
+//    }
+//}

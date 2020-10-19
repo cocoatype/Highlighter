@@ -11,6 +11,18 @@ public class SplitViewController: UISplitViewController {
         setViewController(secondaryViewController, for: .secondary)
     }
 
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .primaryDark
+    }
+
+    // MARK: Status Bar
+
+    open override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    open override var childForStatusBarStyle: UIViewController? { return nil }
+
+    // MARK: Boilerplate
+
     @available(*, unavailable)
     required init(coder: NSCoder) {
         let typeName = NSStringFromClass(type(of: self))

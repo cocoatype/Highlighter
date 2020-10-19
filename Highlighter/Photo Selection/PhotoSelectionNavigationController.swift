@@ -8,7 +8,7 @@ import UIKit
 
 @available(iOS 14.0, *)
 class NavigationWrapper: NSObject, ObservableObject {
-    typealias NavigationObject = (SettingsPresenting & PhotoEditorPresenting & DocumentScannerPresenting & CollectionPresenting)
+    typealias NavigationObject = (SettingsPresenting & PhotoEditorPresenting & DocumentScannerPresenting & CollectionPresenting & LimitedLibraryPresenting)
     init(navigationObject: NavigationObject) {
         self.navigationObject = navigationObject
     }
@@ -33,6 +33,10 @@ class NavigationWrapper: NSObject, ObservableObject {
 
     func present(_ collection: Collection) {
         navigationObject?.present(collection)
+    }
+
+    func presentLimitedLibrary() {
+        navigationObject?.presentLimitedLibrary()
     }
 
     private let navigationObject: NavigationObject?

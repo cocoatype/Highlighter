@@ -52,6 +52,10 @@ class PhotoLibraryViewController: UIHostingController<PhotoLibraryView>, Navigat
         next?.collectionPresenter?.present(collection)
     }
 
+    func presentLimitedLibrary() {
+        next?.limitedLibraryPresenter?.presentLimitedLibrary()
+    }
+
     // MARK: Boilerplate
 
     private static let navigationItemTitle = NSLocalizedString("PhotoSelectionViewController.navigationItemTitle", comment: "Navigation title for the photo selector")
