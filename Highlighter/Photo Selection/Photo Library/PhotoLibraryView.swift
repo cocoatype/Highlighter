@@ -8,7 +8,7 @@ import SwiftUI
 @available(iOS 14.0, *)
 struct PhotoLibraryView: View {
     var navigationWrapper = NavigationWrapper.empty
-    init(dataSource: LibraryDataSource) {
+    init(dataSource: PhotoLibraryDataSource) {
         self.dataSource = dataSource
     }
 
@@ -22,20 +22,20 @@ struct PhotoLibraryView: View {
 
     // MARK: Boilerplate
     
-    private var dataSource: LibraryDataSource
+    private var dataSource: PhotoLibraryDataSource
 }
 
-@available(iOS 14.0, *)
-struct PhotoLibraryView_Previews: PreviewProvider {
-    struct PreviewLibraryDataSource: LibraryDataSource {
-        var itemsCount: Int { 10 }
-        func item(at index: Int) -> PhotoLibraryItem {
-            if index < itemsCount - 1 { return .asset(PHAsset()) }
-            return .documentScan
-        }
-    }
-
-    static var previews: some View {
-        PhotoLibraryView(dataSource: PreviewLibraryDataSource())
-    }
-}
+//@available(iOS 14.0, *)
+//struct PhotoLibraryView_Previews: PreviewProvider {
+//    struct PreviewLibraryDataSource: LibraryDataSource {
+//        var itemsCount: Int { 10 }
+//        func item(at index: Int) -> PhotoLibraryItem {
+//            if index < itemsCount - 1 { return .asset(PHAsset()) }
+//            return .documentScan
+//        }
+//    }
+//
+//    static var previews: some View {
+//        PhotoLibraryView(dataSource: PreviewLibraryDataSource())
+//    }
+//}

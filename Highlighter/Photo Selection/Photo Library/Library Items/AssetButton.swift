@@ -21,7 +21,9 @@ struct AssetButton: View {
                     Color.gray
                 }
             }
-        }.buttonStyle(BorderlessButtonStyle())
+        }
+        .buttonStyle(BorderlessButtonStyle())
+        .tag(asset.photoAsset.localIdentifier)
     }
     
     @ObservedObject private var asset: Asset

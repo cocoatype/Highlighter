@@ -6,7 +6,7 @@ import Photos
 import UIKit
 import VisionKit
 
-class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening, VNDocumentCameraViewControllerDelegate, DocumentScannerPresenting, SettingsPresenting, CollectionPresenting {
+class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening, VNDocumentCameraViewControllerDelegate, DocumentScannerPresenting, SettingsPresenting, CollectionPresenting, LimitedLibraryPresenting {
     init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
         self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
@@ -25,7 +25,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     private let permissionsRequester: PhotoPermissionsRequester
     private var preferredViewController: UIViewController {
         switch permissionsRequester.authorizationStatus() {
-        case .authorized:
+        case .authorized, .limited:
             if #available(iOS 14.0, *) {
                 return SplitViewController(primaryViewController: AlbumsViewController(), secondaryViewController: PhotoLibraryViewController(collection: CollectionType.library.defaultCollection))
             } else {
@@ -45,6 +45,13 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         guard #available(iOS 14.0, *), let splitViewController = children.first(where: { $0 is SplitViewController }) as? SplitViewController, let photoLibraryViewController = splitViewController.viewController(for: .secondary) as? PhotoLibraryViewController else { return }
         photoLibraryViewController.collection = collection
         splitViewController.show(.secondary)
+    }
+
+    // MARK: Limited Library
+
+    @available(iOS 14.0, *)
+    func presentLimitedLibrary() {
+        PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: self)
     }
 
     // MARK: Photo Editing View Controller

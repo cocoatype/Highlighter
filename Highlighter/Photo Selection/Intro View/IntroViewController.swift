@@ -28,7 +28,7 @@ class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
     @objc func requestPermission() {
         permissionsRequester.requestAuthorization { [weak self] status in
             switch status {
-            case .authorized:
+            case .authorized, .limited:
                 UIApplication.shared.sendAction(#selector(AppViewController.showPhotoLibrary), to: nil, from: self, for: nil)
             case .restricted:
                 self?.present(PhotoPermissionsRestrictedAlertFactory.alert(), animated: true)

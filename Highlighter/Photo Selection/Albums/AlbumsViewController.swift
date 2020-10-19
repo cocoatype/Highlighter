@@ -42,6 +42,10 @@ class AlbumsViewController: UIHostingController<AlbumsList>, NavigationWrapper.N
         next?.collectionPresenter?.present(collection)
     }
 
+    func presentLimitedLibrary() {
+        next?.limitedLibraryPresenter?.presentLimitedLibrary()
+    }
+
     // MARK: Boilerplate
 
     private let albumsDataSource: CollectionsDataSource
