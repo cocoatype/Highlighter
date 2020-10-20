@@ -58,6 +58,12 @@ class PhotoEditingWorkspaceView: UIControl {
         }
     }
 
+    var color: UIColor = .black {
+        didSet {
+            brushStrokeView.color = color
+        }
+    }
+
     var image: UIImage? {
         get { return imageView.image }
         set(newImage) {
@@ -74,7 +80,7 @@ class PhotoEditingWorkspaceView: UIControl {
     }
 
     func redact<ObservationType: TextObservation>(_ textObservation: ObservationType) {
-        redactionView.add(TextObservationRedaction(textObservation))
+        redactionView.add(TextObservationRedaction(textObservation, color: color))
     }
 
     var textObservations: [TextRectangleObservation]? {
@@ -107,14 +113,14 @@ class PhotoEditingWorkspaceView: UIControl {
             .flatMap { $0 }
             .filter { strokeBorderPath.contains($0.bounds.center) }
 
-        if let newRedaction = CharacterObservationRedaction(redactedCharacterObservations) {
+        if let newRedaction = CharacterObservationRedaction(redactedCharacterObservations, color: color) {
             redactionView.add(newRedaction)
         }
     }
 
     private func handleManualStrokeCompletion() {
         guard let strokePath = brushStrokeView.currentPath else { return }
-        redactionView.add(PathRedaction(strokePath))
+        redactionView.add(PathRedaction(strokePath, color: color))
     }
 
     // MARK: Accessibility
@@ -125,6 +131,7 @@ class PhotoEditingWorkspaceView: UIControl {
     }
 
     // MARK: Boilerplate
+
 
     private let imageView: PhotoEditingImageView
     private let visualizationView: PhotoEditingObservationVisualizationView

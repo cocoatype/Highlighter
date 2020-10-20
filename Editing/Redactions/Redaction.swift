@@ -4,5 +4,6 @@
 import UIKit
 
 public protocol Redaction {
+    var color: UIColor { get }
     var paths: [UIBezierPath] { get }
 }

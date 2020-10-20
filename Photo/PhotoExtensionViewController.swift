@@ -37,7 +37,7 @@ class PhotoExtensionViewController: UIViewController, PHContentEditingController
                 let serializedRedactions = redactions.map(RedactionSerializer.dataRepresentation(of:))
                 let adjustmentData = try JSONEncoder().encode(serializedRedactions)
 
-                output.adjustmentData = PHAdjustmentData(formatIdentifier: Self.formatIdentifier, formatVersion: "1", data: adjustmentData)
+                output.adjustmentData = PHAdjustmentData(formatIdentifier: Self.formatIdentifier, formatVersion: "2", data: adjustmentData)
                 try outputData.write(to: output.renderedContentURL)
                 completionHandler(output)
             } catch {

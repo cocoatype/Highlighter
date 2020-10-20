@@ -100,6 +100,8 @@
 		04920C1524CFCCD000BA3232 /* AssetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04920C1424CFCCD000BA3232 /* AssetImage.swift */; };
 		04920C1724CFCD3500BA3232 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04920C1624CFCD3500BA3232 /* Asset.swift */; };
 		04920C1924CFD02F00BA3232 /* PhotoAssetEditingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04920C1824CFD02F00BA3232 /* PhotoAssetEditingContainer.swift */; };
+		0493D2D624B6BAE400FF99F4 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493D2D524B6BAE400FF99F4 /* ColorPickerViewController.swift */; };
+		0493D2D824B6BD0000FF99F4 /* BrushStampFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */; };
 		0493BA84253A9CF50083198C /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493BA83253A9CF50083198C /* PhotoPicker.swift */; };
 		0493BA93253AA4F80083198C /* LimitedLibraryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493BA92253AA4F80083198C /* LimitedLibraryButton.swift */; };
 		04953B5824E2405500877800 /* PhotoEditingViewController+Desktop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04953B5724E2405500877800 /* PhotoEditingViewController+Desktop.swift */; };
@@ -157,6 +159,7 @@
 		04A8A5EE2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */; };
 		04A8A5F1231659BA006CE411 /* PhotoEditingCanvasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */; };
 		04A8A5F2231659BA006CE411 /* PhotoEditingCanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5F0231659BA006CE411 /* PhotoEditingCanvasView.m */; };
+		04AA1D6C252EBBE400B486C7 /* ColorPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA1D6B252EBBE400B486C7 /* ColorPanel.swift */; };
 		04ABC8DD2528207400F5BA6A /* CollectionPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABC8DC2528207400F5BA6A /* CollectionPresenting.swift */; };
 		04ADD1562290CCC200E17445 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1552290CCC200E17445 /* AppEntry.swift */; };
 		04ADD1582290CFF100E17445 /* AppListFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1572290CFF100E17445 /* AppListFetcher.swift */; };
@@ -447,6 +450,8 @@
 		04920C1424CFCCD000BA3232 /* AssetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetImage.swift; sourceTree = "<group>"; };
 		04920C1624CFCD3500BA3232 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		04920C1824CFD02F00BA3232 /* PhotoAssetEditingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAssetEditingContainer.swift; sourceTree = "<group>"; };
+		0493D2D524B6BAE400FF99F4 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushStampFactory.swift; sourceTree = "<group>"; };
 		0493BA83253A9CF50083198C /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		0493BA92253AA4F80083198C /* LimitedLibraryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedLibraryButton.swift; sourceTree = "<group>"; };
 		04953B5724E2405500877800 /* PhotoEditingViewController+Desktop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditingViewController+Desktop.swift"; sourceTree = "<group>"; };
@@ -475,6 +480,7 @@
 		04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoEditingCanvasBrushStrokeView.m; sourceTree = "<group>"; };
 		04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingCanvasView.h; sourceTree = "<group>"; };
 		04A8A5F0231659BA006CE411 /* PhotoEditingCanvasView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoEditingCanvasView.m; sourceTree = "<group>"; };
+		04AA1D6B252EBBE400B486C7 /* ColorPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPanel.swift; sourceTree = "<group>"; };
 		04ABC8DC2528207400F5BA6A /* CollectionPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPresenting.swift; sourceTree = "<group>"; };
 		04ADD1552290CCC200E17445 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
 		04ADD1572290CFF100E17445 /* AppListFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListFetcher.swift; sourceTree = "<group>"; };
@@ -995,6 +1001,8 @@
 				042A39AB22811F7A009C1C07 /* Redactions */,
 				041EFF532255A0930058D8EE /* Style */,
 				043CD9CD226EB0B20012F5AE /* Text Detection */,
+				0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */,
+				04AA1D6B252EBBE400B486C7 /* ColorPanel.swift */,
 			);
 			path = Editing;
 			sourceTree = "<group>";
@@ -1007,6 +1015,7 @@
 				04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */,
 				043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */,
 				043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */,
+				0493D2D524B6BAE400FF99F4 /* ColorPickerViewController.swift */,
 			);
 			path = "Editing View";
 			sourceTree = "<group>";
@@ -1788,9 +1797,11 @@
 			files = (
 				049F92F422CDA4E40090C9BC /* CharacterObservationRedaction.swift in Sources */,
 				049F92F822CDA59F0090C9BC /* Colors.swift in Sources */,
+				0493D2D624B6BAE400FF99F4 /* ColorPickerViewController.swift in Sources */,
 				049F92F022CDA4C10090C9BC /* PhotoEditingRedactionView.swift in Sources */,
 				041BEA3F22EF879700FF07C2 /* TextRecognitionOperation.swift in Sources */,
 				04DBC841231E0F040004F7DB /* EditingUserActivity.swift in Sources */,
+				04AA1D6C252EBBE400B486C7 /* ColorPanel.swift in Sources */,
 				049F92F722CDA5690090C9BC /* PhotoEditingObservationVisualizationView.swift in Sources */,
 				049F92FA22CDA5D90090C9BC /* NavigationBar.swift in Sources */,
 				049F92F622CDA54B0090C9BC /* PhotoEditingScrollView.swift in Sources */,
@@ -1808,6 +1819,7 @@
 				04FF8DE122F6D698008CF0E9 /* WordObservationAccessibilityElement.swift in Sources */,
 				049F92FD22CDA6C40090C9BC /* Fonts.swift in Sources */,
 				044074BF23BE9BCD00D3CB99 /* RedactionPathLayer.swift in Sources */,
+				0493D2D824B6BD0000FF99F4 /* BrushStampFactory.swift in Sources */,
 				04431E5E2358117B009FA1F6 /* RedactionSerializer.swift in Sources */,
 				04FDEA5625257B1900F94CA9 /* SplitViewController.swift in Sources */,
 				04FF8DB422F57570008CF0E9 /* Defaults.swift in Sources */,

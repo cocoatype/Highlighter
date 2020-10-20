@@ -4,7 +4,7 @@
 import Photos
 import UIKit
 
-open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate {
+open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate, UIColorPickerViewControllerDelegate {
     public init(asset: PHAsset? = nil, image: UIImage? = nil, redactions: [Redaction]? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
         self.asset = asset
         self.image = image
@@ -17,6 +17,14 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
         redactionChangeObserver = NotificationCenter.default.addObserver(forName: PhotoEditingRedactionView.redactionsDidChange, object: nil, queue: .main, using: { [weak self] _ in
             self?.updateToolbarItems()
         })
+
+        #if targetEnvironment(macCatalyst)
+        ColorPanel.shared.color = .black
+        colorObserver = NotificationCenter.default.addObserver(forName: ColorPanel.colorDidChangeNotification, object: nil, queue: .main, using: { [weak self] notification in
+            guard let colorPanel = notification.object as? ColorPanel else { return }
+            self?.photoEditingView.color = colorPanel.color
+        })
+        #endif
     }
 
     open override func loadView() {
@@ -94,15 +102,35 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
 
         let highlighterToolIcon = photoEditingView.highlighterTool.image
         let highlighterToolItem = UIBarButtonItem(image: highlighterToolIcon, style: .plain, target: self, action: #selector(toggleHighlighterTool))
-        setToolbarItems([undoToolItem, redoToolItem, spacerItem, highlighterToolItem], animated: animated)
+
+        if #available(iOS 14.0, *) {
+            let colorPickerToolItem = UIBarButtonItem(image: UIImage(systemName: "paintpalette"), style: .plain, target: self, action: #selector(showColorPicker))
+            setToolbarItems([undoToolItem, redoToolItem, spacerItem, colorPickerToolItem, highlighterToolItem], animated: animated)
+        } else {
+            setToolbarItems([undoToolItem, redoToolItem, spacerItem, highlighterToolItem], animated: animated)
+        }
+    }
+
+    // MARK: Color Picker
+
+    @available(iOS 14.0, *)
+    @objc public func showColorPicker(_ sender: Any) {
+        if traitCollection.userInterfaceIdiom == .mac {
+            ColorPanel.shared.makeKeyAndOrderFront(sender)
+        } else if let toolbarItem = toolbarItems?.first(where: { $0.action == #selector(showColorPicker(_:)) }) {
+            let picker = ColorPickerViewController()
+            picker.delegate = self
+            picker.popoverPresentationController?.barButtonItem = toolbarItem
+            present(picker, animated: true, completion: nil)
+        }
+    }
+
+    @available(iOS 14.0, *)
+    public func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+        photoEditingView.color = viewController.selectedColor
     }
 
     // MARK: Undo/Redo
-
-//    let editingUndoManager = UndoManager()
-//    open override var undoManager: UndoManager? {
-//        return editingUndoManager
-//    }
 
     @objc private func undo(_ sender: Any) {
         undoManager?.undo()
@@ -193,12 +221,14 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
     private static let redoKeyCommandDiscoverabilityTitle = NSLocalizedString("BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle", comment: "Discovery title for the redo key command")
 
     private let asset: PHAsset?
+    private var colorObserver: Any?
     private let imageManager = PHImageManager()
     private let textRectangleDetector = TextRectangleDetector()
     private let photoEditingView = PhotoEditingView()
     private var redactionChangeObserver: Any?
 
     deinit {
+        colorObserver.map(NotificationCenter.default.removeObserver)
         redactionChangeObserver.map(NotificationCenter.default.removeObserver)
     }
 

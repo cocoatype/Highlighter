@@ -7,6 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol PhotoEditingBrushStrokeView <NSObject>
 
+@property (readwrite, nonnull) UIColor *color;
 @property (readonly, nullable) UIBezierPath *currentPath;
 - (void)updateToolWithCurrentZoomScale:(CGFloat)currentZoomScale NS_SWIFT_NAME(updateTool(currentZoomScale:));
 

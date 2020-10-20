@@ -14,12 +14,21 @@
         self.accessibilityIgnoresInvertColors = YES;
         self.allowsFingerDrawing = YES;
         self.backgroundColor = [UIColor clearColor];
+        self.color = [UIColor blackColor];
         self.opaque = NO;
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
         self.tool = [self toolForZoomScale:1.0];
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
 
     return self;
+}
+
+- (void)setColor:(UIColor *)color {
+    _color = color;
+    PKInkingTool *currentTool = (PKInkingTool *)[self tool];
+    PKInkingTool *newTool = [[PKInkingTool alloc] initWithInkType:currentTool.inkType color:color width:currentTool.width];
+    self.tool = newTool;
 }
 
 // MARK: Tool Creation
@@ -28,12 +37,8 @@
     return [((PKInkingTool *)[self tool]) width];
 }
 
-- (UIColor *)currentColor {
-    return self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark ? [UIColor whiteColor] : [UIColor blackColor];
-}
-
 - (PKTool *)toolForZoomScale:(CGFloat)zoomScale {
-    return [[PKInkingTool alloc] initWithInkType:PKInkTypeMarker color:[self currentColor] width:[self adjustedLineWidthForZoomScale:zoomScale]];
+    return [[PKInkingTool alloc] initWithInkType:PKInkTypeMarker color:self.color width:[self adjustedLineWidthForZoomScale:zoomScale]];
 }
 
 // MARK: Zoom Handling

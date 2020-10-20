@@ -21,6 +21,8 @@ class PhotoEditingLegacyBrushStrokeView: UIControl, PhotoEditingBrushStrokeView 
         currentPath.stroke()
     }
 
+    var color: UIColor = .black
+
     func updateTool(currentZoomScale: CGFloat) {
         // do nothing
     }

@@ -4,7 +4,7 @@
 import UIKit
 
 struct CharacterObservationRedaction: Redaction {
-    init?(_ characterObservations: [CharacterObservation]) {
+    init?(_ characterObservations: [CharacterObservation], color: UIColor) {
         guard characterObservations.count > 0 else { return nil }
         self.characterObservations = characterObservations
 
@@ -25,8 +25,11 @@ struct CharacterObservationRedaction: Redaction {
             path.addLine(to: CGPoint(x: rect.maxX - (width * 0.8), y: rect.midY))
             return path
         }
+
+        self.color = color
     }
 
+    let color: UIColor
     let paths: [UIBezierPath]
     private let characterObservations: [CharacterObservation]
 }
