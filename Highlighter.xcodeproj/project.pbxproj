@@ -62,6 +62,9 @@
 		0445AA592371208B00EB2A7B /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA582371208B00EB2A7B /* ImageDownloader.swift */; };
 		0445AA5B237130CC00EB2A7B /* PurchaseMarketingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA5A237130CC00EB2A7B /* PurchaseMarketingStackView.swift */; };
 		0445AA5D237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA5C237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift */; };
+		044D4C1F2547B7BD00701166 /* main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044D4C1D2547B7BD00701166 /* main.xib */; };
+		044D4C232547B7BD00701166 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 044D4C212547B7BD00701166 /* InfoPlist.strings */; };
+		044D4C4C2547C06600701166 /* RedactAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D4C4B2547C06600701166 /* RedactAction.swift */; };
 		045DB16B2529555C0033CFE8 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 045DB16A2529555C0033CFE8 /* OpenSSL */; };
 		046BEC242470EBAC00FBECD7 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC232470EBAC00FBECD7 /* Collection.swift */; };
 		046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC252470F87200FBECD7 /* CollectionType.swift */; };
@@ -100,10 +103,10 @@
 		04920C1524CFCCD000BA3232 /* AssetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04920C1424CFCCD000BA3232 /* AssetImage.swift */; };
 		04920C1724CFCD3500BA3232 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04920C1624CFCD3500BA3232 /* Asset.swift */; };
 		04920C1924CFD02F00BA3232 /* PhotoAssetEditingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04920C1824CFD02F00BA3232 /* PhotoAssetEditingContainer.swift */; };
-		0493D2D624B6BAE400FF99F4 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493D2D524B6BAE400FF99F4 /* ColorPickerViewController.swift */; };
-		0493D2D824B6BD0000FF99F4 /* BrushStampFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */; };
 		0493BA84253A9CF50083198C /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493BA83253A9CF50083198C /* PhotoPicker.swift */; };
 		0493BA93253AA4F80083198C /* LimitedLibraryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493BA92253AA4F80083198C /* LimitedLibraryButton.swift */; };
+		0493D2D624B6BAE400FF99F4 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493D2D524B6BAE400FF99F4 /* ColorPickerViewController.swift */; };
+		0493D2D824B6BD0000FF99F4 /* BrushStampFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */; };
 		04953B5824E2405500877800 /* PhotoEditingViewController+Desktop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04953B5724E2405500877800 /* PhotoEditingViewController+Desktop.swift */; };
 		0495B57B25354C3200B2DF0B /* PhotoLibraryScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0495B57A25354C3200B2DF0B /* PhotoLibraryScrollView.swift */; };
 		049E1EB224BFEEE7009DE20D /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E1EB124BFEEE7009DE20D /* AlbumsViewController.swift */; };
@@ -411,6 +414,12 @@
 		0445AA582371208B00EB2A7B /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		0445AA5A237130CC00EB2A7B /* PurchaseMarketingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingStackView.swift; sourceTree = "<group>"; };
 		0445AA5C237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingViewHeaderLabel.swift; sourceTree = "<group>"; };
+		044D4C182547B7BC00701166 /* AutomatorActions.action */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutomatorActions.action; sourceTree = BUILT_PRODUCTS_DIR; };
+		044D4C1E2547B7BD00701166 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/main.xib; sourceTree = "<group>"; };
+		044D4C202547B7BD00701166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		044D4C222547B7BD00701166 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		044D4C4A2547C06600701166 /* Automator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Automator-Bridging-Header.h"; sourceTree = "<group>"; };
+		044D4C4B2547C06600701166 /* RedactAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactAction.swift; sourceTree = "<group>"; };
 		046BEC232470EBAC00FBECD7 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		046BEC252470F87200FBECD7 /* CollectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionType.swift; sourceTree = "<group>"; };
 		046BEC272470F89B00FBECD7 /* CollectionsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsDataSource.swift; sourceTree = "<group>"; };
@@ -450,10 +459,10 @@
 		04920C1424CFCCD000BA3232 /* AssetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetImage.swift; sourceTree = "<group>"; };
 		04920C1624CFCD3500BA3232 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		04920C1824CFD02F00BA3232 /* PhotoAssetEditingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAssetEditingContainer.swift; sourceTree = "<group>"; };
-		0493D2D524B6BAE400FF99F4 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
-		0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushStampFactory.swift; sourceTree = "<group>"; };
 		0493BA83253A9CF50083198C /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		0493BA92253AA4F80083198C /* LimitedLibraryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedLibraryButton.swift; sourceTree = "<group>"; };
+		0493D2D524B6BAE400FF99F4 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushStampFactory.swift; sourceTree = "<group>"; };
 		04953B5724E2405500877800 /* PhotoEditingViewController+Desktop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditingViewController+Desktop.swift"; sourceTree = "<group>"; };
 		0495B57A25354C3200B2DF0B /* PhotoLibraryScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryScrollView.swift; sourceTree = "<group>"; };
 		049E1EB124BFEEE7009DE20D /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
@@ -604,6 +613,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		044D4C142547B7BC00701166 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		049F92D422CDA3DB0090C9BC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -639,6 +655,7 @@
 				04F3C8062309E8A800445A8D /* Receipts */,
 				04F3C84A230BC1E100445A8D /* Canvas */,
 				04431E4A23556106009FA1F6 /* Photo */,
+				044D4C192547B7BC00701166 /* Automator */,
 				041EFEF62251A9F30058D8EE /* Products */,
 				04ADD1622290DE6700E17445 /* Frameworks */,
 			);
@@ -654,6 +671,7 @@
 				04F3C8052309E8A800445A8D /* Receipts.framework */,
 				04F3C849230BC1E100445A8D /* Canvas.framework */,
 				04431E4523556106009FA1F6 /* Photo.appex */,
+				044D4C182547B7BC00701166 /* AutomatorActions.action */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -844,6 +862,18 @@
 				0445AA582371208B00EB2A7B /* ImageDownloader.swift */,
 			);
 			path = "Image Downloading";
+			sourceTree = "<group>";
+		};
+		044D4C192547B7BC00701166 /* Automator */ = {
+			isa = PBXGroup;
+			children = (
+				044D4C1D2547B7BD00701166 /* main.xib */,
+				044D4C202547B7BD00701166 /* Info.plist */,
+				044D4C212547B7BD00701166 /* InfoPlist.strings */,
+				044D4C4B2547C06600701166 /* RedactAction.swift */,
+				044D4C4A2547C06600701166 /* Automator-Bridging-Header.h */,
+			);
+			path = Automator;
 			sourceTree = "<group>";
 		};
 		046BEC1F2470E36800FBECD7 /* Albums */ = {
@@ -1427,6 +1457,24 @@
 			productReference = 04431E4523556106009FA1F6 /* Photo.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		044D4C172547B7BC00701166 /* AutomatorActions */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 044D4C262547B7BD00701166 /* Build configuration list for PBXNativeTarget "AutomatorActions" */;
+			buildPhases = (
+				044D4C132547B7BC00701166 /* Sources */,
+				044D4C142547B7BC00701166 /* Frameworks */,
+				044D4C152547B7BC00701166 /* Resources */,
+				044D4C162547B7BC00701166 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AutomatorActions;
+			productName = Automator;
+			productReference = 044D4C182547B7BC00701166 /* AutomatorActions.action */;
+			productType = "com.apple.product-type.bundle";
+		};
 		049F92D622CDA3DB0090C9BC /* Editing */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 049F92E022CDA3DB0090C9BC /* Build configuration list for PBXNativeTarget "Editing" */;
@@ -1508,6 +1556,10 @@
 					04431E4423556106009FA1F6 = {
 						CreatedOnToolsVersion = 11.0;
 					};
+					044D4C172547B7BC00701166 = {
+						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
+					};
 					049F92D622CDA3DB0090C9BC = {
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1100;
@@ -1544,6 +1596,7 @@
 				04F3C8042309E8A800445A8D /* Receipts */,
 				04F3C848230BC1E100445A8D /* Canvas */,
 				04431E4423556106009FA1F6 /* Photo */,
+				044D4C172547B7BC00701166 /* AutomatorActions */,
 			);
 		};
 /* End PBXProject section */
@@ -1594,6 +1647,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		044D4C152547B7BC00701166 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				044D4C1F2547B7BD00701166 /* main.xib in Resources */,
+				044D4C232547B7BD00701166 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		049F92D522CDA3DB0090C9BC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1616,6 +1678,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		044D4C162547B7BC00701166 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "amlint \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		041EFEF12251A9F30058D8EE /* Sources */ = {
@@ -1791,6 +1873,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		044D4C132547B7BC00701166 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				044D4C4C2547C06600701166 /* RedactAction.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		049F92D322CDA3DB0090C9BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1926,6 +2016,22 @@
 				04431E4E23556106009FA1F6 /* Base */,
 			);
 			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		044D4C1D2547B7BD00701166 /* main.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				044D4C1E2547B7BD00701166 /* Base */,
+			);
+			name = main.xib;
+			sourceTree = "<group>";
+		};
+		044D4C212547B7BD00701166 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				044D4C222547B7BD00701166 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		049F92C122CAF2A20090C9BC /* InfoPlist.strings */ = {
@@ -2246,6 +2352,59 @@
 			};
 			name = Release;
 		};
+		044D4C242547B7BD00701166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 287EDDET2B;
+				INFOPLIST_FILE = Automator/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Automator";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				OTHER_OSAFLAGS = "-x -t 0 -c 0";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Automator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Automator/Automator-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = action;
+			};
+			name = Debug;
+		};
+		044D4C252547B7BD00701166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 287EDDET2B;
+				INFOPLIST_FILE = Automator/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Automator";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				OTHER_OSAFLAGS = "-x -t 0 -c 0";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Automator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Automator/Automator-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = action;
+			};
+			name = Release;
+		};
 		049F92E122CDA3DB0090C9BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2478,6 +2637,15 @@
 			buildConfigurations = (
 				04431E5423556106009FA1F6 /* Debug */,
 				04431E5523556106009FA1F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		044D4C262547B7BD00701166 /* Build configuration list for PBXNativeTarget "AutomatorActions" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				044D4C242547B7BD00701166 /* Debug */,
+				044D4C252547B7BD00701166 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
