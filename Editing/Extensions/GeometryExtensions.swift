@@ -1,7 +1,11 @@
 //  Created by Geoff Pado on 4/10/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+#if canImport(AppKit)
+import AppKit
+#elseif canImport(UIKit)
 import UIKit
+#endif
 
 public extension CGSize {
     static func * (size: CGSize, multiplier: CGFloat) -> CGSize {

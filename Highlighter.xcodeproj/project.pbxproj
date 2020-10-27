@@ -65,6 +65,14 @@
 		044D4C1F2547B7BD00701166 /* main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044D4C1D2547B7BD00701166 /* main.xib */; };
 		044D4C232547B7BD00701166 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 044D4C212547B7BD00701166 /* InfoPlist.strings */; };
 		044D4C4C2547C06600701166 /* RedactAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D4C4B2547C06600701166 /* RedactAction.swift */; };
+		044D4C9F2547C8EE00701166 /* Redacting.h in Headers */ = {isa = PBXBuildFile; fileRef = 044D4C9D2547C8EE00701166 /* Redacting.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		044D4CBC2547C92800701166 /* TextRectangleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */; };
+		044D4CC52547CA2400701166 /* TextRectangleDetectionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */; };
+		044D4CCE2547CB2800701166 /* TextObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CE226EB0C70012F5AE /* TextObservation.swift */; };
+		044D4CD72547CB4300701166 /* CharacterObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF7227A924D00F21229 /* CharacterObservation.swift */; };
+		044D4CE02547CC0000701166 /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */; };
+		044D4CFA2547D20900701166 /* Redacting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044D4C9B2547C8EE00701166 /* Redacting.framework */; };
+		044D4D042547D25600701166 /* Redacting.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 044D4C9B2547C8EE00701166 /* Redacting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		045DB16B2529555C0033CFE8 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 045DB16A2529555C0033CFE8 /* OpenSSL */; };
 		046BEC242470EBAC00FBECD7 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC232470EBAC00FBECD7 /* Collection.swift */; };
 		046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC252470F87200FBECD7 /* CollectionType.swift */; };
@@ -314,6 +322,16 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		044D4D032547D24500701166 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				044D4D042547D25600701166 /* Redacting.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		049F92E322CDA3DB0090C9BC /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -420,6 +438,9 @@
 		044D4C222547B7BD00701166 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		044D4C4A2547C06600701166 /* Automator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Automator-Bridging-Header.h"; sourceTree = "<group>"; };
 		044D4C4B2547C06600701166 /* RedactAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactAction.swift; sourceTree = "<group>"; };
+		044D4C9B2547C8EE00701166 /* Redacting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Redacting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		044D4C9D2547C8EE00701166 /* Redacting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Redacting.h; sourceTree = "<group>"; };
+		044D4C9E2547C8EE00701166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		046BEC232470EBAC00FBECD7 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		046BEC252470F87200FBECD7 /* CollectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionType.swift; sourceTree = "<group>"; };
 		046BEC272470F89B00FBECD7 /* CollectionsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsDataSource.swift; sourceTree = "<group>"; };
@@ -617,6 +638,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				044D4CFA2547D20900701166 /* Redacting.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		044D4C982547C8EE00701166 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,6 +685,7 @@
 				04F3C84A230BC1E100445A8D /* Canvas */,
 				04431E4A23556106009FA1F6 /* Photo */,
 				044D4C192547B7BC00701166 /* Automator */,
+				044D4C9C2547C8EE00701166 /* Redacting */,
 				041EFEF62251A9F30058D8EE /* Products */,
 				04ADD1622290DE6700E17445 /* Frameworks */,
 			);
@@ -672,6 +702,7 @@
 				04F3C849230BC1E100445A8D /* Canvas.framework */,
 				04431E4523556106009FA1F6 /* Photo.appex */,
 				044D4C182547B7BC00701166 /* AutomatorActions.action */,
+				044D4C9B2547C8EE00701166 /* Redacting.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -874,6 +905,15 @@
 				044D4C4A2547C06600701166 /* Automator-Bridging-Header.h */,
 			);
 			path = Automator;
+			sourceTree = "<group>";
+		};
+		044D4C9C2547C8EE00701166 /* Redacting */ = {
+			isa = PBXGroup;
+			children = (
+				044D4C9D2547C8EE00701166 /* Redacting.h */,
+				044D4C9E2547C8EE00701166 /* Info.plist */,
+			);
+			path = Redacting;
 			sourceTree = "<group>";
 		};
 		046BEC1F2470E36800FBECD7 /* Albums */ = {
@@ -1346,6 +1386,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		044D4C962547C8EE00701166 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				044D4C9F2547C8EE00701166 /* Redacting.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		049F92D222CDA3DB0090C9BC /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1465,6 +1513,7 @@
 				044D4C142547B7BC00701166 /* Frameworks */,
 				044D4C152547B7BC00701166 /* Resources */,
 				044D4C162547B7BC00701166 /* ShellScript */,
+				044D4D032547D24500701166 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1474,6 +1523,24 @@
 			productName = Automator;
 			productReference = 044D4C182547B7BC00701166 /* AutomatorActions.action */;
 			productType = "com.apple.product-type.bundle";
+		};
+		044D4C9A2547C8EE00701166 /* Redacting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 044D4CA22547C8EE00701166 /* Build configuration list for PBXNativeTarget "Redacting" */;
+			buildPhases = (
+				044D4C962547C8EE00701166 /* Headers */,
+				044D4C972547C8EE00701166 /* Sources */,
+				044D4C982547C8EE00701166 /* Frameworks */,
+				044D4C992547C8EE00701166 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Redacting;
+			productName = Redacting;
+			productReference = 044D4C9B2547C8EE00701166 /* Redacting.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		049F92D622CDA3DB0090C9BC /* Editing */ = {
 			isa = PBXNativeTarget;
@@ -1560,6 +1627,9 @@
 						CreatedOnToolsVersion = 12.2;
 						LastSwiftMigration = 1220;
 					};
+					044D4C9A2547C8EE00701166 = {
+						CreatedOnToolsVersion = 12.2;
+					};
 					049F92D622CDA3DB0090C9BC = {
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1100;
@@ -1597,6 +1667,7 @@
 				04F3C848230BC1E100445A8D /* Canvas */,
 				04431E4423556106009FA1F6 /* Photo */,
 				044D4C172547B7BC00701166 /* AutomatorActions */,
+				044D4C9A2547C8EE00701166 /* Redacting */,
 			);
 		};
 /* End PBXProject section */
@@ -1656,6 +1727,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		044D4C992547C8EE00701166 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		049F92D522CDA3DB0090C9BC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1695,7 +1773,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "amlint \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\"";
+			shellScript = "amlint \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1878,6 +1956,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				044D4C4C2547C06600701166 /* RedactAction.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		044D4C972547C8EE00701166 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				044D4CC52547CA2400701166 /* TextRectangleDetectionOperation.swift in Sources */,
+				044D4CE02547CC0000701166 /* GeometryExtensions.swift in Sources */,
+				044D4CCE2547CB2800701166 /* TextObservation.swift in Sources */,
+				044D4CD72547CB4300701166 /* CharacterObservation.swift in Sources */,
+				044D4CBC2547C92800701166 /* TextRectangleDetector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2405,6 +2495,62 @@
 			};
 			name = Release;
 		};
+		044D4CA02547C8EE00701166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 287EDDET2B;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Redacting/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Redacting;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		044D4CA12547C8EE00701166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 287EDDET2B;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Redacting/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Redacting;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		049F92E122CDA3DB0090C9BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2646,6 +2792,15 @@
 			buildConfigurations = (
 				044D4C242547B7BD00701166 /* Debug */,
 				044D4C252547B7BD00701166 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		044D4CA22547C8EE00701166 /* Build configuration list for PBXNativeTarget "Redacting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				044D4CA02547C8EE00701166 /* Debug */,
+				044D4CA12547C8EE00701166 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

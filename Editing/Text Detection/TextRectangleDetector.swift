@@ -2,9 +2,15 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Vision
+
+#if canImport(AppKit)
+import AppKit
+#elseif canImport(UIKit)
 import UIKit
+#endif
 
 public class TextRectangleDetector: NSObject {
+    #if canImport(UIKit)
     public func detectTextRectangles(in image: UIImage, completionHandler: (([TextRectangleObservation]?) -> Void)? = nil) {
         guard let detectionOperation = TextRectangleDetectionOperation(image: image) else {
             completionHandler?(nil)
@@ -17,9 +23,25 @@ public class TextRectangleDetector: NSObject {
         }
 
         operationQueue.addOperation(detectionOperation)
+    }
+    #elseif canImport(AppKit)
+    public func detectTextRectangles(in image: NSImage, completionHandler: (([TextRectangleObservation]?) -> Void)? = nil) {
+        guard let detectionOperation = TextRectangleDetectionOperation(image: image) else {
+            completionHandler?(nil)
+            return
+        }
 
+        detectionOperation.completionBlock = { [weak detectionOperation] in
+            let detectedTextObservations = detectionOperation?.textRectangleResults?.map { TextRectangleObservation($0, in: image) }
+            completionHandler?(detectedTextObservations)
+        }
+
+        operationQueue.addOperation(detectionOperation)
     }
 
+    #endif
+
+    #if canImport(UIKit)
     @available(iOS 13.0, *)
     public func detectWords(in image: UIImage, completionHandler: @escaping (([WordObservation]?) -> Void)) {
         if let recognitionOperation = TextRecognitionOperation(image: image) {
@@ -49,6 +71,7 @@ public class TextRectangleDetector: NSObject {
             operationQueue.addOperation(recognitionOperation)
         }
     }
+    #endif
 
     // MARK: Boilerplate
 
