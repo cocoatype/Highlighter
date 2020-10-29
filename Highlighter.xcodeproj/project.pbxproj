@@ -73,6 +73,7 @@
 		044D4CE02547CC0000701166 /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */; };
 		044D4CFA2547D20900701166 /* Redacting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044D4C9B2547C8EE00701166 /* Redacting.framework */; };
 		044D4D042547D25600701166 /* Redacting.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 044D4C9B2547C8EE00701166 /* Redacting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		044D4D0C2547D4CC00701166 /* TextRecognitionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3E22EF879700FF07C2 /* TextRecognitionOperation.swift */; };
 		045DB16B2529555C0033CFE8 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 045DB16A2529555C0033CFE8 /* OpenSSL */; };
 		046BEC242470EBAC00FBECD7 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC232470EBAC00FBECD7 /* Collection.swift */; };
 		046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC252470F87200FBECD7 /* CollectionType.swift */; };
@@ -1963,6 +1964,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				044D4D0C2547D4CC00701166 /* TextRecognitionOperation.swift in Sources */,
 				044D4CC52547CA2400701166 /* TextRectangleDetectionOperation.swift in Sources */,
 				044D4CE02547CC0000701166 /* GeometryExtensions.swift in Sources */,
 				044D4CCE2547CB2800701166 /* TextObservation.swift in Sources */,

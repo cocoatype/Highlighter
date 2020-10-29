@@ -26,12 +26,29 @@ class RedactAction: AMBundleAction {
         let images = inputItems.compactMap { $0.image }
         let firstImage = images[0]
 
-        detector.detectTextRectangles(in: firstImage) { [weak self] observations in
+        detector.detectWords(in: firstImage) { [weak self] observations in
+            guard let observations = observations else { return self?.finishRunningWithError(nil) ?? () }
+            let matchingObservations = observations.filter { $0.string == "Highlighter" }
+
+            let finalImage = NSImage(size: firstImage.size)
+            finalImage.lockFocus()
+            if let context = NSGraphicsContext.current?.cgContext {
+                var imageRect = NSRect(origin: .zero, size: firstImage.size)
+                if let cgImage = firstImage.cgImage(forProposedRect: &imageRect, context: nil, hints: nil) {
+                    context.draw(cgImage, in: imageRect)
+                }
+
+                let rects = matchingObservations.map(\.bounds)
+                context.setFillColor(NSColor.systemRed.cgColor)
+                context.fill(rects)
+            }
+            finalImage.unlockFocus()
+
             var inputDump = String()
-            dump(observations, to: &inputDump)
+            dump(matchingObservations, to: &inputDump)
             os_log("foboar %{public}@", inputDump)
 
-            self?.finish(with: firstImage)
+            self?.finish(with: finalImage)
         }
     }
 

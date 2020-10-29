@@ -5,14 +5,29 @@ import Foundation
 import os.log
 import Vision
 
+#if canImport(AppKit)
+import AppKit
+#elseif canImport(UIKit)
+import UIKit
+#endif
+
 @available(iOS 13.0, *)
 class TextRecognitionOperation: Operation {
+    #if canImport(UIKit)
     init?(image: UIImage) {
         guard let cgImage = image.cgImage else { return nil }
         self.imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: image.imageOrientation.cgImagePropertyOrientation)
 
         super.init()
     }
+    #elseif canImport(AppKit)
+    init?(image: NSImage) {
+        var imageRect = NSRect(origin: .zero, size: image.size)
+        guard let cgImage = image.cgImage(forProposedRect: &imageRect, context: nil, hints: nil) else { return nil }
+
+        self.imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: .up)
+    }
+    #endif
 
     var recognizedTextResults: [VNRecognizedTextObservation]?
 
