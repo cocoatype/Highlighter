@@ -10,6 +10,17 @@
 		0401CDF824AD89220011A9BF /* DocumentScanButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401CDF724AD89220011A9BF /* DocumentScanButton.swift */; };
 		0401CDFA24AD8EF50011A9BF /* AssetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401CDF924AD8EF50011A9BF /* AssetButton.swift */; };
 		04171B7E24A5392E006923AC /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 04171B7D24A5392E006923AC /* StoreKitTestCertificate.cer */; };
+		041907AE254A6B7900739749 /* RedactActionInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041907A5254A6B4200739749 /* RedactActionInput.swift */; };
+		041907CD254A6C2500739749 /* RedactedImageExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041907BD254A6C0000739749 /* RedactedImageExporter.swift */; };
+		041907DC254A6CB700739749 /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
+		041907E4254A702400739749 /* UIBezierPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */; };
+		041907F3254A703700739749 /* UIBezierPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */; };
+		0419080B254A744C00739749 /* BrushStampFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041907FB254A743B00739749 /* BrushStampFactory.swift */; };
+		04190845254A7F0A00739749 /* CharacterObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B86228D08D800353414 /* CharacterObservationRedaction.swift */; };
+		0419084D254A7FE900739749 /* TextObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */; };
+		04190855254A80BE00739749 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041EFEFF2251A9F50058D8EE /* Assets.xcassets */; };
+		04190876254A8D1200739749 /* RedactActionExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04190866254A8CFA00739749 /* RedactActionExportOperation.swift */; };
+		0419088E254A8D4D00739749 /* RedactActionExportError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419087E254A8D3C00739749 /* RedactActionExportError.swift */; };
 		041BEA3722EF75E800FF07C2 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3622EF75E800FF07C2 /* Icons.swift */; };
 		041BEA3F22EF879700FF07C2 /* TextRecognitionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3E22EF879700FF07C2 /* TextRecognitionOperation.swift */; };
 		041EFEF92251A9F30058D8EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFEF82251A9F30058D8EE /* AppDelegate.swift */; };
@@ -143,13 +154,11 @@
 		049F92E822CDA43F0090C9BC /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF182251AAFE0058D8EE /* UIViewControllerExtensions.swift */; };
 		049F92E922CDA43F0090C9BC /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */; };
 		049F92EA22CDA43F0090C9BC /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */; };
-		049F92EB22CDA43F0090C9BC /* UIBezierPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */; };
 		049F92ED22CDA4B10090C9BC /* PhotoEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */; };
 		049F92EE22CDA4C10090C9BC /* PhotoEditingLegacyBrushStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9E42277EC910012F5AE /* PhotoEditingLegacyBrushStrokeView.swift */; };
 		049F92EF22CDA4C10090C9BC /* PhotoEditingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072942268137900FF20B6 /* PhotoEditingImageView.swift */; };
 		049F92F022CDA4C10090C9BC /* PhotoEditingRedactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */; };
 		049F92F222CDA4D50090C9BC /* HighlighterTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B84228D01BD00353414 /* HighlighterTool.swift */; };
-		049F92F322CDA4E40090C9BC /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
 		049F92F422CDA4E40090C9BC /* CharacterObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B86228D08D800353414 /* CharacterObservationRedaction.swift */; };
 		049F92F522CDA4E40090C9BC /* PathRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B88228D091000353414 /* PathRedaction.swift */; };
 		049F92F622CDA54B0090C9BC /* PhotoEditingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */; };
@@ -259,6 +268,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0419085D254A86F400739749 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 044D4C9A2547C8EE00701166;
+			remoteInfo = Redacting;
+		};
 		041EFF0A2251A9F50058D8EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
@@ -353,6 +369,11 @@
 		0401CDF924AD8EF50011A9BF /* AssetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetButton.swift; sourceTree = "<group>"; };
 		04171B7C24A52EC2006923AC /* PurchaseConfigurationOriginal.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = PurchaseConfigurationOriginal.storekit; sourceTree = "<group>"; };
 		04171B7D24A5392E006923AC /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
+		041907A5254A6B4200739749 /* RedactActionInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactActionInput.swift; sourceTree = "<group>"; };
+		041907BD254A6C0000739749 /* RedactedImageExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactedImageExporter.swift; sourceTree = "<group>"; };
+		041907FB254A743B00739749 /* BrushStampFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushStampFactory.swift; sourceTree = "<group>"; };
+		04190866254A8CFA00739749 /* RedactActionExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactActionExportOperation.swift; sourceTree = "<group>"; };
+		0419087E254A8D3C00739749 /* RedactActionExportError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactActionExportError.swift; sourceTree = "<group>"; };
 		041BEA3622EF75E800FF07C2 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		041BEA3A22EF7B2900FF07C2 /* PhotoEditingBrushStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingBrushStrokeView.swift; sourceTree = "<group>"; };
 		041BEA3E22EF879700FF07C2 /* TextRecognitionOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionOperation.swift; sourceTree = "<group>"; };
@@ -903,7 +924,12 @@
 				044D4C202547B7BD00701166 /* Info.plist */,
 				044D4C212547B7BD00701166 /* InfoPlist.strings */,
 				044D4C4B2547C06600701166 /* RedactAction.swift */,
+				041907A5254A6B4200739749 /* RedactActionInput.swift */,
 				044D4C4A2547C06600701166 /* Automator-Bridging-Header.h */,
+				041907BD254A6C0000739749 /* RedactedImageExporter.swift */,
+				041907FB254A743B00739749 /* BrushStampFactory.swift */,
+				04190866254A8CFA00739749 /* RedactActionExportOperation.swift */,
+				0419087E254A8D3C00739749 /* RedactActionExportError.swift */,
 			);
 			path = Automator;
 			sourceTree = "<group>";
@@ -1519,6 +1545,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0419085E254A86F400739749 /* PBXTargetDependency */,
 			);
 			name = AutomatorActions;
 			productName = Automator;
@@ -1724,6 +1751,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				044D4C1F2547B7BD00701166 /* main.xib in Resources */,
+				04190855254A80BE00739749 /* Assets.xcassets in Resources */,
 				044D4C232547B7BD00701166 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1956,7 +1984,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04190876254A8D1200739749 /* RedactActionExportOperation.swift in Sources */,
+				0419088E254A8D4D00739749 /* RedactActionExportError.swift in Sources */,
+				041907CD254A6C2500739749 /* RedactedImageExporter.swift in Sources */,
 				044D4C4C2547C06600701166 /* RedactAction.swift in Sources */,
+				041907AE254A6B7900739749 /* RedactActionInput.swift in Sources */,
+				0419080B254A744C00739749 /* BrushStampFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1965,9 +1998,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				044D4D0C2547D4CC00701166 /* TextRecognitionOperation.swift in Sources */,
+				04190845254A7F0A00739749 /* CharacterObservationRedaction.swift in Sources */,
 				044D4CC52547CA2400701166 /* TextRectangleDetectionOperation.swift in Sources */,
+				041907DC254A6CB700739749 /* Redaction.swift in Sources */,
+				041907E4254A702400739749 /* UIBezierPathExtensions.swift in Sources */,
 				044D4CE02547CC0000701166 /* GeometryExtensions.swift in Sources */,
 				044D4CCE2547CB2800701166 /* TextObservation.swift in Sources */,
+				0419084D254A7FE900739749 /* TextObservationRedaction.swift in Sources */,
 				044D4CD72547CB4300701166 /* CharacterObservation.swift in Sources */,
 				044D4CBC2547C92800701166 /* TextRectangleDetector.swift in Sources */,
 			);
@@ -1994,11 +2031,11 @@
 				049F92F222CDA4D50090C9BC /* HighlighterTool.swift in Sources */,
 				04DBC843231E2AEC0004F7DB /* RestoredRedaction.swift in Sources */,
 				049F92EE22CDA4C10090C9BC /* PhotoEditingLegacyBrushStrokeView.swift in Sources */,
-				049F92EB22CDA43F0090C9BC /* UIBezierPathExtensions.swift in Sources */,
 				041BEA3722EF75E800FF07C2 /* Icons.swift in Sources */,
 				049F92E822CDA43F0090C9BC /* UIViewControllerExtensions.swift in Sources */,
 				049F92FB22CDA5D90090C9BC /* Toolbar.swift in Sources */,
 				04FF8DE122F6D698008CF0E9 /* WordObservationAccessibilityElement.swift in Sources */,
+				041907F3254A703700739749 /* UIBezierPathExtensions.swift in Sources */,
 				049F92FD22CDA6C40090C9BC /* Fonts.swift in Sources */,
 				044074BF23BE9BCD00D3CB99 /* RedactionPathLayer.swift in Sources */,
 				0493D2D824B6BD0000FF99F4 /* BrushStampFactory.swift in Sources */,
@@ -2006,7 +2043,6 @@
 				04FDEA5625257B1900F94CA9 /* SplitViewController.swift in Sources */,
 				04FF8DB422F57570008CF0E9 /* Defaults.swift in Sources */,
 				04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */,
-				049F92F322CDA4E40090C9BC /* Redaction.swift in Sources */,
 				049F930322CDA9150090C9BC /* PhotoExporter.swift in Sources */,
 				049F92EF22CDA4C10090C9BC /* PhotoEditingImageView.swift in Sources */,
 				049F92ED22CDA4B10090C9BC /* PhotoEditingView.swift in Sources */,
@@ -2051,6 +2087,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0419085E254A86F400739749 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 044D4C9A2547C8EE00701166 /* Redacting */;
+			targetProxy = 0419085D254A86F400739749 /* PBXContainerItemProxy */;
+		};
 		041EFF0B2251A9F50058D8EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 041EFEF42251A9F30058D8EE /* Highlighter */;

@@ -74,6 +74,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2020 Cocoatype, LLC. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
-	<string>Automator.RedactAction</string>
+	<string>AutomatorActions.RedactAction</string>
 </dict>
 </plist>
