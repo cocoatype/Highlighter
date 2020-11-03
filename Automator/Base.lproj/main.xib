@@ -5,9 +5,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="Automator">
+        <customObject id="-2" userLabel="File's Owner" customClass="RedactAction">
             <connections>
                 <outlet property="view" destination="47Y-Ci-255" id="jdu-ND-x6j"/>
+                <outlet property="wordListView" destination="s4v-mV-ogo" id="5FX-j7-tJ5"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -30,7 +31,7 @@
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
                                     <tableColumn width="370" minWidth="40" maxWidth="1000" id="vLb-Tz-Apa">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Redacted Words">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
@@ -41,32 +42,42 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="dVV-MM-x1h">
+                                            <tableCellView id="ACZ-Qc-9rZ">
                                                 <rect key="frame" x="8" y="0.0" width="365" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Tt-Ms-xx6">
-                                                        <rect key="frame" x="0.0" y="4" width="365" height="16"/>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MjI-y3-X8h">
+                                                        <rect key="frame" x="0.0" y="5" width="365" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="TOa-Th-OVE">
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="9wK-Cg-Qlw">
                                                             <font key="font" usesAppearanceFont="YES"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <action selector="didEditWord:" target="-2" id="CtQ-Yu-0U0"/>
+                                                            <binding destination="ACZ-Qc-9rZ" name="value" keyPath="objectValue" id="3Sy-eE-1Aa"/>
+                                                            <outlet property="delegate" destination="-2" id="jXT-M1-LNz"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <connections>
-                                                    <outlet property="textField" destination="9Tt-Ms-xx6" id="XBZ-bl-oAY"/>
+                                                    <outlet property="textField" destination="MjI-y3-X8h" id="Tv8-cH-8WH"/>
                                                 </connections>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
                                 </tableColumns>
+                                <connections>
+                                    <binding destination="GTs-dO-RXr" name="content" keyPath="arrangedObjects" id="Y43-ES-4jZ"/>
+                                    <binding destination="GTs-dO-RXr" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="Y43-ES-4jZ" id="DJx-K1-Xdd"/>
+                                    <outlet property="delegate" destination="-2" id="29w-6u-hq7"/>
+                                </connections>
                             </tableView>
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="QYl-Rs-lcX">
-                        <rect key="frame" x="1" y="119" width="238" height="15"/>
+                        <rect key="frame" x="1" y="213" width="382" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="FVM-fw-7Up">
@@ -84,6 +95,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="add:" target="GTs-dO-RXr" id="wpK-Da-7Ts"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hzn-Lo-2pb">
                     <rect key="frame" x="57" y="1" width="70" height="27"/>
@@ -91,6 +105,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="remove:" target="GTs-dO-RXr" id="Y4c-4r-pjw"/>
+                    </connections>
                 </button>
             </subviews>
             <constraints>
@@ -110,5 +127,10 @@
                 <binding destination="-2" name="contentObject" keyPath="parameters" id="3tH-Nj-Jac"/>
             </connections>
         </objectController>
+        <arrayController objectClassName="NSString" avoidsEmptySelection="NO" id="GTs-dO-RXr">
+            <connections>
+                <binding destination="aFj-Nx-tzi" name="contentArray" keyPath="selection.wordList" id="1qh-AP-jAH"/>
+            </connections>
+        </arrayController>
     </objects>
 </document>

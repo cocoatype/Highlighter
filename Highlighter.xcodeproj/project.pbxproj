@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0401CDF824AD89220011A9BF /* DocumentScanButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401CDF724AD89220011A9BF /* DocumentScanButton.swift */; };
 		0401CDFA24AD8EF50011A9BF /* AssetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401CDF924AD8EF50011A9BF /* AssetButton.swift */; };
+		0415717325511B250081F365 /* RedactOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0415717225511B250081F365 /* RedactOperation.swift */; };
 		04171B7E24A5392E006923AC /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 04171B7D24A5392E006923AC /* StoreKitTestCertificate.cer */; };
 		041907AE254A6B7900739749 /* RedactActionInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041907A5254A6B4200739749 /* RedactActionInput.swift */; };
 		041907CD254A6C2500739749 /* RedactedImageExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041907BD254A6C0000739749 /* RedactedImageExporter.swift */; };
@@ -367,6 +368,7 @@
 /* Begin PBXFileReference section */
 		0401CDF724AD89220011A9BF /* DocumentScanButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScanButton.swift; sourceTree = "<group>"; };
 		0401CDF924AD8EF50011A9BF /* AssetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetButton.swift; sourceTree = "<group>"; };
+		0415717225511B250081F365 /* RedactOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactOperation.swift; sourceTree = "<group>"; };
 		04171B7C24A52EC2006923AC /* PurchaseConfigurationOriginal.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = PurchaseConfigurationOriginal.storekit; sourceTree = "<group>"; };
 		04171B7D24A5392E006923AC /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		041907A5254A6B4200739749 /* RedactActionInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactActionInput.swift; sourceTree = "<group>"; };
@@ -930,6 +932,7 @@
 				041907FB254A743B00739749 /* BrushStampFactory.swift */,
 				04190866254A8CFA00739749 /* RedactActionExportOperation.swift */,
 				0419087E254A8D3C00739749 /* RedactActionExportError.swift */,
+				0415717225511B250081F365 /* RedactOperation.swift */,
 			);
 			path = Automator;
 			sourceTree = "<group>";
@@ -1984,6 +1987,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0415717325511B250081F365 /* RedactOperation.swift in Sources */,
 				04190876254A8D1200739749 /* RedactActionExportOperation.swift in Sources */,
 				0419088E254A8D4D00739749 /* RedactActionExportError.swift in Sources */,
 				041907CD254A6C2500739749 /* RedactedImageExporter.swift in Sources */,

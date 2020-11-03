@@ -6,7 +6,7 @@ import Automator
 import Redacting
 import os.log
 
-class RedactAction: AMBundleAction {
+class RedactAction: AMBundleAction, NSTextFieldDelegate {
     override func runAsynchronously(withInput input: Any?) {
         guard let inputArray = input as? [Any] else {
             output = input
@@ -25,27 +25,26 @@ class RedactAction: AMBundleAction {
             }
         }
 
-        let images = inputItems.compactMap { $0.image }
-        let firstImage = images[0]
-
-        detector.detectWords(in: firstImage) { [weak self] observations in
-            guard let observations = observations else { return self?.finishRunningWithError(nil) ?? () }
-            let matchingObservations = observations.filter { $0.string == "Highlighter" }
-            let redactions = matchingObservations.map { TextObservationRedaction($0, color: .black) }
-
-            os_log("redactions: %{public}@", redactions)
-
-            RedactActionExporter.export(inputItems[0], redactions: redactions) { [weak self] result in
-                switch result {
-                case .success(let path):
-                    self?.output = path
-                    self?.finishRunningWithError(nil)
-                case .failure(let error):
-                    self?.output = input
-                    self?.finishRunningWithError(error)
-                }
-            }
+        let wordList = self.wordList
+        let redactOperations = inputItems.map {
+            RedactOperation(input: $0, wordList: wordList)
         }
+        let finalizeOperation = BlockOperation { [weak self] in
+            let results = redactOperations.compactMap { $0.result }.compactMap { try? $0.get() }
+            self?.output = results
+            self?.finishRunningWithError(nil)
+        }
+
+        redactOperations.forEach {
+            finalizeOperation.addDependency($0)
+        }
+
+        operationQueue.addOperations(redactOperations + [finalizeOperation], waitUntilFinished: false)
+    }
+
+    @IBAction func didEditWord(_ sender: NSTextField) {
+        guard let row = wordListView?.row(for: sender) else { return }
+        wordList.replaceSubrange(row...row, with: [sender.stringValue])
     }
 
     private let detector = TextRectangleDetector()
@@ -54,6 +53,17 @@ class RedactAction: AMBundleAction {
         operationQueue.qualityOfService = .userInitiated
         return operationQueue
     }()
+
+    private var wordList: [String] {
+        get {
+            return parameters?["wordList"] as? [String] ?? []
+        }
+
+        set(newWordList) {
+            parameters?["wordList"] = newWordList
+        }
+    }
+    @IBOutlet private weak var wordListView: NSTableView?
 }
 
 enum ActionError: Error {
