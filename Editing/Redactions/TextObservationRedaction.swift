@@ -24,8 +24,8 @@ public struct TextObservationRedaction: Redaction {
 #elseif canImport(UIKit)
 import UIKit
 
-struct TextObservationRedaction: Redaction {
-    init<ObservationType: TextObservation>(_ textObservation: ObservationType, color: UIColor) {
+public struct TextObservationRedaction: Redaction {
+    public init<ObservationType: TextObservation>(_ textObservation: ObservationType, color: UIColor) {
         let rect = textObservation.bounds
         let path = UIBezierPath()
         let width = rect.height
@@ -37,7 +37,7 @@ struct TextObservationRedaction: Redaction {
         self.color = color
     }
 
-    let color: UIColor
-    let paths: [UIBezierPath]
+    public let color: UIColor
+    public let paths: [UIBezierPath]
 }
 #endif

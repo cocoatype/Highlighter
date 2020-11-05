@@ -22,6 +22,8 @@ struct AssetButton: View {
                 }
             }
         }
+        .onAppear { asset.startFetchingImage() }
+        .onDisappear { asset.cancelFetchingImage() }
         .buttonStyle(BorderlessButtonStyle())
         .tag(asset.photoAsset.localIdentifier)
     }

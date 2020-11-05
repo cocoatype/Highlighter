@@ -89,6 +89,10 @@
 		045DB16B2529555C0033CFE8 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 045DB16A2529555C0033CFE8 /* OpenSSL */; };
 		0464B18725529CC000D00FAC /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
 		0464B19025529DC500D00FAC /* AutomatorActions.action in Embed Automator Actions */ = {isa = PBXBuildFile; fileRef = 044D4C182547B7BC00701166 /* AutomatorActions.action */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0464B1E12553A3DE00D00FAC /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464B1E02553A3DE00D00FAC /* IntentHandler.swift */; };
+		0464B1E52553A3DE00D00FAC /* Shortcuts.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0464B1DE2553A3DE00D00FAC /* Shortcuts.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0464B1F32553A41300D00FAC /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0464B1F22553A41300D00FAC /* Intents.intentdefinition */; };
+		0464B20C2553A6D900D00FAC /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0464B1F22553A41300D00FAC /* Intents.intentdefinition */; };
 		046BEC242470EBAC00FBECD7 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC232470EBAC00FBECD7 /* Collection.swift */; };
 		046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC252470F87200FBECD7 /* CollectionType.swift */; };
 		046BEC282470F89B00FBECD7 /* CollectionsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC272470F89B00FBECD7 /* CollectionsDataSource.swift */; };
@@ -113,6 +117,10 @@
 		0482C7A325218DB40013B69E /* DesktopSettingsAddRemoveControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C7A225218DB40013B69E /* DesktopSettingsAddRemoveControl.swift */; };
 		0482C7A525218E080013B69E /* DesktopSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C7A425218E080013B69E /* DesktopSettingsTableViewCell.swift */; };
 		0482C7A72522CEB00013B69E /* DesktopSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C7A62522CEB00013B69E /* DesktopSettingsViewController.swift */; };
+		048416592553AF1100048DE8 /* ShortcutsRedactOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */; };
+		048416622553AF8000048DE8 /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
+		048416632553AF8000048DE8 /* Editing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0484166E2553B67800048DE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041EFEFF2251A9F50058D8EE /* Assets.xcassets */; };
 		0489081724AD796D005DDEF3 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489081624AD796D005DDEF3 /* PhotoLibraryViewController.swift */; };
 		0489081A24AD7A32005DDEF3 /* PhotoLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489081924AD7A32005DDEF3 /* PhotoLibraryView.swift */; };
 		0489081B24AD7B17005DDEF3 /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
@@ -313,6 +321,20 @@
 			remoteGlobalIDString = 044D4C172547B7BC00701166;
 			remoteInfo = AutomatorActions;
 		};
+		0464B1E32553A3DE00D00FAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0464B1DD2553A3DE00D00FAC;
+			remoteInfo = Shortcuts;
+		};
+		048416642553AF8000048DE8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 049F92D622CDA3DB0090C9BC;
+			remoteInfo = Editing;
+		};
 		049F92DC22CDA3DB0090C9BC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
@@ -345,6 +367,7 @@
 			files = (
 				043911CC22C461F000D4AE30 /* Action.appex in Embed App Extensions */,
 				04431E5323556106009FA1F6 /* Photo.appex in Embed App Extensions */,
+				0464B1E52553A3DE00D00FAC /* Shortcuts.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +391,17 @@
 				0464B19025529DC500D00FAC /* AutomatorActions.action in Embed Automator Actions */,
 			);
 			name = "Embed Automator Actions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		048416662553AF8000048DE8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				048416632553AF8000048DE8 /* Editing.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		049F92E322CDA3DB0090C9BC /* Embed Frameworks */ = {
@@ -485,6 +519,11 @@
 		044D4C9B2547C8EE00701166 /* Redacting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Redacting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		044D4C9D2547C8EE00701166 /* Redacting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Redacting.h; sourceTree = "<group>"; };
 		044D4C9E2547C8EE00701166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0464B1DE2553A3DE00D00FAC /* Shortcuts.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Shortcuts.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0464B1E02553A3DE00D00FAC /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		0464B1E22553A3DE00D00FAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0464B1E62553A3DE00D00FAC /* Shortcuts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shortcuts.entitlements; sourceTree = "<group>"; };
+		0464B1F22553A41300D00FAC /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		046BEC232470EBAC00FBECD7 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		046BEC252470F87200FBECD7 /* CollectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionType.swift; sourceTree = "<group>"; };
 		046BEC272470F89B00FBECD7 /* CollectionsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsDataSource.swift; sourceTree = "<group>"; };
@@ -511,6 +550,7 @@
 		0482C7A225218DB40013B69E /* DesktopSettingsAddRemoveControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsAddRemoveControl.swift; sourceTree = "<group>"; };
 		0482C7A425218E080013B69E /* DesktopSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		0482C7A62522CEB00013B69E /* DesktopSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsViewController.swift; sourceTree = "<group>"; };
+		048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsRedactOperation.swift; sourceTree = "<group>"; };
 		0489081624AD796D005DDEF3 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		0489081924AD7A32005DDEF3 /* PhotoLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryView.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* BasePhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePhotoEditingViewController.swift; sourceTree = "<group>"; };
@@ -693,6 +733,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0464B1DB2553A3DE00D00FAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				048416622553AF8000048DE8 /* Editing.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		049F92D422CDA3DB0090C9BC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -730,6 +778,7 @@
 				04431E4A23556106009FA1F6 /* Photo */,
 				044D4C192547B7BC00701166 /* Automator */,
 				044D4C9C2547C8EE00701166 /* Redacting */,
+				0464B1DF2553A3DE00D00FAC /* Shortcuts */,
 				041EFEF62251A9F30058D8EE /* Products */,
 				04ADD1622290DE6700E17445 /* Frameworks */,
 			);
@@ -747,6 +796,7 @@
 				04431E4523556106009FA1F6 /* Photo.appex */,
 				044D4C182547B7BC00701166 /* AutomatorActions.action */,
 				044D4C9B2547C8EE00701166 /* Redacting.framework */,
+				0464B1DE2553A3DE00D00FAC /* Shortcuts.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -964,6 +1014,18 @@
 				044D4C9E2547C8EE00701166 /* Info.plist */,
 			);
 			path = Redacting;
+			sourceTree = "<group>";
+		};
+		0464B1DF2553A3DE00D00FAC /* Shortcuts */ = {
+			isa = PBXGroup;
+			children = (
+				0464B1E62553A3DE00D00FAC /* Shortcuts.entitlements */,
+				0464B1E02553A3DE00D00FAC /* IntentHandler.swift */,
+				048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */,
+				0464B1E22553A3DE00D00FAC /* Info.plist */,
+				0464B1F22553A41300D00FAC /* Intents.intentdefinition */,
+			);
+			path = Shortcuts;
 			sourceTree = "<group>";
 		};
 		046BEC1F2470E36800FBECD7 /* Albums */ = {
@@ -1494,6 +1556,7 @@
 				049F92DD22CDA3DB0090C9BC /* PBXTargetDependency */,
 				04F3C80B2309E8A800445A8D /* PBXTargetDependency */,
 				04F3C84F230BC1E100445A8D /* PBXTargetDependency */,
+				0464B1E42553A3DE00D00FAC /* PBXTargetDependency */,
 			);
 			name = Highlighter;
 			packageProductDependencies = (
@@ -1595,6 +1658,25 @@
 			productReference = 044D4C9B2547C8EE00701166 /* Redacting.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		0464B1DD2553A3DE00D00FAC /* Shortcuts */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0464B1E92553A3DE00D00FAC /* Build configuration list for PBXNativeTarget "Shortcuts" */;
+			buildPhases = (
+				0464B1DA2553A3DE00D00FAC /* Sources */,
+				0464B1DB2553A3DE00D00FAC /* Frameworks */,
+				0464B1DC2553A3DE00D00FAC /* Resources */,
+				048416662553AF8000048DE8 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				048416652553AF8000048DE8 /* PBXTargetDependency */,
+			);
+			name = Shortcuts;
+			productName = Shortcuts;
+			productReference = 0464B1DE2553A3DE00D00FAC /* Shortcuts.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		049F92D622CDA3DB0090C9BC /* Editing */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 049F92E022CDA3DB0090C9BC /* Build configuration list for PBXNativeTarget "Editing" */;
@@ -1659,7 +1741,7 @@
 		041EFEED2251A9F30058D8EE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
+				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Cocoatype, LLC";
 				TargetAttributes = {
@@ -1681,6 +1763,9 @@
 						LastSwiftMigration = 1220;
 					};
 					044D4C9A2547C8EE00701166 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					0464B1DD2553A3DE00D00FAC = {
 						CreatedOnToolsVersion = 12.2;
 					};
 					049F92D622CDA3DB0090C9BC = {
@@ -1721,6 +1806,7 @@
 				04431E4423556106009FA1F6 /* Photo */,
 				044D4C172547B7BC00701166 /* AutomatorActions */,
 				044D4C9A2547C8EE00701166 /* Redacting */,
+				0464B1DD2553A3DE00D00FAC /* Shortcuts */,
 			);
 		};
 /* End PBXProject section */
@@ -1788,6 +1874,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0464B1DC2553A3DE00D00FAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0484166E2553B67800048DE8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		049F92D522CDA3DB0090C9BC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1850,6 +1944,7 @@
 				04DBC83E2314D1D90004F7DB /* AutoRedactionsEmptyView.swift in Sources */,
 				049F292D22875AFA00A335BE /* AboutViewController.swift in Sources */,
 				0445AA5B237130CC00EB2A7B /* PurchaseMarketingStackView.swift in Sources */,
+				0464B20C2553A6D900D00FAC /* Intents.intentdefinition in Sources */,
 				0470163224D8FD7F0080DC52 /* DesktopViewController.swift in Sources */,
 				04F3C7D52304437900445A8D /* PurchaseSection.swift in Sources */,
 				04F3C7C02301A52A00445A8D /* AboutItem.swift in Sources */,
@@ -2036,6 +2131,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0464B1DA2553A3DE00D00FAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0464B1F32553A41300D00FAC /* Intents.intentdefinition in Sources */,
+				0464B1E12553A3DE00D00FAC /* IntentHandler.swift in Sources */,
+				048416592553AF1100048DE8 /* ShortcutsRedactOperation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		049F92D322CDA3DB0090C9BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2145,6 +2250,17 @@
 			platformFilter = maccatalyst;
 			target = 044D4C172547B7BC00701166 /* AutomatorActions */;
 			targetProxy = 0464B1B425529E8900D00FAC /* PBXContainerItemProxy */;
+		};
+		0464B1E42553A3DE00D00FAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 0464B1DD2553A3DE00D00FAC /* Shortcuts */;
+			targetProxy = 0464B1E32553A3DE00D00FAC /* PBXContainerItemProxy */;
+		};
+		048416652553AF8000048DE8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 049F92D622CDA3DB0090C9BC /* Editing */;
+			targetProxy = 048416642553AF8000048DE8 /* PBXContainerItemProxy */;
 		};
 		049F92DD22CDA3DB0090C9BC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2627,6 +2743,52 @@
 			};
 			name = Release;
 		};
+		0464B1E72553A3DE00D00FAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = Shortcuts/Shortcuts.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 287EDDET2B;
+				INFOPLIST_FILE = Shortcuts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Shortcuts;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0464B1E82553A3DE00D00FAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = Shortcuts/Shortcuts.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 287EDDET2B;
+				INFOPLIST_FILE = Shortcuts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Shortcuts;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		049F92E122CDA3DB0090C9BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2877,6 +3039,15 @@
 			buildConfigurations = (
 				044D4CA02547C8EE00701166 /* Debug */,
 				044D4CA12547C8EE00701166 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0464B1E92553A3DE00D00FAC /* Build configuration list for PBXNativeTarget "Shortcuts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0464B1E72553A3DE00D00FAC /* Debug */,
+				0464B1E82553A3DE00D00FAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -3,8 +3,8 @@
 
 import UIKit
 
-class BrushStampFactory: NSObject {
-    static func brushStamp(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
+public class BrushStampFactory: NSObject {
+    public static func brushStamp(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
         guard let standardImage = UIImage(named: "Brush") else { fatalError("Unable to load brush stamp image") }
 
         let brushScale = height / standardImage.size.height

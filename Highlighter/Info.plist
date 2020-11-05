@@ -56,6 +56,7 @@
 	<string>Black Highlighter accesses your photo library to open photos for redaction and to save redacted photos.</string>
 	<key>NSUserActivityTypes</key>
 	<array>
+		<string>RedactImageIntent</string>
 		<string>com.cocoatype.Highlighter.editing</string>
 	</array>
 	<key>UIAppFonts</key>
