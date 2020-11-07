@@ -201,6 +201,10 @@
 		04ADD15C2290D29400E17445 /* AppLookupResponseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15B2290D29400E17445 /* AppLookupResponseResult.swift */; };
 		04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15D2290D2D200E17445 /* AppDeveloperInfo.swift */; };
 		04ADD1602290DA8E00E17445 /* AppEntryOpening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15F2290DA8E00E17445 /* AppEntryOpening.swift */; };
+		04BDC4962556576900BCE982 /* ShortcutsRedactExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */; };
+		04BDC49F255657A600BCE982 /* ShortcutsExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */; };
+		04BDC4A7255657CA00BCE982 /* ShortcutsExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */; };
+		04BDC4AF255657CB00BCE982 /* ShortcutsRedactExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */; };
 		04D68BC7225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC6225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift */; };
 		04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */; };
 		04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BCB2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift */; };
@@ -604,6 +608,8 @@
 		04ADD15B2290D29400E17445 /* AppLookupResponseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLookupResponseResult.swift; sourceTree = "<group>"; };
 		04ADD15D2290D2D200E17445 /* AppDeveloperInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeveloperInfo.swift; sourceTree = "<group>"; };
 		04ADD15F2290DA8E00E17445 /* AppEntryOpening.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntryOpening.swift; sourceTree = "<group>"; };
+		04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsRedactExporter.swift; sourceTree = "<group>"; };
+		04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsExportOperation.swift; sourceTree = "<group>"; };
 		04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
 		04D68BC6225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPhotoLibraryViewCellImageView.swift; sourceTree = "<group>"; };
 		04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPermissionsRequester.swift; sourceTree = "<group>"; };
@@ -1024,8 +1030,10 @@
 				0464B1E62553A3DE00D00FAC /* Shortcuts.entitlements */,
 				0464B1E02553A3DE00D00FAC /* IntentHandler.swift */,
 				048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */,
+				04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */,
 				0464B1E22553A3DE00D00FAC /* Info.plist */,
 				0464B1F22553A41300D00FAC /* Intents.intentdefinition */,
+				04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */,
 			);
 			path = Shortcuts;
 			sourceTree = "<group>";
@@ -1940,6 +1948,7 @@
 				048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */,
 				042A2B7A228A642100353414 /* PhotoEditingProtectionAlertController.swift in Sources */,
 				04F3C7B22301A3CF00445A8D /* StandardContentItem.swift in Sources */,
+				04BDC4A7255657CA00BCE982 /* ShortcutsExportOperation.swift in Sources */,
 				04F3C7C62301A5C300445A8D /* PrivacyItem.swift in Sources */,
 				043CD9E3227549330012F5AE /* SettingsTableViewDataSource.swift in Sources */,
 				0482C7A72522CEB00013B69E /* DesktopSettingsViewController.swift in Sources */,
@@ -2046,6 +2055,7 @@
 				041EFF50225303120058D8EE /* PromptLabel.swift in Sources */,
 				046C405D247F5B3F0069E8FB /* SystemCollectionTableViewCell.swift in Sources */,
 				043CD9DF227548F30012F5AE /* SettingsStandardTableViewCell.swift in Sources */,
+				04BDC4AF255657CB00BCE982 /* ShortcutsRedactExporter.swift in Sources */,
 				04F3C7C42301A58C00445A8D /* ContactItem.swift in Sources */,
 				042B78FE229A259C005B7A2A /* SettingsTableViewCellImageView.swift in Sources */,
 				046C4069247F60930069E8FB /* AlbumsHeaderLabel.swift in Sources */,
@@ -2140,8 +2150,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0464B1F32553A41300D00FAC /* Intents.intentdefinition in Sources */,
+				04BDC49F255657A600BCE982 /* ShortcutsExportOperation.swift in Sources */,
 				0464B1E12553A3DE00D00FAC /* IntentHandler.swift in Sources */,
 				048416592553AF1100048DE8 /* ShortcutsRedactOperation.swift in Sources */,
+				04BDC4962556576900BCE982 /* ShortcutsRedactExporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
