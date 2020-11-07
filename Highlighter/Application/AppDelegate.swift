@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 3/31/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Intents
 import UIKit
 
 @UIApplicationMain
@@ -15,10 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.makeKeyAndVisible()
             self.window = window
         }
-
-        #if targetEnvironment(macCatalyst)
-        
-        #endif
 
         return true
     }
@@ -132,6 +129,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private static let contactMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.contact", comment: "Contact menu item title")
     @objc private func initiateContact() {
         UIApplication.shared.open(ContactMailViewController.mailtoURL, options: [:], completionHandler: nil)
+    }
+
+    // MARK: Intent Handling
+
+    func application(_ application: UIApplication, handlerFor intent: INIntent) -> Any? {
+        guard #available(iOS 14.0, *) else { return nil }
+        let intentHandler = IntentHandler()
+        return intentHandler
     }
 
     // MARK: Boilerplate

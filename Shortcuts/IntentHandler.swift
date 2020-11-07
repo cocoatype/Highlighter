@@ -5,6 +5,7 @@ import Intents
 import os.log
 import UIKit
 
+@available(iOS 14.0, *)
 class IntentHandler: INExtension, RedactImageIntentHandling {
     func handle(intent: RedactImageIntent, completion: @escaping (RedactImageIntentResponse) -> Void) {
         os_log("handling redact intent")

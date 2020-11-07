@@ -72,36 +72,6 @@ public class TextRectangleDetector: NSObject {
         }
     }
 
-    @available(iOS 13.0, *)
-    public func detectWords(inImageAt url: URL, completionHandler: @escaping (([WordObservation]?) -> Void)) {
-        let recognitionOperation = TextRecognitionOperation(url: url)
-            recognitionOperation.completionBlock = { [weak recognitionOperation] in
-                // Detect all text in image.
-                guard let results = recognitionOperation?.recognizedTextResults else { return }
-
-                // For every observation, get the top candidate.
-                let candidates = results.compactMap { $0.topCandidates(1).first }
-
-                // Flatten together every struct.
-                let observations = candidates.flatMap { candidate -> [WordObservation] in
-                    // Take the top candidate's string and split it on word boundaries.
-                    let words = candidate.string.words
-                    return words.compactMap { word -> WordObservation? in
-                        let (wordString, wordRange) = word
-                        guard let bounds = try? candidate.boundingBox(for: wordRange)?.boundingBox else { return nil }
-
-                        // Generate (bounding box, word) structs for every word in the string.
-                        let image = UIImage()
-                        return WordObservation(bounds: bounds, string: wordString, in: image)
-                    }
-                }
-
-                completionHandler(observations)
-            }
-
-            operationQueue.addOperation(recognitionOperation)
-    }
-
     #elseif canImport(AppKit)
     @available(macOS 10.15, *)
     public func detectWords(in image: NSImage, completionHandler: @escaping (([WordObservation]?) -> Void)) {

@@ -3,9 +3,11 @@
 
 import Editing
 import Intents
+import os.log
 import UIKit
 import UniformTypeIdentifiers
 
+@available(iOS 14.0, *)
 class ShortcutsRedactOperation: Operation {
     var result: Result<INFile, Error>?
     init(input: INFile, wordList: [String]) {
@@ -14,10 +16,10 @@ class ShortcutsRedactOperation: Operation {
     }
 
     override func start() {
-//        guard let image = UIImage(data: input.data) else { return fail(with: ShortcutsRedactOperationError.noImage) }
+        guard let image = UIImage(data: input.data) else { return fail(with: ShortcutsRedactOperationError.noImage) }
         let input = self.input
         let wordList = self.wordList
-        detector.detectWords(inImageAt: input.fileURL!) { [weak self] detectedObservations in
+        detector.detectWords(in: image) { [weak self] detectedObservations in
             let observations = detectedObservations ?? []
             let matchingObservations = observations.filter { observation in
                 wordList.contains(where: { wordListString in
@@ -74,10 +76,12 @@ class ShortcutsRedactOperation: Operation {
     override var isFinished: Bool { return _finished }
 }
 
+@available(iOS 14.0, *)
 enum ShortcutsRedactOperationError: Error {
     case noImage
 }
 
+@available(iOS 14.0, *)
 class ShortcutsRedactExporter: NSObject {
     static func export(_ input: INFile, redactions: [Redaction], completionHandler: @escaping((Result<INFile, Error>) -> Void)) {
         let exportOperation = ShortcutsExportOperation(input: input, redactions: redactions)
@@ -96,6 +100,7 @@ class ShortcutsRedactExporter: NSObject {
     private static let operationQueue = OperationQueue()
 }
 
+@available(iOS 14.0, *)
 class ShortcutsExportOperation: Operation {
     var result: Result<INFile, Error>?
 
@@ -195,6 +200,7 @@ class ShortcutsExportOperation: Operation {
     private let redactions: [Redaction]
 }
 
+@available(iOS 14.0, *)
 enum ShortcutsExportError: Error {
     case failedToGenerateGraphicsContext
     case failedToRenderImage

@@ -193,6 +193,8 @@
 		04A8A5F2231659BA006CE411 /* PhotoEditingCanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5F0231659BA006CE411 /* PhotoEditingCanvasView.m */; };
 		04AA1D6C252EBBE400B486C7 /* ColorPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA1D6B252EBBE400B486C7 /* ColorPanel.swift */; };
 		04ABC8DD2528207400F5BA6A /* CollectionPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABC8DC2528207400F5BA6A /* CollectionPresenting.swift */; };
+		04ACC40E255648A10035E3C2 /* ShortcutsRedactOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */; };
+		04ACC40F255648A10035E3C2 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464B1E02553A3DE00D00FAC /* IntentHandler.swift */; };
 		04ADD1562290CCC200E17445 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1552290CCC200E17445 /* AppEntry.swift */; };
 		04ADD1582290CFF100E17445 /* AppListFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1572290CFF100E17445 /* AppListFetcher.swift */; };
 		04ADD15A2290D1C500E17445 /* AppLookupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD1592290D1C500E17445 /* AppLookupResponse.swift */; };
@@ -2007,6 +2009,7 @@
 				04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */,
 				041EFF52225303430058D8EE /* PromptButton.swift in Sources */,
 				0489081724AD796D005DDEF3 /* PhotoLibraryViewController.swift in Sources */,
+				04ACC40E255648A10035E3C2 /* ShortcutsRedactOperation.swift in Sources */,
 				0495B57B25354C3200B2DF0B /* PhotoLibraryScrollView.swift in Sources */,
 				041EFEF92251A9F30058D8EE /* AppDelegate.swift in Sources */,
 				046C4065247F5BCA0069E8FB /* UserCollectionTableViewCellImageView.swift in Sources */,
@@ -2063,6 +2066,7 @@
 				041EFF74225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift in Sources */,
 				04F3C7E323089ACA00445A8D /* PurchaseMarketingView.swift in Sources */,
 				0401CDFA24AD8EF50011A9BF /* AssetButton.swift in Sources */,
+				04ACC40F255648A10035E3C2 /* IntentHandler.swift in Sources */,
 				04ADD1582290CFF100E17445 /* AppListFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
