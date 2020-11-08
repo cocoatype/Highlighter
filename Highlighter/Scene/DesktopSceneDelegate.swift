@@ -12,7 +12,7 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         guard let scene = (scene as? UIWindowScene) else { return }
 
         let window = AppWindow(scene: scene)
-        let settingsViewController = DesktopViewController()
+        let settingsViewController = DesktopViewController(representedURL: representedURL(from: connectionOptions))
         window.rootViewController = settingsViewController
         window.makeKeyAndVisible()
 
@@ -25,8 +25,46 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         self.window = window
     }
 
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        var contexts = URLContexts
+        if let windowScene = scene as? UIWindowScene,
+           let window = windowScene.windows.first,
+           let rootViewController = window.rootViewController,
+           let desktopViewController = rootViewController as? DesktopViewController,
+           desktopViewController.representedURL == nil,
+           let context = contexts.popFirst() {
+            desktopViewController.representedURL = context.url
+        }
+        activateSessions(for: contexts)
+    }
+
+    private func activateSessions(for urlContexts: Set<UIOpenURLContext>) {
+        urlContexts.forEach { context in
+            let activity = NSUserActivity(activityType: Self.launchActivityType)
+            activity.userInfo = [Self.launchActivityURLKey: context.url.absoluteString]
+            UIApplication.shared.requestSceneSessionActivation(nil, userActivity: activity, options: nil, errorHandler: nil)
+        }
+    }
+
     func validateToolbarItems() {
         window?.windowScene?.titlebar?.toolbar?.visibleItems?.forEach { $0.validate() }
+    }
+
+    private func representedURL(from options: UIScene.ConnectionOptions) -> URL? {
+        var urlContexts = options.urlContexts
+        if let urlContext = urlContexts.popFirst() {
+            activateSessions(for: urlContexts) // create new sessions for any others
+            return urlContext.url
+        } else if let urlActivity = options.userActivities.first(where: { $0.activityType == Self.launchActivityType }) {
+            guard let userInfo = urlActivity.userInfo,
+                  let value = userInfo[Self.launchActivityURLKey],
+                  let urlString = value as? String,
+                  let url = URL(string: urlString)
+            else { return nil }
+            return url
+        }
+
+        return nil
     }
 
     // MARK: ShareItemDelegate
@@ -74,6 +112,9 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
     }
 
     // MARK: Boilerplate
+
+    private static let launchActivityType = "com.cocoatype.Highlighter.desktop"
+    private static let launchActivityURLKey = "DesktopSceneDelegate.launchActivityURLKey"
 
     private var desktopViewController: DesktopViewController? { window?.rootViewController as? DesktopViewController }
     private var editingViewController: PhotoEditingViewController? { desktopViewController?.editingViewController }

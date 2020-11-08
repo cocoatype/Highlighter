@@ -7,18 +7,50 @@ import UIKit
 class DesktopViewController: UIViewController, UIDocumentPickerDelegate {
     var editingViewController: PhotoEditingViewController? { children.first as? PhotoEditingViewController }
 
-    init() {
+    init(representedURL: URL?) {
+        self.representedURL = representedURL
         super.init(nibName: nil, bundle: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        guard children.contains(where: { $0 is PhotoEditingViewController }) == false else { return }
+        guard representedURL == nil else { return loadRepresentedURL() }
+        displayDocumentPicker()
+    }
+
+    // MARK: Represented URL
+
+    var representedURL: URL? {
+        didSet {
+            loadRepresentedURL()
+        }
+    }
+
+    private func loadRepresentedURL() {
+        guard let representedURL = representedURL,
+              let data = try? Data(contentsOf: representedURL),
+              let image = UIImage(data: data)
+        else { return }
+
+        if presentedViewController is UIDocumentPickerViewController {
+            dismiss(animated: false, completion: nil)
+        }
+
+        windowScene?.titlebar?.representedURL = representedURL
+        windowScene?.title = representedURL.lastPathComponent
+
+        embed(PhotoEditingViewController(image: image))
+        validateAllToolbarItems()
+    }
+
+    // MARK: Document Picker
+
+    private func displayDocumentPicker() {
         let pickerController = UIDocumentPickerViewController(forOpeningContentTypes: [.image])
         pickerController.delegate = self
         present(pickerController, animated: true, completion: nil)
     }
-
-    // MARK: UIDocumentPickerDelegate
 
     private func validateAllToolbarItems() {
         windowScene?.titlebar?.toolbar?.visibleItems?.forEach { $0.validate() }
@@ -26,19 +58,13 @@ class DesktopViewController: UIViewController, UIDocumentPickerDelegate {
 
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let documentURL = urls.first else { return }
-        windowScene?.titlebar?.representedURL = documentURL
-        windowScene?.title = documentURL.lastPathComponent
+        representedURL = documentURL
 
-        guard let data = try? Data(contentsOf: documentURL),
-              let image = UIImage(data: data)
-        else { return }
-
-        embed(PhotoEditingViewController(image: image))
-        validateAllToolbarItems()
+        loadRepresentedURL()
     }
 
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        guard let session = windowScene?.session else { return }
+        guard let session = windowScene?.session, representedURL == nil else { return }
         UIApplication.shared.requestSceneSessionDestruction(session, options: nil)
     }
 
