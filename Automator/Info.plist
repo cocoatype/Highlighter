@@ -14,7 +14,7 @@
 		</array>
 	</dict>
 	<key>AMApplication</key>
-	<string>Black Highlighter</string>
+	<string>Highlighter</string>
 	<key>AMCanShowSelectedItemsWhenRun</key>
 	<false/>
 	<key>AMCanShowWhenRun</key>
@@ -35,7 +35,7 @@
 		<string>https://blackhighlighter.app/</string>
 	</dict>
 	<key>AMIconName</key>
-	<string>AutomatorIcon</string>
+	<string>AppIcon</string>
 	<key>AMKeywords</key>
 	<array/>
 	<key>AMName</key>
