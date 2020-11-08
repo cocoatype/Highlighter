@@ -77,7 +77,7 @@ extension UIBezierPath {
         return UIBezierPath(cgPath: strokedCGPath)
     }
 
-    var dashedPath: UIBezierPath {
+    public var dashedPath: UIBezierPath {
         let cgPath = self.cgPath
         let dashedCGPath = cgPath.copy(dashingWithPhase: 0, lengths: [4, 4])
         let dashedPath = UIBezierPath(cgPath: dashedCGPath)
@@ -85,7 +85,7 @@ extension UIBezierPath {
         return dashedPath
     }
 
-    func forEachPoint(_ function: @escaping ((CGPoint) -> Void)) {
+    public func forEachPoint(_ function: @escaping ((CGPoint) -> Void)) {
         cgPath.forEachPoint(function)
     }
 }

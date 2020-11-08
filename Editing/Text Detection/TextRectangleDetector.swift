@@ -71,6 +71,7 @@ public class TextRectangleDetector: NSObject {
             operationQueue.addOperation(recognitionOperation)
         }
     }
+
     #elseif canImport(AppKit)
     @available(macOS 10.15, *)
     public func detectWords(in image: NSImage, completionHandler: @escaping (([WordObservation]?) -> Void)) {

@@ -36,6 +36,7 @@ struct PhotoLibraryScrollView: View {
                 }.onAppear {
                     guard shouldScrollToBottom else { return }
                     proxy.scrollTo(dataSource.itemsCount - 1, anchor: .bottom)
+
                     shouldScrollToBottom = false
                 }.onReceive(dataSource.itemsCountPublisher) { itemsCount in
                     self.itemsCount = itemsCount

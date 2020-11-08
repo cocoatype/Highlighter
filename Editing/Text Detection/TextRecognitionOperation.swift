@@ -29,9 +29,15 @@ class TextRecognitionOperation: Operation {
     }
     #endif
 
+    init(url: URL) {
+        self.imageRequestHandler = VNImageRequestHandler(url: url)
+        super.init()
+    }
+
     var recognizedTextResults: [VNRecognizedTextObservation]?
 
     override func start() {
+        os_log("running recognition")
         let imageRequest = VNRecognizeTextRequest { [weak self] request, error in
             guard let textObservations = (request.results as? [VNRecognizedTextObservation]) else {
                 TextRectangleDetectionOperation.log("error getting text rectangles: \(error?.localizedDescription ?? "(null)")", type: .error)

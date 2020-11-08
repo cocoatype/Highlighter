@@ -3,25 +3,21 @@
 
 import UIKit
 
-class BrushStampFactory: NSObject {
-    static func brushStamp(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
+public class BrushStampFactory: NSObject {
+    public static func brushStamp(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
         guard let standardImage = UIImage(named: "Brush") else { fatalError("Unable to load brush stamp image") }
 
         let brushScale = height / standardImage.size.height
         let scaledBrushSize = standardImage.size * brushScale
 
-        UIGraphicsBeginImageContext(scaledBrushSize)
-        defer { UIGraphicsEndImageContext() }
+        return UIGraphicsImageRenderer(size: scaledBrushSize).image { context in
+            color.setFill()
+            context.fill(CGRect(origin: .zero, size: scaledBrushSize))
 
-        color.setFill()
-        UIRectFill(CGRect(origin: .zero, size: scaledBrushSize))
+            let cgContext = context.cgContext
+            cgContext.scaleBy(x: brushScale, y: brushScale)
 
-        guard let context = UIGraphicsGetCurrentContext() else { fatalError("Unable to create brush scaling image context") }
-        context.scaleBy(x: brushScale, y: brushScale)
-
-        standardImage.draw(at: .zero, blendMode: .destinationIn, alpha: 1)
-
-        guard let scaledImage = UIGraphicsGetImageFromCurrentImageContext() else { fatalError("Unable to get scaled brush image from context") }
-        return scaledImage
+            standardImage.draw(at: .zero, blendMode: .destinationIn, alpha: 1)
+        }
     }
 }

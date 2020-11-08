@@ -10,23 +10,34 @@ class Asset: ObservableObject {
     let photoAsset: PHAsset
     init(_ asset: PHAsset) {
         self.photoAsset = asset
-
-        fetchImage { [weak self] fetchedImage in
-            self?.image = fetchedImage
-        }
     }
 
     // MARK: Image Loading
 
     static let imageManager = PHImageManager.default()
 
+    private var requestID: PHImageRequestID?
+
     func fetchImage(completionHandler: @escaping ((UIImage?) -> Void)) {
+        guard image == nil, requestID == nil else { return }
+
         let options = PHImageRequestOptions()
         options.isNetworkAccessAllowed = true
         options.deliveryMode = .opportunistic
 
-        Self.imageManager.requestImage(for: photoAsset, targetSize: CGSize(width: photoAsset.pixelWidth, height: photoAsset.pixelHeight), contentMode: .aspectFill, options: options) { image, _ in
+        requestID = Self.imageManager.requestImage(for: photoAsset, targetSize: CGSize(width: photoAsset.pixelWidth, height: photoAsset.pixelHeight), contentMode: .aspectFill, options: options) { image, _ in
             completionHandler(image)
         }
+    }
+
+    func startFetchingImage() {
+        fetchImage { [weak self] image in
+            self?.image = image
+        }
+    }
+
+    func cancelFetchingImage() {
+        guard let requestID = requestID else { return }
+        Self.imageManager.cancelImageRequest(requestID)
     }
 }
