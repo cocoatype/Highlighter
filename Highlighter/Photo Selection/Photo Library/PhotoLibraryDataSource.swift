@@ -13,7 +13,7 @@ protocol LibraryDataSource {
 }
 
 class PhotoLibraryDataSource: NSObject, LibraryDataSource, PHPhotoLibraryChangeObserver, UICollectionViewDataSource {
-    private let collection: Collection
+    let collection: Collection
     init(_ collection: Collection) {
         self.collection = collection
         super.init()

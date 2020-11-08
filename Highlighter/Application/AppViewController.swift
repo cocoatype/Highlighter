@@ -27,7 +27,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         switch permissionsRequester.authorizationStatus() {
         case .authorized, .limited:
             if #available(iOS 14.0, *) {
-                return SplitViewController(primaryViewController: AlbumsViewController(), secondaryViewController: PhotoLibraryViewController(collection: CollectionType.library.defaultCollection))
+                return SplitViewController(primaryViewController: AlbumsViewController(), secondaryViewController: LegacyPhotoLibraryViewController())
             } else {
                 return NavigationController(rootViewController: LegacyPhotoLibraryViewController())
             }
@@ -42,7 +42,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     // MARK: Collections
 
     func present(_ collection: Collection) {
-        guard #available(iOS 14.0, *), let splitViewController = children.first(where: { $0 is SplitViewController }) as? SplitViewController, let photoLibraryViewController = splitViewController.viewController(for: .secondary) as? PhotoLibraryViewController else { return }
+        guard #available(iOS 14.0, *), let splitViewController = children.first(where: { $0 is SplitViewController }) as? SplitViewController, let photoLibraryViewController = splitViewController.viewController(for: .secondary) as? LegacyPhotoLibraryViewController else { return }
         photoLibraryViewController.collection = collection
         splitViewController.show(.secondary)
     }

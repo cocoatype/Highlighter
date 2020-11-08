@@ -33,9 +33,20 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if libraryView?.contentOffset == .zero {
-            libraryView?.layoutIfNeeded()
-            libraryView?.scrollToItem(at: dataSource.lastItemIndexPath, at: .bottom, animated: false)
+        if let libraryView = libraryView,
+           libraryView.contentOffset.y <= 0 {
+            libraryView.layoutIfNeeded()
+            libraryView.scrollToItem(at: dataSource.lastItemIndexPath, at: .bottom, animated: false)
+        }
+    }
+
+    var collection: Collection {
+        get { return dataSource.collection }
+        set(newCollection) {
+            let newDataSource = PhotoLibraryDataSource(newCollection)
+            dataSource = newDataSource
+            libraryView?.dataSource = dataSource
+            libraryView?.reloadData()
         }
     }
 
@@ -92,7 +103,7 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
 
     private static let navigationItemTitle = NSLocalizedString("PhotoSelectionViewController.navigationItemTitle", comment: "Navigation title for the photo selector")
 
-    private let dataSource: PhotoLibraryDataSource
+    private var dataSource: PhotoLibraryDataSource
     private var libraryView: LegacyPhotoLibraryView? { return view as? LegacyPhotoLibraryView }
     private var purchaseStateObserver: Any?
 
