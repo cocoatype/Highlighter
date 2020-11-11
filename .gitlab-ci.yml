@@ -2,7 +2,6 @@ stages:
   - test
   - beta
 before_script:
-  - "$(brew --prefix asdf)/asdf.sh"
   - "bundle install --path vendor/bundle"
 variables:
   LC_ALL: "en_US.UTF-8"
