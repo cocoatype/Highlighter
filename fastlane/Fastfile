@@ -49,6 +49,7 @@ platform :ios do
     
     # Just upload the build to TestFlight, no other changes
     upload_to_testflight(
+      api_key_path: ENV["APPLE_API_KEY_JSON"],      
       app_platform: "ios",
       skip_submission: true,
       skip_waiting_for_build_processing: true)
