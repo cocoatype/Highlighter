@@ -1,0 +1,13 @@
+git_url("git@git.pado.name:pado/certificates.git")
+
+storage_mode("git")
+
+type("appstore") # The default type, can be: appstore, adhoc, enterprise or development
+
+app_identifier([
+        "com.cocoatype.Highlighter",
+        "com.cocoatype.Highlighter.Action",
+        "com.cocoatype.Highlighter.Photo",
+        "com.cocoatype.Highlighter.Shortcuts"
+])
+username("buddybuild@cocoatype.com")
