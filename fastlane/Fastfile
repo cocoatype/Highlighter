@@ -27,3 +27,39 @@ platform :ios do
       skip_waiting_for_build_processing: true)
   end
 end
+
+platform :mac do
+  desc "Runs all the tests"
+  lane :test do
+    # CI does not run Big Sur
+    # run_tests(scheme: "Highlighter")
+  end
+
+  desc "Submit a new beta build to Apple TestFlight"
+  lane :beta do
+    sync_code_signing(
+      additional_cert_types: ["mac_installer_distribution"],
+      app_identifier: ["com.cocoatype.Highlighter", "com.cocoatype.Highlighter.Automator"]
+      platforms: "macos",
+      readonly: true)
+
+    # Set the build number to the number of Git commits
+    build_number = sh "git log --oneline | wc -l"
+    increment_build_number(build_number: build_number)
+
+    # Build the app for App Store
+    build_mac_app(
+      export_method: "app-store",
+      installer_cert_name: "3rd Party Mac Developer Installer: Cocoatype, LLC (287EDDET2B)",
+      scheme: "Highlighter")
+    
+    # Just upload the build to TestFlight, no other changes
+    upload_to_app_store(
+      api_key_path: ENV["APPLE_API_KEY_JSON"],      
+      app_identifier: "com.cocoatype.Highlighter",
+      platform: "osx",
+      skip_app_version_update: true,
+      skip_metadata: true,
+      skip_screenshots: true)
+  end
+end
