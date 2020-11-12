@@ -39,7 +39,7 @@ platform :mac do
   lane :beta do
     sync_code_signing(
       additional_cert_types: ["mac_installer_distribution"],
-      app_identifier: ["com.cocoatype.Highlighter", "com.cocoatype.Highlighter.Automator"]
+      app_identifier: ["com.cocoatype.Highlighter", "com.cocoatype.Highlighter.Automator"],
       platforms: "macos",
       readonly: true)
 
