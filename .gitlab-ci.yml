@@ -1,6 +1,10 @@
 stages:
   - test
   - beta
+cache:
+  key: ${CI_PROJECT_PATH_SLUG}
+  paths:
+    - vendor/bundle
 before_script:
   - "bundle install --path vendor/bundle"
 variables:
