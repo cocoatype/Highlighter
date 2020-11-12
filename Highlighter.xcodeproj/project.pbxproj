@@ -2508,7 +2508,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 287EDDET2B;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				HEADER_SEARCH_PATHS = "$SYMROOT/../../SourcePackages/checkouts/openssl/libcrypto.xcframework/ios-arm64/Headers/**";
+				HEADER_SEARCH_PATHS = "\"${SRCROOT}/SourcePackages/checkouts/openssl/libcrypto.xcframework/ios-arm64/Headers\"/**";
 				INFOPLIST_FILE = Highlighter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
@@ -2943,7 +2943,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				HEADER_SEARCH_PATHS = "$SYMROOT/../../SourcePackages/checkouts/openssl/libcrypto.xcframework/ios-arm64/Headers/**";
+				HEADER_SEARCH_PATHS = "\"${SRCROOT}/SourcePackages/checkouts/openssl/libcrypto.xcframework/ios-arm64/Headers\"/**";
 				INFOPLIST_FILE = Receipts/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

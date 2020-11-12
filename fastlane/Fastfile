@@ -16,12 +16,13 @@ platform :ios do
 
     # Build the app for App Store
     build_app(
+      cloned_source_packages_path: "SourcePackages",
       export_method: "app-store",
       scheme: "Highlighter")
     
     # Just upload the build to TestFlight, no other changes
     upload_to_testflight(
-      api_key_path: ENV["APPLE_API_KEY_JSON"],      
+      api_key_path: ENV["APPLE_API_KEY_JSON"],
       app_platform: "ios",
       skip_submission: true,
       skip_waiting_for_build_processing: true)
@@ -52,7 +53,7 @@ platform :mac do
       export_method: "app-store",
       installer_cert_name: "3rd Party Mac Developer Installer: Cocoatype, LLC (287EDDET2B)",
       scheme: "Highlighter")
-    
+
     # Just upload the build to TestFlight, no other changes
     upload_to_app_store(
       api_key_path: ENV["APPLE_API_KEY_JSON"],      

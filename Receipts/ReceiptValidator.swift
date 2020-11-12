@@ -52,7 +52,7 @@ public class ReceiptValidator {
             try validate(container, withCertificate: ReceiptValidator.appleCertificateData)
         }
         #else
-            validate(container, withCertificate: ReceiptValidator.appleCertificateData)
+            try validate(container, withCertificate: ReceiptValidator.appleCertificateData)
         #endif
 
     }
