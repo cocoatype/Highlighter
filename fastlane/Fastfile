@@ -59,6 +59,7 @@ platform :mac do
       api_key_path: ENV["APPLE_API_KEY_JSON"],      
       app_identifier: "com.cocoatype.Highlighter",
       platform: "osx",
+      precheck_include_in_app_purchases: false,
       skip_app_version_update: true,
       skip_metadata: true,
       skip_screenshots: true)
