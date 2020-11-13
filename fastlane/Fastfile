@@ -41,7 +41,7 @@ platform :mac do
     sync_code_signing(
       additional_cert_types: ["mac_installer_distribution"],
       app_identifier: ["com.cocoatype.Highlighter", "com.cocoatype.Highlighter.Automator"],
-      platform: "macos",
+      platform: "catalyst",
       readonly: true)
 
     # Set the build number to the number of Git commits
