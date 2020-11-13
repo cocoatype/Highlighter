@@ -2678,7 +2678,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 287EDDET2B;
 				INFOPLIST_FILE = Automator/Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Automator";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -2706,7 +2705,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 287EDDET2B;
 				INFOPLIST_FILE = Automator/Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Automator";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
