@@ -91,6 +91,7 @@
 		044D4D042547D25600701166 /* Redacting.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 044D4C9B2547C8EE00701166 /* Redacting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		044D4D0C2547D4CC00701166 /* TextRecognitionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3E22EF879700FF07C2 /* TextRecognitionOperation.swift */; };
 		0464B18725529CC000D00FAC /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
+		0464B19025529DC500D00FAC /* AutomatorActions.action in Embed Automator Actions */ = {isa = PBXBuildFile; fileRef = 044D4C182547B7BC00701166 /* AutomatorActions.action */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0464B1E12553A3DE00D00FAC /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464B1E02553A3DE00D00FAC /* IntentHandler.swift */; };
 		0464B1E52553A3DE00D00FAC /* Shortcuts.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0464B1DE2553A3DE00D00FAC /* Shortcuts.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0464B1F32553A41300D00FAC /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0464B1F22553A41300D00FAC /* Intents.intentdefinition */; };
@@ -386,6 +387,17 @@
 			files = (
 				044D4D042547D25600701166 /* Redacting.framework in CopyFiles */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0464B18F25529D9500D00FAC /* Embed Automator Actions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "${CONTENTS_FOLDER_PATH}/Library/Automator";
+			dstSubfolderSpec = 16;
+			files = (
+				0464B19025529DC500D00FAC /* AutomatorActions.action in Embed Automator Actions */,
+			);
+			name = "Embed Automator Actions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		049F92E322CDA3DB0090C9BC /* Embed Frameworks */ = {
@@ -1540,6 +1552,7 @@
 				041EFEF32251A9F30058D8EE /* Resources */,
 				043911D022C461F000D4AE30 /* Embed App Extensions */,
 				049F92E322CDA3DB0090C9BC /* Embed Frameworks */,
+				0464B18F25529D9500D00FAC /* Embed Automator Actions */,
 			);
 			buildRules = (
 			);
