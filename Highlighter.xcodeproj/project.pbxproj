@@ -158,8 +158,6 @@
 		049F92CF22CD98110090C9BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 049F92CE22CD98110090C9BC /* Localizable.strings */; };
 		049F92D122CD9C350090C9BC /* ActionEditingDismissalAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F92D022CD9C350090C9BC /* ActionEditingDismissalAlertController.swift */; };
 		049F92DB22CDA3DB0090C9BC /* Editing.h in Headers */ = {isa = PBXBuildFile; fileRef = 049F92D922CDA3DB0090C9BC /* Editing.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		049F92DE22CDA3DB0090C9BC /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
-		049F92DF22CDA3DB0090C9BC /* Editing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		049F92E422CDA3FF0090C9BC /* TextRectangleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */; };
 		049F92E522CDA3FF0090C9BC /* TextRectangleDetectionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */; };
 		049F92E622CDA3FF0090C9BC /* TextObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9CE226EB0C70012F5AE /* TextObservation.swift */; };
@@ -274,6 +272,8 @@
 		04F3C85D230BC38600445A8D /* Canvas.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C849230BC1E100445A8D /* Canvas.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04F3C864230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04F3C865230BCBDE00445A8D /* PhotoEditingBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04FB5F2325C7AC8400A5B48D /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
+		04FB5F2425C7AC8400A5B48D /* Editing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04FDEA5625257B1900F94CA9 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDEA5525257B1900F94CA9 /* SplitViewController.swift */; };
 		04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */; };
 		04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */; };
@@ -408,8 +408,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				04F3C85D230BC38600445A8D /* Canvas.framework in Embed Frameworks */,
-				049F92DF22CDA3DB0090C9BC /* Editing.framework in Embed Frameworks */,
 				04F3C80D2309E8A800445A8D /* Receipts.framework in Embed Frameworks */,
+				04FB5F2425C7AC8400A5B48D /* Editing.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -690,7 +690,7 @@
 			files = (
 				04F3C85C230BC38600445A8D /* Canvas.framework in Frameworks */,
 				04F3C80C2309E8A800445A8D /* Receipts.framework in Frameworks */,
-				049F92DE22CDA3DB0090C9BC /* Editing.framework in Frameworks */,
+				04FB5F2325C7AC8400A5B48D /* Editing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1715,7 +1715,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				04ABC8EA25293F1600F5BA6A /* PBXTargetDependency */,
 			);
 			name = Receipts;
 			packageProductDependencies = (
@@ -2278,10 +2277,6 @@
 			isa = PBXTargetDependency;
 			target = 049F92D622CDA3DB0090C9BC /* Editing */;
 			targetProxy = 049F92DC22CDA3DB0090C9BC /* PBXContainerItemProxy */;
-		};
-		04ABC8EA25293F1600F5BA6A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 04ABC8E925293F1600F5BA6A /* OpenSSL */;
 		};
 		04F3C80B2309E8A800445A8D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3097,13 +3092,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		04ABC8E925293F1600F5BA6A /* OpenSSL */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = OpenSSL;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 041EFEED2251A9F30058D8EE /* Project object */;
 }
