@@ -26,14 +26,13 @@ class ShareItem: NSSharingServicePickerToolbarItem, UIActivityItemsConfiguration
         guard let delegate = delegate, delegate.canExportImage else { return [] }
 
         let itemProvider = NSItemProvider()
-        itemProvider.registerItem(forTypeIdentifier: UTType.image.identifier) { [weak self] completionHandler, itemClass, options in
+        itemProvider.registerDataRepresentation(forTypeIdentifier: UTType.png.identifier, visibility: .all, loadHandler: { [weak self] loadHandler -> Progress? in
             self?.delegate?.exportImage { image in
-                guard let completionHandler = completionHandler else { return }
-                guard let imageData = image?.pngData() else { return completionHandler(nil, nil) }
-                completionHandler((imageData as NSData), nil)
+                loadHandler(image?.pngData(), nil)
                 self?.delegate?.didExportImage()
             }
-        }
+            return nil
+        })
 
         return [itemProvider]
     }
