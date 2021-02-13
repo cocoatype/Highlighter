@@ -120,6 +120,7 @@
 		0482C7A325218DB40013B69E /* DesktopSettingsAddRemoveControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C7A225218DB40013B69E /* DesktopSettingsAddRemoveControl.swift */; };
 		0482C7A525218E080013B69E /* DesktopSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C7A425218E080013B69E /* DesktopSettingsTableViewCell.swift */; };
 		0482C7A72522CEB00013B69E /* DesktopSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C7A62522CEB00013B69E /* DesktopSettingsViewController.swift */; };
+		048320DE25D7F43800355393 /* DesktopSettingsSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */; };
 		048416592553AF1100048DE8 /* ShortcutsRedactOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */; };
 		048416622553AF8000048DE8 /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		0484166E2553B67800048DE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041EFEFF2251A9F50058D8EE /* Assets.xcassets */; };
@@ -549,6 +550,7 @@
 		0482C7A225218DB40013B69E /* DesktopSettingsAddRemoveControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsAddRemoveControl.swift; sourceTree = "<group>"; };
 		0482C7A425218E080013B69E /* DesktopSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		0482C7A62522CEB00013B69E /* DesktopSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsViewController.swift; sourceTree = "<group>"; };
+		048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsSceneDelegate.swift; sourceTree = "<group>"; };
 		048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsRedactOperation.swift; sourceTree = "<group>"; };
 		0489081624AD796D005DDEF3 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		0489081924AD7A32005DDEF3 /* PhotoLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryView.swift; sourceTree = "<group>"; };
@@ -1330,6 +1332,7 @@
 				04EF55B922D6DB9400C6600D /* SceneDelegate.swift */,
 				04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */,
 				0470163324D906420080DC52 /* DesktopSceneDelegate.swift */,
+				048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -1977,6 +1980,7 @@
 				046C4061247F5B8F0069E8FB /* CollectionTableViewCellLabel.swift in Sources */,
 				042B7905229A3AC7005B7A2A /* AppRatingsPrompter.swift in Sources */,
 				046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */,
+				048320DE25D7F43800355393 /* DesktopSettingsSceneDelegate.swift in Sources */,
 				0470163724D906820080DC52 /* ShareItem.swift in Sources */,
 				0431E0D322F85F0B00DC85C4 /* DocumentScannerPresenting.swift in Sources */,
 				041EFF6B225C36350058D8EE /* LegacyPhotoLibraryViewController.swift in Sources */,

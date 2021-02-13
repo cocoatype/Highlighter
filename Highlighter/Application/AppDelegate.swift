@@ -103,13 +103,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ])
         builder.insertSibling(preferencesMenu, afterMenu: .about)
     }
-    #endif
 
     @objc private func displayPreferences() {
         let activity = NSUserActivity(activityType: "com.cocoatype.Highlighter.settings")
         let existingScene = UIApplication.shared.openSessions.first(where: { $0.configuration.delegateClass == DesktopSettingsSceneDelegate.self })
         UIApplication.shared.requestSceneSessionActivation(existingScene, userActivity: activity, options: nil, errorHandler: nil)
     }
+    #endif
 
     private static let privacyMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.privacy", comment: "Privacy menu item title")
     @objc private func displayPrivacyPolicy() {
