@@ -120,6 +120,8 @@
 		0482C7A325218DB40013B69E /* DesktopSettingsAddRemoveControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C7A225218DB40013B69E /* DesktopSettingsAddRemoveControl.swift */; };
 		0482C7A525218E080013B69E /* DesktopSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C7A425218E080013B69E /* DesktopSettingsTableViewCell.swift */; };
 		0482C7A72522CEB00013B69E /* DesktopSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C7A62522CEB00013B69E /* DesktopSettingsViewController.swift */; };
+		048320B125D7F12600355393 /* LaunchActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320B025D7F12600355393 /* LaunchActivity.swift */; };
+		048320C425D7F1CB00355393 /* RecentsMenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320C325D7F1CB00355393 /* RecentsMenuDataSource.swift */; };
 		048416592553AF1100048DE8 /* ShortcutsRedactOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */; };
 		048416622553AF8000048DE8 /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		0484166E2553B67800048DE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041EFEFF2251A9F50058D8EE /* Assets.xcassets */; };
@@ -550,6 +552,8 @@
 		0482C7A225218DB40013B69E /* DesktopSettingsAddRemoveControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsAddRemoveControl.swift; sourceTree = "<group>"; };
 		0482C7A425218E080013B69E /* DesktopSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		0482C7A62522CEB00013B69E /* DesktopSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsViewController.swift; sourceTree = "<group>"; };
+		048320B025D7F12600355393 /* LaunchActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchActivity.swift; sourceTree = "<group>"; };
+		048320C325D7F1CB00355393 /* RecentsMenuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsMenuDataSource.swift; sourceTree = "<group>"; };
 		048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsRedactOperation.swift; sourceTree = "<group>"; };
 		0489081624AD796D005DDEF3 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		0489081924AD7A32005DDEF3 /* PhotoLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryView.swift; sourceTree = "<group>"; };
@@ -1084,6 +1088,16 @@
 			path = "Toolbar Items";
 			sourceTree = "<group>";
 		};
+		048320BA25D7F1AF00355393 /* Recents Menu */ = {
+			isa = PBXGroup;
+			children = (
+				04EA0ADC25D4EA6C00D98138 /* FileIconFetcher.h */,
+				04EA0ADD25D4EA6C00D98138 /* FileIconFetcher.m */,
+				048320C325D7F1CB00355393 /* RecentsMenuDataSource.swift */,
+			);
+			path = "Recents Menu";
+			sourceTree = "<group>";
+		};
 		0489081824AD797E005DDEF3 /* Legacy */ = {
 			isa = PBXGroup;
 			children = (
@@ -1111,6 +1125,7 @@
 		048909F0226571830048E203 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				04EA0ADB25D4EA6C00D98138 /* Highlighter-Bridging-Header.h */,
 				04F3C7F92309282600445A8D /* AppleIncRootCertificate.cer */,
 				041EFF042251A9F50058D8EE /* Info.plist */,
 				041EFF4A225300030058D8EE /* Localizable.strings */,
@@ -1302,9 +1317,7 @@
 				042B7902229A38C0005B7A2A /* Defaults.swift */,
 				042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */,
 				04F3C7F22308F37400445A8D /* AsyncOperation.swift */,
-				04EA0ADC25D4EA6C00D98138 /* FileIconFetcher.h */,
-				04EA0ADD25D4EA6C00D98138 /* FileIconFetcher.m */,
-				04EA0ADB25D4EA6C00D98138 /* Highlighter-Bridging-Header.h */,
+				048320BA25D7F1AF00355393 /* Recents Menu */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1337,6 +1350,7 @@
 				04EF55B922D6DB9400C6600D /* SceneDelegate.swift */,
 				04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */,
 				0470163324D906420080DC52 /* DesktopSceneDelegate.swift */,
+				048320B025D7F12600355393 /* LaunchActivity.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -1970,6 +1984,7 @@
 				04F3C7BA2301A47E00445A8D /* OtherAppsSection.swift in Sources */,
 				04899D75231CEAED002BC1D8 /* PurchaseValidator.swift in Sources */,
 				0401CDF824AD89220011A9BF /* DocumentScanButton.swift in Sources */,
+				048320B125D7F12600355393 /* LaunchActivity.swift in Sources */,
 				041EFF492252FAF50058D8EE /* IntroViewController.swift in Sources */,
 				04ABC8DD2528207400F5BA6A /* CollectionPresenting.swift in Sources */,
 				04F3C7AE2301A2D100445A8D /* SettingsContentSection.swift in Sources */,
@@ -2003,6 +2018,7 @@
 				04F3C7C22301A55E00445A8D /* AcknowledgementsItem.swift in Sources */,
 				041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */,
 				0493BA84253A9CF50083198C /* PhotoPicker.swift in Sources */,
+				048320C425D7F1CB00355393 /* RecentsMenuDataSource.swift in Sources */,
 				041EFF6E225C38800058D8EE /* PhotoSelectionNavigationController.swift in Sources */,
 				0491831524E4D87A004251B1 /* SettingsButton.swift in Sources */,
 				046C405B24761E8A0069E8FB /* CollectionEvent.swift in Sources */,
@@ -2496,7 +2512,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cocoatype.Highlighter";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match Development com.cocoatype.Highlighter macos";
 				SUPPORTS_MACCATALYST = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Highlighter/Application/Highlighter-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Highlighter/Highlighter-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";
@@ -2527,7 +2543,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cocoatype.Highlighter";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match AppStore com.cocoatype.Highlighter macos";
 				SUPPORTS_MACCATALYST = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Highlighter/Application/Highlighter-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Highlighter/Highlighter-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};

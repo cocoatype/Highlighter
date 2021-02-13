@@ -115,18 +115,4 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
     private var desktopViewController: DesktopViewController? { window?.rootViewController as? DesktopViewController }
     private var editingViewController: PhotoEditingViewController? { desktopViewController?.editingViewController }
 }
-
-class LaunchActivity: NSUserActivity {
-    init(_ fileURL: URL) {
-        super.init(activityType: Self.activityType)
-//        let activity = NSUserActivity(activityType: Self.launchActivityType)
-        userInfo = [Self.launchActivityURLKey: fileURL.absoluteString]
-    }
-
-    // MARK: Boilerplate
-
-    static let activityType = "com.cocoatype.Highlighter.desktop"
-    static let launchActivityURLKey = "DesktopSceneDelegate.launchActivityURLKey"
-
-}
 #endif

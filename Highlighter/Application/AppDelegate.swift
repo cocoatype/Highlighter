@@ -82,6 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    #if targetEnvironment(macCatalyst)
     @objc func openRecentFile(_ sender: UICommand) {
         guard let path = sender.propertyList as? String else { return }
         let url = URL(fileURLWithPath: path)
@@ -106,7 +107,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: Menu
 
-    #if targetEnvironment(macCatalyst)
     override func buildMenu(with builder: UIMenuBuilder) {
         guard builder.system == .main else { return }
 
@@ -181,43 +181,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: Boilerplate
     private var appViewController: AppViewController? { return window?.rootViewController as? AppViewController }
-}
-
-class RecentsMenuDataSource: NSObject {
-    static func addRecentItem(_ url: URL) {
-        Defaults.addRecentBookmark(url)
-        UIMenuSystem.main.setNeedsRebuild()
-    }
-
-    static func clearRecentItems() {
-        Defaults.clearRecentBookmarks()
-        UIMenuSystem.main.setNeedsRebuild()
-    }
-
-    var recentsMenu: UIMenu {
-        UIMenu(title: Self.menuTitle, identifier: nil, children: menuItems + [clearMenu])
-    }
-
-    private var menuItems: [UIMenuElement] {
-        recentItemsURLs.map { url in
-            UICommand(title: url.lastPathComponent, image: icon(for: url), action: #selector(AppDelegate.openRecentFile(_:)), propertyList: url.path)
-        }
-    }
-
-    private static let clearMenuItemTitle = NSLocalizedString("RecentsMenuDataSource.clearMenuItemTitle", comment: "Title for the clear recents menu item")
-    private let clearMenu = UIMenu(options: .displayInline, children: [
-        UICommand(title: RecentsMenuDataSource.clearMenuItemTitle, action: #selector(AppDelegate.clearRecents))
-    ])
-
-    private func icon(for url: URL) -> UIImage? {
-        let cgImage = FileIconFetcher().icon(for: url).takeUnretainedValue()
-        return UIImage(cgImage: cgImage, scale: UIScreen.main.scale, orientation: .up)
-    }
-
-    private var recentItemsURLs: [URL] {
-        var bool = false
-        return Defaults.recentBookmarks.compactMap { try? URL(resolvingBookmarkData: $0, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &bool) }
-    }
-
-    private static let menuTitle = NSLocalizedString("RecentsMenuDataSource.menuTitle", comment: "Title for the Open Recents menu")
 }
