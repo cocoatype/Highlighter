@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 3/31/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Editing
 import Intents
 import UIKit
 
@@ -66,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    @discardableResult
     private func openFile(at url: URL) -> Bool {
         guard let appViewController = appViewController else { return false }
 
@@ -80,16 +82,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    #if targetEnvironment(macCatalyst)
+    @objc func openRecentFile(_ sender: UICommand) {
+        guard let path = sender.propertyList as? String else { return }
+        let url = URL(fileURLWithPath: path)
+        let activity = LaunchActivity(url)
+
+        UIApplication.shared.requestSceneSessionActivation(nil, userActivity: activity, options: nil, errorHandler: nil)
+    }
+
+    @objc func clearRecents() {
+        RecentsMenuDataSource.clearRecentItems()
+    }
+
+    override func validate(_ command: UICommand) {
+        guard command.action == #selector(clearRecents) else { return super.validate(command) }
+
+        if Defaults.recentBookmarks.count == 0 {
+            command.attributes = [.disabled]
+        } else {
+            command.attributes = []
+        }
+    }
+
     // MARK: Menu
 
-    #if targetEnvironment(macCatalyst)
     override func buildMenu(with builder: UIMenuBuilder) {
         guard builder.system == .main else { return }
 
-        let saveMenu = UIMenu(title: "", options: [.displayInline], children: [
-            UIKeyCommand(title: "Save", action: #selector(PhotoEditingViewController.save(_:)), input: "S", modifierFlags: [.command])
-        ])
-        builder.insertSibling(saveMenu, afterMenu: .close)
+        let saveCommand = UIKeyCommand(title: Self.saveMenuItemTitle, action: #selector(PhotoEditingViewController.save(_:)), input: "S", modifierFlags: [.command])
+
+        if let closeMenu = builder.menu(for: .close) {
+            let existingChildren = closeMenu.children
+            let newChildren = existingChildren + [saveCommand]
+            let newCloseMenu = closeMenu.replacingChildren(newChildren)
+            builder.replace(menu: .close, with: newCloseMenu)
+        } else {
+            let saveMenu = UIMenu(title: "", options: [.displayInline], children: [
+                saveCommand
+            ])
+            builder.insertSibling(saveMenu, afterMenu: .close)
+        }
+
+        let recentsMenuDataSource = RecentsMenuDataSource()
+        builder.replace(menu: .openRecent, with: recentsMenuDataSource.recentsMenu)
 
         let about = UICommand(title: Self.aboutMenuItemTitle, action: #selector(Self.displayAbout))
         let privacyPolicy = UICommand(title: Self.privacyMenuItemTitle, action: #selector(Self.displayPrivacyPolicy))
@@ -98,13 +134,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let helpMenu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [about, privacyPolicy, acknowledgements, contact])
         builder.insertChild(helpMenu, atStartOfMenu: .help)
 
-        let preferencesMenu = UIMenu(title: "Preferences", identifier: .preferences, options: .displayInline, children: [
-            UIKeyCommand(title: "Preferences…", action: #selector(Self.displayPreferences), input: ",", modifierFlags: [.command])
+        let preferencesMenu = UIMenu(title: Self.preferencesMenuTitle, identifier: .preferences, options: .displayInline, children: [
+            UIKeyCommand(title: Self.preferencesMenuItemTitle, action: #selector(Self.displayPreferences), input: ",", modifierFlags: [.command])
         ])
         builder.insertSibling(preferencesMenu, afterMenu: .about)
     }
     #endif
 
+    private static let saveMenuItemTitle = NSLocalizedString("AppDelegate.saveMenuTitle", comment: "Save menu title")
+
+    private static let preferencesMenuTitle = NSLocalizedString("AppDelegate.preferencesMenuTitle", comment: "Preferences menu title")
+    private static let preferencesMenuItemTitle = NSLocalizedString("AppDelegate.preferencesMenuItemTitle", comment: "Preferences menu item title")
     @objc private func displayPreferences() {
         let activity = NSUserActivity(activityType: "com.cocoatype.Highlighter.settings")
         let existingScene = UIApplication.shared.openSessions.first(where: { $0.configuration.delegateClass == DesktopSettingsSceneDelegate.self })

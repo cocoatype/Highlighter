@@ -10,6 +10,10 @@
 
 "AlbumsViewController.navigationTitle" = "Albums";
 
+"AppDelegate.preferencesMenuTitle" = "Preferences";
+"AppDelegate.preferencesMenuItemTitle" = "Preferences…";
+"AppDelegate.saveMenuTitle" = "Save";
+
 "AutoRedactionsAdditionDialogFactory.addButtonTitle" = "Add Word";
 "AutoRedactionsAdditionDialogFactory.placeholder" = "Hidden Word";
 "AutoRedactionsAdditionDialogFactory.dialogTitle" = "Auto-Hide Word";
@@ -75,6 +79,9 @@
 
 "PurchaseMarketingViewController.navigationTitle" = "Ultra Highlighter";
 "PurchaseMarketingViewController.restoreButtonTitle" = "Restore";
+
+"RecentsMenuDataSource.clearMenuItemTitle" = "Clear Menu";
+"RecentsMenuDataSource.menuTitle" = "Open Recent";
 
 "SettingsContentProvider.Item.about" = "About Black Highlighter";
 "SettingsContentProvider.Item.acknowledgements" = "Acknowledgements";
