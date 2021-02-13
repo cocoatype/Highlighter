@@ -53,5 +53,9 @@ class DesktopSettingsSceneDelegate: NSObject, UIWindowSceneDelegate {
         self.window = window
     }
 
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        DesktopSceneDelegate.activateSessions(for: URLContexts)
+    }
+
     private static let windowTitle = NSLocalizedString("DesktopSettingsSceneDelegate.windowTitle", comment: "Title for the desktop settings window")
 }
