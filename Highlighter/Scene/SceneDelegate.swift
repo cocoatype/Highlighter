@@ -34,24 +34,3 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         return appViewController.stateRestorationActivity
     }
 }
-
-class DesktopSettingsSceneDelegate: NSObject, UIWindowSceneDelegate {
-    var window: UIWindow?
-
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let scene = (scene as? UIWindowScene) else { return }
-
-        scene.sizeRestrictions?.maximumSize = CGSize(width: 500, height: 640)
-
-        scene.title = Self.windowTitle
-
-        let window = AppWindow(scene: scene)
-        let settingsViewController = DesktopSettingsViewController()
-        window.rootViewController = settingsViewController
-        window.makeKeyAndVisible()
-
-        self.window = window
-    }
-
-    private static let windowTitle = NSLocalizedString("DesktopSettingsSceneDelegate.windowTitle", comment: "Title for the desktop settings window")
-}

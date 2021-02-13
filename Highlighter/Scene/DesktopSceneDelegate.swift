@@ -35,10 +35,10 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
            let context = contexts.popFirst() {
             desktopViewController.representedURL = context.url
         }
-        activateSessions(for: contexts)
+        Self.activateSessions(for: contexts)
     }
 
-    private func activateSessions(for urlContexts: Set<UIOpenURLContext>) {
+    static func activateSessions(for urlContexts: Set<UIOpenURLContext>) {
         urlContexts.forEach { context in
             let activity = LaunchActivity(context.url)
             UIApplication.shared.requestSceneSessionActivation(nil, userActivity: activity, options: nil, errorHandler: nil)
@@ -52,7 +52,7 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
     private func representedURL(from options: UIScene.ConnectionOptions) -> URL? {
         var urlContexts = options.urlContexts
         if let urlContext = urlContexts.popFirst() {
-            activateSessions(for: urlContexts) // create new sessions for any others
+            Self.activateSessions(for: urlContexts) // create new sessions for any others
             return urlContext.url
         } else if let urlActivity = options.userActivities.first(where: { $0.activityType == LaunchActivity.activityType }) {
             guard let userInfo = urlActivity.userInfo,

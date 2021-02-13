@@ -139,7 +139,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ])
         builder.insertSibling(preferencesMenu, afterMenu: .about)
     }
-    #endif
 
     private static let saveMenuItemTitle = NSLocalizedString("AppDelegate.saveMenuTitle", comment: "Save menu title")
 
@@ -150,6 +149,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let existingScene = UIApplication.shared.openSessions.first(where: { $0.configuration.delegateClass == DesktopSettingsSceneDelegate.self })
         UIApplication.shared.requestSceneSessionActivation(existingScene, userActivity: activity, options: nil, errorHandler: nil)
     }
+    #endif
 
     private static let privacyMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.privacy", comment: "Privacy menu item title")
     @objc private func displayPrivacyPolicy() {
