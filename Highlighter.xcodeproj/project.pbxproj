@@ -216,6 +216,7 @@
 		04DBC8402314D2080004F7DB /* AutoRedactionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBC83F2314D2080004F7DB /* AutoRedactionsListViewController.swift */; };
 		04DBC841231E0F040004F7DB /* EditingUserActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */; };
 		04DBC843231E2AEC0004F7DB /* RestoredRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBC842231E2AEC0004F7DB /* RestoredRedaction.swift */; };
+		04EA0ADE25D4EA6C00D98138 /* FileIconFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EA0ADD25D4EA6C00D98138 /* FileIconFetcher.m */; };
 		04EF55BA22D6DB9400C6600D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55B922D6DB9400C6600D /* SceneDelegate.swift */; };
 		04F3C7A52300206A00445A8D /* Purchaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7A42300206A00445A8D /* Purchaser.swift */; };
 		04F3C7A9230099BC00445A8D /* PurchaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7A8230099BC00445A8D /* PurchaseState.swift */; };
@@ -615,6 +616,9 @@
 		04DBC83F2314D2080004F7DB /* AutoRedactionsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsListViewController.swift; sourceTree = "<group>"; };
 		04DBC842231E2AEC0004F7DB /* RestoredRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoredRedaction.swift; sourceTree = "<group>"; };
 		04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingView.swift; sourceTree = "<group>"; };
+		04EA0ADB25D4EA6C00D98138 /* Highlighter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Highlighter-Bridging-Header.h"; sourceTree = "<group>"; };
+		04EA0ADC25D4EA6C00D98138 /* FileIconFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileIconFetcher.h; sourceTree = "<group>"; };
+		04EA0ADD25D4EA6C00D98138 /* FileIconFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileIconFetcher.m; sourceTree = "<group>"; };
 		04EF55B922D6DB9400C6600D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserActivity.swift; sourceTree = "<group>"; };
 		04F3C7A42300206A00445A8D /* Purchaser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchaser.swift; sourceTree = "<group>"; };
@@ -1298,6 +1302,9 @@
 				042B7902229A38C0005B7A2A /* Defaults.swift */,
 				042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */,
 				04F3C7F22308F37400445A8D /* AsyncOperation.swift */,
+				04EA0ADC25D4EA6C00D98138 /* FileIconFetcher.h */,
+				04EA0ADD25D4EA6C00D98138 /* FileIconFetcher.m */,
+				04EA0ADB25D4EA6C00D98138 /* Highlighter-Bridging-Header.h */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1753,6 +1760,7 @@
 				TargetAttributes = {
 					041EFEF42251A9F30058D8EE = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1230;
 					};
 					041EFF082251A9F50058D8EE = {
 						CreatedOnToolsVersion = 10.2;
@@ -1970,6 +1978,7 @@
 				04F3C7CD2302F0B100445A8D /* SettingsTableHeaderFooterView.swift in Sources */,
 				04F3C7D22304375E00445A8D /* SettingsPurchaseTableViewCell.swift in Sources */,
 				0431E0CD22F826E900DC85C4 /* DocumentScannerPhotoLibraryViewCell.swift in Sources */,
+				04EA0ADE25D4EA6C00D98138 /* FileIconFetcher.m in Sources */,
 				04920C1724CFCD3500BA3232 /* Asset.swift in Sources */,
 				049F293522875F7E00A335BE /* ContactMailViewController.swift in Sources */,
 				046BEC242470EBAC00FBECD7 /* Collection.swift in Sources */,
@@ -2467,6 +2476,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Highlighter/Highlighter.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
@@ -2486,6 +2496,8 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cocoatype.Highlighter";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match Development com.cocoatype.Highlighter macos";
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Highlighter/Application/Highlighter-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
@@ -2496,6 +2508,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Highlighter/Highlighter.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
@@ -2514,6 +2527,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cocoatype.Highlighter";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match AppStore com.cocoatype.Highlighter macos";
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Highlighter/Application/Highlighter-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};

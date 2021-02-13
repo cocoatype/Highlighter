@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 8/3/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+import Editing
 import UIKit
 
 #if targetEnvironment(macCatalyst)
@@ -28,20 +29,30 @@ class DesktopViewController: UIViewController, UIDocumentPickerDelegate {
     }
 
     private func loadRepresentedURL() {
-        guard let representedURL = representedURL,
-              let data = try? Data(contentsOf: representedURL),
-              let image = UIImage(data: data)
-        else { return }
+        guard let representedURL = representedURL else { return }
+        let accessGranted = representedURL.startAccessingSecurityScopedResource()
+        defer { representedURL.stopAccessingSecurityScopedResource() }
+        guard accessGranted else { return }
 
-        if presentedViewController is UIDocumentPickerViewController {
-            dismiss(animated: false, completion: nil)
+        do {
+            let data = try Data(contentsOf: representedURL)
+            guard let image = UIImage(data: data) else { return }
+
+            RecentsMenuDataSource.addRecentItem(representedURL)
+
+            if presentedViewController is UIDocumentPickerViewController {
+                dismiss(animated: false, completion: nil)
+            }
+
+            windowScene?.titlebar?.representedURL = representedURL
+            windowScene?.title = representedURL.lastPathComponent
+
+            embed(PhotoEditingViewController(image: image))
+            validateAllToolbarItems()
+        } catch let error {
+            dump(error)
+            return
         }
-
-        windowScene?.titlebar?.representedURL = representedURL
-        windowScene?.title = representedURL.lastPathComponent
-
-        embed(PhotoEditingViewController(image: image))
-        validateAllToolbarItems()
     }
 
     // MARK: Document Picker

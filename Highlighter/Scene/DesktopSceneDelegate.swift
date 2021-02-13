@@ -12,8 +12,8 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         guard let scene = (scene as? UIWindowScene) else { return }
 
         let window = AppWindow(scene: scene)
-        let settingsViewController = DesktopViewController(representedURL: representedURL(from: connectionOptions))
-        window.rootViewController = settingsViewController
+        let viewController = DesktopViewController(representedURL: representedURL(from: connectionOptions))
+        window.rootViewController = viewController
         window.makeKeyAndVisible()
 
         let toolbar = NSToolbar()
@@ -40,8 +40,7 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
 
     private func activateSessions(for urlContexts: Set<UIOpenURLContext>) {
         urlContexts.forEach { context in
-            let activity = NSUserActivity(activityType: Self.launchActivityType)
-            activity.userInfo = [Self.launchActivityURLKey: context.url.absoluteString]
+            let activity = LaunchActivity(context.url)
             UIApplication.shared.requestSceneSessionActivation(nil, userActivity: activity, options: nil, errorHandler: nil)
         }
     }
@@ -55,9 +54,9 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         if let urlContext = urlContexts.popFirst() {
             activateSessions(for: urlContexts) // create new sessions for any others
             return urlContext.url
-        } else if let urlActivity = options.userActivities.first(where: { $0.activityType == Self.launchActivityType }) {
+        } else if let urlActivity = options.userActivities.first(where: { $0.activityType == LaunchActivity.activityType }) {
             guard let userInfo = urlActivity.userInfo,
-                  let value = userInfo[Self.launchActivityURLKey],
+                  let value = userInfo[LaunchActivity.launchActivityURLKey],
                   let urlString = value as? String,
                   let url = URL(string: urlString)
             else { return nil }
@@ -113,10 +112,21 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
 
     // MARK: Boilerplate
 
-    private static let launchActivityType = "com.cocoatype.Highlighter.desktop"
-    private static let launchActivityURLKey = "DesktopSceneDelegate.launchActivityURLKey"
-
     private var desktopViewController: DesktopViewController? { window?.rootViewController as? DesktopViewController }
     private var editingViewController: PhotoEditingViewController? { desktopViewController?.editingViewController }
+}
+
+class LaunchActivity: NSUserActivity {
+    init(_ fileURL: URL) {
+        super.init(activityType: Self.activityType)
+//        let activity = NSUserActivity(activityType: Self.launchActivityType)
+        userInfo = [Self.launchActivityURLKey: fileURL.absoluteString]
+    }
+
+    // MARK: Boilerplate
+
+    static let activityType = "com.cocoatype.Highlighter.desktop"
+    static let launchActivityURLKey = "DesktopSceneDelegate.launchActivityURLKey"
+
 }
 #endif
