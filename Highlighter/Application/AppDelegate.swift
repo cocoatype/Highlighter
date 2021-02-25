@@ -127,12 +127,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let recentsMenuDataSource = RecentsMenuDataSource()
         builder.replace(menu: .openRecent, with: recentsMenuDataSource.recentsMenu)
 
-        let about = UICommand(title: Self.aboutMenuItemTitle, action: #selector(Self.displayAbout))
-        let privacyPolicy = UICommand(title: Self.privacyMenuItemTitle, action: #selector(Self.displayPrivacyPolicy))
-        let acknowledgements = UICommand(title: Self.acknowledgementsMenuItemTitle, action: #selector(Self.displayAcknowledgements))
-        let contact = UICommand(title: Self.contactMenuItemTitle, action: #selector(Self.initiateContact))
-        let helpMenu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [about, privacyPolicy, acknowledgements, contact])
-        builder.insertChild(helpMenu, atStartOfMenu: .help)
+        let helpMenuDataSource = HelpMenuDataSource()
+        builder.insertChild(helpMenuDataSource.helpMenu, atStartOfMenu: .help)
 
         let preferencesMenu = UIMenu(title: Self.preferencesMenuTitle, identifier: .preferences, options: .displayInline, children: [
             UIKeyCommand(title: Self.preferencesMenuItemTitle, action: #selector(Self.displayPreferences), input: ",", modifierFlags: [.command])
@@ -150,26 +146,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.requestSceneSessionActivation(existingScene, userActivity: activity, options: nil, errorHandler: nil)
     }
     #endif
-
-    private static let privacyMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.privacy", comment: "Privacy menu item title")
-    @objc private func displayPrivacyPolicy() {
-        UIApplication.shared.open(PrivacyViewController.url, options: [:], completionHandler: nil)
-    }
-
-    private static let aboutMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.about", comment: "About menu item title")
-    @objc private func displayAbout() {
-        UIApplication.shared.open(AboutViewController.url, options: [:], completionHandler: nil)
-    }
-
-    private static let acknowledgementsMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.acknowledgements", comment: "Acknowledgements menu item title")
-    @objc private func displayAcknowledgements() {
-        UIApplication.shared.open(AcknowledgementsViewController.url, options: [:], completionHandler: nil)
-    }
-
-    private static let contactMenuItemTitle = NSLocalizedString("SettingsContentProvider.Item.contact", comment: "Contact menu item title")
-    @objc private func initiateContact() {
-        UIApplication.shared.open(ContactMailViewController.mailtoURL, options: [:], completionHandler: nil)
-    }
 
     // MARK: Intent Handling
 

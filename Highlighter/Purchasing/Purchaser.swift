@@ -51,7 +51,7 @@ class Purchaser: NSObject {
     }
 
     private func fetchProducts() {
-        let fetchOperation = FetchProductOperation(identifier: Purchaser.productIdentifier)
+        let fetchOperation = FetchReadyProductOperation(identifier: Purchaser.productIdentifier)
         let handleProductOperation = BlockOperation { [weak self, weak fetchOperation] in
             switch fetchOperation?.result {
             case .success(let product)?: self?.state = .readyForPurchase(product: product)

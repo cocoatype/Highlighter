@@ -36,7 +36,7 @@ class PurchaseOperation: AsyncOperation<Void, Error> {
     }
 
     private func fetchProduct(withIdentifier identifier: String) {
-        let fetchOperation = FetchProductOperation(identifier: identifier)
+        let fetchOperation = FetchPurchaseProductOperation(identifier: identifier)
         let handleProductOperation = BlockOperation { [weak self, weak fetchOperation] in
             guard let result = fetchOperation?.result else {
                 self?.fail(PurchaseOperationError.unknown); return

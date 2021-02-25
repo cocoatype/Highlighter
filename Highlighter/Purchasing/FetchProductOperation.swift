@@ -36,3 +36,6 @@ class FetchProductOperation: AsyncOperation<SKProduct, Error>, SKProductsRequest
 
     private let identifier: String
 }
+
+class FetchPurchaseProductOperation: FetchProductOperation {}
+class FetchReadyProductOperation: FetchProductOperation {}

@@ -1,13 +1,32 @@
 //  Created by Geoff Pado on 3/31/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Editing
 import UIKit
 
 class AppWindow: UIWindow {
     init() {
         super.init(frame: UIScreen.main.bounds)
+        rootViewController = appViewController
         isOpaque = false
     }
+
+    var stateRestorationActivity: NSUserActivity? {
+        return appViewController.stateRestorationActivity
+    }
+
+    func restore(from activity: NSUserActivity) {
+        guard let editingActivity = EditingUserActivity(userActivity: activity),
+              let localIdentifier = editingActivity.assetLocalIdentifier,
+              let asset = PhotoLibraryDataSource.photo(withIdentifier: localIdentifier)
+        else { return }
+
+        appViewController.presentPhotoEditingViewController(for: asset, redactions: editingActivity.redactions, animated: false)
+    }
+
+    // MARK: Boilerplate
+
+    private let appViewController = AppViewController()
 
     @available(iOS 13.0, *)
     init(scene: UIWindowScene) {
@@ -15,6 +34,32 @@ class AppWindow: UIWindow {
         isOpaque = false
         windowScene = scene
     }
+
+    @available(*, unavailable)
+    required init(coder: NSCoder) {
+        let className = String(describing: type(of: self))
+        fatalError("\(className) does not implement init(coder:)")
+    }
+}
+
+class DesktopAppWindow: UIWindow {
+    init(windowScene: UIWindowScene, representedURL: URL?) {
+        super.init(windowScene: windowScene)
+
+        rootViewController = DesktopViewController(representedURL: representedURL)
+        isOpaque = false
+    }
+
+//    func restore(from activity: NSUserActivity) {
+//        guard let editingActivity = EditingUserActivity(userActivity: activity),
+//              let localIdentifier = editingActivity.assetLocalIdentifier,
+//              let asset = PhotoLibraryDataSource.photo(withIdentifier: localIdentifier)
+//        else { return }
+//
+//        appViewController.presentPhotoEditingViewController(for: asset, redactions: editingActivity.redactions, animated: false)
+//    }
+
+    // MARK: Boilerplate
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
