@@ -76,7 +76,9 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
 
     func didExportImage() {
         Defaults.numberOfSaves = Defaults.numberOfSaves + 1
-        AppRatingsPrompter.displayRatingsPrompt(in: window?.windowScene)
+        DispatchQueue.main.async { [weak self] in
+            AppRatingsPrompter.displayRatingsPrompt(in: self?.window?.windowScene)
+        }
     }
 
     // MARK: ToolPickerItemDelegate

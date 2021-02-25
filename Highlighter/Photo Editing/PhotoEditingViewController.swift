@@ -43,7 +43,9 @@ class PhotoEditingViewController: BasePhotoEditingViewController {
             activityController.completionWithItemsHandler = { [weak self] _, completed, _, _ in
                 self?.hasMadeEdits = false
                 Defaults.numberOfSaves = Defaults.numberOfSaves + 1
-                AppRatingsPrompter.displayRatingsPrompt(in: self?.view.window?.windowScene)
+                DispatchQueue.main.async { [weak self] in
+                    AppRatingsPrompter.displayRatingsPrompt(in: self?.view.window?.windowScene)
+                }
             }
 
             DispatchQueue.main.async { [weak self] in
