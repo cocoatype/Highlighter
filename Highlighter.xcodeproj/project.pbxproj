@@ -222,6 +222,7 @@
 		04EA0ADE25D4EA6C00D98138 /* FileIconFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EA0ADD25D4EA6C00D98138 /* FileIconFetcher.m */; };
 		04EF55BA22D6DB9400C6600D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55B922D6DB9400C6600D /* SceneDelegate.swift */; };
 		04F0910925E7A00000966C1E /* HelpMenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0910825E7A00000966C1E /* HelpMenuDataSource.swift */; };
+		04F0914225E7B30D00966C1E /* DesktopAppWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0914125E7B30D00966C1E /* DesktopAppWindow.swift */; };
 		04F3C7A52300206A00445A8D /* Purchaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7A42300206A00445A8D /* Purchaser.swift */; };
 		04F3C7A9230099BC00445A8D /* PurchaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7A8230099BC00445A8D /* PurchaseState.swift */; };
 		04F3C7AC230187F200445A8D /* SettingsContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7AB230187F200445A8D /* SettingsContentProvider.swift */; };
@@ -629,6 +630,7 @@
 		04EF55B922D6DB9400C6600D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserActivity.swift; sourceTree = "<group>"; };
 		04F0910825E7A00000966C1E /* HelpMenuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpMenuDataSource.swift; sourceTree = "<group>"; };
+		04F0914125E7B30D00966C1E /* DesktopAppWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopAppWindow.swift; sourceTree = "<group>"; };
 		04F3C7A42300206A00445A8D /* Purchaser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchaser.swift; sourceTree = "<group>"; };
 		04F3C7A62300968500445A8D /* ReceiptValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptValidator.swift; sourceTree = "<group>"; };
 		04F3C7A8230099BC00445A8D /* PurchaseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseState.swift; sourceTree = "<group>"; };
@@ -1318,6 +1320,7 @@
 				041EFEF82251A9F30058D8EE /* AppDelegate.swift */,
 				041EFEFA2251A9F30058D8EE /* AppViewController.swift */,
 				041EFF1A2251AB8D0058D8EE /* AppWindow.swift */,
+				04F0914125E7B30D00966C1E /* DesktopAppWindow.swift */,
 				042B7902229A38C0005B7A2A /* Defaults.swift */,
 				042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */,
 				04F3C7F22308F37400445A8D /* AsyncOperation.swift */,
@@ -2063,6 +2066,7 @@
 				046C4063247F5BB10069E8FB /* SystemCollectionTableViewCellImageView.swift in Sources */,
 				04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */,
 				04F0910925E7A00000966C1E /* HelpMenuDataSource.swift in Sources */,
+				04F0914225E7B30D00966C1E /* DesktopAppWindow.swift in Sources */,
 				0482C7A525218E080013B69E /* DesktopSettingsTableViewCell.swift in Sources */,
 				0489081A24AD7A32005DDEF3 /* PhotoLibraryView.swift in Sources */,
 				046BEC2E2471013900FBECD7 /* SettingsBarButtonItem.swift in Sources */,

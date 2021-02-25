@@ -41,29 +41,3 @@ class AppWindow: UIWindow {
         fatalError("\(className) does not implement init(coder:)")
     }
 }
-
-class DesktopAppWindow: UIWindow {
-    init(windowScene: UIWindowScene, representedURL: URL?) {
-        super.init(windowScene: windowScene)
-
-        rootViewController = DesktopViewController(representedURL: representedURL)
-        isOpaque = false
-    }
-
-//    func restore(from activity: NSUserActivity) {
-//        guard let editingActivity = EditingUserActivity(userActivity: activity),
-//              let localIdentifier = editingActivity.assetLocalIdentifier,
-//              let asset = PhotoLibraryDataSource.photo(withIdentifier: localIdentifier)
-//        else { return }
-//
-//        appViewController.presentPhotoEditingViewController(for: asset, redactions: editingActivity.redactions, animated: false)
-//    }
-
-    // MARK: Boilerplate
-
-    @available(*, unavailable)
-    required init(coder: NSCoder) {
-        let className = String(describing: type(of: self))
-        fatalError("\(className) does not implement init(coder:)")
-    }
-}
