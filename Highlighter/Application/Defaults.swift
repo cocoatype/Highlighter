@@ -57,7 +57,7 @@ public enum Defaults {
     }
 
     private enum Keys {
-        static let numberOfSaves = "Defaults.Keys.numberOfSaves"
+        static let numberOfSaves = "Defaults.Keys.numberOfSaves2"
         static let autoRedactionsWordList = "Defaults.Keys.autoRedactionsWordList"
         static let recentBookmarks = "Defaults.Keys.recentBookmarks"
     }

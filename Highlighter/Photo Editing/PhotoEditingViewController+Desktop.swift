@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 8/10/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+import Editing
 import UIKit
 import UniformTypeIdentifiers
 
@@ -31,6 +32,11 @@ extension PhotoEditingViewController {
             do {
                 try exportData.write(to: exportURL)
                 self?.clearHasMadeEdits()
+
+                Defaults.numberOfSaves += 1
+                DispatchQueue.main.async { [weak self] in
+                    AppRatingsPrompter.displayRatingsPrompt(in: self?.view.window?.windowScene)
+                }
             } catch {}
         }
     }
