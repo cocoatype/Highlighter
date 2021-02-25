@@ -12,16 +12,12 @@ protocol LibraryDataSource {
     func item(at index: Int) -> PhotoLibraryItem
 }
 
-class PhotoLibraryDataSource: NSObject, LibraryDataSource, PHPhotoLibraryChangeObserver, UICollectionViewDataSource {
+class PhotoLibraryDataSource: NSObject, LibraryDataSource, UICollectionViewDataSource {
     let collection: Collection
     init(_ collection: Collection) {
         self.collection = collection
         super.init()
-
-        PHPhotoLibrary.shared().register(self)
     }
-
-    weak var libraryView: LegacyPhotoLibraryView?
 
     // MARK: Data Source
 
@@ -64,7 +60,7 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, PHPhotoLibraryChangeO
 
     private let permissionsRequester = PhotoPermissionsRequester()
 
-    private lazy var allPhotos: PHFetchResult<PHAsset> = self.fetchAllPhotos()
+    private(set) lazy var allPhotos: PHFetchResult<PHAsset> = self.fetchAllPhotos()
     private var photosCount: Int { return allPhotos.count }
     var itemsCount: Int { photosCount + extraItems.count }
     var itemsCountPublisher = CurrentValueSubject<Int, Never>(0)
@@ -110,39 +106,11 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, PHPhotoLibraryChangeO
 
     // MARK: Photo Library Changes
 
-    func photoLibraryDidChange(_ changeInstance: PHChange) {
-        if let changes = changeInstance.changeDetails(for: allPhotos) {
-            allPhotos = changes.fetchResultAfterChanges
-
-            DispatchQueue.main.async { [weak self] in
-                guard let dataSource = self else { return }
-                dataSource.itemsCountPublisher.send(dataSource.itemsCount)
-
-                guard let libraryView = dataSource.libraryView else { return }
-
-                if changes.hasIncrementalChanges {
-                    libraryView.performBatchUpdates({ [unowned libraryView, changes] in
-                        if let removed = changes.removedIndexes {
-                            libraryView.deleteItems(at: removed.map { IndexPath(item: $0, section:0) })
-                        }
-                        if let inserted = changes.insertedIndexes {
-                            libraryView.insertItems(at: inserted.map { IndexPath(item: $0, section:0) })
-                        }
-                        if let changed = changes.changedIndexes {
-                            libraryView.reloadItems(at: changed.map { IndexPath(item: $0, section:0) })
-                        }
-
-                        changes.enumerateMoves { fromIndex, toIndex in
-                            libraryView.moveItem(at: IndexPath(item: fromIndex, section: 0),
-                                                 to: IndexPath(item: toIndex, section: 0))
-                        }
-                    }, completion: nil)
-                } else {
-                    libraryView.reloadData()
-                }
-            }
-        }
-    }
+//    func changeDetails(for change: PHChange) -> PHFetchResultChangeDetails<PHAsset>? {
+//        guard let details = change.changeDetails(for: allPhotos) else { return nil }
+//        allPhotos = details.fetchResultAfterChanges
+//        return details
+//    }
 }
 
 @available(iOS 14.0, *)

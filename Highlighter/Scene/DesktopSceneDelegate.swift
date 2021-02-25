@@ -11,9 +11,7 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
 
-        let window = AppWindow(scene: scene)
-        let viewController = DesktopViewController(representedURL: representedURL(from: connectionOptions))
-        window.rootViewController = viewController
+        let window = DesktopAppWindow(windowScene: scene, representedURL: representedURL(from: connectionOptions))
         window.makeKeyAndVisible()
 
         let toolbar = NSToolbar()

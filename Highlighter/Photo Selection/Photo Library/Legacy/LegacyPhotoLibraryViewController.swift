@@ -2,12 +2,15 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Editing
+import Photos
 import UIKit
 
-class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate {
+class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate, PHPhotoLibraryChangeObserver {
     init(collection: Collection = CollectionType.library.defaultCollection) {
         self.dataSource = PhotoLibraryDataSource(collection)
         super.init(nibName: nil, bundle: nil)
+
+        PHPhotoLibrary.shared().register(self)
 
         navigationItem.title = Self.navigationItemTitle
         navigationItem.rightBarButtonItem = SettingsBarButtonItem.standard
@@ -22,7 +25,7 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
         libraryView.dataSource = dataSource
         libraryView.delegate = self
         libraryView.dragDelegate = self
-        dataSource.libraryView = libraryView
+//        dataSource.libraryView = libraryView
 
         let dropInteraction = UIDropInteraction(delegate: self)
         libraryView.addInteraction(dropInteraction)
@@ -96,6 +99,41 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
             guard #available(iOS 13.0, *) else { break }
             documentScannerPresenter?.presentDocumentCameraViewController()
         case .limitedLibrary: break
+        }
+    }
+
+    // MARK: Photo Library Changes
+
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        guard let changes = changeInstance.changeDetails(for: dataSource.allPhotos) else { return }
+//        guard let changes = dataSource.changeDetails(for: changeInstance) else { return }
+
+        DispatchQueue.main.async { [weak self] in
+            guard let dataSource = self?.dataSource else { return }
+            dataSource.itemsCountPublisher.send(dataSource.itemsCount)
+
+            guard let libraryView = self?.libraryView else { return }
+
+            if changes.hasIncrementalChanges {
+                libraryView.performBatchUpdates({ [unowned libraryView, changes] in
+                    if let removed = changes.removedIndexes {
+                        libraryView.deleteItems(at: removed.map { IndexPath(item: $0, section:0) })
+                    }
+                    if let inserted = changes.insertedIndexes {
+                        libraryView.insertItems(at: inserted.map { IndexPath(item: $0, section:0) })
+                    }
+                    if let changed = changes.changedIndexes {
+                        libraryView.reloadItems(at: changed.map { IndexPath(item: $0, section:0) })
+                    }
+
+                    changes.enumerateMoves { fromIndex, toIndex in
+                        libraryView.moveItem(at: IndexPath(item: fromIndex, section: 0),
+                                             to: IndexPath(item: toIndex, section: 0))
+                    }
+                }, completion: nil)
+            } else {
+                libraryView.reloadData()
+            }
         }
     }
 

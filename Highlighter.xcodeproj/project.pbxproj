@@ -120,9 +120,9 @@
 		0482C7A325218DB40013B69E /* DesktopSettingsAddRemoveControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C7A225218DB40013B69E /* DesktopSettingsAddRemoveControl.swift */; };
 		0482C7A525218E080013B69E /* DesktopSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C7A425218E080013B69E /* DesktopSettingsTableViewCell.swift */; };
 		0482C7A72522CEB00013B69E /* DesktopSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C7A62522CEB00013B69E /* DesktopSettingsViewController.swift */; };
-		048320DE25D7F43800355393 /* DesktopSettingsSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */; };
 		048320B125D7F12600355393 /* LaunchActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320B025D7F12600355393 /* LaunchActivity.swift */; };
 		048320C425D7F1CB00355393 /* RecentsMenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320C325D7F1CB00355393 /* RecentsMenuDataSource.swift */; };
+		048320DE25D7F43800355393 /* DesktopSettingsSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */; };
 		048416592553AF1100048DE8 /* ShortcutsRedactOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */; };
 		048416622553AF8000048DE8 /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		0484166E2553B67800048DE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041EFEFF2251A9F50058D8EE /* Assets.xcassets */; };
@@ -221,6 +221,8 @@
 		04DBC843231E2AEC0004F7DB /* RestoredRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBC842231E2AEC0004F7DB /* RestoredRedaction.swift */; };
 		04EA0ADE25D4EA6C00D98138 /* FileIconFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EA0ADD25D4EA6C00D98138 /* FileIconFetcher.m */; };
 		04EF55BA22D6DB9400C6600D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55B922D6DB9400C6600D /* SceneDelegate.swift */; };
+		04F0910925E7A00000966C1E /* HelpMenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0910825E7A00000966C1E /* HelpMenuDataSource.swift */; };
+		04F0914225E7B30D00966C1E /* DesktopAppWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0914125E7B30D00966C1E /* DesktopAppWindow.swift */; };
 		04F3C7A52300206A00445A8D /* Purchaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7A42300206A00445A8D /* Purchaser.swift */; };
 		04F3C7A9230099BC00445A8D /* PurchaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7A8230099BC00445A8D /* PurchaseState.swift */; };
 		04F3C7AC230187F200445A8D /* SettingsContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7AB230187F200445A8D /* SettingsContentProvider.swift */; };
@@ -553,9 +555,9 @@
 		0482C7A225218DB40013B69E /* DesktopSettingsAddRemoveControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsAddRemoveControl.swift; sourceTree = "<group>"; };
 		0482C7A425218E080013B69E /* DesktopSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		0482C7A62522CEB00013B69E /* DesktopSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsViewController.swift; sourceTree = "<group>"; };
-		048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsSceneDelegate.swift; sourceTree = "<group>"; };
 		048320B025D7F12600355393 /* LaunchActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchActivity.swift; sourceTree = "<group>"; };
 		048320C325D7F1CB00355393 /* RecentsMenuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsMenuDataSource.swift; sourceTree = "<group>"; };
+		048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsSceneDelegate.swift; sourceTree = "<group>"; };
 		048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsRedactOperation.swift; sourceTree = "<group>"; };
 		0489081624AD796D005DDEF3 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		0489081924AD7A32005DDEF3 /* PhotoLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryView.swift; sourceTree = "<group>"; };
@@ -627,6 +629,8 @@
 		04EA0ADD25D4EA6C00D98138 /* FileIconFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileIconFetcher.m; sourceTree = "<group>"; };
 		04EF55B922D6DB9400C6600D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserActivity.swift; sourceTree = "<group>"; };
+		04F0910825E7A00000966C1E /* HelpMenuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpMenuDataSource.swift; sourceTree = "<group>"; };
+		04F0914125E7B30D00966C1E /* DesktopAppWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopAppWindow.swift; sourceTree = "<group>"; };
 		04F3C7A42300206A00445A8D /* Purchaser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchaser.swift; sourceTree = "<group>"; };
 		04F3C7A62300968500445A8D /* ReceiptValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptValidator.swift; sourceTree = "<group>"; };
 		04F3C7A8230099BC00445A8D /* PurchaseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseState.swift; sourceTree = "<group>"; };
@@ -1316,10 +1320,12 @@
 				041EFEF82251A9F30058D8EE /* AppDelegate.swift */,
 				041EFEFA2251A9F30058D8EE /* AppViewController.swift */,
 				041EFF1A2251AB8D0058D8EE /* AppWindow.swift */,
+				04F0914125E7B30D00966C1E /* DesktopAppWindow.swift */,
 				042B7902229A38C0005B7A2A /* Defaults.swift */,
 				042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */,
 				04F3C7F22308F37400445A8D /* AsyncOperation.swift */,
 				048320BA25D7F1AF00355393 /* Recents Menu */,
+				04F0910825E7A00000966C1E /* HelpMenuDataSource.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -2059,6 +2065,8 @@
 				049F292F22875B1300A335BE /* PrivacyViewController.swift in Sources */,
 				046C4063247F5BB10069E8FB /* SystemCollectionTableViewCellImageView.swift in Sources */,
 				04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */,
+				04F0910925E7A00000966C1E /* HelpMenuDataSource.swift in Sources */,
+				04F0914225E7B30D00966C1E /* DesktopAppWindow.swift in Sources */,
 				0482C7A525218E080013B69E /* DesktopSettingsTableViewCell.swift in Sources */,
 				0489081A24AD7A32005DDEF3 /* PhotoLibraryView.swift in Sources */,
 				046BEC2E2471013900FBECD7 /* SettingsBarButtonItem.swift in Sources */,
