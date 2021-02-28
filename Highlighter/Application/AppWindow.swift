@@ -7,8 +7,7 @@ import UIKit
 class AppWindow: UIWindow {
     init() {
         super.init(frame: UIScreen.main.bounds)
-        rootViewController = appViewController
-        isOpaque = false
+        setup()
     }
 
     var stateRestorationActivity: NSUserActivity? {
@@ -31,8 +30,13 @@ class AppWindow: UIWindow {
     @available(iOS 13.0, *)
     init(scene: UIWindowScene) {
         super.init(frame: scene.coordinateSpace.bounds)
-        isOpaque = false
+        setup()
         windowScene = scene
+    }
+
+    private func setup() {
+        rootViewController = appViewController
+        isOpaque = false
     }
 
     @available(*, unavailable)
