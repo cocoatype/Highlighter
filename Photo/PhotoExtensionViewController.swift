@@ -133,7 +133,7 @@ class PhotoLoadingView: UIView {
     // MARK: Boilerplate
 
     private let spinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .whiteLarge)
+        let spinner = UIActivityIndicatorView(style: .large)
         spinner.color = .primaryExtraLight
         spinner.translatesAutoresizingMaskIntoConstraints = false
         return spinner

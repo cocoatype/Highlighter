@@ -146,11 +146,11 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
 
     #if targetEnvironment(macCatalyst)
     #else
-    private let legacyUndoKeyCommand = UIKeyCommand(input: "z", modifierFlags: .command, action: #selector(BasePhotoEditingViewController.undo), discoverabilityTitle: BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle)
-    private let legacyRedoKeyCommand = UIKeyCommand(input: "z", modifierFlags: [.command, .shift], action: #selector(BasePhotoEditingViewController.redo), discoverabilityTitle: BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle)
+    private let undoKeyCommand = UIKeyCommand(action: #selector(BasePhotoEditingViewController.undo), input: "z", modifierFlags: .command, discoverabilityTitle: BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle)
+    private let redoKeyCommand = UIKeyCommand(action: #selector(BasePhotoEditingViewController.redo), input: "z", modifierFlags: [.command, .shift], discoverabilityTitle: BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle)
     
     open override var keyCommands: [UIKeyCommand]? {
-        return [legacyUndoKeyCommand, legacyRedoKeyCommand]
+        return [undoKeyCommand, redoKeyCommand]
     }
     #endif
     
