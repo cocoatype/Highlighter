@@ -21,9 +21,25 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         }
 
         self.window = window
+
+        openImage(in: connectionOptions.urlContexts)
     }
 
     func stateRestorationActivity(for scene: UIScene) -> NSUserActivity? {
         window?.stateRestorationActivity
+    }
+
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        openImage(in: URLContexts)
+    }
+
+    private func openImage(in urlContexts: Set<UIOpenURLContext>) {
+        guard let url = urlContexts.first?.url,
+              let appViewController = window?.rootViewController as? AppViewController,
+              let imageData = try? Data(contentsOf: url),
+              let image = UIImage(data: imageData)
+        else { return }
+
+        appViewController.presentPhotoEditingViewController(for: image)
     }
 }
