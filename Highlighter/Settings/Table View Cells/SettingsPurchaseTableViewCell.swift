@@ -15,7 +15,6 @@ class SettingsPurchaseTableViewCell: UITableViewCell, SettingsContentTableViewCe
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: SettingsPurchaseTableViewCell.identifier)
-        accessoryType = .disclosureIndicator
         backgroundColor = .tableViewCellBackground
 
         let selectedBackgroundView = UIView()
