@@ -15,6 +15,7 @@ class AlbumsViewController: UIHostingController<AlbumsList>, NavigationWrapper.N
         super.init(rootView: albumsList)
 
         if let navigationObject = navigationObject {
+            navigationItem.title = Self.navigationTitle
             albumsList.navigationWrapper = NavigationWrapper(navigationObject: navigationObject)
             self.rootView = albumsList
         }
@@ -47,6 +48,8 @@ class AlbumsViewController: UIHostingController<AlbumsList>, NavigationWrapper.N
     }
 
     // MARK: Boilerplate
+
+    private static let navigationTitle = NSLocalizedString("AlbumsViewController.navigationTitle", comment: "Navigation title for the albums list")
 
     private let albumsDataSource: CollectionsDataSource
 
