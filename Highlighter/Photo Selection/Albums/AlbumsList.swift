@@ -23,7 +23,7 @@ struct AlbumsList: View {
             }
         }
         .listStyle(SidebarListStyle())
-        .navigationTitle("Photos")
+        .navigationTitle("AlbumsViewController.navigationTitle")
         .environmentObject(navigationWrapper)
     }
 }
