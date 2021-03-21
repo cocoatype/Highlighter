@@ -8,7 +8,6 @@ class SettingsAppEntryTableViewCell: UITableViewCell, SettingsContentTableViewCe
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: SettingsAppEntryTableViewCell.identifier)
-        accessoryType = .disclosureIndicator
         backgroundColor = .tableViewCellBackground
 
         let selectedBackgroundView = UIView()
