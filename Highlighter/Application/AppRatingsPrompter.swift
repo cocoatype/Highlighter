@@ -8,7 +8,8 @@ import StoreKit
 class AppRatingsPrompter: NSObject {
     static func displayRatingsPrompt(in windowScene: UIWindowScene?) {
         guard let windowScene = windowScene else { return }
-        if triggeringNumberOfSaves.contains(Defaults.numberOfSaves) {
+        let numberOfSaves = Defaults.numberOfSaves % 50
+        if triggeringNumberOfSaves.contains(numberOfSaves) {
             if #available(iOS 14.0, *) {
                 SKStoreReviewController.requestReview(in: windowScene)
             } else {
@@ -20,4 +21,5 @@ class AppRatingsPrompter: NSObject {
     // MARK: Boilerplate
 
     static let triggeringNumberOfSaves = [3, 10, 30]
+    private static let wraparound = 50
 }
