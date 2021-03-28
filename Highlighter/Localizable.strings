@@ -97,5 +97,6 @@
 
 "ToolPickerItem.itemLabel" = "Tools";
 "ToolPickerItem.menuTitle" = "Tools";
+"ToolPickerItem.eraserToolItem" = "Eraser";
 "ToolPickerItem.magicToolItem" = "Magic Highlighter";
 "ToolPickerItem.manualToolItem" = "Manual Highlighter";
