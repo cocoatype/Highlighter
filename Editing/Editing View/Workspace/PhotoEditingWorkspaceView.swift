@@ -100,6 +100,7 @@ class PhotoEditingWorkspaceView: UIControl {
         switch highlighterTool {
         case .magic: handleMagicStrokeCompletion()
         case .manual: handleManualStrokeCompletion()
+        case .eraser: break
         }
 
         sendAction(#selector(BasePhotoEditingViewController.markHasMadeEdits), to: nil, for: nil)
