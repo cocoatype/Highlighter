@@ -145,6 +145,10 @@
 		0493D2D824B6BD0000FF99F4 /* BrushStampFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */; };
 		04953B5824E2405500877800 /* PhotoEditingViewController+Desktop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04953B5724E2405500877800 /* PhotoEditingViewController+Desktop.swift */; };
 		0495B57B25354C3200B2DF0B /* PhotoLibraryScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0495B57A25354C3200B2DF0B /* PhotoLibraryScrollView.swift */; };
+		04975D1E26106D6800AA2771 /* PhotoEditingCanvasBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EB2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04975D3726106D8700AA2771 /* PhotoEditingCanvasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04975D5826106DC100AA2771 /* PhotoEditingCanvasBrushStrokeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */; };
+		04975D5926106DC100AA2771 /* PhotoEditingCanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5F0231659BA006CE411 /* PhotoEditingCanvasView.m */; };
 		049E1EB224BFEEE7009DE20D /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E1EB124BFEEE7009DE20D /* AlbumsViewController.swift */; };
 		049E1EB424BFEF09009DE20D /* AlbumsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E1EB324BFEF09009DE20D /* AlbumsList.swift */; };
 		049F2928228755DB00A335BE /* SettingsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F2927228755DB00A335BE /* SettingsNavigationController.swift */; };
@@ -190,10 +194,6 @@
 		049F930922CDAB570090C9BC /* Aleo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF562255A2ED0058D8EE /* Aleo-Bold.otf */; };
 		049F930A22CDAB570090C9BC /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
 		04A606E1251C471F007A2B82 /* DesktopAutoRedactionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A606E0251C471F007A2B82 /* DesktopAutoRedactionsListViewController.swift */; };
-		04A8A5ED2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EB2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h */; };
-		04A8A5EE2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */; };
-		04A8A5F1231659BA006CE411 /* PhotoEditingCanvasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */; };
-		04A8A5F2231659BA006CE411 /* PhotoEditingCanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5F0231659BA006CE411 /* PhotoEditingCanvasView.m */; };
 		04AA1D6C252EBBE400B486C7 /* ColorPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA1D6B252EBBE400B486C7 /* ColorPanel.swift */; };
 		04ABC8DD2528207400F5BA6A /* CollectionPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABC8DC2528207400F5BA6A /* CollectionPresenting.swift */; };
 		04ACC40E255648A10035E3C2 /* ShortcutsRedactOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */; };
@@ -272,12 +272,8 @@
 		04F3C8262309EBFD00445A8D /* ReceiptParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C8252309EBFD00445A8D /* ReceiptParserError.swift */; };
 		04F3C8282309ED1400445A8D /* AppReceiptAttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C8272309ED1400445A8D /* AppReceiptAttributeType.swift */; };
 		04F3C82C2309F3F500445A8D /* PurchaseReceiptAttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C82B2309F3F500445A8D /* PurchaseReceiptAttributeType.swift */; };
-		04F3C84D230BC1E100445A8D /* Canvas.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C84B230BC1E100445A8D /* Canvas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04F3C856230BC1F000445A8D /* PhotoEditingWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */; };
-		04F3C85C230BC38600445A8D /* Canvas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C849230BC1E100445A8D /* Canvas.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		04F3C85D230BC38600445A8D /* Canvas.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04F3C849230BC1E100445A8D /* Canvas.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04F3C864230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04F3C865230BCBDE00445A8D /* PhotoEditingBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04FB5F2325C7AC8400A5B48D /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		04FB5F2425C7AC8400A5B48D /* Editing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04FDEA5625257B1900F94CA9 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDEA5525257B1900F94CA9 /* SplitViewController.swift */; };
@@ -363,13 +359,6 @@
 			remoteGlobalIDString = 04F3C8042309E8A800445A8D;
 			remoteInfo = Receipts;
 		};
-		04F3C84E230BC1E100445A8D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 04F3C848230BC1E100445A8D;
-			remoteInfo = Canvas;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -413,7 +402,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				04F3C85D230BC38600445A8D /* Canvas.framework in Embed Frameworks */,
 				04F3C80D2309E8A800445A8D /* Receipts.framework in Embed Frameworks */,
 				04FB5F2425C7AC8400A5B48D /* Editing.framework in Embed Frameworks */,
 			);
@@ -680,9 +668,6 @@
 		04F3C8252309EBFD00445A8D /* ReceiptParserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptParserError.swift; sourceTree = "<group>"; };
 		04F3C8272309ED1400445A8D /* AppReceiptAttributeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReceiptAttributeType.swift; sourceTree = "<group>"; };
 		04F3C82B2309F3F500445A8D /* PurchaseReceiptAttributeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReceiptAttributeType.swift; sourceTree = "<group>"; };
-		04F3C849230BC1E100445A8D /* Canvas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Canvas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		04F3C84B230BC1E100445A8D /* Canvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Canvas.h; sourceTree = "<group>"; };
-		04F3C84C230BC1E100445A8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04F3C859230BC20E00445A8D /* PencilKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PencilKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/PencilKit.framework; sourceTree = DEVELOPER_DIR; };
 		04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingBrushStrokeView.h; sourceTree = "<group>"; };
 		04F7AAB42537E5AA0024D3B4 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
@@ -702,7 +687,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04F3C85C230BC38600445A8D /* Canvas.framework in Frameworks */,
 				04F3C80C2309E8A800445A8D /* Receipts.framework in Frameworks */,
 				04FB5F2325C7AC8400A5B48D /* Editing.framework in Frameworks */,
 			);
@@ -775,13 +759,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		04F3C846230BC1E100445A8D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -793,7 +770,6 @@
 				043911C122C461F000D4AE30 /* Action */,
 				049F92D822CDA3DB0090C9BC /* Editing */,
 				04F3C8062309E8A800445A8D /* Receipts */,
-				04F3C84A230BC1E100445A8D /* Canvas */,
 				04431E4A23556106009FA1F6 /* Photo */,
 				044D4C192547B7BC00701166 /* Automator */,
 				044D4C9C2547C8EE00701166 /* Redacting */,
@@ -811,7 +787,6 @@
 				043911C022C461EE00D4AE30 /* Action.appex */,
 				049F92D722CDA3DB0090C9BC /* Editing.framework */,
 				04F3C8052309E8A800445A8D /* Receipts.framework */,
-				04F3C849230BC1E100445A8D /* Canvas.framework */,
 				04431E4523556106009FA1F6 /* Photo.appex */,
 				044D4C182547B7BC00701166 /* AutomatorActions.action */,
 				044D4C9B2547C8EE00701166 /* Redacting.framework */,
@@ -1341,6 +1316,10 @@
 		04E192A4229CD34F006F0E56 /* Workspace */ = {
 			isa = PBXGroup;
 			children = (
+				04A8A5EB2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h */,
+				04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */,
+				04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */,
+				04A8A5F0231659BA006CE411 /* PhotoEditingCanvasView.m */,
 				043CD9E42277EC910012F5AE /* PhotoEditingLegacyBrushStrokeView.swift */,
 				047072942268137900FF20B6 /* PhotoEditingImageView.swift */,
 				042A39AE228125FA009C1C07 /* PhotoEditingRedactionView.swift */,
@@ -1507,19 +1486,6 @@
 			path = Parsing;
 			sourceTree = "<group>";
 		};
-		04F3C84A230BC1E100445A8D /* Canvas */ = {
-			isa = PBXGroup;
-			children = (
-				04F3C84B230BC1E100445A8D /* Canvas.h */,
-				04F3C84C230BC1E100445A8D /* Info.plist */,
-				04A8A5EB2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h */,
-				04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */,
-				04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */,
-				04A8A5F0231659BA006CE411 /* PhotoEditingCanvasView.m */,
-			);
-			path = Canvas;
-			sourceTree = "<group>";
-		};
 		04FF8DB522F57A52008CF0E9 /* Auto Redactions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1551,7 +1517,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04F3C864230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h in Headers */,
+				04975D1E26106D6800AA2771 /* PhotoEditingCanvasBrushStrokeView.h in Headers */,
 				049F92DB22CDA3DB0090C9BC /* Editing.h in Headers */,
+				04975D3726106D8700AA2771 /* PhotoEditingCanvasView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1560,17 +1528,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				04F3C8092309E8A800445A8D /* Receipts.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04F3C844230BC1E100445A8D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04F3C865230BCBDE00445A8D /* PhotoEditingBrushStrokeView.h in Headers */,
-				04A8A5ED2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h in Headers */,
-				04F3C84D230BC1E100445A8D /* Canvas.h in Headers */,
-				04A8A5F1231659BA006CE411 /* PhotoEditingCanvasView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1595,7 +1552,6 @@
 				043911CB22C461F000D4AE30 /* PBXTargetDependency */,
 				049F92DD22CDA3DB0090C9BC /* PBXTargetDependency */,
 				04F3C80B2309E8A800445A8D /* PBXTargetDependency */,
-				04F3C84F230BC1E100445A8D /* PBXTargetDependency */,
 				0464B1E42553A3DE00D00FAC /* PBXTargetDependency */,
 			);
 			name = Highlighter;
@@ -1753,24 +1709,6 @@
 			productReference = 04F3C8052309E8A800445A8D /* Receipts.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		04F3C848230BC1E100445A8D /* Canvas */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 04F3C854230BC1E100445A8D /* Build configuration list for PBXNativeTarget "Canvas" */;
-			buildPhases = (
-				04F3C844230BC1E100445A8D /* Headers */,
-				04F3C845230BC1E100445A8D /* Sources */,
-				04F3C846230BC1E100445A8D /* Frameworks */,
-				04F3C847230BC1E100445A8D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Canvas;
-			productName = Canvas;
-			productReference = 04F3C849230BC1E100445A8D /* Canvas.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1812,10 +1750,6 @@
 					04F3C8042309E8A800445A8D = {
 						CreatedOnToolsVersion = 11.0;
 					};
-					04F3C848230BC1E100445A8D = {
-						CreatedOnToolsVersion = 11.0;
-						LastSwiftMigration = 1100;
-					};
 				};
 			};
 			buildConfigurationList = 041EFEF02251A9F30058D8EE /* Build configuration list for PBXProject "Highlighter" */;
@@ -1838,7 +1772,6 @@
 				043911BF22C461EE00D4AE30 /* Action */,
 				049F92D622CDA3DB0090C9BC /* Editing */,
 				04F3C8042309E8A800445A8D /* Receipts */,
-				04F3C848230BC1E100445A8D /* Canvas */,
 				04431E4423556106009FA1F6 /* Photo */,
 				044D4C172547B7BC00701166 /* AutomatorActions */,
 				044D4C9A2547C8EE00701166 /* Redacting */,
@@ -1926,13 +1859,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		04F3C8032309E8A800445A8D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04F3C847230BC1E100445A8D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2195,6 +2121,7 @@
 			files = (
 				049F92F422CDA4E40090C9BC /* CharacterObservationRedaction.swift in Sources */,
 				049F92F822CDA59F0090C9BC /* Colors.swift in Sources */,
+				04975D5926106DC100AA2771 /* PhotoEditingCanvasView.m in Sources */,
 				0493D2D624B6BAE400FF99F4 /* ColorPickerViewController.swift in Sources */,
 				049F92F022CDA4C10090C9BC /* PhotoEditingRedactionView.swift in Sources */,
 				041BEA3F22EF879700FF07C2 /* TextRecognitionOperation.swift in Sources */,
@@ -2208,6 +2135,7 @@
 				049F92F522CDA4E40090C9BC /* PathRedaction.swift in Sources */,
 				049F92EA22CDA43F0090C9BC /* UIImageExtensions.swift in Sources */,
 				049F92F222CDA4D50090C9BC /* HighlighterTool.swift in Sources */,
+				04975D5826106DC100AA2771 /* PhotoEditingCanvasBrushStrokeView.m in Sources */,
 				04DBC843231E2AEC0004F7DB /* RestoredRedaction.swift in Sources */,
 				049F92EE22CDA4C10090C9BC /* PhotoEditingLegacyBrushStrokeView.swift in Sources */,
 				041BEA3722EF75E800FF07C2 /* Icons.swift in Sources */,
@@ -2252,15 +2180,6 @@
 				04F3C8122309E8BB00445A8D /* AppReceiptParsing.swift in Sources */,
 				04F3C8172309E90900445A8D /* PurchaseReceipt.swift in Sources */,
 				04F3C8192309E92900445A8D /* PointerExtensions.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04F3C845230BC1E100445A8D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04A8A5F2231659BA006CE411 /* PhotoEditingCanvasView.m in Sources */,
-				04A8A5EE2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2319,11 +2238,6 @@
 			isa = PBXTargetDependency;
 			target = 04F3C8042309E8A800445A8D /* Receipts */;
 			targetProxy = 04F3C80A2309E8A800445A8D /* PBXContainerItemProxy */;
-		};
-		04F3C84F230BC1E100445A8D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 04F3C848230BC1E100445A8D /* Canvas */;
-			targetProxy = 04F3C84E230BC1E100445A8D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2971,69 +2885,6 @@
 			};
 			name = Release;
 		};
-		04F3C852230BC1E100445A8D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Manual;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Canvas/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				OTHER_LDFLAGS = (
-					"-weak_framework",
-					PencilKit,
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Canvas;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		04F3C853230BC1E100445A8D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Manual;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Canvas/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				OTHER_LDFLAGS = (
-					"-weak_framework",
-					PencilKit,
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Canvas;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3123,15 +2974,6 @@
 			buildConfigurations = (
 				04F3C80F2309E8A800445A8D /* Debug */,
 				04F3C8102309E8A800445A8D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		04F3C854230BC1E100445A8D /* Build configuration list for PBXNativeTarget "Canvas" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				04F3C852230BC1E100445A8D /* Debug */,
-				04F3C853230BC1E100445A8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
