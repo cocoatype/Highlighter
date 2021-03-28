@@ -2509,7 +2509,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Highlighter/Highlighter.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Buddy Build (D47V8Y25W5)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development: Buddy Build (D47V8Y25W5)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 287EDDET2B;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -2524,7 +2525,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cocoatype.Highlighter";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match Development com.cocoatype.Highlighter macos";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match Development com.cocoatype.Highlighter catalyst";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Highlighter/Highlighter-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";

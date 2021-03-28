@@ -94,6 +94,7 @@ class ColorPickerItem: NSToolbarItem {
         self.delegate = delegate
         super.init(itemIdentifier: Self.identifier)
         image = UIImage(systemName: "paintpalette")?.applyingSymbolConfiguration(.init(scale: .large))
+        isBordered = true
         label = Self.itemLabel
 
         target = delegate
