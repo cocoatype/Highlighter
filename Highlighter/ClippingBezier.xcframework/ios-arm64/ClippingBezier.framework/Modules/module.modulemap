@@ -1,0 +1,6 @@
+framework module ClippingBezier {
+  umbrella header "ClippingBezier.h"
+
+  export *
+  module * { export * }
+}

@@ -4,7 +4,7 @@
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
 
-public struct TextObservationRedaction: Redaction {
+extension Redaction {
     public init<ObservationType: TextObservation>(_ textObservation: ObservationType, color: NSColor) {
         let rect = textObservation.bounds
         let path = NSBezierPath()
@@ -16,15 +16,12 @@ public struct TextObservationRedaction: Redaction {
 
         self.color = color
     }
-
-    public let color: NSColor
-    public let paths: [NSBezierPath]
 }
 
 #elseif canImport(UIKit)
 import UIKit
 
-public struct TextObservationRedaction: Redaction {
+extension Redaction {
     public init<ObservationType: TextObservation>(_ textObservation: ObservationType, color: UIColor) {
         let rect = textObservation.bounds
         let path = UIBezierPath()
@@ -36,8 +33,5 @@ public struct TextObservationRedaction: Redaction {
 
         self.color = color
     }
-
-    public let color: UIColor
-    public let paths: [UIBezierPath]
 }
 #endif

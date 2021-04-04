@@ -73,9 +73,9 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
 
             guard let textObservations = textObservations else { return }
 
-            let characterObservationRedactions = textObservations.compactMap { textObservation -> CharacterObservationRedaction? in
+            let characterObservationRedactions = textObservations.compactMap { textObservation -> Redaction? in
                 guard let characterObservations = textObservation.characterObservations else { return nil }
-                return CharacterObservationRedaction(characterObservations, color: .black)
+                return Redaction(characterObservations, color: .black)
             }
             add(characterObservationRedactions)
 

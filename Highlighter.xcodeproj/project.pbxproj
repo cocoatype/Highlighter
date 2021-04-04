@@ -206,6 +206,7 @@
 		04ADD15C2290D29400E17445 /* AppLookupResponseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15B2290D29400E17445 /* AppLookupResponseResult.swift */; };
 		04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15D2290D2D200E17445 /* AppDeveloperInfo.swift */; };
 		04ADD1602290DA8E00E17445 /* AppEntryOpening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15F2290DA8E00E17445 /* AppEntryOpening.swift */; };
+		04B7EC372619E307002875CA /* ClippingBezier.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B7EC362619E307002875CA /* ClippingBezier.xcframework */; };
 		04BC9FD025C2704300213DBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BC9FC725C2700200213DBC /* libz.tbd */; };
 		04BDC4962556576900BCE982 /* ShortcutsRedactExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */; };
 		04BDC49F255657A600BCE982 /* ShortcutsExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */; };
@@ -614,6 +615,7 @@
 		04ADD15B2290D29400E17445 /* AppLookupResponseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLookupResponseResult.swift; sourceTree = "<group>"; };
 		04ADD15D2290D2D200E17445 /* AppDeveloperInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeveloperInfo.swift; sourceTree = "<group>"; };
 		04ADD15F2290DA8E00E17445 /* AppEntryOpening.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntryOpening.swift; sourceTree = "<group>"; };
+		04B7EC362619E307002875CA /* ClippingBezier.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ClippingBezier.xcframework; sourceTree = "<group>"; };
 		04BC9FC725C2700200213DBC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsRedactExporter.swift; sourceTree = "<group>"; };
 		04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsExportOperation.swift; sourceTree = "<group>"; };
@@ -706,6 +708,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04B7EC372619E307002875CA /* ClippingBezier.xcframework in Frameworks */,
 				04F3C85C230BC38600445A8D /* Canvas.framework in Frameworks */,
 				04F3C80C2309E8A800445A8D /* Receipts.framework in Frameworks */,
 				04FB5F2325C7AC8400A5B48D /* Editing.framework in Frameworks */,
@@ -1135,6 +1138,7 @@
 		048909F0226571830048E203 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				04B7EC362619E307002875CA /* ClippingBezier.xcframework */,
 				04EA0ADB25D4EA6C00D98138 /* Highlighter-Bridging-Header.h */,
 				04F3C7F92309282600445A8D /* AppleIncRootCertificate.cer */,
 				041EFF042251A9F50058D8EE /* Info.plist */,
@@ -2529,7 +2533,10 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development: Buddy Build (D47V8Y25W5)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 287EDDET2B;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Highlighter",
+				);
 				INFOPLIST_FILE = Highlighter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
@@ -2560,7 +2567,10 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 287EDDET2B;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Highlighter",
+				);
 				INFOPLIST_FILE = Highlighter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
@@ -2880,6 +2890,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Highlighter";
+				HEADER_SEARCH_PATHS = (
+					"\"${SRCROOT}/libcrypto.xcframework/ios-arm64/Headers\"",
+					"$(PROJECT_DIR)/Highlighter/ClippingBezier.xcframework/ios-arm64/Headers",
+				);
 				INFOPLIST_FILE = Editing/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2888,6 +2903,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC++",
+					"-lstdc++",
+					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Editing;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2911,6 +2931,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Highlighter";
+				HEADER_SEARCH_PATHS = (
+					"\"${SRCROOT}/libcrypto.xcframework/ios-arm64/Headers\"",
+					"$(PROJECT_DIR)/Highlighter/ClippingBezier.xcframework/ios-arm64/Headers",
+				);
 				INFOPLIST_FILE = Editing/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2919,6 +2944,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC++",
+					"-lstdc++",
+					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Editing;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";

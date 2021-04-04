@@ -4,15 +4,15 @@
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
 
-public protocol Redaction {
-    var color: NSColor { get }
-    var paths: [NSBezierPath] { get }
+public struct Redaction: Equatable {
+    public let color: NSColor
+    public let paths: [NSBezierPath]
 }
 #elseif canImport(UIKit)
 import UIKit
 
-public protocol Redaction {
-    var color: UIColor { get }
-    var paths: [UIBezierPath] { get }
+public struct Redaction: Equatable {
+    public let color: UIColor
+    public let paths: [UIBezierPath]
 }
 #endif

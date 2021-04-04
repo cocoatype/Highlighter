@@ -23,7 +23,7 @@ class RedactOperation: Operation {
                 })
             }
 
-            let redactions = matchingObservations.map { TextObservationRedaction($0, color: .black) }
+            let redactions = matchingObservations.map { Redaction($0, color: .black) }
 
             RedactActionExporter.export(input, redactions: redactions) { [weak self] result in
                 self?.finish(with: result)
