@@ -9,18 +9,10 @@ public enum HighlighterTool: CaseIterable {
     case eraser
 
     public var image: UIImage? {
-        if #available(iOS 14.0, *) {
-            switch self {
-            case .magic: return UIImage(named: "highlighter.magic")
-            case .manual: return UIImage(systemName: "highlighter")
-            case .eraser: return UIImage(named: "highlighter.eraser")
-            }
-        } else {
-            switch self {
-            case .magic: return #imageLiteral(resourceName: "Magic Highlighter")
-            case .manual: return #imageLiteral(resourceName: "Standard Highlighter.png")
-            case .eraser: return UIImage(named: "highlighter.eraser")
-            }
+        switch self {
+        case .magic: return UIImage(named: "highlighter.magic")
+        case .manual: return UIImage(named: "highlighter.manual")
+        case .eraser: return UIImage(named: "highlighter.eraser")
         }
     }
 }
