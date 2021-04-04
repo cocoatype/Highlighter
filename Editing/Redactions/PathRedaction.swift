@@ -5,6 +5,6 @@ import UIKit
 
 extension Redaction {
     init(path: UIBezierPath, color: UIColor) {
-        self.init(color: .red, paths: [path])
+        self.init(color: color, paths: [path])
     }
 }

@@ -127,9 +127,10 @@ class PhotoEditingWorkspaceView: UIControl {
 
     private func handleEraserCompletion() {
         guard let strokePath = brushStrokeView.currentPath else { return }
+        let strokeBorderPath = strokePath.strokeBorderPath
         let intersectedRedactions = redactions.filter { redaction in
             redaction.paths.contains(where: { path in
-                path.intersection(with: strokePath).count > 0
+                path.strokeBorderPath.intersection(with: strokeBorderPath)?.count ?? 0 > 0
             })
         }
 
