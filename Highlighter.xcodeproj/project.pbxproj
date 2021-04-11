@@ -206,98 +206,7 @@
 		04ADD15C2290D29400E17445 /* AppLookupResponseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15B2290D29400E17445 /* AppLookupResponseResult.swift */; };
 		04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15D2290D2D200E17445 /* AppDeveloperInfo.swift */; };
 		04ADD1602290DA8E00E17445 /* AppEntryOpening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15F2290DA8E00E17445 /* AppEntryOpening.swift */; };
-		04B7EC562619E34F002875CA /* ClippingBezier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B7EC4D2619E34F002875CA /* ClippingBezier.framework */; };
-		04B7EC5D2619E34F002875CA /* ClippingBezierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7EC5C2619E34F002875CA /* ClippingBezierTests.m */; };
-		04B7EC622619E34F002875CA /* ClippingBezier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B7EC4D2619E34F002875CA /* ClippingBezier.framework */; };
-		04B7EC632619E34F002875CA /* ClippingBezier.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04B7EC4D2619E34F002875CA /* ClippingBezier.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		04B7ECB62619E39A002875CA /* UIBezierPath+Intersections.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC7E2619E396002875CA /* UIBezierPath+Intersections.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ECB72619E39A002875CA /* transforms.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC7F2619E396002875CA /* transforms.h */; };
-		04B7ECB82619E39A002875CA /* interval.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC802619E396002875CA /* interval.h */; };
-		04B7ECB92619E39A002875CA /* UIBezierPath+GeometryExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7EC812619E397002875CA /* UIBezierPath+GeometryExtras.m */; };
-		04B7ECBA2619E39A002875CA /* DKUIBezierPathShape.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC822619E397002875CA /* DKUIBezierPathShape.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ECBB2619E39A002875CA /* transforms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04B7EC832619E397002875CA /* transforms.cpp */; };
-		04B7ECBC2619E39A002875CA /* bezier-utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC842619E397002875CA /* bezier-utils.h */; };
-		04B7ECBD2619E39A002875CA /* UIBezierPath+Trimming.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7EC852619E397002875CA /* UIBezierPath+Trimming.m */; };
-		04B7ECBE2619E39A002875CA /* bezier-clipping.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04B7EC862619E397002875CA /* bezier-clipping.mm */; };
-		04B7ECBF2619E39A002875CA /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04B7EC872619E397002875CA /* matrix.cpp */; };
-		04B7ECC02619E39A002875CA /* DKVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC882619E397002875CA /* DKVector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ECC12619E39A002875CA /* NearestPoint.c in Sources */ = {isa = PBXBuildFile; fileRef = 04B7EC892619E397002875CA /* NearestPoint.c */; };
-		04B7ECC22619E39A002875CA /* UIBezierPath+Intersections.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7EC8A2619E397002875CA /* UIBezierPath+Intersections.m */; };
-		04B7ECC32619E39A002875CA /* DKUIBezierPathClippingResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7EC8B2619E397002875CA /* DKUIBezierPathClippingResult.m */; };
-		04B7ECC42619E39A002875CA /* point.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC8C2619E397002875CA /* point.h */; };
-		04B7ECC52619E39A002875CA /* UIBezierPath+Clipping_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC8D2619E397002875CA /* UIBezierPath+Clipping_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		04B7ECC62619E39A002875CA /* UIBezierPath+DKOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC8E2619E397002875CA /* UIBezierPath+DKOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ECC72619E39A002875CA /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7EC8F2619E397002875CA /* JRSwizzle.m */; };
-		04B7ECC82619E39A002875CA /* DKIntersectionOfPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7EC902619E397002875CA /* DKIntersectionOfPaths.m */; };
-		04B7ECC92619E39A002875CA /* DKUIBezierPathIntersectionPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC912619E398002875CA /* DKUIBezierPathIntersectionPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ECCA2619E39A002875CA /* DKUIBezierPathClippingResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC922619E398002875CA /* DKUIBezierPathClippingResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ECCB2619E39A002875CA /* isnan.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC932619E398002875CA /* isnan.h */; };
-		04B7ECCC2619E39A002875CA /* DKTangentAtPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC942619E398002875CA /* DKTangentAtPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ECCD2619E39A002875CA /* DKUIBezierPathIntersectionPoint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC952619E398002875CA /* DKUIBezierPathIntersectionPoint+Private.h */; };
-		04B7ECCE2619E39A002875CA /* MMBackwardCompatible.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC962619E398002875CA /* MMBackwardCompatible.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ECCF2619E39A002875CA /* UIBezierPath+Trimming.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC972619E398002875CA /* UIBezierPath+Trimming.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ECD02619E39A002875CA /* bezier-clipping.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC982619E398002875CA /* bezier-clipping.h */; };
-		04B7ECD12619E39A002875CA /* UIBezierPath+GeometryExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC992619E398002875CA /* UIBezierPath+GeometryExtras.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ECD22619E39A002875CA /* DKUIBezierUnmatchedPathIntersectionPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7EC9A2619E398002875CA /* DKUIBezierUnmatchedPathIntersectionPoint.m */; };
-		04B7ECD32619E39A002875CA /* DKUIBezierPathClippedSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7EC9B2619E398002875CA /* DKUIBezierPathClippedSegment.m */; };
-		04B7ECD42619E39A002875CA /* bezierclip.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 04B7EC9C2619E398002875CA /* bezierclip.cxx */; };
-		04B7ECD52619E39A002875CA /* DKUIBezierPathIntersectionPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7EC9D2619E398002875CA /* DKUIBezierPathIntersectionPoint.m */; };
-		04B7ECD72619E39A002875CA /* UIBezierPath+Clipping.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7EC9F2619E399002875CA /* UIBezierPath+Clipping.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ECD82619E39A002875CA /* DKUIBezierUnmatchedPathIntersectionPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ECA02619E399002875CA /* DKUIBezierUnmatchedPathIntersectionPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ECD92619E39A002875CA /* point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ECA12619E399002875CA /* point.cpp */; };
-		04B7ECDA2619E39A002875CA /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ECA22619E399002875CA /* JRSwizzle.h */; };
-		04B7ECDB2619E39A002875CA /* UIBezierPath+DKOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ECA32619E399002875CA /* UIBezierPath+DKOSX.m */; };
-		04B7ECDC2619E39A002875CA /* UIBezierPath+Clipping.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ECA42619E399002875CA /* UIBezierPath+Clipping.mm */; };
-		04B7ECDD2619E39A002875CA /* bezier-utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ECA52619E399002875CA /* bezier-utils.cpp */; };
-		04B7ECDE2619E39A002875CA /* DKUIBezierPathClippedSegment.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ECA62619E399002875CA /* DKUIBezierPathClippedSegment.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ECDF2619E39A002875CA /* ClippingBezier.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ECA72619E399002875CA /* ClippingBezier.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ECE02619E39A002875CA /* DKUIBezierPathShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ECA82619E399002875CA /* DKUIBezierPathShape.m */; };
-		04B7ECE12619E39A002875CA /* gauss.hxx in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ECA92619E399002875CA /* gauss.hxx */; };
-		04B7ECE22619E39A002875CA /* DKIntersectionOfPaths.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ECAA2619E399002875CA /* DKIntersectionOfPaths.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ECE32619E39A002875CA /* utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ECAB2619E399002875CA /* utils.h */; };
-		04B7ECE42619E39A002875CA /* DKVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ECAC2619E399002875CA /* DKVector.m */; };
-		04B7ECE62619E39A002875CA /* matrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ECAE2619E39A002875CA /* matrix.h */; };
-		04B7ECE72619E39A002875CA /* NearestPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ECAF2619E39A002875CA /* NearestPoint.h */; };
-		04B7ECE82619E39A002875CA /* convexhull.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ECB02619E39A002875CA /* convexhull.cxx */; };
-		04B7ECE92619E39A002875CA /* DKTangentAtPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ECB12619E39A002875CA /* DKTangentAtPoint.m */; };
-		04B7ECEB2619E39A002875CA /* bezierclip.hxx in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ECB32619E39A002875CA /* bezierclip.hxx */; };
-		04B7ECEC2619E39A002875CA /* MMBackwardCompatible.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ECB42619E39A002875CA /* MMBackwardCompatible.m */; };
-		04B7ECED2619E39A002875CA /* coord.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ECB52619E39A002875CA /* coord.h */; };
-		04B7ED4A2619E501002875CA /* PerformanceBezier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B7ED432619E501002875CA /* PerformanceBezier.framework */; };
-		04B7ED4B2619E501002875CA /* PerformanceBezier.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04B7ED432619E501002875CA /* PerformanceBezier.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		04B7ED822619E527002875CA /* UIBezierPath+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ED652619E525002875CA /* UIBezierPath+Util.m */; };
-		04B7ED832619E527002875CA /* UIBezierPath+NSOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ED662619E525002875CA /* UIBezierPath+NSOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ED842619E527002875CA /* UIBezierPath+Center.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ED672619E525002875CA /* UIBezierPath+Center.m */; };
-		04B7ED852619E527002875CA /* UIBezierPath+Equals.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ED682619E526002875CA /* UIBezierPath+Equals.m */; };
-		04B7ED862619E527002875CA /* UIBezierPath+Performance.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ED692619E526002875CA /* UIBezierPath+Performance.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ED872619E527002875CA /* UIBezierPathProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ED6A2619E526002875CA /* UIBezierPathProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ED882619E527002875CA /* UIBezierPath+FirstLast.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ED6B2619E526002875CA /* UIBezierPath+FirstLast.h */; };
-		04B7ED892619E527002875CA /* UIBezierPath+Ahmed.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ED6C2619E526002875CA /* UIBezierPath+Ahmed.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ED8A2619E527002875CA /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ED6D2619E526002875CA /* JRSwizzle.m */; };
-		04B7ED8B2619E527002875CA /* UIBezierPath+Trim.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ED6E2619E526002875CA /* UIBezierPath+Trim.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ED8C2619E527002875CA /* UIBezierPath+Center.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ED6F2619E526002875CA /* UIBezierPath+Center.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ED8D2619E527002875CA /* UIBezierPathProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ED702619E526002875CA /* UIBezierPathProperties.m */; };
-		04B7ED8E2619E527002875CA /* UIBezierPath+Util.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ED712619E526002875CA /* UIBezierPath+Util.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ED8F2619E527002875CA /* UIBezierPath+Description.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ED722619E526002875CA /* UIBezierPath+Description.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ED902619E527002875CA /* UIBezierPath+Uncached.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ED732619E526002875CA /* UIBezierPath+Uncached.h */; };
-		04B7ED912619E527002875CA /* UIBezierPath+Performance.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ED742619E526002875CA /* UIBezierPath+Performance.m */; };
-		04B7ED922619E527002875CA /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ED752619E526002875CA /* JRSwizzle.h */; };
-		04B7ED932619E527002875CA /* UIBezierPath+Clockwise.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ED762619E526002875CA /* UIBezierPath+Clockwise.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ED942619E527002875CA /* UIBezierPath+FirstLast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ED772619E527002875CA /* UIBezierPath+FirstLast.m */; };
-		04B7ED952619E527002875CA /* UIBezierPath+Uncached.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ED782619E527002875CA /* UIBezierPath+Uncached.m */; };
-		04B7ED962619E527002875CA /* UIBezierPath+Ahmed.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ED792619E527002875CA /* UIBezierPath+Ahmed.m */; };
-		04B7ED972619E527002875CA /* UIBezierPath+Equals.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ED7A2619E527002875CA /* UIBezierPath+Equals.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7ED982619E527002875CA /* UIBezierPath+Clockwise.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ED7B2619E527002875CA /* UIBezierPath+Clockwise.m */; };
-		04B7ED992619E527002875CA /* UIBezierPath+NSOSX_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ED7C2619E527002875CA /* UIBezierPath+NSOSX_Private.h */; };
-		04B7ED9A2619E527002875CA /* UIBezierPath+Trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ED7D2619E527002875CA /* UIBezierPath+Trim.m */; };
-		04B7ED9B2619E527002875CA /* UIBezierPath+Performance_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ED7E2619E527002875CA /* UIBezierPath+Performance_Private.h */; };
-		04B7ED9C2619E527002875CA /* UIBezierPath+NSOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ED7F2619E527002875CA /* UIBezierPath+NSOSX.m */; };
-		04B7ED9D2619E527002875CA /* UIBezierPath+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7ED802619E527002875CA /* UIBezierPath+Description.m */; };
-		04B7ED9E2619E527002875CA /* PerformanceBezier.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B7ED812619E527002875CA /* PerformanceBezier.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04B7EDAA2619E530002875CA /* PerformanceBezier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B7ED432619E501002875CA /* PerformanceBezier.framework */; };
-		04B7EDAB2619E530002875CA /* PerformanceBezier.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04B7ED432619E501002875CA /* PerformanceBezier.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		04B7EE4F2619E8B4002875CA /* ClippingBezier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B7EC4D2619E34F002875CA /* ClippingBezier.framework */; };
-		04B7EE502619E8B4002875CA /* ClippingBezier.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04B7EC4D2619E34F002875CA /* ClippingBezier.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		04B198F42623ADDD001A275B /* ClippingBezier in Frameworks */ = {isa = PBXBuildFile; productRef = 04B198F32623ADDD001A275B /* ClippingBezier */; };
 		04BC9FD025C2704300213DBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BC9FC725C2700200213DBC /* libz.tbd */; };
 		04BDC4962556576900BCE982 /* ShortcutsRedactExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */; };
 		04BDC49F255657A600BCE982 /* ShortcutsExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */; };
@@ -450,48 +359,6 @@
 			remoteGlobalIDString = 049F92D622CDA3DB0090C9BC;
 			remoteInfo = Editing;
 		};
-		04B7EC572619E34F002875CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 04B7EC4C2619E34F002875CA;
-			remoteInfo = ClippingBezier;
-		};
-		04B7EC592619E34F002875CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 041EFEF42251A9F30058D8EE;
-			remoteInfo = Highlighter;
-		};
-		04B7EC602619E34F002875CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 04B7EC4C2619E34F002875CA;
-			remoteInfo = ClippingBezier;
-		};
-		04B7ED482619E501002875CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 04B7ED422619E501002875CA;
-			remoteInfo = PerformanceBezier;
-		};
-		04B7EDAC2619E530002875CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 04B7ED422619E501002875CA;
-			remoteInfo = PerformanceBezier;
-		};
-		04B7EE512619E8B4002875CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 04B7EC4C2619E34F002875CA;
-			remoteInfo = ClippingBezier;
-		};
 		04F3C80A2309E8A800445A8D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
@@ -552,19 +419,6 @@
 				04F3C85D230BC38600445A8D /* Canvas.framework in Embed Frameworks */,
 				04F3C80D2309E8A800445A8D /* Receipts.framework in Embed Frameworks */,
 				04FB5F2425C7AC8400A5B48D /* Editing.framework in Embed Frameworks */,
-				04B7EC632619E34F002875CA /* ClippingBezier.framework in Embed Frameworks */,
-				04B7ED4B2619E501002875CA /* PerformanceBezier.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04B7EDAE2619E530002875CA /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				04B7EDAB2619E530002875CA /* PerformanceBezier.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,7 +429,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				04B7EE502619E8B4002875CA /* ClippingBezier.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -772,97 +625,6 @@
 		04ADD15B2290D29400E17445 /* AppLookupResponseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLookupResponseResult.swift; sourceTree = "<group>"; };
 		04ADD15D2290D2D200E17445 /* AppDeveloperInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeveloperInfo.swift; sourceTree = "<group>"; };
 		04ADD15F2290DA8E00E17445 /* AppEntryOpening.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntryOpening.swift; sourceTree = "<group>"; };
-		04B7EC4D2619E34F002875CA /* ClippingBezier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ClippingBezier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		04B7EC552619E34F002875CA /* ClippingBezierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClippingBezierTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		04B7EC5C2619E34F002875CA /* ClippingBezierTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClippingBezierTests.m; sourceTree = "<group>"; };
-		04B7EC5E2619E34F002875CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04B7EC7E2619E396002875CA /* UIBezierPath+Intersections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Intersections.h"; sourceTree = "<group>"; };
-		04B7EC7F2619E396002875CA /* transforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = transforms.h; sourceTree = "<group>"; };
-		04B7EC802619E396002875CA /* interval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interval.h; sourceTree = "<group>"; };
-		04B7EC812619E397002875CA /* UIBezierPath+GeometryExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+GeometryExtras.m"; sourceTree = "<group>"; };
-		04B7EC822619E397002875CA /* DKUIBezierPathShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKUIBezierPathShape.h; sourceTree = "<group>"; };
-		04B7EC832619E397002875CA /* transforms.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = transforms.cpp; sourceTree = "<group>"; };
-		04B7EC842619E397002875CA /* bezier-utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "bezier-utils.h"; sourceTree = "<group>"; };
-		04B7EC852619E397002875CA /* UIBezierPath+Trimming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Trimming.m"; sourceTree = "<group>"; };
-		04B7EC862619E397002875CA /* bezier-clipping.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "bezier-clipping.mm"; sourceTree = "<group>"; };
-		04B7EC872619E397002875CA /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
-		04B7EC882619E397002875CA /* DKVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKVector.h; sourceTree = "<group>"; };
-		04B7EC892619E397002875CA /* NearestPoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = NearestPoint.c; sourceTree = "<group>"; };
-		04B7EC8A2619E397002875CA /* UIBezierPath+Intersections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Intersections.m"; sourceTree = "<group>"; };
-		04B7EC8B2619E397002875CA /* DKUIBezierPathClippingResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKUIBezierPathClippingResult.m; sourceTree = "<group>"; };
-		04B7EC8C2619E397002875CA /* point.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = point.h; sourceTree = "<group>"; };
-		04B7EC8D2619E397002875CA /* UIBezierPath+Clipping_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Clipping_Private.h"; sourceTree = "<group>"; };
-		04B7EC8E2619E397002875CA /* UIBezierPath+DKOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+DKOSX.h"; sourceTree = "<group>"; };
-		04B7EC8F2619E397002875CA /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
-		04B7EC902619E397002875CA /* DKIntersectionOfPaths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKIntersectionOfPaths.m; sourceTree = "<group>"; };
-		04B7EC912619E398002875CA /* DKUIBezierPathIntersectionPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKUIBezierPathIntersectionPoint.h; sourceTree = "<group>"; };
-		04B7EC922619E398002875CA /* DKUIBezierPathClippingResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKUIBezierPathClippingResult.h; sourceTree = "<group>"; };
-		04B7EC932619E398002875CA /* isnan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isnan.h; sourceTree = "<group>"; };
-		04B7EC942619E398002875CA /* DKTangentAtPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKTangentAtPoint.h; sourceTree = "<group>"; };
-		04B7EC952619E398002875CA /* DKUIBezierPathIntersectionPoint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DKUIBezierPathIntersectionPoint+Private.h"; sourceTree = "<group>"; };
-		04B7EC962619E398002875CA /* MMBackwardCompatible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMBackwardCompatible.h; sourceTree = "<group>"; };
-		04B7EC972619E398002875CA /* UIBezierPath+Trimming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Trimming.h"; sourceTree = "<group>"; };
-		04B7EC982619E398002875CA /* bezier-clipping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "bezier-clipping.h"; sourceTree = "<group>"; };
-		04B7EC992619E398002875CA /* UIBezierPath+GeometryExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+GeometryExtras.h"; sourceTree = "<group>"; };
-		04B7EC9A2619E398002875CA /* DKUIBezierUnmatchedPathIntersectionPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKUIBezierUnmatchedPathIntersectionPoint.m; sourceTree = "<group>"; };
-		04B7EC9B2619E398002875CA /* DKUIBezierPathClippedSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKUIBezierPathClippedSegment.m; sourceTree = "<group>"; };
-		04B7EC9C2619E398002875CA /* bezierclip.cxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bezierclip.cxx; sourceTree = "<group>"; };
-		04B7EC9D2619E398002875CA /* DKUIBezierPathIntersectionPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKUIBezierPathIntersectionPoint.m; sourceTree = "<group>"; };
-		04B7EC9E2619E399002875CA /* ClippingBezier-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ClippingBezier-Info.plist"; sourceTree = "<group>"; };
-		04B7EC9F2619E399002875CA /* UIBezierPath+Clipping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Clipping.h"; sourceTree = "<group>"; };
-		04B7ECA02619E399002875CA /* DKUIBezierUnmatchedPathIntersectionPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKUIBezierUnmatchedPathIntersectionPoint.h; sourceTree = "<group>"; };
-		04B7ECA12619E399002875CA /* point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = point.cpp; sourceTree = "<group>"; };
-		04B7ECA22619E399002875CA /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
-		04B7ECA32619E399002875CA /* UIBezierPath+DKOSX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+DKOSX.m"; sourceTree = "<group>"; };
-		04B7ECA42619E399002875CA /* UIBezierPath+Clipping.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIBezierPath+Clipping.mm"; sourceTree = "<group>"; };
-		04B7ECA52619E399002875CA /* bezier-utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "bezier-utils.cpp"; sourceTree = "<group>"; };
-		04B7ECA62619E399002875CA /* DKUIBezierPathClippedSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKUIBezierPathClippedSegment.h; sourceTree = "<group>"; };
-		04B7ECA72619E399002875CA /* ClippingBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClippingBezier.h; sourceTree = "<group>"; };
-		04B7ECA82619E399002875CA /* DKUIBezierPathShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKUIBezierPathShape.m; sourceTree = "<group>"; };
-		04B7ECA92619E399002875CA /* gauss.hxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = gauss.hxx; sourceTree = "<group>"; };
-		04B7ECAA2619E399002875CA /* DKIntersectionOfPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKIntersectionOfPaths.h; sourceTree = "<group>"; };
-		04B7ECAB2619E399002875CA /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
-		04B7ECAC2619E399002875CA /* DKVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKVector.m; sourceTree = "<group>"; };
-		04B7ECAD2619E39A002875CA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04B7ECAE2619E39A002875CA /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
-		04B7ECAF2619E39A002875CA /* NearestPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearestPoint.h; sourceTree = "<group>"; };
-		04B7ECB02619E39A002875CA /* convexhull.cxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = convexhull.cxx; sourceTree = "<group>"; };
-		04B7ECB12619E39A002875CA /* DKTangentAtPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKTangentAtPoint.m; sourceTree = "<group>"; };
-		04B7ECB22619E39A002875CA /* BezierUtilsLicense */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BezierUtilsLicense; sourceTree = "<group>"; };
-		04B7ECB32619E39A002875CA /* bezierclip.hxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bezierclip.hxx; sourceTree = "<group>"; };
-		04B7ECB42619E39A002875CA /* MMBackwardCompatible.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMBackwardCompatible.m; sourceTree = "<group>"; };
-		04B7ECB52619E39A002875CA /* coord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coord.h; sourceTree = "<group>"; };
-		04B7ED432619E501002875CA /* PerformanceBezier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PerformanceBezier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		04B7ED462619E501002875CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04B7ED652619E525002875CA /* UIBezierPath+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Util.m"; sourceTree = "<group>"; };
-		04B7ED662619E525002875CA /* UIBezierPath+NSOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+NSOSX.h"; sourceTree = "<group>"; };
-		04B7ED672619E525002875CA /* UIBezierPath+Center.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Center.m"; sourceTree = "<group>"; };
-		04B7ED682619E526002875CA /* UIBezierPath+Equals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Equals.m"; sourceTree = "<group>"; };
-		04B7ED692619E526002875CA /* UIBezierPath+Performance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Performance.h"; sourceTree = "<group>"; };
-		04B7ED6A2619E526002875CA /* UIBezierPathProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBezierPathProperties.h; sourceTree = "<group>"; };
-		04B7ED6B2619E526002875CA /* UIBezierPath+FirstLast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+FirstLast.h"; sourceTree = "<group>"; };
-		04B7ED6C2619E526002875CA /* UIBezierPath+Ahmed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Ahmed.h"; sourceTree = "<group>"; };
-		04B7ED6D2619E526002875CA /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
-		04B7ED6E2619E526002875CA /* UIBezierPath+Trim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Trim.h"; sourceTree = "<group>"; };
-		04B7ED6F2619E526002875CA /* UIBezierPath+Center.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Center.h"; sourceTree = "<group>"; };
-		04B7ED702619E526002875CA /* UIBezierPathProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBezierPathProperties.m; sourceTree = "<group>"; };
-		04B7ED712619E526002875CA /* UIBezierPath+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Util.h"; sourceTree = "<group>"; };
-		04B7ED722619E526002875CA /* UIBezierPath+Description.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Description.h"; sourceTree = "<group>"; };
-		04B7ED732619E526002875CA /* UIBezierPath+Uncached.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Uncached.h"; sourceTree = "<group>"; };
-		04B7ED742619E526002875CA /* UIBezierPath+Performance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Performance.m"; sourceTree = "<group>"; };
-		04B7ED752619E526002875CA /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
-		04B7ED762619E526002875CA /* UIBezierPath+Clockwise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Clockwise.h"; sourceTree = "<group>"; };
-		04B7ED772619E527002875CA /* UIBezierPath+FirstLast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+FirstLast.m"; sourceTree = "<group>"; };
-		04B7ED782619E527002875CA /* UIBezierPath+Uncached.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Uncached.m"; sourceTree = "<group>"; };
-		04B7ED792619E527002875CA /* UIBezierPath+Ahmed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Ahmed.m"; sourceTree = "<group>"; };
-		04B7ED7A2619E527002875CA /* UIBezierPath+Equals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Equals.h"; sourceTree = "<group>"; };
-		04B7ED7B2619E527002875CA /* UIBezierPath+Clockwise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Clockwise.m"; sourceTree = "<group>"; };
-		04B7ED7C2619E527002875CA /* UIBezierPath+NSOSX_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+NSOSX_Private.h"; sourceTree = "<group>"; };
-		04B7ED7D2619E527002875CA /* UIBezierPath+Trim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Trim.m"; sourceTree = "<group>"; };
-		04B7ED7E2619E527002875CA /* UIBezierPath+Performance_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Performance_Private.h"; sourceTree = "<group>"; };
-		04B7ED7F2619E527002875CA /* UIBezierPath+NSOSX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+NSOSX.m"; sourceTree = "<group>"; };
-		04B7ED802619E527002875CA /* UIBezierPath+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Description.m"; sourceTree = "<group>"; };
-		04B7ED812619E527002875CA /* PerformanceBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformanceBezier.h; sourceTree = "<group>"; };
 		04BC9FC725C2700200213DBC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsRedactExporter.swift; sourceTree = "<group>"; };
 		04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsExportOperation.swift; sourceTree = "<group>"; };
@@ -958,8 +720,6 @@
 				04F3C85C230BC38600445A8D /* Canvas.framework in Frameworks */,
 				04F3C80C2309E8A800445A8D /* Receipts.framework in Frameworks */,
 				04FB5F2325C7AC8400A5B48D /* Editing.framework in Frameworks */,
-				04B7EC622619E34F002875CA /* ClippingBezier.framework in Frameworks */,
-				04B7ED4A2619E501002875CA /* PerformanceBezier.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1017,30 +777,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04B7EE4F2619E8B4002875CA /* ClippingBezier.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04B7EC4A2619E34F002875CA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04B7EDAA2619E530002875CA /* PerformanceBezier.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04B7EC522619E34F002875CA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04B7EC562619E34F002875CA /* ClippingBezier.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04B7ED402619E501002875CA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				04B198F42623ADDD001A275B /* ClippingBezier in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1077,9 +814,6 @@
 				044D4C192547B7BC00701166 /* Automator */,
 				044D4C9C2547C8EE00701166 /* Redacting */,
 				0464B1DF2553A3DE00D00FAC /* Shortcuts */,
-				04B7EC4E2619E34F002875CA /* ClippingBezier */,
-				04B7EC5B2619E34F002875CA /* ClippingBezierTests */,
-				04B7ED442619E501002875CA /* PerformanceBezier */,
 				041EFEF62251A9F30058D8EE /* Products */,
 				04ADD1622290DE6700E17445 /* Frameworks */,
 			);
@@ -1098,9 +832,6 @@
 				044D4C182547B7BC00701166 /* AutomatorActions.action */,
 				044D4C9B2547C8EE00701166 /* Redacting.framework */,
 				0464B1DE2553A3DE00D00FAC /* Shortcuts.appex */,
-				04B7EC4D2619E34F002875CA /* ClippingBezier.framework */,
-				04B7EC552619E34F002875CA /* ClippingBezierTests.xctest */,
-				04B7ED432619E501002875CA /* PerformanceBezier.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1570,115 +1301,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		04B7EC4E2619E34F002875CA /* ClippingBezier */ = {
-			isa = PBXGroup;
-			children = (
-				04B7EC982619E398002875CA /* bezier-clipping.h */,
-				04B7EC862619E397002875CA /* bezier-clipping.mm */,
-				04B7ECA52619E399002875CA /* bezier-utils.cpp */,
-				04B7EC842619E397002875CA /* bezier-utils.h */,
-				04B7EC9C2619E398002875CA /* bezierclip.cxx */,
-				04B7ECB32619E39A002875CA /* bezierclip.hxx */,
-				04B7ECB22619E39A002875CA /* BezierUtilsLicense */,
-				04B7EC9E2619E399002875CA /* ClippingBezier-Info.plist */,
-				04B7ECA72619E399002875CA /* ClippingBezier.h */,
-				04B7ECB02619E39A002875CA /* convexhull.cxx */,
-				04B7ECB52619E39A002875CA /* coord.h */,
-				04B7ECAA2619E399002875CA /* DKIntersectionOfPaths.h */,
-				04B7EC902619E397002875CA /* DKIntersectionOfPaths.m */,
-				04B7EC942619E398002875CA /* DKTangentAtPoint.h */,
-				04B7ECB12619E39A002875CA /* DKTangentAtPoint.m */,
-				04B7ECA62619E399002875CA /* DKUIBezierPathClippedSegment.h */,
-				04B7EC9B2619E398002875CA /* DKUIBezierPathClippedSegment.m */,
-				04B7EC922619E398002875CA /* DKUIBezierPathClippingResult.h */,
-				04B7EC8B2619E397002875CA /* DKUIBezierPathClippingResult.m */,
-				04B7EC912619E398002875CA /* DKUIBezierPathIntersectionPoint.h */,
-				04B7EC9D2619E398002875CA /* DKUIBezierPathIntersectionPoint.m */,
-				04B7EC952619E398002875CA /* DKUIBezierPathIntersectionPoint+Private.h */,
-				04B7EC822619E397002875CA /* DKUIBezierPathShape.h */,
-				04B7ECA82619E399002875CA /* DKUIBezierPathShape.m */,
-				04B7ECA02619E399002875CA /* DKUIBezierUnmatchedPathIntersectionPoint.h */,
-				04B7EC9A2619E398002875CA /* DKUIBezierUnmatchedPathIntersectionPoint.m */,
-				04B7EC882619E397002875CA /* DKVector.h */,
-				04B7ECAC2619E399002875CA /* DKVector.m */,
-				04B7ECA92619E399002875CA /* gauss.hxx */,
-				04B7ECAD2619E39A002875CA /* Info.plist */,
-				04B7EC802619E396002875CA /* interval.h */,
-				04B7EC932619E398002875CA /* isnan.h */,
-				04B7ECA22619E399002875CA /* JRSwizzle.h */,
-				04B7EC8F2619E397002875CA /* JRSwizzle.m */,
-				04B7EC872619E397002875CA /* matrix.cpp */,
-				04B7ECAE2619E39A002875CA /* matrix.h */,
-				04B7EC962619E398002875CA /* MMBackwardCompatible.h */,
-				04B7ECB42619E39A002875CA /* MMBackwardCompatible.m */,
-				04B7EC892619E397002875CA /* NearestPoint.c */,
-				04B7ECAF2619E39A002875CA /* NearestPoint.h */,
-				04B7ECA12619E399002875CA /* point.cpp */,
-				04B7EC8C2619E397002875CA /* point.h */,
-				04B7EC832619E397002875CA /* transforms.cpp */,
-				04B7EC7F2619E396002875CA /* transforms.h */,
-				04B7EC8D2619E397002875CA /* UIBezierPath+Clipping_Private.h */,
-				04B7EC9F2619E399002875CA /* UIBezierPath+Clipping.h */,
-				04B7ECA42619E399002875CA /* UIBezierPath+Clipping.mm */,
-				04B7EC8E2619E397002875CA /* UIBezierPath+DKOSX.h */,
-				04B7ECA32619E399002875CA /* UIBezierPath+DKOSX.m */,
-				04B7EC992619E398002875CA /* UIBezierPath+GeometryExtras.h */,
-				04B7EC812619E397002875CA /* UIBezierPath+GeometryExtras.m */,
-				04B7EC7E2619E396002875CA /* UIBezierPath+Intersections.h */,
-				04B7EC8A2619E397002875CA /* UIBezierPath+Intersections.m */,
-				04B7EC972619E398002875CA /* UIBezierPath+Trimming.h */,
-				04B7EC852619E397002875CA /* UIBezierPath+Trimming.m */,
-				04B7ECAB2619E399002875CA /* utils.h */,
-			);
-			path = ClippingBezier;
-			sourceTree = "<group>";
-		};
-		04B7EC5B2619E34F002875CA /* ClippingBezierTests */ = {
-			isa = PBXGroup;
-			children = (
-				04B7EC5C2619E34F002875CA /* ClippingBezierTests.m */,
-				04B7EC5E2619E34F002875CA /* Info.plist */,
-			);
-			path = ClippingBezierTests;
-			sourceTree = "<group>";
-		};
-		04B7ED442619E501002875CA /* PerformanceBezier */ = {
-			isa = PBXGroup;
-			children = (
-				04B7ED752619E526002875CA /* JRSwizzle.h */,
-				04B7ED6D2619E526002875CA /* JRSwizzle.m */,
-				04B7ED812619E527002875CA /* PerformanceBezier.h */,
-				04B7ED6C2619E526002875CA /* UIBezierPath+Ahmed.h */,
-				04B7ED792619E527002875CA /* UIBezierPath+Ahmed.m */,
-				04B7ED6F2619E526002875CA /* UIBezierPath+Center.h */,
-				04B7ED672619E525002875CA /* UIBezierPath+Center.m */,
-				04B7ED762619E526002875CA /* UIBezierPath+Clockwise.h */,
-				04B7ED7B2619E527002875CA /* UIBezierPath+Clockwise.m */,
-				04B7ED722619E526002875CA /* UIBezierPath+Description.h */,
-				04B7ED802619E527002875CA /* UIBezierPath+Description.m */,
-				04B7ED7A2619E527002875CA /* UIBezierPath+Equals.h */,
-				04B7ED682619E526002875CA /* UIBezierPath+Equals.m */,
-				04B7ED6B2619E526002875CA /* UIBezierPath+FirstLast.h */,
-				04B7ED772619E527002875CA /* UIBezierPath+FirstLast.m */,
-				04B7ED7C2619E527002875CA /* UIBezierPath+NSOSX_Private.h */,
-				04B7ED662619E525002875CA /* UIBezierPath+NSOSX.h */,
-				04B7ED7F2619E527002875CA /* UIBezierPath+NSOSX.m */,
-				04B7ED7E2619E527002875CA /* UIBezierPath+Performance_Private.h */,
-				04B7ED692619E526002875CA /* UIBezierPath+Performance.h */,
-				04B7ED742619E526002875CA /* UIBezierPath+Performance.m */,
-				04B7ED6E2619E526002875CA /* UIBezierPath+Trim.h */,
-				04B7ED7D2619E527002875CA /* UIBezierPath+Trim.m */,
-				04B7ED732619E526002875CA /* UIBezierPath+Uncached.h */,
-				04B7ED782619E527002875CA /* UIBezierPath+Uncached.m */,
-				04B7ED712619E526002875CA /* UIBezierPath+Util.h */,
-				04B7ED652619E525002875CA /* UIBezierPath+Util.m */,
-				04B7ED6A2619E526002875CA /* UIBezierPathProperties.h */,
-				04B7ED702619E526002875CA /* UIBezierPathProperties.m */,
-				04B7ED462619E501002875CA /* Info.plist */,
-			);
-			path = PerformanceBezier;
-			sourceTree = "<group>";
-		};
 		04D68BC3225EE2A500D09BBD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1959,66 +1581,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		04B7EC482619E34F002875CA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04B7ECDF2619E39A002875CA /* ClippingBezier.h in Headers */,
-				04B7ECC02619E39A002875CA /* DKVector.h in Headers */,
-				04B7ECE32619E39A002875CA /* utils.h in Headers */,
-				04B7ECE62619E39A002875CA /* matrix.h in Headers */,
-				04B7ECDE2619E39A002875CA /* DKUIBezierPathClippedSegment.h in Headers */,
-				04B7ECD12619E39A002875CA /* UIBezierPath+GeometryExtras.h in Headers */,
-				04B7ECC92619E39A002875CA /* DKUIBezierPathIntersectionPoint.h in Headers */,
-				04B7ECBC2619E39A002875CA /* bezier-utils.h in Headers */,
-				04B7ECCA2619E39A002875CA /* DKUIBezierPathClippingResult.h in Headers */,
-				04B7ECD82619E39A002875CA /* DKUIBezierUnmatchedPathIntersectionPoint.h in Headers */,
-				04B7ECCC2619E39A002875CA /* DKTangentAtPoint.h in Headers */,
-				04B7ECCE2619E39A002875CA /* MMBackwardCompatible.h in Headers */,
-				04B7ECE12619E39A002875CA /* gauss.hxx in Headers */,
-				04B7ECB62619E39A002875CA /* UIBezierPath+Intersections.h in Headers */,
-				04B7ECD72619E39A002875CA /* UIBezierPath+Clipping.h in Headers */,
-				04B7ECDA2619E39A002875CA /* JRSwizzle.h in Headers */,
-				04B7ECE72619E39A002875CA /* NearestPoint.h in Headers */,
-				04B7ECB82619E39A002875CA /* interval.h in Headers */,
-				04B7ECED2619E39A002875CA /* coord.h in Headers */,
-				04B7ECE22619E39A002875CA /* DKIntersectionOfPaths.h in Headers */,
-				04B7ECCD2619E39A002875CA /* DKUIBezierPathIntersectionPoint+Private.h in Headers */,
-				04B7ECCB2619E39A002875CA /* isnan.h in Headers */,
-				04B7ECC52619E39A002875CA /* UIBezierPath+Clipping_Private.h in Headers */,
-				04B7ECCF2619E39A002875CA /* UIBezierPath+Trimming.h in Headers */,
-				04B7ECC42619E39A002875CA /* point.h in Headers */,
-				04B7ECD02619E39A002875CA /* bezier-clipping.h in Headers */,
-				04B7ECB72619E39A002875CA /* transforms.h in Headers */,
-				04B7ECBA2619E39A002875CA /* DKUIBezierPathShape.h in Headers */,
-				04B7ECC62619E39A002875CA /* UIBezierPath+DKOSX.h in Headers */,
-				04B7ECEB2619E39A002875CA /* bezierclip.hxx in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04B7ED3E2619E501002875CA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04B7ED832619E527002875CA /* UIBezierPath+NSOSX.h in Headers */,
-				04B7ED932619E527002875CA /* UIBezierPath+Clockwise.h in Headers */,
-				04B7ED882619E527002875CA /* UIBezierPath+FirstLast.h in Headers */,
-				04B7ED872619E527002875CA /* UIBezierPathProperties.h in Headers */,
-				04B7ED9B2619E527002875CA /* UIBezierPath+Performance_Private.h in Headers */,
-				04B7ED892619E527002875CA /* UIBezierPath+Ahmed.h in Headers */,
-				04B7ED8F2619E527002875CA /* UIBezierPath+Description.h in Headers */,
-				04B7ED922619E527002875CA /* JRSwizzle.h in Headers */,
-				04B7ED8B2619E527002875CA /* UIBezierPath+Trim.h in Headers */,
-				04B7ED8C2619E527002875CA /* UIBezierPath+Center.h in Headers */,
-				04B7ED8E2619E527002875CA /* UIBezierPath+Util.h in Headers */,
-				04B7ED972619E527002875CA /* UIBezierPath+Equals.h in Headers */,
-				04B7ED9E2619E527002875CA /* PerformanceBezier.h in Headers */,
-				04B7ED862619E527002875CA /* UIBezierPath+Performance.h in Headers */,
-				04B7ED992619E527002875CA /* UIBezierPath+NSOSX_Private.h in Headers */,
-				04B7ED902619E527002875CA /* UIBezierPath+Uncached.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		04F3C8002309E8A800445A8D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -2061,8 +1623,6 @@
 				04F3C80B2309E8A800445A8D /* PBXTargetDependency */,
 				04F3C84F230BC1E100445A8D /* PBXTargetDependency */,
 				0464B1E42553A3DE00D00FAC /* PBXTargetDependency */,
-				04B7EC612619E34F002875CA /* PBXTargetDependency */,
-				04B7ED492619E501002875CA /* PBXTargetDependency */,
 			);
 			name = Highlighter;
 			packageProductDependencies = (
@@ -2194,68 +1754,13 @@
 			buildRules = (
 			);
 			dependencies = (
-				04B7EE522619E8B4002875CA /* PBXTargetDependency */,
 			);
 			name = Editing;
+			packageProductDependencies = (
+				04B198F32623ADDD001A275B /* ClippingBezier */,
+			);
 			productName = Editing;
 			productReference = 049F92D722CDA3DB0090C9BC /* Editing.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		04B7EC4C2619E34F002875CA /* ClippingBezier */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 04B7EC642619E34F002875CA /* Build configuration list for PBXNativeTarget "ClippingBezier" */;
-			buildPhases = (
-				04B7EC482619E34F002875CA /* Headers */,
-				04B7EC492619E34F002875CA /* Sources */,
-				04B7EC4A2619E34F002875CA /* Frameworks */,
-				04B7EC4B2619E34F002875CA /* Resources */,
-				04B7EDAE2619E530002875CA /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				04B7EDAD2619E530002875CA /* PBXTargetDependency */,
-			);
-			name = ClippingBezier;
-			productName = ClippingBezier;
-			productReference = 04B7EC4D2619E34F002875CA /* ClippingBezier.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		04B7EC542619E34F002875CA /* ClippingBezierTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 04B7EC672619E34F002875CA /* Build configuration list for PBXNativeTarget "ClippingBezierTests" */;
-			buildPhases = (
-				04B7EC512619E34F002875CA /* Sources */,
-				04B7EC522619E34F002875CA /* Frameworks */,
-				04B7EC532619E34F002875CA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				04B7EC582619E34F002875CA /* PBXTargetDependency */,
-				04B7EC5A2619E34F002875CA /* PBXTargetDependency */,
-			);
-			name = ClippingBezierTests;
-			productName = ClippingBezierTests;
-			productReference = 04B7EC552619E34F002875CA /* ClippingBezierTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		04B7ED422619E501002875CA /* PerformanceBezier */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 04B7ED4C2619E501002875CA /* Build configuration list for PBXNativeTarget "PerformanceBezier" */;
-			buildPhases = (
-				04B7ED3E2619E501002875CA /* Headers */,
-				04B7ED3F2619E501002875CA /* Sources */,
-				04B7ED402619E501002875CA /* Frameworks */,
-				04B7ED412619E501002875CA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PerformanceBezier;
-			productName = PerformanceBezier;
-			productReference = 04B7ED432619E501002875CA /* PerformanceBezier.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		04F3C8042309E8A800445A8D /* Receipts */ = {
@@ -2334,16 +1839,6 @@
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1100;
 					};
-					04B7EC4C2619E34F002875CA = {
-						CreatedOnToolsVersion = 12.4;
-					};
-					04B7EC542619E34F002875CA = {
-						CreatedOnToolsVersion = 12.4;
-						TestTargetID = 041EFEF42251A9F30058D8EE;
-					};
-					04B7ED422619E501002875CA = {
-						CreatedOnToolsVersion = 12.4;
-					};
 					04F3C8042309E8A800445A8D = {
 						CreatedOnToolsVersion = 11.0;
 					};
@@ -2363,6 +1858,7 @@
 			);
 			mainGroup = 041EFEEC2251A9F30058D8EE;
 			packageReferences = (
+				04B198E92623ADCA001A275B /* XCRemoteSwiftPackageReference "ClippingBezier" */,
 			);
 			productRefGroup = 041EFEF62251A9F30058D8EE /* Products */;
 			projectDirPath = "";
@@ -2378,9 +1874,6 @@
 				044D4C172547B7BC00701166 /* AutomatorActions */,
 				044D4C9A2547C8EE00701166 /* Redacting */,
 				0464B1DD2553A3DE00D00FAC /* Shortcuts */,
-				04B7EC4C2619E34F002875CA /* ClippingBezier */,
-				04B7EC542619E34F002875CA /* ClippingBezierTests */,
-				04B7ED422619E501002875CA /* PerformanceBezier */,
 			);
 		};
 /* End PBXProject section */
@@ -2457,27 +1950,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		049F92D522CDA3DB0090C9BC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04B7EC4B2619E34F002875CA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04B7EC532619E34F002875CA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04B7ED412619E501002875CA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2796,64 +2268,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		04B7EC492619E34F002875CA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04B7ECBF2619E39A002875CA /* matrix.cpp in Sources */,
-				04B7ECC32619E39A002875CA /* DKUIBezierPathClippingResult.m in Sources */,
-				04B7ECC12619E39A002875CA /* NearestPoint.c in Sources */,
-				04B7ECE42619E39A002875CA /* DKVector.m in Sources */,
-				04B7ECBD2619E39A002875CA /* UIBezierPath+Trimming.m in Sources */,
-				04B7ECD42619E39A002875CA /* bezierclip.cxx in Sources */,
-				04B7ECD92619E39A002875CA /* point.cpp in Sources */,
-				04B7ECDC2619E39A002875CA /* UIBezierPath+Clipping.mm in Sources */,
-				04B7ECE02619E39A002875CA /* DKUIBezierPathShape.m in Sources */,
-				04B7ECD32619E39A002875CA /* DKUIBezierPathClippedSegment.m in Sources */,
-				04B7ECD22619E39A002875CA /* DKUIBezierUnmatchedPathIntersectionPoint.m in Sources */,
-				04B7ECBB2619E39A002875CA /* transforms.cpp in Sources */,
-				04B7ECDD2619E39A002875CA /* bezier-utils.cpp in Sources */,
-				04B7ECD52619E39A002875CA /* DKUIBezierPathIntersectionPoint.m in Sources */,
-				04B7ECC82619E39A002875CA /* DKIntersectionOfPaths.m in Sources */,
-				04B7ECBE2619E39A002875CA /* bezier-clipping.mm in Sources */,
-				04B7ECB92619E39A002875CA /* UIBezierPath+GeometryExtras.m in Sources */,
-				04B7ECC72619E39A002875CA /* JRSwizzle.m in Sources */,
-				04B7ECE92619E39A002875CA /* DKTangentAtPoint.m in Sources */,
-				04B7ECC22619E39A002875CA /* UIBezierPath+Intersections.m in Sources */,
-				04B7ECE82619E39A002875CA /* convexhull.cxx in Sources */,
-				04B7ECEC2619E39A002875CA /* MMBackwardCompatible.m in Sources */,
-				04B7ECDB2619E39A002875CA /* UIBezierPath+DKOSX.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04B7EC512619E34F002875CA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04B7EC5D2619E34F002875CA /* ClippingBezierTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04B7ED3F2619E501002875CA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04B7ED9A2619E527002875CA /* UIBezierPath+Trim.m in Sources */,
-				04B7ED9C2619E527002875CA /* UIBezierPath+NSOSX.m in Sources */,
-				04B7ED912619E527002875CA /* UIBezierPath+Performance.m in Sources */,
-				04B7ED962619E527002875CA /* UIBezierPath+Ahmed.m in Sources */,
-				04B7ED852619E527002875CA /* UIBezierPath+Equals.m in Sources */,
-				04B7ED8D2619E527002875CA /* UIBezierPathProperties.m in Sources */,
-				04B7ED842619E527002875CA /* UIBezierPath+Center.m in Sources */,
-				04B7ED9D2619E527002875CA /* UIBezierPath+Description.m in Sources */,
-				04B7ED952619E527002875CA /* UIBezierPath+Uncached.m in Sources */,
-				04B7ED982619E527002875CA /* UIBezierPath+Clockwise.m in Sources */,
-				04B7ED8A2619E527002875CA /* JRSwizzle.m in Sources */,
-				04B7ED942619E527002875CA /* UIBezierPath+FirstLast.m in Sources */,
-				04B7ED822619E527002875CA /* UIBezierPath+Util.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		04F3C8012309E8A800445A8D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2933,36 +2347,6 @@
 			isa = PBXTargetDependency;
 			target = 049F92D622CDA3DB0090C9BC /* Editing */;
 			targetProxy = 049F92DC22CDA3DB0090C9BC /* PBXContainerItemProxy */;
-		};
-		04B7EC582619E34F002875CA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 04B7EC4C2619E34F002875CA /* ClippingBezier */;
-			targetProxy = 04B7EC572619E34F002875CA /* PBXContainerItemProxy */;
-		};
-		04B7EC5A2619E34F002875CA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 041EFEF42251A9F30058D8EE /* Highlighter */;
-			targetProxy = 04B7EC592619E34F002875CA /* PBXContainerItemProxy */;
-		};
-		04B7EC612619E34F002875CA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 04B7EC4C2619E34F002875CA /* ClippingBezier */;
-			targetProxy = 04B7EC602619E34F002875CA /* PBXContainerItemProxy */;
-		};
-		04B7ED492619E501002875CA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 04B7ED422619E501002875CA /* PerformanceBezier */;
-			targetProxy = 04B7ED482619E501002875CA /* PBXContainerItemProxy */;
-		};
-		04B7EDAD2619E530002875CA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 04B7ED422619E501002875CA /* PerformanceBezier */;
-			targetProxy = 04B7EDAC2619E530002875CA /* PBXContainerItemProxy */;
-		};
-		04B7EE522619E8B4002875CA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 04B7EC4C2619E34F002875CA /* ClippingBezier */;
-			targetProxy = 04B7EE512619E8B4002875CA /* PBXContainerItemProxy */;
 		};
 		04F3C80B2309E8A800445A8D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3590,156 +2974,6 @@
 			};
 			name = Release;
 		};
-		04B7EC652619E34F002875CA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 287EDDET2B;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ClippingBezier/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.ClippingBezier;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		04B7EC662619E34F002875CA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 287EDDET2B;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ClippingBezier/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.ClippingBezier;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		04B7EC682619E34F002875CA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 287EDDET2B;
-				INFOPLIST_FILE = ClippingBezierTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.milestonemade.ClippingBezierTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Highlighter.app/Highlighter";
-			};
-			name = Debug;
-		};
-		04B7EC692619E34F002875CA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 287EDDET2B;
-				INFOPLIST_FILE = ClippingBezierTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.milestonemade.ClippingBezierTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Highlighter.app/Highlighter";
-			};
-			name = Release;
-		};
-		04B7ED4D2619E501002875CA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 287EDDET2B;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PerformanceBezier/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.PerformanceBezier;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		04B7ED4E2619E501002875CA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 287EDDET2B;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PerformanceBezier/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.PerformanceBezier;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		04F3C80F2309E8A800445A8D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3943,33 +3177,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04B7EC642619E34F002875CA /* Build configuration list for PBXNativeTarget "ClippingBezier" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				04B7EC652619E34F002875CA /* Debug */,
-				04B7EC662619E34F002875CA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		04B7EC672619E34F002875CA /* Build configuration list for PBXNativeTarget "ClippingBezierTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				04B7EC682619E34F002875CA /* Debug */,
-				04B7EC692619E34F002875CA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		04B7ED4C2619E501002875CA /* Build configuration list for PBXNativeTarget "PerformanceBezier" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				04B7ED4D2619E501002875CA /* Debug */,
-				04B7ED4E2619E501002875CA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		04F3C80E2309E8A800445A8D /* Build configuration list for PBXNativeTarget "Receipts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -3989,6 +3196,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04B198E92623ADCA001A275B /* XCRemoteSwiftPackageReference "ClippingBezier" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:adamwulf/ClippingBezier.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04B198F32623ADDD001A275B /* ClippingBezier */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04B198E92623ADCA001A275B /* XCRemoteSwiftPackageReference "ClippingBezier" */;
+			productName = ClippingBezier;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 041EFEED2251A9F30058D8EE /* Project object */;
 }
