@@ -17,3 +17,5 @@ FOUNDATION_EXPORT const unsigned char EditingVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <Editing/PublicHeader.h>
 
 #import <Editing/PhotoEditingBrushStrokeView.h>
+#import <Editing/PhotoEditingCanvasBrushStrokeView.h>
+#import <Editing/PhotoEditingCanvasView.h>
