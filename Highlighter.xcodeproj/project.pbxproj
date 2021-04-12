@@ -145,6 +145,8 @@
 		0493D2D824B6BD0000FF99F4 /* BrushStampFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */; };
 		04953B5824E2405500877800 /* PhotoEditingViewController+Desktop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04953B5724E2405500877800 /* PhotoEditingViewController+Desktop.swift */; };
 		0495B57B25354C3200B2DF0B /* PhotoLibraryScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0495B57A25354C3200B2DF0B /* PhotoLibraryScrollView.swift */; };
+		04975D8926106F8B00AA2771 /* HighlighterToolBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04975D8826106F8B00AA2771 /* HighlighterToolBarButtonItem.swift */; };
+		04975D932610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04975D922610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift */; };
 		04975D1E26106D6800AA2771 /* PhotoEditingCanvasBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EB2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04975D3726106D8700AA2771 /* PhotoEditingCanvasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04975D5826106DC100AA2771 /* PhotoEditingCanvasBrushStrokeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */; };
@@ -204,6 +206,7 @@
 		04ADD15C2290D29400E17445 /* AppLookupResponseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15B2290D29400E17445 /* AppLookupResponseResult.swift */; };
 		04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15D2290D2D200E17445 /* AppDeveloperInfo.swift */; };
 		04ADD1602290DA8E00E17445 /* AppEntryOpening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15F2290DA8E00E17445 /* AppEntryOpening.swift */; };
+		04B198F42623ADDD001A275B /* ClippingBezier in Frameworks */ = {isa = PBXBuildFile; productRef = 04B198F32623ADDD001A275B /* ClippingBezier */; };
 		04BC9FD025C2704300213DBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BC9FC725C2700200213DBC /* libz.tbd */; };
 		04BDC4962556576900BCE982 /* ShortcutsRedactExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */; };
 		04BDC49F255657A600BCE982 /* ShortcutsExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */; };
@@ -408,6 +411,16 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04B7EE532619E8B4002875CA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -566,6 +579,8 @@
 		0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushStampFactory.swift; sourceTree = "<group>"; };
 		04953B5724E2405500877800 /* PhotoEditingViewController+Desktop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditingViewController+Desktop.swift"; sourceTree = "<group>"; };
 		0495B57A25354C3200B2DF0B /* PhotoLibraryScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryScrollView.swift; sourceTree = "<group>"; };
+		04975D8826106F8B00AA2771 /* HighlighterToolBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlighterToolBarButtonItem.swift; sourceTree = "<group>"; };
+		04975D922610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyHighlighterToolBarButtonItem.swift; sourceTree = "<group>"; };
 		049E1EB124BFEEE7009DE20D /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		049E1EB324BFEF09009DE20D /* AlbumsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsList.swift; sourceTree = "<group>"; };
 		049F2927228755DB00A335BE /* SettingsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
@@ -746,6 +761,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04B198F42623ADDD001A275B /* ClippingBezier in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1162,6 +1178,15 @@
 			path = "Library Items";
 			sourceTree = "<group>";
 		};
+		04975D8726106F6D00AA2771 /* Toolbar Items */ = {
+			isa = PBXGroup;
+			children = (
+				04975D8826106F8B00AA2771 /* HighlighterToolBarButtonItem.swift */,
+				04975D922610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift */,
+			);
+			path = "Toolbar Items";
+			sourceTree = "<group>";
+		};
 		049F292922875AC200A335BE /* Presented View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1199,6 +1224,7 @@
 		049F92EC22CDA48C0090C9BC /* Editing View */ = {
 			isa = PBXGroup;
 			children = (
+				04975D8726106F6D00AA2771 /* Toolbar Items */,
 				048909F1226571AB0048E203 /* BasePhotoEditingViewController.swift */,
 				04E192A4229CD34F006F0E56 /* Workspace */,
 				04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */,
@@ -1679,12 +1705,16 @@
 				049F92D322CDA3DB0090C9BC /* Sources */,
 				049F92D422CDA3DB0090C9BC /* Frameworks */,
 				049F92D522CDA3DB0090C9BC /* Resources */,
+				04B7EE532619E8B4002875CA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Editing;
+			packageProductDependencies = (
+				04B198F32623ADDD001A275B /* ClippingBezier */,
+			);
 			productName = Editing;
 			productReference = 049F92D722CDA3DB0090C9BC /* Editing.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1762,6 +1792,7 @@
 			);
 			mainGroup = 041EFEEC2251A9F30058D8EE;
 			packageReferences = (
+				04B198E92623ADCA001A275B /* XCRemoteSwiftPackageReference "ClippingBezier" */,
 			);
 			productRefGroup = 041EFEF62251A9F30058D8EE /* Products */;
 			projectDirPath = "";
@@ -2147,6 +2178,7 @@
 				044074BF23BE9BCD00D3CB99 /* RedactionPathLayer.swift in Sources */,
 				0493D2D824B6BD0000FF99F4 /* BrushStampFactory.swift in Sources */,
 				04431E5E2358117B009FA1F6 /* RedactionSerializer.swift in Sources */,
+				04975D8926106F8B00AA2771 /* HighlighterToolBarButtonItem.swift in Sources */,
 				04FDEA5625257B1900F94CA9 /* SplitViewController.swift in Sources */,
 				04FF8DB422F57570008CF0E9 /* Defaults.swift in Sources */,
 				04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */,
@@ -2157,6 +2189,7 @@
 				0464B18725529CC000D00FAC /* Redaction.swift in Sources */,
 				049F92E722CDA3FF0090C9BC /* CharacterObservation.swift in Sources */,
 				049F92E422CDA3FF0090C9BC /* TextRectangleDetector.swift in Sources */,
+				04975D932610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift in Sources */,
 				049F92E922CDA43F0090C9BC /* GeometryExtensions.swift in Sources */,
 				04F3C856230BC1F000445A8D /* PhotoEditingWorkspaceView.swift in Sources */,
 				049F930222CDA9110090C9BC /* BasePhotoEditingViewController.swift in Sources */,
@@ -2319,7 +2352,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Apple Development: Buddy Build (D47V8Y25W5)";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -2427,7 +2460,10 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development: Buddy Build (D47V8Y25W5)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 287EDDET2B;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Highlighter",
+				);
 				INFOPLIST_FILE = Highlighter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
@@ -2458,7 +2494,10 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 287EDDET2B;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Highlighter",
+				);
 				INFOPLIST_FILE = Highlighter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.0;
@@ -2778,6 +2817,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Highlighter";
+				HEADER_SEARCH_PATHS = (
+					"\"${SRCROOT}/libcrypto.xcframework/ios-arm64/Headers\"",
+					"$(PROJECT_DIR)/Highlighter/ClippingBezier.xcframework/ios-arm64/Headers",
+				);
 				INFOPLIST_FILE = Editing/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2786,6 +2830,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC++",
+					"-lstdc++",
+					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Editing;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2809,6 +2858,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Highlighter";
+				HEADER_SEARCH_PATHS = (
+					"\"${SRCROOT}/libcrypto.xcframework/ios-arm64/Headers\"",
+					"$(PROJECT_DIR)/Highlighter/ClippingBezier.xcframework/ios-arm64/Headers",
+				);
 				INFOPLIST_FILE = Editing/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2817,6 +2871,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC++",
+					"-lstdc++",
+					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Editing;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2979,6 +3038,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04B198E92623ADCA001A275B /* XCRemoteSwiftPackageReference "ClippingBezier" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:adamwulf/ClippingBezier.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04B198F32623ADDD001A275B /* ClippingBezier */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04B198E92623ADCA001A275B /* XCRemoteSwiftPackageReference "ClippingBezier" */;
+			productName = ClippingBezier;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 041EFEED2251A9F30058D8EE /* Project object */;
 }

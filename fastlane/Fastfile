@@ -27,6 +27,11 @@ platform :ios do
       skip_submission: true,
       skip_waiting_for_build_processing: true)
   end
+
+  desc "Set up developer environment"
+  lane :dev do
+    sync_code_signing
+  end
 end
 
 platform :mac do
@@ -63,5 +68,10 @@ platform :mac do
       skip_app_version_update: true,
       skip_metadata: true,
       skip_screenshots: true)
+  end
+
+  desc "Set up developer environment"
+  lane :dev do
+    sync_code_signing
   end
 end

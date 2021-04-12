@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 4/17/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import ClippingBezier
 import UIKit
 
 class PhotoEditingWorkspaceView: UIControl {
@@ -70,7 +71,7 @@ class PhotoEditingWorkspaceView: UIControl {
     }
 
     func redact<ObservationType: TextObservation>(_ textObservation: ObservationType) {
-        redactionView.add(TextObservationRedaction(textObservation, color: color))
+        redactionView.add(Redaction(textObservation, color: color))
     }
 
     var textObservations: [TextRectangleObservation]? {
@@ -90,6 +91,7 @@ class PhotoEditingWorkspaceView: UIControl {
         switch highlighterTool {
         case .magic: handleMagicStrokeCompletion()
         case .manual: handleManualStrokeCompletion()
+        case .eraser: handleEraserCompletion()
         }
 
         sendAction(#selector(BasePhotoEditingViewController.markHasMadeEdits), to: nil, for: nil)
@@ -103,14 +105,26 @@ class PhotoEditingWorkspaceView: UIControl {
             .flatMap { $0 }
             .filter { strokeBorderPath.contains($0.bounds.center) }
 
-        if let newRedaction = CharacterObservationRedaction(redactedCharacterObservations, color: color) {
+        if let newRedaction = Redaction(redactedCharacterObservations, color: color) {
             redactionView.add(newRedaction)
         }
     }
 
     private func handleManualStrokeCompletion() {
         guard let strokePath = brushStrokeView.currentPath else { return }
-        redactionView.add(PathRedaction(strokePath, color: color))
+        redactionView.add(Redaction(path: strokePath, color: color))
+    }
+
+    private func handleEraserCompletion() {
+        guard let strokePath = brushStrokeView.currentPath else { return }
+        let strokeBorderPath = strokePath.strokeBorderPath
+        let intersectedRedactions = redactions.filter { redaction in
+            redaction.paths.contains(where: { path in
+                path.strokeBorderPath.intersection(with: strokeBorderPath)?.count ?? 0 > 0
+            })
+        }
+
+        redactionView.remove(intersectedRedactions)
     }
 
     // MARK: Accessibility

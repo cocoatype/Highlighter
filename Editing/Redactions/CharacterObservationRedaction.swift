@@ -4,10 +4,9 @@
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
 
-struct CharacterObservationRedaction: Redaction {
+extension Redaction {
     init?(_ characterObservations: [CharacterObservation], color: NSColor) {
         guard characterObservations.count > 0 else { return nil }
-        self.characterObservations = characterObservations
 
         self.paths = characterObservations.reduce(into: [UUID: [CharacterObservation]]()) { result, characterObservation in
             let textObservationUUID = characterObservation.textObservationUUID
@@ -29,19 +28,14 @@ struct CharacterObservationRedaction: Redaction {
 
         self.color = color
     }
-
-    let color: NSColor
-    let paths: [NSBezierPath]
-    private let characterObservations: [CharacterObservation]
 }
 
 #elseif canImport(UIKit)
 import UIKit
 
-struct CharacterObservationRedaction: Redaction {
+extension Redaction {
     init?(_ characterObservations: [CharacterObservation], color: UIColor) {
         guard characterObservations.count > 0 else { return nil }
-        self.characterObservations = characterObservations
 
         self.paths = characterObservations.reduce(into: [UUID: [CharacterObservation]]()) { result, characterObservation in
             let textObservationUUID = characterObservation.textObservationUUID
@@ -63,9 +57,5 @@ struct CharacterObservationRedaction: Redaction {
 
         self.color = color
     }
-
-    let color: UIColor
-    let paths: [UIBezierPath]
-    private let characterObservations: [CharacterObservation]
 }
 #endif
