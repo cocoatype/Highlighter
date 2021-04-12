@@ -8,7 +8,7 @@ class PhotoEditingScrollView: UIScrollView {
         workspaceView = PhotoEditingWorkspaceView()
 
         super.init(frame: .zero)
-        backgroundColor = .primary
+        backgroundColor = .appBackground
         showsHorizontalScrollIndicator = false
         showsVerticalScrollIndicator = false
         translatesAutoresizingMaskIntoConstraints = false

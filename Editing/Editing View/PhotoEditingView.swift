@@ -6,7 +6,7 @@ import UIKit
 public class PhotoEditingView: UIView, UIScrollViewDelegate {
     public init() {
         super.init(frame: .zero)
-        backgroundColor = .primary
+        backgroundColor = .appBackground
 
         photoScrollView.delegate = self
         addSubview(photoScrollView)
