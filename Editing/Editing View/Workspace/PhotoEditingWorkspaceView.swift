@@ -13,7 +13,7 @@ class PhotoEditingWorkspaceView: UIControl {
 
         super.init(frame: .zero)
         isAccessibilityElement = false
-        backgroundColor = .primary
+        backgroundColor = .appBackground
         translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(imageView)

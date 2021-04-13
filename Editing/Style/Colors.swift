@@ -5,6 +5,14 @@ import SwiftUI
 import UIKit
 
 public extension UIColor {
+    #if targetEnvironment(macCatalyst)
+    static let appBackground = UIColor.secondarySystemBackground
+    #else
+    static let appBackground = UIColor.primary
+    #endif
+
+    // MARK: Base Colors
+
     static let primaryExtraLight = UIColor(hexLiteral: 0xababab)
     static let primaryLight = UIColor(hexLiteral: 0x484848)
     static let primary = UIColor(hexLiteral: 0x212121)
@@ -23,6 +31,24 @@ public extension UIColor {
                   green: green / 255,
                   blue: blue / 255,
                   alpha: 1.0)
+    }
+
+    convenience init?(hexString: String) {
+        guard let int = Int(hexString, radix: 16) else { return nil }
+        self.init(hexLiteral: int)
+    }
+
+    var hexString: String {
+        var red = CGFloat.zero
+        var green = CGFloat.zero
+        var blue = CGFloat.zero
+        getRed(&red, green: &green, blue: &blue, alpha: nil)
+
+        let redInt = Int(round(red * 255))
+        let greenInt = Int(round(green * 255))
+        let blueInt = Int(round(blue * 255))
+
+        return String(format: "#%02x%02x%02x", redInt, greenInt, blueInt)
     }
 }
 
