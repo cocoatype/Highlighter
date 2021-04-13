@@ -145,8 +145,6 @@
 		0493D2D824B6BD0000FF99F4 /* BrushStampFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */; };
 		04953B5824E2405500877800 /* PhotoEditingViewController+Desktop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04953B5724E2405500877800 /* PhotoEditingViewController+Desktop.swift */; };
 		0495B57B25354C3200B2DF0B /* PhotoLibraryScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0495B57A25354C3200B2DF0B /* PhotoLibraryScrollView.swift */; };
-		04975D8926106F8B00AA2771 /* HighlighterToolBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04975D8826106F8B00AA2771 /* HighlighterToolBarButtonItem.swift */; };
-		04975D932610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04975D922610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift */; };
 		04975D1E26106D6800AA2771 /* PhotoEditingCanvasBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EB2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04975D3726106D8700AA2771 /* PhotoEditingCanvasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04975D5826106DC100AA2771 /* PhotoEditingCanvasBrushStrokeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */; };
@@ -208,12 +206,12 @@
 		04ADD15C2290D29400E17445 /* AppLookupResponseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15B2290D29400E17445 /* AppLookupResponseResult.swift */; };
 		04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15D2290D2D200E17445 /* AppDeveloperInfo.swift */; };
 		04ADD1602290DA8E00E17445 /* AppEntryOpening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADD15F2290DA8E00E17445 /* AppEntryOpening.swift */; };
+		04B198F42623ADDD001A275B /* ClippingBezier in Frameworks */ = {isa = PBXBuildFile; productRef = 04B198F32623ADDD001A275B /* ClippingBezier */; };
 		04B19927262410D5001A275B /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		04B199542624117A001A275B /* PhotoEditingWorkspaceViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B1994426241162001A275B /* PhotoEditingWorkspaceViewTests.swift */; };
 		04B1996C26241234001A275B /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B1995C262411DC001A275B /* TestHelpers.swift */; };
 		04B199A726241697001A275B /* PhotoEditingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B199972624168F001A275B /* PhotoEditingViewTests.swift */; };
 		04B199B02624177F001A275B /* PhotoEditingScrollViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B199AF2624177F001A275B /* PhotoEditingScrollViewTests.swift */; };
-		04B198F42623ADDD001A275B /* ClippingBezier in Frameworks */ = {isa = PBXBuildFile; productRef = 04B198F32623ADDD001A275B /* ClippingBezier */; };
 		04BC9FD025C2704300213DBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BC9FC725C2700200213DBC /* libz.tbd */; };
 		04BDC4962556576900BCE982 /* ShortcutsRedactExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */; };
 		04BDC49F255657A600BCE982 /* ShortcutsExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */; };
@@ -1768,6 +1766,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				04B19A0E2625247B001A275B /* PBXTargetDependency */,
 			);
 			name = Editing;
 			packageProductDependencies = (
@@ -2369,6 +2368,10 @@
 			isa = PBXTargetDependency;
 			target = 049F92D622CDA3DB0090C9BC /* Editing */;
 			targetProxy = 04B19928262410D5001A275B /* PBXContainerItemProxy */;
+		};
+		04B19A0E2625247B001A275B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 04B19A0D2625247B001A275B /* ClippingBezier */;
 		};
 		04F3C80B2309E8A800445A8D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3210,6 +3213,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		04B198F32623ADDD001A275B /* ClippingBezier */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04B198E92623ADCA001A275B /* XCRemoteSwiftPackageReference "ClippingBezier" */;
+			productName = ClippingBezier;
+		};
+		04B19A0D2625247B001A275B /* ClippingBezier */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 04B198E92623ADCA001A275B /* XCRemoteSwiftPackageReference "ClippingBezier" */;
 			productName = ClippingBezier;
