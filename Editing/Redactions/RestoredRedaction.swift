@@ -3,15 +3,7 @@
 
 import UIKit
 
-public struct RestoredRedaction: Redaction, Codable {
-    public var color: UIColor
-    public var paths: [UIBezierPath]
-
-    public init(paths: [UIBezierPath], color: UIColor) {
-        self.color = color
-        self.paths = paths
-    }
-
+extension Redaction: Codable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let colorData = try container.decode(Data.self, forKey: .color)

@@ -24,6 +24,11 @@ public class PhotoEditingRedactionView: UIView {
         updateDisplay()
     }
 
+    public func remove(_ redactions: [Redaction]) {
+        self.redactions.removeAll(where: { redactions.contains($0)} )
+        updateDisplay()
+    }
+
     public func removeAllRedactions() {
         self.redactions = []
     }

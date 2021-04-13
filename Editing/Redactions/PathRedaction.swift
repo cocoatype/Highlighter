@@ -3,12 +3,8 @@
 
 import UIKit
 
-struct PathRedaction: Redaction {
-    init(_ path: UIBezierPath, color: UIColor) {
-        self.paths = [path]
-        self.color = color
+extension Redaction {
+    init(path: UIBezierPath, color: UIColor) {
+        self.init(color: color, paths: [path])
     }
-
-    let color: UIColor
-    let paths: [UIBezierPath]
 }

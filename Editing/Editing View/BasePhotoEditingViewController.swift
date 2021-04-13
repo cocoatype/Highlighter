@@ -85,10 +85,17 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
 
     @objc public func selectMagicHighlighter() {
         photoEditingView.highlighterTool = .magic
+        updateToolbarItems()
     }
 
     @objc public func selectManualHighlighter() {
         photoEditingView.highlighterTool = .manual
+        updateToolbarItems()
+    }
+
+    @objc public func selectEraser() {
+        photoEditingView.highlighterTool = .eraser
+        updateToolbarItems()
     }
 
     private func updateToolbarItems(animated: Bool = true) {
@@ -100,8 +107,13 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
 
         let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
-        let highlighterToolIcon = photoEditingView.highlighterTool.image
-        let highlighterToolItem = UIBarButtonItem(image: highlighterToolIcon, style: .plain, target: self, action: #selector(toggleHighlighterTool))
+        let highlighterToolItem: UIBarButtonItem
+        if #available(iOS 14, *) {
+            highlighterToolItem = HighlighterToolBarButtonItem(tool: photoEditingView.highlighterTool, target: self)
+        } else {
+            let highlighterToolIcon = photoEditingView.highlighterTool.image
+            highlighterToolItem = UIBarButtonItem(image: highlighterToolIcon, style: .plain, target: self, action: #selector(toggleHighlighterTool))
+        }
 
         if #available(iOS 14.0, *) {
             let colorPickerToolItem = UIBarButtonItem(image: UIImage(systemName: "paintpalette"), style: .plain, target: self, action: #selector(showColorPicker))
