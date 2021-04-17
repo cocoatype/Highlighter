@@ -106,7 +106,6 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
 
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         guard let changes = changeInstance.changeDetails(for: dataSource.allPhotos) else { return }
-//        guard let changes = dataSource.changeDetails(for: changeInstance) else { return }
 
         DispatchQueue.main.async { [weak self] in
             guard let dataSource = self?.dataSource else { return }
@@ -116,6 +115,7 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
 
             if changes.hasIncrementalChanges {
                 libraryView.performBatchUpdates({ [unowned libraryView, changes] in
+                    dataSource.updatePhotos(with: changeInstance)
                     if let removed = changes.removedIndexes {
                         libraryView.deleteItems(at: removed.map { IndexPath(item: $0, section:0) })
                     }
