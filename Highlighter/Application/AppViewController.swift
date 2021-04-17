@@ -103,7 +103,9 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
                 PHAssetChangeRequest.creationRequestForAsset(from: image)
             }, completionHandler: { [weak self] success, error in
                 assert(success, "an error occurred saving changes: \(error?.localizedDescription ?? "no error")")
-                self?.dismiss(animated: true)
+                DispatchQueue.main.async {
+                    self?.dismiss(animated: true)
+                }
             })
         }
     }

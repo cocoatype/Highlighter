@@ -106,11 +106,10 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, UICollectionViewDataS
 
     // MARK: Photo Library Changes
 
-//    func changeDetails(for change: PHChange) -> PHFetchResultChangeDetails<PHAsset>? {
-//        guard let details = change.changeDetails(for: allPhotos) else { return nil }
-//        allPhotos = details.fetchResultAfterChanges
-//        return details
-//    }
+    func updatePhotos(with change: PHChange) {
+        guard let details = change.changeDetails(for: allPhotos) else { return }
+        allPhotos = details.fetchResultAfterChanges
+    }
 }
 
 @available(iOS 14.0, *)
