@@ -56,6 +56,10 @@
 		0431E0CD22F826E900DC85C4 /* DocumentScannerPhotoLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431E0CC22F826E900DC85C4 /* DocumentScannerPhotoLibraryViewCell.swift */; };
 		0431E0CF22F830BB00DC85C4 /* DocumentScannerPhotoLibraryViewCellIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431E0CE22F830BB00DC85C4 /* DocumentScannerPhotoLibraryViewCellIconView.swift */; };
 		0431E0D322F85F0B00DC85C4 /* DocumentScannerPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431E0D222F85F0B00DC85C4 /* DocumentScannerPresenting.swift */; };
+		04389DEA262AC841004D49B7 /* HelpMenuContactAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04389DE9262AC841004D49B7 /* HelpMenuContactAction.swift */; };
+		04389DF3262AC88C004D49B7 /* HelpMenuAcknowledgementsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04389DF2262AC88C004D49B7 /* HelpMenuAcknowledgementsAction.swift */; };
+		04389DFC262AC8A6004D49B7 /* HelpMenuAboutAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04389DFB262AC8A6004D49B7 /* HelpMenuAboutAction.swift */; };
+		04389E05262AC8AE004D49B7 /* HelpMenuPrivacyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04389E04262AC8AE004D49B7 /* HelpMenuPrivacyAction.swift */; };
 		043911C322C461F000D4AE30 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 043911C222C461F000D4AE30 /* Media.xcassets */; };
 		043911C522C461F000D4AE30 /* ActionEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043911C422C461F000D4AE30 /* ActionEditingViewController.swift */; };
 		043911CC22C461F000D4AE30 /* Action.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 043911C022C461EE00D4AE30 /* Action.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -498,6 +502,10 @@
 		0431E0CC22F826E900DC85C4 /* DocumentScannerPhotoLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerPhotoLibraryViewCell.swift; sourceTree = "<group>"; };
 		0431E0CE22F830BB00DC85C4 /* DocumentScannerPhotoLibraryViewCellIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerPhotoLibraryViewCellIconView.swift; sourceTree = "<group>"; };
 		0431E0D222F85F0B00DC85C4 /* DocumentScannerPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerPresenting.swift; sourceTree = "<group>"; };
+		04389DE9262AC841004D49B7 /* HelpMenuContactAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpMenuContactAction.swift; sourceTree = "<group>"; };
+		04389DF2262AC88C004D49B7 /* HelpMenuAcknowledgementsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpMenuAcknowledgementsAction.swift; sourceTree = "<group>"; };
+		04389DFB262AC8A6004D49B7 /* HelpMenuAboutAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpMenuAboutAction.swift; sourceTree = "<group>"; };
+		04389E04262AC8AE004D49B7 /* HelpMenuPrivacyAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpMenuPrivacyAction.swift; sourceTree = "<group>"; };
 		043911C022C461EE00D4AE30 /* Action.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Action.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		043911C222C461F000D4AE30 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		043911C422C461F000D4AE30 /* ActionEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEditingViewController.swift; sourceTree = "<group>"; };
@@ -960,6 +968,18 @@
 			path = "Photo Library";
 			sourceTree = "<group>";
 		};
+		04389DE1262AC7C8004D49B7 /* Help Menu */ = {
+			isa = PBXGroup;
+			children = (
+				04F0910825E7A00000966C1E /* HelpMenuDataSource.swift */,
+				04389DE9262AC841004D49B7 /* HelpMenuContactAction.swift */,
+				04389DF2262AC88C004D49B7 /* HelpMenuAcknowledgementsAction.swift */,
+				04389DFB262AC8A6004D49B7 /* HelpMenuAboutAction.swift */,
+				04389E04262AC8AE004D49B7 /* HelpMenuPrivacyAction.swift */,
+			);
+			path = "Help Menu";
+			sourceTree = "<group>";
+		};
 		043911C122C461F000D4AE30 /* Action */ = {
 			isa = PBXGroup;
 			children = (
@@ -1382,7 +1402,7 @@
 				042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */,
 				04F3C7F22308F37400445A8D /* AsyncOperation.swift */,
 				048320BA25D7F1AF00355393 /* Recents Menu */,
-				04F0910825E7A00000966C1E /* HelpMenuDataSource.swift */,
+				04389DE1262AC7C8004D49B7 /* Help Menu */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -2043,6 +2063,7 @@
 				04F3C7A52300206A00445A8D /* Purchaser.swift in Sources */,
 				04F3C7CF2302F0E600445A8D /* SettingsTableViewHeaderFooterLabel.swift in Sources */,
 				04F3C7CD2302F0B100445A8D /* SettingsTableHeaderFooterView.swift in Sources */,
+				04389DF3262AC88C004D49B7 /* HelpMenuAcknowledgementsAction.swift in Sources */,
 				04F3C7D22304375E00445A8D /* SettingsPurchaseTableViewCell.swift in Sources */,
 				0431E0CD22F826E900DC85C4 /* DocumentScannerPhotoLibraryViewCell.swift in Sources */,
 				04EA0ADE25D4EA6C00D98138 /* FileIconFetcher.m in Sources */,
@@ -2066,10 +2087,12 @@
 				04F3C7DB230449D800445A8D /* SettingsPurchaseTableViewCellSubtitleLabel.swift in Sources */,
 				04F3C7E92308E7CB00445A8D /* PurchaseOperationTarget.swift in Sources */,
 				04ADD15C2290D29400E17445 /* AppLookupResponseResult.swift in Sources */,
+				04389DEA262AC841004D49B7 /* HelpMenuContactAction.swift in Sources */,
 				048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */,
 				04F3C7CA2301A62200445A8D /* SettingsSection.swift in Sources */,
 				04F3C7C22301A55E00445A8D /* AcknowledgementsItem.swift in Sources */,
 				041EFEFB2251A9F30058D8EE /* AppViewController.swift in Sources */,
+				04389DFC262AC8A6004D49B7 /* HelpMenuAboutAction.swift in Sources */,
 				0493BA84253A9CF50083198C /* PhotoPicker.swift in Sources */,
 				048320C425D7F1CB00355393 /* RecentsMenuDataSource.swift in Sources */,
 				041EFF6E225C38800058D8EE /* PhotoSelectionNavigationController.swift in Sources */,
@@ -2126,6 +2149,7 @@
 				04F3C7F12308E91600445A8D /* FetchProductOperation.swift in Sources */,
 				042A2B7E228CFEDB00353414 /* PhotoEditingNavigationController.swift in Sources */,
 				042A2B7C228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift in Sources */,
+				04389E05262AC8AE004D49B7 /* HelpMenuPrivacyAction.swift in Sources */,
 				04F3C7F32308F37400445A8D /* AsyncOperation.swift in Sources */,
 				041EFF50225303120058D8EE /* PromptLabel.swift in Sources */,
 				046C405D247F5B3F0069E8FB /* SystemCollectionTableViewCell.swift in Sources */,
