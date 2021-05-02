@@ -5,10 +5,11 @@ import Editing
 import UIKit
 
 #if targetEnvironment(macCatalyst)
-class DesktopViewController: UIViewController, UIDocumentPickerDelegate {
+class DesktopViewController: UIViewController, UIDocumentPickerDelegate, FileNameProvider {
     var editingViewController: PhotoEditingViewController? { children.first as? PhotoEditingViewController }
 
-    init(representedURL: URL?) {
+    init(representedURL: URL?, redactions: [Redaction]?) {
+        self.initialRedactions = redactions
         self.representedURL = representedURL
         super.init(nibName: nil, bundle: nil)
     }
@@ -47,13 +48,15 @@ class DesktopViewController: UIViewController, UIDocumentPickerDelegate {
             windowScene?.titlebar?.representedURL = representedURL
             windowScene?.title = representedURL.lastPathComponent
 
-            embed(PhotoEditingViewController(image: image))
+            embed(PhotoEditingViewController(image: image, redactions: initialRedactions))
             validateAllToolbarItems()
         } catch let error {
             dump(error)
             return
         }
     }
+
+    var representedFileName: String? { return representedURL?.lastPathComponent }
 
     // MARK: Document Picker
 
@@ -79,8 +82,15 @@ class DesktopViewController: UIViewController, UIDocumentPickerDelegate {
         UIApplication.shared.requestSceneSessionDestruction(session, options: nil)
     }
 
+    // MARK: State Restoration
+
+    var stateRestorationActivity: NSUserActivity? {
+        editingViewController?.userActivity
+    }
+
     // MARK: Boilerplate
 
+    private let initialRedactions: [Redaction]?
     private var windowScene: UIWindowScene? { return view.window?.windowScene }
 
     @available(*, unavailable)

@@ -6,12 +6,21 @@ import UIKit
 
 #if targetEnvironment(macCatalyst)
 class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, ShareItemDelegate, ToolPickerItemDelegate, ColorPickerItemDelegate {
-    var window: UIWindow?
+    var window: DesktopAppWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
+        let representedURL: URL?
+        let redactions: [Redaction]?
+        if let stateRestorationActivity = session.stateRestorationActivity, let activity = EditingUserActivity(userActivity: stateRestorationActivity) {
+            representedURL = self.representedURL(from: activity)
+            redactions = activity.redactions
+        } else {
+            representedURL = self.representedURL(from: connectionOptions)
+            redactions = nil
+        }
 
-        let window = DesktopAppWindow(windowScene: scene, representedURL: representedURL(from: connectionOptions))
+        let window = DesktopAppWindow(windowScene: scene, representedURL: representedURL, redactions: redactions)
         window.makeKeyAndVisible()
 
         let toolbar = NSToolbar()
@@ -21,6 +30,10 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         scene.titlebar?.toolbarStyle = .unified
 
         self.window = window
+    }
+
+    func stateRestorationActivity(for scene: UIScene) -> NSUserActivity? {
+        window?.stateRestorationActivity
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -62,6 +75,15 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         }
 
         return nil
+    }
+
+    private func representedURL(from activity: EditingUserActivity) -> URL? {
+        var isStale = false
+        guard let bookmarkData = activity.imageBookmarkData,
+              let url = try? URL(resolvingBookmarkData: bookmarkData, bookmarkDataIsStale: &isStale),
+              FileManager.default.fileExists(atPath: url.path)
+        else { return nil }
+        return url
     }
 
     // MARK: ShareItemDelegate

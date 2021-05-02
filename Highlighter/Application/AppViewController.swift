@@ -60,8 +60,8 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         present(PhotoEditingNavigationController(asset: asset, redactions: redactions), animated: animated)
     }
 
-    func presentPhotoEditingViewController(for image: UIImage, completionHandler: ((UIImage) -> Void)? = nil) {
-        present(PhotoEditingNavigationController(image: image, completionHandler: completionHandler), animated: true)
+    func presentPhotoEditingViewController(for image: UIImage, redactions: [Redaction]? = nil, animated: Bool = true, completionHandler: ((UIImage) -> Void)? = nil) {
+        present(PhotoEditingNavigationController(image: image, redactions: redactions, completionHandler: completionHandler), animated: animated)
     }
 
     @objc func dismissPhotoEditingViewController(_ sender: UIBarButtonItem) {

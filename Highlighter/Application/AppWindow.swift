@@ -15,17 +15,27 @@ class AppWindow: UIWindow {
     }
 
     func restore(from activity: NSUserActivity) {
-        guard let editingActivity = EditingUserActivity(userActivity: activity),
-              let localIdentifier = editingActivity.assetLocalIdentifier,
-              let asset = PhotoLibraryDataSource.photo(withIdentifier: localIdentifier)
-        else { return }
+        guard let editingActivity = EditingUserActivity(userActivity: activity) else { return }
 
-        appViewController.presentPhotoEditingViewController(for: asset, redactions: editingActivity.redactions, animated: false)
+        if let localIdentifier = editingActivity.assetLocalIdentifier,
+           let asset = PhotoLibraryDataSource.photo(withIdentifier: localIdentifier) {
+            appViewController.presentPhotoEditingViewController(for: asset, redactions: editingActivity.redactions, animated: false)
+        } else if let imageBookmarkData = editingActivity.imageBookmarkData {
+            do {
+                var isStale = false
+                let url = try URL(resolvingBookmarkData: imageBookmarkData, options: .withSecurityScope, bookmarkDataIsStale: &isStale)
+                imageCache.readImageFromCache(at: url) { [weak self] result in
+                    guard let image = try? result.get() else { return }
+                    self?.appViewController.presentPhotoEditingViewController(for: image, redactions: editingActivity.redactions, animated: false)
+                }
+            } catch {}
+        }
     }
 
     // MARK: Boilerplate
 
     private let appViewController = AppViewController()
+    private let imageCache = RestorationImageCache()
 
     @available(iOS 13.0, *)
     init(scene: UIWindowScene) {

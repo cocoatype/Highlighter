@@ -55,7 +55,7 @@ class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
             self?.dismiss(animated: true)
 
             guard let image = image else { return }
-            self?.photoEditorPresenter?.presentPhotoEditingViewController(for: image, completionHandler: nil)
+            self?.photoEditorPresenter?.presentPhotoEditingViewController(for: image, redactions: nil, animated: true, completionHandler: nil)
         }
     }
 
