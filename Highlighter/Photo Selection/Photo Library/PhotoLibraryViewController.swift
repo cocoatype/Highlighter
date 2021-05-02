@@ -40,8 +40,8 @@ class PhotoLibraryViewController: UIHostingController<PhotoLibraryView>, Navigat
         next?.photoEditorPresenter?.presentPhotoEditingViewController(for: asset, redactions: redactions, animated: animated)
     }
 
-    func presentPhotoEditingViewController(for image: UIImage, completionHandler: ((UIImage) -> Void)?) {
-        next?.photoEditorPresenter?.presentPhotoEditingViewController(for: image, completionHandler: completionHandler)
+    func presentPhotoEditingViewController(for image: UIImage, redactions: [Redaction]?, animated: Bool, completionHandler: ((UIImage) -> Void)?) {
+        next?.photoEditorPresenter?.presentPhotoEditingViewController(for: image, redactions: nil, animated: true, completionHandler: completionHandler)
     }
 
     func presentDocumentCameraViewController() {

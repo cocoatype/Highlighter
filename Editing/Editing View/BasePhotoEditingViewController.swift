@@ -121,6 +121,8 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
         } else {
             setToolbarItems([undoToolItem, redoToolItem, spacerItem, highlighterToolItem], animated: animated)
         }
+
+        userActivity?.needsSave = true
     }
 
     // MARK: Color Picker
@@ -220,7 +222,14 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
 
     open override func updateUserActivityState(_ activity: NSUserActivity) {
         guard let editingActivity = (activity as? EditingUserActivity) else { return }
-        editingActivity.assetLocalIdentifier = asset?.localIdentifier
+        if let asset = asset {
+            editingActivity.assetLocalIdentifier = asset.localIdentifier
+        } else if let image = image {
+            imageCache.writeImageToCache(image, fileName: fileNameProvider?.representedFileName) { result in
+                guard let url = try? result.get() else { return }
+                editingActivity.imageBookmarkData = try? url.bookmarkData()
+            }
+        }
         editingActivity.redactions = photoEditingView.redactions
     }
 
@@ -234,6 +243,7 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
 
     private let asset: PHAsset?
     private var colorObserver: Any?
+    private let imageCache = RestorationImageCache()
     private let imageManager = PHImageManager()
     private let textRectangleDetector = TextRectangleDetector()
     private let photoEditingView = PhotoEditingView()

@@ -38,7 +38,7 @@ class RecentsMenuDataSource: NSObject {
 
     private var recentItemsURLs: [URL] {
         var bool = false
-        return Defaults.recentBookmarks.compactMap { try? URL(resolvingBookmarkData: $0, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &bool) }
+        return Defaults.recentBookmarks.compactMap { try? URL(resolvingBookmarkData: $0, relativeTo: nil, bookmarkDataIsStale: &bool) }
     }
 
     private static let menuTitle = NSLocalizedString("RecentsMenuDataSource.menuTitle", comment: "Title for the Open Recents menu")

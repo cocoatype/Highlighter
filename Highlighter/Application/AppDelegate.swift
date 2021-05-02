@@ -18,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window = window
         }
 
+        #if targetEnvironment(macCatalyst)
+        UserDefaults.standard.set(true, forKey: "NSQuitAlwaysKeepsWindows")
+        #endif
+
         return true
     }
 

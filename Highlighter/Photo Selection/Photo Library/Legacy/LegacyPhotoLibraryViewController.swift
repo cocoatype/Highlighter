@@ -85,7 +85,7 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
         session.loadObjects(ofClass: UIImage.self) { [weak self] dropItems in
             guard let image = (dropItems.first as? UIImage) else { return }
-            self?.photoEditorPresenter?.presentPhotoEditingViewController(for: image, completionHandler: nil)
+            self?.photoEditorPresenter?.presentPhotoEditingViewController(for: image, redactions: nil, animated: true, completionHandler: nil)
         }
     }
 
