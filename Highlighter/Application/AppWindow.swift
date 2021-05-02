@@ -23,7 +23,7 @@ class AppWindow: UIWindow {
         } else if let imageBookmarkData = editingActivity.imageBookmarkData {
             do {
                 var isStale = false
-                let url = try URL(resolvingBookmarkData: imageBookmarkData, options: .withSecurityScope, bookmarkDataIsStale: &isStale)
+                let url = try URL(resolvingBookmarkData: imageBookmarkData, bookmarkDataIsStale: &isStale)
                 imageCache.readImageFromCache(at: url) { [weak self] result in
                     guard let image = try? result.get() else { return }
                     self?.appViewController.presentPhotoEditingViewController(for: image, redactions: editingActivity.redactions, animated: false)
