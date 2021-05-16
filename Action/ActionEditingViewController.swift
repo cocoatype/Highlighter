@@ -35,7 +35,10 @@ class ActionEditingViewController: BasePhotoEditingViewController {
                     self?.load(image)
                 }
             } catch {
-                dump(error)
+                let errorDump = Action.dump(error)
+                let alertController = UIAlertController(title: "An error occurred", message: errorDump, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self?.present(alertController, animated: true)
             }
         }
     }
@@ -85,4 +88,10 @@ class ActionEditingViewController: BasePhotoEditingViewController {
 enum ActionError: Error {
     case imageURLNotFound
     case invalidImageData
+}
+
+func dump<T>(_ value: T) -> String {
+    var string = String()
+    Swift.dump(value, to: &string)
+    return string
 }

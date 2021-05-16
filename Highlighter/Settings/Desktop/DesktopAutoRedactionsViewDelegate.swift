@@ -3,7 +3,7 @@
 
 import Foundation
 
-protocol DesktopAutoRedactionsViewDelegate: class {
+protocol DesktopAutoRedactionsViewDelegate: AnyObject {
     var autoRedactionWordsCount: Int { get }
     func autoRedactionWord(at index: IndexPath) -> String
 }
