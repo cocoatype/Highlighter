@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 8/11/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import ErrorHandling
 import Foundation
 #if canImport(IOKit)
 import IOKit
@@ -107,7 +108,7 @@ public class ReceiptValidator {
 
     private static func data(forCertificateNamed certificateFileName: String) -> Data {
         guard let dataURL = Bundle.main.url(forResource: certificateFileName, withExtension: "cer"), let data = try? Data(contentsOf: dataURL) else {
-            fatalError("Error locating Apple root certificate data")
+            ErrorHandling.crash("Error locating Apple root certificate data")
         }
 
         return data
@@ -119,7 +120,7 @@ public class ReceiptValidator {
 
     private static let receiptURL: URL = {
         guard let receiptURL = Bundle.main.appStoreReceiptURL else {
-            fatalError("Error locating app receipt")
+            ErrorHandling.crash("Error locating app receipt")
         }
 
         return receiptURL

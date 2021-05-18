@@ -2,7 +2,9 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Editing
+import ErrorHandling
 import Intents
+import Sentry
 import UIKit
 
 @UIApplicationMain
@@ -10,6 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        ErrorHandling.setup()
+
         if #available(iOS 13.0, *) {
         } else {
             let window = AppWindow()

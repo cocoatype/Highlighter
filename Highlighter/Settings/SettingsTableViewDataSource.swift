@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 4/27/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import ErrorHandling
 import UIKit
 
 class SettingsTableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
@@ -22,7 +23,7 @@ class SettingsTableViewDataSource: NSObject, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = contentProvider.item(at: indexPath)
         guard let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier, for: indexPath) as? SettingsContentTableViewCell else {
-            fatalError("Settings table view cell is not a SettingsContentTableViewCell: \(item.cellIdentifier)")
+            ErrorHandling.crash("Settings table view cell is not a SettingsContentTableViewCell: \(item.cellIdentifier)")
         }
 
         cell.item = item
@@ -36,7 +37,7 @@ class SettingsTableViewDataSource: NSObject, UITableViewDataSource, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: SettingsTableViewHeaderFooterView.identifier) as? SettingsTableViewHeaderFooterView else { fatalError("Got incorrect header view type") }
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: SettingsTableViewHeaderFooterView.identifier) as? SettingsTableViewHeaderFooterView else { ErrorHandling.crash("Got incorrect header view type") }
         headerView.text = contentProvider.section(at: section).header
         return headerView
     }

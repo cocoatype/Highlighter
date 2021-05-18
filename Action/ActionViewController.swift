@@ -1,12 +1,14 @@
 //  Created by Geoff Pado on 7/1/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import ErrorHandling
 import MobileCoreServices
 import UIKit
 
 class ActionViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
+        ErrorHandling.setup()
     }
 
     override func loadView() {
@@ -44,6 +46,7 @@ class ActionViewController: UIViewController {
                 let alertController = UIAlertController(title: "An error occurred", message: errorDump, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self?.present(alertController, animated: true)
+                ErrorHandling.log(error)
             }
         }
     }

@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 4/3/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import ErrorHandling
 import SwiftUI
 import UIKit
 
@@ -49,7 +50,7 @@ public extension UIFont {
     private static func standardFont(named name: String, for textStyle: UIFont.TextStyle) -> UIFont {
         let size = standardFontSize(for: textStyle)
         guard let appFont = UIFont(name: name, size: size) else {
-            fatalError("Couldn't get regular font")
+            ErrorHandling.crash("Couldn't get regular font")
         }
 
         return appFont
