@@ -22,7 +22,6 @@ platform :ios do
 
     # Upload the dSYMs to Sentry
     sentry_upload_dsym(
-      api_key: ENV["SENTRY_AUTH_TOKEN"],
       org_slug: "cocoatype",
       project_slug: "black-highlighter",
       dsym_path: lane_context[SharedValues::DSYM_OUTPUT_PATH],
