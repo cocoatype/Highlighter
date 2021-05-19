@@ -2,6 +2,7 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Editing
+import ErrorHandling
 import MessageUI
 
 class ContactMailViewController: MFMailComposeViewController, MFMailComposeViewControllerDelegate {
@@ -60,7 +61,7 @@ class ContactMailViewController: MFMailComposeViewController, MFMailComposeViewC
     // MARK: Boilerplate
 
     static var mailtoURL: URL {
-        guard let mailtoURL = URL(string: "mailto:\(emailToAddress)") else { fatalError("Invalid mailto address") }
+        guard let mailtoURL = URL(string: "mailto:\(emailToAddress)") else { ErrorHandling.crash("Invalid mailto address") }
         return mailtoURL
     }
 

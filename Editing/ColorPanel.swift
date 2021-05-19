@@ -1,11 +1,12 @@
 //  Created by Geoff Pado on 10/7/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+import ErrorHandling
 import Foundation
 
 class ColorPanel: NSObject {
     private static let _shared: ColorPanel = {
-        guard let underlyingPanel = NSClassFromString("NSColorPanel")?.value(forKeyPath: "sharedColorPanel") as AnyObject? else { fatalError("Unable to create color panel") }
+        guard let underlyingPanel = NSClassFromString("NSColorPanel")?.value(forKeyPath: "sharedColorPanel") as AnyObject? else { ErrorHandling.crash("Unable to create color panel") }
         return ColorPanel(underlyingPanel)
     }()
     static var shared: ColorPanel { return _shared }
@@ -34,7 +35,7 @@ class ColorPanel: NSObject {
 
     private var colorObserver: Any?
     private let underlyingPanel: AnyObject
-    private override init() { fatalError("Cannot create ColorPanel without underlying panel") }
+    private override init() { ErrorHandling.crash("Cannot create ColorPanel without underlying panel") }
 
     private init(_ underlyingPanel: AnyObject) {
         self.underlyingPanel = underlyingPanel

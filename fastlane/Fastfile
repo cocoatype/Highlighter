@@ -19,6 +19,15 @@ platform :ios do
       cloned_source_packages_path: "SourcePackages",
       export_method: "app-store",
       scheme: "Highlighter")
+
+    # Upload the dSYMs to Sentry
+    sentry_upload_dsym(
+      api_key: ENV["SENTRY_AUTH_TOKEN"],
+      org_slug: "cocoatype",
+      project_slug: "black-highlighter",
+      dsym_path: lane_context[SharedValues::DSYM_OUTPUT_PATH],
+      url: "https://crashes.cocoatype.com/"
+    )
     
     # Just upload the build to TestFlight, no other changes
     upload_to_testflight(
@@ -58,6 +67,15 @@ platform :mac do
       export_method: "app-store",
       installer_cert_name: "3rd Party Mac Developer Installer: Cocoatype, LLC (287EDDET2B)",
       scheme: "Highlighter")
+
+    # Upload the dSYMs to Sentry
+    sentry_upload_dsym(
+      api_key: ENV["SENTRY_AUTH_TOKEN"],
+      org_slug: "cocoatype",
+      project_slug: "black-highlighter",
+      dsym_path: lane_context[SharedValues::DSYM_OUTPUT_PATH],
+      url: "https://crashes.cocoatype.com/"
+    )
 
     # Just upload the build to TestFlight, no other changes
     upload_to_app_store(

@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 9/27/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+import ErrorHandling
 import UIKit
 
 class DesktopSettingsAddRemoveControl: UISegmentedControl {
@@ -8,7 +9,7 @@ class DesktopSettingsAddRemoveControl: UISegmentedControl {
     static let removeIndex = 1
 
     init() {
-        guard let plusImage = UIImage(systemName: "plus"), let minusImage = UIImage(systemName: "minus") else { fatalError("Unable to create plus and minus images") }
+        guard let plusImage = UIImage(systemName: "plus"), let minusImage = UIImage(systemName: "minus") else { ErrorHandling.crash("Unable to create plus and minus images") }
         super.init(items: [plusImage, minusImage])
         isMomentary = true
         translatesAutoresizingMaskIntoConstraints = false

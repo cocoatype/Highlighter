@@ -80,6 +80,10 @@ class SettingsContentProvider: NSObject {
             OtherAppsSection(otherApps: otherAppEntries)
         ] as [SettingsContentSection]))
 
+        #if DEBUG
+        sections.append(DebugSection())
+        #endif
+
         return sections
     }
 }

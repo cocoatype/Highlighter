@@ -2,6 +2,7 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Editing
+import ErrorHandling
 import UIKit
 
 class AutoRedactionsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
@@ -10,7 +11,7 @@ class AutoRedactionsDataSource: NSObject, UITableViewDataSource, UITableViewDele
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let redactionCell = tableView.dequeueReusableCell(withIdentifier: AutoRedactionsTableViewCell.identifier, for: indexPath) as? AutoRedactionsTableViewCell else { fatalError("Auto redactions table view cell is not a AutoRedactionsTableViewCell") }
+        guard let redactionCell = tableView.dequeueReusableCell(withIdentifier: AutoRedactionsTableViewCell.identifier, for: indexPath) as? AutoRedactionsTableViewCell else { ErrorHandling.crash("Auto redactions table view cell is not a AutoRedactionsTableViewCell") }
 
         redactionCell.word = wordList[indexPath.row]
 

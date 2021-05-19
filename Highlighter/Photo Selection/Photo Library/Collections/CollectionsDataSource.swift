@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 5/16/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+import ErrorHandling
 import UIKit
 
 class CollectionsDataSource: NSObject, UITableViewDataSource {
@@ -38,10 +39,10 @@ class CollectionsDataSource: NSObject, UITableViewDataSource {
         switch indexPath.section {
         case 0: cellType = SystemCollectionTableViewCell.self
         case 1: cellType = UserCollectionTableViewCell.self
-        default: fatalError()
+        default: ErrorHandling.crash("Invalid section: \(indexPath.section)")
         }
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellType.identifier, for: indexPath) as? (UITableViewCell & CollectionTableViewCell) else { fatalError("Cell was not a collection cell") }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellType.identifier, for: indexPath) as? (UITableViewCell & CollectionTableViewCell) else { ErrorHandling.crash("Cell was not a collection cell") }
         return cell
     }
 
