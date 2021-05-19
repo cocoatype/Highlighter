@@ -22,10 +22,8 @@ platform :ios do
 
     # Upload the dSYMs to Sentry
     sentry_upload_dsym(
-      org_slug: "cocoatype",
-      project_slug: "black-highlighter",
       dsym_path: lane_context[SharedValues::DSYM_OUTPUT_PATH],
-      url: "https://crashes.cocoatype.com/"
+      verbose: true
     )
     
     # Just upload the build to TestFlight, no other changes
