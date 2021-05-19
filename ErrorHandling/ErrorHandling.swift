@@ -2,7 +2,7 @@
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
 import Foundation
-import Sentry
+@_implementationOnly import Sentry
 
 public enum ErrorHandling {
     public static func setup() {

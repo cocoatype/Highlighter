@@ -2,13 +2,12 @@
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
 import AppKit
-import ErrorHandling
 import os.log
 import Redacting
 
 class BrushStampFactory: NSObject {
     static func brushStamp(scaledToHeight height: CGFloat, color: NSColor) -> NSImage {
-        guard let standardImage = Bundle(for: Self.self).image(forResource: "Brush") else { ErrorHandling.crash("Unable to load brush stamp image") }
+        guard let standardImage = Bundle(for: Self.self).image(forResource: "Brush") else { fatalError("Unable to load brush stamp image") }
 
         let brushScale = height / standardImage.size.height
         let scaledBrushSize = standardImage.size * brushScale
