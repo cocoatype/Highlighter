@@ -4,7 +4,7 @@
 import StoreKit
 import UIKit
 
-class PurchaseMarketingView: UIView {
+class LegacyPurchaseMarketingView: UIView {
     init(product: SKProduct?) {
         self.product = product
         super.init(frame: .zero)

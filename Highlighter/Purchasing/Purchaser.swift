@@ -1,9 +1,11 @@
 //  Created by Geoff Pado on 8/11/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Combine
 import Foundation
 
 class Purchaser: NSObject {
+    @Published
     private(set) var state = PurchaseState.loading {
         didSet {
             NotificationCenter.default.post(name: Purchaser.stateDidChange, object: self)

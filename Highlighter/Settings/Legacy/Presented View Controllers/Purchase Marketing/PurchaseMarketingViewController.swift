@@ -15,7 +15,7 @@ class PurchaseMarketingViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
-        view = PurchaseMarketingView(product: product)
+        view = LegacyPurchaseMarketingView(product: product)
     }
 
     // MARK: Restore

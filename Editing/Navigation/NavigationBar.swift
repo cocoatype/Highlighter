@@ -24,11 +24,11 @@ public class NavigationBar: UINavigationBar {
         NSAttributedString.Key.font: UIFont.navigationBarLargeTitleFont
     ]
 
-    static let buttonTitleTextAttributes = [
+    public static let buttonTitleTextAttributes = [
         NSAttributedString.Key.font: UIFont.navigationBarButtonFont
     ]
 
-    static let titleTextAttributes = [
+    public static let titleTextAttributes = [
         NSAttributedString.Key.font: UIFont.navigationBarTitleFont,
         .foregroundColor: UIColor.white
     ]

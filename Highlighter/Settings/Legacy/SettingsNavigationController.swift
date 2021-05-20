@@ -6,7 +6,8 @@ import UIKit
 
 class SettingsNavigationController: NavigationController {
     init() {
-        let settingsViewController = SettingsViewController(purchaser: purchaser)
+//        let settingsViewController = SettingsViewController(purchaser: purchaser)
+        let settingsViewController = PurchaseMarketingViewController()
         super.init(rootViewController: settingsViewController)
         modalPresentationStyle = .formSheet
         purchaserObservation = NotificationCenter.default.addObserver(forName: Purchaser.stateDidChange, object: nil, queue: .main, using: { [weak self] _ in

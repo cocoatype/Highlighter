@@ -11,4 +11,11 @@ enum PurchaseState {
     case restoring(operation: RestoreOperation)
     case purchased
     case unavailable
+
+    var product: SKProduct? {
+        switch self {
+        case .readyForPurchase(let product): return product
+        default: return nil
+        }
+    }
 }

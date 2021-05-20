@@ -176,6 +176,8 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         UICollectionView.appearance().backgroundColor = .primary
         UINavigationBar.appearance().scrollEdgeAppearance = NavigationBarAppearance()
         UINavigationBar.appearance().standardAppearance = NavigationBarAppearance()
+        UINavigationBar.appearance().titleTextAttributes = NavigationBar.titleTextAttributes
+//        UINavigationBar.appearance().standardAppearance.buttonAppearance
         UIBarButtonItem.appearance().tintColor = .white
     }
 
