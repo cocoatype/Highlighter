@@ -18,7 +18,7 @@ for_platform :ios do
 end
 
 for_platform :mac do
-  platform "catalyst"
+  platform "macos"
   additional_cert_types ["mac_installer_distribution"]
   app_identifier ["com.cocoatype.Highlighter","com.cocoatype.Highlighter.Automator"]
 end
