@@ -2775,7 +2775,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cocoatype.Highlighter";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match AppStore com.cocoatype.Highlighter catalyst";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match AppStore com.cocoatype.Highlighter macos";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Highlighter/Highlighter-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
