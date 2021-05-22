@@ -48,10 +48,9 @@ platform :mac do
 
   desc "Submit a new beta build to Apple TestFlight"
   lane :beta do
-    sync_code_signing(
-      additional_cert_types: ["mac_installer_distribution"],
-      app_identifier: ["com.cocoatype.Highlighter"],
-      readonly: true)
+    # Sync twice to get Catalyst and macOS profiles
+    sync_code_signing(platform: "catalyst")
+    sync_code_signing
 
     # Set the build number to the number of Git commits
     build_number = sh "git log --oneline | wc -l"
@@ -61,7 +60,14 @@ platform :mac do
     build_mac_app(
       export_method: "app-store",
       installer_cert_name: "3rd Party Mac Developer Installer: Cocoatype, LLC (287EDDET2B)",
-      scheme: "Highlighter")
+      scheme: "Highlighter",
+      skip_profile_detection: true,
+      export_options: {
+        method: "app-store",
+        provisioningProfiles: {
+          "com.cocoatype.Highlighter" => "match AppStore com.cocoatype.Highlighter catalyst"
+        }
+      })
 
     # Upload the dSYMs to Sentry
     sentry_upload_dsym(
