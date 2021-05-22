@@ -133,6 +133,8 @@
 		047E913A26560C600075F6B2 /* SettingsHeaderTextCaseModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E913926560C600075F6B2 /* SettingsHeaderTextCaseModifier.swift */; };
 		047E913C26560CB50075F6B2 /* PurchaseTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E913B26560CB50075F6B2 /* PurchaseTitle.swift */; };
 		047E913E26560CEC0075F6B2 /* PurchaseSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E913D26560CEC0075F6B2 /* PurchaseSubtitle.swift */; };
+		047E9140265613120075F6B2 /* PurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E913F265613120075F6B2 /* PurchaseButton.swift */; };
+		047E9142265617E10075F6B2 /* RefreshReceiptsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E9141265617E10075F6B2 /* RefreshReceiptsOperation.swift */; };
 		0482C79B25218D090013B69E /* DesktopAutoRedactionsViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C79A25218D090013B69E /* DesktopAutoRedactionsViewDelegate.swift */; };
 		0482C79D25218D400013B69E /* DesktopAutoRedactionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C79C25218D400013B69E /* DesktopAutoRedactionsListView.swift */; };
 		0482C79F25218D600013B69E /* DesktopSettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C79E25218D600013B69E /* DesktopSettingsTableView.swift */; };
@@ -601,6 +603,8 @@
 		047E913926560C600075F6B2 /* SettingsHeaderTextCaseModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderTextCaseModifier.swift; sourceTree = "<group>"; };
 		047E913B26560CB50075F6B2 /* PurchaseTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTitle.swift; sourceTree = "<group>"; };
 		047E913D26560CEC0075F6B2 /* PurchaseSubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseSubtitle.swift; sourceTree = "<group>"; };
+		047E913F265613120075F6B2 /* PurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButton.swift; sourceTree = "<group>"; };
+		047E9141265617E10075F6B2 /* RefreshReceiptsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshReceiptsOperation.swift; sourceTree = "<group>"; };
 		0482C79A25218D090013B69E /* DesktopAutoRedactionsViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopAutoRedactionsViewDelegate.swift; sourceTree = "<group>"; };
 		0482C79C25218D400013B69E /* DesktopAutoRedactionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopAutoRedactionsListView.swift; sourceTree = "<group>"; };
 		0482C79E25218D600013B69E /* DesktopSettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsTableView.swift; sourceTree = "<group>"; };
@@ -1046,6 +1050,7 @@
 			children = (
 				047E913326560BBB0075F6B2 /* OtherAppButton.swift */,
 				047E912526549BFF0075F6B2 /* PurchaseMarketingView.swift */,
+				047E913F265613120075F6B2 /* PurchaseButton.swift */,
 				047E9127265604F30075F6B2 /* PurchaseNavigationLink.swift */,
 				047E913D26560CEC0075F6B2 /* PurchaseSubtitle.swift */,
 				047E913B26560CB50075F6B2 /* PurchaseTitle.swift */,
@@ -1515,6 +1520,7 @@
 				04F3C7F02308E91600445A8D /* FetchProductOperation.swift */,
 				046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */,
 				04899D74231CEAED002BC1D8 /* PurchaseValidator.swift */,
+				047E9141265617E10075F6B2 /* RefreshReceiptsOperation.swift */,
 			);
 			path = Purchasing;
 			sourceTree = "<group>";
@@ -2231,6 +2237,7 @@
 				04ADD1602290DA8E00E17445 /* AppEntryOpening.swift in Sources */,
 				042B78FC229A257E005B7A2A /* SettingsTableViewCellLabel.swift in Sources */,
 				047E912E26560A5D0075F6B2 /* SettingsNavigationLink.swift in Sources */,
+				047E9140265613120075F6B2 /* PurchaseButton.swift in Sources */,
 				04FF8DB722F57AA1008CF0E9 /* AutoRedactionsListView.swift in Sources */,
 				041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */,
 				0445AA5D237130FE00EB2A7B /* PurchaseMarketingViewHeaderLabel.swift in Sources */,
@@ -2239,6 +2246,7 @@
 				041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */,
 				04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */,
 				047E912626549BFF0075F6B2 /* PurchaseMarketingView.swift in Sources */,
+				047E9142265617E10075F6B2 /* RefreshReceiptsOperation.swift in Sources */,
 				049F2928228755DB00A335BE /* SettingsNavigationController.swift in Sources */,
 				04F3C7BE2301A4FD00445A8D /* AboutSection.swift in Sources */,
 				04F3C7D9230449AB00445A8D /* SettingsPurchaseTableViewCellTitleLabel.swift in Sources */,
@@ -2556,7 +2564,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Development: Buddy Build (D47V8Y25W5)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 9999;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 287EDDET2B;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2624,7 +2632,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 9999;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 287EDDET2B;
 				ENABLE_NS_ASSERTIONS = NO;

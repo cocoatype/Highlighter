@@ -5,7 +5,6 @@ import Foundation
 import StoreKit
 
 class RestoreOperation: AsyncOperation<Void, Error>, SKPaymentTransactionObserver {
-
     override func start() {
         guard SKPaymentQueue.canMakePayments() else { fail(PurchaseOperationError.paymentsNotAvailable); return }
         SKPaymentQueue.default().add(self)

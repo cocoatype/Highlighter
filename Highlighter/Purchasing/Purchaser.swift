@@ -8,6 +8,7 @@ class Purchaser: NSObject {
     @Published
     private(set) var state = PurchaseState.loading {
         didSet {
+            print("purchaser: \(state)")
             NotificationCenter.default.post(name: Purchaser.stateDidChange, object: self)
         }
     }
@@ -15,15 +16,20 @@ class Purchaser: NSObject {
     override init() {
         super.init()
         reset()
+        refreshReceipts()
     }
 
     // MARK: Operations
 
     private func reset() {
         if PurchaseValidator.hasUserPurchasedProduct(withIdentifier: Purchaser.productIdentifier) {
+            print("setting state to purchased")
             state = .purchased
         } else {
-            state = .loading
+            print("setting state to loading")
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .loading
+            }
             fetchProducts()
         }
     }
@@ -56,7 +62,10 @@ class Purchaser: NSObject {
         let fetchOperation = FetchReadyProductOperation(identifier: Purchaser.productIdentifier)
         let handleProductOperation = BlockOperation { [weak self, weak fetchOperation] in
             switch fetchOperation?.result {
-            case .success(let product)?: self?.state = .readyForPurchase(product: product)
+            case .success(let product)?:
+                DispatchQueue.main.async { [weak self] in
+                    self?.state = .readyForPurchase(product: product)
+                }
             case .none, .failure?: self?.reset()
             }
         }
@@ -74,6 +83,18 @@ class Purchaser: NSObject {
 
         operationQueue.addOperations([restoreOperation, handleRestoreOperation], waitUntilFinished: false)
         state = .restoring(operation: restoreOperation)
+    }
+
+    // MARK: Refresh Receipts
+
+    func refreshReceipts() {
+        let refreshOperation = RefreshReceiptsOperation()
+        let handleOperation = BlockOperation { [weak self] in
+            self?.reset()
+        }
+        handleOperation.addDependency(refreshOperation)
+
+        operationQueue.addOperations([refreshOperation, handleOperation], waitUntilFinished: false)
     }
 
     // MARK: Notifications

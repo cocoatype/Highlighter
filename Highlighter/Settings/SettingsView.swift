@@ -5,10 +5,9 @@ import StoreKit
 import SwiftUI
 
 struct SettingsView: View {
-    private let purchaser: Purchaser
+    @Environment(\.purchaser) private var purchaser: Purchaser
     private let readableWidth: CGFloat
-    init(readableWidth: CGFloat = .zero, purchaser: Purchaser) {
-        self.purchaser = purchaser
+    init(readableWidth: CGFloat = .zero) {
         self.readableWidth = readableWidth
     }
 
@@ -26,7 +25,8 @@ struct SettingsViewPreviews: PreviewProvider {
 
     static var previews: some View {
         ForEach(states) { state in
-            SettingsView(readableWidth: 288, purchaser: MockPurchaser(state: state))
+            SettingsView(readableWidth: 288)
+                .environment(\.purchaser, MockPurchaser(state: state))
                 .previewDevice("iPhone 12 Pro Max")
                 .preferredColorScheme(.dark)
         }

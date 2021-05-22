@@ -146,12 +146,20 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
 
     // MARK: Settings View Controller
 
+    private var settingsType: UIViewController.Type {
+        if ProcessInfo.processInfo.environment["NEW_SETTINGS"] != nil {
+            return SettingsHostingController.self
+        } else {
+            return SettingsNavigationController.self
+        }
+    }
+
     @objc func presentSettingsViewController() {
-        present(SettingsNavigationController(), animated: true)
+        present(settingsType.init(), animated: true)
     }
 
     @objc func dismissSettingsViewController() {
-        if presentedViewController is SettingsNavigationController {
+        if type(of: presentedViewController) == settingsType {
             dismiss(animated: true)
         }
     }

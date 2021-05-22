@@ -11,8 +11,11 @@ struct PurchaseValidator {
             let originalPurchaseVersion = Int(receipt.purchaseVersion) ?? Int.max
             let earnedFreeProduct = originalPurchaseVersion < PurchaseValidator.freeProductCutoff
             let purchasedProduct = receipt.containsPurchase(withIdentifier: identifier)
+            print("earned free product: \(earnedFreeProduct)")
+            print("purchased product: \(purchasedProduct)")
             return earnedFreeProduct || purchasedProduct
         } catch {
+            print("received error: \(error.localizedDescription)")
             return false
         }
     }
