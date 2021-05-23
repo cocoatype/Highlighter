@@ -1,57 +1,11 @@
 //  Created by Geoff Pado on 4/8/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
-import Photos
 import Editing
+import Introspect
+import Photos
 import SwiftUI
 import UIKit
-
-@available(iOS 14.0, *)
-class NavigationWrapper: NSObject, ObservableObject {
-    typealias NavigationObject = (SettingsPresenting & PhotoEditorPresenting & DocumentScannerPresenting & CollectionPresenting & LimitedLibraryPresenting)
-    init(navigationObject: NavigationObject) {
-        self.navigationObject = navigationObject
-    }
-
-    static let empty = NavigationWrapper()
-
-    private override init() {
-        self.navigationObject = nil
-    }
-
-    func presentSettings() {
-        navigationObject?.presentSettingsViewController()
-    }
-
-    func presentEditor(for asset: PHAsset) {
-        navigationObject?.presentPhotoEditingViewController(for: asset, redactions: nil, animated: true)
-    }
-
-    func presentDocumentScanner() {
-        navigationObject?.presentDocumentCameraViewController()
-    }
-
-    func present(_ collection: Collection) {
-        navigationObject?.present(collection)
-    }
-
-    func presentLimitedLibrary() {
-        navigationObject?.presentLimitedLibrary()
-    }
-
-    private let navigationObject: NavigationObject?
-}
-
-@available(iOS 14.0, *)
-extension UIResponder {
-    var navigationObject: NavigationWrapper.NavigationObject? {
-        if let navigationObject = (self as? NavigationWrapper.NavigationObject) {
-            return navigationObject
-        }
-
-        return next?.navigationObject
-    }
-}
 
 @available(iOS 14.0, *)
 struct PhotoSelection: View {
@@ -62,16 +16,21 @@ struct PhotoSelection: View {
     var body: some View {
         NavigationView {
             AlbumsList(data: collectionsData)
-        }.accentColor(.primaryLight)
+        }.accentColor(.primaryLight).introspectNavigationController { navigationController in
+            let navigationBar = navigationController.navigationBar
+            navigationBar.standardAppearance = NavigationBarAppearance()
+//            navigationBar.standardAppearance.configureWithOpaqueBackground()
+//            navigationBar.standardAppearance.backgroundColor = .systemRed
+        }
     }
 
     static func hostingController(presenter: NavigationWrapper.NavigationObject) -> UIViewController {
-        UITableView.appearance().backgroundColor = .primary
-        UITableViewCell.appearance().selectionStyle = .none
-        UICollectionView.appearance().backgroundColor = .primary
-        UINavigationBar.appearance().scrollEdgeAppearance = NavigationBarAppearance()
-        UINavigationBar.appearance().standardAppearance = NavigationBarAppearance()
-        UIBarButtonItem.appearance().tintColor = .white
+//        UITableView.appearance().backgroundColor = .primary
+//        UITableViewCell.appearance().selectionStyle = .none
+//        UICollectionView.appearance().backgroundColor = .primary
+//        UINavigationBar.appearance().scrollEdgeAppearance = NavigationBarAppearance()
+//        UINavigationBar.appearance().standardAppearance = NavigationBarAppearance()
+//        UIBarButtonItem.appearance().tintColor = .white
 
         let albumsDataSource = CollectionsDataSource()
         let selectionView = PhotoSelection(data: albumsDataSource.collectionsData)
@@ -91,6 +50,6 @@ struct PhotoSelection: View {
 struct PhotoSelection_Previews: PreviewProvider {
     static var previews: some View {
         PhotoSelection(data: AlbumsList_Previews.fakeData)
-            .previewDevice("iPad Pro (9.7-inch)")
+            .previewDevice("iPad Pro (9.7-inch)").preferredColorScheme(.dark)
     }
 }

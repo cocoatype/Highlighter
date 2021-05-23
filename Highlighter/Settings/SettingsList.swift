@@ -15,7 +15,9 @@ struct SettingsList<Content>: View where Content: View {
     }
 
     var body: some View {
-        List(content: content).settingsListStyle()
+        List(content: content)
+            .settingsListStyle()
+            .introspectTableView { $0.backgroundColor = .primary }
     }
 }
 

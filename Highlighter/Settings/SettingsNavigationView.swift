@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 5/19/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
+import Editing
 import SwiftUI
 
 struct SettingsNavigationView<Content: View>: View {
@@ -10,7 +11,7 @@ struct SettingsNavigationView<Content: View>: View {
     }
 
     var body: some View {
-        NavigationView(content: content)
+        NavigationView(content: content).appNavigationBarAppearance()
     }
 }
 
