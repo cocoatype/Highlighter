@@ -5,18 +5,23 @@ import StoreKit
 import SwiftUI
 
 struct SettingsView: View {
-    @Environment(\.purchaser) private var purchaser: Purchaser
+    private let purchaseStatePublisher = PurchaseStatePublisher().receive(on: RunLoop.main)
+    @State private var purchaseState: PurchaseState
     private let readableWidth: CGFloat
-    init(readableWidth: CGFloat = .zero) {
+
+    init(purchaseState: PurchaseState = .loading, readableWidth: CGFloat = .zero) {
+        self._purchaseState = State<PurchaseState>(initialValue: purchaseState)
         self.readableWidth = readableWidth
     }
 
     var body: some View {
         SettingsNavigationView {
             SettingsList {
-                SettingsContentGenerator(state: purchaser.state).content
+                SettingsContentGenerator(state: purchaseState).content
             }.navigationBarTitle("Settings", displayMode: .inline)
-        }.environment(\.readableWidth, readableWidth)
+        }.environment(\.readableWidth, readableWidth).onAppReceive(purchaseStatePublisher) { newState in
+            purchaseState = newState
+        }
     }
 }
 
@@ -25,8 +30,7 @@ struct SettingsViewPreviews: PreviewProvider {
 
     static var previews: some View {
         ForEach(states) { state in
-            SettingsView(readableWidth: 288)
-                .environment(\.purchaser, MockPurchaser(state: state))
+            SettingsView(purchaseState: state, readableWidth: 288)
                 .previewDevice("iPhone 12 Pro Max")
                 .preferredColorScheme(.dark)
         }

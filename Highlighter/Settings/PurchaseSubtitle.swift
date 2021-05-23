@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 5/19/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
+import StoreKit
 import SwiftUI
 
 struct PurchaseSubtitle: View {
@@ -16,28 +17,9 @@ struct PurchaseSubtitle: View {
     }
 
     private var text: String {
-        guard let price = localizedProductPrice else { return Self.subtitleWithoutProduct }
+        guard let product = purchaseState.product, let price = ProductPriceFormatter.formattedPrice(for: product) else { return Self.subtitleWithoutProduct }
 
         return String(format: Self.subtitleWithProduct, price)
-    }
-
-    // MARK: Price Formatting
-
-    private static let priceFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.formatterBehavior = .behavior10_4
-        formatter.numberStyle = .currency
-        return formatter
-    }()
-
-    private var localizedProductPrice: String? {
-        guard let product = purchaseState.product else { return nil }
-
-        if product.priceLocale != Self.priceFormatter.locale {
-            Self.priceFormatter.locale = product.priceLocale
-        }
-
-        return Self.priceFormatter.string(from: product.price)
     }
 
     // MARK: Localized Strings
@@ -48,6 +30,14 @@ struct PurchaseSubtitle: View {
 
 struct PurchaseSubtitlePreviews: PreviewProvider {
     static var previews: some View {
-        PurchaseSubtitle(state: .loading).preferredColorScheme(.dark)
+        VStack {
+            PurchaseSubtitle(state: .loading).preferredColorScheme(.dark)
+            PurchaseSubtitle(state: .readyForPurchase(product: MockProduct())).preferredColorScheme(.dark)
+        }
+    }
+
+    private class MockProduct: SKProduct {
+        override var priceLocale: Locale { .current }
+        override var price: NSDecimalNumber { NSDecimalNumber(value: 1.99) }
     }
 }

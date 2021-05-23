@@ -239,6 +239,13 @@
 		04BDC49F255657A600BCE982 /* ShortcutsExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */; };
 		04BDC4A7255657CA00BCE982 /* ShortcutsExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */; };
 		04BDC4AF255657CB00BCE982 /* ShortcutsRedactExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */; };
+		04CBB08F2658A14300B792A2 /* PreviousPurchasePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB08E2658A14300B792A2 /* PreviousPurchasePublisher.swift */; };
+		04CBB0912658A45D00B792A2 /* FetchProductsPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB0902658A45D00B792A2 /* FetchProductsPublisher.swift */; };
+		04CBB0932658A4D500B792A2 /* PurchaseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB0922658A4D500B792A2 /* PurchaseConstants.swift */; };
+		04CBB0952658A9D300B792A2 /* FilterProductsPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB0942658A9D300B792A2 /* FilterProductsPublisher.swift */; };
+		04CBB0972658ABB200B792A2 /* ProductPricePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB0962658ABB200B792A2 /* ProductPricePublisher.swift */; };
+		04CBB0992658AF5800B792A2 /* LogPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB0982658AF5800B792A2 /* LogPublisher.swift */; };
+		04CBB09B2658B40C00B792A2 /* PurchaseStatePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB09A2658B40C00B792A2 /* PurchaseStatePublisher.swift */; };
 		04D68BC7225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC6225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift */; };
 		04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */; };
 		04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BCB2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift */; };
@@ -678,6 +685,13 @@
 		04BC9FC725C2700200213DBC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsRedactExporter.swift; sourceTree = "<group>"; };
 		04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsExportOperation.swift; sourceTree = "<group>"; };
+		04CBB08E2658A14300B792A2 /* PreviousPurchasePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousPurchasePublisher.swift; sourceTree = "<group>"; };
+		04CBB0902658A45D00B792A2 /* FetchProductsPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProductsPublisher.swift; sourceTree = "<group>"; };
+		04CBB0922658A4D500B792A2 /* PurchaseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseConstants.swift; sourceTree = "<group>"; };
+		04CBB0942658A9D300B792A2 /* FilterProductsPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterProductsPublisher.swift; sourceTree = "<group>"; };
+		04CBB0962658ABB200B792A2 /* ProductPricePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPricePublisher.swift; sourceTree = "<group>"; };
+		04CBB0982658AF5800B792A2 /* LogPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogPublisher.swift; sourceTree = "<group>"; };
+		04CBB09A2658B40C00B792A2 /* PurchaseStatePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseStatePublisher.swift; sourceTree = "<group>"; };
 		04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
 		04D68BC6225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPhotoLibraryViewCellImageView.swift; sourceTree = "<group>"; };
 		04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPermissionsRequester.swift; sourceTree = "<group>"; };
@@ -1413,6 +1427,23 @@
 			path = Workspace;
 			sourceTree = "<group>";
 		};
+		04CBB08D2658A0FB00B792A2 /* Legacy Purchasing */ = {
+			isa = PBXGroup;
+			children = (
+				04F3C7A42300206A00445A8D /* Purchaser.swift */,
+				04F3C7E62308DD8F00445A8D /* PurchaseOperation.swift */,
+				04F3C7E82308E7CB00445A8D /* PurchaseOperationTarget.swift */,
+				04F3C7EA2308E7F200445A8D /* PurchaseOperationError.swift */,
+				04F3C7EC2308E81400445A8D /* PurchaseOperationQueue.swift */,
+				04F3C7EE2308E8ED00445A8D /* PaymentOperation.swift */,
+				04F3C7F02308E91600445A8D /* FetchProductOperation.swift */,
+				046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */,
+				04899D74231CEAED002BC1D8 /* PurchaseValidator.swift */,
+				047E9141265617E10075F6B2 /* RefreshReceiptsOperation.swift */,
+			);
+			path = "Legacy Purchasing";
+			sourceTree = "<group>";
+		};
 		04D68BC3225EE2A500D09BBD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1464,6 +1495,7 @@
 				04F3C7F22308F37400445A8D /* AsyncOperation.swift */,
 				048320BA25D7F1AF00355393 /* Recents Menu */,
 				04389DE1262AC7C8004D49B7 /* Help Menu */,
+				04CBB0982658AF5800B792A2 /* LogPublisher.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1510,17 +1542,14 @@
 			isa = PBXGroup;
 			children = (
 				04F3C7FB2309E7D300445A8D /* Receipts */,
-				04F3C7A42300206A00445A8D /* Purchaser.swift */,
 				04F3C7A8230099BC00445A8D /* PurchaseState.swift */,
-				04F3C7E62308DD8F00445A8D /* PurchaseOperation.swift */,
-				04F3C7E82308E7CB00445A8D /* PurchaseOperationTarget.swift */,
-				04F3C7EA2308E7F200445A8D /* PurchaseOperationError.swift */,
-				04F3C7EC2308E81400445A8D /* PurchaseOperationQueue.swift */,
-				04F3C7EE2308E8ED00445A8D /* PaymentOperation.swift */,
-				04F3C7F02308E91600445A8D /* FetchProductOperation.swift */,
-				046EA9A6231BCCC7003BFC4D /* RestoreOperation.swift */,
-				04899D74231CEAED002BC1D8 /* PurchaseValidator.swift */,
-				047E9141265617E10075F6B2 /* RefreshReceiptsOperation.swift */,
+				04CBB08D2658A0FB00B792A2 /* Legacy Purchasing */,
+				04CBB08E2658A14300B792A2 /* PreviousPurchasePublisher.swift */,
+				04CBB0902658A45D00B792A2 /* FetchProductsPublisher.swift */,
+				04CBB09A2658B40C00B792A2 /* PurchaseStatePublisher.swift */,
+				04CBB0942658A9D300B792A2 /* FilterProductsPublisher.swift */,
+				04CBB0962658ABB200B792A2 /* ProductPricePublisher.swift */,
+				04CBB0922658A4D500B792A2 /* PurchaseConstants.swift */,
 			);
 			path = Purchasing;
 			sourceTree = "<group>";
@@ -2153,6 +2182,7 @@
 				04F3C7DB230449D800445A8D /* SettingsPurchaseTableViewCellSubtitleLabel.swift in Sources */,
 				047E912C26560A400075F6B2 /* SettingsListStyleModifier.swift in Sources */,
 				04F3C7E92308E7CB00445A8D /* PurchaseOperationTarget.swift in Sources */,
+				04CBB08F2658A14300B792A2 /* PreviousPurchasePublisher.swift in Sources */,
 				04ADD15C2290D29400E17445 /* AppLookupResponseResult.swift in Sources */,
 				04389DEA262AC841004D49B7 /* HelpMenuContactAction.swift in Sources */,
 				048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */,
@@ -2174,6 +2204,7 @@
 				047E912A26560A130075F6B2 /* SettingsList.swift in Sources */,
 				0493BA93253AA4F80083198C /* LimitedLibraryButton.swift in Sources */,
 				046EA9A7231BCCC7003BFC4D /* RestoreOperation.swift in Sources */,
+				04CBB0912658A45D00B792A2 /* FetchProductsPublisher.swift in Sources */,
 				04F3C7B02301A31900445A8D /* SettingsContentItem.swift in Sources */,
 				047E9128265604F30075F6B2 /* PurchaseNavigationLink.swift in Sources */,
 				04F3C7ED2308E81400445A8D /* PurchaseOperationQueue.swift in Sources */,
@@ -2181,6 +2212,7 @@
 				04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */,
 				04ADD1562290CCC200E17445 /* AppEntry.swift in Sources */,
 				04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */,
+				04CBB0972658ABB200B792A2 /* ProductPricePublisher.swift in Sources */,
 				047E913426560BBB0075F6B2 /* OtherAppButton.swift in Sources */,
 				041EFF52225303430058D8EE /* PromptButton.swift in Sources */,
 				0489081724AD796D005DDEF3 /* PhotoLibraryViewController.swift in Sources */,
@@ -2225,6 +2257,7 @@
 				042A2B7C228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift in Sources */,
 				04389E05262AC8AE004D49B7 /* HelpMenuPrivacyAction.swift in Sources */,
 				04F3C7F32308F37400445A8D /* AsyncOperation.swift in Sources */,
+				04CBB09B2658B40C00B792A2 /* PurchaseStatePublisher.swift in Sources */,
 				041EFF50225303120058D8EE /* PromptLabel.swift in Sources */,
 				046C405D247F5B3F0069E8FB /* SystemCollectionTableViewCell.swift in Sources */,
 				043CD9DF227548F30012F5AE /* SettingsStandardTableViewCell.swift in Sources */,
@@ -2236,6 +2269,7 @@
 				04953B5824E2405500877800 /* PhotoEditingViewController+Desktop.swift in Sources */,
 				04ADD1602290DA8E00E17445 /* AppEntryOpening.swift in Sources */,
 				042B78FC229A257E005B7A2A /* SettingsTableViewCellLabel.swift in Sources */,
+				04CBB0992658AF5800B792A2 /* LogPublisher.swift in Sources */,
 				047E912E26560A5D0075F6B2 /* SettingsNavigationLink.swift in Sources */,
 				047E9140265613120075F6B2 /* PurchaseButton.swift in Sources */,
 				04FF8DB722F57AA1008CF0E9 /* AutoRedactionsListView.swift in Sources */,
@@ -2251,11 +2285,13 @@
 				04F3C7BE2301A4FD00445A8D /* AboutSection.swift in Sources */,
 				04F3C7D9230449AB00445A8D /* SettingsPurchaseTableViewCellTitleLabel.swift in Sources */,
 				041EFF74225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift in Sources */,
+				04CBB0932658A4D500B792A2 /* PurchaseConstants.swift in Sources */,
 				047E913A26560C600075F6B2 /* SettingsHeaderTextCaseModifier.swift in Sources */,
 				04F3C7E323089ACA00445A8D /* LegacyPurchaseMarketingView.swift in Sources */,
 				0401CDFA24AD8EF50011A9BF /* AssetButton.swift in Sources */,
 				04ACC40F255648A10035E3C2 /* IntentHandler.swift in Sources */,
 				04ADD1582290CFF100E17445 /* AppListFetcher.swift in Sources */,
+				04CBB0952658A9D300B792A2 /* FilterProductsPublisher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

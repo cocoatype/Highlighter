@@ -25,18 +25,9 @@ struct ReadableWidthKey: EnvironmentKey {
     static let defaultValue = CGFloat.zero
 }
 
-struct PurchaserKey: EnvironmentKey {
-    static let defaultValue = Purchaser()
-}
-
 extension EnvironmentValues {
     var readableWidth: CGFloat {
         get { self[ReadableWidthKey.self] }
         set { self[ReadableWidthKey.self] = newValue }
-    }
-
-    var purchaser: Purchaser {
-        get { self[PurchaserKey.self] }
-        set { self[PurchaserKey.self] = newValue }
     }
 }

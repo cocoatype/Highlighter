@@ -17,7 +17,7 @@ struct SettingsContentGenerator {
                 }
             } else {
                 Section {
-                    PurchaseNavigationLink(destination: PurchaseMarketingView())
+                    PurchaseNavigationLink(state: purchaseState, destination: PurchaseMarketingView())
                 }
             }
             Section {
