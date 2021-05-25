@@ -7,7 +7,7 @@ import SwiftUI
 
 struct PurchaseNavigationLink<Destination: View>: View {
     private let destination: Destination
-    private let purchaseStatePublisher = PurchaseStatePublisher().receive(on: RunLoop.main)
+    @Environment(\.purchaseStatePublisher) private var purchaseStatePublisher: PurchaseStatePublisher
     @State private var purchaseState: PurchaseState
 
     init(state: PurchaseState = .loading, destination: Destination) {
@@ -22,7 +22,7 @@ struct PurchaseNavigationLink<Destination: View>: View {
                 PurchaseSubtitle(state: purchaseState)
             }
         }.settingsCell()
-        .onAppReceive(purchaseStatePublisher, perform: { newState in
+        .onAppReceive(purchaseStatePublisher.receive(on: RunLoop.main), perform: { newState in
             purchaseState = newState
         })
     }

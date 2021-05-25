@@ -6,7 +6,7 @@ import Foundation
 
 class Purchaser: NSObject {
     @Published
-    private(set) var state = PurchaseState.loading {
+    private(set) var state = LegacyPurchaseState.loading {
         didSet {
             print("purchaser: \(state)")
             NotificationCenter.default.post(name: Purchaser.stateDidChange, object: self)

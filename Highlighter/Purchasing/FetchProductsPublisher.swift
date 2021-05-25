@@ -8,10 +8,14 @@ class FetchProductsPublisher: NSObject, Publisher, SKProductsRequestDelegate {
     typealias Output = [SKProduct]
     typealias Failure = Error
 
-    private let passthroughSubject = PassthroughSubject<[SKProduct], Error>()
+    override init() {
+        super.init()
+        start()
+    }
+
+    private let passthroughSubject = CurrentValueSubject<[SKProduct], Error>([])//PassthroughSubject<[SKProduct], Error>()
     func receive<S>(subscriber: S) where S : Subscriber, Error == S.Failure, [SKProduct] == S.Input {
         passthroughSubject.receive(subscriber: subscriber)
-        start()
     }
 
     private func start() {

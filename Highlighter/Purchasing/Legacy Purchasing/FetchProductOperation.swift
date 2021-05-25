@@ -12,9 +12,9 @@ class FetchProductOperation: AsyncOperation<SKProduct, Error>, SKProductsRequest
     override func start() {
         guard SKPaymentQueue.canMakePayments() else { fail(PurchaseOperationError.paymentsNotAvailable); return }
 
-        let productsRequest = SKProductsRequest(productIdentifiers: [identifier])
-        productsRequest.delegate = self
-        productsRequest.start()
+//        let productsRequest = SKProductsRequest(productIdentifiers: [identifier])
+//        productsRequest.delegate = self
+//        productsRequest.start()
     }
 
     // MARK: SKProductsRequestDelegate

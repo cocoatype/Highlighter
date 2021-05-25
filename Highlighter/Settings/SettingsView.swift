@@ -7,7 +7,7 @@ import StoreKit
 import SwiftUI
 
 struct SettingsView: View {
-    private let purchaseStatePublisher = PurchaseStatePublisher().receive(on: RunLoop.main)
+    @Environment(\.purchaseStatePublisher) private var purchaseStatePublisher: PurchaseStatePublisher
     @State private var purchaseState: PurchaseState
     @State private var selectedURL: URL?
     private let readableWidth: CGFloat
@@ -22,7 +22,9 @@ struct SettingsView: View {
             SettingsList {
                 SettingsContentGenerator(state: purchaseState).content
             }.navigationBarTitle("Settings", displayMode: .inline)
-        }.environment(\.readableWidth, readableWidth).onAppReceive(purchaseStatePublisher) { newState in
+        }
+        .environment(\.readableWidth, readableWidth)
+        .onAppReceive(purchaseStatePublisher.receive(on: RunLoop.main)) { newState in
             purchaseState = newState
         }
     }
@@ -39,14 +41,6 @@ struct SettingsViewPreviews: PreviewProvider {
         }
     }
 
-    private class MockPurchaser: Purchaser {
-        init(state: PurchaseState) {
-            mockState = state
-        }
-        private let mockState: PurchaseState
-        override var state: PurchaseState { return mockState }
-    }
-
     private class MockProduct: SKProduct {
         override var priceLocale: Locale { .current }
         override var price: NSDecimalNumber { NSDecimalNumber(value: 1.99) }
@@ -59,11 +53,11 @@ extension PurchaseState: Identifiable, Hashable {
         case .loading: hasher.combine("loading")
         case .purchased: hasher.combine("purchased")
         case .unavailable: hasher.combine("unavailable")
-        case .purchasing(let operation): hasher.combine(operation)
+        case .purchasing: hasher.combine("purchasing")
         case .readyForPurchase(let product):
             hasher.combine(product)
-        case .restoring(let operation):
-            hasher.combine(operation)
+        case .restoring:
+            hasher.combine("restoring")
         }
     }
 
@@ -75,11 +69,11 @@ extension PurchaseState: Identifiable, Hashable {
         case (.purchased, _): return false
         case (.unavailable, .unavailable): return true
         case (.unavailable, _): return false
-        case (.purchasing(let lhsOperation), .purchasing(let rhsOperation)): return lhsOperation == rhsOperation
+        case (.purchasing, .purchasing): return true
         case (.purchasing, _): return false
         case (.readyForPurchase(let lhsProduct), .readyForPurchase(let rhsProduct)): return lhsProduct == rhsProduct
         case (.readyForPurchase, _): return false
-        case (.restoring(let lhsOperation), .restoring(let rhsOperation)): return lhsOperation == rhsOperation
+        case (.restoring, .restoring): return true
         case (.restoring, _): return false
         }
     }

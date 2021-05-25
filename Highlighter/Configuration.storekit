@@ -21,7 +21,7 @@
     }
   ],
   "settings" : {
-
+    "_billingIssuesEnabled" : true
   },
   "subscriptionGroups" : [
 

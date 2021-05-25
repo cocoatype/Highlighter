@@ -63,7 +63,7 @@ class SettingsNavigationController: NavigationController {
     }
 
     @objc func presentPurchaseMarketingViewController() {
-        if case let PurchaseState.readyForPurchase(product: product) = purchaser.state {
+        if case let .readyForPurchase(product: product) = purchaser.state {
             pushViewController(PurchaseMarketingViewController(product: product), animated: true)
         } else {
             pushViewController(PurchaseMarketingViewController(product: nil), animated: true)

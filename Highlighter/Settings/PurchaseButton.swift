@@ -6,51 +6,72 @@ import StoreKit
 import SwiftUI
 
 struct PurchaseButton: View {
-    @State private var price: String?
-    private let productsPublisher = FetchProductsPublisher().filterProducts().formattedPrice().catch { _ in return Just(nil) }.receive(on: RunLoop.main)
+    @State private var purchaseState: PurchaseState
+    @Environment(\.purchaseStatePublisher) private var purchaseStatePublisher: PurchaseStatePublisher
 
-    init(price: String? = nil) {
-        _price = State<String?>(initialValue: price)
+    init(purchaseState: PurchaseState = .loading) {
+        _purchaseState = State<PurchaseState>(initialValue: purchaseState)
     }
 
     var body: some View {
         Button(action: {
-//            purchaser.purchaseUnlock()
+            guard let product = purchaseState.product else { return }
+            purchaseStatePublisher.purchase(product)
         }) {
             Text(title)
                 .underline()
                 .font(.app(textStyle: .headline))
-                .foregroundColor(.white)
-        }.onReceive(productsPublisher, perform: { newPrice in
-            price = newPrice
+                .foregroundColor(disabled ? .primaryExtraLight : .white)
+        }
+        .disabled(disabled)
+        .onAppReceive(purchaseStatePublisher.receive(on: RunLoop.main), perform: { newState in
+            purchaseState = newState
         })
     }
 
     private var title: String {
-        guard let price = price else { return Self.purchaseButtonTitleWithoutProduct }
-        return String(format: Self.purchaseButtonTitleWithProduct, price)
+        switch purchaseState {
+        case .loading:
+            return Self.purchaseButtonTitleLoading
+        case .purchasing, .restoring:
+            return Self.purchaseButtonTitlePurchasing
+        case .readyForPurchase(let product):
+            guard let price = ProductPriceFormatter.formattedPrice(for: product) else { return Self.purchaseButtonTitleLoading }
+            return String(format: Self.purchaseButtonTitleReady, price)
+        case .unavailable:
+            return Self.purchaseButtonTitleLoading
+        case .purchased:
+            return Self.purchaseButtonTitlePurchased
+        }
+    }
+
+    private var disabled: Bool {
+        switch purchaseState {
+        case .readyForPurchase: return false
+        default: return true
+        }
     }
 
     // MARK: Localized Strings
 
-    private static let purchaseButtonTitleWithProduct = NSLocalizedString("PurchaseMarketingView.purchaseButtonTitleWithProduct", comment: "Title for the purchase button on the purchase marketing view")
-    private static let purchaseButtonTitleWithoutProduct = NSLocalizedString("PurchaseMarketingView.purchaseButtonTitleWithoutProduct", comment: "Title for the purchase button on the purchase marketing view")
+    private static let purchaseButtonTitleLoading = NSLocalizedString("PurchaseButton.purchaseButtonTitleLoading", comment: "Title for the purchase button on the purchase marketing view")
+    private static let purchaseButtonTitleReady = NSLocalizedString("PurchaseButton.purchaseButtonTitleReady", comment: "Title for the purchase button on the purchase marketing view")
+    private static let purchaseButtonTitlePurchasing = NSLocalizedString("PurchaseButton.purchaseButtonTitlePurchasing", comment: "Title for the purchase button on the purchase marketing view")
+    private static let purchaseButtonTitlePurchased = NSLocalizedString("PurchaseButton.purchaseButtonTitlePurchased", comment: "Title for the purchase button on the purchase marketing view")
 }
 
 struct PurchaseButton_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(alignment: .leading) {
-            PurchaseButton()
-            PurchaseButton(price: "$1.99")
-        }.preferredColorScheme(.dark)
-    }
-
-    private class MockPurchaser: Purchaser {
-        init(state: PurchaseState) {
-            mockState = state
+        VStack(alignment: .leading, spacing: 3) {
+            PurchaseButton(purchaseState: .loading)
+            PurchaseButton(purchaseState: .readyForPurchase(product: MockProduct()))
+            PurchaseButton(purchaseState: .purchasing)
+            PurchaseButton(purchaseState: .purchased)
+            PurchaseButton(purchaseState: .unavailable)
         }
-        private let mockState: PurchaseState
-        override var state: PurchaseState { return mockState }
+        .padding()
+        .background(Color.appPrimary)
+        .preferredColorScheme(.dark)
     }
 
     private class MockProduct: SKProduct {
