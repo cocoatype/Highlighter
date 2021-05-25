@@ -9,6 +9,7 @@ import SwiftUI
 struct SettingsView: View {
     private let purchaseStatePublisher = PurchaseStatePublisher().receive(on: RunLoop.main)
     @State private var purchaseState: PurchaseState
+    @State private var selectedURL: URL?
     private let readableWidth: CGFloat
 
     init(purchaseState: PurchaseState = .loading, readableWidth: CGFloat = .zero) {

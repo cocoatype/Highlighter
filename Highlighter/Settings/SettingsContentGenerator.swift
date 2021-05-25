@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 5/19/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
+import SafariServices
 import SwiftUI
 
 struct SettingsContentGenerator {
@@ -21,10 +22,10 @@ struct SettingsContentGenerator {
                 }
             }
             Section {
-                SettingsNavigationLink("SettingsContentProvider.Item.about", destination: Text?.none)
-                SettingsNavigationLink("SettingsContentProvider.Item.privacy", destination: Text?.none)
-                SettingsNavigationLink("SettingsContentProvider.Item.acknowledgements", destination: Text?.none)
-                SettingsNavigationLink("SettingsContentProvider.Item.contact", destination: Text?.none)
+                WebURLButton("SettingsContentProvider.Item.about", path: "about")
+                WebURLButton("SettingsContentProvider.Item.privacy", path: "privacy")
+                WebURLButton("SettingsContentProvider.Item.acknowledgements", path: "acknowledgements")
+                WebURLButton("SettingsContentProvider.Item.contact", path: "contact")
             }
             Section(header: SettingsSectionHeader("SettingsContentProvider.Section.otherApps.header")) {
                 OtherAppButton(name: "Kineo", id: "286948844")
@@ -33,4 +34,47 @@ struct SettingsContentGenerator {
             }
         }
     }
+}
+
+struct WebURLButton: View {
+//    @Binding private var selection: URL?
+    private let titleKey: LocalizedStringKey
+    private let url: URL
+    @State private var selected = false
+    init(_ titleKey: LocalizedStringKey, path: String) {
+//        self._selection = selection
+        self.titleKey = titleKey
+        self.url = Self.baseURL.appendingPathComponent(path)
+    }
+
+    var body: some View {
+        Button(titleKey) {
+            selected = true
+        }.sheet(isPresented: $selected) {
+            WebView(url: url)
+        }.settingsCell()
+    }
+
+    static let baseURL: URL = {
+        guard let url = URL(string: "https://blackhighlighter.app/") else { fatalError("Invalid base URL for settings") }
+        return url
+    }()
+}
+
+struct WebView: UIViewControllerRepresentable {
+    private let url: URL
+    init(url: URL) {
+        self.url = url
+    }
+
+    func makeUIViewController(context: Context) -> WebViewController {
+        return WebViewController(url: url)
+    }
+
+    func updateUIViewController(_ uiViewController: WebViewController, context: Context) {}
+}
+
+extension URL: Identifiable {
+    public typealias ID = Int
+    public var id: Int { hashValue }
 }
