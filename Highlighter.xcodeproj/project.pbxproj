@@ -66,6 +66,9 @@
 		043C28DB265C97240054A5A8 /* PaymentPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C28DA265C97240054A5A8 /* PaymentPublisher.swift */; };
 		043C28DD265CB2F70054A5A8 /* PurchaseRestoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C28DC265CB2F70054A5A8 /* PurchaseRestoreButton.swift */; };
 		043C28E4265F41830054A5A8 /* AutoRedactionsTableViewCellLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C28E3265F41830054A5A8 /* AutoRedactionsTableViewCellLabel.swift */; };
+		043C28E6265F47A20054A5A8 /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C28E5265F47A20054A5A8 /* ActionView.swift */; };
+		043C28E7265F47E00054A5A8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF542255A0B00058D8EE /* Colors.swift */; };
+		043C28E9265F49150054A5A8 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF5A2255A39D0058D8EE /* Fonts.swift */; };
 		044074BF23BE9BCD00D3CB99 /* RedactionPathLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044074BE23BE9BCD00D3CB99 /* RedactionPathLayer.swift */; };
 		04431E4723556106009FA1F6 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04431E4623556106009FA1F6 /* PhotosUI.framework */; };
 		04431E4923556106009FA1F6 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04431E4823556106009FA1F6 /* Photos.framework */; };
@@ -524,6 +527,7 @@
 		043C28DA265C97240054A5A8 /* PaymentPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPublisher.swift; sourceTree = "<group>"; };
 		043C28DC265CB2F70054A5A8 /* PurchaseRestoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRestoreButton.swift; sourceTree = "<group>"; };
 		043C28E3265F41830054A5A8 /* AutoRedactionsTableViewCellLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsTableViewCellLabel.swift; sourceTree = "<group>"; };
+		043C28E5265F47A20054A5A8 /* ActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
 		043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRectangleDetector.swift; sourceTree = "<group>"; };
 		043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRectangleDetectionOperation.swift; sourceTree = "<group>"; };
 		043CD9CE226EB0C70012F5AE /* TextObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservation.swift; sourceTree = "<group>"; };
@@ -999,6 +1003,7 @@
 				043911C922C461F000D4AE30 /* Info.plist */,
 				049F92C122CAF2A20090C9BC /* InfoPlist.strings */,
 				049F92C822CAFC5D0090C9BC /* ActionViewController.swift */,
+				043C28E5265F47A20054A5A8 /* ActionView.swift */,
 				049F92CE22CD98110090C9BC /* Localizable.strings */,
 			);
 			path = Action;
@@ -2174,6 +2179,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				043C28E9265F49150054A5A8 /* Fonts.swift in Sources */,
+				043C28E6265F47A20054A5A8 /* ActionView.swift in Sources */,
+				043C28E7265F47E00054A5A8 /* Colors.swift in Sources */,
 				049F92C922CAFC5D0090C9BC /* ActionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
