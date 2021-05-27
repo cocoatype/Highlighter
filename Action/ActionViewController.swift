@@ -3,11 +3,13 @@
 
 import ErrorHandling
 import MobileCoreServices
+import SwiftUI
 import UIKit
 
-class ActionViewController: UIViewController {
+class ActionViewController: UIHostingController<ActionView> {
     init() {
-        super.init(nibName: nil, bundle: nil)
+        super.init(rootView: ActionView())
+//        super.init(nibName: nil, bundle: nil)
         ErrorHandling.setup()
     }
 
@@ -42,10 +44,6 @@ class ActionViewController: UIViewController {
                 self?.chain(selector: #selector(ActionViewController.openURL(_:)), object: callbackURL)
                 self?.extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
             } catch {
-                let errorDump = Action.dump(error)
-                let alertController = UIAlertController(title: "An error occurred", message: errorDump, preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self?.present(alertController, animated: true)
                 ErrorHandling.log(error)
             }
         }
@@ -65,12 +63,6 @@ enum ActionError: Error {
     case callbackURLConstructionFailed
     case imageURLNotFound
     case invalidImageData
-}
-
-func dump<T>(_ value: T) -> String {
-    var string = String()
-    Swift.dump(value, to: &string)
-    return string
 }
 
 extension UIResponder {
