@@ -2,6 +2,7 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Editing
+import SwiftUI
 import UIKit
 
 class AutoRedactionsEditViewController: UIViewController {
@@ -60,4 +61,12 @@ class AutoRedactionsEditViewController: UIViewController {
         let className = String(describing: type(of: self))
         fatalError("\(className) does not implement init(coder:)")
     }
+}
+
+struct AutoRedactionsEditView: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> AutoRedactionsEditViewController {
+        return AutoRedactionsEditViewController()
+    }
+
+    func updateUIViewController(_ uiViewController: AutoRedactionsEditViewController, context: Context) {}
 }

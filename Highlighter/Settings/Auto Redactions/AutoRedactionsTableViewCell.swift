@@ -1,22 +1,17 @@
-//  Created by Geoff Pado on 4/27/19.
+//  Created by Geoff Pado on 8/3/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import UIKit
 
-protocol SettingsContentTableViewCell: UITableViewCell {
-    var item: SettingsContentItem? { get set }
-}
-
-class SettingsStandardTableViewCell: UITableViewCell, SettingsContentTableViewCell {
-    static let identifier = "SettingsTableViewCell.identifier"
+class AutoRedactionsTableViewCell: UITableViewCell {
+    static let identifier = "AutoRedactionsTableViewCell.identifier"
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .value1, reuseIdentifier: SettingsStandardTableViewCell.identifier)
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
         backgroundColor = .tableViewCellBackground
+        selectionStyle = .none
 
-        let selectedBackgroundView = UIView()
-        selectedBackgroundView.backgroundColor = .primaryLight
-        self.selectedBackgroundView = selectedBackgroundView
+        label.text = "Hello, world!"
 
         contentView.addSubview(label)
         NSLayoutConstraint.activate([
@@ -27,15 +22,14 @@ class SettingsStandardTableViewCell: UITableViewCell, SettingsContentTableViewCe
         ])
     }
 
-    var item: SettingsContentItem? {
-        didSet {
-            label.text = item?.title
-        }
+    var word: String? {
+        get { return label.text }
+        set(newWord) { label.text = newWord }
     }
 
     // MARK: Boilerplate
 
-    private let label = SettingsTableViewCellLabel()
+    private let label = AutoRedactionsTableViewCellLabel()
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

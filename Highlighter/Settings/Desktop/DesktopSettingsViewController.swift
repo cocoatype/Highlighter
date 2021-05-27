@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 9/28/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+import SwiftUI
 import UIKit
 
 class DesktopSettingsViewController: UIViewController {
@@ -21,8 +22,7 @@ class DesktopSettingsViewController: UIViewController {
     private var preferredViewController: UIViewController {
         switch purchaser.state {
         case .purchased: return DesktopAutoRedactionsListViewController()
-        case .readyForPurchase(let product): return PurchaseMarketingViewController(product: product)
-        default: return PurchaseMarketingViewController()
+        default: return UIHostingController(rootView: PurchaseMarketingView())
         }
     }
 

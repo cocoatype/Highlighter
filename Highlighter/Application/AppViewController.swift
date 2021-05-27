@@ -7,7 +7,7 @@ import Photos
 import UIKit
 import VisionKit
 
-class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening, VNDocumentCameraViewControllerDelegate, DocumentScannerPresenting, SettingsPresenting, CollectionPresenting, LimitedLibraryPresenting {
+class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCameraViewControllerDelegate, DocumentScannerPresenting, SettingsPresenting, CollectionPresenting, LimitedLibraryPresenting {
     init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
         self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
@@ -154,11 +154,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
     // MARK: Settings View Controller
 
     private var settingsType: UIViewController.Type {
-        if ProcessInfo.processInfo.environment["NEW_SETTINGS"] != nil {
             return SettingsHostingController.self
-        } else {
-            return SettingsNavigationController.self
-        }
     }
 
     @objc func presentSettingsViewController() {
@@ -169,13 +165,6 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         if type(of: presentedViewController) == settingsType {
             dismiss(animated: true)
         }
-    }
-
-    // MARK: App Store
-
-    func openAppStore(displaying appEntry: AppEntry) {
-        guard let appStoreURL = appEntry.appStoreURL else { return }
-        UIApplication.shared.open(appStoreURL)
     }
 
     // MARK: Status Bar

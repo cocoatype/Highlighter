@@ -3,7 +3,7 @@
 
 import UIKit
 
-class SettingsTableViewCellLabel: UILabel {
+class AutoRedactionsTableViewCellLabel: UILabel {
     init() {
         super.init(frame: .zero)
 

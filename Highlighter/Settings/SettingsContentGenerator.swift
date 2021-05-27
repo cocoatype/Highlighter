@@ -14,7 +14,7 @@ struct SettingsContentGenerator {
         Group {
             if case .purchased = purchaseState {
                 Section {
-                    SettingsNavigationLink("SettingsContentProvider.Item.autoRedactions", destination: Text?.none)
+                    SettingsNavigationLink("SettingsContentProvider.Item.autoRedactions", destination: AutoRedactionsEditView())
                 }
             } else {
                 Section {
@@ -37,12 +37,10 @@ struct SettingsContentGenerator {
 }
 
 struct WebURLButton: View {
-//    @Binding private var selection: URL?
     private let titleKey: LocalizedStringKey
     private let url: URL
     @State private var selected = false
     init(_ titleKey: LocalizedStringKey, path: String) {
-//        self._selection = selection
         self.titleKey = titleKey
         self.url = Self.baseURL.appendingPathComponent(path)
     }
