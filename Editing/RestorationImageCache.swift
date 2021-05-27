@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 5/1/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
+import ErrorHandling
 import UIKit
 
 public class RestorationImageCache: NSObject {
@@ -38,7 +39,7 @@ public class RestorationImageCache: NSObject {
     private let directoryURL: URL = {
         do {
             return try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        } catch { fatalError("Error creating caches directory: \(error.localizedDescription)") }
+        } catch { ErrorHandling.crash("Error creating caches directory: \(error.localizedDescription)") }
     }()
 
     enum Error: Swift.Error {

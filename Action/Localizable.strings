@@ -12,3 +12,7 @@
 
 "BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle" = "Undo Redaction";
 "BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle" = "Redo Redaction";
+
+"ToolPickerItem.eraserToolItem" = "Eraser";
+"ToolPickerItem.magicToolItem" = "Magic Highlighter";
+"ToolPickerItem.manualToolItem" = "Manual Highlighter";

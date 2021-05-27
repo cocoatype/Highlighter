@@ -33,6 +33,6 @@ class PhotoPicker: NSObject, PHPickerViewControllerDelegate {
 }
 
 @available(iOS 14.0, *)
-protocol PhotoPickerDelegate: class {
+protocol PhotoPickerDelegate: AnyObject {
     func picker(_ picker: PhotoPicker, didSelectImage image: UIImage?)
 }

@@ -19,6 +19,11 @@ platform :ios do
       cloned_source_packages_path: "SourcePackages",
       export_method: "app-store",
       scheme: "Highlighter")
+
+    # Upload the dSYMs to Sentry
+    sentry_upload_dsym(
+      dsym_path: lane_context[SharedValues::DSYM_OUTPUT_PATH]
+    )
     
     # Just upload the build to TestFlight, no other changes
     upload_to_testflight(
@@ -43,11 +48,9 @@ platform :mac do
 
   desc "Submit a new beta build to Apple TestFlight"
   lane :beta do
-    sync_code_signing(
-      additional_cert_types: ["mac_installer_distribution"],
-      app_identifier: ["com.cocoatype.Highlighter"],
-      platform: "catalyst",
-      readonly: true)
+    # Sync twice to get Catalyst and macOS profiles
+    sync_code_signing(platform: "catalyst")
+    sync_code_signing
 
     # Set the build number to the number of Git commits
     build_number = sh "git log --oneline | wc -l"
@@ -57,7 +60,19 @@ platform :mac do
     build_mac_app(
       export_method: "app-store",
       installer_cert_name: "3rd Party Mac Developer Installer: Cocoatype, LLC (287EDDET2B)",
-      scheme: "Highlighter")
+      scheme: "Highlighter",
+      skip_profile_detection: true,
+      export_options: {
+        method: "app-store",
+        provisioningProfiles: {
+          "com.cocoatype.Highlighter" => "match AppStore com.cocoatype.Highlighter catalyst"
+        }
+      })
+
+    # Upload the dSYMs to Sentry
+    sentry_upload_dsym(
+      dsym_path: lane_context[SharedValues::DSYM_OUTPUT_PATH]
+    )
 
     # Just upload the build to TestFlight, no other changes
     upload_to_app_store(

@@ -2,6 +2,7 @@
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
 import Editing
+import ErrorHandling
 import UIKit
 
 #if targetEnvironment(macCatalyst)
@@ -95,8 +96,7 @@ class DesktopViewController: UIViewController, UIDocumentPickerDelegate, FileNam
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        let typeName = NSStringFromClass(type(of: self))
-        fatalError("\(typeName) does not implement init(coder:)")
+        ErrorHandling.notImplemented()
     }
 }
 
@@ -110,8 +110,7 @@ class DesktopView: UIView {
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        let typeName = NSStringFromClass(type(of: self))
-        fatalError("\(typeName) does not implement init(coder:)")
+        ErrorHandling.notImplemented()
     }
 }
 #endif

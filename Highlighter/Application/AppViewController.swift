@@ -2,6 +2,7 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Editing
+import ErrorHandling
 import Photos
 import UIKit
 import VisionKit
@@ -195,9 +196,8 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
 //        UIBarButtonItem.appearance().tintColor = .white
     }
 
-    @available(*, unavailable)
+//    @available(*, unavailable)
     required init(coder: NSCoder) {
-        let className = String(describing: type(of: self))
-        fatalError("\(className) does not implement init(coder:)")
+        ErrorHandling.notImplemented()
     }
 }

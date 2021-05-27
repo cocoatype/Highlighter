@@ -2,6 +2,7 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Combine
+import ErrorHandling
 import Photos
 import SwiftUI
 import UIKit
@@ -32,7 +33,7 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, UICollectionViewDataS
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssetPhotoLibraryViewCell.identifier, for: indexPath)
         guard let photoCell = cell as? AssetPhotoLibraryViewCell else {
-            fatalError("Got incorrect type of cell for photo picker: \(String(describing: type(of: cell)))")
+            ErrorHandling.crash("Got incorrect type of cell for photo picker: \(String(describing: type(of: cell)))")
         }
 
         photoCell.asset = allPhotos[indexPath.item]
@@ -50,7 +51,7 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, UICollectionViewDataS
 
     private func documentScannerCell(for collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
         guard #available(iOS 13.0, *) else {
-            fatalError("Tried to display a document scanner cell on iOS version prior to iOS 13.0")
+            ErrorHandling.crash("Tried to display a document scanner cell on iOS version prior to iOS 13.0")
         }
 
         return collectionView.dequeueReusableCell(withReuseIdentifier: DocumentScannerPhotoLibraryViewCell.identifier, for: indexPath)
