@@ -68,6 +68,7 @@
 		043C28D02659D8F50054A5A8 /* NavigationWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C28CF2659D8F50054A5A8 /* NavigationWrapper.swift */; };
 		043C28D22659E1720054A5A8 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 043C28D12659E1720054A5A8 /* Introspect */; };
 		043C28DB265C97240054A5A8 /* PaymentPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C28DA265C97240054A5A8 /* PaymentPublisher.swift */; };
+		043C28DD265CB2F70054A5A8 /* PurchaseRestoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C28DC265CB2F70054A5A8 /* PurchaseRestoreButton.swift */; };
 		043CD9DB22753D510012F5AE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DA22753D510012F5AE /* SettingsViewController.swift */; };
 		043CD9DD227548C20012F5AE /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DC227548C20012F5AE /* SettingsTableView.swift */; };
 		043CD9DF227548F30012F5AE /* SettingsStandardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD9DE227548F30012F5AE /* SettingsStandardTableViewCell.swift */; };
@@ -544,6 +545,7 @@
 		0439D78324A687B1001BB6A0 /* Action.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Action.entitlements; sourceTree = "<group>"; };
 		043C28CF2659D8F50054A5A8 /* NavigationWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationWrapper.swift; sourceTree = "<group>"; };
 		043C28DA265C97240054A5A8 /* PaymentPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPublisher.swift; sourceTree = "<group>"; };
+		043C28DC265CB2F70054A5A8 /* PurchaseRestoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRestoreButton.swift; sourceTree = "<group>"; };
 		043CD9C8226EB0400012F5AE /* TextRectangleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRectangleDetector.swift; sourceTree = "<group>"; };
 		043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRectangleDetectionOperation.swift; sourceTree = "<group>"; };
 		043CD9CE226EB0C70012F5AE /* TextObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservation.swift; sourceTree = "<group>"; };
@@ -1073,6 +1075,7 @@
 			children = (
 				047E913326560BBB0075F6B2 /* OtherAppButton.swift */,
 				047E912526549BFF0075F6B2 /* PurchaseMarketingView.swift */,
+				043C28DC265CB2F70054A5A8 /* PurchaseRestoreButton.swift */,
 				047E913F265613120075F6B2 /* PurchaseButton.swift */,
 				047E9127265604F30075F6B2 /* PurchaseNavigationLink.swift */,
 				047E913D26560CEC0075F6B2 /* PurchaseSubtitle.swift */,
@@ -2249,6 +2252,7 @@
 				049E1EB424BFEF09009DE20D /* AlbumsList.swift in Sources */,
 				0482C79B25218D090013B69E /* DesktopAutoRedactionsViewDelegate.swift in Sources */,
 				049F292F22875B1300A335BE /* PrivacyViewController.swift in Sources */,
+				043C28DD265CB2F70054A5A8 /* PurchaseRestoreButton.swift in Sources */,
 				046C4063247F5BB10069E8FB /* SystemCollectionTableViewCellImageView.swift in Sources */,
 				04ADD15E2290D2D200E17445 /* AppDeveloperInfo.swift in Sources */,
 				04F0910925E7A00000966C1E /* HelpMenuDataSource.swift in Sources */,

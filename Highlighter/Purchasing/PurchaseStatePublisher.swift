@@ -16,6 +16,10 @@ class PurchaseStatePublisher: Publisher {
         paymentPublisher.purchase(product)
     }
 
+    func restore() {
+        paymentPublisher.restore()
+    }
+
     private func state(for combinedValues: (Bool, [SKProduct], PaymentPublisher.State)) -> PurchaseState {
         let (previousPurchase, products, paymentState) = combinedValues
 

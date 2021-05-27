@@ -17,6 +17,10 @@ class PaymentPublisher: NSObject, Publisher, SKPaymentTransactionObserver {
         SKPaymentQueue.default().add(SKPayment(product: product))
     }
 
+    func restore() {
+        SKPaymentQueue.default().restoreCompletedTransactions()
+    }
+
     func receive<S>(subscriber: S) where S : Subscriber, Error == S.Failure, State == S.Input {
         stateSubject.receive(subscriber: subscriber)
     }
@@ -51,6 +55,10 @@ class PaymentPublisher: NSObject, Publisher, SKPaymentTransactionObserver {
         @unknown default:
             stateSubject.send(completion: .failure(PurchaseOperationError.unknown))
         }
+    }
+
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        stateSubject.send(.failed(error))
     }
 
     // MARK: Boilerplate
