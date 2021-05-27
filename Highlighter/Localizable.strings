@@ -64,6 +64,11 @@
 "PhotoSelectionViewController.navigationItemTitle" = "Photos";
 "PhotoSelectionViewController.settingsButtonAccessibilityLabel" = "Help";
 
+"PurchaseButton.purchaseButtonTitleLoading" = "Purchase";
+"PurchaseButton.purchaseButtonTitleReady" = "Purchase for %@";
+"PurchaseButton.purchaseButtonTitlePurchasing" = "Purchasing…";
+"PurchaseButton.purchaseButtonTitlePurchased" = "Thank You!";
+
 "PurchaseItem.title" = "Ultra Highlighter";
 "PurchaseItem.subtitleWithoutProduct" = "Enhanced Features";
 "PurchaseItem.subtitleWithProduct" = "Enhanced Features — %@";
@@ -74,8 +79,6 @@
 "PurchaseMarketingView.documentScanningText" = "Sometimes the stuff you want to share is in the real world. Bring them in to the virtual with high-quality document scanning.";
 "PurchaseMarketingView.supportDevelopmentHeader" = "Support Development";
 "PurchaseMarketingView.supportDevelopmentText" = "Black Highlighter is a one-man show. Your support helps keep updates to Black Highlighter coming!";
-"PurchaseMarketingView.purchaseButtonTitleWithoutProduct" = "Purchase";
-"PurchaseMarketingView.purchaseButtonTitleWithProduct" = "Purchase for %@";
 
 "PurchaseMarketingViewController.navigationTitle" = "Ultra Highlighter";
 "PurchaseMarketingViewController.restoreButtonTitle" = "Restore";

@@ -1,6 +1,8 @@
 //  Created by Geoff Pado on 5/15/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Introspect
+import SwiftUI
 import UIKit
 
 public class NavigationBar: UINavigationBar {
@@ -24,11 +26,12 @@ public class NavigationBar: UINavigationBar {
         NSAttributedString.Key.font: UIFont.navigationBarLargeTitleFont
     ]
 
-    static let buttonTitleTextAttributes = [
-        NSAttributedString.Key.font: UIFont.navigationBarButtonFont
+    public static let buttonTitleTextAttributes = [
+        NSAttributedString.Key.font: UIFont.navigationBarButtonFont,
+        .foregroundColor: UIColor.white
     ]
 
-    static let titleTextAttributes = [
+    public static let titleTextAttributes = [
         NSAttributedString.Key.font: UIFont.navigationBarTitleFont,
         .foregroundColor: UIColor.white
     ]
@@ -65,5 +68,23 @@ public class NavigationBarAppearance: UINavigationBarAppearance {
     required init(coder: NSCoder) {
         let typeName = NSStringFromClass(type(of: self))
         fatalError("\(typeName) does not implement init(coder:)")
+    }
+}
+
+struct NavigationBarAppearanceViewModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        AnyView(content).introspectNavigationController { navigationController in
+            navigationController.navigationBar.standardAppearance = NavigationBarAppearance()
+            navigationController.navigationBar.scrollEdgeAppearance = NavigationBarAppearance()
+
+            navigationController.navigationBar.tintColor = .white
+            navigationController.navigationBar.prefersLargeTitles = false
+        }
+    }
+}
+
+public extension View {
+    func appNavigationBarAppearance() -> some View {
+        self.modifier(NavigationBarAppearanceViewModifier())
     }
 }

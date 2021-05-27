@@ -62,10 +62,6 @@ struct AlbumsRow: View {
             .id(collection.identifier)
             .tag(collection.identifier)
         }
-
-//        let destination = PhotoLibraryView(dataSource: PhotoLibraryDataSource(collection))
-//        return NavigationLink(destination: destination, tag: collection.identifier, selection: selection) {
-//        }
     }
 
     @EnvironmentObject private var navigationWrapper: NavigationWrapper
@@ -83,7 +79,7 @@ struct AlbumsList_Previews: PreviewProvider {
     ]
 
     static var previews: some View {
-        AlbumsRow(fakeData[0].collections[0], selection: .constant(nil))
+        AlbumsList(data: fakeData)
             .preferredColorScheme(.dark)
     }
 }

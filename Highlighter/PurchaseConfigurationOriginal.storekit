@@ -1,4 +1,8 @@
 {
+  "identifier" : "C5A77864",
+  "nonRenewingSubscriptions" : [
+
+  ],
   "products" : [
     {
       "displayPrice" : "2.99",
@@ -28,6 +32,6 @@
   ],
   "version" : {
     "major" : 1,
-    "minor" : 0
+    "minor" : 1
   }
 }
