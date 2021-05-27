@@ -28,9 +28,9 @@ struct SettingsContentGenerator {
                 WebURLButton("SettingsContentProvider.Item.contact", path: "contact")
             }
             Section(header: SettingsSectionHeader("SettingsContentProvider.Section.otherApps.header")) {
-                OtherAppButton(name: "Kineo", id: "286948844")
-                OtherAppButton(name: "Scrawl", id: "1229326968")
-                OtherAppButton(name: "Debigulator", id: "1510076117")
+                OtherAppButton(name: "Kineo", subtitle: "Draw flipbook-style animations", id: "286948844")
+                OtherAppButton(name: "Scrawl", subtitle: "definitely an app", id: "1229326968")
+                OtherAppButton(name: "Debigulator", subtitle: "Shrink images to send faster", id: "1510076117")
             }
         }
     }
