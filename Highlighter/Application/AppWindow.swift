@@ -26,7 +26,9 @@ class AppWindow: UIWindow {
                 let url = try URL(resolvingBookmarkData: imageBookmarkData, bookmarkDataIsStale: &isStale)
                 imageCache.readImageFromCache(at: url) { [weak self] result in
                     guard let image = try? result.get() else { return }
-                    self?.appViewController.presentPhotoEditingViewController(for: image, redactions: editingActivity.redactions, animated: false)
+                    DispatchQueue.main.async {
+                        self?.appViewController.presentPhotoEditingViewController(for: image, redactions: editingActivity.redactions, animated: false)
+                    }
                 }
             } catch {}
         }
