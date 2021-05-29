@@ -4,6 +4,7 @@
 import Editing
 import UIKit
 
+#if !targetEnvironment(macCatalyst)
 @available(iOS 14.0, *)
 class LimitedLibraryPhotoLibraryViewCellIconView: UIImageView {
     init() {
@@ -22,3 +23,4 @@ class LimitedLibraryPhotoLibraryViewCellIconView: UIImageView {
         fatalError("\(typeName) does not implement init(coder:)")
     }
 }
+#endif

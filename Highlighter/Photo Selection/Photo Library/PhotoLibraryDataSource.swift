@@ -27,8 +27,7 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let item = item(at: indexPath)
-        switch item {
+        switch item(at: indexPath) {
         case .asset(_):
             return assetCell(for: collectionView, at: indexPath)
         case .documentScan:
