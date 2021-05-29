@@ -16,9 +16,11 @@ class LegacyPhotoLibraryView: UICollectionView {
             register(DocumentScannerPhotoLibraryViewCell.self, forCellWithReuseIdentifier: DocumentScannerPhotoLibraryViewCell.identifier)
         }
 
+        #if !targetEnvironment(macCatalyst)
         if #available(iOS 14.0, *) {
             register(LimitedLibraryPhotoLibraryViewCell.self, forCellWithReuseIdentifier: LimitedLibraryPhotoLibraryViewCell.identifier)
         }
+        #endif
 
         backgroundColor = .primary
     }
