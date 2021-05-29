@@ -7,7 +7,7 @@ import UIKit
 class HelpMenuAboutAction: UIAction {
     convenience init(void: Void = ()) {
         self.init(title: Self.menuItemTitle) { _ in
-            UIApplication.shared.open(AboutViewController.url, options: [:], completionHandler: nil)
+            UIApplication.shared.open(WebURLButton.url(forPath: "about"), options: [:], completionHandler: nil)
         }
     }
 

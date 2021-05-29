@@ -42,7 +42,7 @@ struct WebURLButton: View {
     @State private var selected = false
     init(_ titleKey: LocalizedStringKey, path: String) {
         self.titleKey = titleKey
-        self.url = Self.baseURL.appendingPathComponent(path)
+        self.url = Self.url(forPath: path)
     }
 
     var body: some View {
@@ -57,6 +57,10 @@ struct WebURLButton: View {
         guard let url = URL(string: "https://blackhighlighter.app/") else { fatalError("Invalid base URL for settings") }
         return url
     }()
+
+    static func url(forPath path: String) -> URL {
+        Self.baseURL.appendingPathComponent(path)
+    }
 }
 
 struct WebView: UIViewControllerRepresentable {

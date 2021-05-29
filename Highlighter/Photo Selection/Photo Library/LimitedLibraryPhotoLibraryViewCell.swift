@@ -8,7 +8,7 @@ class LimitedLibraryPhotoLibraryViewCell: UICollectionViewCell {
     static let identifier = "LimitedLibraryPhotoLibraryViewCell.identifier"
 
     override init(frame: CGRect) {
-        iconView = DocumentScannerPhotoLibraryViewCellIconView()
+        iconView = LimitedLibraryPhotoLibraryViewCellIconView()
         super.init(frame: frame)
 
         contentView.addSubview(iconView)
@@ -39,7 +39,7 @@ class LimitedLibraryPhotoLibraryViewCell: UICollectionViewCell {
 
     private static let defaultAccessibilityLabel = NSLocalizedString("LimitedLibraryPhotoLibraryViewCell.defaultAccessibilityLabel", comment: "Accessibility label for the document scanner cell")
 
-    private let iconView: DocumentScannerPhotoLibraryViewCellIconView
+    private let iconView: LimitedLibraryPhotoLibraryViewCellIconView
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

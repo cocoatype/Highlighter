@@ -7,6 +7,9 @@ public enum Icons {
     @available(iOS 13.0, *)
     public static let scanDocument = UIImage(systemName: "doc.text.viewfinder")
 
+    @available(iOS 14.0, *)
+    public static let limitedLibrary = UIImage(systemName: "rectangle.stack.badge.plus")
+
     static var undo: UIImage? {
         if #available(iOS 13.0, *) {
             return UIImage(systemName: "arrow.uturn.left")

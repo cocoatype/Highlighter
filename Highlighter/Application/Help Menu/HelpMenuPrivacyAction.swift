@@ -7,7 +7,7 @@ import UIKit
 class HelpMenuPrivacyAction: UIAction {
     convenience init(void: Void = ()) {
         self.init(title: Self.menuItemTitle) { _ in
-            UIApplication.shared.open(PrivacyViewController.url, options: [:], completionHandler: nil)
+            UIApplication.shared.open(WebURLButton.url(forPath: "privacy"), options: [:], completionHandler: nil)
         }
     }
 

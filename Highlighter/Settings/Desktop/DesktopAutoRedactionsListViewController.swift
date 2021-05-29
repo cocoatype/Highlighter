@@ -2,7 +2,7 @@
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
 import Editing
-import Foundation
+import SwiftUI
 
 class DesktopAutoRedactionsListViewController: UIViewController, DesktopAutoRedactionsViewDelegate {
     init() {
@@ -61,4 +61,12 @@ class DesktopAutoRedactionsListViewController: UIViewController, DesktopAutoReda
         let typeName = NSStringFromClass(type(of: self))
         fatalError("\(typeName) does not implement init(coder:)")
     }
+}
+
+struct DesktopAutoRedactionsListViewControllerRepresentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> some UIViewController {
+        return DesktopAutoRedactionsListViewController()
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 }
