@@ -14,10 +14,6 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
 
         navigationItem.title = Self.navigationItemTitle
         navigationItem.rightBarButtonItem = SettingsBarButtonItem.standard
-        NotificationCenter.default.addObserver(forName: Purchaser.stateDidChange, object: nil, queue: .main) { [weak self] notification in
-            guard let purchaser = notification.object as? Purchaser, case .purchased = purchaser.state else { return }
-            self?.libraryView?.reloadData()
-        }
     }
 
     override func loadView() {
@@ -25,7 +21,6 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
         libraryView.dataSource = dataSource
         libraryView.delegate = self
         libraryView.dragDelegate = self
-//        dataSource.libraryView = libraryView
 
         let dropInteraction = UIDropInteraction(delegate: self)
         libraryView.addInteraction(dropInteraction)
@@ -40,6 +35,11 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
            libraryView.contentOffset.y <= 0 {
             libraryView.layoutIfNeeded()
             libraryView.scrollToItem(at: dataSource.lastItemIndexPath, at: .bottom, animated: false)
+        }
+
+        if let cellCount = libraryView?.numberOfItems(inSection: 0),
+           cellCount != dataSource.itemsCount {
+            libraryView?.reloadData()
         }
     }
 
@@ -98,7 +98,9 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
         case .documentScan:
             guard #available(iOS 13.0, *) else { break }
             documentScannerPresenter?.presentDocumentCameraViewController()
-        case .limitedLibrary: break
+        case .limitedLibrary:
+            guard #available(iOS 14.0, *) else { break }
+            limitedLibraryPresenter?.presentLimitedLibrary()
         }
     }
 

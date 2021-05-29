@@ -4,46 +4,27 @@
 import SwiftUI
 import UIKit
 
-class DesktopSettingsViewController: UIViewController {
+class DesktopSettingsViewController: UIHostingController<DesktopSettingsView> {
     init() {
-        super.init(nibName: nil, bundle: nil)
-
-        embed(preferredViewController)
-
-        purchaserObservation = NotificationCenter.default.addObserver(forName: Purchaser.stateDidChange, object: nil, queue: .main, using: { [weak self] _ in
-            self?.purchaseStateDidChange()
-        })
+        super.init(rootView: DesktopSettingsView())
     }
 
-    deinit {
-        purchaserObservation.map(NotificationCenter.default.removeObserver)
+    override func viewLayoutMarginsDidChange() {
+        super.viewLayoutMarginsDidChange()
+        updateReadableWidth()
     }
 
-    private var preferredViewController: UIViewController {
-        switch purchaser.state {
-        case .purchased: return DesktopAutoRedactionsListViewController()
-        default: return UIHostingController(rootView: PurchaseMarketingView())
-        }
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateReadableWidth()
     }
 
-    // MARK: Purchasing
-
-    @objc func startPurchase() {
-        purchaser.purchaseUnlock()
-    }
-
-    @objc func startRestore() {
-        purchaser.restorePurchases()
-    }
-
-    private func purchaseStateDidChange() {
-        embed(preferredViewController)
+    private func updateReadableWidth() {
+        let readableWidth = view.readableContentGuide.layoutFrame.width
+        rootView = DesktopSettingsView(readableWidth: readableWidth)
     }
 
     // MARK: Boilerplate
-
-    private let purchaser = Purchaser()
-    private var purchaserObservation: Any?
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

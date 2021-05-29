@@ -13,16 +13,17 @@ class PurchaseValidatorTests: XCTestCase {
             return try self.appReceipt(withVersion: "100")
         }
 
-        let wasPurchased =  PurchaseValidator.hasUserPurchasedProduct(withIdentifier: "identifier", receiptFetchingMethod: receiptFetchingMethod)
+        let wasPurchased = try PreviousPurchasePublisher.hasUserPurchasedProduct(receiptFetchingMethod: receiptFetchingMethod).get()
+
         XCTAssertTrue(wasPurchased)
     }
 
-    func testFreeUnlockIfAppWasPurchasedLate() {
+    func testFreeUnlockIfAppWasPurchasedLate() throws {
         let receiptFetchingMethod: (() throws -> AppReceipt) = {
             return try self.appReceipt(withVersion: "1000")
         }
 
-        let wasPurchased =  PurchaseValidator.hasUserPurchasedProduct(withIdentifier: "identifier", receiptFetchingMethod: receiptFetchingMethod)
+        let wasPurchased = try PreviousPurchasePublisher.hasUserPurchasedProduct(receiptFetchingMethod: receiptFetchingMethod).get()
         XCTAssertFalse(wasPurchased)
     }
 

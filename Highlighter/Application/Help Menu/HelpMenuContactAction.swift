@@ -7,7 +7,7 @@ import UIKit
 class HelpMenuContactAction: UIAction {
     convenience init(void: Void = ()) {
         self.init(title: Self.menuItemTitle) { _ in
-            UIApplication.shared.open(ContactMailViewController.mailtoURL, options: [:], completionHandler: nil)
+            UIApplication.shared.open(WebURLButton.url(forPath: "contact"), options: [:], completionHandler: nil)
         }
     }
 

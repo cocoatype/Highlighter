@@ -6,7 +6,7 @@ import StoreKit
 
 class PaymentPublisher: NSObject, Publisher, SKPaymentTransactionObserver {
     typealias Output = State
-    typealias Failure = Error
+    typealias Failure = Swift.Error
 
     override init() {
         super.init()
@@ -21,7 +21,7 @@ class PaymentPublisher: NSObject, Publisher, SKPaymentTransactionObserver {
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
 
-    func receive<S>(subscriber: S) where S : Subscriber, Error == S.Failure, State == S.Input {
+    func receive<S>(subscriber: S) where S : Subscriber, Swift.Error == S.Failure, State == S.Input {
         stateSubject.receive(subscriber: subscriber)
     }
 
@@ -30,8 +30,12 @@ class PaymentPublisher: NSObject, Publisher, SKPaymentTransactionObserver {
         case purchasing
         case purchased(SKPaymentTransaction)
         case restored(SKPaymentTransaction)
-        case failed(Error)
+        case failed(Swift.Error)
         case deferred
+    }
+
+    enum Error: Swift.Error {
+        case unknown
     }
 
     // MARK: SKPaymentTransactionObserver
@@ -50,18 +54,18 @@ class PaymentPublisher: NSObject, Publisher, SKPaymentTransactionObserver {
             stateSubject.send(.restored(transaction))
             queue.finishTransaction(transaction)
         case .failed:
-            stateSubject.send(.failed(transaction.error ?? PurchaseOperationError.unknown))
+            stateSubject.send(.failed(transaction.error ?? Error.unknown))
             queue.finishTransaction(transaction)
         @unknown default:
-            stateSubject.send(completion: .failure(PurchaseOperationError.unknown))
+            stateSubject.send(completion: .failure(Error.unknown))
         }
     }
 
-    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Swift.Error) {
         stateSubject.send(.failed(error))
     }
 
     // MARK: Boilerplate
 
-    private let stateSubject = PassthroughSubject<State, Error>()
+    private let stateSubject = PassthroughSubject<State, Swift.Error>()
 }

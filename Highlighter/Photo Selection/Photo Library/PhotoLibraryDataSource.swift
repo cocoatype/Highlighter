@@ -27,25 +27,34 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard indexPath.row < photosCount else {
+        let item = item(at: indexPath)
+        switch item {
+        case .asset(_):
+            return assetCell(for: collectionView, at: indexPath)
+        case .documentScan:
             return documentScannerCell(for: collectionView, at: indexPath)
+        case .limitedLibrary:
+            return limitedLibraryCell(for: collectionView, at: indexPath)
         }
+    }
 
+    private func assetCell(for collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssetPhotoLibraryViewCell.identifier, for: indexPath)
         guard let photoCell = cell as? AssetPhotoLibraryViewCell else {
             ErrorHandling.crash("Got incorrect type of cell for photo picker: \(String(describing: type(of: cell)))")
         }
 
         photoCell.asset = allPhotos[indexPath.item]
-
-        return cell
+        return photoCell
     }
 
     // MARK: Document Scanning
 
     private var shouldShowDocumentScannerCell: Bool {
-        guard #available(iOS 13.0, *) else { return false }
-        guard case .purchased = Purchaser().state else { return false }
+        guard #available(iOS 13.0, *),
+              let hasPurchased = try? PreviousPurchasePublisher.hasUserPurchasedProduct().get(),
+              hasPurchased == true
+        else { return false }
         return VNDocumentCameraViewController.isSupported
     }
 
@@ -55,6 +64,16 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, UICollectionViewDataS
         }
 
         return collectionView.dequeueReusableCell(withReuseIdentifier: DocumentScannerPhotoLibraryViewCell.identifier, for: indexPath)
+    }
+
+    // MARK: Limited Library
+
+    private func limitedLibraryCell(for collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
+        guard #available(iOS 14.0, *) else {
+            ErrorHandling.crash("Tried to display a limited library cell on iOS version prior to iOS 14.0")
+        }
+
+        return collectionView.dequeueReusableCell(withReuseIdentifier: LimitedLibraryPhotoLibraryViewCell.identifier, for: indexPath)
     }
 
     // MARK: Photos
@@ -104,14 +123,6 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, UICollectionViewDataS
         itemsCountPublisher.send(assets.count + extraItems.count)
         return assets
     }
-
-    // MARK: Photo Library Changes
-
-//    func changeDetails(for change: PHChange) -> PHFetchResultChangeDetails<PHAsset>? {
-//        guard let details = change.changeDetails(for: allPhotos) else { return nil }
-//        allPhotos = details.fetchResultAfterChanges
-//        return details
-//    }
 }
 
 @available(iOS 14.0, *)
