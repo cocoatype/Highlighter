@@ -6,9 +6,9 @@ import SwiftUI
 struct SettingsHeaderTextCaseModifier: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOS 14, *) {
-            return AnyView(content).textCase(.none)
+            AnyView(content).textCase(.none)
         } else {
-            return AnyView(content).textCase(nil)
+            content
         }
     }
 }
