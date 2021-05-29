@@ -4,7 +4,6 @@
 import Editing
 import UIKit
 
-@available(iOS 14.0, *)
 class LimitedLibraryPhotoLibraryViewCellIconView: UIImageView {
     init() {
         super.init(image: Icons.limitedLibrary)
