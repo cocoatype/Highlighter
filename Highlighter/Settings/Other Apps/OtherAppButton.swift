@@ -35,28 +35,6 @@ struct OtherAppButton: View {
     }
 }
 
-struct OtherAppNameText: View {
-    private let text: String
-    init(_ text: String) {
-        self.text = text
-    }
-
-    var body: some View {
-        Text(text).font(.app(textStyle: .subheadline)).foregroundColor(.white)
-    }
-}
-
-struct OtherAppSubtitleText: View {
-    private let text: String
-    init(_ text: String) {
-        self.text = text
-    }
-
-    var body: some View {
-        Text(text).font(.app(textStyle: .footnote)).foregroundColor(.primaryExtraLight)
-    }
-}
-
 struct OtherAppButton_Previews: PreviewProvider {
     static var previews: some View {
         OtherAppButton(name: "Kineo", subtitle: "Create flipbook-style animations", id: "286948844").preferredColorScheme(.dark)
