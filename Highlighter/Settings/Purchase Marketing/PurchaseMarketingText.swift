@@ -12,9 +12,17 @@ struct PurchaseMarketingText: View {
     var body: some View {
         Text(titleKey)
             .lineSpacing(3)
-            .font(.app(textStyle: .subheadline))
+            .font(.app(textStyle: Self.textStyle))
             .foregroundColor(Color(.primaryExtraLight))
     }
+
+    private static let textStyle: UIFont.TextStyle = {
+        #if targetEnvironment(macCatalyst)
+        return .body
+        #else
+        return .subheadline
+        #endif
+    }()
 }
 
 struct PurchaseMarketingTextPreviews: PreviewProvider {
