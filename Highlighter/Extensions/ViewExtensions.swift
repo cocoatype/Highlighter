@@ -19,4 +19,14 @@ extension View {
             return self.onReceive(publisher, perform: action)
         }
     }
+
+    public func fill() -> some View {
+        return self.modifier(FillViewModifier())
+    }
+}
+
+struct FillViewModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        AnyView(content).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+    }
 }

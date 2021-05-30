@@ -5,23 +5,23 @@ import SwiftUI
 
 struct PurchaseMarketingView: View {
     var body: some View {
-        HStack {
-            PurchaseMarketingStack {
-                PurchaseMarketingItem(
-                    header: "PurchaseMarketingView.autoRedactionsHeader",
-                    text: "PurchaseMarketingView.autoRedactionsText")
-                #if !targetEnvironment(macCatalyst)
-                PurchaseMarketingItem(
-                    header: "PurchaseMarketingView.documentScanningHeader",
-                    text: "PurchaseMarketingView.documentScanningText")
-                #endif
-                PurchaseMarketingItem(
-                    header: "PurchaseMarketingView.supportDevelopmentHeader",
-                    text: "PurchaseMarketingView.supportDevelopmentText")
-                PurchaseButton()
-                Spacer()
-            }
-        }.frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).background(Color(.primary))
+        PurchaseMarketingStack {
+            PurchaseMarketingItem(
+                header: "PurchaseMarketingView.autoRedactionsHeader",
+                text: "PurchaseMarketingView.autoRedactionsText")
+            #if !targetEnvironment(macCatalyst)
+            PurchaseMarketingItem(
+                header: "PurchaseMarketingView.documentScanningHeader",
+                text: "PurchaseMarketingView.documentScanningText")
+            #endif
+            PurchaseMarketingItem(
+                header: "PurchaseMarketingView.supportDevelopmentHeader",
+                text: "PurchaseMarketingView.supportDevelopmentText")
+            PurchaseButton()
+            Spacer()
+        }
+        .fill()
+        .background(Color(.primary))
         .navigationBarItems(trailing: PurchaseRestoreButton())
     }
 }

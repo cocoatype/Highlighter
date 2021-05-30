@@ -12,9 +12,15 @@ struct PurchaseMarketingItem: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 4) {
             PurchaseMarketingHeader(headerKey)
             PurchaseMarketingText(textKey)
         }
+    }
+}
+
+struct PurchaseMarketingItemPreviews: PreviewProvider {
+    static var previews: some View {
+        PurchaseMarketingItem(header: "PurchaseMarketingView.supportDevelopmentHeader", text: "PurchaseMarketingView.supportDevelopmentText").preferredColorScheme(.dark)
     }
 }

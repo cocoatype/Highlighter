@@ -11,7 +11,15 @@ struct PurchaseMarketingText: View {
 
     var body: some View {
         Text(titleKey)
+            .lineSpacing(3)
             .font(.app(textStyle: .subheadline))
             .foregroundColor(Color(.primaryExtraLight))
+    }
+}
+
+struct PurchaseMarketingTextPreviews: PreviewProvider {
+    static var previews: some View {
+        PurchaseMarketingText("PurchaseMarketingView.supportDevelopmentText")
+            .preferredColorScheme(.dark)
     }
 }
