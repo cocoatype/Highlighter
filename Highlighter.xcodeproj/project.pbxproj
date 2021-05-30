@@ -48,6 +48,15 @@
 		0429C7B22661DD2500236D10 /* LimitedLibraryPhotoLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7B12661DD2500236D10 /* LimitedLibraryPhotoLibraryViewCell.swift */; };
 		0429C7B42661E37200236D10 /* DesktopSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7B32661E37200236D10 /* DesktopSettingsView.swift */; };
 		0429C7B62661F55C00236D10 /* LimitedLibraryPhotoLibraryViewCellIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7B52661F55C00236D10 /* LimitedLibraryPhotoLibraryViewCellIconView.swift */; };
+		0429C7B92663841500236D10 /* PurchaseMarketingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7B82663841500236D10 /* PurchaseMarketingItem.swift */; };
+		0429C7BB2663845B00236D10 /* PurchaseMarketingStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7BA2663845B00236D10 /* PurchaseMarketingStack.swift */; };
+		0429C7BD2663847600236D10 /* PurchaseMarketingHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7BC2663847600236D10 /* PurchaseMarketingHeader.swift */; };
+		0429C7BF2663849200236D10 /* PurchaseMarketingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7BE2663849200236D10 /* PurchaseMarketingText.swift */; };
+		0429C7C22663852300236D10 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7C12663852300236D10 /* ViewExtensions.swift */; };
+		0429C7C72663860600236D10 /* WebURLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7C62663860600236D10 /* WebURLButton.swift */; };
+		0429C7C92663861C00236D10 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7C82663861C00236D10 /* WebView.swift */; };
+		0429C7CB2663867600236D10 /* OtherAppNameText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7CA2663867600236D10 /* OtherAppNameText.swift */; };
+		0429C7CD2663868F00236D10 /* OtherAppSubtitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7CC2663868F00236D10 /* OtherAppSubtitleText.swift */; };
 		042A2B7A228A642100353414 /* PhotoEditingProtectionAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B79228A642100353414 /* PhotoEditingProtectionAlertController.swift */; };
 		042A2B7C228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B7B228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift */; };
 		042A2B7E228CFEDB00353414 /* PhotoEditingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A2B7D228CFEDB00353414 /* PhotoEditingNavigationController.swift */; };
@@ -491,6 +500,15 @@
 		0429C7B12661DD2500236D10 /* LimitedLibraryPhotoLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedLibraryPhotoLibraryViewCell.swift; sourceTree = "<group>"; };
 		0429C7B32661E37200236D10 /* DesktopSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesktopSettingsView.swift; sourceTree = "<group>"; };
 		0429C7B52661F55C00236D10 /* LimitedLibraryPhotoLibraryViewCellIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedLibraryPhotoLibraryViewCellIconView.swift; sourceTree = "<group>"; };
+		0429C7B82663841500236D10 /* PurchaseMarketingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingItem.swift; sourceTree = "<group>"; };
+		0429C7BA2663845B00236D10 /* PurchaseMarketingStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingStack.swift; sourceTree = "<group>"; };
+		0429C7BC2663847600236D10 /* PurchaseMarketingHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingHeader.swift; sourceTree = "<group>"; };
+		0429C7BE2663849200236D10 /* PurchaseMarketingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingText.swift; sourceTree = "<group>"; };
+		0429C7C12663852300236D10 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		0429C7C62663860600236D10 /* WebURLButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebURLButton.swift; sourceTree = "<group>"; };
+		0429C7C82663861C00236D10 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		0429C7CA2663867600236D10 /* OtherAppNameText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherAppNameText.swift; sourceTree = "<group>"; };
+		0429C7CC2663868F00236D10 /* OtherAppSubtitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherAppSubtitleText.swift; sourceTree = "<group>"; };
 		042A2B77228A5B6F00353414 /* PhotoExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExporter.swift; sourceTree = "<group>"; };
 		042A2B79228A642100353414 /* PhotoEditingProtectionAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingProtectionAlertController.swift; sourceTree = "<group>"; };
 		042A2B7B228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPermissionsRestrictedAlertController.swift; sourceTree = "<group>"; };
@@ -814,13 +832,13 @@
 				041EFEF72251A9F30058D8EE /* Highlighter */,
 				041EFF0C2251A9F50058D8EE /* HighlighterTests */,
 				043911C122C461F000D4AE30 /* Action */,
-				049F92D822CDA3DB0090C9BC /* Editing */,
-				04F3C8062309E8A800445A8D /* Receipts */,
-				04431E4A23556106009FA1F6 /* Photo */,
 				044D4C192547B7BC00701166 /* Automator */,
+				049F92D822CDA3DB0090C9BC /* Editing */,
+				04DE87B3265213F40002BA42 /* ErrorHandling */,
+				04431E4A23556106009FA1F6 /* Photo */,
+				04F3C8062309E8A800445A8D /* Receipts */,
 				044D4C9C2547C8EE00701166 /* Redacting */,
 				0464B1DF2553A3DE00D00FAC /* Shortcuts */,
-				04DE87B3265213F40002BA42 /* ErrorHandling */,
 				041EFEF62251A9F30058D8EE /* Products */,
 				04ADD1622290DE6700E17445 /* Frameworks */,
 			);
@@ -847,14 +865,14 @@
 		041EFEF72251A9F30058D8EE /* Highlighter */ = {
 			isa = PBXGroup;
 			children = (
-				0470163024D8FD660080DC52 /* Desktop */,
-				0439D78224A687B1001BB6A0 /* Highlighter.entitlements */,
-				0445AA572371207000EB2A7B /* Image Downloading */,
-				04F3C7A32300204B00445A8D /* Purchasing */,
 				04D68BCF2262C41300D09BBD /* Application */,
 				048D134D229F7E4400427FE3 /* Callback Actions */,
+				0470163024D8FD660080DC52 /* Desktop */,
+				0429C7C02663851600236D10 /* Extensions */,
+				0445AA572371207000EB2A7B /* Image Downloading */,
 				048909EF2265716B0048E203 /* Photo Editing */,
 				041EFF6C225C38600058D8EE /* Photo Selection */,
+				04F3C7A32300204B00445A8D /* Purchasing */,
 				04EF55B822D6DB8500C6600D /* Scene */,
 				043CD9D922753D450012F5AE /* Settings */,
 				048909F0226571830048E203 /* Supporting Files */,
@@ -900,22 +918,22 @@
 		041EFF69225C36130058D8EE /* Photo Library */ = {
 			isa = PBXGroup;
 			children = (
-				046BEC222470EB9800FBECD7 /* Collections */,
+				04920C1624CFCD3500BA3232 /* Asset.swift */,
 				041EFF73225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift */,
 				04D68BC6225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift */,
 				0431E0CC22F826E900DC85C4 /* DocumentScannerPhotoLibraryViewCell.swift */,
-				0429C7B12661DD2500236D10 /* LimitedLibraryPhotoLibraryViewCell.swift */,
 				0431E0CE22F830BB00DC85C4 /* DocumentScannerPhotoLibraryViewCellIconView.swift */,
+				0429C7B12661DD2500236D10 /* LimitedLibraryPhotoLibraryViewCell.swift */,
 				0429C7B52661F55C00236D10 /* LimitedLibraryPhotoLibraryViewCellIconView.swift */,
 				041EFF71225C3DC00058D8EE /* PhotoLibraryDataSource.swift */,
-				0489081824AD797E005DDEF3 /* Legacy */,
-				0489081624AD796D005DDEF3 /* PhotoLibraryViewController.swift */,
+				0495B57A25354C3200B2DF0B /* PhotoLibraryScrollView.swift */,
 				0489081924AD7A32005DDEF3 /* PhotoLibraryView.swift */,
-				0493BA8B253AA4DF0083198C /* Library Items */,
-				04920C1624CFCD3500BA3232 /* Asset.swift */,
+				0489081624AD796D005DDEF3 /* PhotoLibraryViewController.swift */,
 				0491831424E4D87A004251B1 /* SettingsButton.swift */,
 				0491831624E4DA72004251B1 /* SettingsPresenting.swift */,
-				0495B57A25354C3200B2DF0B /* PhotoLibraryScrollView.swift */,
+				046BEC222470EB9800FBECD7 /* Collections */,
+				0489081824AD797E005DDEF3 /* Legacy */,
+				0493BA8B253AA4DF0083198C /* Library Items */,
 			);
 			path = "Photo Library";
 			sourceTree = "<group>";
@@ -923,18 +941,120 @@
 		041EFF6C225C38600058D8EE /* Photo Selection */ = {
 			isa = PBXGroup;
 			children = (
-				0493BA82253A9CE20083198C /* Photo Picker */,
+				04ABC8DC2528207400F5BA6A /* CollectionPresenting.swift */,
+				043C28CF2659D8F50054A5A8 /* NavigationWrapper.swift */,
+				04FF8DE222F6DF2C008CF0E9 /* PageCountAlertFactory.swift */,
+				041EFF6D225C38800058D8EE /* PhotoSelectionNavigationController.swift */,
+				046BEC2D2471013900FBECD7 /* SettingsBarButtonItem.swift */,
 				046BEC1F2470E36800FBECD7 /* Albums */,
 				041EFF4C225302B90058D8EE /* Intro View */,
 				041EFF69225C36130058D8EE /* Photo Library */,
-				041EFF6D225C38800058D8EE /* PhotoSelectionNavigationController.swift */,
-				043C28CF2659D8F50054A5A8 /* NavigationWrapper.swift */,
 				04D68BCA2262B34600D09BBD /* Photo Permissions */,
-				04FF8DE222F6DF2C008CF0E9 /* PageCountAlertFactory.swift */,
-				046BEC2D2471013900FBECD7 /* SettingsBarButtonItem.swift */,
-				04ABC8DC2528207400F5BA6A /* CollectionPresenting.swift */,
+				0493BA82253A9CE20083198C /* Photo Picker */,
 			);
 			path = "Photo Selection";
+			sourceTree = "<group>";
+		};
+		0429C7B7266383FE00236D10 /* Purchase Marketing */ = {
+			isa = PBXGroup;
+			children = (
+				047E913F265613120075F6B2 /* PurchaseButton.swift */,
+				043C28DC265CB2F70054A5A8 /* PurchaseRestoreButton.swift */,
+				047E912526549BFF0075F6B2 /* PurchaseMarketingView.swift */,
+				0429C7B82663841500236D10 /* PurchaseMarketingItem.swift */,
+				0429C7BA2663845B00236D10 /* PurchaseMarketingStack.swift */,
+				0429C7BC2663847600236D10 /* PurchaseMarketingHeader.swift */,
+				0429C7BE2663849200236D10 /* PurchaseMarketingText.swift */,
+			);
+			path = "Purchase Marketing";
+			sourceTree = "<group>";
+		};
+		0429C7C02663851600236D10 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0429C7C12663852300236D10 /* ViewExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0429C7C32663859C00236D10 /* Purchase Item */ = {
+			isa = PBXGroup;
+			children = (
+				047E9127265604F30075F6B2 /* PurchaseNavigationLink.swift */,
+				047E913D26560CEC0075F6B2 /* PurchaseSubtitle.swift */,
+				047E913B26560CB50075F6B2 /* PurchaseTitle.swift */,
+			);
+			path = "Purchase Item";
+			sourceTree = "<group>";
+		};
+		0429C7C4266385BD00236D10 /* Other Apps */ = {
+			isa = PBXGroup;
+			children = (
+				047E913326560BBB0075F6B2 /* OtherAppButton.swift */,
+				0429C7CA2663867600236D10 /* OtherAppNameText.swift */,
+				0429C7CC2663868F00236D10 /* OtherAppSubtitleText.swift */,
+			);
+			path = "Other Apps";
+			sourceTree = "<group>";
+		};
+		0429C7C5266385ED00236D10 /* Web URLs */ = {
+			isa = PBXGroup;
+			children = (
+				0429C7C62663860600236D10 /* WebURLButton.swift */,
+				0429C7C82663861C00236D10 /* WebView.swift */,
+				049F292A22875ADD00A335BE /* WebViewController.swift */,
+			);
+			path = "Web URLs";
+			sourceTree = "<group>";
+		};
+		0429C7CE266386BD00236D10 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				047E912F26560B8B0075F6B2 /* SettingsCellViewModifier.swift */,
+				047E913126560BA50075F6B2 /* SettingsContentGenerator.swift */,
+				047E913926560C600075F6B2 /* SettingsHeaderTextCaseModifier.swift */,
+				047E9120265362CD0075F6B2 /* SettingsHostingController.swift */,
+				047E912926560A130075F6B2 /* SettingsList.swift */,
+				047E912B26560A400075F6B2 /* SettingsListStyleModifier.swift */,
+				047E912D26560A5D0075F6B2 /* SettingsNavigationLink.swift */,
+				047E913526560BFF0075F6B2 /* SettingsNavigationView.swift */,
+				047E913726560C390075F6B2 /* SettingsSectionHeader.swift */,
+				047E9123265363020075F6B2 /* SettingsView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		0429C7CF2663874700236D10 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0439D78324A687B1001BB6A0 /* Action.entitlements */,
+				043911C922C461F000D4AE30 /* Info.plist */,
+				049F92CE22CD98110090C9BC /* Localizable.strings */,
+				043911C222C461F000D4AE30 /* Media.xcassets */,
+				049F92C122CAF2A20090C9BC /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0429C7D02663875E00236D10 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				044D4C1D2547B7BD00701166 /* main.xib */,
+				044D4C202547B7BD00701166 /* Info.plist */,
+				044D4C212547B7BD00701166 /* InfoPlist.strings */,
+				044D4C4A2547C06600701166 /* Automator-Bridging-Header.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0429C7D2266387A600236D10 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0464B1E62553A3DE00D00FAC /* Shortcuts.entitlements */,
+				0464B1F22553A41300D00FAC /* Intents.intentdefinition */,
+				0464B1E22553A3DE00D00FAC /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		042A2B7F228D012300353414 /* Navigation */ = {
@@ -984,13 +1104,9 @@
 		043911C122C461F000D4AE30 /* Action */ = {
 			isa = PBXGroup;
 			children = (
-				0439D78324A687B1001BB6A0 /* Action.entitlements */,
-				043911C222C461F000D4AE30 /* Media.xcassets */,
-				043911C922C461F000D4AE30 /* Info.plist */,
-				049F92C122CAF2A20090C9BC /* InfoPlist.strings */,
-				049F92C822CAFC5D0090C9BC /* ActionViewController.swift */,
 				043C28E5265F47A20054A5A8 /* ActionView.swift */,
-				049F92CE22CD98110090C9BC /* Localizable.strings */,
+				049F92C822CAFC5D0090C9BC /* ActionViewController.swift */,
+				0429C7CF2663874700236D10 /* Supporting Files */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -1011,26 +1127,13 @@
 		043CD9D922753D450012F5AE /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				047E913326560BBB0075F6B2 /* OtherAppButton.swift */,
-				047E912526549BFF0075F6B2 /* PurchaseMarketingView.swift */,
-				043C28DC265CB2F70054A5A8 /* PurchaseRestoreButton.swift */,
-				047E913F265613120075F6B2 /* PurchaseButton.swift */,
-				047E9127265604F30075F6B2 /* PurchaseNavigationLink.swift */,
-				047E913D26560CEC0075F6B2 /* PurchaseSubtitle.swift */,
-				047E913B26560CB50075F6B2 /* PurchaseTitle.swift */,
-				047E912F26560B8B0075F6B2 /* SettingsCellViewModifier.swift */,
-				047E913126560BA50075F6B2 /* SettingsContentGenerator.swift */,
-				047E913926560C600075F6B2 /* SettingsHeaderTextCaseModifier.swift */,
-				047E9120265362CD0075F6B2 /* SettingsHostingController.swift */,
-				047E912926560A130075F6B2 /* SettingsList.swift */,
-				047E912B26560A400075F6B2 /* SettingsListStyleModifier.swift */,
-				047E912D26560A5D0075F6B2 /* SettingsNavigationLink.swift */,
-				047E913526560BFF0075F6B2 /* SettingsNavigationView.swift */,
-				047E913726560C390075F6B2 /* SettingsSectionHeader.swift */,
-				047E9123265363020075F6B2 /* SettingsView.swift */,
-				049F292A22875ADD00A335BE /* WebViewController.swift */,
 				04FF8DB522F57A52008CF0E9 /* Auto Redactions */,
 				04A606DF251C470E007A2B82 /* Desktop */,
+				0429C7CE266386BD00236D10 /* List */,
+				0429C7C4266385BD00236D10 /* Other Apps */,
+				0429C7C32663859C00236D10 /* Purchase Item */,
+				0429C7B7266383FE00236D10 /* Purchase Marketing */,
+				0429C7C5266385ED00236D10 /* Web URLs */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1057,17 +1160,14 @@
 		044D4C192547B7BC00701166 /* Automator */ = {
 			isa = PBXGroup;
 			children = (
-				044D4C1D2547B7BD00701166 /* main.xib */,
-				044D4C202547B7BD00701166 /* Info.plist */,
-				044D4C212547B7BD00701166 /* InfoPlist.strings */,
-				044D4C4B2547C06600701166 /* RedactAction.swift */,
-				041907A5254A6B4200739749 /* RedactActionInput.swift */,
-				044D4C4A2547C06600701166 /* Automator-Bridging-Header.h */,
-				041907BD254A6C0000739749 /* RedactedImageExporter.swift */,
 				041907FB254A743B00739749 /* BrushStampFactory.swift */,
-				04190866254A8CFA00739749 /* RedactActionExportOperation.swift */,
+				044D4C4B2547C06600701166 /* RedactAction.swift */,
 				0419087E254A8D3C00739749 /* RedactActionExportError.swift */,
+				04190866254A8CFA00739749 /* RedactActionExportOperation.swift */,
+				041907A5254A6B4200739749 /* RedactActionInput.swift */,
+				041907BD254A6C0000739749 /* RedactedImageExporter.swift */,
 				0415717225511B250081F365 /* RedactOperation.swift */,
+				0429C7D02663875E00236D10 /* Supporting Files */,
 			);
 			path = Automator;
 			sourceTree = "<group>";
@@ -1084,13 +1184,11 @@
 		0464B1DF2553A3DE00D00FAC /* Shortcuts */ = {
 			isa = PBXGroup;
 			children = (
-				0464B1E62553A3DE00D00FAC /* Shortcuts.entitlements */,
 				0464B1E02553A3DE00D00FAC /* IntentHandler.swift */,
-				048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */,
-				04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */,
-				0464B1E22553A3DE00D00FAC /* Info.plist */,
-				0464B1F22553A41300D00FAC /* Intents.intentdefinition */,
 				04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */,
+				04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */,
+				048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */,
+				0429C7D2266387A600236D10 /* Supporting Files */,
 			);
 			path = Shortcuts;
 			sourceTree = "<group>";
@@ -1126,8 +1224,8 @@
 		0470163024D8FD660080DC52 /* Desktop */ = {
 			isa = PBXGroup;
 			children = (
-				0470163524D9066F0080DC52 /* Toolbar Items */,
 				0470163124D8FD7F0080DC52 /* DesktopViewController.swift */,
+				0470163524D9066F0080DC52 /* Toolbar Items */,
 			);
 			path = Desktop;
 			sourceTree = "<group>";
@@ -1163,13 +1261,13 @@
 		048909EF2265716B0048E203 /* Photo Editing */ = {
 			isa = PBXGroup;
 			children = (
+				0431E0D222F85F0B00DC85C4 /* DocumentScannerPresenting.swift */,
+				04920C1824CFD02F00BA3232 /* PhotoAssetEditingContainer.swift */,
 				042A2B7D228CFEDB00353414 /* PhotoEditingNavigationController.swift */,
 				042A2B79228A642100353414 /* PhotoEditingProtectionAlertController.swift */,
-				048909F3226573750048E203 /* PhotoEditorPresenting.swift */,
-				0431E0D222F85F0B00DC85C4 /* DocumentScannerPresenting.swift */,
 				043911E722C4658800D4AE30 /* PhotoEditingViewController.swift */,
-				04920C1824CFD02F00BA3232 /* PhotoAssetEditingContainer.swift */,
 				04953B5724E2405500877800 /* PhotoEditingViewController+Desktop.swift */,
+				048909F3226573750048E203 /* PhotoEditorPresenting.swift */,
 			);
 			path = "Photo Editing";
 			sourceTree = "<group>";
@@ -1177,15 +1275,16 @@
 		048909F0226571830048E203 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				04EA0ADB25D4EA6C00D98138 /* Highlighter-Bridging-Header.h */,
 				04F3C7F92309282600445A8D /* AppleIncRootCertificate.cer */,
-				041EFF042251A9F50058D8EE /* Info.plist */,
-				041EFF4A225300030058D8EE /* Localizable.strings */,
 				041EFEFF2251A9F50058D8EE /* Assets.xcassets */,
+				04F7AAB42537E5AA0024D3B4 /* Configuration.storekit */,
+				04EA0ADB25D4EA6C00D98138 /* Highlighter-Bridging-Header.h */,
+				0439D78224A687B1001BB6A0 /* Highlighter.entitlements */,
+				041EFF042251A9F50058D8EE /* Info.plist */,
 				041EFF012251A9F50058D8EE /* LaunchScreen.storyboard */,
+				041EFF4A225300030058D8EE /* Localizable.strings */,
 				04171B7C24A52EC2006923AC /* PurchaseConfigurationOriginal.storekit */,
 				04171B7D24A5392E006923AC /* StoreKitTestCertificate.cer */,
-				04F7AAB42537E5AA0024D3B4 /* Configuration.storekit */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1245,20 +1344,20 @@
 		049F92D822CDA3DB0090C9BC /* Editing */ = {
 			isa = PBXGroup;
 			children = (
-				04B19923262410D5001A275B /* Tests */,
-				042A2B77228A5B6F00353414 /* PhotoExporter.swift */,
 				049F92D922CDA3DB0090C9BC /* Editing.h */,
 				049F92DA22CDA3DB0090C9BC /* Info.plist */,
+				0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */,
+				04AA1D6B252EBBE400B486C7 /* ColorPanel.swift */,
 				042A2B84228D01BD00353414 /* HighlighterTool.swift */,
+				042A2B77228A5B6F00353414 /* PhotoExporter.swift */,
+				04616809263E271700C28B7F /* RestorationImageCache.swift */,
 				049F92EC22CDA48C0090C9BC /* Editing View */,
 				04D68BC3225EE2A500D09BBD /* Extensions */,
 				042A2B7F228D012300353414 /* Navigation */,
 				042A39AB22811F7A009C1C07 /* Redactions */,
 				041EFF532255A0930058D8EE /* Style */,
+				04B19923262410D5001A275B /* Tests */,
 				043CD9CD226EB0B20012F5AE /* Text Detection */,
-				0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */,
-				04AA1D6B252EBBE400B486C7 /* ColorPanel.swift */,
-				04616809263E271700C28B7F /* RestorationImageCache.swift */,
 			);
 			path = Editing;
 			sourceTree = "<group>";
@@ -1348,8 +1447,8 @@
 		04D68BCA2262B34600D09BBD /* Photo Permissions */ = {
 			isa = PBXGroup;
 			children = (
-				04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */,
 				04D68BCB2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift */,
+				04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */,
 				042A2B7B228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift */,
 			);
 			path = "Photo Permissions";
@@ -1377,15 +1476,15 @@
 			isa = PBXGroup;
 			children = (
 				041EFEF82251A9F30058D8EE /* AppDelegate.swift */,
+				042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */,
 				041EFEFA2251A9F30058D8EE /* AppViewController.swift */,
 				041EFF1A2251AB8D0058D8EE /* AppWindow.swift */,
-				04F0914125E7B30D00966C1E /* DesktopAppWindow.swift */,
-				042B7902229A38C0005B7A2A /* Defaults.swift */,
-				042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */,
 				04F3C7F22308F37400445A8D /* AsyncOperation.swift */,
-				048320BA25D7F1AF00355393 /* Recents Menu */,
-				04389DE1262AC7C8004D49B7 /* Help Menu */,
+				042B7902229A38C0005B7A2A /* Defaults.swift */,
+				04F0914125E7B30D00966C1E /* DesktopAppWindow.swift */,
 				04CBB0982658AF5800B792A2 /* LogPublisher.swift */,
+				04389DE1262AC7C8004D49B7 /* Help Menu */,
+				048320BA25D7F1AF00355393 /* Recents Menu */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1428,11 +1527,11 @@
 		04EF55B822D6DB8500C6600D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				04EF55B922D6DB9400C6600D /* SceneDelegate.swift */,
-				04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */,
 				0470163324D906420080DC52 /* DesktopSceneDelegate.swift */,
 				048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */,
+				04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */,
 				048320B025D7F12600355393 /* LaunchActivity.swift */,
+				04EF55B922D6DB9400C6600D /* SceneDelegate.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -1440,15 +1539,15 @@
 		04F3C7A32300204B00445A8D /* Purchasing */ = {
 			isa = PBXGroup;
 			children = (
-				04F3C7FB2309E7D300445A8D /* Receipts */,
-				04F3C7A8230099BC00445A8D /* PurchaseState.swift */,
-				04CBB08E2658A14300B792A2 /* PreviousPurchasePublisher.swift */,
-				043C28DA265C97240054A5A8 /* PaymentPublisher.swift */,
 				04CBB0902658A45D00B792A2 /* FetchProductsPublisher.swift */,
-				04CBB09A2658B40C00B792A2 /* PurchaseStatePublisher.swift */,
 				04CBB0942658A9D300B792A2 /* FilterProductsPublisher.swift */,
+				043C28DA265C97240054A5A8 /* PaymentPublisher.swift */,
+				04CBB08E2658A14300B792A2 /* PreviousPurchasePublisher.swift */,
 				04CBB0962658ABB200B792A2 /* ProductPricePublisher.swift */,
 				04CBB0922658A4D500B792A2 /* PurchaseConstants.swift */,
+				04F3C7A8230099BC00445A8D /* PurchaseState.swift */,
+				04CBB09A2658B40C00B792A2 /* PurchaseStatePublisher.swift */,
+				04F3C7FB2309E7D300445A8D /* Receipts */,
 			);
 			path = Purchasing;
 			sourceTree = "<group>";
@@ -1464,15 +1563,15 @@
 			isa = PBXGroup;
 			children = (
 				04F3C7FE2309E80100445A8D /* AppReceipt.swift */,
+				04F3C8272309ED1400445A8D /* AppReceiptAttributeType.swift */,
 				04F3C8182309E92900445A8D /* PointerExtensions.swift */,
 				04F3C8162309E90900445A8D /* PurchaseReceipt.swift */,
-				04F3C8272309ED1400445A8D /* AppReceiptAttributeType.swift */,
+				04F3C82B2309F3F500445A8D /* PurchaseReceiptAttributeType.swift */,
 				04F3C8232309EBDF00445A8D /* ReceiptParser.swift */,
 				04F3C8252309EBFD00445A8D /* ReceiptParserError.swift */,
 				04F3C7A62300968500445A8D /* ReceiptValidator.swift */,
 				04F3C82A2309EDC100445A8D /* Parsing */,
 				04F3C8292309ED9D00445A8D /* Supporting Files */,
-				04F3C82B2309F3F500445A8D /* PurchaseReceiptAttributeType.swift */,
 			);
 			path = Receipts;
 			sourceTree = "<group>";
@@ -2016,6 +2115,7 @@
 				0482C79F25218D600013B69E /* DesktopSettingsTableView.swift in Sources */,
 				0482C7A325218DB40013B69E /* DesktopSettingsAddRemoveControl.swift in Sources */,
 				0429C7B62661F55C00236D10 /* LimitedLibraryPhotoLibraryViewCellIconView.swift in Sources */,
+				0429C7C92663861C00236D10 /* WebView.swift in Sources */,
 				0401CDF824AD89220011A9BF /* DocumentScanButton.swift in Sources */,
 				048320B125D7F12600355393 /* LaunchActivity.swift in Sources */,
 				041EFF492252FAF50058D8EE /* IntroViewController.swift in Sources */,
@@ -2024,7 +2124,9 @@
 				0431E0CD22F826E900DC85C4 /* DocumentScannerPhotoLibraryViewCell.swift in Sources */,
 				04EA0ADE25D4EA6C00D98138 /* FileIconFetcher.m in Sources */,
 				04920C1724CFCD3500BA3232 /* Asset.swift in Sources */,
+				0429C7BF2663849200236D10 /* PurchaseMarketingText.swift in Sources */,
 				046BEC242470EBAC00FBECD7 /* Collection.swift in Sources */,
+				0429C7BD2663847600236D10 /* PurchaseMarketingHeader.swift in Sources */,
 				046C4061247F5B8F0069E8FB /* CollectionTableViewCellLabel.swift in Sources */,
 				042B7905229A3AC7005B7A2A /* AppRatingsPrompter.swift in Sources */,
 				046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */,
@@ -2039,6 +2141,7 @@
 				041EFF72225C3DC00058D8EE /* PhotoLibraryDataSource.swift in Sources */,
 				047E912C26560A400075F6B2 /* SettingsListStyleModifier.swift in Sources */,
 				043C28DB265C97240054A5A8 /* PaymentPublisher.swift in Sources */,
+				0429C7C72663860600236D10 /* WebURLButton.swift in Sources */,
 				04CBB08F2658A14300B792A2 /* PreviousPurchasePublisher.swift in Sources */,
 				04389DEA262AC841004D49B7 /* HelpMenuContactAction.swift in Sources */,
 				048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */,
@@ -2059,6 +2162,7 @@
 				0429C7B22661DD2500236D10 /* LimitedLibraryPhotoLibraryViewCell.swift in Sources */,
 				046C4067247F60780069E8FB /* AlbumsHeaderView.swift in Sources */,
 				04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */,
+				0429C7B92663841500236D10 /* PurchaseMarketingItem.swift in Sources */,
 				04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */,
 				04CBB0972658ABB200B792A2 /* ProductPricePublisher.swift in Sources */,
 				047E913426560BBB0075F6B2 /* OtherAppButton.swift in Sources */,
@@ -2090,6 +2194,7 @@
 				04FF8DBB22F57B09008CF0E9 /* AutoRedactionsTableViewCell.swift in Sources */,
 				04D68BC7225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift in Sources */,
 				0470163424D906420080DC52 /* DesktopSceneDelegate.swift in Sources */,
+				0429C7C22663852300236D10 /* ViewExtensions.swift in Sources */,
 				04FF8DB922F57AD9008CF0E9 /* AutoRedactionsDataSource.swift in Sources */,
 				047E913026560B8B0075F6B2 /* SettingsCellViewModifier.swift in Sources */,
 				04DBC8402314D2080004F7DB /* AutoRedactionsListViewController.swift in Sources */,
@@ -2109,13 +2214,16 @@
 				047E912E26560A5D0075F6B2 /* SettingsNavigationLink.swift in Sources */,
 				047E9140265613120075F6B2 /* PurchaseButton.swift in Sources */,
 				04FF8DB722F57AA1008CF0E9 /* AutoRedactionsListView.swift in Sources */,
+				0429C7BB2663845B00236D10 /* PurchaseMarketingStack.swift in Sources */,
 				041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */,
 				04F3C7A9230099BC00445A8D /* PurchaseState.swift in Sources */,
 				041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */,
 				04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */,
+				0429C7CB2663867600236D10 /* OtherAppNameText.swift in Sources */,
 				047E912626549BFF0075F6B2 /* PurchaseMarketingView.swift in Sources */,
 				041EFF74225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift in Sources */,
 				04CBB0932658A4D500B792A2 /* PurchaseConstants.swift in Sources */,
+				0429C7CD2663868F00236D10 /* OtherAppSubtitleText.swift in Sources */,
 				047E913A26560C600075F6B2 /* SettingsHeaderTextCaseModifier.swift in Sources */,
 				0401CDFA24AD8EF50011A9BF /* AssetButton.swift in Sources */,
 				04ACC40F255648A10035E3C2 /* IntentHandler.swift in Sources */,
