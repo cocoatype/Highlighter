@@ -21,15 +21,12 @@ struct PurchaseNavigationLink<Destination: View>: View {
                 PurchaseTitle()
                 PurchaseSubtitle(state: purchaseState)
             }
-        }.settingsCell()
+        }
+        .padding(6)
+        .settingsCell()
         .onAppReceive(purchaseStatePublisher.receive(on: RunLoop.main), perform: { newState in
             purchaseState = newState
         })
-    }
-
-    private class MockProduct: SKProduct {
-        override var priceLocale: Locale { .current }
-        override var price: NSDecimalNumber { NSDecimalNumber(value: 1.99) }
     }
 }
 

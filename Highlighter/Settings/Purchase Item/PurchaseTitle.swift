@@ -6,7 +6,7 @@ import SwiftUI
 struct PurchaseTitle: View {
     var body: some View {
         return Text("PurchaseItem.title")
-            .font(.app(textStyle: .headline))
+            .font(.app(textStyle: .title3))
             .foregroundColor(.white)
     }
 }

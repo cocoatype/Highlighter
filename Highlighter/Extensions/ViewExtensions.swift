@@ -23,10 +23,25 @@ extension View {
     public func fill() -> some View {
         return self.modifier(FillViewModifier())
     }
+
+    public func continuousCornerRadius(_ radius: CGFloat) -> some View {
+        return self.modifier(ContinuousCornerRadiusViewModifier(radius))
+    }
 }
 
 struct FillViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         AnyView(content).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+    }
+}
+
+struct ContinuousCornerRadiusViewModifier: ViewModifier {
+    private let radius: CGFloat
+    init(_ radius: CGFloat) {
+        self.radius = radius
+    }
+
+    func body(content: Content) -> some View {
+        AnyView(content).clipShape(RoundedRectangle(cornerRadius: radius, style: .continuous))
     }
 }

@@ -29,3 +29,9 @@ struct WebURLButton: View {
         Self.baseURL.appendingPathComponent(path)
     }
 }
+
+struct WebURLButtonPreviews: PreviewProvider {
+    static var previews: some View {
+        WebURLButton("Hello", path: "world").preferredColorScheme(.dark)
+    }
+}

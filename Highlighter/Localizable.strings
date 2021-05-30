@@ -72,8 +72,8 @@
 "PurchaseButton.purchaseButtonTitlePurchased" = "Thank You!";
 
 "PurchaseItem.title" = "Ultra Highlighter";
-"PurchaseItem.subtitleWithoutProduct" = "Enhanced Features";
-"PurchaseItem.subtitleWithProduct" = "Enhanced Features — %@";
+"PurchaseItem.subtitleWithoutProduct" = "Extra Features";
+"PurchaseItem.subtitleWithProduct" = "Extra Features — %@";
 
 "PurchaseMarketingView.autoRedactionsHeader" = "Auto-Hide Words";
 "PurchaseMarketingView.autoRedactionsText" = "Got words you never want to share? We’ll go ahead and hide them for you, right when you open the image.";
@@ -94,7 +94,9 @@
 "SettingsContentProvider.Item.contact" = "Contact the Developer";
 "SettingsContentProvider.Item.privacy" = "Privacy Policy";
 
+"SettingsContentProvider.Section.purchasedFeatures.header" = "Ultra Highlighter Features";
 "SettingsContentProvider.Section.otherApps.header" = "Other Apps by Cocoatype";
+"SettingsContentProvider.Section.webURLs.header" = "Important Information";
 
 "SettingsViewController.navigationTitle" = "Settings";
 

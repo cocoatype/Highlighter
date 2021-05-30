@@ -13,7 +13,7 @@ struct SettingsContentGenerator {
     var content: some View {
         Group {
             if case .purchased = purchaseState {
-                Section {
+                Section(header: SettingsSectionHeader("SettingsContentProvider.Section.purchasedFeatures.header")) {
                     SettingsNavigationLink("SettingsContentProvider.Item.autoRedactions", destination: AutoRedactionsEditView())
                 }
             } else {
@@ -21,7 +21,7 @@ struct SettingsContentGenerator {
                     PurchaseNavigationLink(state: purchaseState, destination: PurchaseMarketingView())
                 }
             }
-            Section {
+            Section(header: SettingsSectionHeader("SettingsContentProvider.Section.webURLs.header")) {
                 WebURLButton("SettingsContentProvider.Item.about", path: "about")
                 WebURLButton("SettingsContentProvider.Item.privacy", path: "privacy")
                 WebURLButton("SettingsContentProvider.Item.acknowledgements", path: "acknowledgements")
