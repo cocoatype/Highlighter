@@ -21,9 +21,7 @@ platform :ios do
       scheme: "Highlighter")
 
     # Upload the dSYMs to Sentry
-    sentry_upload_dsym(
-      dsym_path: lane_context[SharedValues::DSYM_OUTPUT_PATH]
-    )
+    sentry_upload_dsym
     
     # Just upload the build to TestFlight, no other changes
     upload_to_testflight(
@@ -70,9 +68,7 @@ platform :mac do
       })
 
     # Upload the dSYMs to Sentry
-    sentry_upload_dsym(
-      dsym_path: lane_context[SharedValues::DSYM_OUTPUT_PATH]
-    )
+    sentry_upload_dsym
 
     # Just upload the build to TestFlight, no other changes
     upload_to_app_store(
