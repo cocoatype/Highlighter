@@ -8,12 +8,10 @@ public enum ErrorHandling {
     public static func setup() {
         SentrySDK.start { options in
             options.dsn = "https://5cd823be954943b8b6ff4786082ad91d@crashes.cocoatype.com/2"
-            options.debug = true
             options.integrations = options.integrations?.filter { integration in
                 let bannedIntegrations = ["SentryAutoBreadcrumbTrackingIntegration", "SentryAutoSessionTrackingIntegration"]
                 return bannedIntegrations.contains(integration) == false
             }
-            dump(options.integrations)
         }
     }
 
