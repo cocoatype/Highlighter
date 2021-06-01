@@ -27,8 +27,6 @@ class PhotoLibraryDataSourceChangeCalculator: NSObject {
             return libraryView.reloadData()
         }
 
-        print(libraryView.dataSource?.collectionView(libraryView, numberOfItemsInSection: 0))
-
         libraryView.performBatchUpdates({ [unowned libraryView, changeDetails] in
             if let removed = changeDetails.removedIndexes {
                 libraryView.deleteItems(at: removed.map { IndexPath(item: $0, section:0) })
