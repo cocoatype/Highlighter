@@ -3,7 +3,7 @@
 
 import UIKit
 
-class LegacyPhotoLibraryView: UICollectionView {
+class PhotoLibraryView: UICollectionView {
     init() {
         let layout = PhotoLibraryViewLayout()
         super.init(frame: .zero, collectionViewLayout: layout)

@@ -5,7 +5,7 @@ import Editing
 import Photos
 import UIKit
 
-class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate, PHPhotoLibraryChangeObserver {
+class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate, PHPhotoLibraryChangeObserver {
     init(collection: Collection = CollectionType.library.defaultCollection) {
         self.dataSource = PhotoLibraryDataSource(collection)
         super.init(nibName: nil, bundle: nil)
@@ -17,7 +17,6 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
     }
 
     override func loadView() {
-        let libraryView = LegacyPhotoLibraryView()
         libraryView.dataSource = dataSource
         libraryView.delegate = self
         libraryView.dragDelegate = self
@@ -31,15 +30,14 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if let libraryView = libraryView,
-           libraryView.contentOffset.y <= 0 {
+        if libraryView.contentOffset.y <= 0 {
             libraryView.layoutIfNeeded()
             libraryView.scrollToItem(at: dataSource.lastItemIndexPath, at: .bottom, animated: false)
         }
 
-        if let cellCount = libraryView?.numberOfItems(inSection: 0),
-           cellCount != dataSource.itemsCount {
-            libraryView?.reloadData()
+        let cellCount = libraryView.numberOfItems(inSection: 0)
+        if cellCount != dataSource.itemsCount {
+            libraryView.reloadData()
         }
     }
 
@@ -48,8 +46,7 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
         set(newCollection) {
             let newDataSource = PhotoLibraryDataSource(newCollection)
             dataSource = newDataSource
-            libraryView?.dataSource = dataSource
-            libraryView?.reloadData()
+            libraryView.reloadData()
         }
     }
 
@@ -106,36 +103,10 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
 
     // MARK: Photo Library Changes
 
-    func photoLibraryDidChange(_ changeInstance: PHChange) {
-        guard let changes = changeInstance.changeDetails(for: dataSource.allPhotos) else { return }
-//        guard let changes = dataSource.changeDetails(for: changeInstance) else { return }
-
-        DispatchQueue.main.async { [weak self] in
-            guard let dataSource = self?.dataSource else { return }
-            dataSource.itemsCountPublisher.send(dataSource.itemsCount)
-
-            guard let libraryView = self?.libraryView else { return }
-
-            if changes.hasIncrementalChanges {
-                libraryView.performBatchUpdates({ [unowned libraryView, changes] in
-                    if let removed = changes.removedIndexes {
-                        libraryView.deleteItems(at: removed.map { IndexPath(item: $0, section:0) })
-                    }
-                    if let inserted = changes.insertedIndexes {
-                        libraryView.insertItems(at: inserted.map { IndexPath(item: $0, section:0) })
-                    }
-                    if let changed = changes.changedIndexes {
-                        libraryView.reloadItems(at: changed.map { IndexPath(item: $0, section:0) })
-                    }
-
-                    changes.enumerateMoves { fromIndex, toIndex in
-                        libraryView.moveItem(at: IndexPath(item: fromIndex, section: 0),
-                                             to: IndexPath(item: toIndex, section: 0))
-                    }
-                }, completion: nil)
-            } else {
-                libraryView.reloadData()
-            }
+    func photoLibraryDidChange(_ change: PHChange) {
+        DispatchQueue.main.async { [unowned self] in
+            assert(self.libraryView.dataSource === self.dataSource, "Library view's data source is wrong!")
+            self.dataSource.calculateChange(in: self.libraryView, from: change)
         }
     }
 
@@ -143,12 +114,17 @@ class LegacyPhotoLibraryViewController: UIViewController, UICollectionViewDelega
 
     private static let navigationItemTitle = NSLocalizedString("PhotoSelectionViewController.navigationItemTitle", comment: "Navigation title for the photo selector")
 
-    private var dataSource: PhotoLibraryDataSource
-    private var libraryView: LegacyPhotoLibraryView? { return view as? LegacyPhotoLibraryView }
+    private var dataSource: PhotoLibraryDataSource {
+        didSet {
+            libraryView.dataSource = dataSource
+        }
+    }
+    private let libraryView = PhotoLibraryView()
     private var purchaseStateObserver: Any?
 
     deinit {
         purchaseStateObserver.map(NotificationCenter.default.removeObserver)
+        PHPhotoLibrary.shared().unregisterChangeObserver(self)
     }
 
     @available(*, unavailable)

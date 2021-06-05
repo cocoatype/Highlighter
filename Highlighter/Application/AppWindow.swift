@@ -18,7 +18,7 @@ class AppWindow: UIWindow {
         guard let editingActivity = EditingUserActivity(userActivity: activity) else { return }
 
         if let localIdentifier = editingActivity.assetLocalIdentifier,
-           let asset = PhotoLibraryDataSource.photo(withIdentifier: localIdentifier) {
+           let asset = PhotoLibraryDataSourceAssetsProvider.photo(withIdentifier: localIdentifier) {
             appViewController.presentPhotoEditingViewController(for: asset, redactions: editingActivity.redactions, animated: false)
         } else if let imageBookmarkData = editingActivity.imageBookmarkData {
             do {

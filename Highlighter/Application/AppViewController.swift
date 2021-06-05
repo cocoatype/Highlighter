@@ -29,10 +29,10 @@ class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCame
         case .authorized, .limited:
             if #available(iOS 14.0, *) {
                 let albumsNavigationController = NavigationController(rootViewController: AlbumsViewController())
-                let photoLibraryNavigationController = NavigationController(rootViewController: LegacyPhotoLibraryViewController())
+                let photoLibraryNavigationController = NavigationController(rootViewController: PhotoLibraryViewController())
                 return SplitViewController(primaryViewController: albumsNavigationController, secondaryViewController: photoLibraryNavigationController)
             } else {
-                return NavigationController(rootViewController: LegacyPhotoLibraryViewController())
+                return NavigationController(rootViewController: PhotoLibraryViewController())
             }
         default: return IntroViewController()
         }
@@ -48,7 +48,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCame
         guard #available(iOS 14.0, *),
               let splitViewController = children.first(where: { $0 is SplitViewController }) as? SplitViewController,
               let photoLibraryNavigationController = splitViewController.viewController(for: .secondary) as? NavigationController,
-              let photoLibraryViewController = photoLibraryNavigationController.viewControllers.first as? LegacyPhotoLibraryViewController
+              let photoLibraryViewController = photoLibraryNavigationController.viewControllers.first as? PhotoLibraryViewController
         else { return }
         photoLibraryViewController.collection = collection
         splitViewController.show(.secondary)
