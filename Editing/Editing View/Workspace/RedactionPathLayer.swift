@@ -15,6 +15,7 @@ class RedactionPathLayer: CALayer {
         self.brushWidth = brushWidth
         super.init()
 
+        drawsAsynchronously = true
         frame = pathBounds
         masksToBounds = false
 
