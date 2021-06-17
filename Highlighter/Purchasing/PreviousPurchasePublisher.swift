@@ -2,6 +2,7 @@
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
 import Combine
+import ErrorHandling
 import Receipts
 
 struct PreviousPurchasePublisher: Publisher {
@@ -23,8 +24,8 @@ struct PreviousPurchasePublisher: Publisher {
             let userHasProduct = earnedFreeProduct || purchasedProduct
             return .success(userHasProduct)
         } catch {
-            dump(error)
-            return .failure(error)
+            ErrorHandling.log(error)
+            return .success(true)
         }
     }
 

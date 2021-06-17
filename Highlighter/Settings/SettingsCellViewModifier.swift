@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 5/19/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
+import Introspect
 import SwiftUI
 
 struct SettingsCellViewModifier: ViewModifier {
@@ -9,6 +10,13 @@ struct SettingsCellViewModifier: ViewModifier {
             .font(.app(textStyle: .subheadline))
             .foregroundColor(.white)
             .listRowBackground(Color(.tableViewCellBackground))
+            .introspectTableViewCell { cell in
+                cell.selectedBackgroundView = {
+                    let view = UIView()
+                    view.backgroundColor = .tableViewCellBackgroundHighlighted
+                    return view
+                }()
+            }
     }
 }
 

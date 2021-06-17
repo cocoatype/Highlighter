@@ -14,7 +14,7 @@ struct SettingsContentGenerator {
         Group {
             if case .purchased = purchaseState {
                 Section {
-                    SettingsNavigationLink("SettingsContentProvider.Item.autoRedactions", destination: AutoRedactionsEditView())
+                    SettingsNavigationLink("SettingsContentProvider.Item.autoRedactions", destination: AutoRedactionsEditView().background(Color.appPrimary.edgesIgnoringSafeArea(.all)))
                 }
             } else {
                 Section {

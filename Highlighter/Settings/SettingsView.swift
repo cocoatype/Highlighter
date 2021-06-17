@@ -10,16 +10,18 @@ struct SettingsView: View {
     @Environment(\.purchaseStatePublisher) private var purchaseStatePublisher: PurchaseStatePublisher
     @State private var purchaseState: PurchaseState
     @State private var selectedURL: URL?
+    private let dismissAction: () -> Void
     private let readableWidth: CGFloat
 
-    init(purchaseState: PurchaseState = .loading, readableWidth: CGFloat = .zero) {
+    init(purchaseState: PurchaseState = .loading, readableWidth: CGFloat = .zero, dismissAction: @escaping (() -> Void)) {
         self._purchaseState = State<PurchaseState>(initialValue: purchaseState)
+        self.dismissAction = dismissAction
         self.readableWidth = readableWidth
     }
 
     var body: some View {
         SettingsNavigationView {
-            SettingsList {
+            SettingsList(dismissAction: dismissAction) {
                 SettingsContentGenerator(state: purchaseState).content
             }.navigationBarTitle("Settings", displayMode: .inline)
         }
@@ -35,7 +37,7 @@ struct SettingsViewPreviews: PreviewProvider {
 
     static var previews: some View {
         ForEach(states) { state in
-            SettingsView(purchaseState: state, readableWidth: 288)
+            SettingsView(purchaseState: state, readableWidth: 288, dismissAction: {})
                 .previewDevice("iPhone 12 Pro Max")
                 .preferredColorScheme(.dark)
         }
