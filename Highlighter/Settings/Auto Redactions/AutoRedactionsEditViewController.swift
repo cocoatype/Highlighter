@@ -70,3 +70,9 @@ struct AutoRedactionsEditView: UIViewControllerRepresentable {
 
     func updateUIViewController(_ uiViewController: AutoRedactionsEditViewController, context: Context) {}
 }
+
+struct AutoRedactionsEditViewPreviews: PreviewProvider {
+    static var previews: some View {
+        AutoRedactionsEditView().background(Color.appPrimary.edgesIgnoringSafeArea(.all))
+    }
+}
