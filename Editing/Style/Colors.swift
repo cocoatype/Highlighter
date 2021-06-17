@@ -20,6 +20,7 @@ public extension UIColor {
 
     static let controlTint = UIColor(named: "Web Tint Color")
     static let tableViewCellBackground = UIColor(hexLiteral: 0x2c2c2c)
+    static let tableViewCellBackgroundHighlighted = UIColor.primaryLight
     static let tableViewSeparator = UIColor(hexLiteral: 0x878787)
 
     convenience init(hexLiteral hex: Int) {
