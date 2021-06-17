@@ -19,8 +19,9 @@ struct PurchaseMarketingView: View {
                 PurchaseButton()
                 Spacer()
             }
-        }.frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).background(Color(.primary))
-        .navigationBarItems(trailing: PurchaseRestoreButton())
+        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+            .background(Color(.primary).edgesIgnoringSafeArea(.all))
+            .navigationBarItems(trailing: PurchaseRestoreButton())
     }
 }
 
@@ -39,11 +40,9 @@ struct PurchaseMarketingStack<Content: View>: View {
 
 struct PurchaseMarketingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsNavigationView {
-            PurchaseMarketingView()
-                .preferredColorScheme(.dark)
-                .environment(\.readableWidth, 288)
-        }
+        PurchaseMarketingView()
+            .previewDevice("iPhone 12 Pro Max")
+            .environment(\.readableWidth, 288)
     }
 }
 

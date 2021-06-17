@@ -12,8 +12,6 @@ class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCame
         self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
 
-        setupAppearance()
-
         view.isOpaque = false
         view.backgroundColor = .clear
         embed(preferredViewController)
@@ -153,18 +151,13 @@ class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCame
 
     // MARK: Settings View Controller
 
-    private var settingsType: UIViewController.Type {
-            return SettingsHostingController.self
-    }
-
     @objc func presentSettingsViewController() {
-        present(settingsType.init(), animated: true)
+        present(SettingsHostingController(), animated: true)
     }
 
     @objc func dismissSettingsViewController() {
-        if type(of: presentedViewController) == settingsType {
-            dismiss(animated: true)
-        }
+        guard presentedViewController is SettingsHostingController else { return }
+        dismiss(animated: true)
     }
 
     // MARK: Status Bar
@@ -174,18 +167,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCame
 
     // MARK: Boilerplate
 
-    private func setupAppearance() {
-//        UITableView.appearance().backgroundColor = .primary
-//        UITableViewCell.appearance().selectionStyle = .none
-//        UICollectionView.appearance().backgroundColor = .primary
-//        UINavigationBar.appearance().scrollEdgeAppearance = NavigationBarAppearance()
-//        UINavigationBar.appearance().standardAppearance = NavigationBarAppearance()
-//        UINavigationBar.appearance().titleTextAttributes = NavigationBar.titleTextAttributes
-////        UINavigationBar.appearance().standardAppearance.buttonAppearance
-//        UIBarButtonItem.appearance().tintColor = .white
-    }
-
-//    @available(*, unavailable)
+    @available(*, unavailable)
     required init(coder: NSCoder) {
         ErrorHandling.notImplemented()
     }
