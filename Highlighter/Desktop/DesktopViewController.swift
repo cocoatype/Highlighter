@@ -6,7 +6,7 @@ import ErrorHandling
 import UIKit
 
 #if targetEnvironment(macCatalyst)
-class DesktopViewController: UIViewController, UIDocumentPickerDelegate, FileNameProvider {
+class DesktopViewController: UIViewController, FileNameProvider {
     var editingViewController: PhotoEditingViewController? { children.first as? PhotoEditingViewController }
 
     init(representedURL: URL?, redactions: [Redaction]?) {
@@ -19,7 +19,6 @@ class DesktopViewController: UIViewController, UIDocumentPickerDelegate, FileNam
         super.viewDidAppear(animated)
         guard children.contains(where: { $0 is PhotoEditingViewController }) == false else { return }
         guard representedURL == nil else { return loadRepresentedURL() }
-        displayDocumentPicker()
     }
 
     // MARK: Represented URL
@@ -42,10 +41,6 @@ class DesktopViewController: UIViewController, UIDocumentPickerDelegate, FileNam
 
             RecentsMenuDataSource.addRecentItem(representedURL)
 
-            if presentedViewController is UIDocumentPickerViewController {
-                dismiss(animated: false, completion: nil)
-            }
-
             windowScene?.titlebar?.representedURL = representedURL
             windowScene?.title = representedURL.lastPathComponent
 
@@ -59,28 +54,8 @@ class DesktopViewController: UIViewController, UIDocumentPickerDelegate, FileNam
 
     var representedFileName: String? { return representedURL?.lastPathComponent }
 
-    // MARK: Document Picker
-
-    private func displayDocumentPicker() {
-        let pickerController = UIDocumentPickerViewController(forOpeningContentTypes: [.image])
-        pickerController.delegate = self
-        present(pickerController, animated: true, completion: nil)
-    }
-
     private func validateAllToolbarItems() {
         windowScene?.titlebar?.toolbar?.visibleItems?.forEach { $0.validate() }
-    }
-
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-        guard let documentURL = urls.first else { return }
-        representedURL = documentURL
-
-        loadRepresentedURL()
-    }
-
-    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        guard let session = windowScene?.session, representedURL == nil else { return }
-        UIApplication.shared.requestSceneSessionDestruction(session, options: nil)
     }
 
     // MARK: State Restoration
