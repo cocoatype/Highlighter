@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		0401CDF824AD89220011A9BF /* DocumentScanButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401CDF724AD89220011A9BF /* DocumentScanButton.swift */; };
 		0401CDFA24AD8EF50011A9BF /* AssetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401CDF924AD8EF50011A9BF /* AssetButton.swift */; };
-		0414F4A8255D576100BD77F9 /* libssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0414F4A6255D576100BD77F9 /* libssl.xcframework */; };
-		0414F4A9255D576100BD77F9 /* libcrypto.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0414F4A7255D576100BD77F9 /* libcrypto.xcframework */; };
 		0414F4B1255D577200BD77F9 /* libcrypto.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0414F4A7255D576100BD77F9 /* libcrypto.xcframework */; };
 		0414F4B3255D577200BD77F9 /* libssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0414F4A6255D576100BD77F9 /* libssl.xcframework */; };
 		0415717325511B250081F365 /* RedactOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0415717225511B250081F365 /* RedactOperation.swift */; };
@@ -745,8 +743,6 @@
 			files = (
 				0489081B24AD7B17005DDEF3 /* Editing.framework in Frameworks */,
 				04431E4723556106009FA1F6 /* PhotosUI.framework in Frameworks */,
-				0414F4A8255D576100BD77F9 /* libssl.xcframework in Frameworks */,
-				0414F4A9255D576100BD77F9 /* libcrypto.xcframework in Frameworks */,
 				04431E4923556106009FA1F6 /* Photos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
