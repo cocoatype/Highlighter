@@ -1,0 +1,3 @@
+module OpenSSL {
+  header "shim.h"
+}
