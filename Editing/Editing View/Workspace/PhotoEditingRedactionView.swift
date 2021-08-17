@@ -12,6 +12,8 @@ public class PhotoEditingRedactionView: UIView {
         contentMode = .redraw
         isOpaque = false
         translatesAutoresizingMaskIntoConstraints = false
+
+        layer.masksToBounds = true
     }
 
     public func add(_ redaction: Redaction) {
