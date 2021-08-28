@@ -94,7 +94,7 @@ class PhotoEditingWorkspaceView: UIControl {
         case .eraser: handleEraserCompletion()
         }
 
-        sendAction(#selector(BasePhotoEditingViewController.markHasMadeEdits), to: nil, for: nil)
+        sendAction(#selector(PhotoEditingViewController.markHasMadeEdits), to: nil, for: nil)
     }
 
     private func handleMagicStrokeCompletion() {

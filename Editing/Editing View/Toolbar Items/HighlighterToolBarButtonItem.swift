@@ -32,9 +32,9 @@ class HighlighterToolBarButtonItem: UIBarButtonItem {
 
     private static func selectAction(for tool: HighlighterTool) -> Selector {
         switch tool {
-        case .magic: return #selector(BasePhotoEditingViewController.selectMagicHighlighter)
-        case .manual: return #selector(BasePhotoEditingViewController.selectManualHighlighter)
-        case .eraser: return #selector(BasePhotoEditingViewController.selectEraser)
+        case .magic: return #selector(PhotoEditingViewController.selectMagicHighlighter)
+        case .manual: return #selector(PhotoEditingViewController.selectManualHighlighter)
+        case .eraser: return #selector(PhotoEditingViewController.selectEraser)
         }
     }
 }
