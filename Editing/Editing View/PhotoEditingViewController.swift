@@ -38,6 +38,8 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        updateToolbarItems(animated: false)
+
         let options = PHImageRequestOptions()
         options.version = .current
         options.deliveryMode = .highQualityFormat
@@ -60,6 +62,11 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         becomeFirstResponder()
+    }
+
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateToolbarItems(animated: false)
     }
 
     open override var canBecomeFirstResponder: Bool { return true }
@@ -123,7 +130,7 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         navigationItem.setRightBarButtonItems(actionSet.trailingNavigationItems, animated: false)
         setToolbarItems(actionSet.toolbarItems, animated: false)
 
-        navigationController?.setToolbarHidden(actionSet.toolbarItems.count == 0, animated: animated)
+        navigationController?.setToolbarHidden(actionSet.toolbarItems.count == 0, animated: false)
 
         userActivity?.needsSave = true
     }
