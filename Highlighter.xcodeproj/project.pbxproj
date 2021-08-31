@@ -65,7 +65,6 @@
 		04389E05262AC8AE004D49B7 /* HelpMenuPrivacyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04389E04262AC8AE004D49B7 /* HelpMenuPrivacyAction.swift */; };
 		043911C322C461F000D4AE30 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 043911C222C461F000D4AE30 /* Media.xcassets */; };
 		043911CC22C461F000D4AE30 /* Action.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 043911C022C461EE00D4AE30 /* Action.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		043911E822C4658800D4AE30 /* NotPhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043911E722C4658800D4AE30 /* NotPhotoEditingViewController.swift */; };
 		043C28D02659D8F50054A5A8 /* NavigationWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C28CF2659D8F50054A5A8 /* NavigationWrapper.swift */; };
 		043C28D22659E1720054A5A8 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 043C28D12659E1720054A5A8 /* Introspect */; };
 		043C28DB265C97240054A5A8 /* PaymentPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C28DA265C97240054A5A8 /* PaymentPublisher.swift */; };
@@ -77,7 +76,6 @@
 		044074BF23BE9BCD00D3CB99 /* RedactionPathLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044074BE23BE9BCD00D3CB99 /* RedactionPathLayer.swift */; };
 		04431E4723556106009FA1F6 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04431E4623556106009FA1F6 /* PhotosUI.framework */; };
 		04431E4923556106009FA1F6 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04431E4823556106009FA1F6 /* Photos.framework */; };
-		04431E4C23556106009FA1F6 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04431E4B23556106009FA1F6 /* PhotoEditingViewController.swift */; };
 		04431E4F23556106009FA1F6 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04431E4D23556106009FA1F6 /* MainInterface.storyboard */; };
 		04431E5323556106009FA1F6 /* Photo.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 04431E4523556106009FA1F6 /* Photo.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04431E5723556A3D009FA1F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041EFEFF2251A9F50058D8EE /* Assets.xcassets */; };
@@ -528,7 +526,6 @@
 		043911C022C461EE00D4AE30 /* Action.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Action.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		043911C222C461F000D4AE30 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		043911C922C461F000D4AE30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		043911E722C4658800D4AE30 /* NotPhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotPhotoEditingViewController.swift; sourceTree = "<group>"; };
 		0439D78224A687B1001BB6A0 /* Highlighter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Highlighter.entitlements; sourceTree = "<group>"; };
 		0439D78324A687B1001BB6A0 /* Action.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Action.entitlements; sourceTree = "<group>"; };
 		043C28CF2659D8F50054A5A8 /* NavigationWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationWrapper.swift; sourceTree = "<group>"; };
@@ -546,7 +543,6 @@
 		04431E4523556106009FA1F6 /* Photo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Photo.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		04431E4623556106009FA1F6 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		04431E4823556106009FA1F6 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
-		04431E4B23556106009FA1F6 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
 		04431E4E23556106009FA1F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		04431E5023556106009FA1F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04431E5823556AC2009FA1F6 /* PhotoExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExtensionViewController.swift; sourceTree = "<group>"; };
@@ -1064,7 +1060,6 @@
 		04431E4A23556106009FA1F6 /* Photo */ = {
 			isa = PBXGroup;
 			children = (
-				04431E4B23556106009FA1F6 /* PhotoEditingViewController.swift */,
 				04431E4D23556106009FA1F6 /* MainInterface.storyboard */,
 				04431E5023556106009FA1F6 /* Info.plist */,
 				04431E5823556AC2009FA1F6 /* PhotoExtensionViewController.swift */,
@@ -1193,7 +1188,6 @@
 				042A2B79228A642100353414 /* PhotoEditingProtectionAlertController.swift */,
 				048909F3226573750048E203 /* PhotoEditorPresenting.swift */,
 				0431E0D222F85F0B00DC85C4 /* DocumentScannerPresenting.swift */,
-				043911E722C4658800D4AE30 /* NotPhotoEditingViewController.swift */,
 				04920C1824CFD02F00BA3232 /* PhotoAssetEditingContainer.swift */,
 				04953B5724E2405500877800 /* PhotoEditingViewController+Desktop.swift */,
 			);
@@ -2070,7 +2064,6 @@
 				041EFF70225C3D830058D8EE /* PhotoLibraryView.swift in Sources */,
 				04920C1524CFCCD000BA3232 /* AssetImage.swift in Sources */,
 				04FF8DE322F6DF2C008CF0E9 /* PageCountAlertFactory.swift in Sources */,
-				043911E822C4658800D4AE30 /* NotPhotoEditingViewController.swift in Sources */,
 				041EFF72225C3DC00058D8EE /* PhotoLibraryDataSource.swift in Sources */,
 				047E912C26560A400075F6B2 /* SettingsListStyleModifier.swift in Sources */,
 				043C28DB265C97240054A5A8 /* PaymentPublisher.swift in Sources */,
@@ -2187,7 +2180,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04431E4C23556106009FA1F6 /* PhotoEditingViewController.swift in Sources */,
 				04431E5923556AC2009FA1F6 /* PhotoExtensionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
