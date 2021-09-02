@@ -16,7 +16,10 @@ struct SettingsList<Content>: View where Content: View {
         List(content: content)
             .settingsListStyle()
             .navigationBarItems(trailing: DoneButton(action: dismissAction))
-            .introspectTableView { $0.backgroundColor = .primary }
+            .introspectTableView {
+                $0.backgroundColor = .primary
+                $0.indicatorStyle = .white
+            }
     }
 }
 
