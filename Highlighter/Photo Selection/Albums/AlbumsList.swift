@@ -5,7 +5,7 @@ import SwiftUI
 
 @available(iOS 14.0, *)
 struct AlbumsList: View {
-    @State private var selectedCollectionIdentifier: String?
+    @State private var selectedCollectionIdentifier: String? = CollectionType.library.defaultCollection.identifier
     var navigationWrapper = NavigationWrapper.empty
     let data: [CollectionSection]
     init(data: [CollectionSection]) {
@@ -27,45 +27,6 @@ struct AlbumsList: View {
         .environmentObject(navigationWrapper)
         .introspectTableView { $0.backgroundColor = .primary }
     }
-}
-
-@available(iOS 14.0, *)
-struct AlbumsSectionHeader: View {
-    private let text: String
-
-    init(_ text: String) {
-        self.text = text
-    }
-
-    var body: some View {
-        Text(text).font(Font.app(textStyle: .title3)).foregroundColor(.white)
-    }
-}
-
-@available(iOS 14.0, *)
-struct AlbumsRow: View {
-    let selection: Binding<String?>
-    private let collection: Collection
-    init(_ collection: Collection, selection: Binding<String?>) {
-        self.collection = collection
-        self.selection = selection
-    }
-
-    var body: some View {
-        Button {
-            navigationWrapper.present(collection)
-        } label: {
-            Label(
-                title: { Text(collection.title ?? "") },
-                icon: { Image(uiImage: collection.icon ?? UIImage()).foregroundColor(.white) }
-            ).font(.sidebarItem)
-            .foregroundColor(.white)
-            .id(collection.identifier)
-            .tag(collection.identifier)
-        }
-    }
-
-    @EnvironmentObject private var navigationWrapper: NavigationWrapper
 }
 
 @available(iOS 14.0, *)

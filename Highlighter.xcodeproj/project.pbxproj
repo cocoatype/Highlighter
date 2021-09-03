@@ -129,6 +129,9 @@
 		04750E9626D9EEF500E98BB4 /* ColorPickerBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04750E9526D9EEF500E98BB4 /* ColorPickerBarButtonItem.swift */; };
 		04750E9826D9EF0700E98BB4 /* RedoBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04750E9726D9EF0700E98BB4 /* RedoBarButtonItem.swift */; };
 		04750E9A26D9EF1900E98BB4 /* UndoBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04750E9926D9EF1900E98BB4 /* UndoBarButtonItem.swift */; };
+		04750E9C26DDE20900E98BB4 /* AlbumsSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04750E9B26DDE20900E98BB4 /* AlbumsSectionHeader.swift */; };
+		04750E9E26DDE23100E98BB4 /* AlbumsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04750E9D26DDE23100E98BB4 /* AlbumsRow.swift */; };
+		04750EA026DDE24D00E98BB4 /* AlbumsRowSelectedViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04750E9F26DDE24D00E98BB4 /* AlbumsRowSelectedViewModifier.swift */; };
 		047E9121265362CD0075F6B2 /* SettingsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E9120265362CD0075F6B2 /* SettingsHostingController.swift */; };
 		047E9124265363020075F6B2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E9123265363020075F6B2 /* SettingsView.swift */; };
 		047E912626549BFF0075F6B2 /* PurchaseMarketingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E912526549BFF0075F6B2 /* PurchaseMarketingView.swift */; };
@@ -589,6 +592,9 @@
 		04750E9526D9EEF500E98BB4 /* ColorPickerBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerBarButtonItem.swift; sourceTree = "<group>"; };
 		04750E9726D9EF0700E98BB4 /* RedoBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedoBarButtonItem.swift; sourceTree = "<group>"; };
 		04750E9926D9EF1900E98BB4 /* UndoBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoBarButtonItem.swift; sourceTree = "<group>"; };
+		04750E9B26DDE20900E98BB4 /* AlbumsSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsSectionHeader.swift; sourceTree = "<group>"; };
+		04750E9D26DDE23100E98BB4 /* AlbumsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsRow.swift; sourceTree = "<group>"; };
+		04750E9F26DDE24D00E98BB4 /* AlbumsRowSelectedViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsRowSelectedViewModifier.swift; sourceTree = "<group>"; };
 		047E9120265362CD0075F6B2 /* SettingsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostingController.swift; sourceTree = "<group>"; };
 		047E9123265363020075F6B2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		047E912526549BFF0075F6B2 /* PurchaseMarketingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingView.swift; sourceTree = "<group>"; };
@@ -1123,6 +1129,9 @@
 				046C4068247F60930069E8FB /* AlbumsHeaderLabel.swift */,
 				049E1EB124BFEEE7009DE20D /* AlbumsViewController.swift */,
 				049E1EB324BFEF09009DE20D /* AlbumsList.swift */,
+				04750E9B26DDE20900E98BB4 /* AlbumsSectionHeader.swift */,
+				04750E9D26DDE23100E98BB4 /* AlbumsRow.swift */,
+				04750E9F26DDE24D00E98BB4 /* AlbumsRowSelectedViewModifier.swift */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -2029,6 +2038,7 @@
 				0431E0CF22F830BB00DC85C4 /* DocumentScannerPhotoLibraryViewCellIconView.swift in Sources */,
 				0445AA592371208B00EB2A7B /* ImageDownloader.swift in Sources */,
 				047E913826560C390075F6B2 /* SettingsSectionHeader.swift in Sources */,
+				04750E9E26DDE23100E98BB4 /* AlbumsRow.swift in Sources */,
 				048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */,
 				043C28D02659D8F50054A5A8 /* NavigationWrapper.swift in Sources */,
 				047E913626560BFF0075F6B2 /* SettingsNavigationView.swift in Sources */,
@@ -2046,6 +2056,7 @@
 				0482C7A325218DB40013B69E /* DesktopSettingsAddRemoveControl.swift in Sources */,
 				0429C7B62661F55C00236D10 /* LimitedLibraryPhotoLibraryViewCellIconView.swift in Sources */,
 				0401CDF824AD89220011A9BF /* DocumentScanButton.swift in Sources */,
+				04750E9C26DDE20900E98BB4 /* AlbumsSectionHeader.swift in Sources */,
 				048320B125D7F12600355393 /* LaunchActivity.swift in Sources */,
 				041EFF492252FAF50058D8EE /* IntroViewController.swift in Sources */,
 				04ABC8DD2528207400F5BA6A /* CollectionPresenting.swift in Sources */,
@@ -2132,6 +2143,7 @@
 				046C405D247F5B3F0069E8FB /* SystemCollectionTableViewCell.swift in Sources */,
 				04BDC4AF255657CB00BCE982 /* ShortcutsRedactExporter.swift in Sources */,
 				046C4069247F60930069E8FB /* AlbumsHeaderLabel.swift in Sources */,
+				04750EA026DDE24D00E98BB4 /* AlbumsRowSelectedViewModifier.swift in Sources */,
 				04953B5824E2405500877800 /* PhotoEditingViewController+Desktop.swift in Sources */,
 				04CBB0992658AF5800B792A2 /* LogPublisher.swift in Sources */,
 				047E912E26560A5D0075F6B2 /* SettingsNavigationLink.swift in Sources */,
