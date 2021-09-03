@@ -14,9 +14,11 @@ public class NavigationBar: UINavigationBar {
             standardAppearance = NavigationBarAppearance()
             compactAppearance = NavigationBarAppearance()
             scrollEdgeAppearance = NavigationBarAppearance()
-            if #available(iOSApplicationExtension 15.0, *) {
+            #if swift(>=5.5)
+            if #available(iOS 15.0, *) {
                 compactScrollEdgeAppearance = NavigationBarAppearance()
             }
+            #endif
             isTranslucent = false
         } else {
             barTintColor = .primaryDark
