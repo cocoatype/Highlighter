@@ -149,6 +149,12 @@ class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCame
         }
     }
 
+    // MARK: App Ratings Prompt
+
+    @objc func displayAppRatingsPrompt() {
+        AppRatingsPrompter.displayRatingsPrompt(in: view.window?.windowScene)
+    }
+
     // MARK: Settings View Controller
 
     @objc func presentSettingsViewController() {

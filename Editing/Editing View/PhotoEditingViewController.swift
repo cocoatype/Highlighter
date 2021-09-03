@@ -4,7 +4,7 @@
 import Photos
 import UIKit
 
-open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegate, UIColorPickerViewControllerDelegate {
+open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, UIColorPickerViewControllerDelegate {
     public init(asset: PHAsset? = nil, image: UIImage? = nil, redactions: [Redaction]? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
         self.asset = asset
         self.image = image
@@ -17,6 +17,10 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
         redactionChangeObserver = NotificationCenter.default.addObserver(forName: PhotoEditingRedactionView.redactionsDidChange, object: nil, queue: .main, using: { [weak self] _ in
             self?.updateToolbarItems()
         })
+
+        updateToolbarItems(animated: false)
+
+        userActivity = EditingUserActivity()
 
         #if targetEnvironment(macCatalyst)
         ColorPanel.shared.color = .black
@@ -33,6 +37,8 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
 
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        updateToolbarItems(animated: false)
 
         let options = PHImageRequestOptions()
         options.version = .current
@@ -53,9 +59,28 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
         }
     }
 
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        becomeFirstResponder()
+    }
+
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateToolbarItems(animated: false)
+    }
+
+    open override var canBecomeFirstResponder: Bool { return true }
+
     // MARK: Edit Protection
 
-    @objc open func markHasMadeEdits() {} // hook for responder chain
+    private(set) public var hasMadeEdits = false
+    @objc func markHasMadeEdits() {
+        hasMadeEdits = true
+    }
+
+    func clearHasMadeEdits() {
+        hasMadeEdits = false
+    }
 
     // MARK: Sharing
 
@@ -99,28 +124,13 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
     }
 
     private func updateToolbarItems(animated: Bool = true) {
-        let undoToolItem = UIBarButtonItem(image: Icons.undo, style: .plain, target: self, action: #selector(BasePhotoEditingViewController.undo))
-        undoToolItem.isEnabled = undoManager?.canUndo ?? false
+        let actionSet = ActionSet.actionSet(for: self, undoManager: undoManager, selectedTool: photoEditingView.highlighterTool, sizeClass: traitCollection.horizontalSizeClass)
 
-        let redoToolItem = UIBarButtonItem(image: Icons.redo, style: .plain, target: self, action: #selector(BasePhotoEditingViewController.redo))
-        redoToolItem.isEnabled = undoManager?.canRedo ?? false
+        navigationItem.setLeftBarButtonItems(actionSet.leadingNavigationItems, animated: false)
+        navigationItem.setRightBarButtonItems(actionSet.trailingNavigationItems, animated: false)
+        setToolbarItems(actionSet.toolbarItems, animated: false)
 
-        let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-
-        let highlighterToolItem: UIBarButtonItem
-        if #available(iOS 14, *) {
-            highlighterToolItem = HighlighterToolBarButtonItem(tool: photoEditingView.highlighterTool, target: self)
-        } else {
-            let highlighterToolIcon = photoEditingView.highlighterTool.image
-            highlighterToolItem = UIBarButtonItem(image: highlighterToolIcon, style: .plain, target: self, action: #selector(toggleHighlighterTool))
-        }
-
-        if #available(iOS 14.0, *) {
-            let colorPickerToolItem = UIBarButtonItem(image: UIImage(systemName: "paintpalette"), style: .plain, target: self, action: #selector(showColorPicker))
-            setToolbarItems([undoToolItem, redoToolItem, spacerItem, colorPickerToolItem, highlighterToolItem], animated: animated)
-        } else {
-            setToolbarItems([undoToolItem, redoToolItem, spacerItem, highlighterToolItem], animated: animated)
-        }
+        navigationController?.setToolbarHidden(actionSet.toolbarItems.count == 0, animated: false)
 
         userActivity?.needsSave = true
     }
@@ -160,8 +170,8 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
 
     #if targetEnvironment(macCatalyst)
     #else
-    private let undoKeyCommand = UIKeyCommand(action: #selector(BasePhotoEditingViewController.undo), input: "z", modifierFlags: .command, discoverabilityTitle: BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle)
-    private let redoKeyCommand = UIKeyCommand(action: #selector(BasePhotoEditingViewController.redo), input: "z", modifierFlags: [.command, .shift], discoverabilityTitle: BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle)
+    private let undoKeyCommand = UIKeyCommand(action: #selector(PhotoEditingViewController.undo), input: "z", modifierFlags: .command, discoverabilityTitle: PhotoEditingViewController.undoKeyCommandDiscoverabilityTitle)
+    private let redoKeyCommand = UIKeyCommand(action: #selector(PhotoEditingViewController.redo), input: "z", modifierFlags: [.command, .shift], discoverabilityTitle: PhotoEditingViewController.redoKeyCommandDiscoverabilityTitle)
     
     open override var keyCommands: [UIKeyCommand]? {
         return [undoKeyCommand, redoKeyCommand]
@@ -174,6 +184,12 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
         } else if action == #selector(redo(_:)) {
             return undoManager?.canRedo ?? false
         }
+
+#if targetEnvironment(macCatalyst)
+        if action == #selector(save(_:)) {
+            return self.canSave
+        }
+#endif
 
         return super.canPerformAction(action, withSender: sender)
     }
@@ -233,6 +249,28 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
         editingActivity.redactions = photoEditingView.redactions
     }
 
+    // MARK: Sharing
+
+    @objc func sharePhoto(_ sender: Any) {
+        exportImage { [weak self] image in
+            guard let exportedImage = image else { return }
+
+            let activityController = UIActivityViewController(activityItems: [exportedImage], applicationActivities: nil)
+            activityController.completionWithItemsHandler = { [weak self] _, completed, _, _ in
+                self?.hasMadeEdits = false
+                Defaults.numberOfSaves = Defaults.numberOfSaves + 1
+                DispatchQueue.main.async { [weak self] in
+                    self?.chain(selector: #selector(PhotoEditingActions.displayAppRatingsPrompt))
+                }
+            }
+
+            DispatchQueue.main.async { [weak self] in
+                activityController.popoverPresentationController?.barButtonItem = self?.navigationItem.rightBarButtonItem
+                self?.present(activityController, animated: true)
+            }
+        }
+    }
+
     // MARK: Boilerplate
 
     public let completionHandler: ((UIImage) -> Void)?
@@ -262,4 +300,9 @@ open class BasePhotoEditingViewController: UIViewController, UIScrollViewDelegat
         let className = String(describing: type(of: self))
         fatalError("\(className) does not implement init(coder:)")
     }
+}
+
+@objc protocol PhotoEditingActions: NSObjectProtocol {
+    func dismissPhotoEditingViewController(_ sender: UIBarButtonItem)
+    func displayAppRatingsPrompt()
 }

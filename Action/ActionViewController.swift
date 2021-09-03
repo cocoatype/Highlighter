@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 7/1/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Editing
 import ErrorHandling
 import MobileCoreServices
 import SwiftUI
@@ -9,7 +10,6 @@ import UIKit
 class ActionViewController: UIHostingController<ActionView> {
     init() {
         super.init(rootView: ActionView())
-//        super.init(nibName: nil, bundle: nil)
         ErrorHandling.setup()
     }
 
@@ -63,14 +63,4 @@ enum ActionError: Error {
     case callbackURLConstructionFailed
     case imageURLNotFound
     case invalidImageData
-}
-
-extension UIResponder {
-    func chain(selector: Selector, object: Any? = nil, ignoreSelf: Bool = true) {
-        let object = object ?? self
-        let base = ignoreSelf ? next : self
-        let actionTarget = base?.target(forAction: selector, withSender: self) as? UIResponder
-        Swift.dump(actionTarget)
-        actionTarget?.perform(selector, with: object)
-    }
 }

@@ -37,6 +37,8 @@
 
 "DesktopSettingsView.wordListLabel" = "Auto-Hidden Words";
 
+"DismissBarButtonItem.title" = "Done";
+
 "DoneButton.label" = "Done";
 
 "IntroView.permissionLabelText" = "Black Highlighter needs permission to edit your photos.";
