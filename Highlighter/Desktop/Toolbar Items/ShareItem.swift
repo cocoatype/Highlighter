@@ -58,9 +58,9 @@ class ToolPickerItem: NSMenuToolbarItem {
 
     private var currentMenu: UIMenu {
         UIMenu(title: Self.menuTitle, children: [
-            UICommand(title: Self.magicToolItem, image: UIImage(named: "highlighter.magic"), action: #selector(BasePhotoEditingViewController.selectMagicHighlighter), state: (delegate.highlighterTool == .magic ? .on : .off)),
-            UICommand(title: Self.manualToolItem, image: UIImage(systemName: "highlighter"), action: #selector(BasePhotoEditingViewController.selectManualHighlighter), state: (delegate.highlighterTool == .manual ? .on : .off)),
-            UICommand(title: Self.eraserToolItem, image: UIImage(named: "highlighter.eraser"), action: #selector(BasePhotoEditingViewController.selectEraser), state: (delegate.highlighterTool == .eraser ? .on : .off))
+            UICommand(title: Self.magicToolItem, image: UIImage(named: "highlighter.magic"), action: #selector(PhotoEditingViewController.selectMagicHighlighter), state: (delegate.highlighterTool == .magic ? .on : .off)),
+            UICommand(title: Self.manualToolItem, image: UIImage(systemName: "highlighter"), action: #selector(PhotoEditingViewController.selectManualHighlighter), state: (delegate.highlighterTool == .manual ? .on : .off)),
+            UICommand(title: Self.eraserToolItem, image: UIImage(named: "highlighter.eraser"), action: #selector(PhotoEditingViewController.selectEraser), state: (delegate.highlighterTool == .eraser ? .on : .off))
         ])
     }
 
