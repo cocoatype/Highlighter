@@ -74,15 +74,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard builder.system == .main else { return }
 
         let saveCommand = UIKeyCommand(title: Self.saveMenuItemTitle, action: #selector(PhotoEditingViewController.save(_:)), input: "S", modifierFlags: [.command])
+        let saveAsCommand = UIKeyCommand(title: Self.saveAsMenuItemTitle, action: #selector(PhotoEditingViewController.saveAs(_:)), input: "S", modifierFlags: [.command, .shift])
 
         if let closeMenu = builder.menu(for: .close) {
             let existingChildren = closeMenu.children
-            let newChildren = existingChildren + [saveCommand]
+            let newChildren = existingChildren + [saveCommand, saveAsCommand]
             let newCloseMenu = closeMenu.replacingChildren(newChildren)
             builder.replace(menu: .close, with: newCloseMenu)
         } else {
             let saveMenu = UIMenu(title: "", options: [.displayInline], children: [
-                saveCommand
+                saveCommand, saveAsCommand
             ])
             builder.insertSibling(saveMenu, afterMenu: .close)
         }
@@ -100,6 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private static let saveMenuItemTitle = NSLocalizedString("AppDelegate.saveMenuTitle", comment: "Save menu title")
+    private static let saveAsMenuItemTitle = NSLocalizedString("AppDelegate.saveAsMenuTitle", comment: "Save As menu title")
 
     private static let preferencesMenuTitle = NSLocalizedString("AppDelegate.preferencesMenuTitle", comment: "Preferences menu title")
     private static let preferencesMenuItemTitle = NSLocalizedString("AppDelegate.preferencesMenuItemTitle", comment: "Preferences menu item title")

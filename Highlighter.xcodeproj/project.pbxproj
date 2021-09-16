@@ -175,7 +175,6 @@
 		0493BA93253AA4F80083198C /* LimitedLibraryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493BA92253AA4F80083198C /* LimitedLibraryButton.swift */; };
 		0493D2D624B6BAE400FF99F4 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493D2D524B6BAE400FF99F4 /* ColorPickerViewController.swift */; };
 		0493D2D824B6BD0000FF99F4 /* BrushStampFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */; };
-		04953B5824E2405500877800 /* PhotoEditingViewController+Desktop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04953B5724E2405500877800 /* PhotoEditingViewController+Desktop.swift */; };
 		04975D1E26106D6800AA2771 /* PhotoEditingCanvasBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EB2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04975D3726106D8700AA2771 /* PhotoEditingCanvasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04975D5826106DC100AA2771 /* PhotoEditingCanvasBrushStrokeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */; };
@@ -216,6 +215,7 @@
 		049F930822CDAB570090C9BC /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
 		049F930922CDAB570090C9BC /* Aleo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF562255A2ED0058D8EE /* Aleo-Bold.otf */; };
 		049F930A22CDAB570090C9BC /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
+		04A280DE26F2EA35002A0A32 /* PhotoEditingViewController+Desktop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04953B5724E2405500877800 /* PhotoEditingViewController+Desktop.swift */; };
 		04A606E1251C471F007A2B82 /* DesktopAutoRedactionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A606E0251C471F007A2B82 /* DesktopAutoRedactionsListViewController.swift */; };
 		04AA1D6C252EBBE400B486C7 /* ColorPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA1D6B252EBBE400B486C7 /* ColorPanel.swift */; };
 		04ABC8DD2528207400F5BA6A /* CollectionPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABC8DC2528207400F5BA6A /* CollectionPresenting.swift */; };
@@ -2144,7 +2144,6 @@
 				04BDC4AF255657CB00BCE982 /* ShortcutsRedactExporter.swift in Sources */,
 				046C4069247F60930069E8FB /* AlbumsHeaderLabel.swift in Sources */,
 				04750EA026DDE24D00E98BB4 /* AlbumsRowSelectedViewModifier.swift in Sources */,
-				04953B5824E2405500877800 /* PhotoEditingViewController+Desktop.swift in Sources */,
 				04CBB0992658AF5800B792A2 /* LogPublisher.swift in Sources */,
 				047E912E26560A5D0075F6B2 /* SettingsNavigationLink.swift in Sources */,
 				047E9140265613120075F6B2 /* PurchaseButton.swift in Sources */,
@@ -2154,6 +2153,7 @@
 				041CFA982665916900042E8E /* PhotoLibraryItem.swift in Sources */,
 				041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */,
 				04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */,
+				04A280DE26F2EA35002A0A32 /* PhotoEditingViewController+Desktop.swift in Sources */,
 				047E912626549BFF0075F6B2 /* PurchaseMarketingView.swift in Sources */,
 				041EFF74225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift in Sources */,
 				04CBB0932658A4D500B792A2 /* PurchaseConstants.swift in Sources */,

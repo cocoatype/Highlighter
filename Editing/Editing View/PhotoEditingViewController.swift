@@ -78,7 +78,7 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         hasMadeEdits = true
     }
 
-    func clearHasMadeEdits() {
+    public func clearHasMadeEdits() {
         hasMadeEdits = false
     }
 
@@ -186,9 +186,9 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         }
 
 #if targetEnvironment(macCatalyst)
-        if action == #selector(save(_:)) {
-            return self.canSave
-        }
+//        if action == #selector(PhotoEditingViewController.save(_:)) {
+//            return self.canSave
+//        }
 #endif
 
         return super.canPerformAction(action, withSender: sender)
