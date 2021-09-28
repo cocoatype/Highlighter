@@ -240,6 +240,12 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         guard let editingActivity = (activity as? EditingUserActivity) else { return }
         if let asset = asset {
             editingActivity.assetLocalIdentifier = asset.localIdentifier
+        } else if let representedURL = fileURLProvider?.representedFileURL {
+            let accessGranted = representedURL.startAccessingSecurityScopedResource()
+            defer { representedURL.stopAccessingSecurityScopedResource() }
+            guard accessGranted else { return }
+
+            editingActivity.imageBookmarkData = try? representedURL.bookmarkData()
         } else if let image = image {
             imageCache.writeImageToCache(image, fileName: fileURLProvider?.representedFileName) { result in
                 guard let url = try? result.get() else { return }
