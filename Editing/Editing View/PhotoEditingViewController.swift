@@ -241,7 +241,7 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         if let asset = asset {
             editingActivity.assetLocalIdentifier = asset.localIdentifier
         } else if let image = image {
-            imageCache.writeImageToCache(image, fileName: fileNameProvider?.representedFileName) { result in
+            imageCache.writeImageToCache(image, fileName: fileURLProvider?.representedFileName) { result in
                 guard let url = try? result.get() else { return }
                 editingActivity.imageBookmarkData = try? url.bookmarkData()
             }

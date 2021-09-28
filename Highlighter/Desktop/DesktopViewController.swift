@@ -6,7 +6,7 @@ import ErrorHandling
 import UIKit
 
 #if targetEnvironment(macCatalyst)
-class DesktopViewController: UIViewController, FileNameProvider {
+class DesktopViewController: UIViewController, FileURLProvider {
     var editingViewController: PhotoEditingViewController? { children.first as? PhotoEditingViewController }
 
     init(representedURL: URL?, redactions: [Redaction]?) {
@@ -17,8 +17,13 @@ class DesktopViewController: UIViewController, FileNameProvider {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard children.contains(where: { $0 is PhotoEditingViewController }) == false else { return }
-        guard representedURL == nil else { return loadRepresentedURL() }
+
+        if children.contains(where: { $0 is PhotoEditingViewController }), let representedURL = representedURL {
+            windowScene?.titlebar?.representedURL = representedURL
+            windowScene?.title = representedURL.lastPathComponent
+        } else {
+            loadRepresentedURL()
+        }
     }
 
     // MARK: Represented URL
@@ -52,7 +57,7 @@ class DesktopViewController: UIViewController, FileNameProvider {
         }
     }
 
-    var representedFileName: String? { return representedURL?.lastPathComponent }
+    var representedFileURL: URL? { representedURL }
 
     private func validateAllToolbarItems() {
         windowScene?.titlebar?.toolbar?.visibleItems?.forEach { $0.validate() }
