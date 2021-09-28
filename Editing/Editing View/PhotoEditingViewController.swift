@@ -78,7 +78,7 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         hasMadeEdits = true
     }
 
-    func clearHasMadeEdits() {
+    public func clearHasMadeEdits() {
         hasMadeEdits = false
     }
 
@@ -186,9 +186,9 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         }
 
 #if targetEnvironment(macCatalyst)
-        if action == #selector(save(_:)) {
-            return self.canSave
-        }
+//        if action == #selector(PhotoEditingViewController.save(_:)) {
+//            return self.canSave
+//        }
 #endif
 
         return super.canPerformAction(action, withSender: sender)
@@ -240,8 +240,14 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         guard let editingActivity = (activity as? EditingUserActivity) else { return }
         if let asset = asset {
             editingActivity.assetLocalIdentifier = asset.localIdentifier
+        } else if let representedURL = fileURLProvider?.representedFileURL {
+            let accessGranted = representedURL.startAccessingSecurityScopedResource()
+            defer { representedURL.stopAccessingSecurityScopedResource() }
+            guard accessGranted else { return }
+
+            editingActivity.imageBookmarkData = try? representedURL.bookmarkData()
         } else if let image = image {
-            imageCache.writeImageToCache(image, fileName: fileNameProvider?.representedFileName) { result in
+            imageCache.writeImageToCache(image, fileName: fileURLProvider?.representedFileName) { result in
                 guard let url = try? result.get() else { return }
                 editingActivity.imageBookmarkData = try? url.bookmarkData()
             }

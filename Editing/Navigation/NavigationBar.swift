@@ -14,7 +14,7 @@ public class NavigationBar: UINavigationBar {
             standardAppearance = NavigationBarAppearance()
             compactAppearance = NavigationBarAppearance()
             scrollEdgeAppearance = NavigationBarAppearance()
-            #if swift(>=5.5)
+            #if swift(>=5.5) && !targetEnvironment(macCatalyst)
             if #available(iOS 15.0, *) {
                 compactScrollEdgeAppearance = NavigationBarAppearance()
             }

@@ -13,6 +13,7 @@
 "AppDelegate.preferencesMenuTitle" = "Preferences";
 "AppDelegate.preferencesMenuItemTitle" = "Preferences…";
 "AppDelegate.saveMenuTitle" = "Save";
+"AppDelegate.saveAsMenuTitle" = "Save As…";
 
 "AutoRedactionsAdditionDialogFactory.addButtonTitle" = "Add Word";
 "AutoRedactionsAdditionDialogFactory.placeholder" = "Hidden Word";
@@ -32,6 +33,14 @@
 "CollectionsDataSource.smartAlbumsHeader" = "Library";
 
 "ContactMailViewController.emailSubject" = "Hello!";
+
+"DesktopSaveAlertController.dismissButtonTitle" = "OK";
+
+"DesktopSaveError.missingRepresentedURL.alertTitle" = "Invalid Image";
+"DesktopSaveError.missingImageType.alertTitle" = "Unknown Image Type";
+"DesktopSaveError.noImageData.alertTitle" = "Export Failed";
+
+"DesktopSaveError.alertMessage" = "There was an unexpected error when saving the image. If this continues to happen, please contact support at hello@cocoatype.com.";
 
 "DesktopSettingsSceneDelegate.windowTitle" = "Preferences";
 
