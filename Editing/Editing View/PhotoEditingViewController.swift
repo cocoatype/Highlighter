@@ -124,7 +124,7 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
     }
 
     private func updateToolbarItems(animated: Bool = true) {
-        let actionSet = ActionSet.actionSet(for: self, undoManager: undoManager, selectedTool: photoEditingView.highlighterTool, sizeClass: traitCollection.horizontalSizeClass)
+        let actionSet = ActionSet(for: self, undoManager: undoManager, selectedTool: photoEditingView.highlighterTool, sizeClass: traitCollection.horizontalSizeClass)
 
         navigationItem.setLeftBarButtonItems(actionSet.leadingNavigationItems, animated: false)
         navigationItem.setRightBarButtonItems(actionSet.trailingNavigationItems, animated: false)
