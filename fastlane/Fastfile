@@ -19,9 +19,6 @@ platform :ios do
       cloned_source_packages_path: "SourcePackages",
       export_method: "app-store",
       scheme: "Highlighter")
-
-    # Upload the dSYMs to Sentry
-    sentry_upload_dsym
     
     # Just upload the build to TestFlight, no other changes
     upload_to_testflight(
@@ -66,9 +63,6 @@ platform :mac do
           "com.cocoatype.Highlighter" => "match AppStore com.cocoatype.Highlighter catalyst"
         }
       })
-
-    # Upload the dSYMs to Sentry
-    sentry_upload_dsym
 
     # Just upload the build to TestFlight, no other changes
     upload_to_app_store(
