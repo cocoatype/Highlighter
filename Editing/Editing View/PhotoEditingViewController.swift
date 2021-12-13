@@ -141,10 +141,10 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
     @objc public func showColorPicker(_ sender: Any) {
         if traitCollection.userInterfaceIdiom == .mac {
             ColorPanel.shared.makeKeyAndOrderFront(sender)
-        } else if let toolbarItem = toolbarItems?.first(where: { $0.action == #selector(showColorPicker(_:)) }) {
+        } else if let barButtonItem = sender as? UIBarButtonItem {
             let picker = ColorPickerViewController()
             picker.delegate = self
-            picker.popoverPresentationController?.barButtonItem = toolbarItem
+            picker.popoverPresentationController?.barButtonItem = barButtonItem
             present(picker, animated: true, completion: nil)
         }
     }
