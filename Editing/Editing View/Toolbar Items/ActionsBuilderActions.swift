@@ -6,4 +6,5 @@
     func redo(_ sender: Any)
     func toggleHighlighterTool(_ sender: Any)
     func showColorPicker(_ sender: Any)
+    func startSeeking(_ sender: Any)
 }

@@ -74,6 +74,9 @@
 		043C28E7265F47E00054A5A8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF542255A0B00058D8EE /* Colors.swift */; };
 		043C28E9265F49150054A5A8 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF5A2255A39D0058D8EE /* Fonts.swift */; };
 		044074BF23BE9BCD00D3CB99 /* RedactionPathLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044074BE23BE9BCD00D3CB99 /* RedactionPathLayer.swift */; };
+		04409440275F1694003155CC /* ToolbarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440943F275F1694003155CC /* ToolbarBuilder.swift */; };
+		04409441275F170F003155CC /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440943D275F0A5D003155CC /* FeatureFlag.swift */; };
+		04409443275F1A28003155CC /* SeekBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04409442275F1A28003155CC /* SeekBarButtonItem.swift */; };
 		04431E4723556106009FA1F6 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04431E4623556106009FA1F6 /* PhotosUI.framework */; };
 		04431E4923556106009FA1F6 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04431E4823556106009FA1F6 /* Photos.framework */; };
 		04431E4F23556106009FA1F6 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04431E4D23556106009FA1F6 /* MainInterface.storyboard */; };
@@ -543,6 +546,9 @@
 		043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingScrollView.swift; sourceTree = "<group>"; };
 		043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingObservationVisualizationView.swift; sourceTree = "<group>"; };
 		044074BE23BE9BCD00D3CB99 /* RedactionPathLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactionPathLayer.swift; sourceTree = "<group>"; };
+		0440943D275F0A5D003155CC /* FeatureFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlag.swift; sourceTree = "<group>"; };
+		0440943F275F1694003155CC /* ToolbarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarBuilder.swift; sourceTree = "<group>"; };
+		04409442275F1A28003155CC /* SeekBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekBarButtonItem.swift; sourceTree = "<group>"; };
 		04431E4523556106009FA1F6 /* Photo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Photo.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		04431E4623556106009FA1F6 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		04431E4823556106009FA1F6 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
@@ -1272,8 +1278,10 @@
 				04975D922610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift */,
 				04750E9326D9EEE100E98BB4 /* DismissBarButtonItem.swift */,
 				04750E9526D9EEF500E98BB4 /* ColorPickerBarButtonItem.swift */,
+				04409442275F1A28003155CC /* SeekBarButtonItem.swift */,
 				04750E9726D9EF0700E98BB4 /* RedoBarButtonItem.swift */,
 				04750E9926D9EF1900E98BB4 /* UndoBarButtonItem.swift */,
+				0440943F275F1694003155CC /* ToolbarBuilder.swift */,
 			);
 			path = "Toolbar Items";
 			sourceTree = "<group>";
@@ -1414,15 +1422,16 @@
 			isa = PBXGroup;
 			children = (
 				041EFEF82251A9F30058D8EE /* AppDelegate.swift */,
+				042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */,
 				041EFEFA2251A9F30058D8EE /* AppViewController.swift */,
 				041EFF1A2251AB8D0058D8EE /* AppWindow.swift */,
-				04F0914125E7B30D00966C1E /* DesktopAppWindow.swift */,
-				042B7902229A38C0005B7A2A /* Defaults.swift */,
-				042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */,
 				04F3C7F22308F37400445A8D /* AsyncOperation.swift */,
-				048320BA25D7F1AF00355393 /* Recents Menu */,
-				04389DE1262AC7C8004D49B7 /* Help Menu */,
+				042B7902229A38C0005B7A2A /* Defaults.swift */,
+				04F0914125E7B30D00966C1E /* DesktopAppWindow.swift */,
+				0440943D275F0A5D003155CC /* FeatureFlag.swift */,
 				04CBB0982658AF5800B792A2 /* LogPublisher.swift */,
+				04389DE1262AC7C8004D49B7 /* Help Menu */,
+				048320BA25D7F1AF00355393 /* Recents Menu */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -2265,6 +2274,7 @@
 				049F92EA22CDA43F0090C9BC /* UIImageExtensions.swift in Sources */,
 				049F92F222CDA4D50090C9BC /* HighlighterTool.swift in Sources */,
 				04975D5826106DC100AA2771 /* PhotoEditingCanvasBrushStrokeView.m in Sources */,
+				04409441275F170F003155CC /* FeatureFlag.swift in Sources */,
 				04DBC843231E2AEC0004F7DB /* RestoredRedaction.swift in Sources */,
 				041BEA3722EF75E800FF07C2 /* Icons.swift in Sources */,
 				049F92E822CDA43F0090C9BC /* UIViewControllerExtensions.swift in Sources */,
@@ -2278,8 +2288,10 @@
 				04431E5E2358117B009FA1F6 /* RedactionSerializer.swift in Sources */,
 				04975D8926106F8B00AA2771 /* HighlighterToolBarButtonItem.swift in Sources */,
 				04FDEA5625257B1900F94CA9 /* SplitViewController.swift in Sources */,
+				04409443275F1A28003155CC /* SeekBarButtonItem.swift in Sources */,
 				04FF8DB422F57570008CF0E9 /* Defaults.swift in Sources */,
 				04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */,
+				04409440275F1694003155CC /* ToolbarBuilder.swift in Sources */,
 				049F930322CDA9150090C9BC /* PhotoExporter.swift in Sources */,
 				049F92EF22CDA4C10090C9BC /* PhotoEditingImageView.swift in Sources */,
 				049F92ED22CDA4B10090C9BC /* PhotoEditingView.swift in Sources */,
