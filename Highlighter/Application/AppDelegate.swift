@@ -98,8 +98,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ]
         }
 
-        builder.replaceChildren(ofMenu: .newScene) {
-            $0 + [NewFromClipboardCommand()]
+        if FeatureFlag.newFromClipboard {
+            builder.replaceChildren(ofMenu: .newScene) {
+                $0 + [NewFromClipboardCommand()]
+            }
         }
 
         let recentsMenuDataSource = RecentsMenuDataSource()
