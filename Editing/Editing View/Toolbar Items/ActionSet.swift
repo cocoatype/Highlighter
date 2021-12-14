@@ -16,7 +16,7 @@ struct ActionSet {
     @ToolbarBuilder var trailingNavigationItems: [UIBarButtonItem] {
         ShareBarButtonItem(target: target)
 
-        if FeatureFlag.seekAndDestroy {
+        if FeatureFlag.seekAndDestroy, sizeClass == .regular {
             SeekBarButtonItem(target: target)
         }
 
