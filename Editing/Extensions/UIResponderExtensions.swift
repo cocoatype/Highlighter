@@ -8,7 +8,6 @@ extension UIResponder {
         let object = object ?? self
         let base = ignoreSelf ? next : self
         let actionTarget = base?.target(forAction: selector, withSender: self) as? UIResponder
-        Swift.dump(actionTarget)
         actionTarget?.perform(selector, with: object)
     }
 }

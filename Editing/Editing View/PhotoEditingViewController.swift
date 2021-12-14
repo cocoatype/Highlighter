@@ -155,9 +155,18 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         seekBar.becomeFirstResponder()
     }
 
-    @objc public func stopSeeking(_ sender: Any) {
+    @objc public func cancelSeeking(_ sender: Any) {
         isSeeking = false
         seekBar.resignFirstResponder()
+    }
+
+    @objc public func finishSeeking(_ sender: Any) {
+        isSeeking = false
+        seekBar.resignFirstResponder()
+    }
+
+    @objc public func seekBarDidChangeText(_ sender: UISearchTextField) {
+        dump(sender.text)
     }
 
     open override var canResignFirstResponder: Bool { true }

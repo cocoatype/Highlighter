@@ -7,7 +7,7 @@ class SeekBar: UIToolbar {
     init() {
         super.init(frame: CGRect(origin: .zero, size: CGSize(width: 320, height: 44)))
 
-        items = [UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(PhotoEditingViewController.stopSeeking(_:))),
+        items = [UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(PhotoEditingViewController.cancelSeeking(_:))),
                  SeekTextField.barButtonItem()]
     }
 
@@ -26,7 +26,6 @@ class SeekBar: UIToolbar {
         }
 
         textFieldBarButtonItem?.width = bounds.size.width - totalItemsWidth - itemsMargin
-        NSLog("WIDTH=%f", textFieldBarButtonItem?.width ?? 0);
 
         super.layoutSubviews()
     }
