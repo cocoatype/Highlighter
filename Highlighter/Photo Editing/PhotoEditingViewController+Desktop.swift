@@ -15,7 +15,7 @@ extension PhotoEditingViewController {
     }
 
     @objc func save(_ sender: Any) {
-        guard let exportURL = fileURLProvider?.representedFileURL else { return present(.missingRepresentedURL) }
+        guard let exportURL = fileURLProvider?.representedFileURL else { return saveAs(sender) }
         guard let imageType = imageType else { return present(.missingImageType) }
 
         exportImage { [weak self] image in
@@ -48,11 +48,11 @@ extension PhotoEditingViewController {
     }
 
     @objc func saveAs(_ sender: Any) {
-        guard let representedURL = fileURLProvider?.representedFileURL else { return present(.missingRepresentedURL) }
         guard let imageType = imageType else { return present(.missingImageType) }
 
+        let representedURLName = fileURLProvider?.representedFileURL?.lastPathComponent ?? "image.\(imageType.preferredFilenameExtension ?? "png")"
         let temporaryURL = URL(fileURLWithPath: NSTemporaryDirectory())
-            .appendingPathComponent(representedURL.lastPathComponent)
+            .appendingPathComponent(representedURLName)
 
         exportImage { [weak self] image in
             let data: Data?
