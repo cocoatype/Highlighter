@@ -9,9 +9,10 @@ import UIKit
 class DesktopViewController: UIViewController, FileURLProvider {
     var editingViewController: PhotoEditingViewController? { children.first as? PhotoEditingViewController }
 
-    init(representedURL: URL?, redactions: [Redaction]?) {
+    init(representedURL: URL?, image: UIImage?, redactions: [Redaction]?) {
         self.initialRedactions = redactions
         self.representedURL = representedURL
+        self.image = image
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -21,8 +22,10 @@ class DesktopViewController: UIViewController, FileURLProvider {
         if children.contains(where: { $0 is PhotoEditingViewController }), let representedURL = representedURL {
             windowScene?.titlebar?.representedURL = representedURL
             windowScene?.title = representedURL.lastPathComponent
-        } else {
+        } else if representedURL != nil {
             loadRepresentedURL()
+        } else if image != nil {
+            loadImage()
         }
     }
 
@@ -49,8 +52,7 @@ class DesktopViewController: UIViewController, FileURLProvider {
             windowScene?.titlebar?.representedURL = representedURL
             windowScene?.title = representedURL.lastPathComponent
 
-            embed(PhotoEditingViewController(image: image, redactions: initialRedactions))
-            validateAllToolbarItems()
+            self.image = image
         } catch let error {
             dump(error)
             return
@@ -61,6 +63,19 @@ class DesktopViewController: UIViewController, FileURLProvider {
 
     private func validateAllToolbarItems() {
         windowScene?.titlebar?.toolbar?.visibleItems?.forEach { $0.validate() }
+    }
+
+    // MARK: Image
+
+    var image: UIImage? {
+        didSet {
+            loadImage()
+        }
+    }
+
+    private func loadImage() {
+        embed(PhotoEditingViewController(image: image, redactions: initialRedactions))
+        validateAllToolbarItems()
     }
 
     // MARK: State Restoration

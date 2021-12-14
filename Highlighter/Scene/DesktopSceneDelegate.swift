@@ -12,15 +12,18 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         guard let scene = (scene as? UIWindowScene) else { return }
         let representedURL: URL?
         let redactions: [Redaction]?
+        let image: UIImage?
         if let stateRestorationActivity = session.stateRestorationActivity, let activity = EditingUserActivity(userActivity: stateRestorationActivity) {
             representedURL = self.representedURL(from: activity)
             redactions = activity.redactions
+            image = activity.image
         } else {
             representedURL = self.representedURL(from: connectionOptions)
             redactions = nil
+            image = self.image(from: connectionOptions)
         }
 
-        let window = DesktopAppWindow(windowScene: scene, representedURL: representedURL, redactions: redactions)
+        let window = DesktopAppWindow(windowScene: scene, representedURL: representedURL, image: image, redactions: redactions)
         window.makeKeyAndVisible()
 
         let toolbar = NSToolbar()
@@ -58,6 +61,10 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
 
     func validateToolbarItems() {
         window?.windowScene?.titlebar?.toolbar?.visibleItems?.forEach { $0.validate() }
+    }
+
+    private func image(from options: UIScene.ConnectionOptions) -> UIImage? {
+        options.userActivities.compactMap(EditingUserActivity.init(userActivity:)).first?.image
     }
 
     private func representedURL(from options: UIScene.ConnectionOptions) -> URL? {

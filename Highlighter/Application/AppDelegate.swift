@@ -126,7 +126,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     @objc func newSceneFromClipboard() {
-
+        guard let data = UIPasteboard.general.data(forPasteboardType: UTType.image.identifier) else { return }
+        let activity = EditingUserActivity(imageData: data)
+        activity.needsSave = true
+        UIApplication.shared.requestSceneSessionActivation(nil, userActivity: activity, options: nil, errorHandler: nil)
     }
     #endif
 
