@@ -242,6 +242,8 @@
 		04CBB0972658ABB200B792A2 /* ProductPricePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB0962658ABB200B792A2 /* ProductPricePublisher.swift */; };
 		04CBB0992658AF5800B792A2 /* LogPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB0982658AF5800B792A2 /* LogPublisher.swift */; };
 		04CBB09B2658B40C00B792A2 /* PurchaseStatePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB09A2658B40C00B792A2 /* PurchaseStatePublisher.swift */; };
+		04D442392768438F00F2933C /* SeekBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D442382768438F00F2933C /* SeekBar.swift */; };
+		04D4423C276845EA00F2933C /* SeekTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4423B276845EA00F2933C /* SeekTextField.swift */; };
 		04D68BC7225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC6225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift */; };
 		04D68BC92262B0C400D09BBD /* PhotoPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */; };
 		04D68BCC2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BCB2262B35700D09BBD /* PhotoPermissionsDeniedAlertController.swift */; };
@@ -679,6 +681,8 @@
 		04CBB0962658ABB200B792A2 /* ProductPricePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPricePublisher.swift; sourceTree = "<group>"; };
 		04CBB0982658AF5800B792A2 /* LogPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogPublisher.swift; sourceTree = "<group>"; };
 		04CBB09A2658B40C00B792A2 /* PurchaseStatePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseStatePublisher.swift; sourceTree = "<group>"; };
+		04D442382768438F00F2933C /* SeekBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekBar.swift; sourceTree = "<group>"; };
+		04D4423B276845EA00F2933C /* SeekTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekTextField.swift; sourceTree = "<group>"; };
 		04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
 		04D68BC6225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPhotoLibraryViewCellImageView.swift; sourceTree = "<group>"; };
 		04D68BC82262B0C400D09BBD /* PhotoPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPermissionsRequester.swift; sourceTree = "<group>"; };
@@ -1317,6 +1321,7 @@
 				043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */,
 				043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */,
 				0493D2D524B6BAE400FF99F4 /* ColorPickerViewController.swift */,
+				04D4423A276845D800F2933C /* Seek and Destroy */,
 			);
 			path = "Editing View";
 			sourceTree = "<group>";
@@ -1376,6 +1381,15 @@
 				04B1994426241162001A275B /* PhotoEditingWorkspaceViewTests.swift */,
 			);
 			path = Workspace;
+			sourceTree = "<group>";
+		};
+		04D4423A276845D800F2933C /* Seek and Destroy */ = {
+			isa = PBXGroup;
+			children = (
+				04D442382768438F00F2933C /* SeekBar.swift */,
+				04D4423B276845EA00F2933C /* SeekTextField.swift */,
+			);
+			path = "Seek and Destroy";
 			sourceTree = "<group>";
 		};
 		04D68BC3225EE2A500D09BBD /* Extensions */ = {
@@ -2274,6 +2288,7 @@
 				049F92EA22CDA43F0090C9BC /* UIImageExtensions.swift in Sources */,
 				049F92F222CDA4D50090C9BC /* HighlighterTool.swift in Sources */,
 				04975D5826106DC100AA2771 /* PhotoEditingCanvasBrushStrokeView.m in Sources */,
+				04D442392768438F00F2933C /* SeekBar.swift in Sources */,
 				04409441275F170F003155CC /* FeatureFlag.swift in Sources */,
 				04DBC843231E2AEC0004F7DB /* RestoredRedaction.swift in Sources */,
 				041BEA3722EF75E800FF07C2 /* Icons.swift in Sources */,
@@ -2298,6 +2313,7 @@
 				049F930422CDAA9D0090C9BC /* NavigationController.swift in Sources */,
 				04750E8A26D9D72F00E98BB4 /* ActionSet.swift in Sources */,
 				0464B18725529CC000D00FAC /* Redaction.swift in Sources */,
+				04D4423C276845EA00F2933C /* SeekTextField.swift in Sources */,
 				049F92E722CDA3FF0090C9BC /* CharacterObservation.swift in Sources */,
 				049F92E422CDA3FF0090C9BC /* TextRectangleDetector.swift in Sources */,
 				04750E9226D9EECE00E98BB4 /* ShareBarButtonItem.swift in Sources */,

@@ -135,6 +135,33 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         userActivity?.needsSave = true
     }
 
+    // MARK: Seek and Destroy
+
+    private let seekBar = SeekBar()
+
+    private var isSeeking = false {
+        didSet {
+            reloadInputViews()
+        }
+    }
+
+    open override var inputAccessoryView: UIView? {
+        guard isSeeking else { return nil }
+        return seekBar
+    }
+
+    @objc public func startSeeking(_ sender: Any) {
+        isSeeking = true
+        seekBar.becomeFirstResponder()
+    }
+
+    @objc public func stopSeeking(_ sender: Any) {
+        isSeeking = false
+        seekBar.resignFirstResponder()
+    }
+
+    open override var canResignFirstResponder: Bool { true }
+
     // MARK: Color Picker
 
     @available(iOS 14.0, *)
