@@ -49,8 +49,12 @@ public class EditingUserActivity: NSUserActivity {
     // MARK: Image
 
     public var image: UIImage? {
-        guard let data = imageData else { return nil }
-        return UIImage(data: data)
+        get {
+            guard let data = imageData else { return nil }
+            return UIImage(data: data)
+        } set(newImage) {
+            imageData = newImage?.pngData()
+        }
     }
 
     // MARK: Boilerplate

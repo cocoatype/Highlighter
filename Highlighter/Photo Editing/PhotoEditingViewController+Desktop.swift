@@ -77,8 +77,11 @@ extension PhotoEditingViewController {
 
                 Defaults.numberOfSaves += 1
                 DispatchQueue.main.async { [weak self] in
-                    let saveViewController = DesktopSaveViewController(url: temporaryURL) { [weak self] in
+                    let saveViewController = DesktopSaveViewController(url: temporaryURL) { [weak self] urls in
                         AppRatingsPrompter.displayRatingsPrompt(in: self?.view.window?.windowScene)
+                        if let exportURL = urls.first {
+                            self?.fileURLProvider?.updateRepresentedFileURL(to: exportURL)
+                        }
                     }
                     self?.present(saveViewController, animated: true, completion: nil)
                 }
@@ -98,8 +101,8 @@ extension PhotoEditingViewController {
 }
 
 class DesktopSaveViewController: UIDocumentPickerViewController, UIDocumentPickerDelegate {
-    private var onSave: (() -> Void)? = nil
-    convenience init(url: URL, onSave: @escaping (() -> Void)) {
+    private var onSave: (([URL]) -> Void)? = nil
+    convenience init(url: URL, onSave: @escaping (([URL]) -> Void)) {
         self.init(forExporting: [url], asCopy: true)
         self.onSave = onSave
         delegate = self
@@ -108,7 +111,7 @@ class DesktopSaveViewController: UIDocumentPickerViewController, UIDocumentPicke
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let onSave = self.onSave else { return }
         DispatchQueue.main.async {
-            onSave()
+            onSave(urls)
         }
     }
 }

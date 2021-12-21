@@ -51,6 +51,7 @@ public class RestorationImageCache: NSObject {
 
 public protocol FileURLProvider {
     var representedFileURL: URL? { get }
+    func updateRepresentedFileURL(to newURL: URL)
 }
 
 extension FileURLProvider {

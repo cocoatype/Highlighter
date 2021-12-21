@@ -247,10 +247,11 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
 
             editingActivity.imageBookmarkData = try? representedURL.bookmarkData()
         } else if let image = image {
-            imageCache.writeImageToCache(image, fileName: fileURLProvider?.representedFileName) { result in
-                guard let url = try? result.get() else { return }
-                editingActivity.imageBookmarkData = try? url.bookmarkData()
-            }
+            editingActivity.image = image
+//            imageCache.writeImageToCache(image, fileName: fileURLProvider?.representedFileName) { result in
+//                guard let url = try? result.get() else { return }
+//                editingActivity.imageBookmarkData = try? url.bookmarkData()
+//            }
         }
         editingActivity.redactions = photoEditingView.redactions
     }

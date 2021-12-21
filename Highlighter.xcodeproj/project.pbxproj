@@ -100,6 +100,7 @@
 		044D4D042547D25600701166 /* Redacting.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 044D4C9B2547C8EE00701166 /* Redacting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		044D4D0C2547D4CC00701166 /* TextRecognitionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3E22EF879700FF07C2 /* TextRecognitionOperation.swift */; };
 		0453B0C82654E71600EFE68A /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 0453B0C72654E71600EFE68A /* Sentry */; };
+		045CA3AA2771823D00DEA988 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3A92771823D00DEA988 /* URLExtensions.swift */; };
 		0461680A263E271700C28B7F /* RestorationImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04616809263E271700C28B7F /* RestorationImageCache.swift */; };
 		0464B18725529CC000D00FAC /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
 		0464B19025529DC500D00FAC /* AutomatorActions.action in Embed Automator Actions */ = {isa = PBXBuildFile; fileRef = 044D4C182547B7BC00701166 /* AutomatorActions.action */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -566,6 +567,7 @@
 		044D4C9B2547C8EE00701166 /* Redacting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Redacting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		044D4C9D2547C8EE00701166 /* Redacting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Redacting.h; sourceTree = "<group>"; };
 		044D4C9E2547C8EE00701166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		045CA3A92771823D00DEA988 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		04616809263E271700C28B7F /* RestorationImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorationImageCache.swift; sourceTree = "<group>"; };
 		0464B1DE2553A3DE00D00FAC /* Shortcuts.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Shortcuts.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0464B1E02553A3DE00D00FAC /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
@@ -1385,6 +1387,7 @@
 				04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */,
 				043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */,
 				04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */,
+				045CA3A92771823D00DEA988 /* URLExtensions.swift */,
 				04750E8D26D9E23E00E98BB4 /* UIResponderExtensions.swift */,
 			);
 			path = Extensions;
@@ -2304,6 +2307,7 @@
 				04975D932610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift in Sources */,
 				049F92E922CDA43F0090C9BC /* GeometryExtensions.swift in Sources */,
 				04F3C856230BC1F000445A8D /* PhotoEditingWorkspaceView.swift in Sources */,
+				045CA3AA2771823D00DEA988 /* URLExtensions.swift in Sources */,
 				0461680A263E271700C28B7F /* RestorationImageCache.swift in Sources */,
 				04750E8E26D9E23E00E98BB4 /* UIResponderExtensions.swift in Sources */,
 			);

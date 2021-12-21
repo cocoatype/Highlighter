@@ -88,7 +88,9 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         var isStale = false
         guard let bookmarkData = activity.imageBookmarkData,
               let url = try? URL(resolvingBookmarkData: bookmarkData, bookmarkDataIsStale: &isStale),
-              FileManager.default.fileExists(atPath: url.path)
+              FileManager.default.fileExists(atPath: url.path),
+              let cachesDirectory = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false),
+              cachesDirectory.isParent(of: url) == false
         else { return nil }
         return url
     }
