@@ -65,6 +65,8 @@
 "PhotoEditingProtectionAlertController.deleteButtonTitle" = "Delete Changes";
 "PhotoEditingProtectionAlertController.saveButtonTitle" = "Save to Photos";
 
+"PhotoEditingViewController.defaultImageName" = "Redacted Image";
+
 "PhotoLibraryViewDocumentScannerCell.defaultAccessibilityLabel" = "Scan Document";
 
 "PhotoPermissionsDeniedAlertController.alertTitle" = "No Access to Your Photos";

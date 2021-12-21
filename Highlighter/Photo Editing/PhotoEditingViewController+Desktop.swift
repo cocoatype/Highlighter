@@ -50,7 +50,7 @@ extension PhotoEditingViewController {
     @objc func saveAs(_ sender: Any) {
         guard let imageType = imageType else { return present(.missingImageType) }
 
-        let representedURLName = fileURLProvider?.representedFileURL?.lastPathComponent ?? "image.\(imageType.preferredFilenameExtension ?? "png")"
+        let representedURLName = fileURLProvider?.representedFileURL?.lastPathComponent ?? "\(Self.defaultImageName).\(imageType.preferredFilenameExtension ?? "png")"
         let temporaryURL = URL(fileURLWithPath: NSTemporaryDirectory())
             .appendingPathComponent(representedURLName)
 
@@ -98,6 +98,8 @@ extension PhotoEditingViewController {
         guard hasMadeEdits == true else { return false }
         return [UTType.png, .jpeg].contains(imageType)
     }
+
+    private static let defaultImageName = NSLocalizedString("PhotoEditingViewController.defaultImageName", comment: "Default name when saving the image on macOS")
 }
 
 class DesktopSaveViewController: UIDocumentPickerViewController, UIDocumentPickerDelegate {
