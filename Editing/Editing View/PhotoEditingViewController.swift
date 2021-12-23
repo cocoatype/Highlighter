@@ -152,7 +152,12 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
 
     @objc public func startSeeking(_ sender: Any) {
         isSeeking = true
+
+        #if targetEnvironment(macCatalyst)
+        present(DesktopSeekViewController(), animated: true, completion: nil)
+        #else
         seekBar.becomeFirstResponder()
+        #endif
     }
 
     @objc public func cancelSeeking(_ sender: Any) {

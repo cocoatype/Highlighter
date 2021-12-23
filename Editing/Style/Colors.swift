@@ -23,6 +23,9 @@ public extension UIColor {
     static let tableViewCellBackgroundHighlighted = UIColor.primaryLight
     static let tableViewSeparator = UIColor(hexLiteral: 0x878787)
 
+    static let seekBoxInnerBorder = UIColor(named: "Seek Box Inner Border")
+    static let seekBoxOuterBorder = UIColor(named: "Seek Box Outer Border")
+
     convenience init(hexLiteral hex: Int) {
         let red = CGFloat((hex & 0xFF0000) >> 16)
         let green = CGFloat((hex & 0x00FF00) >> 8)
