@@ -9,6 +9,6 @@ public enum FeatureFlag {
     }
 
     public static var newFromClipboard: Bool {
-        UserDefaults.standard.bool(forKey: "FeatureFlag.newFromClipboard")
+        true
     }
 }
