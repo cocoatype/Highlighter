@@ -6,13 +6,13 @@ import UIKit
 
 #if targetEnvironment(macCatalyst)
 class DesktopAppWindow: UIWindow, UIDocumentBrowserViewControllerDelegate {
-    init(windowScene: UIWindowScene, representedURL: URL?, redactions: [Redaction]?) {
-        desktopViewController = DesktopViewController(representedURL: representedURL, redactions: redactions)
+    init(windowScene: UIWindowScene, representedURL: URL?, image: UIImage?, redactions: [Redaction]?) {
+        desktopViewController = DesktopViewController(representedURL: representedURL, image: image, redactions: redactions)
         super.init(windowScene: windowScene)
 
         isOpaque = false
 
-        if representedURL == nil {
+        if representedURL == nil && image == nil {
             let documentBrowser = DesktopDocumentBrowserViewController()
             documentBrowser.delegate = self
             rootViewController = documentBrowser

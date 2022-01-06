@@ -3,8 +3,12 @@
 
 import Foundation
 
-enum FeatureFlag {
+public enum FeatureFlag {
     static var seekAndDestroy: Bool {
         UserDefaults.standard.bool(forKey: "FeatureFlag.seekAndDestroy")
+    }
+
+    public static var newFromClipboard: Bool {
+        UserDefaults.standard.bool(forKey: "FeatureFlag.newFromClipboard")
     }
 }
