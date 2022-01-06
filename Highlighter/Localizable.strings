@@ -57,6 +57,8 @@
 
 "LimitedLibraryPhotoLibraryViewCell.defaultAccessibilityLabel" = "Change Selected Photos";
 
+"NewFromClipboardCommand.title" = "New from Clipboard";
+
 "PageCountAlertFactory.alertTitle" = "Too Many Pages";
 "PageCountAlertFactory.alertMessage" = "Highlighter only supports editing one page at a time. Only the first page of your scan will appear.";
 "PageCountAlertFactory.dismissButtonTitle" = "Okay";

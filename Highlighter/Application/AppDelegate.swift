@@ -98,11 +98,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ]
         }
 
+        #if targetEnvironment(macCatalyst)
         if FeatureFlag.newFromClipboard {
             builder.replaceChildren(ofMenu: .newScene) {
                 $0 + [NewFromClipboardCommand()]
             }
         }
+        #endif
 
         let recentsMenuDataSource = RecentsMenuDataSource()
         builder.replace(menu: .openRecent, with: recentsMenuDataSource.recentsMenu)
@@ -145,10 +147,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: Boilerplate
     private var appViewController: AppViewController? { return window?.rootViewController as? AppViewController }
-}
-
-class NewFromClipboardCommand: UIKeyCommand {
-    override convenience init() {
-        self.init(title: "New from Clipboard", action: #selector(AppDelegate.newSceneFromClipboard), input: "N", modifierFlags: [.command, .alternate])
-    }
 }

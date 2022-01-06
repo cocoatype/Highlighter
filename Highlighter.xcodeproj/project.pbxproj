@@ -152,6 +152,7 @@
 		047E913C26560CB50075F6B2 /* PurchaseTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E913B26560CB50075F6B2 /* PurchaseTitle.swift */; };
 		047E913E26560CEC0075F6B2 /* PurchaseSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E913D26560CEC0075F6B2 /* PurchaseSubtitle.swift */; };
 		047E9140265613120075F6B2 /* PurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E913F265613120075F6B2 /* PurchaseButton.swift */; };
+		047F8E7A2786A0C900E1F2A9 /* NewFromClipboardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F8E792786A0C900E1F2A9 /* NewFromClipboardCommand.swift */; };
 		0482C79B25218D090013B69E /* DesktopAutoRedactionsViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C79A25218D090013B69E /* DesktopAutoRedactionsViewDelegate.swift */; };
 		0482C79D25218D400013B69E /* DesktopAutoRedactionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C79C25218D400013B69E /* DesktopAutoRedactionsListView.swift */; };
 		0482C79F25218D600013B69E /* DesktopSettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C79E25218D600013B69E /* DesktopSettingsTableView.swift */; };
@@ -619,6 +620,7 @@
 		047E913B26560CB50075F6B2 /* PurchaseTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTitle.swift; sourceTree = "<group>"; };
 		047E913D26560CEC0075F6B2 /* PurchaseSubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseSubtitle.swift; sourceTree = "<group>"; };
 		047E913F265613120075F6B2 /* PurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButton.swift; sourceTree = "<group>"; };
+		047F8E792786A0C900E1F2A9 /* NewFromClipboardCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFromClipboardCommand.swift; sourceTree = "<group>"; };
 		0482C79A25218D090013B69E /* DesktopAutoRedactionsViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopAutoRedactionsViewDelegate.swift; sourceTree = "<group>"; };
 		0482C79C25218D400013B69E /* DesktopAutoRedactionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopAutoRedactionsListView.swift; sourceTree = "<group>"; };
 		0482C79E25218D600013B69E /* DesktopSettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsTableView.swift; sourceTree = "<group>"; };
@@ -1425,6 +1427,7 @@
 			isa = PBXGroup;
 			children = (
 				041EFEF82251A9F30058D8EE /* AppDelegate.swift */,
+				047F8E792786A0C900E1F2A9 /* NewFromClipboardCommand.swift */,
 				042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */,
 				041EFEFA2251A9F30058D8EE /* AppViewController.swift */,
 				041EFF1A2251AB8D0058D8EE /* AppWindow.swift */,
@@ -2121,6 +2124,7 @@
 				047E913E26560CEC0075F6B2 /* PurchaseSubtitle.swift in Sources */,
 				046C4065247F5BCA0069E8FB /* UserCollectionTableViewCellImageView.swift in Sources */,
 				041EFF76225C3DF10058D8EE /* PhotoLibraryViewLayout.swift in Sources */,
+				047F8E7A2786A0C900E1F2A9 /* NewFromClipboardCommand.swift in Sources */,
 				0482C7A125218D860013B69E /* AlternatingRowTableViewBackgroundView.swift in Sources */,
 				04FF8DBD22F57B3A008CF0E9 /* AutoRedactionsAdditionAlertController.swift in Sources */,
 				047E913C26560CB50075F6B2 /* PurchaseTitle.swift in Sources */,
