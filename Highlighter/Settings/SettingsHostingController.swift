@@ -7,6 +7,7 @@ import UIKit
 class SettingsHostingController: UIHostingController<SettingsView> {
     init() {
         super.init(rootView: SettingsView(dismissAction: {}))
+        modalPresentationStyle = .formSheet
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

@@ -26,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.set(true, forKey: "NSQuitAlwaysKeepsWindows")
         #endif
 
+        let appearance = UIBarButtonItem.appearance()
+        appearance.setTitleTextAttributes(NavigationBar.buttonTitleTextAttributes, for: .normal)
+        appearance.setTitleTextAttributes(NavigationBar.buttonTitleTextAttributes, for: .highlighted)
+
         return true
     }
 

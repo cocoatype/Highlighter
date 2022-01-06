@@ -13,6 +13,7 @@ class PhotoPicker: NSObject, PHPickerViewControllerDelegate {
         configuration.filter = .images
 
         let controller = PHPickerViewController(configuration: configuration)
+        controller.overrideUserInterfaceStyle = .dark
         controller.delegate = self
         return controller
     }()
