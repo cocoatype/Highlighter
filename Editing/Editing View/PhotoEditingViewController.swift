@@ -11,6 +11,8 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         self.completionHandler = completionHandler
         super.init(nibName: nil, bundle: nil)
 
+        definesPresentationContext = true
+
         photoEditingView.add(redactions ?? [])
         updateToolbarItems(animated: false)
 
@@ -150,6 +152,14 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         return seekBar
     }
 
+    @objc public func toggleSeeking(_ sender: Any) {
+        if isSeeking {
+            cancelSeeking(sender)
+        } else {
+            startSeeking(sender)
+        }
+    }
+
     @objc public func startSeeking(_ sender: Any) {
         isSeeking = true
 
@@ -162,12 +172,26 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
 
     @objc public func cancelSeeking(_ sender: Any) {
         isSeeking = false
+
+        #if targetEnvironment(macCatalyst)
+        if presentedViewController is DesktopSeekViewController {
+            dismiss(animated: true, completion: nil)
+        }
+        #else
         seekBar.resignFirstResponder()
+        #endif
     }
 
     @objc public func finishSeeking(_ sender: Any) {
         isSeeking = false
+
+        #if targetEnvironment(macCatalyst)
+        if presentedViewController is DesktopSeekViewController {
+            dismiss(animated: true, completion: nil)
+        }
+        #else
         seekBar.resignFirstResponder()
+        #endif
     }
 
     @objc public func seekBarDidChangeText(_ sender: UISearchTextField) {

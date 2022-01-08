@@ -115,8 +115,8 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
 
     // MARK: SeekItemDelegate
 
-    func startSeeking(_ sender: NSToolbarItem) {
-        editingViewController?.startSeeking(sender)
+    func toggleSeeking(_ sender: NSToolbarItem) {
+        editingViewController?.toggleSeeking(sender)
     }
 
     // MARK: NSToolbarDelegate

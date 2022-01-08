@@ -126,7 +126,7 @@ class SeekItem: NSToolbarItem {
         label = Self.itemLabel
 
         target = delegate
-        action = #selector(SeekItemDelegate.startSeeking(_:))
+        action = #selector(SeekItemDelegate.toggleSeeking(_:))
     }
 
     // MARK: Boilerplate
@@ -134,7 +134,7 @@ class SeekItem: NSToolbarItem {
 }
 
 @objc protocol SeekItemDelegate: AnyObject {
-    @objc func startSeeking(_ sender: NSToolbarItem)
+    @objc func toggleSeeking(_ sender: NSToolbarItem)
 }
 
 #endif
