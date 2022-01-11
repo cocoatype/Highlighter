@@ -4,10 +4,11 @@
 import UIKit
 import ErrorHandling
 
-class DesktopSeekTextField: UITextField {
+class DesktopSeekTextField: UITextField, UITextFieldDelegate {
     init() {
         super.init(frame: .zero)
         borderStyle = .none
+        delegate = self
         tintColor = .white
         translatesAutoresizingMaskIntoConstraints = false
 
@@ -19,6 +20,13 @@ class DesktopSeekTextField: UITextField {
     }
 
     var textToRedact: String? { text }
+
+    // MARK: Delegate
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        chain(selector: #selector(PhotoEditingViewController.finishSeeking(_:)))
+        return false
+    }
 
     // MARK: Boilerplate
 

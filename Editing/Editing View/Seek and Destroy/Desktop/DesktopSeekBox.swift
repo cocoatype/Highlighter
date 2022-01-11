@@ -11,6 +11,7 @@ class DesktopSeekBox: UIView {
         super.init(frame: .zero)
 
         backgroundColor = .clear
+        isUserInteractionEnabled = false
         translatesAutoresizingMaskIntoConstraints = false
 
         layer.cornerRadius = 0
