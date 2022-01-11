@@ -4,7 +4,7 @@
 import Foundation
 
 public enum FeatureFlag {
-    static var seekAndDestroy: Bool {
+    public static var seekAndDestroy: Bool {
         UserDefaults.standard.bool(forKey: "FeatureFlag.seekAndDestroy")
     }
 

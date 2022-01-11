@@ -5,7 +5,7 @@ import Editing
 import UIKit
 
 #if targetEnvironment(macCatalyst)
-class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, ShareItemDelegate, ToolPickerItemDelegate, ColorPickerItemDelegate {
+class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, ShareItemDelegate, ToolPickerItemDelegate, ColorPickerItemDelegate, SeekItemDelegate {
     var window: DesktopAppWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -122,14 +122,26 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         editingViewController?.showColorPicker(self)
     }
 
+    // MARK: SeekItemDelegate
+
+    func toggleSeeking(_ sender: NSToolbarItem) {
+        editingViewController?.toggleSeeking(sender)
+    }
+
     // MARK: NSToolbarDelegate
 
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        [ColorPickerItem.identifier, ToolPickerItem.identifier, ShareItem.identifier]
+        var identifiers = [NSToolbarItem.Identifier]()
+        if FeatureFlag.seekAndDestroy {
+            identifiers.append(SeekItem.identifier)
+        }
+
+        identifiers.append(contentsOf: [ColorPickerItem.identifier, ToolPickerItem.identifier, ShareItem.identifier])
+        return identifiers
     }
 
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        [ColorPickerItem.identifier, ToolPickerItem.identifier, ShareItem.identifier]
+        return toolbarDefaultItemIdentifiers(toolbar)
     }
 
     func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
@@ -137,6 +149,7 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         case ToolPickerItem.identifier: return ToolPickerItem(delegate: self)
         case ShareItem.identifier: return ShareItem(delegate: self)
         case ColorPickerItem.identifier: return ColorPickerItem(delegate: self)
+        case SeekItem.identifier: return SeekItem(delegate: self)
         default: return nil
         }
     }

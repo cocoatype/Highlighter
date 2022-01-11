@@ -42,6 +42,8 @@
 
 "DesktopSaveError.alertMessage" = "There was an unexpected error when saving the image. If this continues to happen, please contact support at hello@cocoatype.com.";
 
+"DesktopSeekButton.title" = "Hide";
+
 "DesktopSettingsSceneDelegate.windowTitle" = "Preferences";
 
 "DesktopSettingsView.wordListLabel" = "Auto-Hidden Words";
