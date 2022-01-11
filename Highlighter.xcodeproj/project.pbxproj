@@ -109,6 +109,7 @@
 		045CA3E427719A4A00DEA988 /* DesktopSeekBoxLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3E327719A4A00DEA988 /* DesktopSeekBoxLabel.swift */; };
 		045CA3E627719A7500DEA988 /* DesktopSeekBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3E527719A7500DEA988 /* DesktopSeekBorderView.swift */; };
 		045CA3E827719A9E00DEA988 /* DesktopSeekBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3E727719A9E00DEA988 /* DesktopSeekBackgroundView.swift */; };
+		045CA3AA2771823D00DEA988 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3A92771823D00DEA988 /* URLExtensions.swift */; };
 		0461680A263E271700C28B7F /* RestorationImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04616809263E271700C28B7F /* RestorationImageCache.swift */; };
 		0464B18725529CC000D00FAC /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
 		0464B19025529DC500D00FAC /* AutomatorActions.action in Embed Automator Actions */ = {isa = PBXBuildFile; fileRef = 044D4C182547B7BC00701166 /* AutomatorActions.action */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -160,6 +161,7 @@
 		047E913C26560CB50075F6B2 /* PurchaseTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E913B26560CB50075F6B2 /* PurchaseTitle.swift */; };
 		047E913E26560CEC0075F6B2 /* PurchaseSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E913D26560CEC0075F6B2 /* PurchaseSubtitle.swift */; };
 		047E9140265613120075F6B2 /* PurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E913F265613120075F6B2 /* PurchaseButton.swift */; };
+		047F8E7A2786A0C900E1F2A9 /* NewFromClipboardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F8E792786A0C900E1F2A9 /* NewFromClipboardCommand.swift */; };
 		0482C79B25218D090013B69E /* DesktopAutoRedactionsViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C79A25218D090013B69E /* DesktopAutoRedactionsViewDelegate.swift */; };
 		0482C79D25218D400013B69E /* DesktopAutoRedactionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C79C25218D400013B69E /* DesktopAutoRedactionsListView.swift */; };
 		0482C79F25218D600013B69E /* DesktopSettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C79E25218D600013B69E /* DesktopSettingsTableView.swift */; };
@@ -586,6 +588,7 @@
 		045CA3E327719A4A00DEA988 /* DesktopSeekBoxLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekBoxLabel.swift; sourceTree = "<group>"; };
 		045CA3E527719A7500DEA988 /* DesktopSeekBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekBorderView.swift; sourceTree = "<group>"; };
 		045CA3E727719A9E00DEA988 /* DesktopSeekBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekBackgroundView.swift; sourceTree = "<group>"; };
+		045CA3A92771823D00DEA988 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		04616809263E271700C28B7F /* RestorationImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorationImageCache.swift; sourceTree = "<group>"; };
 		0464B1DE2553A3DE00D00FAC /* Shortcuts.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Shortcuts.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0464B1E02553A3DE00D00FAC /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
@@ -637,6 +640,7 @@
 		047E913B26560CB50075F6B2 /* PurchaseTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTitle.swift; sourceTree = "<group>"; };
 		047E913D26560CEC0075F6B2 /* PurchaseSubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseSubtitle.swift; sourceTree = "<group>"; };
 		047E913F265613120075F6B2 /* PurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButton.swift; sourceTree = "<group>"; };
+		047F8E792786A0C900E1F2A9 /* NewFromClipboardCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFromClipboardCommand.swift; sourceTree = "<group>"; };
 		0482C79A25218D090013B69E /* DesktopAutoRedactionsViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopAutoRedactionsViewDelegate.swift; sourceTree = "<group>"; };
 		0482C79C25218D400013B69E /* DesktopAutoRedactionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopAutoRedactionsListView.swift; sourceTree = "<group>"; };
 		0482C79E25218D600013B69E /* DesktopSettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsTableView.swift; sourceTree = "<group>"; };
@@ -1434,6 +1438,7 @@
 				04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */,
 				043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */,
 				04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */,
+				045CA3A92771823D00DEA988 /* URLExtensions.swift */,
 				04750E8D26D9E23E00E98BB4 /* UIResponderExtensions.swift */,
 			);
 			path = Extensions;
@@ -1471,6 +1476,7 @@
 			isa = PBXGroup;
 			children = (
 				041EFEF82251A9F30058D8EE /* AppDelegate.swift */,
+				047F8E792786A0C900E1F2A9 /* NewFromClipboardCommand.swift */,
 				042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */,
 				041EFEFA2251A9F30058D8EE /* AppViewController.swift */,
 				041EFF1A2251AB8D0058D8EE /* AppWindow.swift */,
@@ -2167,6 +2173,7 @@
 				047E913E26560CEC0075F6B2 /* PurchaseSubtitle.swift in Sources */,
 				046C4065247F5BCA0069E8FB /* UserCollectionTableViewCellImageView.swift in Sources */,
 				041EFF76225C3DF10058D8EE /* PhotoLibraryViewLayout.swift in Sources */,
+				047F8E7A2786A0C900E1F2A9 /* NewFromClipboardCommand.swift in Sources */,
 				0482C7A125218D860013B69E /* AlternatingRowTableViewBackgroundView.swift in Sources */,
 				04FF8DBD22F57B3A008CF0E9 /* AutoRedactionsAdditionAlertController.swift in Sources */,
 				047E913C26560CB50075F6B2 /* PurchaseTitle.swift in Sources */,
@@ -2362,6 +2369,7 @@
 				04975D932610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift in Sources */,
 				049F92E922CDA43F0090C9BC /* GeometryExtensions.swift in Sources */,
 				04F3C856230BC1F000445A8D /* PhotoEditingWorkspaceView.swift in Sources */,
+				045CA3AA2771823D00DEA988 /* URLExtensions.swift in Sources */,
 				0461680A263E271700C28B7F /* RestorationImageCache.swift in Sources */,
 				04750E8E26D9E23E00E98BB4 /* UIResponderExtensions.swift in Sources */,
 				045CA3DE2771905400DEA988 /* DesktopSeekBox.swift in Sources */,
@@ -2543,7 +2551,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = Highlight;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2613,7 +2620,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = Highlight;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

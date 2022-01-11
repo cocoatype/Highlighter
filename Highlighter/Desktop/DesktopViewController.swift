@@ -9,9 +9,10 @@ import UIKit
 class DesktopViewController: UIViewController, FileURLProvider {
     var editingViewController: PhotoEditingViewController? { children.first as? PhotoEditingViewController }
 
-    init(representedURL: URL?, redactions: [Redaction]?) {
+    init(representedURL: URL?, image: UIImage?, redactions: [Redaction]?) {
         self.initialRedactions = redactions
         self.representedURL = representedURL
+        self.image = image
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -21,8 +22,13 @@ class DesktopViewController: UIViewController, FileURLProvider {
         if children.contains(where: { $0 is PhotoEditingViewController }), let representedURL = representedURL {
             windowScene?.titlebar?.representedURL = representedURL
             windowScene?.title = representedURL.lastPathComponent
-        } else {
-            loadRepresentedURL()
+        } else if representedURL != nil {
+            do {
+                try loadRepresentedURL()
+                updateURLRepresentation()
+            } catch { ErrorHandling.log(error) }
+        } else if image != nil {
+            loadImage()
         }
     }
 
@@ -30,37 +36,58 @@ class DesktopViewController: UIViewController, FileURLProvider {
 
     var representedURL: URL? {
         didSet {
-            loadRepresentedURL()
+            do {
+                try loadRepresentedURL()
+                updateURLRepresentation()
+            } catch {
+                ErrorHandling.log(error)
+            }
         }
     }
 
-    private func loadRepresentedURL() {
-        guard let representedURL = representedURL else { return }
+    private func loadRepresentedURL() throws {
+        guard let representedURL = representedURL, image == nil else { return }
         let accessGranted = representedURL.startAccessingSecurityScopedResource()
         defer { representedURL.stopAccessingSecurityScopedResource() }
-        guard accessGranted else { return }
+        guard accessGranted else { throw LoadError.accessNotGranted }
 
-        do {
-            let data = try Data(contentsOf: representedURL)
-            guard let image = UIImage(data: data) else { return }
+        let data = try Data(contentsOf: representedURL)
+        guard let image = UIImage(data: data) else { return }
+        self.image = image
+    }
 
-            RecentsMenuDataSource.addRecentItem(representedURL)
-
-            windowScene?.titlebar?.representedURL = representedURL
-            windowScene?.title = representedURL.lastPathComponent
-
-            embed(PhotoEditingViewController(image: image, redactions: initialRedactions))
-            validateAllToolbarItems()
-        } catch let error {
-            dump(error)
+    private func updateURLRepresentation() {
+        guard let representedURL = representedURL else {
             return
         }
+
+        RecentsMenuDataSource.addRecentItem(representedURL)
+
+        windowScene?.titlebar?.representedURL = representedURL
+        windowScene?.title = representedURL.lastPathComponent
     }
 
     var representedFileURL: URL? { representedURL }
 
+    func updateRepresentedFileURL(to newURL: URL) {
+        representedURL = newURL
+    }
+
     private func validateAllToolbarItems() {
         windowScene?.titlebar?.toolbar?.visibleItems?.forEach { $0.validate() }
+    }
+
+    // MARK: Image
+
+    var image: UIImage? {
+        didSet {
+            loadImage()
+        }
+    }
+
+    private func loadImage() {
+        embed(PhotoEditingViewController(image: image, redactions: initialRedactions))
+        validateAllToolbarItems()
     }
 
     // MARK: State Restoration
@@ -77,6 +104,10 @@ class DesktopViewController: UIViewController, FileURLProvider {
     @available(*, unavailable)
     required init(coder: NSCoder) {
         ErrorHandling.notImplemented()
+    }
+
+    private enum LoadError: Error {
+        case accessNotGranted
     }
 }
 

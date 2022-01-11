@@ -74,6 +74,10 @@
             argument = "-FeatureFlag.seekAndDestroy YES"
             isEnabled = "YES">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-FeatureFlag.newFromClipboard YES"
+            isEnabled = "YES">
+         </CommandLineArgument>
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable

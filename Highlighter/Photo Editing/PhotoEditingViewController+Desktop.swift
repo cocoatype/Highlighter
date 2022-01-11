@@ -15,7 +15,7 @@ extension PhotoEditingViewController {
     }
 
     @objc func save(_ sender: Any) {
-        guard let exportURL = fileURLProvider?.representedFileURL else { return present(.missingRepresentedURL) }
+        guard let exportURL = fileURLProvider?.representedFileURL else { return saveAs(sender) }
         guard let imageType = imageType else { return present(.missingImageType) }
 
         exportImage { [weak self] image in
@@ -48,11 +48,11 @@ extension PhotoEditingViewController {
     }
 
     @objc func saveAs(_ sender: Any) {
-        guard let representedURL = fileURLProvider?.representedFileURL else { return present(.missingRepresentedURL) }
         guard let imageType = imageType else { return present(.missingImageType) }
 
+        let representedURLName = fileURLProvider?.representedFileURL?.lastPathComponent ?? "\(Self.defaultImageName).\(imageType.preferredFilenameExtension ?? "png")"
         let temporaryURL = URL(fileURLWithPath: NSTemporaryDirectory())
-            .appendingPathComponent(representedURL.lastPathComponent)
+            .appendingPathComponent(representedURLName)
 
         exportImage { [weak self] image in
             let data: Data?
@@ -77,8 +77,11 @@ extension PhotoEditingViewController {
 
                 Defaults.numberOfSaves += 1
                 DispatchQueue.main.async { [weak self] in
-                    let saveViewController = DesktopSaveViewController(url: temporaryURL) { [weak self] in
+                    let saveViewController = DesktopSaveViewController(url: temporaryURL) { [weak self] urls in
                         AppRatingsPrompter.displayRatingsPrompt(in: self?.view.window?.windowScene)
+                        if let exportURL = urls.first {
+                            self?.fileURLProvider?.updateRepresentedFileURL(to: exportURL)
+                        }
                     }
                     self?.present(saveViewController, animated: true, completion: nil)
                 }
@@ -95,11 +98,13 @@ extension PhotoEditingViewController {
         guard hasMadeEdits == true else { return false }
         return [UTType.png, .jpeg].contains(imageType)
     }
+
+    private static let defaultImageName = NSLocalizedString("PhotoEditingViewController.defaultImageName", comment: "Default name when saving the image on macOS")
 }
 
 class DesktopSaveViewController: UIDocumentPickerViewController, UIDocumentPickerDelegate {
-    private var onSave: (() -> Void)? = nil
-    convenience init(url: URL, onSave: @escaping (() -> Void)) {
+    private var onSave: (([URL]) -> Void)? = nil
+    convenience init(url: URL, onSave: @escaping (([URL]) -> Void)) {
         self.init(forExporting: [url], asCopy: true)
         self.onSave = onSave
         delegate = self
@@ -108,7 +113,7 @@ class DesktopSaveViewController: UIDocumentPickerViewController, UIDocumentPicke
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let onSave = self.onSave else { return }
         DispatchQueue.main.async {
-            onSave()
+            onSave(urls)
         }
     }
 }

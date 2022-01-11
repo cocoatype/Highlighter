@@ -5,6 +5,7 @@ import Editing
 import ErrorHandling
 import Intents
 import Sentry
+import UniformTypeIdentifiers
 import UIKit
 
 @UIApplicationMain
@@ -25,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #if targetEnvironment(macCatalyst)
         UserDefaults.standard.set(true, forKey: "NSQuitAlwaysKeepsWindows")
         #endif
+
+        let appearance = UIBarButtonItem.appearance()
+        appearance.setTitleTextAttributes(NavigationBar.buttonTitleTextAttributes, for: .normal)
+        appearance.setTitleTextAttributes(NavigationBar.buttonTitleTextAttributes, for: .highlighted)
 
         return true
     }
@@ -59,12 +64,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     override func validate(_ command: UICommand) {
-        guard command.action == #selector(clearRecents) else { return super.validate(command) }
+        switch command.action {
+        case #selector(clearRecents):
+            validateClearRecents(command)
+        case #selector(newSceneFromClipboard):
+            validateNewSceneFromClipboard(command)
+        default:
+            super.validate(command)
+        }
+    }
 
+    private func validateClearRecents(_ command: UICommand) {
         if Defaults.recentBookmarks.count == 0 {
             command.attributes = [.disabled]
         } else {
             command.attributes = []
+        }
+    }
+
+    private func validateNewSceneFromClipboard(_ command: UICommand) {
+        if UIPasteboard.general.contains(pasteboardTypes: [UTType.image.identifier]) {
+            command.attributes = []
+        } else {
+            command.attributes = [.disabled]
         }
     }
 
@@ -73,20 +95,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     override func buildMenu(with builder: UIMenuBuilder) {
         guard builder.system == .main else { return }
 
-        let saveCommand = UIKeyCommand(title: Self.saveMenuItemTitle, action: #selector(PhotoEditingViewController.save(_:)), input: "S", modifierFlags: [.command])
-        let saveAsCommand = UIKeyCommand(title: Self.saveAsMenuItemTitle, action: #selector(PhotoEditingViewController.saveAs(_:)), input: "S", modifierFlags: [.command, .shift])
-
-        if let closeMenu = builder.menu(for: .close) {
-            let existingChildren = closeMenu.children
-            let newChildren = existingChildren + [saveCommand, saveAsCommand]
-            let newCloseMenu = closeMenu.replacingChildren(newChildren)
-            builder.replace(menu: .close, with: newCloseMenu)
-        } else {
-            let saveMenu = UIMenu(title: "", options: [.displayInline], children: [
-                saveCommand, saveAsCommand
-            ])
-            builder.insertSibling(saveMenu, afterMenu: .close)
+        builder.replaceChildren(ofMenu: .close) { existingChildren in
+            existingChildren + [
+                UIKeyCommand(title: Self.saveMenuItemTitle, action: #selector(PhotoEditingViewController.save(_:)), input: "S", modifierFlags: [.command]),
+                UIKeyCommand(title: Self.saveAsMenuItemTitle, action: #selector(PhotoEditingViewController.saveAs(_:)), input: "S", modifierFlags: [.command, .shift])
+            ]
         }
+
+        #if targetEnvironment(macCatalyst)
+        if FeatureFlag.newFromClipboard {
+            builder.replaceChildren(ofMenu: .newScene) {
+                $0 + [NewFromClipboardCommand()]
+            }
+        }
+        #endif
 
         let recentsMenuDataSource = RecentsMenuDataSource()
         builder.replace(menu: .openRecent, with: recentsMenuDataSource.recentsMenu)
@@ -109,6 +131,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let activity = NSUserActivity(activityType: "com.cocoatype.Highlighter.settings")
         let existingScene = UIApplication.shared.openSessions.first(where: { $0.configuration.delegateClass == DesktopSettingsSceneDelegate.self })
         UIApplication.shared.requestSceneSessionActivation(existingScene, userActivity: activity, options: nil, errorHandler: nil)
+    }
+
+    @objc func newSceneFromClipboard() {
+        guard let data = UIPasteboard.general.data(forPasteboardType: UTType.image.identifier) else { return }
+        let activity = EditingUserActivity(imageData: data)
+        activity.needsSave = true
+        UIApplication.shared.requestSceneSessionActivation(nil, userActivity: activity, options: nil, errorHandler: nil)
     }
     #endif
 

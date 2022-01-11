@@ -7,4 +7,8 @@ public enum FeatureFlag {
     public static var seekAndDestroy: Bool {
         UserDefaults.standard.bool(forKey: "FeatureFlag.seekAndDestroy")
     }
+
+    public static var newFromClipboard: Bool {
+        true
+    }
 }
