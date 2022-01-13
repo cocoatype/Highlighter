@@ -100,6 +100,7 @@
 		044D4D042547D25600701166 /* Redacting.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 044D4C9B2547C8EE00701166 /* Redacting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		044D4D0C2547D4CC00701166 /* TextRecognitionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3E22EF879700FF07C2 /* TextRecognitionOperation.swift */; };
 		0453B0C82654E71600EFE68A /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 0453B0C72654E71600EFE68A /* Sentry */; };
+		045CA3AA2771823D00DEA988 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3A92771823D00DEA988 /* URLExtensions.swift */; };
 		045CA3D827718E5D00DEA988 /* DesktopSeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3D727718E5D00DEA988 /* DesktopSeekViewController.swift */; };
 		045CA3DA27718F4400DEA988 /* DesktopSeekContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3D927718F4400DEA988 /* DesktopSeekContainerView.swift */; };
 		045CA3DC27718FC000DEA988 /* DesktopSeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3DB27718FC000DEA988 /* DesktopSeekView.swift */; };
@@ -109,7 +110,6 @@
 		045CA3E427719A4A00DEA988 /* DesktopSeekBoxLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3E327719A4A00DEA988 /* DesktopSeekBoxLabel.swift */; };
 		045CA3E627719A7500DEA988 /* DesktopSeekBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3E527719A7500DEA988 /* DesktopSeekBorderView.swift */; };
 		045CA3E827719A9E00DEA988 /* DesktopSeekBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3E727719A9E00DEA988 /* DesktopSeekBackgroundView.swift */; };
-		045CA3AA2771823D00DEA988 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3A92771823D00DEA988 /* URLExtensions.swift */; };
 		0461680A263E271700C28B7F /* RestorationImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04616809263E271700C28B7F /* RestorationImageCache.swift */; };
 		0464B18725529CC000D00FAC /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
 		0464B19025529DC500D00FAC /* AutomatorActions.action in Embed Automator Actions */ = {isa = PBXBuildFile; fileRef = 044D4C182547B7BC00701166 /* AutomatorActions.action */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -241,6 +241,8 @@
 		04B1996C26241234001A275B /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B1995C262411DC001A275B /* TestHelpers.swift */; };
 		04B199A726241697001A275B /* PhotoEditingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B199972624168F001A275B /* PhotoEditingViewTests.swift */; };
 		04B199B02624177F001A275B /* PhotoEditingScrollViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B199AF2624177F001A275B /* PhotoEditingScrollViewTests.swift */; };
+		04BB710A278D2E4B00F5BAEC /* TabletSeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7109278D2E4B00F5BAEC /* TabletSeekViewController.swift */; };
+		04BB710C278D2FF700F5BAEC /* TabletSeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB710B278D2FF700F5BAEC /* TabletSeekView.swift */; };
 		04BC9FD025C2704300213DBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BC9FC725C2700200213DBC /* libz.tbd */; };
 		04BDC4962556576900BCE982 /* ShortcutsRedactExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */; };
 		04BDC49F255657A600BCE982 /* ShortcutsExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */; };
@@ -579,6 +581,7 @@
 		044D4C9B2547C8EE00701166 /* Redacting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Redacting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		044D4C9D2547C8EE00701166 /* Redacting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Redacting.h; sourceTree = "<group>"; };
 		044D4C9E2547C8EE00701166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		045CA3A92771823D00DEA988 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		045CA3D727718E5D00DEA988 /* DesktopSeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekViewController.swift; sourceTree = "<group>"; };
 		045CA3D927718F4400DEA988 /* DesktopSeekContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekContainerView.swift; sourceTree = "<group>"; };
 		045CA3DB27718FC000DEA988 /* DesktopSeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekView.swift; sourceTree = "<group>"; };
@@ -588,7 +591,6 @@
 		045CA3E327719A4A00DEA988 /* DesktopSeekBoxLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekBoxLabel.swift; sourceTree = "<group>"; };
 		045CA3E527719A7500DEA988 /* DesktopSeekBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekBorderView.swift; sourceTree = "<group>"; };
 		045CA3E727719A9E00DEA988 /* DesktopSeekBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekBackgroundView.swift; sourceTree = "<group>"; };
-		045CA3A92771823D00DEA988 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		04616809263E271700C28B7F /* RestorationImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorationImageCache.swift; sourceTree = "<group>"; };
 		0464B1DE2553A3DE00D00FAC /* Shortcuts.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Shortcuts.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0464B1E02553A3DE00D00FAC /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
@@ -693,6 +695,8 @@
 		04B1995C262411DC001A275B /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		04B199972624168F001A275B /* PhotoEditingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewTests.swift; sourceTree = "<group>"; };
 		04B199AF2624177F001A275B /* PhotoEditingScrollViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingScrollViewTests.swift; sourceTree = "<group>"; };
+		04BB7109278D2E4B00F5BAEC /* TabletSeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabletSeekViewController.swift; sourceTree = "<group>"; };
+		04BB710B278D2FF700F5BAEC /* TabletSeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabletSeekView.swift; sourceTree = "<group>"; };
 		04BC9FC725C2700200213DBC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsRedactExporter.swift; sourceTree = "<group>"; };
 		04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsExportOperation.swift; sourceTree = "<group>"; };
@@ -1421,9 +1425,19 @@
 			path = Workspace;
 			sourceTree = "<group>";
 		};
+		04BB7108278D2E4100F5BAEC /* Tablet */ = {
+			isa = PBXGroup;
+			children = (
+				04BB7109278D2E4B00F5BAEC /* TabletSeekViewController.swift */,
+				04BB710B278D2FF700F5BAEC /* TabletSeekView.swift */,
+			);
+			path = Tablet;
+			sourceTree = "<group>";
+		};
 		04D4423A276845D800F2933C /* Seek and Destroy */ = {
 			isa = PBXGroup;
 			children = (
+				04BB7108278D2E4100F5BAEC /* Tablet */,
 				045CA3D627718E5100DEA988 /* Desktop */,
 				04D442382768438F00F2933C /* SeekBar.swift */,
 				04D4423B276845EA00F2933C /* SeekTextField.swift */,
@@ -2330,6 +2344,7 @@
 				049F92F622CDA54B0090C9BC /* PhotoEditingScrollView.swift in Sources */,
 				049F92E522CDA3FF0090C9BC /* TextRectangleDetectionOperation.swift in Sources */,
 				049F92E622CDA3FF0090C9BC /* TextObservation.swift in Sources */,
+				04BB710A278D2E4B00F5BAEC /* TabletSeekViewController.swift in Sources */,
 				049F92F522CDA4E40090C9BC /* PathRedaction.swift in Sources */,
 				049F92EA22CDA43F0090C9BC /* UIImageExtensions.swift in Sources */,
 				049F92F222CDA4D50090C9BC /* HighlighterTool.swift in Sources */,
@@ -2365,6 +2380,7 @@
 				04D4423C276845EA00F2933C /* SeekTextField.swift in Sources */,
 				049F92E722CDA3FF0090C9BC /* CharacterObservation.swift in Sources */,
 				049F92E422CDA3FF0090C9BC /* TextRectangleDetector.swift in Sources */,
+				04BB710C278D2FF700F5BAEC /* TabletSeekView.swift in Sources */,
 				04750E9226D9EECE00E98BB4 /* ShareBarButtonItem.swift in Sources */,
 				04975D932610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift in Sources */,
 				049F92E922CDA43F0090C9BC /* GeometryExtensions.swift in Sources */,
