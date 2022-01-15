@@ -148,7 +148,7 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
     }
 
     open override var inputAccessoryView: UIView? {
-        guard isSeeking else { return nil }
+        guard isSeeking, traitCollection.horizontalSizeClass != .regular else { return nil }
         return seekBar
     }
 
@@ -166,7 +166,14 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         #if targetEnvironment(macCatalyst)
         present(DesktopSeekViewController(), animated: true, completion: nil)
         #else
-        seekBar.becomeFirstResponder()
+        if traitCollection.horizontalSizeClass == .regular {
+            let seekViewController = TabletSeekViewController()
+//            seekViewController.popoverPresentationController?.sourceView = self.view
+            seekViewController.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
+            present(seekViewController, animated: true, completion: nil)
+        } else {
+            seekBar.becomeFirstResponder()
+        }
         #endif
     }
 
@@ -179,19 +186,15 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         }
         #else
         seekBar.resignFirstResponder()
+        if presentedViewController is TabletSeekViewController {
+            dismiss(animated: true, completion: nil)
+        }
         #endif
     }
 
     @objc public func finishSeeking(_ sender: Any) {
-        isSeeking = false
-
-        #if targetEnvironment(macCatalyst)
-        if presentedViewController is DesktopSeekViewController {
-            dismiss(animated: true, completion: nil)
-        }
-        #else
-        seekBar.resignFirstResponder()
-        #endif
+        // perform redaction, then…
+        cancelSeeking(sender)
     }
 
     @objc public func seekBarDidChangeText(_ sender: UISearchTextField) {
