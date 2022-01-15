@@ -168,7 +168,6 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         #else
         if traitCollection.horizontalSizeClass == .regular {
             let seekViewController = TabletSeekViewController()
-//            seekViewController.popoverPresentationController?.sourceView = self.view
             seekViewController.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
             present(seekViewController, animated: true, completion: nil)
         } else {
@@ -180,12 +179,16 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
     @objc public func cancelSeeking(_ sender: Any) {
         isSeeking = false
 
+        photoEditingView.seekPreviewObservations = []
+
         #if targetEnvironment(macCatalyst)
         if presentedViewController is DesktopSeekViewController {
             dismiss(animated: true, completion: nil)
         }
         #else
         seekBar.resignFirstResponder()
+        seekBar.searchTextField?.text = nil
+
         if presentedViewController is TabletSeekViewController {
             dismiss(animated: true, completion: nil)
         }
@@ -198,7 +201,11 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
     }
 
     @objc public func seekBarDidChangeText(_ sender: UISearchTextField) {
-        dump(sender.text)
+        guard let wordObservations = photoEditingView.wordObservations,
+              let text = sender.text
+        else { return }
+
+        photoEditingView.seekPreviewObservations = wordObservations.matching([text])
     }
 
     open override var canResignFirstResponder: Bool { true }
@@ -316,10 +323,6 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
             editingActivity.imageBookmarkData = try? representedURL.bookmarkData()
         } else if let image = image {
             editingActivity.image = image
-//            imageCache.writeImageToCache(image, fileName: fileURLProvider?.representedFileName) { result in
-//                guard let url = try? result.get() else { return }
-//                editingActivity.imageBookmarkData = try? url.bookmarkData()
-//            }
         }
         editingActivity.redactions = photoEditingView.redactions
     }

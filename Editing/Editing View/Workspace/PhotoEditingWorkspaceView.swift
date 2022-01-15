@@ -45,7 +45,9 @@ class PhotoEditingWorkspaceView: UIControl {
 
     var highlighterTool = HighlighterTool.magic {
         didSet {
-            visualizationView.shouldShowVisualization = (highlighterTool == .magic)
+            if highlighterTool == .magic {
+                visualizationView.animateFullVisualization()
+            }
         }
     }
 
@@ -83,6 +85,20 @@ class PhotoEditingWorkspaceView: UIControl {
 
     func scrollViewDidZoom(to zoomScale: CGFloat) {
         brushStrokeView.updateTool(currentZoomScale: zoomScale)
+    }
+
+    // MARK: Seek and Destroy
+
+    var seekPreviewObservations: [WordObservation] {
+        get { return visualizationView.seekPreviewObservations }
+        set(newTextObservations) {
+            visualizationView.seekPreviewObservations = newTextObservations
+            if newTextObservations.count > 0 {
+                visualizationView.presentPreviewVisualization()
+            } else {
+                visualizationView.hidePreviewVisualization()
+            }
+        }
     }
 
     // MARK: Actions
@@ -135,7 +151,6 @@ class PhotoEditingWorkspaceView: UIControl {
     }
 
     // MARK: Boilerplate
-
 
     private let imageView: PhotoEditingImageView
     private let visualizationView: PhotoEditingObservationVisualizationView

@@ -58,3 +58,13 @@ public struct WordObservation: TextObservation {
     public let bounds: CGRect
     public let string: String
 }
+
+extension Array where Element == WordObservation {
+    func matching(_ strings: [String]) -> [WordObservation] {
+        return filter { observation in
+            strings.contains(where: { wordListString in
+                wordListString.compare(observation.string, options: [.caseInsensitive, .diacriticInsensitive]) == .orderedSame
+            })
+        }
+    }
+}
