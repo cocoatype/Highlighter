@@ -22,6 +22,8 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
 
     // MARK: Animation
 
+    var color = UIColor.black
+
     private let animationLayer: CAGradientLayer = {
         let animationLayer = CAGradientLayer()
 
@@ -71,7 +73,6 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
     }
 
     func presentPreviewVisualization() {
-        print("preview visualization")
         removeAllRedactions()
         add(seekPreviewRedactions)
 
@@ -86,8 +87,7 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
 
     var seekPreviewObservations = [WordObservation]() {
         didSet {
-            print("setting observations: \(seekPreviewObservations)")
-            seekPreviewRedactions = seekPreviewObservations.map { Redaction($0, color: .black) }
+            seekPreviewRedactions = seekPreviewObservations.map { Redaction($0, color: color) }
         }
     }
 
@@ -97,13 +97,6 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
 
     var textObservations: [TextRectangleObservation]? {
         didSet {
-            guard let textObservations = textObservations else { return }
-
-            cannons = textObservations.compactMap { textObservation -> Redaction? in
-                guard let characterObservations = textObservation.characterObservations else { return nil }
-                return Redaction(characterObservations, color: .black)
-            }
-
             setNeedsDisplay()
             animateFullVisualization()
         }
@@ -111,7 +104,13 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
 
     // cannons by @eaglenaut on 4/30/21
     // preview redactions for all text, shown in the full visualization
-    private var cannons = [Redaction]()
+    private var cannons: [Redaction] {
+        guard let textObservations = textObservations else { return [] }
+        return textObservations.compactMap { textObservation -> Redaction? in
+            guard let characterObservations = textObservation.characterObservations else { return nil }
+            return Redaction(characterObservations, color: color)
+        }
+    }
 
     // MARK: Boilerplate
 

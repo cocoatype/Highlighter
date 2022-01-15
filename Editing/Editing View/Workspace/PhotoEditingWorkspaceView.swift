@@ -54,6 +54,7 @@ class PhotoEditingWorkspaceView: UIControl {
     var color: UIColor = .black {
         didSet {
             brushStrokeView.color = color
+            visualizationView.color = color
         }
     }
 
