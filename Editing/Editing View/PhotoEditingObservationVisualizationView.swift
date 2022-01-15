@@ -7,15 +7,8 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
     override init() {
         super.init()
 
+        alpha = 0
         isUserInteractionEnabled = false
-
-        layer.mask = animationLayer
-    }
-
-    var shouldShowVisualization = true {
-        didSet {
-            animateVisualization()
-        }
     }
 
     override func layoutSublayers(of layer: CALayer) {
@@ -47,12 +40,24 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
     }
 
     private var animationOffsetDistance: CGFloat {
-//        return 0
         return (animationRect.width / 2.0)
     }
 
-    private func animateVisualization() {
-        guard shouldShowVisualization && UIAccessibility.isReduceMotionEnabled == false else { return }
+    func animateFullVisualization() {
+        #warning("#152: Do *something* when reduce motion is enabled")
+        guard UIAccessibility.isReduceMotionEnabled == false else { return }
+
+        removeAllRedactions()
+        add(cannons)
+
+        layer.mask = animationLayer
+        alpha = 1
+
+        CATransaction.begin()
+        CATransaction.setCompletionBlock { [weak self] in
+            self?.layer.mask = nil
+            self?.alpha = 0
+        }
 
         let slideAnimation = CABasicAnimation(keyPath: "position.x")
         slideAnimation.fromValue = layer.bounds.width / -2.0
@@ -62,27 +67,51 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
         self.animationLayer.position = CGPoint(x: self.layer.bounds.width * 1.5, y: self.layer.bounds.midY)
 
         animationLayer.add(slideAnimation, forKey: "position.x")
+        CATransaction.commit()
     }
+
+    func presentPreviewVisualization() {
+        print("preview visualization")
+        removeAllRedactions()
+        add(seekPreviewRedactions)
+
+        alpha = 0.4
+    }
+
+    func hidePreviewVisualization() {
+        alpha = 0
+    }
+
+    // MARK: Seek and Destroy
+
+    var seekPreviewObservations = [WordObservation]() {
+        didSet {
+            print("setting observations: \(seekPreviewObservations)")
+            seekPreviewRedactions = seekPreviewObservations.map { Redaction($0, color: .black) }
+        }
+    }
+
+    private var seekPreviewRedactions = [Redaction]()
 
     // MARK: Text Observations
 
     var textObservations: [TextRectangleObservation]? {
         didSet {
-            removeAllRedactions()
-            defer { setNeedsDisplay() }
-
             guard let textObservations = textObservations else { return }
 
-            let characterObservationRedactions = textObservations.compactMap { textObservation -> Redaction? in
+            cannons = textObservations.compactMap { textObservation -> Redaction? in
                 guard let characterObservations = textObservation.characterObservations else { return nil }
                 return Redaction(characterObservations, color: .black)
             }
-            add(characterObservationRedactions)
 
             setNeedsDisplay()
-            animateVisualization()
+            animateFullVisualization()
         }
     }
+
+    // cannons by @eaglenaut on 4/30/21
+    // preview redactions for all text, shown in the full visualization
+    private var cannons = [Redaction]()
 
     // MARK: Boilerplate
 

@@ -62,6 +62,13 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
         observations.forEach { [unowned self] in self.workspaceView.redact($0) }
     }
 
+    var seekPreviewObservations: [WordObservation] {
+        get { workspaceView.seekPreviewObservations }
+        set(newTextObservations) {
+            workspaceView.seekPreviewObservations = newTextObservations
+        }
+    }
+
     // MARK: UIScrollViewDelegate
 
     public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
