@@ -196,7 +196,7 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
     }
 
     @objc public func finishSeeking(_ sender: Any) {
-        // perform redaction, then…
+        photoEditingView.redact(photoEditingView.seekPreviewObservations)
         cancelSeeking(sender)
     }
 
