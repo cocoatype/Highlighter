@@ -13,6 +13,8 @@ class DesktopSeekTextField: UITextField, UITextFieldDelegate {
         translatesAutoresizingMaskIntoConstraints = false
 
         setContentHuggingPriority(.required, for: .vertical)
+
+        addTarget(nil, action: #selector(PhotoEditingViewController.seekBarDidChangeText(_:)), for: .editingChanged)
     }
 
     override func didMoveToWindow() {
