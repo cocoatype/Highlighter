@@ -6,12 +6,19 @@ import UIKit
 
 class SettingsHostingController: UIHostingController<SettingsView> {
     init() {
-        super.init(rootView: SettingsView())
+        super.init(rootView: SettingsView(dismissAction: {}))
+        modalPresentationStyle = .formSheet
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         let readableWidth = view.readableContentGuide.layoutFrame.width
-        rootView = SettingsView(readableWidth: readableWidth)
+        rootView = SettingsView(readableWidth: readableWidth, dismissAction: { [weak self] in
+            self?.dismissSettings()
+        })
+    }
+
+    private func dismissSettings() {
+        UIApplication.shared.sendAction(#selector(AppViewController.dismissSettingsViewController), to: nil, from: self, for: nil)
     }
 
     @available(*, unavailable)

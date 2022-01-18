@@ -120,6 +120,12 @@ extension Font {
         }
     }
 
+    // MARK: Special
+
+    public static var navigationBarButtonFont: Font {
+        return Font(UIFont.navigationBarButtonFont)
+    }
+
     // MARK: Text Styles
 
     public static var sidebarItem: Font {

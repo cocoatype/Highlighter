@@ -13,6 +13,7 @@
 "AppDelegate.preferencesMenuTitle" = "Preferences";
 "AppDelegate.preferencesMenuItemTitle" = "Preferences…";
 "AppDelegate.saveMenuTitle" = "Save";
+"AppDelegate.saveAsMenuTitle" = "Save As…";
 
 "AutoRedactionsAdditionDialogFactory.addButtonTitle" = "Add Word";
 "AutoRedactionsAdditionDialogFactory.placeholder" = "Hidden Word";
@@ -33,9 +34,23 @@
 
 "ContactMailViewController.emailSubject" = "Hello!";
 
+"DesktopSaveAlertController.dismissButtonTitle" = "OK";
+
+"DesktopSaveError.missingRepresentedURL.alertTitle" = "Invalid Image";
+"DesktopSaveError.missingImageType.alertTitle" = "Unknown Image Type";
+"DesktopSaveError.noImageData.alertTitle" = "Export Failed";
+
+"DesktopSaveError.alertMessage" = "There was an unexpected error when saving the image. If this continues to happen, please contact support at hello@cocoatype.com.";
+
+"DesktopSeekButton.title" = "Hide";
+
 "DesktopSettingsSceneDelegate.windowTitle" = "Preferences";
 
 "DesktopSettingsView.wordListLabel" = "Auto-Hidden Words";
+
+"DismissBarButtonItem.title" = "Done";
+
+"DoneButton.label" = "Done";
 
 "IntroView.permissionLabelText" = "Black Highlighter needs permission to edit your photos.";
 "IntroView.permissionButtonTitle" = "Grant Access";
@@ -44,6 +59,8 @@
 
 "LimitedLibraryPhotoLibraryViewCell.defaultAccessibilityLabel" = "Change Selected Photos";
 
+"NewFromClipboardCommand.title" = "New from Clipboard";
+
 "PageCountAlertFactory.alertTitle" = "Too Many Pages";
 "PageCountAlertFactory.alertMessage" = "Highlighter only supports editing one page at a time. Only the first page of your scan will appear.";
 "PageCountAlertFactory.dismissButtonTitle" = "Okay";
@@ -51,6 +68,8 @@
 "PhotoEditingProtectionAlertController.cancelButtonTitle" = "Cancel";
 "PhotoEditingProtectionAlertController.deleteButtonTitle" = "Delete Changes";
 "PhotoEditingProtectionAlertController.saveButtonTitle" = "Save to Photos";
+
+"PhotoEditingViewController.defaultImageName" = "Redacted Image";
 
 "PhotoLibraryViewDocumentScannerCell.defaultAccessibilityLabel" = "Scan Document";
 

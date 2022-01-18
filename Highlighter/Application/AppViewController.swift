@@ -12,10 +12,9 @@ class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCame
         self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
 
-        setupAppearance()
-
         view.isOpaque = false
         view.backgroundColor = .clear
+        overrideUserInterfaceStyle = .dark
         embed(preferredViewController)
     }
 
@@ -59,6 +58,13 @@ class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCame
     @available(iOS 14.0, *)
     func presentLimitedLibrary() {
         PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: self)
+    }
+
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        if viewControllerToPresent is UIImagePickerController {
+            viewControllerToPresent.overrideUserInterfaceStyle = .dark
+        }
+        super.present(viewControllerToPresent, animated: flag, completion: completion)
     }
 
     // MARK: Photo Editing View Controller
@@ -124,7 +130,9 @@ class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCame
     @available(iOS 13.0, *)
     @objc func presentDocumentCameraViewController() {
         let cameraViewController = VNDocumentCameraViewController()
+        cameraViewController.overrideUserInterfaceStyle = .dark
         cameraViewController.delegate = self
+        cameraViewController.view.tintColor = .controlTint
         present(cameraViewController, animated: true)
     }
 
@@ -151,20 +159,21 @@ class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCame
         }
     }
 
-    // MARK: Settings View Controller
+    // MARK: App Ratings Prompt
 
-    private var settingsType: UIViewController.Type {
-            return SettingsHostingController.self
+    @objc func displayAppRatingsPrompt() {
+        AppRatingsPrompter.displayRatingsPrompt(in: view.window?.windowScene)
     }
 
+    // MARK: Settings View Controller
+
     @objc func presentSettingsViewController() {
-        present(settingsType.init(), animated: true)
+        present(SettingsHostingController(), animated: true)
     }
 
     @objc func dismissSettingsViewController() {
-        if type(of: presentedViewController) == settingsType {
-            dismiss(animated: true)
-        }
+        guard presentedViewController is SettingsHostingController else { return }
+        dismiss(animated: true)
     }
 
     // MARK: Status Bar
@@ -174,18 +183,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCame
 
     // MARK: Boilerplate
 
-    private func setupAppearance() {
-//        UITableView.appearance().backgroundColor = .primary
-//        UITableViewCell.appearance().selectionStyle = .none
-//        UICollectionView.appearance().backgroundColor = .primary
-//        UINavigationBar.appearance().scrollEdgeAppearance = NavigationBarAppearance()
-//        UINavigationBar.appearance().standardAppearance = NavigationBarAppearance()
-//        UINavigationBar.appearance().titleTextAttributes = NavigationBar.titleTextAttributes
-////        UINavigationBar.appearance().standardAppearance.buttonAppearance
-//        UIBarButtonItem.appearance().tintColor = .white
-    }
-
-//    @available(*, unavailable)
+    @available(*, unavailable)
     required init(coder: NSCoder) {
         ErrorHandling.notImplemented()
     }

@@ -49,16 +49,21 @@ public class RestorationImageCache: NSObject {
     }
 }
 
-public protocol FileNameProvider {
-    var representedFileName: String? { get }
+public protocol FileURLProvider {
+    var representedFileURL: URL? { get }
+    func updateRepresentedFileURL(to newURL: URL)
 }
 
-extension UIResponder {
-    var fileNameProvider: FileNameProvider? {
-        if let provider = (self as? FileNameProvider) {
+extension FileURLProvider {
+    var representedFileName: String? { representedFileURL?.lastPathComponent }
+}
+
+public extension UIResponder {
+    var fileURLProvider: FileURLProvider? {
+        if let provider = (self as? FileURLProvider) {
             return provider
         }
 
-        return next?.fileNameProvider
+        return next?.fileURLProvider
     }
 }

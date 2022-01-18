@@ -6,81 +6,88 @@ import ErrorHandling
 import UIKit
 
 #if targetEnvironment(macCatalyst)
-class DesktopViewController: UIViewController, UIDocumentPickerDelegate, FileNameProvider {
+class DesktopViewController: UIViewController, FileURLProvider {
     var editingViewController: PhotoEditingViewController? { children.first as? PhotoEditingViewController }
 
-    init(representedURL: URL?, redactions: [Redaction]?) {
+    init(representedURL: URL?, image: UIImage?, redactions: [Redaction]?) {
         self.initialRedactions = redactions
         self.representedURL = representedURL
+        self.image = image
         super.init(nibName: nil, bundle: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard children.contains(where: { $0 is PhotoEditingViewController }) == false else { return }
-        guard representedURL == nil else { return loadRepresentedURL() }
-        displayDocumentPicker()
+
+        if children.contains(where: { $0 is PhotoEditingViewController }), let representedURL = representedURL {
+            windowScene?.titlebar?.representedURL = representedURL
+            windowScene?.title = representedURL.lastPathComponent
+        } else if representedURL != nil {
+            do {
+                try loadRepresentedURL()
+                updateURLRepresentation()
+            } catch { ErrorHandling.log(error) }
+        } else if image != nil {
+            loadImage()
+        }
     }
 
     // MARK: Represented URL
 
     var representedURL: URL? {
         didSet {
-            loadRepresentedURL()
+            do {
+                try loadRepresentedURL()
+                updateURLRepresentation()
+            } catch {
+                ErrorHandling.log(error)
+            }
         }
     }
 
-    private func loadRepresentedURL() {
-        guard let representedURL = representedURL else { return }
+    private func loadRepresentedURL() throws {
+        guard let representedURL = representedURL, image == nil else { return }
         let accessGranted = representedURL.startAccessingSecurityScopedResource()
         defer { representedURL.stopAccessingSecurityScopedResource() }
-        guard accessGranted else { return }
+        guard accessGranted else { throw LoadError.accessNotGranted }
 
-        do {
-            let data = try Data(contentsOf: representedURL)
-            guard let image = UIImage(data: data) else { return }
-
-            RecentsMenuDataSource.addRecentItem(representedURL)
-
-            if presentedViewController is UIDocumentPickerViewController {
-                dismiss(animated: false, completion: nil)
-            }
-
-            windowScene?.titlebar?.representedURL = representedURL
-            windowScene?.title = representedURL.lastPathComponent
-
-            embed(PhotoEditingViewController(image: image, redactions: initialRedactions))
-            validateAllToolbarItems()
-        } catch let error {
-            dump(error)
-            return
-        }
+        let data = try Data(contentsOf: representedURL)
+        guard let image = UIImage(data: data) else { return }
+        self.image = image
     }
 
-    var representedFileName: String? { return representedURL?.lastPathComponent }
+    private func updateURLRepresentation() {
+        guard let representedURL = representedURL else {
+            return
+        }
 
-    // MARK: Document Picker
+        RecentsMenuDataSource.addRecentItem(representedURL)
 
-    private func displayDocumentPicker() {
-        let pickerController = UIDocumentPickerViewController(forOpeningContentTypes: [.image])
-        pickerController.delegate = self
-        present(pickerController, animated: true, completion: nil)
+        windowScene?.titlebar?.representedURL = representedURL
+        windowScene?.title = representedURL.lastPathComponent
+    }
+
+    var representedFileURL: URL? { representedURL }
+
+    func updateRepresentedFileURL(to newURL: URL) {
+        representedURL = newURL
     }
 
     private func validateAllToolbarItems() {
         windowScene?.titlebar?.toolbar?.visibleItems?.forEach { $0.validate() }
     }
 
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-        guard let documentURL = urls.first else { return }
-        representedURL = documentURL
+    // MARK: Image
 
-        loadRepresentedURL()
+    var image: UIImage? {
+        didSet {
+            loadImage()
+        }
     }
 
-    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        guard let session = windowScene?.session, representedURL == nil else { return }
-        UIApplication.shared.requestSceneSessionDestruction(session, options: nil)
+    private func loadImage() {
+        embed(PhotoEditingViewController(image: image, redactions: initialRedactions))
+        validateAllToolbarItems()
     }
 
     // MARK: State Restoration
@@ -97,6 +104,10 @@ class DesktopViewController: UIViewController, UIDocumentPickerDelegate, FileNam
     @available(*, unavailable)
     required init(coder: NSCoder) {
         ErrorHandling.notImplemented()
+    }
+
+    private enum LoadError: Error {
+        case accessNotGranted
     }
 }
 

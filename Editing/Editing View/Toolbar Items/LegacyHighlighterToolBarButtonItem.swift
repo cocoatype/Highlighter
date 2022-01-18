@@ -4,5 +4,7 @@
 import UIKit
 
 class LegacyHighlighterToolBarButtonItem: UIBarButtonItem {
-    
+    convenience init(tool: HighlighterTool, target: AnyObject?) {
+        self.init(image: tool.image, style: .plain, target: target, action: #selector(ActionsBuilderActions.toggleHighlighterTool(_:)))
+    }
 }

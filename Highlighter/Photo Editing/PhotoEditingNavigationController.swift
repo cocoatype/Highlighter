@@ -19,6 +19,12 @@ class PhotoEditingNavigationController: NavigationController {
         modalPresentationStyle = .fullScreen
     }
 
+    // MARK: Hack
+
+    @objc public func finishSeeking(_ sender: Any) {
+        (viewControllers.first as? PhotoEditingViewController)?.finishSeeking(sender)
+    }
+
     // MARK: Boilerplate
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {

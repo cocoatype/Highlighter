@@ -5,22 +5,25 @@ import Editing
 import UIKit
 
 #if targetEnvironment(macCatalyst)
-class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, ShareItemDelegate, ToolPickerItemDelegate, ColorPickerItemDelegate {
+class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, ShareItemDelegate, ToolPickerItemDelegate, ColorPickerItemDelegate, SeekItemDelegate {
     var window: DesktopAppWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         let representedURL: URL?
         let redactions: [Redaction]?
+        let image: UIImage?
         if let stateRestorationActivity = session.stateRestorationActivity, let activity = EditingUserActivity(userActivity: stateRestorationActivity) {
             representedURL = self.representedURL(from: activity)
             redactions = activity.redactions
+            image = activity.image
         } else {
             representedURL = self.representedURL(from: connectionOptions)
             redactions = nil
+            image = self.image(from: connectionOptions)
         }
 
-        let window = DesktopAppWindow(windowScene: scene, representedURL: representedURL, redactions: redactions)
+        let window = DesktopAppWindow(windowScene: scene, representedURL: representedURL, image: image, redactions: redactions)
         window.makeKeyAndVisible()
 
         let toolbar = NSToolbar()
@@ -60,6 +63,10 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         window?.windowScene?.titlebar?.toolbar?.visibleItems?.forEach { $0.validate() }
     }
 
+    private func image(from options: UIScene.ConnectionOptions) -> UIImage? {
+        options.userActivities.compactMap(EditingUserActivity.init(userActivity:)).first?.image
+    }
+
     private func representedURL(from options: UIScene.ConnectionOptions) -> URL? {
         var urlContexts = options.urlContexts
         if let urlContext = urlContexts.popFirst() {
@@ -81,7 +88,9 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         var isStale = false
         guard let bookmarkData = activity.imageBookmarkData,
               let url = try? URL(resolvingBookmarkData: bookmarkData, bookmarkDataIsStale: &isStale),
-              FileManager.default.fileExists(atPath: url.path)
+              FileManager.default.fileExists(atPath: url.path),
+              let cachesDirectory = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false),
+              cachesDirectory.isParent(of: url) == false
         else { return nil }
         return url
     }
@@ -113,14 +122,26 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         editingViewController?.showColorPicker(self)
     }
 
+    // MARK: SeekItemDelegate
+
+    func toggleSeeking(_ sender: NSToolbarItem) {
+        editingViewController?.toggleSeeking(sender)
+    }
+
     // MARK: NSToolbarDelegate
 
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        [ColorPickerItem.identifier, ToolPickerItem.identifier, ShareItem.identifier]
+        var identifiers = [NSToolbarItem.Identifier]()
+        if FeatureFlag.seekAndDestroy {
+            identifiers.append(SeekItem.identifier)
+        }
+
+        identifiers.append(contentsOf: [ColorPickerItem.identifier, ToolPickerItem.identifier, ShareItem.identifier])
+        return identifiers
     }
 
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        [ColorPickerItem.identifier, ToolPickerItem.identifier, ShareItem.identifier]
+        return toolbarDefaultItemIdentifiers(toolbar)
     }
 
     func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
@@ -128,6 +149,7 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         case ToolPickerItem.identifier: return ToolPickerItem(delegate: self)
         case ShareItem.identifier: return ShareItem(delegate: self)
         case ColorPickerItem.identifier: return ColorPickerItem(delegate: self)
+        case SeekItem.identifier: return SeekItem(delegate: self)
         default: return nil
         }
     }

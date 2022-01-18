@@ -1,11 +1,13 @@
 //  Created by Geoff Pado on 8/3/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+#if targetEnvironment(macCatalyst)
+
 import Editing
 import UIKit
 import UniformTypeIdentifiers
+import AppKit
 
-#if targetEnvironment(macCatalyst)
 class ShareItem: NSSharingServicePickerToolbarItem, UIActivityItemsConfigurationReading {
     static let identifier = NSToolbarItem.Identifier("ShareItem.identifier")
 
@@ -38,7 +40,7 @@ class ShareItem: NSSharingServicePickerToolbarItem, UIActivityItemsConfiguration
     }
 }
 
-protocol ShareItemDelegate: class {
+protocol ShareItemDelegate: AnyObject {
     var canExportImage: Bool { get }
     func exportImage(_ completionHandler: @escaping ((UIImage?) -> Void))
     func didExportImage()
@@ -58,9 +60,9 @@ class ToolPickerItem: NSMenuToolbarItem {
 
     private var currentMenu: UIMenu {
         UIMenu(title: Self.menuTitle, children: [
-            UICommand(title: Self.magicToolItem, image: UIImage(named: "highlighter.magic"), action: #selector(BasePhotoEditingViewController.selectMagicHighlighter), state: (delegate.highlighterTool == .magic ? .on : .off)),
-            UICommand(title: Self.manualToolItem, image: UIImage(systemName: "highlighter"), action: #selector(BasePhotoEditingViewController.selectManualHighlighter), state: (delegate.highlighterTool == .manual ? .on : .off)),
-            UICommand(title: Self.eraserToolItem, image: UIImage(named: "highlighter.eraser"), action: #selector(BasePhotoEditingViewController.selectEraser), state: (delegate.highlighterTool == .eraser ? .on : .off))
+            UICommand(title: Self.magicToolItem, image: UIImage(named: "highlighter.magic"), action: #selector(PhotoEditingViewController.selectMagicHighlighter), state: (delegate.highlighterTool == .magic ? .on : .off)),
+            UICommand(title: Self.manualToolItem, image: UIImage(systemName: "highlighter"), action: #selector(PhotoEditingViewController.selectManualHighlighter), state: (delegate.highlighterTool == .manual ? .on : .off)),
+            UICommand(title: Self.eraserToolItem, image: UIImage(named: "highlighter.eraser"), action: #selector(PhotoEditingViewController.selectEraser), state: (delegate.highlighterTool == .eraser ? .on : .off))
         ])
     }
 
@@ -85,7 +87,7 @@ class ToolPickerItem: NSMenuToolbarItem {
     private static let eraserToolItem = NSLocalizedString("ToolPickerItem.eraserToolItem", comment: "Menu item for the eraser highlighter tool")
 }
 
-protocol ToolPickerItemDelegate: class {
+protocol ToolPickerItemDelegate: AnyObject {
     var highlighterTool: HighlighterTool { get }
 }
 
@@ -108,9 +110,32 @@ class ColorPickerItem: NSToolbarItem {
     private static let itemLabel = NSLocalizedString("ColorPickerItem.itemLabel", comment: "Label for the color picker toolbar item")
 }
 
-@objc protocol ColorPickerItemDelegate: class {
+@objc protocol ColorPickerItemDelegate: AnyObject {
     var currentColor: UIColor { get }
     @objc func displayColorPicker(_ sender: NSToolbarItem)
+}
+
+class SeekItem: NSToolbarItem {
+    static let identifier = NSToolbarItem.Identifier("SeekItem.identifier")
+    let delegate: SeekItemDelegate
+
+    init(delegate: SeekItemDelegate) {
+        self.delegate = delegate
+        super.init(itemIdentifier: Self.identifier)
+        image = UIImage(systemName: "magnifyingglass")?.applyingSymbolConfiguration(.init(scale: .large))
+        isBordered = true
+        label = Self.itemLabel
+
+        target = delegate
+        action = #selector(SeekItemDelegate.toggleSeeking(_:))
+    }
+
+    // MARK: Boilerplate
+    private static let itemLabel = NSLocalizedString("SeekItem.itemLabel", comment: "Label for the seek and destroy toolbar item")
+}
+
+@objc protocol SeekItemDelegate: AnyObject {
+    @objc func toggleSeeking(_ sender: NSToolbarItem)
 }
 
 #endif

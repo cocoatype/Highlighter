@@ -7,10 +7,6 @@ open class NavigationController: UINavigationController {
     public override init(rootViewController: UIViewController) {
         super.init(navigationBarClass: NavigationBar.self, toolbarClass: Toolbar.self)
         setViewControllers([rootViewController], animated: false)
-
-        let appearance = UIBarButtonItem.appearance()
-        appearance.setTitleTextAttributes(NavigationBar.buttonTitleTextAttributes, for: .normal)
-        appearance.setTitleTextAttributes(NavigationBar.buttonTitleTextAttributes, for: .highlighted)
     }
 
     // MARK: Status Bar
