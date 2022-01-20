@@ -98,6 +98,8 @@
 "PurchaseMarketingView.autoRedactionsText" = "Got words you never want to share? We’ll go ahead and hide them for you, right when you open the image.";
 "PurchaseMarketingView.documentScanningHeader" = "Document Scanning";
 "PurchaseMarketingView.documentScanningText" = "Sometimes the stuff you want to share is in the real world. Bring them in to the virtual with high-quality document scanning.";
+"PurchaseMarketingView.shortcutsHeader" = "Shortcuts";
+"PurchaseMarketingView.shortcutsText" = "What's better than automatic redaction? Automatic automatic redaction. Build workflows with Shortcuts to speed up common redactions.";
 "PurchaseMarketingView.supportDevelopmentHeader" = "Support Development";
 "PurchaseMarketingView.supportDevelopmentText" = "Black Highlighter is a one-man show. Your support helps keep updates to Black Highlighter coming!";
 

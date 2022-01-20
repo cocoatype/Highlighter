@@ -5,20 +5,25 @@ import SwiftUI
 
 struct PurchaseMarketingView: View {
     var body: some View {
-        PurchaseMarketingStack {
-            PurchaseMarketingItem(
-                header: "PurchaseMarketingView.autoRedactionsHeader",
-                text: "PurchaseMarketingView.autoRedactionsText")
-            #if !targetEnvironment(macCatalyst)
-            PurchaseMarketingItem(
-                header: "PurchaseMarketingView.documentScanningHeader",
-                text: "PurchaseMarketingView.documentScanningText")
-            #endif
-            PurchaseMarketingItem(
-                header: "PurchaseMarketingView.supportDevelopmentHeader",
-                text: "PurchaseMarketingView.supportDevelopmentText")
-            PurchaseButton()
-            Spacer()
+        ScrollView {
+            PurchaseMarketingStack   {
+                PurchaseMarketingItem(
+                    header: "PurchaseMarketingView.autoRedactionsHeader",
+                    text: "PurchaseMarketingView.autoRedactionsText", imageName: "automatic")
+                #if !targetEnvironment(macCatalyst)
+                PurchaseMarketingItem(
+                    header: "PurchaseMarketingView.documentScanningHeader",
+                    text: "PurchaseMarketingView.documentScanningText", imageName: "scanner")
+                #endif
+                PurchaseMarketingItem(
+                    header: "PurchaseMarketingView.shortcutsHeader",
+                    text: "PurchaseMarketingView.shortcutsText", imageName: "shortcuts")
+                PurchaseMarketingItem(
+                    header: "PurchaseMarketingView.supportDevelopmentHeader",
+                    text: "PurchaseMarketingView.supportDevelopmentText", imageName: "shortcuts")
+                PurchaseButton()
+                Spacer()
+            }
         }
         .fill()
         .background(Color(.primary))

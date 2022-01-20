@@ -13,7 +13,7 @@ struct PurchaseMarketingText: View {
         Text(titleKey)
             .lineSpacing(3)
             .font(.app(textStyle: Self.textStyle))
-            .foregroundColor(Color(.primaryExtraLight))
+            .foregroundColor(Color(.white))
     }
 
     private static let textStyle: UIFont.TextStyle = {

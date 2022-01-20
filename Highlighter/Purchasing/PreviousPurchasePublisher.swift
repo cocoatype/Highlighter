@@ -16,17 +16,18 @@ struct PreviousPurchasePublisher: Publisher {
     // MARK: Purchase Validation
 
     static func hasUserPurchasedProduct(receiptFetchingMethod: (() throws -> AppReceipt) = ReceiptValidator.validatedAppReceipt) -> Result<Bool, Error> {
-        do {
-            let receipt = try receiptFetchingMethod()
-            let originalPurchaseVersion = Int(receipt.purchaseVersion) ?? Int.max
-            let earnedFreeProduct = originalPurchaseVersion < Self.freeProductCutoff
-            let purchasedProduct = receipt.containsPurchase(withIdentifier: PurchaseConstants.productIdentifier)
-            let userHasProduct = earnedFreeProduct || purchasedProduct
-            return .success(userHasProduct)
-        } catch {
-            ErrorHandling.log(error)
-            return .success(true)
-        }
+        return .success(false)
+//        do {
+//            let receipt = try receiptFetchingMethod()
+//            let originalPurchaseVersion = Int(receipt.purchaseVersion) ?? Int.max
+//            let earnedFreeProduct = originalPurchaseVersion < Self.freeProductCutoff
+//            let purchasedProduct = receipt.containsPurchase(withIdentifier: PurchaseConstants.productIdentifier)
+//            let userHasProduct = earnedFreeProduct || purchasedProduct
+//            return .success(userHasProduct)
+//        } catch {
+//            ErrorHandling.log(error)
+//            return .success(true)
+//        }
     }
 
     private static let freeProductCutoff = 200 // arbitrary build in between 19.3 and 19.4
