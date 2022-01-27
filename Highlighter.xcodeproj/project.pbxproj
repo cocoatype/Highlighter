@@ -107,6 +107,7 @@
 		044D4CFA2547D20900701166 /* Redacting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044D4C9B2547C8EE00701166 /* Redacting.framework */; };
 		044D4D042547D25600701166 /* Redacting.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 044D4C9B2547C8EE00701166 /* Redacting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		044D4D0C2547D4CC00701166 /* TextRecognitionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3E22EF879700FF07C2 /* TextRecognitionOperation.swift */; };
+		044EF9F427A23C2700ECAC5D /* PurchaseMarketingTopBarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044EF9F327A23C2700ECAC5D /* PurchaseMarketingTopBarText.swift */; };
 		0453B0C82654E71600EFE68A /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 0453B0C72654E71600EFE68A /* Sentry */; };
 		045CA3AA2771823D00DEA988 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3A92771823D00DEA988 /* URLExtensions.swift */; };
 		045CA3D827718E5D00DEA988 /* DesktopSeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3D727718E5D00DEA988 /* DesktopSeekViewController.swift */; };
@@ -283,6 +284,7 @@
 		04DE87C3265218C10002BA42 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 04DE87C2265218C10002BA42 /* Sentry */; };
 		04EA0ADE25D4EA6C00D98138 /* FileIconFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EA0ADD25D4EA6C00D98138 /* FileIconFetcher.m */; };
 		04EF55BA22D6DB9400C6600D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55B922D6DB9400C6600D /* SceneDelegate.swift */; };
+		04F08B8527990870007E0052 /* PurchaseMarketingTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F08B8427990870007E0052 /* PurchaseMarketingTopBar.swift */; };
 		04F0910925E7A00000966C1E /* HelpMenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0910825E7A00000966C1E /* HelpMenuDataSource.swift */; };
 		04F0914225E7B30D00966C1E /* DesktopAppWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0914125E7B30D00966C1E /* DesktopAppWindow.swift */; };
 		04F3C7A9230099BC00445A8D /* PurchaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C7A8230099BC00445A8D /* PurchaseState.swift */; };
@@ -598,6 +600,7 @@
 		044D4C9B2547C8EE00701166 /* Redacting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Redacting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		044D4C9D2547C8EE00701166 /* Redacting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Redacting.h; sourceTree = "<group>"; };
 		044D4C9E2547C8EE00701166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		044EF9F327A23C2700ECAC5D /* PurchaseMarketingTopBarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingTopBarText.swift; sourceTree = "<group>"; };
 		045CA3A92771823D00DEA988 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		045CA3D727718E5D00DEA988 /* DesktopSeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekViewController.swift; sourceTree = "<group>"; };
 		045CA3D927718F4400DEA988 /* DesktopSeekContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekContainerView.swift; sourceTree = "<group>"; };
@@ -747,6 +750,7 @@
 		04EA0ADD25D4EA6C00D98138 /* FileIconFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileIconFetcher.m; sourceTree = "<group>"; };
 		04EF55B922D6DB9400C6600D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04EF55BB22D6EBFA00C6600D /* EditingUserActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserActivity.swift; sourceTree = "<group>"; };
+		04F08B8427990870007E0052 /* PurchaseMarketingTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingTopBar.swift; sourceTree = "<group>"; };
 		04F0910825E7A00000966C1E /* HelpMenuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpMenuDataSource.swift; sourceTree = "<group>"; };
 		04F0914125E7B30D00966C1E /* DesktopAppWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopAppWindow.swift; sourceTree = "<group>"; };
 		04F3C7A62300968500445A8D /* ReceiptValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptValidator.swift; sourceTree = "<group>"; };
@@ -1025,6 +1029,8 @@
 				047E913F265613120075F6B2 /* PurchaseButton.swift */,
 				043C28DC265CB2F70054A5A8 /* PurchaseRestoreButton.swift */,
 				047E912526549BFF0075F6B2 /* PurchaseMarketingView.swift */,
+				04F08B8427990870007E0052 /* PurchaseMarketingTopBar.swift */,
+				044EF9F327A23C2700ECAC5D /* PurchaseMarketingTopBarText.swift */,
 				0429C7B82663841500236D10 /* PurchaseMarketingItem.swift */,
 				0429C7BA2663845B00236D10 /* PurchaseMarketingStack.swift */,
 				0429C7BC2663847600236D10 /* PurchaseMarketingHeader.swift */,
@@ -2307,6 +2313,7 @@
 				041CFA9C2665922B00042E8E /* PhotoLibraryDataSourceAssetsProvider.swift in Sources */,
 				0482C7A525218E080013B69E /* DesktopSettingsTableViewCell.swift in Sources */,
 				046BEC2E2471013900FBECD7 /* SettingsBarButtonItem.swift in Sources */,
+				044EF9F427A23C2700ECAC5D /* PurchaseMarketingTopBarText.swift in Sources */,
 				04DBC83C2314D1C20004F7DB /* AutoRedactionsEmptyViewController.swift in Sources */,
 				04EF55BA22D6DB9400C6600D /* SceneDelegate.swift in Sources */,
 				04FF8DBB22F57B09008CF0E9 /* AutoRedactionsTableViewCell.swift in Sources */,
@@ -2334,6 +2341,7 @@
 				04FF8DB722F57AA1008CF0E9 /* AutoRedactionsListView.swift in Sources */,
 				0429C7BB2663845B00236D10 /* PurchaseMarketingStack.swift in Sources */,
 				041EFF1B2251AB8D0058D8EE /* AppWindow.swift in Sources */,
+				04F08B8527990870007E0052 /* PurchaseMarketingTopBar.swift in Sources */,
 				04F3C7A9230099BC00445A8D /* PurchaseState.swift in Sources */,
 				041CFA982665916900042E8E /* PhotoLibraryItem.swift in Sources */,
 				041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */,

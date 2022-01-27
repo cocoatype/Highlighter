@@ -10,7 +10,7 @@ public extension UIFont {
         let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
         let fontMethod: ((UIFont.TextStyle) -> UIFont)
         switch textStyle {
-        case .headline, .title1, .title2, .title3:
+        case .headline, .title1, .title2, .title3, .largeTitle:
             fontMethod = boldFont(for:)
         default:
             fontMethod = regularFont(for:)

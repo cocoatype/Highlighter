@@ -5,24 +5,27 @@ import SwiftUI
 
 struct PurchaseMarketingView: View {
     var body: some View {
-        ScrollView {
-            PurchaseMarketingStack   {
-                PurchaseMarketingItem(
-                    header: "PurchaseMarketingView.autoRedactionsHeader",
-                    text: "PurchaseMarketingView.autoRedactionsText", imageName: "automatic")
-                #if !targetEnvironment(macCatalyst)
-                PurchaseMarketingItem(
-                    header: "PurchaseMarketingView.documentScanningHeader",
-                    text: "PurchaseMarketingView.documentScanningText", imageName: "scanner")
-                #endif
-                PurchaseMarketingItem(
-                    header: "PurchaseMarketingView.shortcutsHeader",
-                    text: "PurchaseMarketingView.shortcutsText", imageName: "shortcuts")
-                PurchaseMarketingItem(
-                    header: "PurchaseMarketingView.supportDevelopmentHeader",
-                    text: "PurchaseMarketingView.supportDevelopmentText", imageName: "shortcuts")
-                PurchaseButton()
-                Spacer()
+        VStack {
+            PurchaseMarketingTopBar()
+            ScrollView {
+                PurchaseMarketingStack   {
+                    PurchaseMarketingItem(
+                        header: "PurchaseMarketingView.autoRedactionsHeader",
+                        text: "PurchaseMarketingView.autoRedactionsText", imageName: "automatic")
+                    #if !targetEnvironment(macCatalyst)
+                    PurchaseMarketingItem(
+                        header: "PurchaseMarketingView.documentScanningHeader",
+                        text: "PurchaseMarketingView.documentScanningText", imageName: "scanner")
+                    #endif
+                    PurchaseMarketingItem(
+                        header: "PurchaseMarketingView.shortcutsHeader",
+                        text: "PurchaseMarketingView.shortcutsText", imageName: "shortcuts")
+                    PurchaseMarketingItem(
+                        header: "PurchaseMarketingView.supportDevelopmentHeader",
+                        text: "PurchaseMarketingView.supportDevelopmentText", imageName: "shortcuts")
+                    PurchaseButton()
+                    Spacer()
+                }
             }
         }
         .fill()
@@ -36,5 +39,6 @@ struct PurchaseMarketingView_Previews: PreviewProvider {
         PurchaseMarketingView()
             .preferredColorScheme(.dark)
             .environment(\.readableWidth, 288)
+            .previewLayout(.fixed(width: 640, height: 640))
     }
 }

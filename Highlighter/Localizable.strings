@@ -94,6 +94,9 @@
 "PurchaseItem.subtitleWithoutProduct" = "Extra Features";
 "PurchaseItem.subtitleWithProduct" = "Extra Features — %@";
 
+"PurchaseMarketingTopBarHeadlineLabel.text" = "Ultra Highlighter";
+"PurchaseMarketingTopBarSubheadlineLabel.text" = "Some amount of text here about how cool the extra features are.";
+
 "PurchaseMarketingView.autoRedactionsHeader" = "Auto-Hide Words";
 "PurchaseMarketingView.autoRedactionsText" = "Got words you never want to share? We’ll go ahead and hide them for you, right when you open the image.";
 "PurchaseMarketingView.documentScanningHeader" = "Document Scanning";
