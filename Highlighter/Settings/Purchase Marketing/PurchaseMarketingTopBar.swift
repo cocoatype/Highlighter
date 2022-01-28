@@ -16,6 +16,6 @@ struct PurchaseMarketingTopBar: View {
 
 struct PurchaseMarketingTopBarPreviews: PreviewProvider {
     static var previews: some View {
-        PurchaseMarketingTopBar().previewLayout(.sizeThatFits)
+        PurchaseMarketingTopBar()
     }
 }

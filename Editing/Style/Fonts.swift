@@ -105,7 +105,7 @@ extension Font {
     public static func app(textStyle: UIFont.TextStyle) -> Font {
         let fontName: String
         switch textStyle {
-        case .headline, .title2, .title3:
+        case .headline, .title2, .title3, .largeTitle:
             fontName = UIFont.boldFontName
         default:
             fontName = UIFont.regularFontName
