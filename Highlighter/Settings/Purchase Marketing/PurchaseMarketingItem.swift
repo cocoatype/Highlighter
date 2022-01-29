@@ -12,15 +12,14 @@ struct PurchaseMarketingItem: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Image(imageName).resizable().aspectRatio(379.0/284.0, contentMode: .fit)
             VStack(alignment: .leading, spacing: 8) {
                 PurchaseMarketingHeader(headerKey)
                 PurchaseMarketingText(textKey)
-            }.padding()
+            }.padding(EdgeInsets(top: 16, leading: 20, bottom: 0, trailing: 20))
+            Image(imageName).resizable().aspectRatio(290.0/166.0, contentMode: .fit)
         }
-        .background(Color.primaryDark)
+        .background(Color.cellBackground)
         .cornerRadius(21)
-        .shadow(radius: 4)
     }
 
     private let headerKey: LocalizedStringKey
@@ -31,10 +30,11 @@ struct PurchaseMarketingItem: View {
 struct PurchaseMarketingItemPreviews: PreviewProvider {
     static var previews: some View {
         Group {
-            PurchaseMarketingItem(header: "PurchaseMarketingView.supportDevelopmentHeader", text: "PurchaseMarketingView.supportDevelopmentText", imageName: "shortcuts").padding()
+            PurchaseMarketingItem(header: "PurchaseMarketingView.supportDevelopmentHeader", text: "PurchaseMarketingView.supportDevelopmentText", imageName: "Support")
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.appPrimary)
         .preferredColorScheme(.dark)
+        .previewLayout(.fixed(width: 290, height: 242))
     }
 }

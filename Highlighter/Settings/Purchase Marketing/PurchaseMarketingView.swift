@@ -8,24 +8,30 @@ struct PurchaseMarketingView: View {
         VStack {
             PurchaseMarketingTopBar()
             ScrollView {
-                PurchaseMarketingStack   {
+                LazyVGrid(columns: [GridItem(spacing: 20), GridItem(spacing: 20)], spacing: 20) {
                     PurchaseMarketingItem(
                         header: "PurchaseMarketingView.autoRedactionsHeader",
-                        text: "PurchaseMarketingView.autoRedactionsText", imageName: "automatic")
+                        text: "PurchaseMarketingView.autoRedactionsText",
+                        imageName: "Seek")
                     #if !targetEnvironment(macCatalyst)
                     PurchaseMarketingItem(
                         header: "PurchaseMarketingView.documentScanningHeader",
-                        text: "PurchaseMarketingView.documentScanningText", imageName: "scanner")
+                        text: "PurchaseMarketingView.documentScanningText",
+                        imageName: "Scanner")
                     #endif
                     PurchaseMarketingItem(
                         header: "PurchaseMarketingView.shortcutsHeader",
-                        text: "PurchaseMarketingView.shortcutsText", imageName: "shortcuts")
+                        text: "PurchaseMarketingView.shortcutsText",
+                        imageName: "Shortcuts")
                     PurchaseMarketingItem(
                         header: "PurchaseMarketingView.supportDevelopmentHeader",
-                        text: "PurchaseMarketingView.supportDevelopmentText", imageName: "shortcuts")
-                    PurchaseButton()
-                    Spacer()
-                }
+                        text: "PurchaseMarketingView.supportDevelopmentText",
+                        imageName: "Support")
+                    PurchaseMarketingItem(
+                        header: "PurchaseMarketingView.crossPlatformHeader",
+                        text: "PurchaseMarketingView.crossPlatformText",
+                        imageName: "Systems")
+                }.padding(EdgeInsets(top: 24, leading: 20, bottom: 24, trailing: 20))
             }
         }
         .fill()
@@ -39,6 +45,6 @@ struct PurchaseMarketingView_Previews: PreviewProvider {
         PurchaseMarketingView()
             .preferredColorScheme(.dark)
             .environment(\.readableWidth, 288)
-            .previewLayout(.fixed(width: 640, height: 640))
+            .previewLayout(.fixed(width: 640, height: 1024))
     }
 }

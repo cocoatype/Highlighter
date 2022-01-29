@@ -7,15 +7,16 @@ struct PurchaseMarketingTopBar: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             PurchaseMarketingTopBarText()
-//            PurchaseMarketingTopBarHeadline()
-//            PurchaseMarketingTopBarSubheadline()
             PurchaseButton()
-        }.background(Color.primaryDark)
+        }
+        .padding(30)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.primaryDark)
     }
 }
 
 struct PurchaseMarketingTopBarPreviews: PreviewProvider {
     static var previews: some View {
-        PurchaseMarketingTopBar()
+        PurchaseMarketingTopBar().previewLayout(.sizeThatFits)
     }
 }

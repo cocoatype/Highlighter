@@ -76,6 +76,6 @@ struct PurchaseMarketingTopBarSubheadline: View {
     var body: some View {
         Text("Some amount of text here about how cool the extra features are.")
             .font(.app(textStyle: .body))
-            .foregroundColor(.white)
+            .foregroundColor(.primaryUltraLight)
     }
 }

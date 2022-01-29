@@ -20,7 +20,7 @@ struct PurchaseMarketingText: View {
         #if targetEnvironment(macCatalyst)
         return .body
         #else
-        return .subheadline
+        return .footnote
         #endif
     }()
 }

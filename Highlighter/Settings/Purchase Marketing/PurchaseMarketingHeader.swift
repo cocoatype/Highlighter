@@ -11,7 +11,8 @@ struct PurchaseMarketingHeader: View {
 
     var body: some View {
         Text(titleKey)
-            .font(.app(textStyle: .title2))
+            .font(.app(textStyle: .headline))
             .foregroundColor(.white)
+            .lineLimit(1)
     }
 }
