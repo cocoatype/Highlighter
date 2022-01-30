@@ -7,11 +7,23 @@ struct PurchaseMarketingTopBar: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             PurchaseMarketingTopBarText()
-            PurchaseButton()
+            HStack {
+                PurchaseButton()
+                PurchaseButtonSeparator()
+                PurchaseRestoreButton()
+            }
         }
-        .padding(30)
+        .padding(40)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color.primaryDark)
+    }
+}
+
+struct PurchaseButtonSeparator: View {
+    var body: some View {
+        Text("PurchaseButtonSeparator.text")
+            .font(.app(textStyle: .headline))
+            .foregroundColor(.white)
     }
 }
 

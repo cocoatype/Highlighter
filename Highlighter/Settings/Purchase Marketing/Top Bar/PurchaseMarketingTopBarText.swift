@@ -8,7 +8,7 @@ struct PurchaseMarketingTopBarText: View {
     @State private var textWidth: CGFloat?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: 4) {
             PurchaseMarketingTopBarHeadline().modifier(SetWidthViewModifier(textWidth: $textWidth))
             PurchaseMarketingTopBarSubheadline().modifier(GetWidthViewModifier(textWidth: $textWidth))
         }
@@ -60,22 +60,5 @@ struct PurchaseMarketingTopBarText: View {
 struct PurchaseMarketingTopBarTextPreviews: PreviewProvider {
     static var previews: some View {
         PurchaseMarketingTopBarText().background(Color.black).previewLayout(.sizeThatFits)
-    }
-}
-
-struct PurchaseMarketingTopBarHeadline: View {
-    var body: some View {
-        Text("Ultra Highlighter")
-            .font(.app(textStyle: .largeTitle))
-            .foregroundColor(.white)
-            .lineLimit(1)
-    }
-}
-
-struct PurchaseMarketingTopBarSubheadline: View {
-    var body: some View {
-        Text("Some amount of text here about how cool the extra features are.")
-            .font(.app(textStyle: .body))
-            .foregroundColor(.primaryUltraLight)
     }
 }

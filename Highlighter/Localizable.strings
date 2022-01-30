@@ -90,6 +90,8 @@
 "PurchaseButton.purchaseButtonTitlePurchasing" = "Purchasing…";
 "PurchaseButton.purchaseButtonTitlePurchased" = "Thank You!";
 
+"PurchaseButtonSeparator.text" = "or";
+
 "PurchaseItem.title" = "Ultra Highlighter";
 "PurchaseItem.subtitleWithoutProduct" = "Extra Features";
 "PurchaseItem.subtitleWithProduct" = "Extra Features — %@";

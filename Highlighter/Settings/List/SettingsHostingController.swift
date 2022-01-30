@@ -8,6 +8,7 @@ class SettingsHostingController: UIHostingController<SettingsView> {
     init() {
         super.init(rootView: SettingsView(dismissAction: {}))
         modalPresentationStyle = .formSheet
+        preferredContentSize = CGSize(width: 640, height: 640)
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

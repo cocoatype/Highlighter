@@ -14,15 +14,18 @@ struct PurchaseRestoreButton: View {
     }
 
     var body: some View {
-        return Button("PurchaseMarketingViewController.restoreButtonTitle", action: {
+        Button(action: {
             purchaseStatePublisher.restore()
+        }) {
+            Text("PurchaseMarketingViewController.restoreButtonTitle")
+                .underline()
+                .font(.app(textStyle: .headline))
+                .foregroundColor(disabled ? .primaryExtraLight : .white)
+        }
+        .disabled(disabled)
+        .onAppReceive(purchaseStatePublisher.receive(on: RunLoop.main), perform: { newState in
+            purchaseState = newState
         })
-            .font(.app(textStyle: .subheadline))
-            .foregroundColor(disabled ? .primaryExtraLight : .white)
-            .disabled(disabled)
-            .onAppReceive(purchaseStatePublisher.receive(on: RunLoop.main), perform: { newState in
-                purchaseState = newState
-            })
     }
 
     private var disabled: Bool {

@@ -6,7 +6,10 @@ import SwiftUI
 struct PurchaseMarketingView: View {
     var body: some View {
         VStack {
-            PurchaseMarketingTopBar()
+            ZStack(alignment: .topTrailing) {
+                PurchaseMarketingTopBar()
+                PurchaseMarketingCloseButton()
+            }
             ScrollView {
                 LazyVGrid(columns: [GridItem(spacing: 20), GridItem(spacing: 20)], spacing: 20) {
                     PurchaseMarketingItem(
@@ -36,7 +39,26 @@ struct PurchaseMarketingView: View {
         }
         .fill()
         .background(Color(.primary))
-        .navigationBarItems(trailing: PurchaseRestoreButton())
+        .navigationBarHidden(true)
+    }
+}
+
+struct PurchaseMarketingCloseButton: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
+    var body: some View {
+        #if targetEnvironment(macCatalyst)
+        EmptyView()
+        #else
+        Button(action: {
+            presentationMode.wrappedValue.dismiss()
+        }) {
+            Image(systemName: "xmark")
+                .font(.app(textStyle: .headline))
+                .foregroundColor(.white)
+                .padding(20)
+        }
+        #endif
     }
 }
 
