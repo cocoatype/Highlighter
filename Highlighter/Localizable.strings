@@ -90,16 +90,25 @@
 "PurchaseButton.purchaseButtonTitlePurchasing" = "Purchasing…";
 "PurchaseButton.purchaseButtonTitlePurchased" = "Thank You!";
 
-"PurchaseItem.title" = "Ultra Highlighter";
-"PurchaseItem.subtitleWithoutProduct" = "Enhanced Features";
-"PurchaseItem.subtitleWithProduct" = "Enhanced Features — %@";
+"PurchaseButtonSeparator.text" = "or";
 
-"PurchaseMarketingView.autoRedactionsHeader" = "Auto-Hide Words";
-"PurchaseMarketingView.autoRedactionsText" = "Got words you never want to share? We’ll go ahead and hide them for you, right when you open the image.";
-"PurchaseMarketingView.documentScanningHeader" = "Document Scanning";
-"PurchaseMarketingView.documentScanningText" = "Sometimes the stuff you want to share is in the real world. Bring them in to the virtual with high-quality document scanning.";
-"PurchaseMarketingView.supportDevelopmentHeader" = "Support Development";
-"PurchaseMarketingView.supportDevelopmentText" = "Black Highlighter is a one-man show. Your support helps keep updates to Black Highlighter coming!";
+"PurchaseItem.title" = "Ultra Highlighter";
+"PurchaseItem.subtitleWithoutProduct" = "Extra Features";
+"PurchaseItem.subtitleWithProduct" = "Extra Features — %@";
+
+"PurchaseMarketingTopBarHeadlineLabel.text" = "Ultra Highlighter";
+"PurchaseMarketingTopBarSubheadlineLabel.text" = "Some amount of text here about how cool the extra features are.";
+
+"PurchaseMarketingView.autoRedactionsHeader" = "Seek and destroy.";
+"PurchaseMarketingView.autoRedactionsText" = "Choose things you never want to see, and Black Highlighter will find them for you.";
+"PurchaseMarketingView.crossPlatformHeader" = "Always ready when you are.";
+"PurchaseMarketingView.crossPlatformText" = "Black Highlighter is right at home on iOS, iPadOS, and macOS.";
+"PurchaseMarketingView.documentScanningHeader" = "Not digital? Not a problem.";
+"PurchaseMarketingView.documentScanningText" = "Scan documents with your phone's camera and redact them with Black Highlighter.";
+"PurchaseMarketingView.shortcutsHeader" = "Plays well with others.";
+"PurchaseMarketingView.shortcutsText" = "Build workflows in Shortcuts to combine Black Highlighter with other apps.";
+"PurchaseMarketingView.supportDevelopmentHeader" = "Help keep the (high)lights on.";
+"PurchaseMarketingView.supportDevelopmentText" = "Your support helps keep updates to Black Highlighter coming!";
 
 "PurchaseMarketingViewController.navigationTitle" = "Ultra Highlighter";
 "PurchaseMarketingViewController.restoreButtonTitle" = "Restore";
@@ -113,7 +122,9 @@
 "SettingsContentProvider.Item.contact" = "Contact the Developer";
 "SettingsContentProvider.Item.privacy" = "Privacy Policy";
 
+"SettingsContentProvider.Section.purchasedFeatures.header" = "Ultra Highlighter Features";
 "SettingsContentProvider.Section.otherApps.header" = "Other Apps by Cocoatype";
+"SettingsContentProvider.Section.webURLs.header" = "Important Information";
 
 "SettingsViewController.navigationTitle" = "Settings";
 

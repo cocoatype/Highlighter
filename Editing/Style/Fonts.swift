@@ -10,7 +10,7 @@ public extension UIFont {
         let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
         let fontMethod: ((UIFont.TextStyle) -> UIFont)
         switch textStyle {
-        case .headline, .title2, .title3:
+        case .headline, .title1, .title2, .title3, .largeTitle:
             fontMethod = boldFont(for:)
         default:
             fontMethod = regularFont(for:)
@@ -84,7 +84,7 @@ public extension UIFont {
     private static func mobileStandardFontSize(for textStyle: UIFont.TextStyle) -> CGFloat {
         switch textStyle {
         case .largeTitle: return 34.0
-        case .title1: return 28.0
+        case .title1: return 24.0
         case .title2: return 22.0
         case .title3: return 20.0
         case .headline: return 17.0
@@ -105,7 +105,7 @@ extension Font {
     public static func app(textStyle: UIFont.TextStyle) -> Font {
         let fontName: String
         switch textStyle {
-        case .headline, .title2, .title3:
+        case .headline, .title2, .title3, .largeTitle:
             fontName = UIFont.boldFontName
         default:
             fontName = UIFont.regularFontName

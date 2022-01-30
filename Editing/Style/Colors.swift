@@ -13,6 +13,7 @@ public extension UIColor {
 
     // MARK: Base Colors
 
+    static let primaryUltraLight = UIColor(hexLiteral: 0xcbcbcb)
     static let primaryExtraLight = UIColor(hexLiteral: 0xababab)
     static let primaryLight = UIColor(hexLiteral: 0x484848)
     static let primary = UIColor(hexLiteral: 0x212121)
@@ -57,8 +58,10 @@ public extension UIColor {
 }
 
 public extension Color {
+    static let primaryUltraLight = Color(.primaryUltraLight)
     static let primaryExtraLight = Color(.primaryExtraLight)
     static let primaryLight = Color(.primaryLight)
     static let appPrimary = Color(.primary)
     static let primaryDark = Color(.primaryDark)
+    static let cellBackground = Color(.tableViewCellBackground)
 }

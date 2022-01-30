@@ -168,7 +168,8 @@ class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCame
     // MARK: Settings View Controller
 
     @objc func presentSettingsViewController() {
-        present(SettingsHostingController(), animated: true)
+        let settingsController = SettingsHostingController()
+        present(settingsController, animated: true)
     }
 
     @objc func dismissSettingsViewController() {

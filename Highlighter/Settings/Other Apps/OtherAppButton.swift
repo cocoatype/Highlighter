@@ -24,36 +24,15 @@ struct OtherAppButton: View {
         Button(action: {
             UIApplication.shared.open(url)
         }, label: {
-            HStack {
-                Image(decorative: name).cornerRadius(5.6)
+            HStack(spacing: 12) {
+                Image(decorative: name)
+                    .continuousCornerRadius(5.6)
                 VStack(alignment: .leading) {
                     OtherAppNameText(name)
                     OtherAppSubtitleText(subtitle)
                 }
             }
         }).settingsCell()
-    }
-}
-
-struct OtherAppNameText: View {
-    private let text: String
-    init(_ text: String) {
-        self.text = text
-    }
-
-    var body: some View {
-        Text(text).font(.app(textStyle: .subheadline)).foregroundColor(.white)
-    }
-}
-
-struct OtherAppSubtitleText: View {
-    private let text: String
-    init(_ text: String) {
-        self.text = text
-    }
-
-    var body: some View {
-        Text(text).font(.app(textStyle: .footnote)).foregroundColor(.primaryExtraLight)
     }
 }
 

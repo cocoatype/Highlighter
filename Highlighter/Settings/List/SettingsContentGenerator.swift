@@ -13,7 +13,7 @@ struct SettingsContentGenerator {
     var content: some View {
         Group {
             if case .purchased = purchaseState {
-                Section {
+                Section(header: SettingsSectionHeader("SettingsContentProvider.Section.purchasedFeatures.header")) {
                     SettingsNavigationLink("SettingsContentProvider.Item.autoRedactions", destination: AutoRedactionsEditView().background(Color.appPrimary.edgesIgnoringSafeArea(.all)))
                 }
             } else {
@@ -21,7 +21,7 @@ struct SettingsContentGenerator {
                     PurchaseNavigationLink(state: purchaseState, destination: PurchaseMarketingView())
                 }
             }
-            Section {
+            Section(header: SettingsSectionHeader("SettingsContentProvider.Section.webURLs.header")) {
                 WebURLButton("SettingsContentProvider.Item.about", path: "about")
                 WebURLButton("SettingsContentProvider.Item.privacy", path: "privacy")
                 WebURLButton("SettingsContentProvider.Item.acknowledgements", path: "acknowledgements")
@@ -34,49 +34,4 @@ struct SettingsContentGenerator {
             }
         }
     }
-}
-
-struct WebURLButton: View {
-    private let titleKey: LocalizedStringKey
-    private let url: URL
-    @State private var selected = false
-    init(_ titleKey: LocalizedStringKey, path: String) {
-        self.titleKey = titleKey
-        self.url = Self.url(forPath: path)
-    }
-
-    var body: some View {
-        Button(titleKey) {
-            selected = true
-        }.sheet(isPresented: $selected) {
-            WebView(url: url)
-        }.settingsCell()
-    }
-
-    static let baseURL: URL = {
-        guard let url = URL(string: "https://blackhighlighter.app/") else { fatalError("Invalid base URL for settings") }
-        return url
-    }()
-
-    static func url(forPath path: String) -> URL {
-        Self.baseURL.appendingPathComponent(path)
-    }
-}
-
-struct WebView: UIViewControllerRepresentable {
-    private let url: URL
-    init(url: URL) {
-        self.url = url
-    }
-
-    func makeUIViewController(context: Context) -> WebViewController {
-        return WebViewController(url: url)
-    }
-
-    func updateUIViewController(_ uiViewController: WebViewController, context: Context) {}
-}
-
-extension URL: Identifiable {
-    public typealias ID = Int
-    public var id: Int { hashValue }
 }
