@@ -116,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let helpMenuDataSource = HelpMenuDataSource()
         builder.insertChild(helpMenuDataSource.helpMenu, atStartOfMenu: .help)
 
-        let preferencesMenu = UIMenu(title: Self.preferencesMenuTitle, identifier: .preferences, options: .displayInline, children: [
+        let preferencesMenu = UIMenu(options: .displayInline, children: [
             UIKeyCommand(title: Self.preferencesMenuItemTitle, action: #selector(Self.displayPreferences), input: ",", modifierFlags: [.command])
         ])
         builder.insertSibling(preferencesMenu, afterMenu: .about)
