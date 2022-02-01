@@ -59,6 +59,8 @@
 
 "LimitedLibraryPhotoLibraryViewCell.defaultAccessibilityLabel" = "Change Selected Photos";
 
+"MenuBuilder.findMenuItemTitle" = "Find…";
+
 "NewFromClipboardCommand.title" = "New from Clipboard";
 
 "PageCountAlertFactory.alertTitle" = "Too Many Pages";
