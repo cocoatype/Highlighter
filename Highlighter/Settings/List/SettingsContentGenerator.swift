@@ -10,6 +10,12 @@ struct SettingsContentGenerator {
         self.purchaseState = state
     }
 
+    private var versionString: String {
+        let infoDictionary = Bundle.main.infoDictionary
+        let versionString = infoDictionary?["CFBundleShortVersionString"] as? String
+        return versionString ?? "???"
+    }
+
     var content: some View {
         Group {
             if case .purchased = purchaseState {
@@ -22,6 +28,7 @@ struct SettingsContentGenerator {
                 }
             }
             Section(header: SettingsSectionHeader("SettingsContentProvider.Section.webURLs.header")) {
+                WebURLButton("SettingsContentProvider.Item.new", "\(String(format: Self.versionStringFormat, versionString))", path: "releases")
                 WebURLButton("SettingsContentProvider.Item.about", path: "about")
                 WebURLButton("SettingsContentProvider.Item.privacy", path: "privacy")
                 WebURLButton("SettingsContentProvider.Item.acknowledgements", path: "acknowledgements")
@@ -34,4 +41,6 @@ struct SettingsContentGenerator {
             }
         }
     }
+
+    private static let versionStringFormat = NSLocalizedString("SettingsContentGenerator.versionStringFormat", comment: "Format string for the app version in Settings")
 }

@@ -104,7 +104,7 @@
 "PurchaseMarketingView.crossPlatformHeader" = "Always ready when you are.";
 "PurchaseMarketingView.crossPlatformText" = "Black Highlighter is right at home on iOS, iPadOS, and macOS.";
 "PurchaseMarketingView.documentScanningHeader" = "Not digital? Not a problem.";
-"PurchaseMarketingView.documentScanningText" = "Scan documents with your phone's camera and redact them with Black Highlighter.";
+"PurchaseMarketingView.documentScanningText" = "Scan documents with your phone’s camera and redact them with Black Highlighter.";
 "PurchaseMarketingView.shortcutsHeader" = "Plays well with others.";
 "PurchaseMarketingView.shortcutsText" = "Build workflows in Shortcuts to combine Black Highlighter with other apps.";
 "PurchaseMarketingView.supportDevelopmentHeader" = "Help keep the (high)lights on.";
@@ -120,11 +120,14 @@
 "SettingsContentProvider.Item.acknowledgements" = "Acknowledgements";
 "SettingsContentProvider.Item.autoRedactions" = "Auto-Hidden Words";
 "SettingsContentProvider.Item.contact" = "Contact the Developer";
+"SettingsContentProvider.Item.new" = "What’s New";
 "SettingsContentProvider.Item.privacy" = "Privacy Policy";
 
 "SettingsContentProvider.Section.purchasedFeatures.header" = "Ultra Highlighter Features";
 "SettingsContentProvider.Section.otherApps.header" = "Other Apps by Cocoatype";
 "SettingsContentProvider.Section.webURLs.header" = "Important Information";
+
+"SettingsContentGenerator.versionStringFormat" = "Version %@";
 
 "SettingsViewController.navigationTitle" = "Settings";
 

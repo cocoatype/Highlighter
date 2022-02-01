@@ -38,6 +38,6 @@ struct OtherAppButton: View {
 
 struct OtherAppButton_Previews: PreviewProvider {
     static var previews: some View {
-        OtherAppButton(name: "Kineo", subtitle: "Create flipbook-style animations", id: "286948844").preferredColorScheme(.dark)
+        OtherAppButton(name: "Kineo", subtitle: "Create flipbook-style animations", id: "286948844").preferredColorScheme(.dark).previewLayout(.sizeThatFits)
     }
 }
