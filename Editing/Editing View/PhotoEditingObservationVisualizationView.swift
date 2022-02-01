@@ -46,12 +46,17 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
     }
 
     func animateFullVisualization() {
-        #warning("#152: Do *something* when reduce motion is enabled")
-        guard UIAccessibility.isReduceMotionEnabled == false else { return }
-
         removeAllRedactions()
         add(cannons)
 
+        if UIAccessibility.isReduceMotionEnabled {
+            performReducedMotionVisualization()
+        } else {
+            performFullMotionVisualization()
+        }
+    }
+
+    private func performFullMotionVisualization() {
         layer.mask = animationLayer
         alpha = 1
 
@@ -69,6 +74,20 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
         self.animationLayer.position = CGPoint(x: self.layer.bounds.width * 1.5, y: self.layer.bounds.midY)
 
         animationLayer.add(slideAnimation, forKey: "position.x")
+        CATransaction.commit()
+    }
+
+    private func performReducedMotionVisualization() {
+        CATransaction.begin()
+
+        let fadeAnimation = CABasicAnimation(keyPath: "opacity")
+        fadeAnimation.fromValue = 0
+        fadeAnimation.toValue = 0.6
+        fadeAnimation.duration = 0.5
+        fadeAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        fadeAnimation.autoreverses = true
+
+        layer.add(fadeAnimation, forKey: "opacity")
         CATransaction.commit()
     }
 
