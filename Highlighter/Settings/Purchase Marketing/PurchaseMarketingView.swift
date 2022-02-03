@@ -4,14 +4,16 @@
 import SwiftUI
 
 struct PurchaseMarketingView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+
     var body: some View {
-        VStack {
-            ZStack(alignment: .topTrailing) {
-                PurchaseMarketingTopBar()
-                PurchaseMarketingCloseButton()
-            }
-            ScrollView {
-                LazyVGrid(columns: [GridItem(spacing: 20), GridItem(spacing: 20)], spacing: 20) {
+        ScrollView {
+            VStack {
+                ZStack(alignment: .topTrailing) {
+                    topBar
+                    PurchaseMarketingCloseButton()
+                }
+                LazyVGrid(columns: columns, spacing: 20) {
                     PurchaseMarketingItem(
                         header: "PurchaseMarketingView.autoRedactionsHeader",
                         text: "PurchaseMarketingView.autoRedactionsText",
@@ -41,6 +43,21 @@ struct PurchaseMarketingView: View {
         .background(Color(.primary))
         .navigationBarHidden(true)
     }
+
+    @ViewBuilder
+    private var topBar: some View {
+        switch horizontalSizeClass {
+        case .compact?: PurchaseMarketingTopBarCompact()
+        default: PurchaseMarketingTopBarRegular()
+        }
+    }
+
+    private var columns: [GridItem] {
+        switch horizontalSizeClass {
+        case .compact?: return [GridItem(spacing: 20)]
+        default: return [GridItem(spacing: 20), GridItem(spacing: 20)]
+        }
+    }
 }
 
 struct PurchaseMarketingCloseButton: View {
@@ -67,6 +84,6 @@ struct PurchaseMarketingView_Previews: PreviewProvider {
         PurchaseMarketingView()
             .preferredColorScheme(.dark)
             .environment(\.readableWidth, 288)
-            .previewLayout(.fixed(width: 640, height: 1024))
+//            .previewLayout(.fixed(width: 640, height: 1024))
     }
 }

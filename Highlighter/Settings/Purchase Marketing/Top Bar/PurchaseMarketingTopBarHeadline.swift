@@ -8,6 +8,5 @@ struct PurchaseMarketingTopBarHeadline: View {
         Text("Ultra Highlighter")
             .font(.app(textStyle: .largeTitle))
             .foregroundColor(.white)
-            .lineLimit(1)
     }
 }
