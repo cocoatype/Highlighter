@@ -123,9 +123,6 @@
 		0461680A263E271700C28B7F /* RestorationImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04616809263E271700C28B7F /* RestorationImageCache.swift */; };
 		0464B18725529CC000D00FAC /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
 		0464B19025529DC500D00FAC /* AutomatorActions.action in Embed Automator Actions */ = {isa = PBXBuildFile; fileRef = 044D4C182547B7BC00701166 /* AutomatorActions.action */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0464B1E12553A3DE00D00FAC /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464B1E02553A3DE00D00FAC /* IntentHandler.swift */; };
-		0464B1E52553A3DE00D00FAC /* Shortcuts.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0464B1DE2553A3DE00D00FAC /* Shortcuts.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		0464B1F32553A41300D00FAC /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0464B1F22553A41300D00FAC /* Intents.intentdefinition */; };
 		0464B20C2553A6D900D00FAC /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0464B1F22553A41300D00FAC /* Intents.intentdefinition */; };
 		046BEC242470EBAC00FBECD7 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC232470EBAC00FBECD7 /* Collection.swift */; };
 		046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC252470F87200FBECD7 /* CollectionType.swift */; };
@@ -183,9 +180,6 @@
 		048320B125D7F12600355393 /* LaunchActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320B025D7F12600355393 /* LaunchActivity.swift */; };
 		048320C425D7F1CB00355393 /* RecentsMenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320C325D7F1CB00355393 /* RecentsMenuDataSource.swift */; };
 		048320DE25D7F43800355393 /* DesktopSettingsSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */; };
-		048416592553AF1100048DE8 /* ShortcutsRedactOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */; };
-		048416622553AF8000048DE8 /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
-		0484166E2553B67800048DE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041EFEFF2251A9F50058D8EE /* Assets.xcassets */; };
 		0489081B24AD7B17005DDEF3 /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
 		04899D78231CEC4F002BC1D8 /* PurchaseValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04899D77231CEC4F002BC1D8 /* PurchaseValidatorTests.swift */; };
@@ -255,8 +249,6 @@
 		04BB710A278D2E4B00F5BAEC /* TabletSeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7109278D2E4B00F5BAEC /* TabletSeekViewController.swift */; };
 		04BB710C278D2FF700F5BAEC /* TabletSeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB710B278D2FF700F5BAEC /* TabletSeekView.swift */; };
 		04BC9FD025C2704300213DBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BC9FC725C2700200213DBC /* libz.tbd */; };
-		04BDC4962556576900BCE982 /* ShortcutsRedactExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */; };
-		04BDC49F255657A600BCE982 /* ShortcutsExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */; };
 		04BDC4A7255657CA00BCE982 /* ShortcutsExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */; };
 		04BDC4AF255657CB00BCE982 /* ShortcutsRedactExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */; };
 		04CBB08F2658A14300B792A2 /* PreviousPurchasePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB08E2658A14300B792A2 /* PreviousPurchasePublisher.swift */; };
@@ -374,20 +366,6 @@
 			remoteGlobalIDString = 044D4C172547B7BC00701166;
 			remoteInfo = AutomatorActions;
 		};
-		0464B1E32553A3DE00D00FAC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0464B1DD2553A3DE00D00FAC;
-			remoteInfo = Shortcuts;
-		};
-		048416642553AF8000048DE8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 049F92D622CDA3DB0090C9BC;
-			remoteInfo = Editing;
-		};
 		049F92DC22CDA3DB0090C9BC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
@@ -434,7 +412,6 @@
 			files = (
 				043911CC22C461F000D4AE30 /* Action.appex in Embed App Extensions */,
 				04431E5323556106009FA1F6 /* Photo.appex in Embed App Extensions */,
-				0464B1E52553A3DE00D00FAC /* Shortcuts.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -615,10 +592,7 @@
 		045CA3E527719A7500DEA988 /* DesktopSeekBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekBorderView.swift; sourceTree = "<group>"; };
 		045CA3E727719A9E00DEA988 /* DesktopSeekBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekBackgroundView.swift; sourceTree = "<group>"; };
 		04616809263E271700C28B7F /* RestorationImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorationImageCache.swift; sourceTree = "<group>"; };
-		0464B1DE2553A3DE00D00FAC /* Shortcuts.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Shortcuts.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0464B1E02553A3DE00D00FAC /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
-		0464B1E22553A3DE00D00FAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0464B1E62553A3DE00D00FAC /* Shortcuts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shortcuts.entitlements; sourceTree = "<group>"; };
 		0464B1F22553A41300D00FAC /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		046BEC232470EBAC00FBECD7 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		046BEC252470F87200FBECD7 /* CollectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionType.swift; sourceTree = "<group>"; };
@@ -842,14 +816,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0464B1DB2553A3DE00D00FAC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				048416622553AF8000048DE8 /* Editing.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		049F92D422CDA3DB0090C9BC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -913,7 +879,6 @@
 				04431E4A23556106009FA1F6 /* Photo */,
 				04F3C8062309E8A800445A8D /* Receipts */,
 				044D4C9C2547C8EE00701166 /* Redacting */,
-				0464B1DF2553A3DE00D00FAC /* Shortcuts */,
 				041EFEF62251A9F30058D8EE /* Products */,
 				04ADD1622290DE6700E17445 /* Frameworks */,
 			);
@@ -930,7 +895,6 @@
 				04431E4523556106009FA1F6 /* Photo.appex */,
 				044D4C182547B7BC00701166 /* AutomatorActions.action */,
 				044D4C9B2547C8EE00701166 /* Redacting.framework */,
-				0464B1DE2553A3DE00D00FAC /* Shortcuts.appex */,
 				04B19922262410D5001A275B /* EditingTests.xctest */,
 				04DE87B2265213F40002BA42 /* ErrorHandling.framework */,
 			);
@@ -950,6 +914,7 @@
 				04F3C7A32300204B00445A8D /* Purchasing */,
 				04EF55B822D6DB8500C6600D /* Scene */,
 				043CD9D922753D450012F5AE /* Settings */,
+				0464B1DF2553A3DE00D00FAC /* Shortcuts */,
 				048909F0226571830048E203 /* Supporting Files */,
 			);
 			path = Highlighter;
@@ -1117,16 +1082,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0429C7D2266387A600236D10 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				0464B1E62553A3DE00D00FAC /* Shortcuts.entitlements */,
-				0464B1F22553A41300D00FAC /* Intents.intentdefinition */,
-				0464B1E22553A3DE00D00FAC /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		042A2B7F228D012300353414 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1282,11 +1237,11 @@
 		0464B1DF2553A3DE00D00FAC /* Shortcuts */ = {
 			isa = PBXGroup;
 			children = (
+				0464B1F22553A41300D00FAC /* Intents.intentdefinition */,
 				0464B1E02553A3DE00D00FAC /* IntentHandler.swift */,
 				04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */,
 				04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */,
 				048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */,
-				0429C7D2266387A600236D10 /* Supporting Files */,
 			);
 			path = Shortcuts;
 			sourceTree = "<group>";
@@ -1807,7 +1762,6 @@
 				043911CB22C461F000D4AE30 /* PBXTargetDependency */,
 				049F92DD22CDA3DB0090C9BC /* PBXTargetDependency */,
 				04F3C80B2309E8A800445A8D /* PBXTargetDependency */,
-				0464B1E42553A3DE00D00FAC /* PBXTargetDependency */,
 				04DE87B8265213F40002BA42 /* PBXTargetDependency */,
 			);
 			name = Highlighter;
@@ -1913,26 +1867,6 @@
 			productName = Redacting;
 			productReference = 044D4C9B2547C8EE00701166 /* Redacting.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		0464B1DD2553A3DE00D00FAC /* Shortcuts */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0464B1E92553A3DE00D00FAC /* Build configuration list for PBXNativeTarget "Shortcuts" */;
-			buildPhases = (
-				0464B1DA2553A3DE00D00FAC /* Sources */,
-				0464B1DB2553A3DE00D00FAC /* Frameworks */,
-				0464B1DC2553A3DE00D00FAC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				048416652553AF8000048DE8 /* PBXTargetDependency */,
-			);
-			name = Shortcuts;
-			packageProductDependencies = (
-			);
-			productName = Shortcuts;
-			productReference = 0464B1DE2553A3DE00D00FAC /* Shortcuts.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 		049F92D622CDA3DB0090C9BC /* Editing */ = {
 			isa = PBXNativeTarget;
@@ -2051,9 +1985,6 @@
 					044D4C9A2547C8EE00701166 = {
 						CreatedOnToolsVersion = 12.2;
 					};
-					0464B1DD2553A3DE00D00FAC = {
-						CreatedOnToolsVersion = 12.2;
-					};
 					049F92D622CDA3DB0090C9BC = {
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1100;
@@ -2096,7 +2027,6 @@
 				04431E4423556106009FA1F6 /* Photo */,
 				044D4C172547B7BC00701166 /* AutomatorActions */,
 				044D4C9A2547C8EE00701166 /* Redacting */,
-				0464B1DD2553A3DE00D00FAC /* Shortcuts */,
 				04B19921262410D5001A275B /* EditingTests */,
 				04DE87B1265213F40002BA42 /* ErrorHandling */,
 			);
@@ -2163,14 +2093,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0464B1DC2553A3DE00D00FAC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0484166E2553B67800048DE8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2438,18 +2360,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0464B1DA2553A3DE00D00FAC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0464B1F32553A41300D00FAC /* Intents.intentdefinition in Sources */,
-				04BDC49F255657A600BCE982 /* ShortcutsExportOperation.swift in Sources */,
-				0464B1E12553A3DE00D00FAC /* IntentHandler.swift in Sources */,
-				048416592553AF1100048DE8 /* ShortcutsRedactOperation.swift in Sources */,
-				04BDC4962556576900BCE982 /* ShortcutsRedactExporter.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		049F92D322CDA3DB0090C9BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2603,17 +2513,6 @@
 			platformFilter = maccatalyst;
 			target = 044D4C172547B7BC00701166 /* AutomatorActions */;
 			targetProxy = 0464B1B425529E8900D00FAC /* PBXContainerItemProxy */;
-		};
-		0464B1E42553A3DE00D00FAC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			platformFilter = ios;
-			target = 0464B1DD2553A3DE00D00FAC /* Shortcuts */;
-			targetProxy = 0464B1E32553A3DE00D00FAC /* PBXContainerItemProxy */;
-		};
-		048416652553AF8000048DE8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 049F92D622CDA3DB0090C9BC /* Editing */;
-			targetProxy = 048416642553AF8000048DE8 /* PBXContainerItemProxy */;
 		};
 		049F92DD22CDA3DB0090C9BC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3141,54 +3040,6 @@
 			};
 			name = Release;
 		};
-		0464B1E72553A3DE00D00FAC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_ENTITLEMENTS = Shortcuts/Shortcuts.entitlements;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 287EDDET2B;
-				INFOPLIST_FILE = Shortcuts/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Shortcuts;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cocoatype.Highlighter.Shortcuts";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		0464B1E82553A3DE00D00FAC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_ENTITLEMENTS = Shortcuts/Shortcuts.entitlements;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 287EDDET2B;
-				INFOPLIST_FILE = Shortcuts/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Shortcuts;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cocoatype.Highlighter.Shortcuts";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		049F92E122CDA3DB0090C9BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3501,15 +3352,6 @@
 			buildConfigurations = (
 				044D4CA02547C8EE00701166 /* Debug */,
 				044D4CA12547C8EE00701166 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0464B1E92553A3DE00D00FAC /* Build configuration list for PBXNativeTarget "Shortcuts" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0464B1E72553A3DE00D00FAC /* Debug */,
-				0464B1E82553A3DE00D00FAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
