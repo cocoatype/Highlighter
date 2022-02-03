@@ -93,41 +93,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Menu
 
     override func buildMenu(with builder: UIMenuBuilder) {
-        guard builder.system == .main else { return }
-
-        builder.replaceChildren(ofMenu: .close) { existingChildren in
-            existingChildren + [
-                UIKeyCommand(title: Self.saveMenuItemTitle, action: #selector(PhotoEditingViewController.save(_:)), input: "S", modifierFlags: [.command]),
-                UIKeyCommand(title: Self.saveAsMenuItemTitle, action: #selector(PhotoEditingViewController.saveAs(_:)), input: "S", modifierFlags: [.command, .shift])
-            ]
-        }
-
-        #if targetEnvironment(macCatalyst)
-        if FeatureFlag.newFromClipboard {
-            builder.replaceChildren(ofMenu: .newScene) {
-                $0 + [NewFromClipboardCommand()]
-            }
-        }
-        #endif
-
-        let recentsMenuDataSource = RecentsMenuDataSource()
-        builder.replace(menu: .openRecent, with: recentsMenuDataSource.recentsMenu)
-
-        let helpMenuDataSource = HelpMenuDataSource()
-        builder.insertChild(helpMenuDataSource.helpMenu, atStartOfMenu: .help)
-
-        let preferencesMenu = UIMenu(options: .displayInline, children: [
-            UIKeyCommand(title: Self.preferencesMenuItemTitle, action: #selector(Self.displayPreferences), input: ",", modifierFlags: [.command])
-        ])
-        builder.insertSibling(preferencesMenu, afterMenu: .about)
+        MenuBuilder.buildMenu(with: builder)
     }
 
-    private static let saveMenuItemTitle = NSLocalizedString("AppDelegate.saveMenuTitle", comment: "Save menu title")
-    private static let saveAsMenuItemTitle = NSLocalizedString("AppDelegate.saveAsMenuTitle", comment: "Save As menu title")
-
-    private static let preferencesMenuTitle = NSLocalizedString("AppDelegate.preferencesMenuTitle", comment: "Preferences menu title")
-    private static let preferencesMenuItemTitle = NSLocalizedString("AppDelegate.preferencesMenuItemTitle", comment: "Preferences menu item title")
-    @objc private func displayPreferences() {
+    @objc func displayPreferences() {
         let activity = NSUserActivity(activityType: "com.cocoatype.Highlighter.settings")
         let existingScene = UIApplication.shared.openSessions.first(where: { $0.configuration.delegateClass == DesktopSettingsSceneDelegate.self })
         UIApplication.shared.requestSceneSessionActivation(existingScene, userActivity: activity, options: nil, errorHandler: nil)

@@ -109,6 +109,7 @@
 		044EF9F427A23C2700ECAC5D /* PurchaseMarketingTopBarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044EF9F327A23C2700ECAC5D /* PurchaseMarketingTopBarText.swift */; };
 		044EF9F727A66DD300ECAC5D /* PurchaseMarketingTopBarHeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044EF9F627A66DD300ECAC5D /* PurchaseMarketingTopBarHeadline.swift */; };
 		044EF9F927A66DF200ECAC5D /* PurchaseMarketingTopBarSubheadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044EF9F827A66DF200ECAC5D /* PurchaseMarketingTopBarSubheadline.swift */; };
+		044EF9FF27A8E88600ECAC5D /* MenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044EF9FE27A8E88600ECAC5D /* MenuBuilder.swift */; };
 		0453B0C82654E71600EFE68A /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 0453B0C72654E71600EFE68A /* Sentry */; };
 		045CA3AA2771823D00DEA988 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3A92771823D00DEA988 /* URLExtensions.swift */; };
 		045CA3D827718E5D00DEA988 /* DesktopSeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3D727718E5D00DEA988 /* DesktopSeekViewController.swift */; };
@@ -603,6 +604,7 @@
 		044EF9F327A23C2700ECAC5D /* PurchaseMarketingTopBarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingTopBarText.swift; sourceTree = "<group>"; };
 		044EF9F627A66DD300ECAC5D /* PurchaseMarketingTopBarHeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingTopBarHeadline.swift; sourceTree = "<group>"; };
 		044EF9F827A66DF200ECAC5D /* PurchaseMarketingTopBarSubheadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingTopBarSubheadline.swift; sourceTree = "<group>"; };
+		044EF9FE27A8E88600ECAC5D /* MenuBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBuilder.swift; sourceTree = "<group>"; };
 		045CA3A92771823D00DEA988 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		045CA3D727718E5D00DEA988 /* DesktopSeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekViewController.swift; sourceTree = "<group>"; };
 		045CA3D927718F4400DEA988 /* DesktopSeekContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekContainerView.swift; sourceTree = "<group>"; };
@@ -1606,6 +1608,7 @@
 			isa = PBXGroup;
 			children = (
 				041EFEF82251A9F30058D8EE /* AppDelegate.swift */,
+				044EF9FE27A8E88600ECAC5D /* MenuBuilder.swift */,
 				047F8E792786A0C900E1F2A9 /* NewFromClipboardCommand.swift */,
 				042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */,
 				041EFEFA2251A9F30058D8EE /* AppViewController.swift */,
@@ -2357,6 +2360,7 @@
 				041CFA982665916900042E8E /* PhotoLibraryItem.swift in Sources */,
 				041EFF4E225302CC0058D8EE /* IntroView.swift in Sources */,
 				044EF9F727A66DD300ECAC5D /* PurchaseMarketingTopBarHeadline.swift in Sources */,
+				044EF9FF27A8E88600ECAC5D /* MenuBuilder.swift in Sources */,
 				04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */,
 				0429C7CB2663867600236D10 /* OtherAppNameText.swift in Sources */,
 				04A280DE26F2EA35002A0A32 /* PhotoEditingViewController+Desktop.swift in Sources */,
