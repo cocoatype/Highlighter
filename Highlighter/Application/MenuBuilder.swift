@@ -1,6 +1,8 @@
 //  Created by Geoff Pado on 1/31/22.
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
+#if targetEnvironment(macCatalyst)
+
 import Editing
 import UIKit
 
@@ -48,3 +50,5 @@ enum MenuBuilder {
 
     private static let findMenuItemTitle = NSLocalizedString("MenuBuilder.findMenuItemTitle", comment: "Find menu item title")
 }
+
+#endif
