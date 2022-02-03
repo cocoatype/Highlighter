@@ -10,7 +10,8 @@ class DesktopSettingsSceneDelegate: NSObject, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
 
-        scene.sizeRestrictions?.maximumSize = CGSize(width: 500, height: 640)
+        scene.sizeRestrictions?.maximumSize = CGSize(width: 640, height: Double.greatestFiniteMagnitude)
+        scene.sizeRestrictions?.minimumSize = CGSize(width: 640, height: 320)
 
         scene.title = Self.windowTitle
 
