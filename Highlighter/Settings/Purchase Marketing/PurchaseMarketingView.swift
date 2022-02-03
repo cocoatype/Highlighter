@@ -4,42 +4,65 @@
 import SwiftUI
 
 struct PurchaseMarketingView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+
     var body: some View {
-        VStack {
-            ZStack(alignment: .topTrailing) {
-                PurchaseMarketingTopBar()
-                PurchaseMarketingCloseButton()
-            }
+        GeometryReader { proxy in
             ScrollView {
-                LazyVGrid(columns: [GridItem(spacing: 20), GridItem(spacing: 20)], spacing: 20) {
-                    PurchaseMarketingItem(
-                        header: "PurchaseMarketingView.autoRedactionsHeader",
-                        text: "PurchaseMarketingView.autoRedactionsText",
-                        imageName: "Seek")
-                    #if !targetEnvironment(macCatalyst)
-                    PurchaseMarketingItem(
-                        header: "PurchaseMarketingView.documentScanningHeader",
-                        text: "PurchaseMarketingView.documentScanningText",
-                        imageName: "Scanner")
-                    #endif
-                    PurchaseMarketingItem(
-                        header: "PurchaseMarketingView.shortcutsHeader",
-                        text: "PurchaseMarketingView.shortcutsText",
-                        imageName: "Shortcuts")
-                    PurchaseMarketingItem(
-                        header: "PurchaseMarketingView.supportDevelopmentHeader",
-                        text: "PurchaseMarketingView.supportDevelopmentText",
-                        imageName: "Support")
-                    PurchaseMarketingItem(
-                        header: "PurchaseMarketingView.crossPlatformHeader",
-                        text: "PurchaseMarketingView.crossPlatformText",
-                        imageName: "Systems")
-                }.padding(EdgeInsets(top: 24, leading: 20, bottom: 24, trailing: 20))
+                VStack {
+                    ZStack(alignment: .topTrailing) {
+                        topBar(forWidth: proxy.size.width)
+                        PurchaseMarketingCloseButton()
+                    }
+                    LazyVGrid(columns: columns(forWidth: proxy.size.width), spacing: 20) {
+                        PurchaseMarketingItem(
+                            header: "PurchaseMarketingView.autoRedactionsHeader",
+                            text: "PurchaseMarketingView.autoRedactionsText",
+                            imageName: "Seek")
+                        #if !targetEnvironment(macCatalyst)
+                        PurchaseMarketingItem(
+                            header: "PurchaseMarketingView.documentScanningHeader",
+                            text: "PurchaseMarketingView.documentScanningText",
+                            imageName: "Scanner")
+                        #endif
+                        PurchaseMarketingItem(
+                            header: "PurchaseMarketingView.shortcutsHeader",
+                            text: "PurchaseMarketingView.shortcutsText",
+                            imageName: "Shortcuts")
+                        PurchaseMarketingItem(
+                            header: "PurchaseMarketingView.supportDevelopmentHeader",
+                            text: "PurchaseMarketingView.supportDevelopmentText",
+                            imageName: "Support")
+                        PurchaseMarketingItem(
+                            header: "PurchaseMarketingView.crossPlatformHeader",
+                            text: "PurchaseMarketingView.crossPlatformText",
+                            imageName: "Systems")
+                    }.padding(EdgeInsets(top: 24, leading: 20, bottom: 24, trailing: 20))
+                }
             }
+            .fill()
+            .background(Color(.primary))
+            .navigationBarHidden(true)
         }
-        .fill()
-        .background(Color(.primary))
-        .navigationBarHidden(true)
+    }
+
+    private static let breakWidth = Double(640)
+
+    @ViewBuilder
+    private func topBar(forWidth width: Double) -> some View {
+        if width < Self.breakWidth {
+            PurchaseMarketingTopBarCompact()
+        } else {
+            PurchaseMarketingTopBarRegular()
+        }
+    }
+
+    private func columns(forWidth width: Double) -> [GridItem] {
+        if width < Self.breakWidth {
+            return [GridItem(spacing: 20)]
+        } else {
+            return [GridItem(spacing: 20), GridItem(spacing: 20)]
+        }
     }
 }
 
@@ -67,6 +90,6 @@ struct PurchaseMarketingView_Previews: PreviewProvider {
         PurchaseMarketingView()
             .preferredColorScheme(.dark)
             .environment(\.readableWidth, 288)
-            .previewLayout(.fixed(width: 640, height: 1024))
+//            .previewLayout(.fixed(width: 640, height: 1024))
     }
 }

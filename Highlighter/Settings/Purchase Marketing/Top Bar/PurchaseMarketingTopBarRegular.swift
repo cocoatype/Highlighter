@@ -1,28 +1,27 @@
-//  Created by Geoff Pado on 1/26/22.
+//  Created by Geoff Pado on 1/19/22.
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
-import UIKit
 import SwiftUI
 
-struct PurchaseMarketingTopBarText: View {
+struct PurchaseMarketingTopBarRegular: View {
     @State private var textWidth: CGFloat?
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             PurchaseMarketingTopBarHeadline().modifier(SetWidthViewModifier(textWidth: $textWidth))
             PurchaseMarketingTopBarSubheadline().modifier(GetWidthViewModifier(textWidth: $textWidth))
+            HStack {
+                PurchaseButton()
+                PurchaseButtonSeparator()
+                PurchaseRestoreButton()
+            }
         }
+        .padding(40)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.primaryDark)
     }
 
-    struct TextWidthPreferenceKey: PreferenceKey {
-        static let defaultValue: CGFloat = .zero
-
-        static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-            value = min(value, nextValue())
-        }
-    }
-
-    struct SetWidthViewModifier: ViewModifier {
+    private struct SetWidthViewModifier: ViewModifier {
         @Binding var textWidth: CGFloat?
         init(textWidth: Binding<CGFloat?>) {
             _textWidth = textWidth
@@ -40,7 +39,7 @@ struct PurchaseMarketingTopBarText: View {
         }
     }
 
-    struct GetWidthViewModifier: ViewModifier {
+    private struct GetWidthViewModifier: ViewModifier {
         @Binding var textWidth: CGFloat?
         init(textWidth: Binding<CGFloat?>) {
             _textWidth = textWidth
@@ -55,10 +54,26 @@ struct PurchaseMarketingTopBarText: View {
                 }
         }
     }
+
+    private struct TextWidthPreferenceKey: PreferenceKey {
+        static let defaultValue: CGFloat = .zero
+
+        static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+            value = min(value, nextValue())
+        }
+    }
 }
 
-struct PurchaseMarketingTopBarTextPreviews: PreviewProvider {
+struct PurchaseButtonSeparator: View {
+    var body: some View {
+        Text("PurchaseButtonSeparator.text")
+            .font(.app(textStyle: .headline))
+            .foregroundColor(.white)
+    }
+}
+
+struct PurchaseMarketingTopBarPreviews: PreviewProvider {
     static var previews: some View {
-        PurchaseMarketingTopBarText().background(Color.black).previewLayout(.sizeThatFits)
+        PurchaseMarketingTopBarRegular().previewLayout(.sizeThatFits)
     }
 }
