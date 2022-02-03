@@ -16,6 +16,10 @@ struct PreviousPurchasePublisher: Publisher {
     // MARK: Purchase Validation
 
     static func hasUserPurchasedProduct(receiptFetchingMethod: (() throws -> AppReceipt) = ReceiptValidator.validatedAppReceipt) -> Result<Bool, Error> {
+        guard ProcessInfo.processInfo.environment.keys.contains("OVERRIDE_PURCHASE") == false else {
+            return .success(false)
+        }
+
         do {
             let receipt = try receiptFetchingMethod()
             let originalPurchaseVersion = Int(receipt.purchaseVersion) ?? Int.max

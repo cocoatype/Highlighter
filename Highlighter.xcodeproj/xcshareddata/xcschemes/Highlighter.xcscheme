@@ -81,7 +81,7 @@
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable
-            key = "NEW_SETTINGS"
+            key = "OVERRIDE_PURCHASE"
             value = "1"
             isEnabled = "YES">
          </EnvironmentVariable>
