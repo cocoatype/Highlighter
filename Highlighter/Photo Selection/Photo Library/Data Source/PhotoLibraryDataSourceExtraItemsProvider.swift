@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 5/31/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
+import Editing
 import ErrorHandling
 import VisionKit
 
@@ -12,18 +13,10 @@ class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
 
     // MARK: Document Scanning
     private var shouldShowDocumentScannerCell: Bool {
-        guard #available(iOS 13.0, *),
-              let hasPurchased = try? PreviousPurchasePublisher.hasUserPurchasedProduct().get(),
-              hasPurchased == true
-        else { return false }
-        return VNDocumentCameraViewController.isSupported
+        return VNDocumentCameraViewController.isSupported && hideDocumentScanner == false
     }
 
     func documentScannerCell(for collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
-        guard #available(iOS 13.0, *) else {
-            ErrorHandling.crash("Tried to display a document scanner cell on iOS version prior to iOS 13.0")
-        }
-
         return collectionView.dequeueReusableCell(withReuseIdentifier: DocumentScannerPhotoLibraryViewCell.identifier, for: indexPath)
     }
 
@@ -48,6 +41,7 @@ class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
 
     // MARK: Boilerplate
 
+    @Defaults.Value(key: .hideDocumentScanner) private var hideDocumentScanner: Bool
     private var extraItems: [PhotoLibraryItem] {
         var extraItems = [PhotoLibraryItem]()
 

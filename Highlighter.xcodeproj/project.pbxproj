@@ -140,6 +140,10 @@
 		0470163224D8FD7F0080DC52 /* DesktopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470163124D8FD7F0080DC52 /* DesktopViewController.swift */; };
 		0470163424D906420080DC52 /* DesktopSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470163324D906420080DC52 /* DesktopSceneDelegate.swift */; };
 		0470163724D906820080DC52 /* ShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470163624D906820080DC52 /* ShareItem.swift */; };
+		0474B07227BDEEA60031210C /* DocumentScanningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474B07127BDEEA60031210C /* DocumentScanningController.swift */; };
+		0474B07627C0A2880031210C /* DefaultsValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474B07427C0A2740031210C /* DefaultsValue.swift */; };
+		0474B07927C0A3100031210C /* DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474B07727C0A2EE0031210C /* DefaultsKey.swift */; };
+		0474B07B27C0A3900031210C /* DocumentScannerNotPurchasedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474B07A27C0A3900031210C /* DocumentScannerNotPurchasedAlertController.swift */; };
 		04750E8A26D9D72F00E98BB4 /* ActionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04750E8926D9D72F00E98BB4 /* ActionSet.swift */; };
 		04750E8C26D9E12D00E98BB4 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F1226571AB0048E203 /* PhotoEditingViewController.swift */; };
 		04750E8E26D9E23E00E98BB4 /* UIResponderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04750E8D26D9E23E00E98BB4 /* UIResponderExtensions.swift */; };
@@ -612,6 +616,10 @@
 		0470163624D906820080DC52 /* ShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareItem.swift; sourceTree = "<group>"; };
 		047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingWorkspaceView.swift; sourceTree = "<group>"; };
 		047072942268137900FF20B6 /* PhotoEditingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingImageView.swift; sourceTree = "<group>"; };
+		0474B07127BDEEA60031210C /* DocumentScanningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScanningController.swift; sourceTree = "<group>"; };
+		0474B07427C0A2740031210C /* DefaultsValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsValue.swift; sourceTree = "<group>"; };
+		0474B07727C0A2EE0031210C /* DefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKey.swift; sourceTree = "<group>"; };
+		0474B07A27C0A3900031210C /* DocumentScannerNotPurchasedAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerNotPurchasedAlertController.swift; sourceTree = "<group>"; };
 		04750E8926D9D72F00E98BB4 /* ActionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSet.swift; sourceTree = "<group>"; };
 		04750E8D26D9E23E00E98BB4 /* UIResponderExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIResponderExtensions.swift; sourceTree = "<group>"; };
 		04750E8F26D9EEB900E98BB4 /* ActionsBuilderActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsBuilderActions.swift; sourceTree = "<group>"; };
@@ -907,6 +915,7 @@
 				04D68BCF2262C41300D09BBD /* Application */,
 				048D134D229F7E4400427FE3 /* Callback Actions */,
 				0470163024D8FD660080DC52 /* Desktop */,
+				0474B06E27BDEE010031210C /* Document Scanning */,
 				0429C7C02663851600236D10 /* Extensions */,
 				0445AA572371207000EB2A7B /* Image Downloading */,
 				048909EF2265716B0048E203 /* Photo Editing */,
@@ -1294,6 +1303,25 @@
 			path = "Toolbar Items";
 			sourceTree = "<group>";
 		};
+		0474B06E27BDEE010031210C /* Document Scanning */ = {
+			isa = PBXGroup;
+			children = (
+				0474B07127BDEEA60031210C /* DocumentScanningController.swift */,
+				0474B07A27C0A3900031210C /* DocumentScannerNotPurchasedAlertController.swift */,
+			);
+			path = "Document Scanning";
+			sourceTree = "<group>";
+		};
+		0474B07327C0A15D0031210C /* Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				042B7902229A38C0005B7A2A /* Defaults.swift */,
+				0474B07427C0A2740031210C /* DefaultsValue.swift */,
+				0474B07727C0A2EE0031210C /* DefaultsKey.swift */,
+			);
+			path = Defaults;
+			sourceTree = "<group>";
+		};
 		048320BA25D7F1AF00355393 /* Recents Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1569,7 +1597,7 @@
 				041EFEFA2251A9F30058D8EE /* AppViewController.swift */,
 				041EFF1A2251AB8D0058D8EE /* AppWindow.swift */,
 				04F3C7F22308F37400445A8D /* AsyncOperation.swift */,
-				042B7902229A38C0005B7A2A /* Defaults.swift */,
+				0474B07327C0A15D0031210C /* Defaults */,
 				04F0914125E7B30D00966C1E /* DesktopAppWindow.swift */,
 				0440943D275F0A5D003155CC /* FeatureFlag.swift */,
 				04CBB0982658AF5800B792A2 /* LogPublisher.swift */,
@@ -2187,6 +2215,7 @@
 				0429C7BF2663849200236D10 /* PurchaseMarketingText.swift in Sources */,
 				046BEC242470EBAC00FBECD7 /* Collection.swift in Sources */,
 				0429C7BD2663847600236D10 /* PurchaseMarketingHeader.swift in Sources */,
+				0474B07227BDEEA60031210C /* DocumentScanningController.swift in Sources */,
 				046C4061247F5B8F0069E8FB /* CollectionTableViewCellLabel.swift in Sources */,
 				042B7905229A3AC7005B7A2A /* AppRatingsPrompter.swift in Sources */,
 				046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */,
@@ -2257,6 +2286,7 @@
 				04D68BC7225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift in Sources */,
 				0470163424D906420080DC52 /* DesktopSceneDelegate.swift in Sources */,
 				0429C7C22663852300236D10 /* ViewExtensions.swift in Sources */,
+				0474B07B27C0A3900031210C /* DocumentScannerNotPurchasedAlertController.swift in Sources */,
 				04FF8DB922F57AD9008CF0E9 /* AutoRedactionsDataSource.swift in Sources */,
 				047E913026560B8B0075F6B2 /* SettingsCellViewModifier.swift in Sources */,
 				04DBC8402314D2080004F7DB /* AutoRedactionsListViewController.swift in Sources */,
@@ -2374,6 +2404,7 @@
 				04750E9826D9EF0700E98BB4 /* RedoBarButtonItem.swift in Sources */,
 				04975D5926106DC100AA2771 /* PhotoEditingCanvasView.m in Sources */,
 				045CA3E827719A9E00DEA988 /* DesktopSeekBackgroundView.swift in Sources */,
+				0474B07627C0A2880031210C /* DefaultsValue.swift in Sources */,
 				0493D2D624B6BAE400FF99F4 /* ColorPickerViewController.swift in Sources */,
 				04750E8C26D9E12D00E98BB4 /* PhotoEditingViewController.swift in Sources */,
 				049F92F022CDA4C10090C9BC /* PhotoEditingRedactionView.swift in Sources */,
@@ -2422,6 +2453,7 @@
 				04D4423C276845EA00F2933C /* SeekTextField.swift in Sources */,
 				049F92E722CDA3FF0090C9BC /* CharacterObservation.swift in Sources */,
 				049F92E422CDA3FF0090C9BC /* TextRectangleDetector.swift in Sources */,
+				0474B07927C0A3100031210C /* DefaultsKey.swift in Sources */,
 				04BB710C278D2FF700F5BAEC /* TabletSeekView.swift in Sources */,
 				04750E9226D9EECE00E98BB4 /* ShareBarButtonItem.swift in Sources */,
 				04975D932610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift in Sources */,

@@ -41,16 +41,26 @@ class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCame
         return photoEditingViewController?.userActivity
     }
 
-    // MARK: Collections
+    // MARK: Library
+
+    private var librarySplitViewController: SplitViewController? {
+        children.first(where: { $0 is SplitViewController }) as? SplitViewController
+    }
+
+    private var photoLibraryViewController: PhotoLibraryViewController? {
+        guard let photoLibraryNavigationController = librarySplitViewController?.viewController(for: .secondary) as? NavigationController,
+              let photoLibraryViewController = photoLibraryNavigationController.viewControllers.first as? PhotoLibraryViewController
+        else { return nil }
+        return photoLibraryViewController
+    }
 
     func present(_ collection: Collection) {
-        guard #available(iOS 14.0, *),
-              let splitViewController = children.first(where: { $0 is SplitViewController }) as? SplitViewController,
-              let photoLibraryNavigationController = splitViewController.viewController(for: .secondary) as? NavigationController,
-              let photoLibraryViewController = photoLibraryNavigationController.viewControllers.first as? PhotoLibraryViewController
-        else { return }
-        photoLibraryViewController.collection = collection
-        splitViewController.show(.secondary)
+        photoLibraryViewController?.collection = collection
+        librarySplitViewController?.show(.secondary)
+    }
+
+    @objc func refreshLibrary(_ sender: AnyObject) {
+        photoLibraryViewController?.reloadData()
     }
 
     // MARK: Limited Library
@@ -127,12 +137,8 @@ class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCame
 
     // MARK: Document Scanner
 
-    @available(iOS 13.0, *)
     @objc func presentDocumentCameraViewController() {
-        let cameraViewController = VNDocumentCameraViewController()
-        cameraViewController.overrideUserInterfaceStyle = .dark
-        cameraViewController.delegate = self
-        cameraViewController.view.tintColor = .controlTint
+        let cameraViewController = DocumentScanningController().cameraViewController(delegate: self)
         present(cameraViewController, animated: true)
     }
 

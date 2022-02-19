@@ -14,6 +14,10 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
 
         navigationItem.title = Self.navigationItemTitle
         navigationItem.rightBarButtonItem = SettingsBarButtonItem.standard
+
+        hideDocumentScannerObserver = NotificationCenter.default.addObserver(forName: _hideDocumentScanner.valueDidChange, object:nil, queue: nil) { [weak self] _ in
+            self?.libraryView.reloadData()
+        }
     }
 
     override func loadView() {
@@ -39,6 +43,10 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         if cellCount != dataSource.itemsCount {
             libraryView.reloadData()
         }
+    }
+
+    func reloadData() {
+        libraryView.reloadData()
     }
 
     var collection: Collection {
@@ -93,10 +101,8 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         case .asset(let asset):
             photoEditorPresenter?.presentPhotoEditingViewController(for: asset, redactions: nil, animated: true)
         case .documentScan:
-            guard #available(iOS 13.0, *) else { break }
             documentScannerPresenter?.presentDocumentCameraViewController()
         case .limitedLibrary:
-            guard #available(iOS 14.0, *) else { break }
             limitedLibraryPresenter?.presentLimitedLibrary()
         }
     }
@@ -114,6 +120,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
 
     private static let navigationItemTitle = NSLocalizedString("PhotoSelectionViewController.navigationItemTitle", comment: "Navigation title for the photo selector")
 
+    @Defaults.Value(key: .hideDocumentScanner) private var hideDocumentScanner: Bool
     private var dataSource: PhotoLibraryDataSource {
         didSet {
             libraryView.dataSource = dataSource
@@ -121,9 +128,11 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
     }
     private let libraryView = PhotoLibraryView()
     private var purchaseStateObserver: Any?
+    private var hideDocumentScannerObserver: Any?
 
     deinit {
         purchaseStateObserver.map(NotificationCenter.default.removeObserver)
+        hideDocumentScannerObserver.map { NotificationCenter.default.removeObserver($0) }
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
     }
 
