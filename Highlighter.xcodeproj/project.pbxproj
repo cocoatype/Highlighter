@@ -144,6 +144,7 @@
 		0474B07627C0A2880031210C /* DefaultsValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474B07427C0A2740031210C /* DefaultsValue.swift */; };
 		0474B07927C0A3100031210C /* DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474B07727C0A2EE0031210C /* DefaultsKey.swift */; };
 		0474B07B27C0A3900031210C /* DocumentScannerNotPurchasedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474B07A27C0A3900031210C /* DocumentScannerNotPurchasedAlertController.swift */; };
+		0474B07D27C0AE560031210C /* SettingsAlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474B07C27C0AE560031210C /* SettingsAlertButton.swift */; };
 		04750E8A26D9D72F00E98BB4 /* ActionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04750E8926D9D72F00E98BB4 /* ActionSet.swift */; };
 		04750E8C26D9E12D00E98BB4 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F1226571AB0048E203 /* PhotoEditingViewController.swift */; };
 		04750E8E26D9E23E00E98BB4 /* UIResponderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04750E8D26D9E23E00E98BB4 /* UIResponderExtensions.swift */; };
@@ -620,6 +621,7 @@
 		0474B07427C0A2740031210C /* DefaultsValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsValue.swift; sourceTree = "<group>"; };
 		0474B07727C0A2EE0031210C /* DefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKey.swift; sourceTree = "<group>"; };
 		0474B07A27C0A3900031210C /* DocumentScannerNotPurchasedAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerNotPurchasedAlertController.swift; sourceTree = "<group>"; };
+		0474B07C27C0AE560031210C /* SettingsAlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAlertButton.swift; sourceTree = "<group>"; };
 		04750E8926D9D72F00E98BB4 /* ActionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSet.swift; sourceTree = "<group>"; };
 		04750E8D26D9E23E00E98BB4 /* UIResponderExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIResponderExtensions.swift; sourceTree = "<group>"; };
 		04750E8F26D9EEB900E98BB4 /* ActionsBuilderActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsBuilderActions.swift; sourceTree = "<group>"; };
@@ -1064,6 +1066,7 @@
 				047E913526560BFF0075F6B2 /* SettingsNavigationView.swift */,
 				047E913726560C390075F6B2 /* SettingsSectionHeader.swift */,
 				047E9123265363020075F6B2 /* SettingsView.swift */,
+				0474B07C27C0AE560031210C /* SettingsAlertButton.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -2186,6 +2189,7 @@
 				0445AA592371208B00EB2A7B /* ImageDownloader.swift in Sources */,
 				047E913826560C390075F6B2 /* SettingsSectionHeader.swift in Sources */,
 				04750E9E26DDE23100E98BB4 /* AlbumsRow.swift in Sources */,
+				0474B07D27C0AE560031210C /* SettingsAlertButton.swift in Sources */,
 				048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */,
 				043C28D02659D8F50054A5A8 /* NavigationWrapper.swift in Sources */,
 				047E913626560BFF0075F6B2 /* SettingsNavigationView.swift in Sources */,

@@ -137,6 +137,11 @@
 
 "SettingsContentGenerator.versionStringFormat" = "Version %@";
 
+"SettingsView.notPurchasedAlertTitle" = "Requires Ultra Highlighter";
+"SettingsView.notPurchasedAlertMessage" = "Automatically hiding words requires the Ultra Highlighter, a one-time purchase.";
+"SettingsView.notPurchasedDismissButton" = "Okay";
+"SettingsView.notPurchasedHideButton" = "Never Show This";
+
 "SettingsViewController.navigationTitle" = "Settings";
 
 "ShareItem.label" = "Share";

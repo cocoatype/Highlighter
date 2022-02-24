@@ -9,5 +9,6 @@ extension Defaults {
         case autoRedactionsWordList = "Defaults.Keys.autoRedactionsWordList"
         case recentBookmarks = "Defaults.Keys.recentBookmarks"
         case hideDocumentScanner = "Defaults.Keys.hideDocumentScanner"
+        case hideAutoRedactions = "Defaults.Keys.hideAutoRedactions"
     }
 }

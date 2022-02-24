@@ -1,16 +1,16 @@
 //  Created by Geoff Pado on 2/18/22.
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
+import Combine
 import Foundation
 
 extension Defaults {
     @propertyWrapper public struct Value<ValueType> {
         public var wrappedValue: ValueType {
             get {
-                guard let object = Self.userDefaults.object(forKey: key.rawValue) as? ValueType else { return fallback }
-                return object
+                Self.object(for: key, fallback: fallback)
             }
-            set {
+            nonmutating set {
                 Self.userDefaults.set(newValue, forKey: key.rawValue)
                 NotificationCenter.default.post(name: valueDidChange, object: nil)
             }
@@ -19,6 +19,8 @@ extension Defaults {
         public init(key: Defaults.Key, fallback: ValueType) {
             self.key = key
             self.fallback = fallback
+            self.publisher = CurrentValueSubject<ValueType, Never>(Self.object(for: key, fallback: fallback))
+
         }
 
         public init(key: Defaults.Key) where ValueType == Bool {
@@ -36,7 +38,21 @@ extension Defaults {
         private let key: Defaults.Key
         private let fallback: ValueType
 
+        // MARK: Projected Value
+        
+        public var projectedValue: CurrentValueSubject<ValueType, Never> {
+            return publisher
+        }
+
+        private let publisher: CurrentValueSubject<ValueType, Never>
+
+
         // MARK: Boilerplate
+
+        private static func object(for key: Key, fallback: ValueType) -> ValueType {
+            guard let object = Self.userDefaults.object(forKey: key.rawValue) as? ValueType else { return fallback }
+            return object
+        }
 
         public var valueDidChange: Notification.Name {
             Notification.Name("Defaults.valueDidChange.\(key.rawValue)")

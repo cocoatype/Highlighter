@@ -13,7 +13,8 @@ class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
 
     // MARK: Document Scanning
     private var shouldShowDocumentScannerCell: Bool {
-        return VNDocumentCameraViewController.isSupported && hideDocumentScanner == false
+        let hasPurchased = (try? PreviousPurchasePublisher.hasUserPurchasedProduct().get()) ?? false
+        return VNDocumentCameraViewController.isSupported && (hideDocumentScanner == false || hasPurchased)
     }
 
     func documentScannerCell(for collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
