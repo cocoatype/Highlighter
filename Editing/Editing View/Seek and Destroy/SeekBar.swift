@@ -9,6 +9,7 @@ class SeekBar: UIToolbar {
 
         items = [UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(PhotoEditingViewController.cancelSeeking(_:))),
                  SeekTextField.barButtonItem()]
+        reloadView()
     }
 
     // https://stackoverflow.com/a/18926749/49345
@@ -29,6 +30,31 @@ class SeekBar: UIToolbar {
 
         super.layoutSubviews()
     }
+
+    // MARK: Interactivity
+
+    var isSeeking = false {
+        didSet {
+            reloadView()
+        }
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        reloadView()
+    }
+
+    private func reloadView() {
+        if isSeeking, traitCollection.horizontalSizeClass != .regular {
+            isHidden = false
+            isUserInteractionEnabled = true
+        } else {
+            isHidden = true
+            isUserInteractionEnabled = false
+        }
+    }
+
+    // MARK: First Responder
 
     @discardableResult override func becomeFirstResponder() -> Bool {
         searchTextField?.becomeFirstResponder() ?? false

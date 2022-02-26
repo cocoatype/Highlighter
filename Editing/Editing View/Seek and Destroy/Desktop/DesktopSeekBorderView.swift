@@ -29,8 +29,6 @@ class DesktopSeekBorderView: UIView {
         }
     }
 
-    #warning("#214: Remember to fix light mode colors!")
-
     class InnerBorderLayer: CALayer {
         init(cornerRadius: CGFloat, screenScale: CGFloat) {
             super.init()

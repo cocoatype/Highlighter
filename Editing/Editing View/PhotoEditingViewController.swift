@@ -4,7 +4,7 @@
 import Photos
 import UIKit
 
-open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, UIColorPickerViewControllerDelegate {
+open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, UIColorPickerViewControllerDelegate, UIPopoverPresentationControllerDelegate {
     public init(asset: PHAsset? = nil, image: UIImage? = nil, redactions: [Redaction]? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
         self.asset = asset
         self.image = image
@@ -69,6 +69,7 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
     open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         updateToolbarItems(animated: false)
+        updateSeekPresentation()
     }
 
     open override var canBecomeFirstResponder: Bool { return true }
@@ -143,14 +144,21 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
 
     private var isSeeking = false {
         didSet {
-            reloadInputViews()
+            seekBar.isSeeking = isSeeking
         }
     }
 
     open override var inputAccessoryView: UIView? {
-        guard isSeeking, traitCollection.horizontalSizeClass != .regular else { return nil }
         return seekBar
     }
+
+//    private func updateAccessoryView() {
+//        if isSeeking, traitCollection.horizontalSizeClass != .regular {
+//            self.inputAccessoryView = seekBar
+//        } else {
+//            self.inputAccessoryView = nil
+//        }
+//    }
 
     @objc public func toggleSeeking(_ sender: Any) {
         if isSeeking {
@@ -169,6 +177,7 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         if traitCollection.horizontalSizeClass == .regular {
             let seekViewController = TabletSeekViewController()
             seekViewController.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
+            seekViewController.popoverPresentationController?.delegate = self
             present(seekViewController, animated: true, completion: nil)
         } else {
             seekBar.becomeFirstResponder()
@@ -192,6 +201,8 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         if presentedViewController is TabletSeekViewController {
             dismiss(animated: true, completion: nil)
         }
+
+        becomeFirstResponder()
         #endif
     }
 
@@ -209,6 +220,19 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
     }
 
     open override var canResignFirstResponder: Bool { true }
+
+    public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        self.cancelSeeking(presentationController)
+    }
+
+    public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+
+    private func updateSeekPresentation() {
+        #warning("#225: Move text between tablet and phone presentations")
+        cancelSeeking(self)
+    }
 
     // MARK: Color Picker
 
