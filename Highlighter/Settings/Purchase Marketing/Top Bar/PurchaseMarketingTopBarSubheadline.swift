@@ -5,7 +5,7 @@ import SwiftUI
 
 struct PurchaseMarketingTopBarSubheadline: View {
     var body: some View {
-        Text("Some amount of text here about how cool the extra features are.")
+        Text("PurchaseMarketingTopBarSubheadlineLabel.text")
             .font(.app(textStyle: .body))
             .foregroundColor(.primaryUltraLight)
     }

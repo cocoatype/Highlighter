@@ -41,7 +41,7 @@ struct PurchaseMarketingView: View {
                 }
             }
             .fill()
-            .background(Color(.primary))
+            .background(Color(.primary).ignoresSafeArea())
             .navigationBarHidden(true)
         }
     }

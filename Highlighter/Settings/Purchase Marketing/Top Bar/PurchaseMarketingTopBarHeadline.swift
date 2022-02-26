@@ -5,7 +5,7 @@ import SwiftUI
 
 struct PurchaseMarketingTopBarHeadline: View {
     var body: some View {
-        Text("Ultra Highlighter")
+        Text("PurchaseMarketingTopBarHeadlineLabel.text")
             .font(.app(textStyle: .largeTitle))
             .foregroundColor(.white)
     }

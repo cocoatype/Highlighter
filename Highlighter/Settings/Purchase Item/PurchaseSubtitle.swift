@@ -14,6 +14,7 @@ struct PurchaseSubtitle: View {
         return Text(text)
             .font(.app(textStyle: .subheadline))
             .foregroundColor(.primaryExtraLight)
+            .truncationMode(.middle)
     }
 
     private var text: String {
