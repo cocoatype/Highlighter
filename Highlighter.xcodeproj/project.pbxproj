@@ -311,6 +311,8 @@
 		04FB5F2425C7AC8400A5B48D /* Editing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04FC597027C736580072481B /* PurchaseMarketingHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC596F27C736580072481B /* PurchaseMarketingHostingController.swift */; };
 		04FC597227C9DDCB0072481B /* DesktopSeekButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC597127C9DDCB0072481B /* DesktopSeekButton.swift */; };
+		04FC597727C9E6990072481B /* InputAccessoryHostingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 04FC597527C9E6990072481B /* InputAccessoryHostingViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04FC597827C9E6990072481B /* InputAccessoryHostingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC597627C9E6990072481B /* InputAccessoryHostingViewController.m */; };
 		04FDEA5625257B1900F94CA9 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDEA5525257B1900F94CA9 /* SplitViewController.swift */; };
 		04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */; };
 		04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */; };
@@ -767,6 +769,8 @@
 		04F7AAB42537E5AA0024D3B4 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		04FC596F27C736580072481B /* PurchaseMarketingHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingHostingController.swift; sourceTree = "<group>"; };
 		04FC597127C9DDCB0072481B /* DesktopSeekButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekButton.swift; sourceTree = "<group>"; };
+		04FC597527C9E6990072481B /* InputAccessoryHostingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputAccessoryHostingViewController.h; sourceTree = "<group>"; };
+		04FC597627C9E6990072481B /* InputAccessoryHostingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InputAccessoryHostingViewController.m; sourceTree = "<group>"; };
 		04FDEA5525257B1900F94CA9 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservationRedaction.swift; sourceTree = "<group>"; };
 		04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEditViewController.swift; sourceTree = "<group>"; };
@@ -1466,14 +1470,16 @@
 		049F92EC22CDA48C0090C9BC /* Editing View */ = {
 			isa = PBXGroup;
 			children = (
-				04975D8726106F6D00AA2771 /* Toolbar Items */,
-				048909F1226571AB0048E203 /* PhotoEditingViewController.swift */,
-				04E192A4229CD34F006F0E56 /* Workspace */,
-				04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */,
+				04FC597527C9E6990072481B /* InputAccessoryHostingViewController.h */,
+				04FC597627C9E6990072481B /* InputAccessoryHostingViewController.m */,
+				0493D2D524B6BAE400FF99F4 /* ColorPickerViewController.swift */,
 				043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */,
 				043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */,
-				0493D2D524B6BAE400FF99F4 /* ColorPickerViewController.swift */,
+				04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */,
+				048909F1226571AB0048E203 /* PhotoEditingViewController.swift */,
 				04D4423A276845D800F2933C /* Seek and Destroy */,
+				04975D8726106F6D00AA2771 /* Toolbar Items */,
+				04E192A4229CD34F006F0E56 /* Workspace */,
 			);
 			path = "Editing View";
 			sourceTree = "<group>";
@@ -1755,6 +1761,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04FC597727C9E6990072481B /* InputAccessoryHostingViewController.h in Headers */,
 				04F3C864230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h in Headers */,
 				04975D1E26106D6800AA2771 /* PhotoEditingCanvasBrushStrokeView.h in Headers */,
 				049F92DB22CDA3DB0090C9BC /* Editing.h in Headers */,
@@ -2476,6 +2483,7 @@
 				04750E8E26D9E23E00E98BB4 /* UIResponderExtensions.swift in Sources */,
 				045CA3DE2771905400DEA988 /* DesktopSeekBox.swift in Sources */,
 				045CA3D827718E5D00DEA988 /* DesktopSeekViewController.swift in Sources */,
+				04FC597827C9E6990072481B /* InputAccessoryHostingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
