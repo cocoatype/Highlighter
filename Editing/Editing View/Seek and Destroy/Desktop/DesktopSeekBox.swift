@@ -16,7 +16,7 @@ class DesktopSeekBox: UIView {
 
         layer.cornerRadius = 0
         layer.cornerCurve = .continuous
-        layer.shadowOpacity = 0.3
+        layer.shadowOpacity = 0.1
         layer.shadowOffset = .zero
 
         addSubview(backgroundView)
