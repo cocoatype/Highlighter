@@ -101,11 +101,11 @@
 "PurchaseButtonSeparator.text" = "or";
 
 "PurchaseItem.title" = "Ultra Highlighter";
-"PurchaseItem.subtitleWithoutProduct" = "Extra Features";
-"PurchaseItem.subtitleWithProduct" = "Extra Features — %@";
+"PurchaseItem.subtitleWithoutProduct" = "More Highlighting Power";
+"PurchaseItem.subtitleWithProduct" = "Ultimate Highlight Power — %@";
 
 "PurchaseMarketingTopBarHeadlineLabel.text" = "Ultra Highlighter";
-"PurchaseMarketingTopBarSubheadlineLabel.text" = "Some amount of text here about how cool the extra features are.";
+"PurchaseMarketingTopBarSubheadlineLabel.text" = "Unlock these powerful new abilities for Black Highlighter.";
 
 "PurchaseMarketingView.autoRedactionsHeader" = "Seek and destroy.";
 "PurchaseMarketingView.autoRedactionsText" = "Choose things you never want to see, and Black Highlighter will find them for you.";

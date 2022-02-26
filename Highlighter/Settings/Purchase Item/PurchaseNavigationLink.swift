@@ -22,7 +22,7 @@ struct PurchaseNavigationLink<Destination: View>: View {
                 PurchaseSubtitle(state: purchaseState)
             }
         }
-        .padding(6)
+        .padding(.vertical, 6)
         .settingsCell()
         .onAppReceive(purchaseStatePublisher.receive(on: RunLoop.main), perform: { newState in
             purchaseState = newState
