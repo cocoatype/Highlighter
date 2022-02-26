@@ -23,7 +23,7 @@ struct PurchaseButton: View {
                 .font(.app(textStyle: .headline))
                 .foregroundColor(disabled ? .primaryExtraLight : .white)
         }
-        .buttonStyle(.plain)
+        .buttonStyle(PlainButtonStyle())
         .disabled(disabled)
         .onAppReceive(purchaseStatePublisher.receive(on: RunLoop.main), perform: { newState in
             purchaseState = newState
