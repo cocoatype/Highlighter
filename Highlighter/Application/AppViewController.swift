@@ -6,8 +6,9 @@ import ErrorHandling
 import Photos
 import UIKit
 import VisionKit
+import SwiftUI
 
-class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCameraViewControllerDelegate, DocumentScannerPresenting, SettingsPresenting, CollectionPresenting, LimitedLibraryPresenting {
+class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, SettingsPresenting, CollectionPresenting, LimitedLibraryPresenting {
     init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
         self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
@@ -172,6 +173,11 @@ class AppViewController: UIViewController, PhotoEditorPresenting, VNDocumentCame
     }
 
     // MARK: Settings View Controller
+
+    @objc func presentPurchaseMarketing() {
+        let purchaseMarketingController = PurchaseMarketingHostingController()
+        present(purchaseMarketingController, animated: true)
+    }
 
     @objc func presentSettingsViewController() {
         let settingsController = SettingsHostingController()

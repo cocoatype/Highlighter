@@ -6,7 +6,7 @@ import UIKit
 import VisionKit
 
 class DocumentScanningController: NSObject {
-    func cameraViewController(delegate: VNDocumentCameraViewControllerDelegate) -> UIViewController {
+    func cameraViewController(delegate: DocumentScanningDelegate) -> UIViewController {
         if purchased {
             let cameraViewController = VNDocumentCameraViewController()
             cameraViewController.delegate = delegate
@@ -14,7 +14,7 @@ class DocumentScanningController: NSObject {
             cameraViewController.view.tintColor = .controlTint
             return cameraViewController
         } else {
-            return DocumentScannerNotPurchasedAlertController(feedback: "FB6920546")
+            return DocumentScannerNotPurchasedAlertController(learnMoreAction: delegate.presentPurchaseMarketing)
         }
     }
 
@@ -23,4 +23,8 @@ class DocumentScanningController: NSObject {
             return try PreviousPurchasePublisher.hasUserPurchasedProduct().get()
         } catch { return false }
     }
+}
+
+protocol DocumentScanningDelegate: VNDocumentCameraViewControllerDelegate {
+    func presentPurchaseMarketing()
 }

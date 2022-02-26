@@ -50,7 +50,7 @@ class PurchaseStatePublisher: Publisher {
 
     private let previousPurchasePublisher = PreviousPurchasePublisher()
     private let fetchProductsPublisher = FetchProductsPublisher()
-    private let paymentPublisher = PaymentPublisher()
+    private let paymentPublisher = PaymentPublisher.shared
 
     private lazy var statePublisher = Publishers.CombineLatest3(
         previousPurchasePublisher.prepend(false),

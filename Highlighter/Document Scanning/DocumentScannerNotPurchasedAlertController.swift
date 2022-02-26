@@ -5,7 +5,7 @@ import Editing
 import UIKit
 
 class DocumentScannerNotPurchasedAlertController: UIAlertController {
-    convenience init(feedback: String) {
+    convenience init(learnMoreAction: @escaping () -> Void) {
         let title = NSLocalizedString("DocumentScannerNotPurchasedAlertController.title", comment: "Title for the document scanner not purchased alert")
         let message = NSLocalizedString("DocumentScannerNotPurchasedAlertController.message", comment: "Message for the document scanner not purchased alert")
         self.init(title: title, message: message, preferredStyle: .alert)
@@ -14,15 +14,15 @@ class DocumentScannerNotPurchasedAlertController: UIAlertController {
             UIAlertAction(
                 title: NSLocalizedString("DocumentScannerNotPurchasedAlertController.learnMoreButton", comment: ""),
                 style: .default,
-                handler: { action in
-                    NSLog("learn more")
+                handler: { _ in
+                    learnMoreAction()
                 }))
 
         addAction(
             UIAlertAction(
                 title: NSLocalizedString("DocumentScannerNotPurchasedAlertController.hideButton", comment: ""),
                 style: .default,
-                handler: { [weak self] action in
+                handler: { [weak self] _ in
                     self?.hideDocumentScanner = true
                 }))
 
@@ -31,6 +31,12 @@ class DocumentScannerNotPurchasedAlertController: UIAlertController {
                 title: NSLocalizedString("DocumentScannerNotPurchasedAlertController.dismissButton", comment: ""),
                 style: .cancel,
                 handler: { _ in }))
+    }
+
+    private var latestParent: UIViewController?
+    override func didMove(toParent parent: UIViewController?) {
+        guard let parent = parent else { return }
+        latestParent = parent
     }
 
     @Defaults.Value(key: .hideDocumentScanner) private var hideDocumentScanner: Bool

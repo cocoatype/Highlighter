@@ -8,10 +8,14 @@ class PaymentPublisher: NSObject, Publisher, SKPaymentTransactionObserver {
     typealias Output = State
     typealias Failure = Swift.Error
 
-    override init() {
+    static let shared = PaymentPublisher()
+
+    private override init() {
         super.init()
         SKPaymentQueue.default().add(self)
     }
+
+    func setup() {}
 
     func purchase(_ product: SKProduct) {
         SKPaymentQueue.default().add(SKPayment(product: product))
@@ -63,6 +67,10 @@ class PaymentPublisher: NSObject, Publisher, SKPaymentTransactionObserver {
 
     func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Swift.Error) {
         stateSubject.send(.failed(error))
+    }
+
+    func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool {
+        return true
     }
 
     // MARK: Boilerplate

@@ -21,11 +21,16 @@
     }
   ],
   "settings" : {
+    "_askToBuyEnabled" : true,
     "_billingIssuesEnabled" : false
   },
   "subscriptionGroups" : [
 
   ],
+  "subscriptionOffersKeyPair" : {
+    "id" : "439A1A74",
+    "privateKey" : "MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgURFeyUUG7V+lJqVrfdDVGcV3iDiEBFQ76WIAK7MBH9agCgYIKoZIzj0DAQehRANCAATT6yZ9zEMzSiqYoWeZx8IHxX3ShGI73VlCUJZMt8WEzwdzWjSGGXD0zkLdWahaUrgZXOiTvOWYKWXPmHrqnlEP"
+  },
   "version" : {
     "major" : 1,
     "minor" : 1
