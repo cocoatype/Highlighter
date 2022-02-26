@@ -21,7 +21,7 @@
     }
   ],
   "settings" : {
-    "_askToBuyEnabled" : true,
+    "_askToBuyEnabled" : false,
     "_billingIssuesEnabled" : false
   },
   "subscriptionGroups" : [
