@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         ErrorHandling.setup()
+        PaymentPublisher.shared.setup()
 
         if #available(iOS 13.0, *) {
         } else {

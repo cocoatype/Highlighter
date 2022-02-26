@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 5/19/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
+import Editing
 import SafariServices
 import SwiftUI
 
@@ -18,15 +19,20 @@ struct SettingsContentGenerator {
 
     var content: some View {
         Group {
-            if case .purchased = purchaseState {
-                Section(header: SettingsSectionHeader("SettingsContentProvider.Section.purchasedFeatures.header")) {
-                    SettingsNavigationLink("SettingsContentProvider.Item.autoRedactions", destination: AutoRedactionsEditView().background(Color.appPrimary.edgesIgnoringSafeArea(.all)))
-                }
-            } else {
-                Section {
+            Section {
+                if purchaseState != .purchased {
                     PurchaseNavigationLink(state: purchaseState, destination: PurchaseMarketingView())
                 }
+
+                if purchaseState != .purchased && hideAutoRedactions == false {
+                    SettingsAlertButton("SettingsContentProvider.Item.autoRedactions")
+                }
+
+                if purchaseState == .purchased {
+                    SettingsNavigationLink("SettingsContentProvider.Item.autoRedactions", destination: AutoRedactionsEditView().background(Color.appPrimary.edgesIgnoringSafeArea(.all)))
+                }
             }
+
             Section(header: SettingsSectionHeader("SettingsContentProvider.Section.webURLs.header")) {
                 WebURLButton("SettingsContentProvider.Item.new", "\(String(format: Self.versionStringFormat, versionString))", path: "releases")
                 WebURLButton("SettingsContentProvider.Item.about", path: "about")
@@ -43,4 +49,5 @@ struct SettingsContentGenerator {
     }
 
     private static let versionStringFormat = NSLocalizedString("SettingsContentGenerator.versionStringFormat", comment: "Format string for the app version in Settings")
+    @Defaults.Value(key: .hideAutoRedactions) private var hideAutoRedactions: Bool
 }
