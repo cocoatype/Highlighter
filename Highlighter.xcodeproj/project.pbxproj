@@ -310,6 +310,7 @@
 		04FB5F2325C7AC8400A5B48D /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		04FB5F2425C7AC8400A5B48D /* Editing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04FC597027C736580072481B /* PurchaseMarketingHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC596F27C736580072481B /* PurchaseMarketingHostingController.swift */; };
+		04FC597227C9DDCB0072481B /* DesktopSeekButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC597127C9DDCB0072481B /* DesktopSeekButton.swift */; };
 		04FDEA5625257B1900F94CA9 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDEA5525257B1900F94CA9 /* SplitViewController.swift */; };
 		04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */; };
 		04FF8DB322F56E31008CF0E9 /* AutoRedactionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */; };
@@ -765,6 +766,7 @@
 		04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingBrushStrokeView.h; sourceTree = "<group>"; };
 		04F7AAB42537E5AA0024D3B4 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		04FC596F27C736580072481B /* PurchaseMarketingHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingHostingController.swift; sourceTree = "<group>"; };
+		04FC597127C9DDCB0072481B /* DesktopSeekButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekButton.swift; sourceTree = "<group>"; };
 		04FDEA5525257B1900F94CA9 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservationRedaction.swift; sourceTree = "<group>"; };
 		04FF8DB222F56E31008CF0E9 /* AutoRedactionsEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRedactionsEditViewController.swift; sourceTree = "<group>"; };
@@ -1245,6 +1247,7 @@
 				045CA3DF2771969C00DEA988 /* DesktopSeekTextField.swift */,
 				045CA3DB27718FC000DEA988 /* DesktopSeekView.swift */,
 				045CA3D727718E5D00DEA988 /* DesktopSeekViewController.swift */,
+				04FC597127C9DDCB0072481B /* DesktopSeekButton.swift */,
 			);
 			path = Desktop;
 			sourceTree = "<group>";
@@ -2440,6 +2443,7 @@
 				041907F3254A703700739749 /* UIBezierPathExtensions.swift in Sources */,
 				049F92FD22CDA6C40090C9BC /* Fonts.swift in Sources */,
 				044074BF23BE9BCD00D3CB99 /* RedactionPathLayer.swift in Sources */,
+				04FC597227C9DDCB0072481B /* DesktopSeekButton.swift in Sources */,
 				04750E9626D9EEF500E98BB4 /* ColorPickerBarButtonItem.swift in Sources */,
 				0493D2D824B6BD0000FF99F4 /* BrushStampFactory.swift in Sources */,
 				045CA3E02771969C00DEA988 /* DesktopSeekTextField.swift in Sources */,

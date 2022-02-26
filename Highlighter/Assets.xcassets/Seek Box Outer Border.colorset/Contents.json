@@ -4,6 +4,22 @@
       "color" : {
         "color-space" : "gray-gamma-22",
         "components" : {
+          "alpha" : "0.220",
+          "white" : "0.000"
+        }
+      },
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "color" : {
+        "color-space" : "gray-gamma-22",
+        "components" : {
           "alpha" : "0.800",
           "white" : "0.000"
         }
