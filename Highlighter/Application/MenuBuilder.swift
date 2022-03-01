@@ -34,7 +34,9 @@ enum MenuBuilder {
         builder.insertSibling(findMenu, beforeMenu: .spelling)
 
         let helpMenuDataSource = HelpMenuDataSource()
-        builder.insertChild(helpMenuDataSource.helpMenu, atStartOfMenu: .help)
+        builder.replaceChildren(ofMenu: .help) { _ in
+            helpMenuDataSource.helpMenu.children
+        }
 
         let preferencesMenu = UIMenu(options: .displayInline, children: [
             UIKeyCommand(title: Self.preferencesMenuItemTitle, action: #selector(AppDelegate.displayPreferences), input: ",", modifierFlags: [.command])
