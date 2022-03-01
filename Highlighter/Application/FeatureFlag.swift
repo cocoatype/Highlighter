@@ -5,7 +5,7 @@ import Foundation
 
 public enum FeatureFlag {
     public static var seekAndDestroy: Bool {
-        UserDefaults.standard.bool(forKey: "FeatureFlag.seekAndDestroy")
+        true
     }
 
     public static var newFromClipboard: Bool {
