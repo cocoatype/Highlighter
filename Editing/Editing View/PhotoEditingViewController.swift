@@ -208,6 +208,7 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
 
     @objc public func finishSeeking(_ sender: Any) {
         photoEditingView.redact(photoEditingView.seekPreviewObservations)
+        if photoEditingView.seekPreviewObservations.count > 0 { markHasMadeEdits() }
         cancelSeeking(sender)
     }
 
