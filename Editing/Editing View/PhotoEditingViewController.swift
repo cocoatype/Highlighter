@@ -357,12 +357,33 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
     }
 
     // MARK: Sharing
-
     @objc func sharePhoto(_ sender: Any) {
+        let imageType = image?.type
         exportImage { [weak self] image in
             guard let exportedImage = image else { return }
 
-            let activityController = UIActivityViewController(activityItems: [exportedImage], applicationActivities: nil)
+            let representedURLName = "\(Self.defaultImageName).\(imageType?.preferredFilenameExtension ?? "png")"
+            let temporaryURL = URL(fileURLWithPath: NSTemporaryDirectory())
+                .appendingPathComponent(representedURLName)
+
+            let data: Data?
+
+            switch imageType {
+            case .jpeg?:
+                data = image?.jpegData(compressionQuality: 0.9)
+            case .png?: fallthrough
+            default:
+                data = image?.pngData()
+            }
+
+            let activityItems: [Any]
+            if let data = data, let _ = try? data.write(to: temporaryURL) {
+                activityItems = [temporaryURL]
+            } else {
+                activityItems = [exportedImage]
+            }
+
+            let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
             activityController.completionWithItemsHandler = { [weak self] _, completed, _, _ in
                 self?.hasMadeEdits = false
                 Defaults.numberOfSaves = Defaults.numberOfSaves + 1
@@ -383,8 +404,9 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
     public let completionHandler: ((UIImage) -> Void)?
     public var redactions: [Redaction] { return photoEditingView.redactions }
 
-    private static let undoKeyCommandDiscoverabilityTitle = NSLocalizedString("BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle", comment: "Discovery title for the undo key command")
+    public static let defaultImageName = NSLocalizedString("PhotoEditingViewController.defaultImageName", comment: "Default name when saving the image on macOS")
     private static let redoKeyCommandDiscoverabilityTitle = NSLocalizedString("BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle", comment: "Discovery title for the redo key command")
+    private static let undoKeyCommandDiscoverabilityTitle = NSLocalizedString("BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle", comment: "Discovery title for the undo key command")
 
     private let asset: PHAsset?
     private var colorObserver: Any?
