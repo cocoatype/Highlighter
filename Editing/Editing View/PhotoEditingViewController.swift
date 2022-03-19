@@ -213,7 +213,7 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
 
     @objc public func seekBarDidChangeText(_ sender: UISearchTextField) {
         guard let wordObservations = photoEditingView.wordObservations,
-              let text = sender.text
+              let text = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         else { return }
 
         photoEditingView.seekPreviewObservations = wordObservations.matching([text])
