@@ -325,8 +325,12 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
                     })
                 }
 
-                DispatchQueue.main.async {
-                    self?.photoEditingView.redact(matchingObservations)
+                DispatchQueue.main.async { [weak self] in
+                    if matchingObservations.count > 0 {
+                        self?.photoEditingView.redact(matchingObservations)
+                        self?.markHasMadeEdits()
+                    }
+
                     self?.photoEditingView.wordObservations = observations
                 }
             }
