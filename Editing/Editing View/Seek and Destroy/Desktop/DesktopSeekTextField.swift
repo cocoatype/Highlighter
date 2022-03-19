@@ -23,6 +23,13 @@ class DesktopSeekTextField: UITextField, UITextFieldDelegate {
 
     var textToRedact: String? { text }
 
+    // MARK: Key Commands
+
+    override var keyCommands: [UIKeyCommand]? {
+        let escapeCommand = UIKeyCommand(action: #selector(PhotoEditingViewController.cancelSeeking(_:)), input: UIKeyCommand.inputEscape)
+        return (super.keyCommands ?? []) + [escapeCommand]
+    }
+
     // MARK: Delegate
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

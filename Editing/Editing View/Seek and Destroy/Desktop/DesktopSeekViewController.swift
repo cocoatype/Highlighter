@@ -8,6 +8,7 @@ class DesktopSeekViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .overCurrentContext
+        modalTransitionStyle = .crossDissolve
     }
 
     override func loadView() {
