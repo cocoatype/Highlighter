@@ -98,8 +98,6 @@ extension PhotoEditingViewController {
         guard hasMadeEdits == true else { return false }
         return [UTType.png, .jpeg].contains(imageType)
     }
-
-    private static let defaultImageName = NSLocalizedString("PhotoEditingViewController.defaultImageName", comment: "Default name when saving the image on macOS")
 }
 
 class DesktopSaveViewController: UIDocumentPickerViewController, UIDocumentPickerDelegate {

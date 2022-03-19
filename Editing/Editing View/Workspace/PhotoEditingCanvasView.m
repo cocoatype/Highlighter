@@ -12,11 +12,7 @@
 {
     if ((self = [super initWithFrame:CGRectZero])) {
         self.accessibilityIgnoresInvertColors = YES;
-#if TARGET_OS_MACCATALYST
         self.drawingPolicy = PKCanvasViewDrawingPolicyAnyInput;
-#else
-        self.allowsFingerDrawing = YES;
-#endif
         self.backgroundColor = [UIColor clearColor];
         self.color = [UIColor blackColor];
         self.opaque = NO;
