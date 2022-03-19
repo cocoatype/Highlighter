@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
 
         let appearance = UIBarButtonItem.appearance()
+        appearance.tintColor = .white
         appearance.setTitleTextAttributes(NavigationBar.buttonTitleTextAttributes, for: .normal)
         appearance.setTitleTextAttributes(NavigationBar.buttonTitleTextAttributes, for: .highlighted)
 
