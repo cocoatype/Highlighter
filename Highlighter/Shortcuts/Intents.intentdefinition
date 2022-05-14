@@ -9,11 +9,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>kgtKa3</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>20A5395g</string>
+	<string>21E258</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>12B5035g</string>
+	<string>13E113</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>12.2</string>
+	<string>13.3</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -149,6 +149,24 @@
 					<dict>
 						<key>INIntentResponseCodeName</key>
 						<string>failure</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>Shortcuts support requires Ultra Highlighter. For more information, see Black Highlighter's preferences.</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>1NeFok</string>
+						<key>INIntentResponseCodeName</key>
+						<string>unpurchasedDesktop</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>Shortcuts support requires Ultra Highlighter. For more information, see Black Highlighter's settings screen.</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>CyyIr3</string>
+						<key>INIntentResponseCodeName</key>
+						<string>unpurchasedMobile</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
 					</dict>
 				</array>
 				<key>INIntentResponseLastParameterTag</key>

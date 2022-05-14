@@ -8,6 +8,11 @@ import UIKit
 @available(iOS 14.0, *)
 class IntentHandler: INExtension, RedactImageIntentHandling {
     func handle(intent: RedactImageIntent, completion: @escaping (RedactImageIntentResponse) -> Void) {
+        guard
+            case .success(let hasPurchased) = PreviousPurchasePublisher.hasUserPurchasedProduct(),
+            hasPurchased
+        else { return completion(.unpurchased) }
+
         os_log("handling redact intent")
         guard let sourceImages = intent.sourceImages, let redactedWords = intent.redactedWords else { return completion(.failure) }
 
@@ -52,4 +57,13 @@ extension RedactImageIntentResponse {
         return response
     }
     static var failure = RedactImageIntentResponse(code: .failure, userActivity: nil)
+    static let unpurchased = RedactImageIntentResponse(code: .unpurchased, userActivity: nil)
+}
+
+extension RedactImageIntentResponseCode {
+    #if targetEnvironment(macCatalyst)
+    static let unpurchased = RedactImageIntentResponseCode.unpurchasedDesktop
+    #else
+    static let unpurchased = RedactImageIntentResponseCode.unpurchasedMobile
+    #endif
 }
