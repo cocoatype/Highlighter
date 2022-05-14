@@ -12,6 +12,8 @@ public class PhotoEditingRedactionView: UIView {
         contentMode = .redraw
         isOpaque = false
         translatesAutoresizingMaskIntoConstraints = false
+
+        layer.masksToBounds = true
     }
 
     public func add(_ redaction: Redaction) {
@@ -21,6 +23,11 @@ public class PhotoEditingRedactionView: UIView {
 
     public func add(_ redactions: [Redaction]) {
         self.redactions.append(contentsOf: redactions)
+        updateDisplay()
+    }
+
+    public func remove(_ redactions: [Redaction]) {
+        self.redactions.removeAll(where: { redactions.contains($0)} )
         updateDisplay()
     }
 
@@ -38,10 +45,11 @@ public class PhotoEditingRedactionView: UIView {
     }
 
     private func updateDisplay() {
-        layer.sublayers = redactions
-          .flatMap { $0.paths }
-          .map { $0.dashedPath }
-          .map { RedactionPathLayer(path: $0, brushWidth: $0.lineWidth) }
+        layer.sublayers = redactions.flatMap { redaction -> [RedactionPathLayer] in
+            return redaction.paths
+              .map(\.dashedPath)
+              .map { RedactionPathLayer(path: $0, color: redaction.color)}
+        }
     }
 
     // MARK: Notifications

@@ -3,8 +3,10 @@
 
 import UIKit
 
-struct WordObservationRedaction: Redaction {
-    init(_ wordObservations: [WordObservation]) {
+//struct WordObservationRedaction: Redaction {
+#if canImport(UIKit)
+extension Redaction {
+    init(_ wordObservations: [WordObservation], color: UIColor) {
         self.paths = wordObservations.reduce(into: [UUID: [WordObservation]]()) { result, wordObservation in
             let textObservationUUID = wordObservation.textObservationUUID
             var siblingObservations = result[textObservationUUID] ?? []
@@ -22,7 +24,7 @@ struct WordObservationRedaction: Redaction {
             path.addLine(to: CGPoint(x: rect.maxX - (width * 0.8), y: rect.midY))
             return path
         }
+        self.color = color
     }
-
-    let paths: [UIBezierPath]
 }
+#endif

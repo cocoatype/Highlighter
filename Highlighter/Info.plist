@@ -13,6 +13,8 @@
 			<array/>
 			<key>CFBundleTypeName</key>
 			<string>Images</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>public.image</string>
@@ -30,7 +32,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>20.1</string>
+	<string>22.2</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -44,18 +46,27 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>INIntentsSupported</key>
+	<array>
+		<string>RedactImageIntent</string>
+	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.photography</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
-	<false/>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Black Highlighter accesses your photo library to open photos for redaction and to save redacted photos.</string>
+	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Black Highlighter accesses your camera to scan documents for redaction.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Black Highlighter accesses your photo library to open photos for redaction and to save redacted photos.</string>
+	<key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
+	<true/>
 	<key>NSUserActivityTypes</key>
 	<array>
+		<string>RedactImageIntent</string>
 		<string>com.cocoatype.Highlighter.editing</string>
 	</array>
 	<key>UIAppFonts</key>
@@ -76,6 +87,18 @@
 					<string>Highlighter</string>
 					<key>UISceneDelegateClassName</key>
 					<string>Highlighter.SceneDelegate</string>
+				</dict>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Settings</string>
+					<key>UISceneDelegateClassName</key>
+					<string>Highlighter.DesktopSettingsSceneDelegate</string>
+				</dict>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Desktop</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_NAME).DesktopSceneDelegate</string>
 				</dict>
 			</array>
 		</dict>

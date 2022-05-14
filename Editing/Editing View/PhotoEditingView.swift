@@ -6,7 +6,7 @@ import UIKit
 public class PhotoEditingView: UIView, UIScrollViewDelegate {
     public init() {
         super.init(frame: .zero)
-        backgroundColor = .primary
+        backgroundColor = .appBackground
 
         photoScrollView.delegate = self
         addSubview(photoScrollView)
@@ -17,6 +17,11 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
             photoScrollView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             photoScrollView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor)
         ])
+    }
+
+    public var color: UIColor {
+        get { return workspaceView.color }
+        set(newColor) { workspaceView.color = newColor }
     }
 
     public var image: UIImage? {
@@ -56,6 +61,13 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
     func redact<ObservationType: TextObservation>(_ observations: [ObservationType], joinSiblings: Bool) {
         self.workspaceView.redact(observations, joinSiblings: joinSiblings)
 //        observations.forEach { [unowned self] in self.workspaceView.redact($0, joinSiblings: joinSiblings) }
+    }
+
+    var seekPreviewObservations: [WordObservation] {
+        get { workspaceView.seekPreviewObservations }
+        set(newTextObservations) {
+            workspaceView.seekPreviewObservations = newTextObservations
+        }
     }
 
     // MARK: UIScrollViewDelegate

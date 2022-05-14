@@ -1,0 +1,25 @@
+git_url "git@git.pado.name:pado/certificates.git"
+storage_mode "git"
+readonly true
+type "development" # The default type, can be: appstore, adhoc, enterprise or development
+username "buddybuild@cocoatype.com"
+
+for_lane :beta do
+  type "appstore"
+end
+
+for_platform :ios do
+  app_identifier([
+                   "com.cocoatype.Highlighter",
+                   "com.cocoatype.Highlighter.Action",
+                   "com.cocoatype.Highlighter.Photo",
+                   "com.cocoatype.Highlighter.Shortcuts"
+                 ])
+end
+
+for_platform :mac do
+  platform "macos"
+  additional_cert_types ["mac_installer_distribution"]
+  app_identifier ["com.cocoatype.Highlighter"]
+end
+                   

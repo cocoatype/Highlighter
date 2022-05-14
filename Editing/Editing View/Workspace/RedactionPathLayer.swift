@@ -4,14 +4,18 @@
 import Foundation
 
 class RedactionPathLayer: CALayer {
-    init(path: UIBezierPath, brushWidth: CGFloat) {
-        let pathBounds = path.strokeBorderPath.bounds.insetBy(dx: -brushWidth, dy: 0)
+    init(path: UIBezierPath, color: UIColor) {
+        let brushWidth = path.lineWidth
+        let brushStampImage = BrushStampFactory.brushStamp(scaledToHeight: brushWidth, color: color)
+        let pathBounds = path.strokeBorderPath.bounds.insetBy(dx: brushStampImage.size.width * -0.5, dy: 0)
         path.apply(CGAffineTransform(translationX: -pathBounds.origin.x, y: -pathBounds.origin.y))
 
+        self.color = color
         self.path = path
         self.brushWidth = brushWidth
         super.init()
 
+        drawsAsynchronously = true
         frame = pathBounds
         masksToBounds = false
 
@@ -21,40 +25,34 @@ class RedactionPathLayer: CALayer {
     override init(layer: Any) {
         let pathLayer = layer as? RedactionPathLayer
         self.brushWidth = pathLayer?.brushWidth ?? 0
+        self.color = pathLayer?.color ?? .black
         self.path = pathLayer?.path ?? UIBezierPath()
         super.init(layer: layer)
     }
 
     override func draw(in context: CGContext) {
-        guard let brushStampImage = brushStamp(scaledToHeight: brushWidth).cgImage else { fatalError("Unable to create brush stamp image") }
+        let stampImage = BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
+
+        UIGraphicsPushContext(context)
+        defer { UIGraphicsPopContext() }
+
         path.forEachPoint { point in
-            let imageSize = CGSize(width: brushStampImage.width, height: brushStampImage.height)
-            let drawRect = CGRect(origin: point, size: imageSize).offsetBy(dx: imageSize.width * -0.5, dy: imageSize.height * -0.5)
-            context.draw(brushStampImage, in: drawRect)
+            context.saveGState()
+            defer { context.restoreGState() }
+
+            context.translateBy(x: stampImage.size.width * -0.5, y: stampImage.size.height * -0.5)
+            stampImage.draw(at: point)
         }
     }
 
     private func brushStamp(scaledToHeight height: CGFloat) -> UIImage {
-        guard let standardImage = UIImage(named: "Brush") else { fatalError("Unable to load brush stamp image") }
-
-        let brushScale = height / standardImage.size.height
-        let scaledBrushSize = standardImage.size * brushScale
-
-        UIGraphicsBeginImageContext(scaledBrushSize)
-        defer { UIGraphicsEndImageContext() }
-
-        guard let context = UIGraphicsGetCurrentContext() else { fatalError("Unable to create brush scaling image context") }
-        context.scaleBy(x: brushScale, y: brushScale)
-
-        standardImage.draw(at: .zero)
-
-        guard let scaledImage = UIGraphicsGetImageFromCurrentImageContext() else { fatalError("Unable to get scaled brush image from context") }
-        return scaledImage
+        BrushStampFactory.brushStamp(scaledToHeight: height, color: color)
     }
 
     // MARK: Boilerplate
 
     private let brushWidth: CGFloat
+    private let color: UIColor
     private let path: UIBezierPath
 
     @available(*, unavailable)

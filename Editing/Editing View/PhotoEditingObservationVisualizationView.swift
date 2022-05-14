@@ -7,15 +7,8 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
     override init() {
         super.init()
 
+        alpha = 0
         isUserInteractionEnabled = false
-
-        layer.mask = animationLayer
-    }
-
-    var shouldShowVisualization = true {
-        didSet {
-            animateVisualization()
-        }
     }
 
     override func layoutSublayers(of layer: CALayer) {
@@ -28,6 +21,8 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
     }
 
     // MARK: Animation
+
+    var color = UIColor.black
 
     private let animationLayer: CAGradientLayer = {
         let animationLayer = CAGradientLayer()
@@ -47,12 +42,29 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
     }
 
     private var animationOffsetDistance: CGFloat {
-//        return 0
         return (animationRect.width / 2.0)
     }
 
-    private func animateVisualization() {
-        guard shouldShowVisualization && UIAccessibility.isReduceMotionEnabled == false else { return }
+    func animateFullVisualization() {
+        removeAllRedactions()
+        add(cannons)
+
+        if UIAccessibility.isReduceMotionEnabled {
+            performReducedMotionVisualization()
+        } else {
+            performFullMotionVisualization()
+        }
+    }
+
+    private func performFullMotionVisualization() {
+        layer.mask = animationLayer
+        alpha = 1
+
+        CATransaction.begin()
+        CATransaction.setCompletionBlock { [weak self] in
+            self?.layer.mask = nil
+            self?.alpha = 0
+        }
 
         let slideAnimation = CABasicAnimation(keyPath: "position.x")
         slideAnimation.fromValue = layer.bounds.width / -2.0
@@ -62,25 +74,60 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
         self.animationLayer.position = CGPoint(x: self.layer.bounds.width * 1.5, y: self.layer.bounds.midY)
 
         animationLayer.add(slideAnimation, forKey: "position.x")
+        CATransaction.commit()
     }
+
+    private func performReducedMotionVisualization() {
+        CATransaction.begin()
+
+        let fadeAnimation = CABasicAnimation(keyPath: "opacity")
+        fadeAnimation.fromValue = 0
+        fadeAnimation.toValue = 0.6
+        fadeAnimation.duration = 0.5
+        fadeAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        fadeAnimation.autoreverses = true
+
+        layer.add(fadeAnimation, forKey: "opacity")
+        CATransaction.commit()
+    }
+
+    func presentPreviewVisualization() {
+        removeAllRedactions()
+        add(seekPreviewRedactions)
+
+        alpha = 0.4
+    }
+
+    func hidePreviewVisualization() {
+        alpha = 0
+    }
+
+    // MARK: Seek and Destroy
+
+    var seekPreviewObservations = [WordObservation]() {
+        didSet {
+            seekPreviewRedactions = seekPreviewObservations.map { Redaction($0, color: color) }
+        }
+    }
+
+    private var seekPreviewRedactions = [Redaction]()
 
     // MARK: Text Observations
 
     var textObservations: [TextRectangleObservation]? {
         didSet {
-            removeAllRedactions()
-            defer { setNeedsDisplay() }
-
-            guard let textObservations = textObservations else { return }
-
-            let characterObservationRedactions = textObservations.compactMap { textObservation -> CharacterObservationRedaction? in
-                guard let characterObservations = textObservation.characterObservations else { return nil }
-                return CharacterObservationRedaction(characterObservations)
-            }
-            add(characterObservationRedactions)
-
             setNeedsDisplay()
-            animateVisualization()
+            animateFullVisualization()
+        }
+    }
+
+    // cannons by @eaglenaut on 4/30/21
+    // preview redactions for all text, shown in the full visualization
+    private var cannons: [Redaction] {
+        guard let textObservations = textObservations else { return [] }
+        return textObservations.compactMap { textObservation -> Redaction? in
+            guard let characterObservations = textObservation.characterObservations else { return nil }
+            return Redaction(characterObservations, color: color)
         }
     }
 

@@ -3,6 +3,26 @@
 
 import UIKit
 
-public struct RestoredRedaction: Redaction {
-    public var paths: [UIBezierPath]
+extension Redaction: Codable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let colorData = try container.decode(Data.self, forKey: .color)
+        let pathsData = try container.decode([Data].self, forKey: .paths)
+
+        color = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData) ?? .black
+        paths = try pathsData.compactMap { try NSKeyedUnarchiver.unarchivedObject(ofClass: UIBezierPath.self, from: $0) }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        let colorData = try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: true)
+        let pathsData = paths.compactMap { try? NSKeyedArchiver.archivedData(withRootObject: $0, requiringSecureCoding: true) }
+
+        try container.encode(colorData, forKey: .color)
+        try container.encode(pathsData, forKey: .paths)
+    }
+
+    enum CodingKeys: CodingKey {
+        case color, paths
+    }
 }

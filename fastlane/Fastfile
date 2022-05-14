@@ -8,49 +8,82 @@ platform :ios do
 
   desc "Submit a new beta build to Apple TestFlight"
   lane :beta do
-    # Download signing credentials
-    get_certificates
-    get_provisioning_profile(
-      app_identifier: "com.cocoatype.Highlighter",
-      filename: "app.mobileprovision",
-      platform: "ios")
-    get_provisioning_profile(
-      app_identifier: "com.cocoatype.Highlighter.Action",
-      filename: "action.mobileprovision",
-      platform: "ios")
-    get_provisioning_profile(
-      app_identifier: "com.cocoatype.Highlighter.Photo",
-      filename: "photo.mobileprovision",
-      platform: "ios")
+    sync_code_signing(readonly: true)
 
-    # Update the Xcode project with the correct signing credentials
-    disable_automatic_code_signing
-    update_project_provisioning(
-      build_configuration: "Release",
-      target_filter: "Highlighter",
-      profile: "./app.mobileprovision")
-    update_project_provisioning(
-      build_configuration: "Release",
-      target_filter: "Action",
-      profile: "./action.mobileprovision")
-    update_project_provisioning(
-      build_configuration: "Release",
-      target_filter: "Photo",
-      profile: "./photo.mobileprovision")
+    # Set the build number to the number of Git commits
+    build_number = sh "git log --oneline | wc -l"
+    increment_build_number(build_number: build_number)
+
+    # Set the marketing number to the release branch name
+    release_branch = ENV['CI_COMMIT_BRANCH']
+    match = /release\/(.*)/.match(release_branch)
+    unless match.nil?
+      increment_version_number(version_number: match[1])
+    end
+
+    # Build the app for App Store
+    build_app(
+      cloned_source_packages_path: "SourcePackages",
+      export_method: "app-store",
+      scheme: "Highlighter")
+    
+    # Just upload the build to TestFlight, no other changes
+    upload_to_testflight(
+      api_key_path: ENV["APPLE_API_KEY_JSON"],
+      app_platform: "ios",
+      skip_submission: true,
+      skip_waiting_for_build_processing: true)
+  end
+
+  desc "Set up developer environment"
+  lane :dev do
+    sync_code_signing
+  end
+end
+
+platform :mac do
+  desc "Runs all the tests"
+  lane :test do
+    # CI does not run Big Sur
+    # run_tests(scheme: "Highlighter")
+  end
+
+  desc "Submit a new beta build to Apple TestFlight"
+  lane :beta do
+    # Sync twice to get Catalyst and macOS profiles
+    sync_code_signing(platform: "catalyst")
+    sync_code_signing
 
     # Set the build number to the number of Git commits
     build_number = sh "git log --oneline | wc -l"
     increment_build_number(build_number: build_number)
 
     # Build the app for App Store
-    build_app(
+    build_mac_app(
       export_method: "app-store",
-      scheme: "Highlighter")
-    
+      installer_cert_name: "3rd Party Mac Developer Installer: Cocoatype, LLC (287EDDET2B)",
+      scheme: "Highlighter",
+      skip_profile_detection: true,
+      export_options: {
+        method: "app-store",
+        provisioningProfiles: {
+          "com.cocoatype.Highlighter" => "match AppStore com.cocoatype.Highlighter catalyst"
+        }
+      })
+
     # Just upload the build to TestFlight, no other changes
-    upload_to_testflight(
-      app_platform: "ios",
-      skip_submission: true,
-      skip_waiting_for_build_processing: true)
+    upload_to_app_store(
+      api_key_path: ENV["APPLE_API_KEY_JSON"],      
+      app_identifier: "com.cocoatype.Highlighter",
+      platform: "osx",
+      precheck_include_in_app_purchases: false,
+      skip_app_version_update: true,
+      skip_metadata: true,
+      skip_screenshots: true)
+  end
+
+  desc "Set up developer environment"
+  lane :dev do
+    sync_code_signing
   end
 end

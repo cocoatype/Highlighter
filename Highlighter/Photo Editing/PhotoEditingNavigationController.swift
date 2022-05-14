@@ -3,6 +3,7 @@
 
 import Editing
 import Photos
+import SwiftUI
 import UIKit
 
 class PhotoEditingNavigationController: NavigationController {
@@ -12,10 +13,16 @@ class PhotoEditingNavigationController: NavigationController {
         modalPresentationStyle = .fullScreen
     }
 
-    init(image: UIImage, completionHandler: ((UIImage) -> Void)? = nil) {
-        super.init(rootViewController: PhotoEditingViewController(image: image, completionHandler: completionHandler))
+    init(image: UIImage, redactions: [Redaction]? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
+        super.init(rootViewController: PhotoEditingViewController(image: image, redactions: redactions, completionHandler: completionHandler))
         isToolbarHidden = false
         modalPresentationStyle = .fullScreen
+    }
+
+    // MARK: Hack
+
+    @objc public func finishSeeking(_ sender: Any) {
+        (viewControllers.first as? PhotoEditingViewController)?.finishSeeking(sender)
     }
 
     // MARK: Boilerplate

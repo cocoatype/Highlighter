@@ -1,0 +1,21 @@
+/* AMApplication localized strings */
+/* e.g. "TextEdit" = "TextEdit"; */
+
+/* AMCategory localized strings */
+/* e.g. "Text" = "Text"; */
+
+AMName = "Redact Images";
+
+/* AMDefaultParameters localized values */
+/* e.g. myDefaultIntegerParameter = 0; */
+/* e.g. myDefaultStringParameter = "Default String Value"; */
+
+/* AMDescription localized strings */
+AMDInput = "Image files.";
+AMDResult = "Image files.";
+AMDSummary = "Redact occurrences of a specified word in the input images.";
+AMDWebsite = "https://blackhighlighter.app/";
+
+/* AMKeyword localized strings */
+/* e.g. "Filter" = "Filter"; */
+

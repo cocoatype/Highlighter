@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 4/17/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+@_implementationOnly import ClippingBezier
 import UIKit
 
 class PhotoEditingWorkspaceView: UIControl {
@@ -8,21 +9,11 @@ class PhotoEditingWorkspaceView: UIControl {
         imageView = PhotoEditingImageView()
         visualizationView = PhotoEditingObservationVisualizationView()
         redactionView = PhotoEditingRedactionView()
-
-        if #available(iOS 13.0, *) {
-            // thanks i hate it
-            if let canvasBundle = Bundle(identifier: "com.cocoatype.Highlighter.Canvas"), let canvasViewType = (canvasBundle.principalClass as? NSObject.Type), let canvasView = (canvasViewType.init() as? UIControl & PhotoEditingBrushStrokeView) {
-                brushStrokeView = canvasView
-            } else {
-                brushStrokeView = PhotoEditingLegacyBrushStrokeView()
-            }
-        } else {
-            brushStrokeView = PhotoEditingLegacyBrushStrokeView()
-        }
+        brushStrokeView = PhotoEditingCanvasBrushStrokeView()
 
         super.init(frame: .zero)
         isAccessibilityElement = false
-        backgroundColor = .primary
+        backgroundColor = .appBackground
         translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(imageView)
@@ -54,7 +45,16 @@ class PhotoEditingWorkspaceView: UIControl {
 
     var highlighterTool = HighlighterTool.magic {
         didSet {
-            visualizationView.shouldShowVisualization = (highlighterTool == .magic)
+            if highlighterTool == .magic {
+                visualizationView.animateFullVisualization()
+            }
+        }
+    }
+
+    var color: UIColor = .black {
+        didSet {
+            brushStrokeView.color = color
+            visualizationView.color = color
         }
     }
 
@@ -75,14 +75,14 @@ class PhotoEditingWorkspaceView: UIControl {
 
     func redact<ObservationType: TextObservation>(_ observations: [ObservationType], joinSiblings: Bool) {
         if joinSiblings, let wordObservations = (observations as? [WordObservation]) {
-            redactionView.add(WordObservationRedaction(wordObservations))
+            redactionView.add(Redaction(wordObservations, color: color))
         } else {
             observations.forEach { redact($0) }
         }
     }
 
     func redact<ObservationType: TextObservation>(_ textObservation: ObservationType) {
-        redactionView.add(TextObservationRedaction(textObservation))
+        redactionView.add(Redaction(textObservation, color: color))
     }
 
     var textObservations: [TextRectangleObservation]? {
@@ -96,15 +96,30 @@ class PhotoEditingWorkspaceView: UIControl {
         brushStrokeView.updateTool(currentZoomScale: zoomScale)
     }
 
+    // MARK: Seek and Destroy
+
+    var seekPreviewObservations: [WordObservation] {
+        get { return visualizationView.seekPreviewObservations }
+        set(newTextObservations) {
+            visualizationView.seekPreviewObservations = newTextObservations
+            if newTextObservations.count > 0 {
+                visualizationView.presentPreviewVisualization()
+            } else {
+                visualizationView.hidePreviewVisualization()
+            }
+        }
+    }
+
     // MARK: Actions
 
     @objc func handleStrokeCompletion() {
         switch highlighterTool {
         case .magic: handleMagicStrokeCompletion()
         case .manual: handleManualStrokeCompletion()
+        case .eraser: handleEraserCompletion()
         }
 
-        sendAction(#selector(BasePhotoEditingViewController.markHasMadeEdits), to: nil, for: nil)
+        sendAction(#selector(PhotoEditingViewController.markHasMadeEdits), to: nil, for: nil)
     }
 
     private func handleMagicStrokeCompletion() {
@@ -115,14 +130,26 @@ class PhotoEditingWorkspaceView: UIControl {
             .flatMap { $0 }
             .filter { strokeBorderPath.contains($0.bounds.center) }
 
-        if let newRedaction = CharacterObservationRedaction(redactedCharacterObservations) {
+        if let newRedaction = Redaction(redactedCharacterObservations, color: color) {
             redactionView.add(newRedaction)
         }
     }
 
     private func handleManualStrokeCompletion() {
         guard let strokePath = brushStrokeView.currentPath else { return }
-        redactionView.add(PathRedaction(strokePath))
+        redactionView.add(Redaction(path: strokePath, color: color))
+    }
+
+    private func handleEraserCompletion() {
+        guard let strokePath = brushStrokeView.currentPath else { return }
+        let strokeBorderPath = strokePath.strokeBorderPath
+        let intersectedRedactions = redactions.filter { redaction in
+            redaction.paths.contains(where: { path in
+                path.strokeBorderPath.intersection(with: strokeBorderPath)?.count ?? 0 > 0
+            })
+        }
+
+        redactionView.remove(intersectedRedactions)
     }
 
     // MARK: Accessibility

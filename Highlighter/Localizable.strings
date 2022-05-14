@@ -6,6 +6,15 @@
   Copyright © 2019 Cocoatype, LLC. All rights reserved.
 */
 
+"AlbumsBarButtonItem.standardAccessibilityLabel" = "Albums";
+
+"AlbumsViewController.navigationTitle" = "Albums";
+
+"AppDelegate.preferencesMenuTitle" = "Preferences";
+"AppDelegate.preferencesMenuItemTitle" = "Preferences…";
+"AppDelegate.saveMenuTitle" = "Save";
+"AppDelegate.saveAsMenuTitle" = "Save As…";
+
 "AutoRedactionsAdditionDialogFactory.addButtonTitle" = "Add Word";
 "AutoRedactionsAdditionDialogFactory.placeholder" = "Hidden Word";
 "AutoRedactionsAdditionDialogFactory.dialogTitle" = "Auto-Hide Word";
@@ -20,10 +29,45 @@
 "BasePhotoEditingViewController.undoKeyCommandDiscoverabilityTitle" = "Undo Redaction";
 "BasePhotoEditingViewController.redoKeyCommandDiscoverabilityTitle" = "Redo Redaction";
 
+"CollectionsDataSource.userAlbumsHeader" = "Albums";
+"CollectionsDataSource.smartAlbumsHeader" = "Library";
+
 "ContactMailViewController.emailSubject" = "Hello!";
 
-"IntroView.promptLabelText" = "Black Highlighter needs permission to edit your photos.";
-"IntroView.promptButtonTitle" = "Grant Access";
+"DesktopSaveAlertController.dismissButtonTitle" = "OK";
+
+"DesktopSaveError.missingRepresentedURL.alertTitle" = "Invalid Image";
+"DesktopSaveError.missingImageType.alertTitle" = "Unknown Image Type";
+"DesktopSaveError.noImageData.alertTitle" = "Export Failed";
+
+"DesktopSaveError.alertMessage" = "There was an unexpected error when saving the image. If this continues to happen, please contact support at hello@cocoatype.com.";
+
+"DesktopSeekButton.title" = "Hide";
+
+"DesktopSettingsSceneDelegate.windowTitle" = "Preferences";
+
+"DesktopSettingsView.wordListLabel" = "Auto-Hidden Words";
+
+"DismissBarButtonItem.title" = "Done";
+
+"DocumentScannerNotPurchasedAlertController.dismissButton" = "Okay";
+"DocumentScannerNotPurchasedAlertController.learnMoreButton" = "Learn More…";
+"DocumentScannerNotPurchasedAlertController.hideButton" = "Never Show This";
+"DocumentScannerNotPurchasedAlertController.message" = "Using the document scanner requires the Ultra Highlighter, a one-time purchase.";
+"DocumentScannerNotPurchasedAlertController.title" = "Requires Ultra Highlighter";
+
+"DoneButton.label" = "Done";
+
+"IntroView.permissionLabelText" = "Black Highlighter needs permission to edit your photos.";
+"IntroView.permissionButtonTitle" = "Grant Access";
+"IntroView.importLabelText" = "Or, select a single photo.";
+"IntroView.importButtonTitle" = "Select Photo";
+
+"LimitedLibraryPhotoLibraryViewCell.defaultAccessibilityLabel" = "Change Selected Photos";
+
+"MenuBuilder.findMenuItemTitle" = "Find…";
+
+"NewFromClipboardCommand.title" = "New from Clipboard";
 
 "PageCountAlertFactory.alertTitle" = "Too Many Pages";
 "PageCountAlertFactory.alertMessage" = "Highlighter only supports editing one page at a time. Only the first page of your scan will appear.";
@@ -32,6 +76,8 @@
 "PhotoEditingProtectionAlertController.cancelButtonTitle" = "Cancel";
 "PhotoEditingProtectionAlertController.deleteButtonTitle" = "Delete Changes";
 "PhotoEditingProtectionAlertController.saveButtonTitle" = "Save to Photos";
+
+"PhotoEditingViewController.defaultImageName" = "Redacted Image";
 
 "PhotoLibraryViewDocumentScannerCell.defaultAccessibilityLabel" = "Scan Document";
 
@@ -47,28 +93,61 @@
 "PhotoSelectionViewController.navigationItemTitle" = "Photos";
 "PhotoSelectionViewController.settingsButtonAccessibilityLabel" = "Help";
 
-"PurchaseItem.title" = "Ultra Highlighter";
-"PurchaseItem.subtitleWithoutProduct" = "Enhanced Features — $2.99";
-"PurchaseItem.subtitleWithProduct" = "Enhanced Features — %@";
+"PurchaseButton.purchaseButtonTitleLoading" = "Purchase";
+"PurchaseButton.purchaseButtonTitleReady" = "Purchase for %@";
+"PurchaseButton.purchaseButtonTitlePurchasing" = "Purchasing…";
+"PurchaseButton.purchaseButtonTitlePurchased" = "Thank You!";
 
-"PurchaseMarketingView.autoRedactionsHeader" = "Auto-Hide Words";
-"PurchaseMarketingView.autoRedactionsText" = "Got words you never want to share? We’ll go ahead and hide them for you, right when you open the image.";
-"PurchaseMarketingView.documentScanningHeader" = "Document Scanning";
-"PurchaseMarketingView.documentScanningText" = "Sometimes the stuff you want to share is in the real world. Bring them in to the virtual with high-quality document scanning.";
-"PurchaseMarketingView.supportDevelopmentHeader" = "Support Development";
-"PurchaseMarketingView.supportDevelopmentText" = "Black Highlighter is a one-man show. Your support helps keep updates to Black Highlighter coming!";
-"PurchaseMarketingView.purchaseButtonTitleWithoutProduct" = "Purchase for $2.99";
-"PurchaseMarketingView.purchaseButtonTitleWithProduct" = "Purchase for %@";
+"PurchaseButtonSeparator.text" = "or";
+
+"PurchaseItem.title" = "Ultra Highlighter";
+"PurchaseItem.subtitleWithoutProduct" = "More Highlighting Power";
+"PurchaseItem.subtitleWithProduct" = "Ultimate Highlight Power — %@";
+
+"PurchaseMarketingTopBarHeadlineLabel.text" = "Ultra Highlighter";
+"PurchaseMarketingTopBarSubheadlineLabel.text" = "Unlock these powerful new abilities for Black Highlighter.";
+
+"PurchaseMarketingView.autoRedactionsHeader" = "Seek and destroy.";
+"PurchaseMarketingView.autoRedactionsText" = "Choose things you never want to see, and Black Highlighter will find them for you.";
+"PurchaseMarketingView.crossPlatformHeader" = "Always ready when you are.";
+"PurchaseMarketingView.crossPlatformText" = "Black Highlighter is right at home on iOS, iPadOS, and macOS.";
+"PurchaseMarketingView.documentScanningHeader" = "Not digital? Not a problem.";
+"PurchaseMarketingView.documentScanningText" = "Scan documents with your phone’s camera and redact them with Black Highlighter.";
+"PurchaseMarketingView.shortcutsHeader" = "Plays well with others.";
+"PurchaseMarketingView.shortcutsText" = "Build workflows in Shortcuts to combine Black Highlighter with other apps.";
+"PurchaseMarketingView.supportDevelopmentHeader" = "Help keep the (high)lights on.";
+"PurchaseMarketingView.supportDevelopmentText" = "Your support helps keep updates to Black Highlighter coming!";
 
 "PurchaseMarketingViewController.navigationTitle" = "Ultra Highlighter";
 "PurchaseMarketingViewController.restoreButtonTitle" = "Restore";
+
+"RecentsMenuDataSource.clearMenuItemTitle" = "Clear Menu";
+"RecentsMenuDataSource.menuTitle" = "Open Recent";
 
 "SettingsContentProvider.Item.about" = "About Black Highlighter";
 "SettingsContentProvider.Item.acknowledgements" = "Acknowledgements";
 "SettingsContentProvider.Item.autoRedactions" = "Auto-Hidden Words";
 "SettingsContentProvider.Item.contact" = "Contact the Developer";
+"SettingsContentProvider.Item.new" = "What’s New";
 "SettingsContentProvider.Item.privacy" = "Privacy Policy";
 
+"SettingsContentProvider.Section.purchasedFeatures.header" = "Ultra Highlighter Features";
 "SettingsContentProvider.Section.otherApps.header" = "Other Apps by Cocoatype";
+"SettingsContentProvider.Section.webURLs.header" = "Important Information";
+
+"SettingsContentGenerator.versionStringFormat" = "Version %@";
+
+"SettingsView.notPurchasedAlertTitle" = "Requires Ultra Highlighter";
+"SettingsView.notPurchasedAlertMessage" = "Automatically hiding words requires the Ultra Highlighter, a one-time purchase.";
+"SettingsView.notPurchasedDismissButton" = "Okay";
+"SettingsView.notPurchasedHideButton" = "Never Show This";
 
 "SettingsViewController.navigationTitle" = "Settings";
+
+"ShareItem.label" = "Share";
+
+"ToolPickerItem.itemLabel" = "Tools";
+"ToolPickerItem.menuTitle" = "Tools";
+"ToolPickerItem.eraserToolItem" = "Eraser";
+"ToolPickerItem.magicToolItem" = "Magic Highlighter";
+"ToolPickerItem.manualToolItem" = "Manual Highlighter";

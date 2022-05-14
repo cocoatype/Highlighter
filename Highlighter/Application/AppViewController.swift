@@ -2,20 +2,80 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Editing
+import ErrorHandling
 import Photos
 import UIKit
 import VisionKit
+import SwiftUI
 
-class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpening, VNDocumentCameraViewControllerDelegate, DocumentScannerPresenting {
-    init() {
+class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, SettingsPresenting, CollectionPresenting, LimitedLibraryPresenting {
+    init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
+        self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
 
-        let navigationController = NavigationController(rootViewController: PhotoSelectionViewController())
-        embed(navigationController)
+        view.isOpaque = false
+        view.backgroundColor = .clear
+        overrideUserInterfaceStyle = .dark
+        embed(preferredViewController)
+    }
+
+    @objc func showPhotoLibrary() {
+        transition(to: preferredViewController)
+    }
+
+    private let permissionsRequester: PhotoPermissionsRequester
+    private var preferredViewController: UIViewController {
+        switch permissionsRequester.authorizationStatus() {
+        case .authorized, .limited:
+            if #available(iOS 14.0, *) {
+                let albumsNavigationController = NavigationController(rootViewController: AlbumsViewController())
+                let photoLibraryNavigationController = NavigationController(rootViewController: PhotoLibraryViewController())
+                return SplitViewController(primaryViewController: albumsNavigationController, secondaryViewController: photoLibraryNavigationController)
+            } else {
+                return NavigationController(rootViewController: PhotoLibraryViewController())
+            }
+        default: return IntroViewController()
+        }
     }
 
     var stateRestorationActivity: NSUserActivity? {
         return photoEditingViewController?.userActivity
+    }
+
+    // MARK: Library
+
+    private var librarySplitViewController: SplitViewController? {
+        children.first(where: { $0 is SplitViewController }) as? SplitViewController
+    }
+
+    private var photoLibraryViewController: PhotoLibraryViewController? {
+        guard let photoLibraryNavigationController = librarySplitViewController?.viewController(for: .secondary) as? NavigationController,
+              let photoLibraryViewController = photoLibraryNavigationController.viewControllers.first as? PhotoLibraryViewController
+        else { return nil }
+        return photoLibraryViewController
+    }
+
+    func present(_ collection: Collection) {
+        photoLibraryViewController?.collection = collection
+        librarySplitViewController?.show(.secondary)
+    }
+
+    @objc func refreshLibrary(_ sender: AnyObject) {
+        photoLibraryViewController?.reloadData()
+    }
+
+    // MARK: Limited Library
+
+    @available(iOS 14.0, *)
+    func presentLimitedLibrary() {
+        PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: self)
+    }
+
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        if viewControllerToPresent is UIImagePickerController {
+            viewControllerToPresent.overrideUserInterfaceStyle = .dark
+        }
+        super.present(viewControllerToPresent, animated: flag, completion: completion)
     }
 
     // MARK: Photo Editing View Controller
@@ -24,8 +84,8 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         present(PhotoEditingNavigationController(asset: asset, redactions: redactions), animated: animated)
     }
 
-    func presentPhotoEditingViewController(for image: UIImage, completionHandler: ((UIImage) -> Void)? = nil) {
-        present(PhotoEditingNavigationController(image: image, completionHandler: completionHandler), animated: true)
+    func presentPhotoEditingViewController(for image: UIImage, redactions: [Redaction]? = nil, animated: Bool = true, completionHandler: ((UIImage) -> Void)? = nil) {
+        present(PhotoEditingNavigationController(image: image, redactions: redactions, completionHandler: completionHandler), animated: animated)
     }
 
     @objc func dismissPhotoEditingViewController(_ sender: UIBarButtonItem) {
@@ -41,7 +101,10 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         }
 
         let alertController = PhotoEditingProtectionAlertController(appViewController: self)
+        #if targetEnvironment(macCatalyst)
+        #else
         alertController.barButtonItem = sender
+        #endif
         photoEditingViewController.present(alertController, animated: true)
     }
 
@@ -64,7 +127,9 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
                 PHAssetChangeRequest.creationRequestForAsset(from: image)
             }, completionHandler: { [weak self] success, error in
                 assert(success, "an error occurred saving changes: \(error?.localizedDescription ?? "no error")")
-                self?.dismiss(animated: true)
+                DispatchQueue.main.async {
+                    self?.dismiss(animated: true)
+                }
             })
         }
     }
@@ -75,10 +140,8 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
 
     // MARK: Document Scanner
 
-    @available(iOS 13.0, *)
     @objc func presentDocumentCameraViewController() {
-        let cameraViewController = VNDocumentCameraViewController()
-        cameraViewController.delegate = self
+        let cameraViewController = DocumentScanningController().cameraViewController(delegate: self)
         present(cameraViewController, animated: true)
     }
 
@@ -105,34 +168,38 @@ class AppViewController: UIViewController, PhotoEditorPresenting, AppEntryOpenin
         }
     }
 
+    // MARK: App Ratings Prompt
+
+    @objc func displayAppRatingsPrompt() {
+        AppRatingsPrompter.displayRatingsPrompt(in: view.window?.windowScene)
+    }
+
     // MARK: Settings View Controller
 
+    @objc func presentPurchaseMarketing() {
+        let purchaseMarketingController = PurchaseMarketingHostingController()
+        present(purchaseMarketingController, animated: true)
+    }
+
     @objc func presentSettingsViewController() {
-        present(SettingsNavigationController(), animated: true)
+        let settingsController = SettingsHostingController()
+        present(settingsController, animated: true)
     }
 
     @objc func dismissSettingsViewController() {
-        if presentedViewController is SettingsNavigationController {
-            dismiss(animated: true)
-        }
-    }
-
-    // MARK: App Store
-
-    func openAppStore(displaying appEntry: AppEntry) {
-        guard let appStoreURL = appEntry.appStoreURL else { return }
-        UIApplication.shared.open(appStoreURL)
+        guard presentedViewController is SettingsHostingController else { return }
+        dismiss(animated: true)
     }
 
     // MARK: Status Bar
 
-    override var childForStatusBarStyle: UIViewController? { return children.first }
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    override var childForStatusBarStyle: UIViewController? { return nil }
 
     // MARK: Boilerplate
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        let className = String(describing: type(of: self))
-        fatalError("\(className) does not implement init(coder:)")
+        ErrorHandling.notImplemented()
     }
 }

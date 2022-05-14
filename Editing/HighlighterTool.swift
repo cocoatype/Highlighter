@@ -6,11 +6,13 @@ import UIKit
 public enum HighlighterTool: CaseIterable {
     case magic
     case manual
+    case eraser
 
-    public var image: UIImage {
+    public var image: UIImage? {
         switch self {
-        case .magic: return #imageLiteral(resourceName: "Magic Highlighter")
-        case .manual: return #imageLiteral(resourceName: "Standard Highlighter.png")
+        case .magic: return UIImage(named: "highlighter.magic")
+        case .manual: return UIImage(named: "highlighter.manual")
+        case .eraser: return UIImage(named: "highlighter.eraser")
         }
     }
 }

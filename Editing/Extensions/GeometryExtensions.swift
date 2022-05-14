@@ -1,7 +1,11 @@
 //  Created by Geoff Pado on 4/10/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+#if canImport(AppKit)
+import AppKit
+#elseif canImport(UIKit)
 import UIKit
+#endif
 
 public extension CGSize {
     static func * (size: CGSize, multiplier: CGFloat) -> CGSize {
@@ -50,13 +54,19 @@ public extension CGRect {
 
     static func flippedRect(from rect: CGRect, scaledTo size: CGSize) -> CGRect {
         var scaledRect = rect
+
+        #if canImport(UIKit)
         scaledRect.origin.y = (1.0 - scaledRect.origin.y)
+        #endif
 
         scaledRect.origin.x *= size.width
         scaledRect.origin.y *= size.height
         scaledRect.size.width *= size.width
         scaledRect.size.height *= size.height
+
+        #if canImport(UIKit)
         scaledRect.origin.y -= scaledRect.size.height
+        #endif
 
         return scaledRect.integral
     }

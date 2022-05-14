@@ -4,30 +4,28 @@
 import UIKit
 
 public enum Icons {
-    @available(iOS 13.0, *)
     public static let scanDocument = UIImage(systemName: "doc.text.viewfinder")
 
-    static var undo: UIImage? {
-        if #available(iOS 13.0, *) {
-            return UIImage(systemName: "arrow.uturn.left")
-        }
+    @available(iOS 14.0, *)
+    public static let limitedLibrary = UIImage(systemName: "rectangle.stack.badge.plus")
 
-        return UIImage(named: "Undo")
-    }
+    static var undo: UIImage? { UIImage(systemName: "arrow.uturn.left") }
 
-    static var redo: UIImage? {
-        if #available(iOS 13.0, *) {
-            return UIImage(systemName: "arrow.uturn.right")
-        }
+    static var redo: UIImage? { UIImage(systemName: "arrow.uturn.right") }
 
-        return UIImage(named: "Redo")
-    }
+    static var seekAndDestroy: UIImage? { UIImage(systemName: "magnifyingglass") }
 
-    public static var help: UIImage? {
-        if #available(iOS 13.0, *) {
-            return UIImage(systemName: "gear")
-        }
+    public static var help: UIImage? { UIImage(systemName: "gear") }
 
-        return UIImage(named: "Help")
-    }
+    public static var albums: UIImage? { UIImage(systemName: "rectangle.stack") }
+
+    // MARK: Collections
+
+    public static var favoritesCollection: UIImage? { UIImage(systemName: "suit.heart")?.withRenderingMode(.alwaysTemplate) }
+
+    public static var recentsCollection: UIImage? { UIImage(systemName: "clock")?.withRenderingMode(.alwaysTemplate) }
+
+    public static var screenshotsCollection: UIImage? { UIImage(systemName: "camera.viewfinder")?.withRenderingMode(.alwaysTemplate) }
+
+    public static var standardCollection: UIImage? { UIImage(systemName: "rectangle.stack")?.withRenderingMode(.alwaysTemplate) }
 }

@@ -2,6 +2,16 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import UIKit
+import UniformTypeIdentifiers
+
+extension UIImage {
+    public var type: UTType? {
+        guard let imageTypeString = cgImage?.utType
+        else { return nil }
+
+        return UTType(imageTypeString as String)
+    }
+}
 
 extension UIImage.Orientation {
     var cgImagePropertyOrientation: CGImagePropertyOrientation {

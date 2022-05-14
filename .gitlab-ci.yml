@@ -1,13 +1,16 @@
 stages:
   - test
   - beta
+cache:
+  key: ${CI_PROJECT_PATH_SLUG}
+  paths:
+    - vendor/bundle
 before_script:
   - "bundle install --path vendor/bundle"
-  - "carthage bootstrap --platform ios --cache-builds"
 variables:
   LC_ALL: "en_US.UTF-8"
   LANG: "en_US.UTF-8"
-test:
+ios_test:
   dependencies: []
   stage: test
   artifacts:
@@ -19,7 +22,19 @@ test:
     - "bundle exec fastlane test"
   tags:
     - xcode
-beta:
+mac_test:
+  dependencies: []
+  stage: test
+  artifacts:
+    paths:
+      - fastlane/screenshots
+      - fastlane/logs
+      - fastlane/test_output
+  script:
+    - "bundle exec fastlane mac test"
+  tags:
+    - xcode
+ios_beta:
   dependencies: []
   stage: beta
   artifacts:
@@ -28,6 +43,21 @@ beta:
       - fastlane/logs
   script:
     - "bundle exec fastlane beta"
+  tags:
+    - xcode
+  only:
+    - master
+    - /^release\/(.*)$/
+    - /^future\/(.*)$/
+mac_beta:
+  dependencies: []
+  stage: beta
+  artifacts:
+    paths:
+      - fastlane/screenshots
+      - fastlane/logs
+  script:
+    - "bundle exec fastlane mac beta"
   tags:
     - xcode
   only:
