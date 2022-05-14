@@ -1,43 +1,41 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "ClippingBezier",
-        "repositoryURL": "git@github.com:adamwulf/ClippingBezier.git",
-        "state": {
-          "branch": null,
-          "revision": "b6405e29fc840f89869cbfcbc5ee34ef9d5dfafe",
-          "version": "1.2.2"
-        }
-      },
-      {
-        "package": "PerformanceBezier",
-        "repositoryURL": "https://github.com/adamwulf/PerformanceBezier.git",
-        "state": {
-          "branch": null,
-          "revision": "7676ed00a64377e15aa92e3ba2853e6fb7a143f9",
-          "version": "1.3.1"
-        }
-      },
-      {
-        "package": "Sentry",
-        "repositoryURL": "git@github.com:getsentry/sentry-cocoa.git",
-        "state": {
-          "branch": null,
-          "revision": "967f04b3cd6989df3f9ced3060481a21646c146d",
-          "version": "7.9.0"
-        }
-      },
-      {
-        "package": "Introspect",
-        "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect.git",
-        "state": {
-          "branch": null,
-          "revision": "f2616860a41f9d9932da412a8978fec79c06fe24",
-          "version": "0.1.4"
-        }
+  "pins" : [
+    {
+      "identity" : "clippingbezier",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:adamwulf/ClippingBezier.git",
+      "state" : {
+        "revision" : "b6405e29fc840f89869cbfcbc5ee34ef9d5dfafe",
+        "version" : "1.2.2"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "performancebezier",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/adamwulf/PerformanceBezier.git",
+      "state" : {
+        "revision" : "7676ed00a64377e15aa92e3ba2853e6fb7a143f9",
+        "version" : "1.3.1"
+      }
+    },
+    {
+      "identity" : "sentry-cocoa",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:getsentry/sentry-cocoa.git",
+      "state" : {
+        "revision" : "967f04b3cd6989df3f9ced3060481a21646c146d",
+        "version" : "7.9.0"
+      }
+    },
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/SwiftUI-Introspect.git",
+      "state" : {
+        "revision" : "f2616860a41f9d9932da412a8978fec79c06fe24",
+        "version" : "0.1.4"
+      }
+    }
+  ],
+  "version" : 2
 }

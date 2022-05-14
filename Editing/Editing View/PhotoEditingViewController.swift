@@ -207,7 +207,7 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
     }
 
     @objc public func finishSeeking(_ sender: Any) {
-        photoEditingView.redact(photoEditingView.seekPreviewObservations)
+        photoEditingView.redact(photoEditingView.seekPreviewObservations, joinSiblings: false)
         if photoEditingView.seekPreviewObservations.count > 0 { markHasMadeEdits() }
         cancelSeeking(sender)
     }
@@ -328,7 +328,7 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
 
                 DispatchQueue.main.async { [weak self] in
                     if matchingObservations.count > 0 {
-                        self?.photoEditingView.redact(matchingObservations)
+                        self?.photoEditingView.redact(matchingObservations, joinSiblings: false)
                         self?.markHasMadeEdits()
                     }
 

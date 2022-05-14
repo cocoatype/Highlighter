@@ -137,6 +137,9 @@
 		046C4065247F5BCA0069E8FB /* UserCollectionTableViewCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C4064247F5BCA0069E8FB /* UserCollectionTableViewCellImageView.swift */; };
 		046C4067247F60780069E8FB /* AlbumsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C4066247F60780069E8FB /* AlbumsHeaderView.swift */; };
 		046C4069247F60930069E8FB /* AlbumsHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C4068247F60930069E8FB /* AlbumsHeaderLabel.swift */; };
+		046C406B2482075F0069E8FB /* WordObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C406A2482075F0069E8FB /* WordObservationRedaction.swift */; };
+		046C406D248207BB0069E8FB /* StringTagger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C406C248207BB0069E8FB /* StringTagger.swift */; };
+		046C406F24820C720069E8FB /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C406E24820C720069E8FB /* StringExtensions.swift */; };
 		0470163224D8FD7F0080DC52 /* DesktopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470163124D8FD7F0080DC52 /* DesktopViewController.swift */; };
 		0470163424D906420080DC52 /* DesktopSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470163324D906420080DC52 /* DesktopSceneDelegate.swift */; };
 		0470163724D906820080DC52 /* ShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470163624D906820080DC52 /* ShareItem.swift */; };
@@ -263,6 +266,7 @@
 		04CBB0972658ABB200B792A2 /* ProductPricePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB0962658ABB200B792A2 /* ProductPricePublisher.swift */; };
 		04CBB0992658AF5800B792A2 /* LogPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB0982658AF5800B792A2 /* LogPublisher.swift */; };
 		04CBB09B2658B40C00B792A2 /* PurchaseStatePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB09A2658B40C00B792A2 /* PurchaseStatePublisher.swift */; };
+		04CEA1BD282F630A0080E510 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C406E24820C720069E8FB /* StringExtensions.swift */; };
 		04D442392768438F00F2933C /* SeekBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D442382768438F00F2933C /* SeekBar.swift */; };
 		04D4423C276845EA00F2933C /* SeekTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4423B276845EA00F2933C /* SeekTextField.swift */; };
 		04D68BC7225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC6225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift */; };
@@ -616,6 +620,9 @@
 		046C4064247F5BCA0069E8FB /* UserCollectionTableViewCellImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionTableViewCellImageView.swift; sourceTree = "<group>"; };
 		046C4066247F60780069E8FB /* AlbumsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsHeaderView.swift; sourceTree = "<group>"; };
 		046C4068247F60930069E8FB /* AlbumsHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsHeaderLabel.swift; sourceTree = "<group>"; };
+		046C406A2482075F0069E8FB /* WordObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordObservationRedaction.swift; sourceTree = "<group>"; };
+		046C406C248207BB0069E8FB /* StringTagger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTagger.swift; sourceTree = "<group>"; };
+		046C406E24820C720069E8FB /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		0470163124D8FD7F0080DC52 /* DesktopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopViewController.swift; sourceTree = "<group>"; };
 		0470163324D906420080DC52 /* DesktopSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSceneDelegate.swift; sourceTree = "<group>"; };
 		0470163624D906820080DC52 /* ShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareItem.swift; sourceTree = "<group>"; };
@@ -1120,6 +1127,7 @@
 				04431E5C23581116009FA1F6 /* RedactionSerializer.swift */,
 				042A39AC22811F87009C1C07 /* Redaction.swift */,
 				042A2B86228D08D800353414 /* CharacterObservationRedaction.swift */,
+				046C406A2482075F0069E8FB /* WordObservationRedaction.swift */,
 				042A2B88228D091000353414 /* PathRedaction.swift */,
 				04FF8DAE22EFB996008CF0E9 /* TextObservationRedaction.swift */,
 				04DBC842231E2AEC0004F7DB /* RestoredRedaction.swift */,
@@ -1166,6 +1174,7 @@
 				04A3AEF7227A924D00F21229 /* CharacterObservation.swift */,
 				041BEA3E22EF879700FF07C2 /* TextRecognitionOperation.swift */,
 				04FF8DE022F6D698008CF0E9 /* WordObservationAccessibilityElement.swift */,
+				046C406C248207BB0069E8FB /* StringTagger.swift */,
 			);
 			path = "Text Detection";
 			sourceTree = "<group>";
@@ -1568,6 +1577,7 @@
 				04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */,
 				043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */,
 				04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */,
+				046C406E24820C720069E8FB /* StringExtensions.swift */,
 				045CA3A92771823D00DEA988 /* URLExtensions.swift */,
 				04750E8D26D9E23E00E98BB4 /* UIResponderExtensions.swift */,
 			);
@@ -2401,6 +2411,7 @@
 				041907DC254A6CB700739749 /* Redaction.swift in Sources */,
 				041907E4254A702400739749 /* UIBezierPathExtensions.swift in Sources */,
 				044D4CE02547CC0000701166 /* GeometryExtensions.swift in Sources */,
+				04CEA1BD282F630A0080E510 /* StringExtensions.swift in Sources */,
 				044D4CCE2547CB2800701166 /* TextObservation.swift in Sources */,
 				0419084D254A7FE900739749 /* TextObservationRedaction.swift in Sources */,
 				044D4CD72547CB4300701166 /* CharacterObservation.swift in Sources */,
@@ -2413,6 +2424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				049F92F422CDA4E40090C9BC /* CharacterObservationRedaction.swift in Sources */,
+				046C406D248207BB0069E8FB /* StringTagger.swift in Sources */,
 				045CA3E227719A0B00DEA988 /* DesktopSeekTextBox.swift in Sources */,
 				04750E9426D9EEE100E98BB4 /* DismissBarButtonItem.swift in Sources */,
 				04750E9026D9EEB900E98BB4 /* ActionsBuilderActions.swift in Sources */,
@@ -2443,6 +2455,8 @@
 				04D442392768438F00F2933C /* SeekBar.swift in Sources */,
 				04409441275F170F003155CC /* FeatureFlag.swift in Sources */,
 				04DBC843231E2AEC0004F7DB /* RestoredRedaction.swift in Sources */,
+				046C406B2482075F0069E8FB /* WordObservationRedaction.swift in Sources */,
+				046C406F24820C720069E8FB /* StringExtensions.swift in Sources */,
 				041BEA3722EF75E800FF07C2 /* Icons.swift in Sources */,
 				049F92E822CDA43F0090C9BC /* UIViewControllerExtensions.swift in Sources */,
 				049F92FB22CDA5D90090C9BC /* Toolbar.swift in Sources */,

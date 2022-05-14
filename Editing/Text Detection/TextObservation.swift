@@ -42,21 +42,24 @@ public struct TextRectangleObservation: TextObservation {
 
 public struct WordObservation: TextObservation {
     #if canImport(UIKit)
-    init(bounds: CGRect, string: String, in image: UIImage) {
+    init(bounds: CGRect, string: String, in image: UIImage, textObservationUUID: UUID) {
         let imageSize = image.size * image.scale
         self.bounds = CGRect.flippedRect(from: bounds, scaledTo: imageSize)
         self.string = string
+        self.textObservationUUID = textObservationUUID
     }
     #elseif canImport(AppKit)
-    init(bounds: CGRect, string: String, in image: NSImage) {
+    init(bounds: CGRect, string: String, in image: NSImage, textObservationUUID: UUID) {
         let imageSize = image.size
         self.bounds = CGRect.flippedRect(from: bounds, scaledTo: imageSize)
         self.string = string
+        self.textObservationUUID = textObservationUUID
     }
     #endif
 
     public let bounds: CGRect
     public let string: String
+    public let textObservationUUID: UUID
 }
 
 extension Array where Element == WordObservation {

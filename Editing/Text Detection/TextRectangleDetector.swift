@@ -49,19 +49,20 @@ public class TextRectangleDetector: NSObject {
                 // Detect all text in image.
                 guard let results = recognitionOperation?.recognizedTextResults else { return }
 
-                // For every observation, get the top candidate.
-                let candidates = results.compactMap { $0.topCandidates(1).first }
+                let observations = results.flatMap { result -> [WordObservation] in
+                    // For every observation, get the top candidate.
+                    guard let topCandidate = result.topCandidates(1).first else {
+                        assertionFailure("had zero top candidates")
+                        return []
+                    }
 
-                // Flatten together every struct.
-                let observations = candidates.flatMap { candidate -> [WordObservation] in
-                    // Take the top candidate's string and split it on word boundaries.
-                    let words = candidate.string.words
+                    let words = topCandidate.string.words
                     return words.compactMap { word -> WordObservation? in
                         let (wordString, wordRange) = word
-                        guard let bounds = try? candidate.boundingBox(for: wordRange)?.boundingBox else { return nil }
+                        guard let bounds = try? topCandidate.boundingBox(for: wordRange)?.boundingBox else { return nil }
 
                         // Generate (bounding box, word) structs for every word in the string.
-                        return WordObservation(bounds: bounds, string: wordString, in: image)
+                        return WordObservation(bounds: bounds, string: wordString, in: image, textObservationUUID: result.uuid)
                     }
                 }
 
@@ -80,11 +81,11 @@ public class TextRectangleDetector: NSObject {
                 // Detect all text in image.
                 guard let results = recognitionOperation?.recognizedTextResults else { return }
 
-                // For every observation, get the top candidate.
-                let candidates = results.compactMap { $0.topCandidates(1).first }
-
                 // Flatten together every struct.
-                let observations = candidates.flatMap { candidate -> [WordObservation] in
+                let observations = results.flatMap { result -> [WordObservation] in
+                    // For every observation, get the top candidate.
+                    guard let candidate = result.topCandidates(1).first else { return [] }
+
                     // Take the top candidate's string and split it on word boundaries.
                     let words = candidate.string.words
                     return words.compactMap { word -> WordObservation? in
@@ -92,7 +93,7 @@ public class TextRectangleDetector: NSObject {
                         guard let bounds = try? candidate.boundingBox(for: wordRange)?.boundingBox else { return nil }
 
                         // Generate (bounding box, word) structs for every word in the string.
-                        return WordObservation(bounds: bounds, string: wordString, in: image)
+                        return WordObservation(bounds: bounds, string: wordString, in: image, textObservationUUID: result.uuid)
                     }
                 }
 
@@ -107,16 +108,4 @@ public class TextRectangleDetector: NSObject {
     // MARK: Boilerplate
 
     private let operationQueue = OperationQueue()
-}
-
-private extension String {
-    var words: [(String, Range<String.Index>)] {
-        var words = [(String, Range<String.Index>)]()
-        enumerateSubstrings(in: startIndex..<endIndex, options: [.byWords]) { word, wordRange, _, _ in
-            guard let word = word else { return }
-            words.append((word, wordRange))
-        }
-
-        return words
-    }
 }
