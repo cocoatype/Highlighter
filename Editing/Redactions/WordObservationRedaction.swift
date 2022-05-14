@@ -3,7 +3,6 @@
 
 import UIKit
 
-//struct WordObservationRedaction: Redaction {
 #if canImport(UIKit)
 extension Redaction {
     init(_ wordObservations: [WordObservation], color: UIColor) {
