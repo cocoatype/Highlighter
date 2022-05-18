@@ -347,7 +347,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     }
 
     // MARK: Sharing
-    @objc func sharePhoto(_ sender: Any) {
+    @objc public func sharePhoto(_ sender: Any) {
         let imageType = image?.type
         exportImage { [weak self] image in
             guard let exportedImage = image else { return }

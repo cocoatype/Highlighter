@@ -46,7 +46,7 @@ class PhotoEditingNavigationController: NavigationController, PhotoEditingProtec
         photoEditingViewController.present(alertController, animated: true)
     }
 
-    @objc func destructivelyDismissPhotoEditingViewController() {
+    func destructivelyDismissPhotoEditingViewController() {
         if let image = photoEditingViewController.image {
             photoEditingViewController.completionHandler?(image)
         }
@@ -66,6 +66,10 @@ class PhotoEditingNavigationController: NavigationController, PhotoEditingProtec
                 }
             })
         }
+    }
+
+    func presentShareDialogInPhotoEditingViewController() {
+        photoEditingViewController.sharePhoto(self)
     }
 
     private let photoEditingViewController: PhotoEditingViewController
