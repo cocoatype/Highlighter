@@ -49,6 +49,7 @@
 	<key>INIntentsSupported</key>
 	<array>
 		<string>RedactImageIntent</string>
+		<string>RedactDetectedIntent</string>
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
@@ -62,13 +63,14 @@
 	<string>Black Highlighter accesses your camera to scan documents for redaction.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Black Highlighter accesses your photo library to open photos for redaction and to save redacted photos.</string>
-	<key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
-	<true/>
 	<key>NSUserActivityTypes</key>
 	<array>
+		<string>RedactDetectedIntent</string>
 		<string>RedactImageIntent</string>
 		<string>com.cocoatype.Highlighter.editing</string>
 	</array>
+	<key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
+	<true/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Aleo-Bold.otf</string>
