@@ -3,7 +3,6 @@
 
 import UIKit
 
-@available(iOS 13.0, *)
 class DocumentScannerPhotoLibraryViewCell: UICollectionViewCell {
     static let identifier = "DocumentScannerPhotoLibraryViewCell.identifier"
 

@@ -11,7 +11,6 @@ import AppKit
 import UIKit
 #endif
 
-@available(iOS 13.0, *)
 class TextRecognitionOperation: Operation {
     #if canImport(UIKit)
     init(image: UIImage) throws {

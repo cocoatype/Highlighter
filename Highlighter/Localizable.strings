@@ -76,6 +76,7 @@
 "PhotoEditingProtectionAlertController.cancelButtonTitle" = "Cancel";
 "PhotoEditingProtectionAlertController.deleteButtonTitle" = "Delete Changes";
 "PhotoEditingProtectionAlertController.saveButtonTitle" = "Save to Photos";
+"PhotoEditingProtectionAlertController.shareButtonTitle" = "Share Image";
 
 "PhotoEditingViewController.defaultImageName" = "Redacted Image";
 

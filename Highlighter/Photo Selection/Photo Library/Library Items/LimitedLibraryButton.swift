@@ -3,7 +3,6 @@
 
 import SwiftUI
 
-@available(iOS 14.0, *)
 struct LimitedLibraryButton: View {
     var body: some View {
         GeometryReader { proxy in
@@ -19,12 +18,10 @@ struct LimitedLibraryButton: View {
     @EnvironmentObject private var navigationWrapper: NavigationWrapper
 }
 
-@available(iOS 14.0, *)
 protocol LimitedLibraryPresenting {
     func presentLimitedLibrary()
 }
 
-@available(iOS 14.0, *)
 extension UIResponder {
     var limitedLibraryPresenter: LimitedLibraryPresenting? {
         if let presenter = (self as? LimitedLibraryPresenting) {

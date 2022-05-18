@@ -3,7 +3,6 @@
 
 import PhotosUI
 
-@available(iOS 14.0, *)
 class PhotoPicker: NSObject, PHPickerViewControllerDelegate {
     weak var delegate: PhotoPickerDelegate?
 
@@ -33,7 +32,6 @@ class PhotoPicker: NSObject, PHPickerViewControllerDelegate {
     }
 }
 
-@available(iOS 14.0, *)
 protocol PhotoPickerDelegate: AnyObject {
     func picker(_ picker: PhotoPicker, didSelectImage image: UIImage?)
 }

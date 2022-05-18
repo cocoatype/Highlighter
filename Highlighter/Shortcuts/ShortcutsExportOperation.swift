@@ -5,7 +5,6 @@ import Editing
 import Intents
 import UniformTypeIdentifiers
 
-@available(iOS 14.0, *)
 class ShortcutsExportOperation: Operation {
     var result: Result<INFile, Error>?
 
@@ -105,7 +104,6 @@ class ShortcutsExportOperation: Operation {
     private let redactions: [Redaction]
 }
 
-@available(iOS 14.0, *)
 enum ShortcutsExportError: Error {
     case failedToGenerateGraphicsContext
     case failedToRenderImage

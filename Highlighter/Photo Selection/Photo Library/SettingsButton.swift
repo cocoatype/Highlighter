@@ -3,7 +3,6 @@
 
 import SwiftUI
 
-@available(iOS 14.0, *)
 struct SettingsButton: View {
     @EnvironmentObject var navigationWrapper: NavigationWrapper
 
@@ -16,7 +15,6 @@ struct SettingsButton: View {
     }
 }
 
-@available(iOS 14.0, *)
 struct SettingsButton_Previews: PreviewProvider {
     static var previews: some View {
         SettingsButton()

@@ -51,7 +51,7 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
     }
 
     public var redactions: [Redaction] {
-        return workspaceView.redactions
+        workspaceView.redactions
     }
 
     public func add(_ redactions: [Redaction]) {
@@ -59,7 +59,7 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
     }
 
     func redact<ObservationType: TextObservation>(_ observations: [ObservationType], joinSiblings: Bool) {
-        self.workspaceView.redact(observations, joinSiblings: joinSiblings)
+        workspaceView.redact(observations, joinSiblings: joinSiblings)
     }
 
     var seekPreviewObservations: [WordObservation] {
@@ -83,7 +83,7 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
     // MARK: Boilerplate
 
     private let photoScrollView = PhotoEditingScrollView()
-    private var workspaceView: PhotoEditingWorkspaceView { return photoScrollView.workspaceView }
+    private var workspaceView: PhotoEditingWorkspaceView { photoScrollView.workspaceView }
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

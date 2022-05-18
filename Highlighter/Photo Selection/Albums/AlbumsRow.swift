@@ -3,7 +3,6 @@
 
 import SwiftUI
 
-@available(iOS 14.0, *)
 struct AlbumsRow: View {
     @Binding var selection: String?
     private let collection: Collection

@@ -3,8 +3,7 @@
 
 import UIKit
 
-@available(iOS 14.0, *)
-public class SplitViewController: UISplitViewController {
+open class SplitViewController: UISplitViewController {
     public init(primaryViewController: UIViewController, secondaryViewController: UIViewController) {
         super.init(style: .doubleColumn)
         setViewController(primaryViewController, for: .primary)
@@ -24,7 +23,7 @@ public class SplitViewController: UISplitViewController {
     // MARK: Boilerplate
 
     @available(*, unavailable)
-    required init(coder: NSCoder) {
+    public required init(coder: NSCoder) {
         let typeName = NSStringFromClass(type(of: self))
         fatalError("\(typeName) does not implement init(coder:)")
     }

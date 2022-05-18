@@ -5,7 +5,6 @@ import Editing
 import Photos
 import SwiftUI
 
-@available(iOS 14.0, *)
 class AlbumsViewController: UIHostingController<AlbumsList>, NavigationWrapper.NavigationObject {
     init() {
         let albumsDataSource = CollectionsDataSource()

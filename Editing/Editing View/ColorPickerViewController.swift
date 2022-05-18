@@ -3,7 +3,6 @@
 
 import UIKit
 
-@available(iOS 14.0, *)
 class ColorPickerViewController: UIColorPickerViewController {
     override init() {
         super.init()

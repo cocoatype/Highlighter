@@ -18,14 +18,6 @@ class SystemCollectionTableViewCell: UITableViewCell, CollectionTableViewCell {
         contentView.addSubview(label)
         contentView.addSubview(iconImageView)
 
-        let labelAlignmentConstraint: NSLayoutConstraint
-
-        if #available(iOS 13.0, *) {
-            labelAlignmentConstraint = label.firstBaselineAnchor.constraint(equalTo: iconImageView.firstBaselineAnchor)
-        } else {
-            labelAlignmentConstraint = label.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor)
-        }
-
         NSLayoutConstraint.activate([
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -34,7 +26,7 @@ class SystemCollectionTableViewCell: UITableViewCell, CollectionTableViewCell {
             iconImageView.heightAnchor.constraint(equalToConstant: 36),
             label.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8),
             label.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -15),
-            labelAlignmentConstraint
+            label.firstBaselineAnchor.constraint(equalTo: iconImageView.firstBaselineAnchor)
         ])
     }
 

@@ -3,7 +3,6 @@
 
 import SwiftUI
 
-@available(iOS 14.0, *)
 struct AlbumsSectionHeader: View {
     private let text: String
 

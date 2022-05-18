@@ -4,7 +4,6 @@
 import UIKit
 
 #if !targetEnvironment(macCatalyst)
-@available(iOS 14.0, *)
 class LimitedLibraryPhotoLibraryViewCell: UICollectionViewCell {
     static let identifier = "LimitedLibraryPhotoLibraryViewCell.identifier"
 

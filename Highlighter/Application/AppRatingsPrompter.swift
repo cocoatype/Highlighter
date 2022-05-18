@@ -10,11 +10,7 @@ class AppRatingsPrompter: NSObject {
         guard let windowScene = windowScene else { return }
         let numberOfSaves = Defaults.numberOfSaves % 50
         if triggeringNumberOfSaves.contains(numberOfSaves) {
-            if #available(iOS 14.0, *) {
-                SKStoreReviewController.requestReview(in: windowScene)
-            } else {
-                SKStoreReviewController.requestReview()
-            }
+            SKStoreReviewController.requestReview(in: windowScene)
         }
     }
 

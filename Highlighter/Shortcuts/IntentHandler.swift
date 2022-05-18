@@ -4,7 +4,6 @@
 import Intents
 import UIKit
 
-@available(iOS 14.0, *)
 class IntentHandler: INExtension, RedactImageIntentHandling, RedactDetectedIntentHandling {
     // MARK: Redact Detection
 

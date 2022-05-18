@@ -5,7 +5,6 @@ import Editing
 import UIKit
 
 #if !targetEnvironment(macCatalyst)
-@available(iOS 14.0, *)
 class LimitedLibraryPhotoLibraryViewCellIconView: UIImageView {
     init() {
         super.init(image: Icons.limitedLibrary)

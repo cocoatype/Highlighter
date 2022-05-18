@@ -4,7 +4,6 @@
 import Photos
 import SwiftUI
 
-@available(iOS 14.0, *)
 struct AssetButton: View {
     init(_ asset: PHAsset) { self.init(Asset(asset)) }
     init(_ asset: Asset) {
@@ -32,7 +31,6 @@ struct AssetButton: View {
     @EnvironmentObject private var navigationWrapper: NavigationWrapper
 }
 
-@available(iOS 14.0, *)
 struct AssetButton_Previews: PreviewProvider {
     class PreviewAsset: Asset {
         init() {

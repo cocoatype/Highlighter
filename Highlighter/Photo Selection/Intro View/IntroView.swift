@@ -14,10 +14,9 @@ struct IntroView: View {
         VStack(alignment: .leading, spacing: 3) {
             IntroLabel("IntroView.permissionLabelText")
             IntroButton("IntroView.permissionButtonTitle", action: permissionAction)
-            if #available(iOS 14.0, *) {
-                IntroLabel("IntroView.importLabelText").padding(.top, 12)
-                IntroButton("IntroView.importButtonTitle", action: importAction)
-            }
+
+            IntroLabel("IntroView.importLabelText").padding(.top, 12)
+            IntroButton("IntroView.importButtonTitle", action: importAction)
         }.background(Color.appPrimary).frame(maxWidth: 240)
     }
 

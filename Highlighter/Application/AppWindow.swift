@@ -39,7 +39,6 @@ class AppWindow: UIWindow {
     private let appViewController = AppViewController()
     private let imageCache = RestorationImageCache()
 
-    @available(iOS 13.0, *)
     init(scene: UIWindowScene) {
         super.init(frame: scene.coordinateSpace.bounds)
         setup()

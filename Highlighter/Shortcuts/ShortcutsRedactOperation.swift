@@ -7,7 +7,6 @@ import os.log
 import UIKit
 import UniformTypeIdentifiers
 
-@available(iOS 14.0, *)
 class ShortcutRedactor: NSObject {
     func redact(_ input: INFile, words wordList: [String]) async throws -> INFile {
         guard let image = UIImage(data: input.data) else { throw ShortcutsRedactorError.noImage }
@@ -57,7 +56,6 @@ extension DetectionKind {
     }
 }
 
-@available(iOS 14.0, *)
 enum ShortcutsRedactorError: Error {
     case noImage
 }

@@ -3,7 +3,6 @@
 
 import UIKit
 
-@available(iOS 14.0, *)
 class HighlighterToolBarButtonItem: UIBarButtonItem {
     convenience init(tool: HighlighterTool, target: AnyObject?) {
         self.init(title: "foo", image: tool.image)

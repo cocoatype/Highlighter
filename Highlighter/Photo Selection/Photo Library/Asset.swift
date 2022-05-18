@@ -4,7 +4,6 @@
 import Photos
 import SwiftUI
 
-@available(iOS 14.0, *)
 class Asset: ObservableObject {
     @Published var image: UIImage?
     let photoAsset: PHAsset
