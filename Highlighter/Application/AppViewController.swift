@@ -8,7 +8,7 @@ import UIKit
 import VisionKit
 import SwiftUI
 
-class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, SettingsPresenting, CollectionPresenting, LimitedLibraryPresenting {
+class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, SettingsPresenting, LimitedLibraryPresenting {
     init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
         self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
@@ -26,37 +26,12 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
     private let permissionsRequester: PhotoPermissionsRequester
     private var preferredViewController: UIViewController {
         switch permissionsRequester.authorizationStatus() {
-        case .authorized, .limited:
-            let albumsNavigationController = NavigationController(rootViewController: AlbumsViewController())
-            let photoLibraryNavigationController = NavigationController(rootViewController: PhotoLibraryViewController())
-            return SplitViewController(primaryViewController: albumsNavigationController, secondaryViewController: photoLibraryNavigationController)
+        case .authorized, .limited: return LibrarySplitViewController()
         default: return IntroViewController()
         }
     }
 
     var stateRestorationActivity: NSUserActivity? { photoEditingViewController?.userActivity }
-
-    // MARK: Library
-
-    private var librarySplitViewController: SplitViewController? {
-        children.first(where: { $0 is SplitViewController }) as? SplitViewController
-    }
-
-    private var photoLibraryViewController: PhotoLibraryViewController? {
-        guard let photoLibraryNavigationController = librarySplitViewController?.viewController(for: .secondary) as? NavigationController,
-              let photoLibraryViewController = photoLibraryNavigationController.viewControllers.first as? PhotoLibraryViewController
-        else { return nil }
-        return photoLibraryViewController
-    }
-
-    func present(_ collection: Collection) {
-        photoLibraryViewController?.collection = collection
-        librarySplitViewController?.show(.secondary)
-    }
-
-    @objc func refreshLibrary(_ sender: AnyObject) {
-        photoLibraryViewController?.reloadData()
-    }
 
     // MARK: Limited Library
 

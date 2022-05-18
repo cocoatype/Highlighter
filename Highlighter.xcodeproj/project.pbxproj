@@ -280,6 +280,7 @@
 		04CEA1D528343E750080E510 /* CharacterObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3AEF7227A924D00F21229 /* CharacterObservation.swift */; };
 		04CEA1DA283443060080E510 /* RecognizedTextObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CEA1D9283443060080E510 /* RecognizedTextObservation.swift */; };
 		04CEA1DB283446860080E510 /* RecognizedTextObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CEA1D9283443060080E510 /* RecognizedTextObservation.swift */; };
+		04CEA1DF2834D86D0080E510 /* LibrarySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CEA1DE2834D86D0080E510 /* LibrarySplitViewController.swift */; };
 		04D442392768438F00F2933C /* SeekBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D442382768438F00F2933C /* SeekBar.swift */; };
 		04D4423C276845EA00F2933C /* SeekTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4423B276845EA00F2933C /* SeekTextField.swift */; };
 		04D68BC7225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC6225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift */; };
@@ -748,6 +749,7 @@
 		04CEA1CF28343DC30080E510 /* TextRectangleObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRectangleObservation.swift; sourceTree = "<group>"; };
 		04CEA1D228343E030080E510 /* RecognizedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizedText.swift; sourceTree = "<group>"; };
 		04CEA1D9283443060080E510 /* RecognizedTextObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizedTextObservation.swift; sourceTree = "<group>"; };
+		04CEA1DE2834D86D0080E510 /* LibrarySplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySplitViewController.swift; sourceTree = "<group>"; };
 		04D442382768438F00F2933C /* SeekBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekBar.swift; sourceTree = "<group>"; };
 		04D4423B276845EA00F2933C /* SeekTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekTextField.swift; sourceTree = "<group>"; };
 		04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
@@ -957,6 +959,7 @@
 				0474B06E27BDEE010031210C /* Document Scanning */,
 				0429C7C02663851600236D10 /* Extensions */,
 				0445AA572371207000EB2A7B /* Image Downloading */,
+				04CEA1DD2834D85D0080E510 /* Library */,
 				048909EF2265716B0048E203 /* Photo Editing */,
 				041EFF6C225C38600058D8EE /* Photo Selection */,
 				04F3C7A32300204B00445A8D /* Purchasing */,
@@ -1604,6 +1607,14 @@
 				04CEA1CA283345220080E510 /* RedactDetectedIntentResponseCodeExtensions.swift */,
 			);
 			path = "Redact Detections";
+			sourceTree = "<group>";
+		};
+		04CEA1DD2834D85D0080E510 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				04CEA1DE2834D86D0080E510 /* LibrarySplitViewController.swift */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 		04D4423A276845D800F2933C /* Seek and Destroy */ = {
@@ -2254,6 +2265,7 @@
 			files = (
 				04920C1924CFD02F00BA3232 /* PhotoAssetEditingContainer.swift in Sources */,
 				0482C79D25218D400013B69E /* DesktopAutoRedactionsListView.swift in Sources */,
+				04CEA1DF2834D86D0080E510 /* LibrarySplitViewController.swift in Sources */,
 				0429C7B42661E37200236D10 /* DesktopSettingsView.swift in Sources */,
 				0431E0CF22F830BB00DC85C4 /* DocumentScannerPhotoLibraryViewCellIconView.swift in Sources */,
 				0445AA592371208B00EB2A7B /* ImageDownloader.swift in Sources */,
