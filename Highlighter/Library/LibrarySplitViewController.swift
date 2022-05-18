@@ -2,9 +2,10 @@
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
 import Editing
+import Photos
 import UIKit
 
-class LibrarySplitViewController: SplitViewController, CollectionPresenting {
+class LibrarySplitViewController: SplitViewController, CollectionPresenting, LimitedLibraryPresenting {
     init() {
         let albumsNavigationController = NavigationController(rootViewController: AlbumsViewController())
         let photoLibraryNavigationController = NavigationController(rootViewController: PhotoLibraryViewController())
@@ -27,5 +28,18 @@ class LibrarySplitViewController: SplitViewController, CollectionPresenting {
 
     @objc func refreshLibrary(_ sender: AnyObject) {
         photoLibraryViewController?.reloadData()
+    }
+
+    // MARK: Limited Library
+
+    func presentLimitedLibrary() {
+        PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: self)
+    }
+
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        if viewControllerToPresent is UIImagePickerController {
+            viewControllerToPresent.overrideUserInterfaceStyle = .dark
+        }
+        super.present(viewControllerToPresent, animated: flag, completion: completion)
     }
 }

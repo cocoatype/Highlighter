@@ -8,7 +8,7 @@ import UIKit
 import VisionKit
 import SwiftUI
 
-class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, SettingsPresenting, LimitedLibraryPresenting {
+class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, SettingsPresenting {
     init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
         self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
@@ -32,19 +32,6 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
     }
 
     var stateRestorationActivity: NSUserActivity? { photoEditingViewController?.userActivity }
-
-    // MARK: Limited Library
-
-    func presentLimitedLibrary() {
-        PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: self)
-    }
-
-    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
-        if viewControllerToPresent is UIImagePickerController {
-            viewControllerToPresent.overrideUserInterfaceStyle = .dark
-        }
-        super.present(viewControllerToPresent, animated: flag, completion: completion)
-    }
 
     // MARK: Photo Editing View Controller
 
