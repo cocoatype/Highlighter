@@ -14,27 +14,25 @@ import UIKit
 @available(iOS 13.0, *)
 class TextRecognitionOperation: Operation {
     #if canImport(UIKit)
-    init?(image: UIImage) {
-        guard let cgImage = image.cgImage else { return nil }
+    init(image: UIImage) throws {
+        guard let cgImage = image.cgImage else { throw TextRecognitionOperationError.cannotCreateCGImageFromImage }
         self.imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: image.imageOrientation.cgImagePropertyOrientation)
+        self.imageSize = CGSize(width: cgImage.width, height: cgImage.height)
 
         super.init()
     }
     #elseif canImport(AppKit)
-    init?(image: NSImage) {
+    init(image: NSImage) throws {
         var imageRect = NSRect(origin: .zero, size: image.size)
-        guard let cgImage = image.cgImage(forProposedRect: &imageRect, context: nil, hints: nil) else { return nil }
+        guard let cgImage = image.cgImage(forProposedRect: &imageRect, context: nil, hints: nil) else { throw TextRecognitionOperationError.cannotCreateCGImageFromImage }
 
         self.imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: .up)
+        self.imageSize = CGSize(width: cgImage.width, height: cgImage.height)
     }
     #endif
 
-    init(url: URL) {
-        self.imageRequestHandler = VNImageRequestHandler(url: url)
-        super.init()
-    }
-
     var recognizedTextResults: [VNRecognizedTextObservation]?
+    let imageSize: CGSize
 
     override func start() {
         os_log("running recognition")
@@ -50,6 +48,8 @@ class TextRecognitionOperation: Operation {
             self?._finished = true
             self?._executing = false
         }
+        imageRequest.recognitionLevel = .accurate
+        imageRequest.usesLanguageCorrection = true
 
         do {
             try imageRequestHandler.perform([imageRequest])
@@ -95,4 +95,8 @@ class TextRecognitionOperation: Operation {
         }
     }
     override var isFinished: Bool { return _finished }
+}
+
+public enum TextRecognitionOperationError: Error {
+    case cannotCreateCGImageFromImage
 }

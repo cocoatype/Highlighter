@@ -47,7 +47,7 @@ class RedactAction: AMBundleAction, NSTextFieldDelegate {
         wordList.replaceSubrange(row...row, with: [sender.stringValue])
     }
 
-    private let detector = TextRectangleDetector()
+    private let detector = TextDetector()
     private let operationQueue: OperationQueue = {
         let operationQueue = OperationQueue()
         operationQueue.qualityOfService = .userInitiated

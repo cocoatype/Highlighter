@@ -47,7 +47,7 @@ class RedactOperation: Operation {
 
     // MARK: Boilerplate
 
-    private let detector = TextRectangleDetector()
+    private let detector = TextDetector()
     private let input: RedactActionInput
     private let wordList: [String]
 

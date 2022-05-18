@@ -317,24 +317,33 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
             }
         }
 
-        if #available(iOS 13.0, *) {
-            textRectangleDetector.detectWords(in: image) { [weak self] recognizedTextObservations in
-                guard let observations = recognizedTextObservations else { return }
-                let matchingObservations = observations.filter { observation in
-                    Defaults.autoRedactionsWordList.contains(where: { wordListString in
-                        wordListString.compare(observation.string, options: [.caseInsensitive, .diacriticInsensitive]) == .orderedSame
-                    })
-                }
-
-                DispatchQueue.main.async { [weak self] in
-                    if matchingObservations.count > 0 {
-                        self?.photoEditingView.redact(matchingObservations, joinSiblings: false)
-                        self?.markHasMadeEdits()
-                    }
-
-                    self?.photoEditingView.wordObservations = observations
+        textRectangleDetector.detectText(in: image) { [weak self] recognizedTextObservations in
+            guard let observations = recognizedTextObservations else { return }
+            Task { [weak self] in
+                await MainActor.run { [weak self] in
+                    self?.updateWordObservations(from: observations)
+                    self?.autoRedact(using: observations)
                 }
             }
+        }
+    }
+
+    @MainActor
+    private func updateWordObservations(from textObservations: [RecognizedTextObservation]) {
+        photoEditingView.wordObservations = textObservations.flatMap(\.allWordObservations)
+    }
+
+    @MainActor
+    private func autoRedact(using textObservations: [RecognizedTextObservation]) {
+        let matchingObservations = Defaults.autoRedactionsWordList.flatMap { word -> [WordObservation] in
+            return textObservations.flatMap { observation -> [WordObservation] in
+                observation.wordObservations(matching: word)
+            }
+        }
+
+        if matchingObservations.count > 0 {
+            photoEditingView.redact(matchingObservations, joinSiblings: false)
+            markHasMadeEdits()
         }
     }
 
@@ -412,7 +421,7 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
     private var colorObserver: Any?
     private let imageCache = RestorationImageCache()
     private let imageManager = PHImageManager()
-    private let textRectangleDetector = TextRectangleDetector()
+    private let textRectangleDetector = TextDetector()
     private let photoEditingView = PhotoEditingView()
     private var redactionChangeObserver: Any?
 
