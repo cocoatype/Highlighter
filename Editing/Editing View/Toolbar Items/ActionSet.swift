@@ -20,11 +20,9 @@ struct ActionSet {
             SeekBarButtonItem(target: target)
         }
 
-        if #available(iOS 14, *), sizeClass == .regular {
+        if sizeClass == .regular {
             ColorPickerBarButtonItem(target: target)
             HighlighterToolBarButtonItem(tool: selectedTool, target: target)
-        } else if sizeClass == .regular {
-            LegacyHighlighterToolBarButtonItem(tool: selectedTool, target: target)
         }
     }
 
@@ -38,12 +36,8 @@ struct ActionSet {
                 SeekBarButtonItem(target: target)
             }
 
-            if #available(iOS 14, *) {
-                ColorPickerBarButtonItem(target: target)
-                HighlighterToolBarButtonItem(tool: selectedTool, target: target)
-            } else {
-                LegacyHighlighterToolBarButtonItem(tool: selectedTool, target: target)
-            }
+            ColorPickerBarButtonItem(target: target)
+            HighlighterToolBarButtonItem(tool: selectedTool, target: target)
         }
     }
 

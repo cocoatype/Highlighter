@@ -61,8 +61,6 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
     // MARK: UICollectionViewDragDelegate
 
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        guard #available(iOS 13.0, *) else { return [] }
-
         let item = dataSource.item(at: indexPath)
         guard case .asset(let asset) = item else { return [] }
 

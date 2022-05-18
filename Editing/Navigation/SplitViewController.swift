@@ -3,7 +3,6 @@
 
 import UIKit
 
-@available(iOS 14.0, *)
 public class SplitViewController: UISplitViewController {
     public init(primaryViewController: UIViewController, secondaryViewController: UIViewController) {
         super.init(style: .doubleColumn)

@@ -10,9 +10,7 @@ class SystemCollectionTableViewCellImageView: UIImageView {
         tintColor = .white
         translatesAutoresizingMaskIntoConstraints = false
 
-        if #available(iOS 13.0, *) {
-            preferredSymbolConfiguration = UIImage.SymbolConfiguration(textStyle: .body, scale: .large)
-        }
+        preferredSymbolConfiguration = UIImage.SymbolConfiguration(textStyle: .body, scale: .large)
     }
 
     override var intrinsicContentSize: CGSize { return CGSize(width: 36, height: 36) }

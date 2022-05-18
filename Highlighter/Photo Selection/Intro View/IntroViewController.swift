@@ -9,15 +9,7 @@ class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
     init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
         self.permissionsRequester = permissionsRequester
         super.init(rootView: IntroView())
-
-        let introView: IntroView
-        if #available(iOS 14.0, *) {
-            introView = IntroView(permissionAction: requestPermission, importAction: importPhoto)
-        } else {
-            introView = IntroView(permissionAction: requestPermission)
-        }
-
-        self.rootView = introView
+        self.rootView = IntroView(permissionAction: requestPermission, importAction: importPhoto)
     }
 
     override func viewWillLayoutSubviews() {
@@ -42,14 +34,12 @@ class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
         }
     }
 
-    @available(iOS 14.0, *)
     @objc func importPhoto() {
         present(photoPicker.pickerViewController, animated: true)
     }
 
     // MARK: PhotoPickerDelegate
 
-    @available(iOS 14.0, *)
     func picker(_ picker: PhotoPicker, didSelectImage image: UIImage?) {
         DispatchQueue.main.async { [weak self] in
             self?.dismiss(animated: true)
@@ -63,7 +53,6 @@ class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
 
     private let permissionsRequester: PhotoPermissionsRequester
 
-    @available(iOS 14.0, *)
     private lazy var photoPicker: PhotoPicker = {
         let picker = PhotoPicker()
         picker.delegate = self

@@ -5,11 +5,7 @@ import SwiftUI
 
 struct SettingsListStyleModifier: ViewModifier {
     func body(content: Content) -> some View {
-        if #available(iOS 14, *) {
-            AnyView(content).listStyle(InsetGroupedListStyle())
-        } else {
-            AnyView(content).listStyle(GroupedListStyle())
-        }
+        AnyView(content).listStyle(InsetGroupedListStyle())
     }
 }
 

@@ -152,14 +152,6 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         return seekBar
     }
 
-//    private func updateAccessoryView() {
-//        if isSeeking, traitCollection.horizontalSizeClass != .regular {
-//            self.inputAccessoryView = seekBar
-//        } else {
-//            self.inputAccessoryView = nil
-//        }
-//    }
-
     @objc public func toggleSeeking(_ sender: Any) {
         if isSeeking {
             cancelSeeking(sender)
@@ -237,7 +229,6 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
 
     // MARK: Color Picker
 
-    @available(iOS 14.0, *)
     @objc public func showColorPicker(_ sender: Any) {
         if traitCollection.userInterfaceIdiom == .mac {
             ColorPanel.shared.makeKeyAndOrderFront(sender)
@@ -249,7 +240,6 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         }
     }
 
-    @available(iOS 14.0, *)
     public func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
         photoEditingView.color = viewController.selectedColor
     }
@@ -284,12 +274,6 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
         } else if action == #selector(redo(_:)) {
             return undoManager?.canRedo ?? false
         }
-
-#if targetEnvironment(macCatalyst)
-//        if action == #selector(PhotoEditingViewController.save(_:)) {
-//            return self.canSave
-//        }
-#endif
 
         return super.canPerformAction(action, withSender: sender)
     }

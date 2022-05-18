@@ -24,18 +24,13 @@ class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
     // MARK: Limited Library
 
     private var shouldShowLimitedLibraryCell: Bool {
-        if #available(iOS 14.0, *), permissionsRequester.authorizationStatus() == .limited { return true }
-        return false
+        permissionsRequester.authorizationStatus() == .limited
     }
 
     func limitedLibraryCell(for collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
         #if targetEnvironment(macCatalyst)
         ErrorHandling.crash("Tried to display a limited library cell on macOS")
         #else
-        guard #available(iOS 14.0, *) else {
-            ErrorHandling.crash("Tried to display a limited library cell on iOS version prior to iOS 14.0")
-        }
-
         return collectionView.dequeueReusableCell(withReuseIdentifier: LimitedLibraryPhotoLibraryViewCell.identifier, for: indexPath)
         #endif
     }

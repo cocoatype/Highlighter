@@ -4,7 +4,6 @@
 import Editing
 import Intents
 
-@available(iOS 14.0, *)
 class ShortcutsRedactExporter: NSObject {
     static func export(_ input: INFile, redactions: [Redaction], completionHandler: @escaping((Result<INFile, Error>) -> Void)) {
         let exportOperation = ShortcutsExportOperation(input: input, redactions: redactions)

@@ -4,7 +4,6 @@
 import Foundation
 import Photos
 
-@available(iOS 14.0, *)
 class NavigationWrapper: NSObject, ObservableObject {
     typealias NavigationObject = (SettingsPresenting & PhotoEditorPresenting & DocumentScannerPresenting & CollectionPresenting & LimitedLibraryPresenting)
     init(navigationObject: NavigationObject) {
@@ -40,7 +39,6 @@ class NavigationWrapper: NSObject, ObservableObject {
     private let navigationObject: NavigationObject?
 }
 
-@available(iOS 14.0, *)
 extension UIResponder {
     var navigationObject: NavigationWrapper.NavigationObject? {
         if let navigationObject = (self as? NavigationWrapper.NavigationObject) {

@@ -3,12 +3,10 @@
 
 import UIKit
 
-@available(iOS 14.0, *)
 protocol CollectionPresenting {
     func present(_ collection: Collection)
 }
 
-@available(iOS 14.0, *)
 extension UIResponder {
     var collectionPresenter: CollectionPresenting? {
         if let presenter = (self as? CollectionPresenting) {

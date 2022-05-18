@@ -16,13 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ErrorHandling.setup()
         PaymentPublisher.shared.setup()
 
-        if #available(iOS 13.0, *) {
-        } else {
-            let window = AppWindow()
-            window.rootViewController = AppViewController()
-            window.makeKeyAndVisible()
-            self.window = window
-        }
+        let window = AppWindow()
+        window.rootViewController = AppViewController()
+        window.makeKeyAndVisible()
+        self.window = window
 
         #if targetEnvironment(macCatalyst)
         UserDefaults.standard.set(true, forKey: "NSQuitAlwaysKeepsWindows")
@@ -115,9 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Intent Handling
 
     func application(_ application: UIApplication, handlerFor intent: INIntent) -> Any? {
-        guard #available(iOS 14.0, *) else { return nil }
-        let intentHandler = IntentHandler()
-        return intentHandler
+        return IntentHandler()
     }
 
     // MARK: Boilerplate

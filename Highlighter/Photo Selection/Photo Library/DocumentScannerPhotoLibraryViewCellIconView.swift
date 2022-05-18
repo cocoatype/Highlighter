@@ -4,7 +4,6 @@
 import Editing
 import UIKit
 
-@available(iOS 13.0, *)
 class DocumentScannerPhotoLibraryViewCellIconView: UIImageView {
     init() {
         super.init(image: Icons.scanDocument)

@@ -27,20 +27,14 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
     private var preferredViewController: UIViewController {
         switch permissionsRequester.authorizationStatus() {
         case .authorized, .limited:
-            if #available(iOS 14.0, *) {
-                let albumsNavigationController = NavigationController(rootViewController: AlbumsViewController())
-                let photoLibraryNavigationController = NavigationController(rootViewController: PhotoLibraryViewController())
-                return SplitViewController(primaryViewController: albumsNavigationController, secondaryViewController: photoLibraryNavigationController)
-            } else {
-                return NavigationController(rootViewController: PhotoLibraryViewController())
-            }
+            let albumsNavigationController = NavigationController(rootViewController: AlbumsViewController())
+            let photoLibraryNavigationController = NavigationController(rootViewController: PhotoLibraryViewController())
+            return SplitViewController(primaryViewController: albumsNavigationController, secondaryViewController: photoLibraryNavigationController)
         default: return IntroViewController()
         }
     }
 
-    var stateRestorationActivity: NSUserActivity? {
-        return photoEditingViewController?.userActivity
-    }
+    var stateRestorationActivity: NSUserActivity? { photoEditingViewController?.userActivity }
 
     // MARK: Library
 
@@ -66,7 +60,6 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
 
     // MARK: Limited Library
 
-    @available(iOS 14.0, *)
     func presentLimitedLibrary() {
         PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: self)
     }
@@ -101,8 +94,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
         }
 
         let alertController = PhotoEditingProtectionAlertController(appViewController: self)
-        #if targetEnvironment(macCatalyst)
-        #else
+        #if !targetEnvironment(macCatalyst)
         alertController.barButtonItem = sender
         #endif
         photoEditingViewController.present(alertController, animated: true)
@@ -152,7 +144,6 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
         present(alert, animated: true)
     }
 
-    @available(iOS 13.0, *)
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
         guard let presentedViewController = presentedViewController, presentedViewController == controller else { return }
 
@@ -177,13 +168,11 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
     // MARK: Settings View Controller
 
     @objc func presentPurchaseMarketing() {
-        let purchaseMarketingController = PurchaseMarketingHostingController()
-        present(purchaseMarketingController, animated: true)
+        present(PurchaseMarketingHostingController(), animated: true)
     }
 
     @objc func presentSettingsViewController() {
-        let settingsController = SettingsHostingController()
-        present(settingsController, animated: true)
+        present(SettingsHostingController(), animated: true)
     }
 
     @objc func dismissSettingsViewController() {
@@ -193,8 +182,8 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
 
     // MARK: Status Bar
 
-    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-    override var childForStatusBarStyle: UIViewController? { return nil }
+    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
+    override var childForStatusBarStyle: UIViewController? { nil }
 
     // MARK: Boilerplate
 

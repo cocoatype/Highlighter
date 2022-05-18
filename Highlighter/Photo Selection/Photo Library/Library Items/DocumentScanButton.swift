@@ -4,7 +4,6 @@
 import Editing
 import SwiftUI
 
-@available(iOS 14.0, *)
 struct DocumentScanButton: View {
     var body: some View {
         GeometryReader { proxy in
@@ -20,7 +19,6 @@ struct DocumentScanButton: View {
     @EnvironmentObject private var navigationWrapper: NavigationWrapper
 }
 
-@available(iOS 14.0, *)
 struct DocumentScanButton_Previews: PreviewProvider {
     static var previews: some View {
         Group {

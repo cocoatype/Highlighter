@@ -3,7 +3,6 @@
 
 import SwiftUI
 
-@available(iOS 14.0, *)
 struct AssetImage: View {
     init(_ image: UIImage, size: CGSize) {
         self.image = image

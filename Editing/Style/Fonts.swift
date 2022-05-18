@@ -99,9 +99,7 @@ public extension UIFont {
     }
 }
 
-@available(iOS 13.0, iOSApplicationExtension 13.0, *)
 extension Font {
-    @available(iOS 13.0, iOSApplicationExtension 13.0, *)
     public static func app(textStyle: UIFont.TextStyle) -> Font {
         let fontName: String
         switch textStyle {
@@ -113,11 +111,7 @@ extension Font {
 
         let fontSize = UIFont.standardFontSize(for: textStyle)
 
-        if #available(iOS 14.0, iOSApplicationExtension 14.0, *) {
-            return Font.custom(fontName, size: fontSize, relativeTo: textStyle.swiftUI)
-        } else {
-            return Font.custom(fontName, size: fontSize)
-        }
+        return Font.custom(fontName, size: fontSize, relativeTo: textStyle.swiftUI)
     }
 
     // MARK: Special
@@ -133,37 +127,21 @@ extension Font {
     }
 }
 
-@available(iOS 13.0, iOSApplicationExtension 13.0, *)
 extension UIFont.TextStyle {
-    @available(iOS 13.0, iOSApplicationExtension 13.0, *)
     var swiftUI: Font.TextStyle {
-        if #available(iOS 14.0, iOSApplicationExtension 14.0, *) {
-            switch self {
-            case .largeTitle: return .largeTitle
-            case .title1: return .title
-            case .title2: return .title2
-            case .title3: return .title3
-            case .headline: return .headline
-            case .body: return .body
-            case .callout: return .callout
-            case .subheadline: return .subheadline
-            case .footnote: return .footnote
-            case .caption1: return .caption
-            case .caption2: return .caption2
-            default: return .body
-            }
-        } else {
-            switch self {
-            case .largeTitle: return .largeTitle
-            case .title1: return .title
-            case .headline: return .headline
-            case .body: return .body
-            case .callout: return .callout
-            case .subheadline: return .subheadline
-            case .footnote: return .footnote
-            case .caption1: return .caption
-            default: return .body
-            }
+        switch self {
+        case .largeTitle: return .largeTitle
+        case .title1: return .title
+        case .title2: return .title2
+        case .title3: return .title3
+        case .headline: return .headline
+        case .body: return .body
+        case .callout: return .callout
+        case .subheadline: return .subheadline
+        case .footnote: return .footnote
+        case .caption1: return .caption
+        case .caption2: return .caption2
+        default: return .body
         }
     }
 }

@@ -3,7 +3,6 @@
 
 import SwiftUI
 
-@available(iOS 14.0, *)
 struct AlbumsList: View {
     @State private var selectedCollectionIdentifier: String? = CollectionType.library.defaultCollection.identifier
     var navigationWrapper = NavigationWrapper.empty
@@ -29,7 +28,6 @@ struct AlbumsList: View {
     }
 }
 
-@available(iOS 14.0, *)
 struct AlbumsList_Previews: PreviewProvider {
     static let fakeData = [
         CollectionSection(title: "Smart Collections", collections: [

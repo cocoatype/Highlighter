@@ -206,7 +206,6 @@
 		04975D5826106DC100AA2771 /* PhotoEditingCanvasBrushStrokeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */; };
 		04975D5926106DC100AA2771 /* PhotoEditingCanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5F0231659BA006CE411 /* PhotoEditingCanvasView.m */; };
 		04975D8926106F8B00AA2771 /* HighlighterToolBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04975D8826106F8B00AA2771 /* HighlighterToolBarButtonItem.swift */; };
-		04975D932610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04975D922610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift */; };
 		049E1EB224BFEEE7009DE20D /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E1EB124BFEEE7009DE20D /* AlbumsViewController.swift */; };
 		049E1EB424BFEF09009DE20D /* AlbumsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E1EB324BFEF09009DE20D /* AlbumsList.swift */; };
 		049F292B22875ADD00A335BE /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F292A22875ADD00A335BE /* WebViewController.swift */; };
@@ -703,7 +702,6 @@
 		0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushStampFactory.swift; sourceTree = "<group>"; };
 		04953B5724E2405500877800 /* PhotoEditingViewController+Desktop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditingViewController+Desktop.swift"; sourceTree = "<group>"; };
 		04975D8826106F8B00AA2771 /* HighlighterToolBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlighterToolBarButtonItem.swift; sourceTree = "<group>"; };
-		04975D922610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyHighlighterToolBarButtonItem.swift; sourceTree = "<group>"; };
 		049E1EB124BFEEE7009DE20D /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		049E1EB324BFEF09009DE20D /* AlbumsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsList.swift; sourceTree = "<group>"; };
 		049F292A22875ADD00A335BE /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -1474,7 +1472,6 @@
 				04750E8F26D9EEB900E98BB4 /* ActionsBuilderActions.swift */,
 				04750E9126D9EECE00E98BB4 /* ShareBarButtonItem.swift */,
 				04975D8826106F8B00AA2771 /* HighlighterToolBarButtonItem.swift */,
-				04975D922610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift */,
 				04750E9326D9EEE100E98BB4 /* DismissBarButtonItem.swift */,
 				04750E9526D9EEF500E98BB4 /* ColorPickerBarButtonItem.swift */,
 				04409442275F1A28003155CC /* SeekBarButtonItem.swift */,
@@ -2552,7 +2549,6 @@
 				0474B07927C0A3100031210C /* DefaultsKey.swift in Sources */,
 				04BB710C278D2FF700F5BAEC /* TabletSeekView.swift in Sources */,
 				04750E9226D9EECE00E98BB4 /* ShareBarButtonItem.swift in Sources */,
-				04975D932610710D00AA2771 /* LegacyHighlighterToolBarButtonItem.swift in Sources */,
 				04CEA1D028343DC30080E510 /* TextRectangleObservation.swift in Sources */,
 				049F92E922CDA43F0090C9BC /* GeometryExtensions.swift in Sources */,
 				04F3C856230BC1F000445A8D /* PhotoEditingWorkspaceView.swift in Sources */,
