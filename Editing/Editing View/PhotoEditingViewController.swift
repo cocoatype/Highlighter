@@ -4,7 +4,7 @@
 import Photos
 import UIKit
 
-open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, UIColorPickerViewControllerDelegate, UIPopoverPresentationControllerDelegate {
+public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, UIColorPickerViewControllerDelegate, UIPopoverPresentationControllerDelegate {
     public init(asset: PHAsset? = nil, image: UIImage? = nil, redactions: [Redaction]? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
         self.asset = asset
         self.image = image
@@ -42,10 +42,7 @@ open class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, U
 
         updateToolbarItems(animated: false)
 
-        let options = PHImageRequestOptions()
-        options.version = .current
-        options.deliveryMode = .highQualityFormat
-        options.isNetworkAccessAllowed = true
+        let options = StandardImageRequestOptions()
 
         if image != nil {
             updateScrollView()

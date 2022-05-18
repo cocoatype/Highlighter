@@ -281,6 +281,7 @@
 		04CEA1DA283443060080E510 /* RecognizedTextObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CEA1D9283443060080E510 /* RecognizedTextObservation.swift */; };
 		04CEA1DB283446860080E510 /* RecognizedTextObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CEA1D9283443060080E510 /* RecognizedTextObservation.swift */; };
 		04CEA1DF2834D86D0080E510 /* LibrarySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CEA1DE2834D86D0080E510 /* LibrarySplitViewController.swift */; };
+		04CEA1E32834DC600080E510 /* StandardImageRequestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CEA1E22834DC600080E510 /* StandardImageRequestOptions.swift */; };
 		04D442392768438F00F2933C /* SeekBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D442382768438F00F2933C /* SeekBar.swift */; };
 		04D4423C276845EA00F2933C /* SeekTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4423B276845EA00F2933C /* SeekTextField.swift */; };
 		04D68BC7225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D68BC6225EE2FD00D09BBD /* AssetPhotoLibraryViewCellImageView.swift */; };
@@ -750,6 +751,7 @@
 		04CEA1D228343E030080E510 /* RecognizedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizedText.swift; sourceTree = "<group>"; };
 		04CEA1D9283443060080E510 /* RecognizedTextObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizedTextObservation.swift; sourceTree = "<group>"; };
 		04CEA1DE2834D86D0080E510 /* LibrarySplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySplitViewController.swift; sourceTree = "<group>"; };
+		04CEA1E22834DC600080E510 /* StandardImageRequestOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardImageRequestOptions.swift; sourceTree = "<group>"; };
 		04D442382768438F00F2933C /* SeekBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekBar.swift; sourceTree = "<group>"; };
 		04D4423B276845EA00F2933C /* SeekTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekTextField.swift; sourceTree = "<group>"; };
 		04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
@@ -1502,6 +1504,7 @@
 				041EFF532255A0930058D8EE /* Style */,
 				04B19923262410D5001A275B /* Tests */,
 				043CD9CD226EB0B20012F5AE /* Text Detection */,
+				04CEA1E22834DC600080E510 /* StandardImageRequestOptions.swift */,
 			);
 			path = Editing;
 			sourceTree = "<group>";
@@ -2523,6 +2526,7 @@
 				04975D5826106DC100AA2771 /* PhotoEditingCanvasBrushStrokeView.m in Sources */,
 				04D442392768438F00F2933C /* SeekBar.swift in Sources */,
 				04409441275F170F003155CC /* FeatureFlag.swift in Sources */,
+				04CEA1E32834DC600080E510 /* StandardImageRequestOptions.swift in Sources */,
 				04DBC843231E2AEC0004F7DB /* RestoredRedaction.swift in Sources */,
 				046C406B2482075F0069E8FB /* WordObservationRedaction.swift in Sources */,
 				046C406F24820C720069E8FB /* StringExtensions.swift in Sources */,

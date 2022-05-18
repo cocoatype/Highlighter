@@ -155,7 +155,6 @@ class PhotoEditingWorkspaceView: UIControl {
     // MARK: Accessibility
 
     override func accessibilityActivate() -> Bool {
-        print("activate")
         return true
     }
 
