@@ -31,6 +31,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
         }
     }
 
+    private var photoEditingViewController: PhotoEditingViewController? { ((presentedViewController as? NavigationController)?.viewControllers.first as? PhotoEditingViewController) }
     var stateRestorationActivity: NSUserActivity? { photoEditingViewController?.userActivity }
 
     // MARK: Photo Editing View Controller
@@ -43,82 +44,17 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
         present(PhotoEditingNavigationController(image: image, redactions: redactions, completionHandler: completionHandler), animated: animated)
     }
 
-    @objc func dismissPhotoEditingViewController(_ sender: UIBarButtonItem) {
-        guard let photoEditingViewController = photoEditingViewController else { return }
-
-        guard photoEditingViewController.hasMadeEdits else {
-            if let image = photoEditingViewController.image {
-                photoEditingViewController.completionHandler?(image)
-            }
-
-            dismiss(animated: true)
-            return
-        }
-
-        let alertController = PhotoEditingProtectionAlertController(appViewController: self)
-        #if !targetEnvironment(macCatalyst)
-        alertController.barButtonItem = sender
-        #endif
-        photoEditingViewController.present(alertController, animated: true)
-    }
-
-    @objc func destructivelyDismissPhotoEditingViewController() {
-        if let photoEditingViewController = photoEditingViewController {
-            if let image = photoEditingViewController.image {
-                photoEditingViewController.completionHandler?(image)
-            }
-            dismiss(animated: true)
-        }
-    }
-
-    func dismissPhotoEditingViewControllerAfterSaving() {
-        guard let photoEditingViewController = photoEditingViewController else { return }
-
-        photoEditingViewController.exportImage { [weak self] image in
-            guard let image = image else { return }
-
-            PHPhotoLibrary.shared().performChanges({
-                PHAssetChangeRequest.creationRequestForAsset(from: image)
-            }, completionHandler: { [weak self] success, error in
-                assert(success, "an error occurred saving changes: \(error?.localizedDescription ?? "no error")")
-                DispatchQueue.main.async {
-                    self?.dismiss(animated: true)
-                }
-            })
-        }
-    }
-
-    private var photoEditingViewController: PhotoEditingViewController? {
-        return ((presentedViewController as? NavigationController)?.viewControllers.first as? PhotoEditingViewController)
-    }
-
     // MARK: Document Scanner
 
+    private lazy var documentScanningController = DocumentScanningController(delegate: self)
+
     @objc func presentDocumentCameraViewController() {
-        let cameraViewController = DocumentScanningController().cameraViewController(delegate: self)
-        present(cameraViewController, animated: true)
+        present(documentScanningController.cameraViewController(), animated: true)
     }
 
-    private func presentPageCountAlert(beforeEditing image: UIImage) {
-        let alert = PageCountAlertFactory.alert { [weak self] in
-            self?.presentPhotoEditingViewController(for: image)
-        }
-        present(alert, animated: true)
-    }
-
-    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
-        guard let presentedViewController = presentedViewController, presentedViewController == controller else { return }
-
-        dismiss(animated: true) { [weak self] in
-            guard scan.pageCount > 0 else { return }
-            let pageImage = scan.imageOfPage(at: 0)
-
-            if scan.pageCount > 1 {
-                self?.presentPageCountAlert(beforeEditing: pageImage)
-            } else {
-                self?.presentPhotoEditingViewController(for: pageImage)
-            }
-        }
+    func dismissDocumentScanner() {
+        guard presentedViewController is VNDocumentCameraViewController else { return }
+        dismiss(animated: true)
     }
 
     // MARK: App Ratings Prompt

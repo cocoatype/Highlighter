@@ -5,18 +5,20 @@ import Editing
 import UIKit
 
 class DocumentScannerNotPurchasedAlertController: UIAlertController {
-    convenience init(learnMoreAction: @escaping () -> Void) {
+    convenience init(learnMoreAction: (() -> Void)?) {
         let title = NSLocalizedString("DocumentScannerNotPurchasedAlertController.title", comment: "Title for the document scanner not purchased alert")
         let message = NSLocalizedString("DocumentScannerNotPurchasedAlertController.message", comment: "Message for the document scanner not purchased alert")
         self.init(title: title, message: message, preferredStyle: .alert)
 
-        addAction(
-            UIAlertAction(
-                title: NSLocalizedString("DocumentScannerNotPurchasedAlertController.learnMoreButton", comment: ""),
-                style: .default,
-                handler: { _ in
-                    learnMoreAction()
-                }))
+        if let learnMoreAction = learnMoreAction {
+            addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("DocumentScannerNotPurchasedAlertController.learnMoreButton", comment: ""),
+                    style: .default,
+                    handler: { _ in
+                        learnMoreAction()
+                    }))
+        }
 
         addAction(
             UIAlertAction(

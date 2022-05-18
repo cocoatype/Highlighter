@@ -4,8 +4,8 @@
 import UIKit
 
 class PhotoEditingProtectionAlertController: UIAlertController {
-    init(appViewController: AppViewController) {
-        self.appViewController = appViewController
+    init(delegate: PhotoEditingProtectionAlertDelegate) {
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
         view.tintColor = .controlTint
 
@@ -22,10 +22,10 @@ class PhotoEditingProtectionAlertController: UIAlertController {
     }
 
     private lazy var saveAction = UIAlertAction(title: PhotoEditingProtectionAlertController.saveButtonTitle, style: .default, handler: { [weak self] _ in
-        self?.appViewController?.dismissPhotoEditingViewControllerAfterSaving()
+        self?.delegate?.dismissPhotoEditingViewControllerAfterSaving()
     })
     private lazy var deleteAction = UIAlertAction(title: PhotoEditingProtectionAlertController.deleteButtonTitle, style: .destructive, handler: { [weak self] _ in
-        self?.appViewController?.destructivelyDismissPhotoEditingViewController()
+        self?.delegate?.destructivelyDismissPhotoEditingViewController()
     })
     private let cancelAction = UIAlertAction(title: PhotoEditingProtectionAlertController.cancelButtonTitle, style: .cancel, handler: nil)
 
@@ -38,7 +38,7 @@ class PhotoEditingProtectionAlertController: UIAlertController {
         return .actionSheet
         #endif
     }
-    weak var appViewController: AppViewController?
+    weak var delegate: PhotoEditingProtectionAlertDelegate?
 
     private static let cancelButtonTitle = NSLocalizedString("PhotoEditingProtectionAlertController.cancelButtonTitle", comment: "Title for the cancel button on the photo permissions denied alert")
     private static let deleteButtonTitle = NSLocalizedString("PhotoEditingProtectionAlertController.deleteButtonTitle", comment: "Title for the delete button on the photo permissions denied alert")
@@ -49,4 +49,9 @@ class PhotoEditingProtectionAlertController: UIAlertController {
         let className = String(describing: type(of: self))
         fatalError("\(className) does not implement init(coder:)")
     }
+}
+
+protocol PhotoEditingProtectionAlertDelegate: AnyObject {
+    func dismissPhotoEditingViewControllerAfterSaving()
+    func destructivelyDismissPhotoEditingViewController()
 }

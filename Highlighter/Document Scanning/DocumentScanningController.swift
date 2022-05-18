@@ -5,16 +5,21 @@ import Editing
 import UIKit
 import VisionKit
 
-class DocumentScanningController: NSObject {
-    func cameraViewController(delegate: DocumentScanningDelegate) -> UIViewController {
+class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelegate {
+    init(delegate: DocumentScanningDelegate?) {
+        self.delegate = delegate
+        super.init()
+    }
+
+    func cameraViewController() -> UIViewController {
         if purchased {
             let cameraViewController = VNDocumentCameraViewController()
-            cameraViewController.delegate = delegate
+            cameraViewController.delegate = self
             cameraViewController.overrideUserInterfaceStyle = .dark
             cameraViewController.view.tintColor = .controlTint
             return cameraViewController
         } else {
-            return DocumentScannerNotPurchasedAlertController(learnMoreAction: delegate.presentPurchaseMarketing)
+            return DocumentScannerNotPurchasedAlertController(learnMoreAction: delegate?.presentPurchaseMarketing)
         }
     }
 
@@ -23,8 +28,30 @@ class DocumentScanningController: NSObject {
             return try PreviousPurchasePublisher.hasUserPurchasedProduct().get()
         } catch { return false }
     }
+
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+        guard scan.pageCount > 0 else { return delegate?.dismissDocumentScanner() ?? () }
+        let pageImage = scan.imageOfPage(at: 0)
+
+        if scan.pageCount > 1 {
+            let alert = PageCountAlertFactory.alert { [weak self] in
+                self?.dismissAndEdit(pageImage)
+            }
+            controller.present(alert, animated: true)
+        } else {
+            dismissAndEdit(pageImage)
+        }
+    }
+
+    func dismissAndEdit(_ image: UIImage) {
+        delegate?.dismissDocumentScanner()
+        delegate?.presentPhotoEditingViewController(for: image, redactions: nil, animated: true, completionHandler: nil)
+    }
+
+    private weak var delegate: DocumentScanningDelegate?
 }
 
-protocol DocumentScanningDelegate: VNDocumentCameraViewControllerDelegate {
+protocol DocumentScanningDelegate: AnyObject, PhotoEditorPresenting {
     func presentPurchaseMarketing()
+    func dismissDocumentScanner()
 }
