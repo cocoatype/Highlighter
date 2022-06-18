@@ -152,3 +152,5 @@
 "ToolPickerItem.eraserToolItem" = "Eraser";
 "ToolPickerItem.magicToolItem" = "Magic Highlighter";
 "ToolPickerItem.manualToolItem" = "Manual Highlighter";
+
+"WordObservationAccessibilityElement.redactedValue" = "Redacted";

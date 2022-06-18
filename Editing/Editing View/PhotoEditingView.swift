@@ -37,9 +37,7 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
 
     var wordObservations: [WordObservation]? {
         didSet {
-            workspaceView.accessibilityElements = wordObservations?.compactMap { observation in
-                WordObservationAccessibilityElement(observation, in: workspaceView)
-            }
+            updateAccessibilityElements()
         }
     }
 
@@ -60,6 +58,7 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
 
     func redact<ObservationType: TextObservation>(_ observations: [ObservationType], joinSiblings: Bool) {
         workspaceView.redact(observations, joinSiblings: joinSiblings)
+        updateAccessibilityElements()
     }
 
     var seekPreviewObservations: [WordObservation] {
@@ -78,6 +77,17 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
     public func scrollViewDidZoom(_ scrollView: UIScrollView) {
         guard scrollView == photoScrollView else { return }
         workspaceView.scrollViewDidZoom(to: scrollView.zoomScale)
+    }
+
+    // MARK: Accessibility
+
+    private func updateAccessibilityElements() {
+        workspaceView.accessibilityElements = wordObservations?.map { observation in
+            WordObservationAccessibilityElement(observation, in: workspaceView) { [weak self] observation -> Bool in
+                self?.redact([observation], joinSiblings: true)
+                return true
+            }
+        }
     }
 
     // MARK: Boilerplate
