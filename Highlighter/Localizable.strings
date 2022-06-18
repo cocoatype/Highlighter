@@ -58,6 +58,8 @@
 
 "DoneButton.label" = "Done";
 
+"HighlighterToolBarButtonItem.buttonTitle" = "Tools";
+
 "IntroView.permissionLabelText" = "Black Highlighter needs permission to edit your photos.";
 "IntroView.permissionButtonTitle" = "Grant Access";
 "IntroView.importLabelText" = "Or, select a single photo.";
