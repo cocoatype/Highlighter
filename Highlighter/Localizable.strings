@@ -15,6 +15,8 @@
 "AppDelegate.saveMenuTitle" = "Save";
 "AppDelegate.saveAsMenuTitle" = "Save As…";
 
+"AssetPhotoLibraryViewCell.accessibilityLabelFormat%@" = "Photo, %@";
+
 "AutoRedactionsAdditionDialogFactory.addButtonTitle" = "Add Word";
 "AutoRedactionsAdditionDialogFactory.placeholder" = "Hidden Word";
 "AutoRedactionsAdditionDialogFactory.dialogTitle" = "Auto-Hide Word";
