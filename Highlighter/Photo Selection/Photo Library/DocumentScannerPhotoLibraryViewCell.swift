@@ -20,6 +20,7 @@ class DocumentScannerPhotoLibraryViewCell: UICollectionViewCell {
 
         isAccessibilityElement = true
         accessibilityLabel = DocumentScannerPhotoLibraryViewCell.defaultAccessibilityLabel
+        accessibilityTraits = .button
         backgroundColor = .primary
     }
 

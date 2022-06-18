@@ -21,6 +21,7 @@ class LimitedLibraryPhotoLibraryViewCell: UICollectionViewCell {
 
         isAccessibilityElement = true
         accessibilityLabel = Self.defaultAccessibilityLabel
+        accessibilityTraits = .button
         backgroundColor = .primary
     }
 
