@@ -5,7 +5,7 @@ import UIKit
 
 class HighlighterToolBarButtonItem: UIBarButtonItem {
     convenience init(tool: HighlighterTool, target: AnyObject?) {
-        self.init(title: "foo", image: tool.image)
+        self.init(title: Self.buttonTitle, image: tool.image)
 
         menu = UIMenu(
             image: HighlighterTool.magic.image,
@@ -19,6 +19,8 @@ class HighlighterToolBarButtonItem: UIBarButtonItem {
             }
         )
         self.target = target
+
+        accessibilityValue = Self.title(for: tool)
     }
 
     private static func title(for tool: HighlighterTool) -> String {
@@ -36,4 +38,6 @@ class HighlighterToolBarButtonItem: UIBarButtonItem {
         case .eraser: return #selector(PhotoEditingViewController.selectEraser)
         }
     }
+
+    private static let buttonTitle = NSLocalizedString("HighlighterToolBarButtonItem.buttonTitle", comment: "Title for the tool button")
 }
