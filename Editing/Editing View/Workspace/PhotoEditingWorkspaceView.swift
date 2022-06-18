@@ -4,7 +4,7 @@
 @_implementationOnly import ClippingBezier
 import UIKit
 
-class PhotoEditingWorkspaceView: UIControl {
+class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
     init() {
         imageView = PhotoEditingImageView()
         visualizationView = PhotoEditingObservationVisualizationView()
@@ -41,6 +41,8 @@ class PhotoEditingWorkspaceView: UIControl {
         ])
 
         brushStrokeView.addTarget(self, action: #selector(handleStrokeCompletion), for: .touchUpInside)
+
+        addGestureRecognizer(switchControlGestureRecognizer)
     }
 
     var highlighterTool = HighlighterTool.magic {
@@ -153,6 +155,36 @@ class PhotoEditingWorkspaceView: UIControl {
     }
 
     // MARK: Accessibility
+
+    private lazy var switchControlGestureRecognizer: UITapGestureRecognizer = {
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(handleSwitchTap))
+        recognizer.delegate = self
+        return recognizer
+    }()
+
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        UIAccessibility.isSwitchControlRunning
+    }
+
+    @objc func handleSwitchTap() {
+        guard UIAccessibility.isSwitchControlRunning else { return }
+        let location = switchControlGestureRecognizer.location(in: self)
+        let tappedElement = accessibilityElements?.first(where: { element in
+            guard let accessibilityElement = element as? UIAccessibilityElement
+            else { return false }
+
+            return accessibilityElement.accessibilityFrameInContainerSpace.contains(location)
+        }) as? UIAccessibilityElement
+
+        tappedElement?.accessibilityActivate()
+    }
+
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        guard UIAccessibility.isSwitchControlRunning
+        else { return super.hitTest(point, with: event) }
+
+        return self
+    }
 
     override func accessibilityActivate() -> Bool {
         return true
