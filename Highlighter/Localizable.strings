@@ -34,6 +34,8 @@
 "CollectionsDataSource.userAlbumsHeader" = "Albums";
 "CollectionsDataSource.smartAlbumsHeader" = "Library";
 
+"ColorPickerBarButtonItem.accessibilityLabel" = "Color Picker";
+
 "ContactMailViewController.emailSubject" = "Hello!";
 
 "DesktopSaveAlertController.dismissButtonTitle" = "OK";

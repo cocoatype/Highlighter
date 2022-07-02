@@ -21,7 +21,7 @@ struct ActionSet {
         }
 
         if sizeClass == .regular {
-            ColorPickerBarButtonItem(target: target)
+            ColorPickerBarButtonItem(target: target, color: currentColor)
             HighlighterToolBarButtonItem(tool: selectedTool, target: target)
         }
     }
@@ -36,20 +36,22 @@ struct ActionSet {
                 SeekBarButtonItem(target: target)
             }
 
-            ColorPickerBarButtonItem(target: target)
+            ColorPickerBarButtonItem(target: target, color: currentColor)
             HighlighterToolBarButtonItem(tool: selectedTool, target: target)
         }
     }
 
-    init(for target: AnyObject, undoManager: UndoManager?, selectedTool: HighlighterTool, sizeClass: UIUserInterfaceSizeClass) {
+    init(for target: AnyObject, undoManager: UndoManager?, selectedTool: HighlighterTool, sizeClass: UIUserInterfaceSizeClass, currentColor: UIColor) {
         self.target = target
         self.undoManager = undoManager
         self.selectedTool = selectedTool
         self.sizeClass = sizeClass
+        self.currentColor = currentColor
     }
 
     private let target: AnyObject
     private let undoManager: UndoManager?
     private let selectedTool: HighlighterTool
     private let sizeClass: UIUserInterfaceSizeClass
+    private let currentColor: UIColor
 }
