@@ -326,6 +326,7 @@
 		04F3C82C2309F3F500445A8D /* PurchaseReceiptAttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C82B2309F3F500445A8D /* PurchaseReceiptAttributeType.swift */; };
 		04F3C856230BC1F000445A8D /* PhotoEditingWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */; };
 		04F3C864230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04FB0963286FE6C600B600A0 /* RedactedWordObservationRotor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB0962286FE6C600B600A0 /* RedactedWordObservationRotor.swift */; };
 		04FB5F2325C7AC8400A5B48D /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		04FB5F2425C7AC8400A5B48D /* Editing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04FC597027C736580072481B /* PurchaseMarketingHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC596F27C736580072481B /* PurchaseMarketingHostingController.swift */; };
@@ -800,6 +801,7 @@
 		04F3C859230BC20E00445A8D /* PencilKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PencilKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/PencilKit.framework; sourceTree = DEVELOPER_DIR; };
 		04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingBrushStrokeView.h; sourceTree = "<group>"; };
 		04F7AAB42537E5AA0024D3B4 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
+		04FB0962286FE6C600B600A0 /* RedactedWordObservationRotor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactedWordObservationRotor.swift; sourceTree = "<group>"; };
 		04FC596F27C736580072481B /* PurchaseMarketingHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingHostingController.swift; sourceTree = "<group>"; };
 		04FC597127C9DDCB0072481B /* DesktopSeekButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSeekButton.swift; sourceTree = "<group>"; };
 		04FC597527C9E6990072481B /* InputAccessoryHostingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputAccessoryHostingViewController.h; sourceTree = "<group>"; };
@@ -1206,6 +1208,7 @@
 				04CEA1CF28343DC30080E510 /* TextRectangleObservation.swift */,
 				04CEA1CC28343D680080E510 /* WordObservation.swift */,
 				04FF8DE022F6D698008CF0E9 /* WordObservationAccessibilityElement.swift */,
+				04FB0962286FE6C600B600A0 /* RedactedWordObservationRotor.swift */,
 			);
 			path = "Text Detection";
 			sourceTree = "<group>";
@@ -2546,6 +2549,7 @@
 				04431E5E2358117B009FA1F6 /* RedactionSerializer.swift in Sources */,
 				04975D8926106F8B00AA2771 /* HighlighterToolBarButtonItem.swift in Sources */,
 				04FDEA5625257B1900F94CA9 /* SplitViewController.swift in Sources */,
+				04FB0963286FE6C600B600A0 /* RedactedWordObservationRotor.swift in Sources */,
 				04409443275F1A28003155CC /* SeekBarButtonItem.swift in Sources */,
 				04FF8DB422F57570008CF0E9 /* Defaults.swift in Sources */,
 				04FF8DAF22EFB996008CF0E9 /* TextObservationRedaction.swift in Sources */,

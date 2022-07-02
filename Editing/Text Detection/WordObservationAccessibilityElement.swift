@@ -25,7 +25,7 @@ class WordObservationAccessibilityElement: UIAccessibilityElement {
 
     private static let redactedValue = NSLocalizedString("WordObservationAccessibilityElement.redactedValue", comment: "Redacted accessibility value")
 
-    private var isRedacted: Bool {
+    var isRedacted: Bool {
         guard let workspaceView = workspaceView
         else { return false }
 
@@ -33,5 +33,9 @@ class WordObservationAccessibilityElement: UIAccessibilityElement {
             let sampleRedaction = Redaction(wordObservation, color: existingRedaction.color)
             return existingRedaction == sampleRedaction
         })
+    }
+
+    static func == (lhs: WordObservationAccessibilityElement, rhs: WordObservationAccessibilityElement) -> Bool {
+        lhs.wordObservation.textObservationUUID == rhs.wordObservation.textObservationUUID
     }
 }
