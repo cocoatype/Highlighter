@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0401CDF824AD89220011A9BF /* DocumentScanButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401CDF724AD89220011A9BF /* DocumentScanButton.swift */; };
 		0401CDFA24AD8EF50011A9BF /* AssetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401CDF924AD8EF50011A9BF /* AssetButton.swift */; };
+		040CFDEA2870003E0055E870 /* PurchaseMarketingTopBarButtonStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040CFDE92870003E0055E870 /* PurchaseMarketingTopBarButtonStack.swift */; };
+		040CFDEC2870006E0055E870 /* LegacyPurchaseMarketingTopBarButtonStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040CFDEB2870006E0055E870 /* LegacyPurchaseMarketingTopBarButtonStack.swift */; };
+		040CFDEE2870008E0055E870 /* PurchaseMarketingTopBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040CFDED2870008E0055E870 /* PurchaseMarketingTopBarButtons.swift */; };
 		0414F4B1255D577200BD77F9 /* libcrypto.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0414F4A7255D576100BD77F9 /* libcrypto.xcframework */; };
 		0414F4B3255D577200BD77F9 /* libssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0414F4A6255D576100BD77F9 /* libssl.xcframework */; };
 		0415717325511B250081F365 /* RedactOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0415717225511B250081F365 /* RedactOperation.swift */; };
@@ -494,6 +497,9 @@
 /* Begin PBXFileReference section */
 		0401CDF724AD89220011A9BF /* DocumentScanButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScanButton.swift; sourceTree = "<group>"; };
 		0401CDF924AD8EF50011A9BF /* AssetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetButton.swift; sourceTree = "<group>"; };
+		040CFDE92870003E0055E870 /* PurchaseMarketingTopBarButtonStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingTopBarButtonStack.swift; sourceTree = "<group>"; };
+		040CFDEB2870006E0055E870 /* LegacyPurchaseMarketingTopBarButtonStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyPurchaseMarketingTopBarButtonStack.swift; sourceTree = "<group>"; };
+		040CFDED2870008E0055E870 /* PurchaseMarketingTopBarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingTopBarButtons.swift; sourceTree = "<group>"; };
 		0414F4A6255D576100BD77F9 /* libssl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libssl.xcframework; sourceTree = "<group>"; };
 		0414F4A7255D576100BD77F9 /* libcrypto.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libcrypto.xcframework; sourceTree = "<group>"; };
 		0415717225511B250081F365 /* RedactOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactOperation.swift; sourceTree = "<group>"; };
@@ -1278,6 +1284,9 @@
 				044EF9F627A66DD300ECAC5D /* PurchaseMarketingTopBarHeadline.swift */,
 				044EF9F827A66DF200ECAC5D /* PurchaseMarketingTopBarSubheadline.swift */,
 				043C28DC265CB2F70054A5A8 /* PurchaseRestoreButton.swift */,
+				040CFDE92870003E0055E870 /* PurchaseMarketingTopBarButtonStack.swift */,
+				040CFDEB2870006E0055E870 /* LegacyPurchaseMarketingTopBarButtonStack.swift */,
+				040CFDED2870008E0055E870 /* PurchaseMarketingTopBarButtons.swift */,
 			);
 			path = "Top Bar";
 			sourceTree = "<group>";
@@ -2336,11 +2345,13 @@
 				046C405B24761E8A0069E8FB /* CollectionEvent.swift in Sources */,
 				04A606E1251C471F007A2B82 /* DesktopAutoRedactionsListViewController.swift in Sources */,
 				049F292B22875ADD00A335BE /* WebViewController.swift in Sources */,
+				040CFDEA2870003E0055E870 /* PurchaseMarketingTopBarButtonStack.swift in Sources */,
 				046BEC282470F89B00FBECD7 /* CollectionsDataSource.swift in Sources */,
 				047E912A26560A130075F6B2 /* SettingsList.swift in Sources */,
 				041CFA9E266597CD00042E8E /* PhotoLibraryDataSourceChangeCalculator.swift in Sources */,
 				0493BA93253AA4F80083198C /* LimitedLibraryButton.swift in Sources */,
 				0481F9ED27964DAC00815BB0 /* PhotoLibraryDataSource.swift in Sources */,
+				040CFDEC2870006E0055E870 /* LegacyPurchaseMarketingTopBarButtonStack.swift in Sources */,
 				04CBB0912658A45D00B792A2 /* FetchProductsPublisher.swift in Sources */,
 				047E9128265604F30075F6B2 /* PurchaseNavigationLink.swift in Sources */,
 				0429C7B22661DD2500236D10 /* LimitedLibraryPhotoLibraryViewCell.swift in Sources */,
@@ -2374,6 +2385,7 @@
 				041CFA952665913C00042E8E /* LibraryDataSource.swift in Sources */,
 				046C4063247F5BB10069E8FB /* SystemCollectionTableViewCellImageView.swift in Sources */,
 				04F0910925E7A00000966C1E /* HelpMenuDataSource.swift in Sources */,
+				040CFDEE2870008E0055E870 /* PurchaseMarketingTopBarButtons.swift in Sources */,
 				04F0914225E7B30D00966C1E /* DesktopAppWindow.swift in Sources */,
 				041CFA9C2665922B00042E8E /* PhotoLibraryDataSourceAssetsProvider.swift in Sources */,
 				0482C7A525218E080013B69E /* DesktopSettingsTableViewCell.swift in Sources */,

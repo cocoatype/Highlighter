@@ -6,22 +6,24 @@ import SwiftUI
 struct PurchaseMarketingTopBarCompact: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            PurchaseMarketingTopBarHeadline().lineLimit(0)
+            PurchaseMarketingTopBarHeadline()
             PurchaseMarketingTopBarSubheadline()
-            HStack {
-                PurchaseButton()
-                PurchaseButtonSeparator()
-                PurchaseRestoreButton()
+            if #available(iOS 15, *) {
+                PurchaseMarketingTopBarButtonStack()
+            } else {
+                LegacyPurchaseMarketingTopBarButtonStack()
             }
         }
-        .padding(EdgeInsets(top: 40, leading: 20, bottom: 20, trailing: 20))
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.primaryDark)
+        .padding(EdgeInsets(top: 40, leading: 20, bottom: 20, trailing: 20))
+        .background(Color.primaryDark.ignoresSafeArea())
     }
 }
 
 struct PurchaseMarketingTopBarCompactPreviews: PreviewProvider {
     static var previews: some View {
-        PurchaseMarketingTopBarCompact()
+        ScrollView {
+            PurchaseMarketingTopBarCompact()
+        }.ignoresSafeArea()
     }
 }

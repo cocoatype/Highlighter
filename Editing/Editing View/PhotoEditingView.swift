@@ -61,6 +61,11 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
         updateAccessibilityElements()
     }
 
+    func unredact<ObservationType: TextObservation>(_ observation:  ObservationType) {
+        workspaceView.unredact(observation)
+        updateAccessibilityElements()
+    }
+
     var seekPreviewObservations: [WordObservation] {
         get { workspaceView.seekPreviewObservations }
         set(newTextObservations) {
@@ -83,8 +88,13 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
 
     private func updateAccessibilityElements() {
         let accessibilityElements = wordObservations?.map { observation in
-            WordObservationAccessibilityElement(observation, in: workspaceView) { [weak self] observation -> Bool in
-                self?.redact([observation], joinSiblings: true)
+            WordObservationAccessibilityElement(observation, in: workspaceView) { [weak self] observation, isRedacted -> Bool in
+                if isRedacted {
+                    self?.unredact(observation)
+                } else {
+                    self?.redact([observation], joinSiblings: true)
+                }
+
                 return true
             }
         }
