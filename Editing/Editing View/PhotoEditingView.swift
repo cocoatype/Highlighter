@@ -87,16 +87,20 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
     // MARK: Accessibility
 
     private func updateAccessibilityElements() {
-        workspaceView.accessibilityElements = wordObservations?.map { observation in
+        let accessibilityElements = wordObservations?.map { observation in
             WordObservationAccessibilityElement(observation, in: workspaceView) { [weak self] observation, isRedacted -> Bool in
                 if isRedacted {
                     self?.unredact(observation)
                 } else {
                     self?.redact([observation], joinSiblings: true)
                 }
+
                 return true
             }
         }
+
+        workspaceView.accessibilityElements = accessibilityElements
+        workspaceView.accessibilityCustomRotors = [RedactedWordObservationRotor(accessibilityElements: accessibilityElements)]
     }
 
     // MARK: Boilerplate

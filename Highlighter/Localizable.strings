@@ -131,6 +131,8 @@
 "RecentsMenuDataSource.clearMenuItemTitle" = "Clear Menu";
 "RecentsMenuDataSource.menuTitle" = "Open Recent";
 
+"RedactedWordObservationRotor.name" = "Redacted Words";
+
 "SettingsContentProvider.Item.about" = "About Black Highlighter";
 "SettingsContentProvider.Item.acknowledgements" = "Acknowledgements";
 "SettingsContentProvider.Item.autoRedactions" = "Auto-Hidden Words";
