@@ -4,7 +4,7 @@
 import UIKit
 
 class WordObservationAccessibilityElement: UIAccessibilityElement {
-    init(_ wordObservation: WordObservation, in workspaceView: PhotoEditingWorkspaceView, onActivate: @escaping (WordObservation) -> Bool) {
+    init(_ wordObservation: WordObservation, in workspaceView: PhotoEditingWorkspaceView, onActivate: @escaping (WordObservation, Bool) -> Bool) {
         self.wordObservation = wordObservation
         self.onActivate = onActivate
         super.init(accessibilityContainer: workspaceView)
@@ -15,12 +15,12 @@ class WordObservationAccessibilityElement: UIAccessibilityElement {
         accessibilityValue = isRedacted ? Self.redactedValue : nil
     }
 
-    private let onActivate: (WordObservation) -> Bool
+    private let onActivate: (WordObservation, Bool) -> Bool
     override func accessibilityActivate() -> Bool {
-        return onActivate(wordObservation)
+        return onActivate(wordObservation, isRedacted)
     }
 
-    private var wordObservation: WordObservation
+    private let wordObservation: WordObservation
     private var workspaceView: PhotoEditingWorkspaceView? { return accessibilityContainer as? PhotoEditingWorkspaceView }
 
     private static let redactedValue = NSLocalizedString("WordObservationAccessibilityElement.redactedValue", comment: "Redacted accessibility value")
