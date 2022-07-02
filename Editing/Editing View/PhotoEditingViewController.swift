@@ -124,7 +124,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     }
 
     private func updateToolbarItems(animated: Bool = true) {
-        let actionSet = ActionSet(for: self, undoManager: undoManager, selectedTool: photoEditingView.highlighterTool, sizeClass: traitCollection.horizontalSizeClass)
+        let actionSet = ActionSet(for: self, undoManager: undoManager, selectedTool: photoEditingView.highlighterTool, sizeClass: traitCollection.horizontalSizeClass, currentColor: photoEditingView.color)
 
         navigationItem.setLeftBarButtonItems(actionSet.leadingNavigationItems, animated: false)
         navigationItem.setRightBarButtonItems(actionSet.trailingNavigationItems, animated: false)
@@ -239,6 +239,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     public func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
         photoEditingView.color = viewController.selectedColor
+        updateToolbarItems()
     }
 
     // MARK: Undo/Redo
