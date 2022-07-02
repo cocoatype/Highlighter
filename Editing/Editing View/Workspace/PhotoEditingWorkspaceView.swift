@@ -87,6 +87,12 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
         redactionView.add(Redaction(textObservation, color: color))
     }
 
+    func unredact<ObservationType: TextObservation>(_ textObservation: ObservationType) {
+        redactionView.removeRedactions { existingRedaction in
+            Redaction(textObservation, color: existingRedaction.color) == existingRedaction
+        }
+    }
+
     var textObservations: [TextRectangleObservation]? {
         get { return visualizationView.textObservations }
         set(newTextObservations) {
