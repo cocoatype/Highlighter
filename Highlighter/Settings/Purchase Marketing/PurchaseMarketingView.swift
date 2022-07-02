@@ -8,8 +8,12 @@ struct PurchaseMarketingView: View {
 
     var body: some View {
         GeometryReader { proxy in
+            VStack(spacing: 0) {
+                Color.primaryDark
+                Color.appPrimary
+            }.ignoresSafeArea()
             ScrollView {
-                VStack {
+                VStack(spacing: 0) {
                     ZStack(alignment: .topTrailing) {
                         topBar(forWidth: proxy.size.width)
                         PurchaseMarketingCloseButton()
@@ -38,10 +42,10 @@ struct PurchaseMarketingView: View {
                             text: "PurchaseMarketingView.crossPlatformText",
                             imageName: "Systems")
                     }.padding(EdgeInsets(top: 24, leading: 20, bottom: 24, trailing: 20))
+                        .background(Color.appPrimary)
                 }
             }
             .fill()
-            .background(Color(.primary).ignoresSafeArea())
             .navigationBarHidden(true)
         }
     }

@@ -13,6 +13,6 @@ struct PurchaseMarketingHeader: View {
         Text(titleKey)
             .font(.app(textStyle: .headline))
             .foregroundColor(.white)
-            .lineLimit(1)
+            .lineLimit(nil)
     }
 }
