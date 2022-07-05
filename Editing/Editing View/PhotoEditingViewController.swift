@@ -126,13 +126,29 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     private func updateToolbarItems(animated: Bool = true) {
         let actionSet = ActionSet(for: self, undoManager: undoManager, selectedTool: photoEditingView.highlighterTool, sizeClass: traitCollection.horizontalSizeClass, currentColor: photoEditingView.color)
 
-        navigationItem.setLeftBarButtonItems(actionSet.leadingNavigationItems, animated: false)
-        navigationItem.setRightBarButtonItems(actionSet.trailingNavigationItems, animated: false)
-        setToolbarItems(actionSet.toolbarItems, animated: false)
+        if #available(iOS 16, *) {
+            navigationItem.style = .editor
 
+            navigationItem.leadingItemGroups = actionSet.leadingNavigationItems.map { $0.creatingFixedGroup() }
+            navigationItem.centerItemGroups = actionSet.centerNavigationItems.map { $0.creatingFixedGroup() }
+            navigationItem.trailingItemGroups = actionSet.trailingNavigationItems.map { $0.creatingFixedGroup() }
+        } else {
+            navigationItem.setLeftBarButtonItems(actionSet.leadingNavigationItems, animated: false)
+            navigationItem.setRightBarButtonItems(actionSet.trailingNavigationItems, animated: false)
+        }
+
+        setToolbarItems(actionSet.toolbarItems, animated: false)
         navigationController?.setToolbarHidden(actionSet.toolbarItems.count == 0, animated: false)
 
         userActivity?.needsSave = true
+    }
+
+    private var shareBarButtonItem: UIBarButtonItem? {
+        if #available(iOS 16, *) {
+            return navigationItem.trailingItemGroups.flatMap { $0.barButtonItems }.first(where: { $0 is ShareBarButtonItem })
+        } else {
+            return navigationItem.rightBarButtonItems?.first(where: { $0 is ShareBarButtonItem })
+        }
     }
 
     // MARK: Seek and Destroy
@@ -384,7 +400,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
             }
 
             DispatchQueue.main.async { [weak self] in
-                activityController.popoverPresentationController?.barButtonItem = self?.navigationItem.rightBarButtonItem
+                activityController.popoverPresentationController?.barButtonItem = self?.shareBarButtonItem
                 self?.present(activityController, animated: true)
             }
         }
