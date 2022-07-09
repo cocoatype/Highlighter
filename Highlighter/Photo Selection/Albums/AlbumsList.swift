@@ -24,7 +24,7 @@ struct AlbumsList: View {
         .listStyle(SidebarListStyle())
         .navigationTitle("AlbumsViewController.navigationTitle")
         .environmentObject(navigationWrapper)
-        .introspectTableView { $0.backgroundColor = .primary }
+        .albumsListBackground()
     }
 }
 

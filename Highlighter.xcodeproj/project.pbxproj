@@ -190,6 +190,7 @@
 		048320B125D7F12600355393 /* LaunchActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320B025D7F12600355393 /* LaunchActivity.swift */; };
 		048320C425D7F1CB00355393 /* RecentsMenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320C325D7F1CB00355393 /* RecentsMenuDataSource.swift */; };
 		048320DE25D7F43800355393 /* DesktopSettingsSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */; };
+		0483323528791A5400CA6A38 /* AlbumsListBackgroundViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483323428791A5400CA6A38 /* AlbumsListBackgroundViewModifier.swift */; };
 		0489081B24AD7B17005DDEF3 /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
 		04899D78231CEC4F002BC1D8 /* PurchaseValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04899D77231CEC4F002BC1D8 /* PurchaseValidatorTests.swift */; };
@@ -694,6 +695,7 @@
 		048320B025D7F12600355393 /* LaunchActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchActivity.swift; sourceTree = "<group>"; };
 		048320C325D7F1CB00355393 /* RecentsMenuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsMenuDataSource.swift; sourceTree = "<group>"; };
 		048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsSceneDelegate.swift; sourceTree = "<group>"; };
+		0483323428791A5400CA6A38 /* AlbumsListBackgroundViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsListBackgroundViewModifier.swift; sourceTree = "<group>"; };
 		048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsRedactOperation.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
 		048909F3226573750048E203 /* PhotoEditorPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorPresenting.swift; sourceTree = "<group>"; };
@@ -1332,6 +1334,7 @@
 				04750E9B26DDE20900E98BB4 /* AlbumsSectionHeader.swift */,
 				04750E9D26DDE23100E98BB4 /* AlbumsRow.swift */,
 				04750E9F26DDE24D00E98BB4 /* AlbumsRowSelectedViewModifier.swift */,
+				0483323428791A5400CA6A38 /* AlbumsListBackgroundViewModifier.swift */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -2287,6 +2290,7 @@
 				047E913826560C390075F6B2 /* SettingsSectionHeader.swift in Sources */,
 				04750E9E26DDE23100E98BB4 /* AlbumsRow.swift in Sources */,
 				0474B07D27C0AE560031210C /* SettingsAlertButton.swift in Sources */,
+				0483323528791A5400CA6A38 /* AlbumsListBackgroundViewModifier.swift in Sources */,
 				048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */,
 				043C28D02659D8F50054A5A8 /* NavigationWrapper.swift in Sources */,
 				047E913626560BFF0075F6B2 /* SettingsNavigationView.swift in Sources */,
