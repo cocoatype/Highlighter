@@ -5,16 +5,20 @@ import Foundation
 
 class RedactionPathLayer: CALayer {
     init(path: UIBezierPath, color: UIColor) {
+        let startImage = BrushStampFactory.brushStart(scaledToHeight: path.bounds.height, color: color)
+        let endImage = BrushStampFactory.brushEnd(scaledToHeight: path.bounds.height, color: color)
         let brushWidth = path.lineWidth
-        let brushStampImage = BrushStampFactory.brushStamp(scaledToHeight: brushWidth, color: color)
-        let pathBounds = path.strokeBorderPath.bounds.insetBy(dx: brushStampImage.size.width * -0.5, dy: 0)
+        let pathBounds = path.strokeBorderPath.bounds.inset(by: UIEdgeInsets(top: 0, left: startImage.size.width * -1, bottom: 0, right: endImage.size.width * -1))
         path.apply(CGAffineTransform(translationX: -pathBounds.origin.x, y: -pathBounds.origin.y))
 
         self.color = color
         self.path = path
         self.brushWidth = brushWidth
+        self.startImage = startImage
+        self.endImage = endImage
         super.init()
 
+        backgroundColor = UIColor.clear.cgColor//color.cgColor
         drawsAsynchronously = true
         frame = pathBounds
         masksToBounds = false
@@ -27,23 +31,24 @@ class RedactionPathLayer: CALayer {
         self.brushWidth = pathLayer?.brushWidth ?? 0
         self.color = pathLayer?.color ?? .black
         self.path = pathLayer?.path ?? UIBezierPath()
+        self.startImage = pathLayer?.startImage ?? UIImage()
+        self.endImage = pathLayer?.endImage ?? UIImage()
         super.init(layer: layer)
     }
 
     override func draw(in context: CGContext) {
-        let stampImage = BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
-
         UIGraphicsPushContext(context)
         defer { UIGraphicsPopContext() }
 
-        path.forEachPoint { point in
-            context.saveGState()
-            defer { context.restoreGState() }
+        color.setFill()
+        UIBezierPath(rect: bounds.inset(by: UIEdgeInsets(top: 0, left: startImage.size.width, bottom: 0, right: endImage.size.width))).fill()
 
-            context.translateBy(x: stampImage.size.width * -0.5, y: stampImage.size.height * -0.5)
-            stampImage.draw(at: point)
-        }
+        context.draw(startImage.cgImage!, in: CGRect(origin: .zero, size: startImage.size))
+        context.draw(endImage.cgImage!, in: CGRect(origin: CGPoint(x: bounds.maxX - endImage.size.width, y: bounds.minY), size: endImage.size))
     }
+
+    private let startImage: UIImage
+    private let endImage: UIImage
 
     private func brushStamp(scaledToHeight height: CGFloat) -> UIImage {
         BrushStampFactory.brushStamp(scaledToHeight: height, color: color)

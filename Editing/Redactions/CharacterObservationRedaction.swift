@@ -47,11 +47,11 @@ extension Redaction {
                 currentRect.union(characterObservation.bounds)
             })
         }.map { rect in
-            let path = UIBezierPath()
-            let width = rect.height
-            path.lineWidth = width
-            path.move(to: CGPoint(x: rect.minX + (width * 0.8), y: rect.midY))
-            path.addLine(to: CGPoint(x: rect.maxX - (width * 0.8), y: rect.midY))
+            let path = UIBezierPath(rect: rect)
+//            let width = rect.height
+//            path.lineWidth = width
+//            path.move(to: CGPoint(x: rect.minX + (width * 0.8), y: rect.midY))
+//            path.addLine(to: CGPoint(x: rect.maxX - (width * 0.8), y: rect.midY))
             return path
         }
 
