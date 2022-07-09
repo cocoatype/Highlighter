@@ -46,12 +46,12 @@ struct AlbumsList_Previews: PreviewProvider {
 
 struct DummyCollection: Collection {
     let title: String?
-    let icon: UIImage?
+    let icon: String
     let identifier: String
 
     init(title: String, iconName: String) {
         self.title = title
-        self.icon = UIImage(systemName: iconName)?.withRenderingMode(.alwaysTemplate)
+        self.icon = iconName
         self.identifier = title
     }
 }
