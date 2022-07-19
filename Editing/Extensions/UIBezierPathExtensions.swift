@@ -88,6 +88,11 @@ extension UIBezierPath {
     public func forEachPoint(_ function: @escaping ((CGPoint) -> Void)) {
         cgPath.forEachPoint(function)
     }
+
+    public var redactionHeight: CGFloat {
+        guard abs(bounds.height - 0) > 0.1 else { return lineWidth }
+        return bounds.height
+    }
 }
 #endif
 

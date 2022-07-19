@@ -5,10 +5,11 @@ import Foundation
 
 class RedactionPathLayer: CALayer {
     init(path: UIBezierPath, color: UIColor) {
-        let startImage = BrushStampFactory.brushStart(scaledToHeight: path.bounds.height, color: color)
-        let endImage = BrushStampFactory.brushEnd(scaledToHeight: path.bounds.height, color: color)
+        let borderBounds = path.strokeBorderPath.bounds
+        let startImage = BrushStampFactory.brushStart(scaledToHeight: borderBounds.height, color: color)
+        let endImage = BrushStampFactory.brushEnd(scaledToHeight: borderBounds.height, color: color)
         let brushWidth = path.lineWidth
-        let pathBounds = path.strokeBorderPath.bounds.inset(by: UIEdgeInsets(top: 0, left: startImage.size.width * -1, bottom: 0, right: endImage.size.width * -1))
+        let pathBounds = borderBounds.inset(by: UIEdgeInsets(top: 0, left: startImage.size.width * -1, bottom: 0, right: endImage.size.width * -1))
         path.apply(CGAffineTransform(translationX: -pathBounds.origin.x, y: -pathBounds.origin.y))
 
         self.color = color
@@ -18,7 +19,7 @@ class RedactionPathLayer: CALayer {
         self.endImage = endImage
         super.init()
 
-        backgroundColor = UIColor.clear.cgColor//color.cgColor
+        backgroundColor = UIColor.clear.cgColor
         drawsAsynchronously = true
         frame = pathBounds
         masksToBounds = false

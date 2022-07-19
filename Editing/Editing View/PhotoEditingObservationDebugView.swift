@@ -26,7 +26,7 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
         guard let textObservations = textObservations else { return [] }
         return textObservations.flatMap { textObservation -> [CALayer] in
             guard let characterObservations = textObservation.characterObservations else { return [] }
-            let characterLayers = characterObservations.map { observation in
+            let characterLayers = characterObservations.map { observation -> CALayer in
                 let layer = CALayer()
                 layer.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.3).cgColor
                 layer.frame = observation.bounds
