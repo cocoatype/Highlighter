@@ -3,21 +3,26 @@
 
 import Editing
 import Intents
+import UniformTypeIdentifiers
 
 class ShortcutsRedactExporter: NSObject {
-    static func export(_ input: INFile, redactions: [Redaction], completionHandler: @escaping((Result<INFile, Error>) -> Void)) {
-        let exportOperation = ShortcutsExportOperation(input: input, redactions: redactions)
-        let callbackOperation = BlockOperation {
-            guard let result = exportOperation.result else {
-                return completionHandler(.failure(ShortcutsExportError.operationReturnedNoResult))
-            }
+    static func export(_ input: INFile, redactions: [Redaction]) async throws -> INFile {
+        guard let sourceImage = UIImage(data: input.data)
+        else { throw ShortcutsExportError.noImageForInput }
 
-            completionHandler(result)
-        }
+        let exportImage = await PhotoExportRenderer(image: sourceImage, redactions: redactions).render()
 
-        callbackOperation.addDependency(exportOperation)
-        operationQueue.addOperations([exportOperation, callbackOperation], waitUntilFinished: false)
+        guard let imageData = exportImage.pngData()
+        else { throw ShortcutsExportError.failedToRenderImage }
+
+        let filename = ((input.filename as NSString).deletingPathExtension as NSString).appendingPathExtension(for: UTType.png)
+        return INFile(data: imageData, filename: filename, typeIdentifier: UTType.png.identifier)
     }
 
     private static let operationQueue = OperationQueue()
+}
+
+enum ShortcutsExportError: Error {
+    case failedToRenderImage
+    case noImageForInput
 }

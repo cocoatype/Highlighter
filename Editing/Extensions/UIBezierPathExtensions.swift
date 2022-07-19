@@ -5,18 +5,6 @@
 import AppKit
 
 extension NSBezierPath {
-    public var dashedPath: NSBezierPath {
-        let cgPath = self.cgPath
-        let dashedCGPath = cgPath.copy(dashingWithPhase: 0, lengths: [4, 4])
-        let dashedPath = NSBezierPath(cgPath: dashedCGPath)
-        dashedPath.lineWidth = lineWidth
-        return dashedPath
-    }
-
-    public func forEachPoint(_ function: @escaping ((CGPoint) -> Void)) {
-        cgPath.forEachPoint(function)
-    }
-
     convenience init(cgPath: CGPath) {
         self.init()
 
@@ -76,39 +64,5 @@ extension UIBezierPath {
         let strokedCGPath = cgPath.copy(strokingWithWidth: lineWidth, lineCap: lineCapStyle, lineJoin: lineJoinStyle, miterLimit: miterLimit)
         return UIBezierPath(cgPath: strokedCGPath)
     }
-
-    public var dashedPath: UIBezierPath {
-        let cgPath = self.cgPath
-        let dashedCGPath = cgPath.copy(dashingWithPhase: 0, lengths: [4, 4])
-        let dashedPath = UIBezierPath(cgPath: dashedCGPath)
-        dashedPath.lineWidth = lineWidth
-        return dashedPath
-    }
-
-    public func forEachPoint(_ function: @escaping ((CGPoint) -> Void)) {
-        cgPath.forEachPoint(function)
-    }
-
-    public var redactionHeight: CGFloat {
-        guard abs(bounds.height - 0) > 0.1 else { return lineWidth }
-        return bounds.height
-    }
 }
 #endif
-
-extension CGPath {
-    func forEachPoint(_ function: @escaping ((CGPoint) -> Void)) {
-        withUnsafePointer(to: function) { functionPointer in
-            let rawFunctionPointer = UnsafeMutableRawPointer(mutating: functionPointer)
-            apply(info: rawFunctionPointer) { functionPointer, elementPointer in
-                let function = functionPointer?.assumingMemoryBound(to: ((CGPoint) -> Void).self).pointee
-                let element = elementPointer.pointee
-                let elementType = element.type
-                guard elementType == .moveToPoint || elementType == .addLineToPoint else { return }
-
-                let elementPoint = element.points.pointee
-                function?(elementPoint)
-            }
-        }
-    }
-}

@@ -259,7 +259,6 @@
 		04BB710A278D2E4B00F5BAEC /* TabletSeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7109278D2E4B00F5BAEC /* TabletSeekViewController.swift */; };
 		04BB710C278D2FF700F5BAEC /* TabletSeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB710B278D2FF700F5BAEC /* TabletSeekView.swift */; };
 		04BC9FD025C2704300213DBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BC9FC725C2700200213DBC /* libz.tbd */; };
-		04BDC4A7255657CA00BCE982 /* ShortcutsExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */; };
 		04BDC4AF255657CB00BCE982 /* ShortcutsRedactExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */; };
 		04BE62E9288651500070858B /* PhotoExportError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE62E8288651500070858B /* PhotoExportError.swift */; };
 		04BE62ED288651AA0070858B /* PhotoExportRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE62EC288651AA0070858B /* PhotoExportRenderer.swift */; };
@@ -743,7 +742,6 @@
 		04BB710B278D2FF700F5BAEC /* TabletSeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabletSeekView.swift; sourceTree = "<group>"; };
 		04BC9FC725C2700200213DBC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsRedactExporter.swift; sourceTree = "<group>"; };
-		04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsExportOperation.swift; sourceTree = "<group>"; };
 		04BE62E8288651500070858B /* PhotoExportError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExportError.swift; sourceTree = "<group>"; };
 		04BE62EC288651AA0070858B /* PhotoExportRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExportRenderer.swift; sourceTree = "<group>"; };
 		04CBB08E2658A14300B792A2 /* PreviousPurchasePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousPurchasePublisher.swift; sourceTree = "<group>"; };
@@ -1321,7 +1319,6 @@
 				0464B1E02553A3DE00D00FAC /* IntentHandler.swift */,
 				04CEA1C5283342BF0080E510 /* Redact Detections */,
 				04CEA1C0283341EF0080E510 /* Redact Image */,
-				04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */,
 				04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */,
 				048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */,
 			);
@@ -2309,7 +2306,6 @@
 				047E913626560BFF0075F6B2 /* SettingsNavigationView.swift in Sources */,
 				047E9121265362CD0075F6B2 /* SettingsHostingController.swift in Sources */,
 				042A2B7A228A642100353414 /* PhotoEditingProtectionAlertController.swift in Sources */,
-				04BDC4A7255657CA00BCE982 /* ShortcutsExportOperation.swift in Sources */,
 				0482C7A72522CEB00013B69E /* DesktopSettingsViewController.swift in Sources */,
 				04DBC83E2314D1D90004F7DB /* AutoRedactionsEmptyView.swift in Sources */,
 				047E9124265363020075F6B2 /* SettingsView.swift in Sources */,

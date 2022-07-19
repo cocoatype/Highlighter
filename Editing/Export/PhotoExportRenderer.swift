@@ -3,13 +3,13 @@
 
 import UIKit
 
-actor PhotoExportRenderer {
-    init(image: UIImage, redactions: [Redaction]) {
+public actor PhotoExportRenderer {
+    public init(image: UIImage, redactions: [Redaction]) {
         self.redactions = redactions
         self.sourceImage = image
     }
 
-    func render() -> UIImage {
+    public func render() -> UIImage {
         let imageSize = sourceImage.size * sourceImage.scale
 
         var tileRect = CGRect.zero

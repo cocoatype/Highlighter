@@ -35,9 +35,7 @@ class ShortcutRedactor: NSObject {
     private func redact(_ input: INFile, wordObservations: [WordObservation]) async throws -> INFile {
         let redactions = wordObservations.map { Redaction($0, color: .black) }
 
-        return try await withCheckedThrowingContinuation { continuation in
-            ShortcutsRedactExporter.export(input, redactions: redactions, completionHandler: continuation.resume(with:))
-        }
+        return try await ShortcutsRedactExporter.export(input, redactions: redactions)
     }
 
     // MARK: Boilerplate
