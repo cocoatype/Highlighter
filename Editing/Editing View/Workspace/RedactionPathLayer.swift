@@ -8,13 +8,9 @@ class RedactionPathLayer: CALayer {
         let borderBounds = path.strokeBorderPath.bounds
         let startImage = BrushStampFactory.brushStart(scaledToHeight: borderBounds.height, color: color)
         let endImage = BrushStampFactory.brushEnd(scaledToHeight: borderBounds.height, color: color)
-        let brushWidth = path.lineWidth
         let pathBounds = borderBounds.inset(by: UIEdgeInsets(top: 0, left: startImage.size.width * -1, bottom: 0, right: endImage.size.width * -1))
-        path.apply(CGAffineTransform(translationX: -pathBounds.origin.x, y: -pathBounds.origin.y))
 
         self.color = color
-        self.path = path
-        self.brushWidth = brushWidth
         self.startImage = startImage
         self.endImage = endImage
         super.init()
@@ -29,9 +25,7 @@ class RedactionPathLayer: CALayer {
 
     override init(layer: Any) {
         let pathLayer = layer as? RedactionPathLayer
-        self.brushWidth = pathLayer?.brushWidth ?? 0
         self.color = pathLayer?.color ?? .black
-        self.path = pathLayer?.path ?? UIBezierPath()
         self.startImage = pathLayer?.startImage ?? UIImage()
         self.endImage = pathLayer?.endImage ?? UIImage()
         super.init(layer: layer)
@@ -57,9 +51,7 @@ class RedactionPathLayer: CALayer {
 
     // MARK: Boilerplate
 
-    private let brushWidth: CGFloat
     private let color: UIColor
-    private let path: UIBezierPath
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

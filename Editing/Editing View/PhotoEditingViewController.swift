@@ -86,11 +86,9 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     public func exportImage(completionHandler: @escaping ((UIImage?) -> Void)) {
         guard let image = photoEditingView.image else { return completionHandler(nil) }
-        PhotoExporter.export(image, redactions: photoEditingView.redactions) { result in
-            switch result {
-            case .success(let image): completionHandler(image)
-            case .failure: completionHandler(nil)
-            }
+        Task {
+            let image = await PhotoExporter.export(image, redactions: photoEditingView.redactions)
+            completionHandler(image)
         }
     }
 
