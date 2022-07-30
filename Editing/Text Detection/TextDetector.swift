@@ -9,7 +9,7 @@ import AppKit
 import UIKit
 #endif
 
-public class TextDetector: NSObject {
+open class TextDetector: NSObject {
     #if canImport(UIKit)
     public func detectTextRectangles(in image: UIImage, completionHandler: (([TextRectangleObservation]?) -> Void)? = nil) {
         guard let detectionOperation = TextRectangleDetectionOperation(image: image) else {
@@ -82,7 +82,7 @@ public class TextDetector: NSObject {
         }
     }
 
-    public func detectText(in image: UIImage) async throws -> [RecognizedTextObservation] {
+    open func detectText(in image: UIImage) async throws -> [RecognizedTextObservation] {
         let recognitionOperation = try TextRecognitionOperation(image: image)
         return await detectText(with: recognitionOperation)
     }

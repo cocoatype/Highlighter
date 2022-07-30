@@ -5,7 +5,7 @@ import Editing
 import Intents
 
 class ShortcutsRedactExporter: NSObject {
-    static func export(_ input: INFile, redactions: [Redaction], completionHandler: @escaping((Result<INFile, Error>) -> Void)) {
+    func export(_ input: INFile, redactions: [Redaction], completionHandler: @escaping((Result<INFile, Error>) -> Void)) {
         let exportOperation = ShortcutsExportOperation(input: input, redactions: redactions)
         let callbackOperation = BlockOperation {
             guard let result = exportOperation.result else {
@@ -19,5 +19,5 @@ class ShortcutsRedactExporter: NSObject {
         operationQueue.addOperations([exportOperation, callbackOperation], waitUntilFinished: false)
     }
 
-    private static let operationQueue = OperationQueue()
+    private let operationQueue = OperationQueue()
 }

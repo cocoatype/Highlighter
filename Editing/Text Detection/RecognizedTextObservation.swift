@@ -2,6 +2,7 @@
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
 import Foundation
+import Vision
 
 public struct RecognizedTextObservation: TextObservation {
     init?(_ recognizedText: RecognizedText, imageSize: CGSize) {
