@@ -60,7 +60,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
     // MARK: App Ratings Prompt
 
     @objc func displayAppRatingsPrompt() {
-        AppRatingsPrompter.displayRatingsPrompt(in: view.window?.windowScene)
+        AppRatingsPrompter().displayRatingsPrompt(in: view.window?.windowScene)
     }
 
     // MARK: Settings View Controller
