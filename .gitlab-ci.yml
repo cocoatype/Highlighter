@@ -1,12 +1,9 @@
 stages:
   - test
   - beta
-cache:
-  key: ${CI_PROJECT_PATH_SLUG}
-  paths:
-    - vendor/bundle
 before_script:
-  - "bundle install --path vendor/bundle"
+  - "bundle config set --local path vendor/bundle"
+  - "bundle install"
 variables:
   PATH: "/Users/develop/.asdf/shims:/opt/homebrew/opt/asdf/libexec/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin"
   LC_ALL: "en_US.UTF-8"

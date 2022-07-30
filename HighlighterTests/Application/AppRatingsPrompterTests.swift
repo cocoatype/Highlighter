@@ -18,7 +18,7 @@ class AppRatingsPrompterTests: XCTestCase {
         let windowScene = try InstanceHelper.create(UIWindowScene.self)
         prompter.displayRatingsPrompt(in: windowScene)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 0.01)
     }
 
     func testDisplayingPromptOnThirdAttemptPrompts() throws {
