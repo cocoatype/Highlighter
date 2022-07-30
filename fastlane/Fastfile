@@ -44,8 +44,7 @@ end
 platform :mac do
   desc "Runs all the tests"
   lane :test do
-    # CI does not run Big Sur
-    # run_tests(scheme: "Highlighter")
+    run_tests(scheme: "Highlighter")
   end
 
   desc "Submit a new beta build to Apple TestFlight"

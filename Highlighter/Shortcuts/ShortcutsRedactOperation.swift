@@ -8,10 +8,15 @@ import UIKit
 import UniformTypeIdentifiers
 
 class ShortcutRedactor: NSObject {
+    init(detector: TextDetector = TextDetector(), exporter: ShortcutsRedactExporter = ShortcutsRedactExporter()) {
+        self.detector = detector
+        self.exporter = exporter
+    }
+
     func redact(_ input: INFile, words wordList: [String]) async throws -> INFile {
         guard let image = UIImage(data: input.data) else { throw ShortcutsRedactorError.noImage }
         let textObservations = try await detector.detectText(in: image)
-        let matchingObservations = Defaults.autoRedactionsWordList.flatMap { word -> [WordObservation] in
+        let matchingObservations = wordList.flatMap { word -> [WordObservation] in
             return textObservations.flatMap { observation -> [WordObservation] in
                 observation.wordObservations(matching: word)
             }
@@ -36,13 +41,14 @@ class ShortcutRedactor: NSObject {
         let redactions = wordObservations.map { Redaction($0, color: .black) }
 
         return try await withCheckedThrowingContinuation { continuation in
-            ShortcutsRedactExporter.export(input, redactions: redactions, completionHandler: continuation.resume(with:))
+            exporter.export(input, redactions: redactions, completionHandler: continuation.resume(with:))
         }
     }
 
     // MARK: Boilerplate
 
-    private let detector = TextDetector()
+    private let detector: TextDetector
+    private let exporter: ShortcutsRedactExporter
 }
 
 extension DetectionKind {
