@@ -44,6 +44,10 @@ end
 platform :mac do
   desc "Runs all the tests"
   lane :test do
+    # Sync twice to get Catalyst and macOS profiles
+    sync_code_signing(platform: "catalyst")
+    sync_code_signing
+
     run_tests(
       scheme: "Highlighter",
       catalyst_platform: "macos")
