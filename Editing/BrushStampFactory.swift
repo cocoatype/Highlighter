@@ -5,23 +5,6 @@ import ErrorHandling
 import UIKit
 
 public class BrushStampFactory: NSObject {
-    public static func brushStamp(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
-        guard let standardImage = UIImage(named: "Brush") else { ErrorHandling.crash("Unable to load brush stamp image") }
-
-        let brushScale = height / standardImage.size.height
-        let scaledBrushSize = standardImage.size * brushScale
-
-        return UIGraphicsImageRenderer(size: scaledBrushSize).image { context in
-            color.setFill()
-            context.fill(CGRect(origin: .zero, size: scaledBrushSize))
-
-            let cgContext = context.cgContext
-            cgContext.scaleBy(x: brushScale, y: brushScale)
-
-            standardImage.draw(at: .zero, blendMode: .destinationIn, alpha: 1)
-        }
-    }
-
     public static func brushStart(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
         guard let startImage = UIImage(named: "Brush Start") else { ErrorHandling.crash("Unable to load brush start image") }
 

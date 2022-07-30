@@ -45,10 +45,6 @@ class RedactionPathLayer: CALayer {
     private let startImage: UIImage
     private let endImage: UIImage
 
-    private func brushStamp(scaledToHeight height: CGFloat) -> UIImage {
-        BrushStampFactory.brushStamp(scaledToHeight: height, color: color)
-    }
-
     // MARK: Boilerplate
 
     private let color: UIColor

@@ -18,12 +18,7 @@ extension Redaction {
                 currentRect.union(characterObservation.bounds)
             })
         }.map { rect -> NSBezierPath in
-            let path = NSBezierPath()
-            let width = rect.height
-            path.lineWidth = width
-            path.move(to: CGPoint(x: rect.minX + (width * 0.8), y: rect.midY))
-            path.line(to: CGPoint(x: rect.maxX - (width * 0.8), y: rect.midY))
-            return path
+            return NSBezierPath(rect: rect)
         }
 
         self.color = color
@@ -47,12 +42,7 @@ extension Redaction {
                 currentRect.union(characterObservation.bounds)
             })
         }.map { rect in
-            let path = UIBezierPath(rect: rect)
-//            let width = rect.height
-//            path.lineWidth = width
-//            path.move(to: CGPoint(x: rect.minX + (width * 0.8), y: rect.midY))
-//            path.addLine(to: CGPoint(x: rect.maxX - (width * 0.8), y: rect.midY))
-            return path
+            return UIBezierPath(rect: rect)
         }
 
         self.color = color

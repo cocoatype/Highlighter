@@ -54,7 +54,39 @@ extension NSBezierPath {
 
         return path
     }
+
+    public var strokeBorderPath: NSBezierPath {
+        let cgPath = self.cgPath
+        let strokedCGPath = cgPath.copy(strokingWithWidth: lineWidth,
+                                        lineCap: lineCapStyle.cgLineCap,
+                                        lineJoin: lineJoinStyle.cgLineJoin,
+                                        miterLimit: miterLimit)
+        return NSBezierPath(cgPath: strokedCGPath)
+    }
 }
+
+extension NSBezierPath.LineCapStyle {
+    var cgLineCap: CGLineCap {
+        switch self {
+        case .butt: return .butt
+        case .round: return .round
+        case .square: return .square
+        @unknown default: return .butt
+        }
+    }
+}
+
+extension NSBezierPath.LineJoinStyle {
+    var cgLineJoin: CGLineJoin {
+        switch self {
+        case .round: return .round
+        case .bevel: return .bevel
+        case .miter: return .miter
+        @unknown default: return .round
+        }
+    }
+}
+
 #elseif canImport(UIKit)
 import UIKit
 

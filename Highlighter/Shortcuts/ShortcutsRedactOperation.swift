@@ -11,7 +11,7 @@ class ShortcutRedactor: NSObject {
     func redact(_ input: INFile, words wordList: [String]) async throws -> INFile {
         guard let image = UIImage(data: input.data) else { throw ShortcutsRedactorError.noImage }
         let textObservations = try await detector.detectText(in: image)
-        let matchingObservations = Defaults.autoRedactionsWordList.flatMap { word -> [WordObservation] in
+        let matchingObservations = wordList.flatMap { word -> [WordObservation] in
             return textObservations.flatMap { observation -> [WordObservation] in
                 observation.wordObservations(matching: word)
             }
