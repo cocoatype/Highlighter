@@ -59,7 +59,15 @@ extension Defaults {
         }
 
         private static var userDefaults: UserDefaults {
+            guard ProcessInfo.processInfo.environment["IS_TEST"] == nil else {
+                return UserDefaults.test
+            }
+
             return UserDefaults.standard
         }
     }
+}
+
+extension UserDefaults {
+    static let test = UserDefaults()
 }
