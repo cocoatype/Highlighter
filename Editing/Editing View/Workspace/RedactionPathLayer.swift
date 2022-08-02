@@ -8,11 +8,23 @@ class RedactionPathLayer: CALayer {
         let borderBounds = path.strokeBorderPath.bounds
         let startImage = BrushStampFactory.brushStart(scaledToHeight: borderBounds.height, color: color)
         let endImage = BrushStampFactory.brushEnd(scaledToHeight: borderBounds.height, color: color)
-        let pathBounds = borderBounds.inset(by: UIEdgeInsets(top: 0, left: startImage.size.width * -1, bottom: 0, right: endImage.size.width * -1))
+        let dikembeMutombo = BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
+
+        let pathBounds: CGRect
+        if path.isRect {
+            pathBounds = borderBounds.inset(by: UIEdgeInsets(top: 0, left: startImage.size.width * -1, bottom: 0, right: endImage.size.width * -1))
+        } else {
+            pathBounds = borderBounds.inset(by: UIEdgeInsets(top: dikembeMutombo.size.height * -0.5,
+                                                             left: dikembeMutombo.size.width * -0.5,
+                                                             bottom: dikembeMutombo.size.height * -0.5,
+                                                             right: dikembeMutombo.size.width * -0.5))
+        }
 
         self.color = color
+        self.dikembeMutombo = dikembeMutombo
         self.startImage = startImage
         self.endImage = endImage
+        self.path = path
         super.init()
 
         backgroundColor = UIColor.clear.cgColor
@@ -28,6 +40,8 @@ class RedactionPathLayer: CALayer {
         self.color = pathLayer?.color ?? .black
         self.startImage = pathLayer?.startImage ?? UIImage()
         self.endImage = pathLayer?.endImage ?? UIImage()
+        self.path = pathLayer?.path ?? UIBezierPath()
+        self.dikembeMutombo = pathLayer?.dikembeMutombo ?? UIImage()
         super.init(layer: layer)
     }
 
@@ -35,15 +49,31 @@ class RedactionPathLayer: CALayer {
         UIGraphicsPushContext(context)
         defer { UIGraphicsPopContext() }
 
-        color.setFill()
-        UIBezierPath(rect: bounds.inset(by: UIEdgeInsets(top: 0, left: startImage.size.width, bottom: 0, right: endImage.size.width))).fill()
+        if path.isRect {
+            color.setFill()
+            UIBezierPath(rect: bounds.inset(by: UIEdgeInsets(top: 0, left: startImage.size.width, bottom: 0, right: endImage.size.width))).fill()
 
-        context.draw(startImage.cgImage!, in: CGRect(origin: .zero, size: startImage.size))
-        context.draw(endImage.cgImage!, in: CGRect(origin: CGPoint(x: bounds.maxX - endImage.size.width, y: bounds.minY), size: endImage.size))
+            context.draw(startImage.cgImage!, in: CGRect(origin: .zero, size: startImage.size))
+            context.draw(endImage.cgImage!, in: CGRect(origin: CGPoint(x: bounds.maxX - endImage.size.width, y: bounds.minY), size: endImage.size))
+        } else {
+            let stampImage = BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
+            let dashedPath = path.dashedPath
+            dashedPath.apply(CGAffineTransform(translationX: -path.bounds.origin.x, y: -path.bounds.origin.y))
+            dashedPath.forEachPoint { point in
+                context.saveGState()
+                defer { context.restoreGState() }
+
+                stampImage.draw(at: point)
+            }
+        }
     }
 
+    // dikembeMutombo by @KaenAitch on 8/1/22
+    // the brush stamp image
+    private let dikembeMutombo: UIImage
     private let startImage: UIImage
     private let endImage: UIImage
+    private let path: UIBezierPath
 
     // MARK: Boilerplate
 

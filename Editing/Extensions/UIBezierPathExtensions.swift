@@ -63,6 +63,18 @@ extension NSBezierPath {
                                         miterLimit: miterLimit)
         return NSBezierPath(cgPath: strokedCGPath)
     }
+
+    public var dashedPath: NSBezierPath {
+        let cgPath = self.cgPath
+        let dashedCGPath = cgPath.copy(dashingWithPhase: 0, lengths: [4, 4])
+        let dashedPath = NSBezierPath(cgPath: dashedCGPath)
+        dashedPath.lineWidth = lineWidth
+        return dashedPath
+    }
+
+    public func forEachPoint(_ function: @escaping ((CGPoint) -> Void)) {
+        cgPath.forEachPoint(function)
+    }
 }
 
 extension NSBezierPath.LineCapStyle {
@@ -96,5 +108,34 @@ extension UIBezierPath {
         let strokedCGPath = cgPath.copy(strokingWithWidth: lineWidth, lineCap: lineCapStyle, lineJoin: lineJoinStyle, miterLimit: miterLimit)
         return UIBezierPath(cgPath: strokedCGPath)
     }
+
+    public var dashedPath: UIBezierPath {
+        let cgPath = self.cgPath
+        let dashedCGPath = cgPath.copy(dashingWithPhase: 0, lengths: [4, 4])
+        let dashedPath = UIBezierPath(cgPath: dashedCGPath)
+        dashedPath.lineWidth = lineWidth
+        return dashedPath
+    }
+
+    public func forEachPoint(_ function: @escaping ((CGPoint) -> Void)) {
+        cgPath.forEachPoint(function)
+    }
+
+    public var isRect: Bool {
+        cgPath.isRect(nil)
+    }
 }
 #endif
+
+extension CGPath {
+    func forEachPoint(_ function: @escaping ((CGPoint) -> Void)) {
+        applyWithBlock { elementPointer in
+            let element = elementPointer.pointee
+            let elementType = element.type
+            guard elementType == .moveToPoint || elementType == .addLineToPoint else { return }
+
+            let elementPoint = element.points.pointee
+            function(elementPoint)
+        }
+    }
+}

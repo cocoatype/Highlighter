@@ -38,4 +38,21 @@ public class BrushStampFactory: NSObject {
             endImage.draw(at: .zero, blendMode: .destinationIn, alpha: 1)
         }
     }
+
+    public static func brushStamp(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
+        guard let stampImage = UIImage(named: "Brush") else { ErrorHandling.crash("Unable to load brush stamp image") }
+
+        let brushScale = height / stampImage.size.height
+        let scaledBrushSize = stampImage.size * brushScale
+
+        return UIGraphicsImageRenderer(size: scaledBrushSize).image { context in
+            color.setFill()
+            context.fill(CGRect(origin: .zero, size: scaledBrushSize))
+
+            let cgContext = context.cgContext
+            cgContext.scaleBy(x: brushScale, y: brushScale)
+
+            stampImage.draw(at: .zero, blendMode: .destinationIn, alpha: 1)
+        }
+    }
 }
