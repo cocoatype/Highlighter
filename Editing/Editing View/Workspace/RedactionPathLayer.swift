@@ -63,6 +63,7 @@ class RedactionPathLayer: CALayer {
                 context.saveGState()
                 defer { context.restoreGState() }
 
+                context.translateBy(x: stampImage.size.width * 0.5, y: stampImage.size.height * 0.5)
                 stampImage.draw(at: point)
             }
         }

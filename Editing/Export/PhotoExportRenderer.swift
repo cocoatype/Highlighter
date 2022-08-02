@@ -62,17 +62,29 @@ public actor PhotoExportRenderer {
             drawings.forEach { drawing in
                 let (path, color) = drawing
                 let borderBounds = path.strokeBorderPath.bounds
-                let startImage = BrushStampFactory.brushStart(scaledToHeight: borderBounds.height, color: color)
-                let endImage = BrushStampFactory.brushEnd(scaledToHeight: borderBounds.height, color: color)
+                if path.isRect {
+                    let startImage = BrushStampFactory.brushStart(scaledToHeight: borderBounds.height, color: color)
+                    let endImage = BrushStampFactory.brushEnd(scaledToHeight: borderBounds.height, color: color)
 
-                color.setFill()
-                UIBezierPath(rect: borderBounds).fill()
+                    color.setFill()
+                    UIBezierPath(rect: borderBounds).fill()
 
-                let startRect = CGRect(origin: borderBounds.origin, size: startImage.size).offsetBy(dx: -startImage.size.width, dy: 0)
-                context.draw(startImage.cgImage!, in: startRect)
+                    let startRect = CGRect(origin: borderBounds.origin, size: startImage.size).offsetBy(dx: -startImage.size.width, dy: 0)
+                    context.draw(startImage.cgImage!, in: startRect)
 
-                let endRect = CGRect(origin: borderBounds.origin, size: endImage.size).offsetBy(dx: borderBounds.width, dy: 0)
-                context.draw(endImage.cgImage!, in: endRect)
+                    let endRect = CGRect(origin: borderBounds.origin, size: endImage.size).offsetBy(dx: borderBounds.width, dy: 0)
+                    context.draw(endImage.cgImage!, in: endRect)
+                } else {
+                    let stampImage = BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
+                    let dashedPath = path.dashedPath
+                    dashedPath.forEachPoint { point in
+                        context.saveGState()
+                        defer { context.restoreGState() }
+
+                        context.translateBy(x: stampImage.size.width * -0.5, y: stampImage.size.height * -0.5)
+                        stampImage.draw(at: point)
+                    }
+                }
             }
         }
     }
