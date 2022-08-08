@@ -63,8 +63,9 @@ private class StubRedactExporter: ShortcutsRedactExporter {
         super.init()
     }
 
-    override func export(_ input: INFile, redactions: [Redaction], completionHandler: @escaping ((Result<INFile, Error>) -> Void)) {
+    override func export(_ input: INFile, redactions: [Redaction]) async throws -> INFile {
         XCTAssertEqual(redactions.count, expectedRedactionCount)
         exportExpectation.fulfill()
+        return INFile()
     }
 }

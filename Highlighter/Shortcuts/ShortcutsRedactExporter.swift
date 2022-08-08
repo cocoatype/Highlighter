@@ -8,7 +8,7 @@ import Intents
 import UniformTypeIdentifiers
 
 class ShortcutsRedactExporter: NSObject {
-    static func export(_ input: INFile, redactions: [Redaction]) async throws -> INFile {
+    func export(_ input: INFile, redactions: [Redaction]) async throws -> INFile {
         os_log("starting export with redactions: %{public}@", String(describing: redactions))
         guard let sourceImage = UIImage(data: input.data)
         else { throw ShortcutsExportError.noImageForInput }
@@ -27,8 +27,6 @@ class ShortcutsRedactExporter: NSObject {
         let filename = ((input.filename as NSString).deletingPathExtension as NSString).appendingPathExtension(for: UTType.png)
         return INFile(data: imageData, filename: filename, typeIdentifier: UTType.png.identifier)
     }
-
-    private let operationQueue = OperationQueue()
 }
 
 enum ShortcutsExportError: Error {
