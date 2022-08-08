@@ -92,6 +92,11 @@
             value = "1"
             isEnabled = "NO">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "SHOW_DEBUG_OVERLAY"
+            value = "1"
+            isEnabled = "NO">
+         </EnvironmentVariable>
       </EnvironmentVariables>
       <StoreKitConfigurationFileReference
          identifier = "../../Highlighter/Configuration.storekit">

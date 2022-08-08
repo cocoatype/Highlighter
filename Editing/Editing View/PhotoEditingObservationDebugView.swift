@@ -23,7 +23,7 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
     }
 
     private var debugLayers: [CALayer] {
-        guard let textObservations = textObservations else { return [] }
+        guard FeatureFlag.shouldShowDebugOverlay, let textObservations = textObservations else { return [] }
         return textObservations.flatMap { textObservation -> [CALayer] in
             guard let characterObservations = textObservation.characterObservations else { return [] }
             let characterLayers = characterObservations.map { observation -> CALayer in

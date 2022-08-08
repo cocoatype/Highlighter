@@ -11,4 +11,8 @@ public enum FeatureFlag {
     public static var newFromClipboard: Bool {
         true
     }
+
+    public static var shouldShowDebugOverlay: Bool {
+        ProcessInfo.processInfo.environment["SHOW_DEBUG_OVERLAY"] != nil
+    }
 }
