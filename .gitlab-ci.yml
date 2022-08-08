@@ -1,15 +1,14 @@
 stages:
   - test
   - beta
-cache:
-  key: ${CI_PROJECT_PATH_SLUG}
-  paths:
-    - vendor/bundle
 before_script:
-  - "bundle install --path vendor/bundle"
+  - "bundle config set --local path vendor/bundle"
+  - "bundle install"
 variables:
+  PATH: "/Users/develop/.asdf/shims:/opt/homebrew/opt/asdf/libexec/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin"
   LC_ALL: "en_US.UTF-8"
   LANG: "en_US.UTF-8"
+
 ios_test:
   dependencies: []
   stage: test
@@ -22,6 +21,7 @@ ios_test:
     - "bundle exec fastlane test"
   tags:
     - xcode
+
 mac_test:
   dependencies: []
   stage: test
@@ -34,6 +34,7 @@ mac_test:
     - "bundle exec fastlane mac test"
   tags:
     - xcode
+
 ios_beta:
   dependencies: []
   stage: beta
@@ -49,6 +50,7 @@ ios_beta:
     - master
     - /^release\/(.*)$/
     - /^future\/(.*)$/
+
 mac_beta:
   dependencies: []
   stage: beta

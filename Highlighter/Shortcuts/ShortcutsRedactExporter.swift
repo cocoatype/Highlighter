@@ -28,7 +28,7 @@ class ShortcutsRedactExporter: NSObject {
         return INFile(data: imageData, filename: filename, typeIdentifier: UTType.png.identifier)
     }
 
-    private static let operationQueue = OperationQueue()
+    private let operationQueue = OperationQueue()
 }
 
 enum ShortcutsExportError: Error {

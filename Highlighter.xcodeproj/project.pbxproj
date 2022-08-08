@@ -331,6 +331,10 @@
 		04F3C82C2309F3F500445A8D /* PurchaseReceiptAttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C82B2309F3F500445A8D /* PurchaseReceiptAttributeType.swift */; };
 		04F3C856230BC1F000445A8D /* PhotoEditingWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047072922268134500FF20B6 /* PhotoEditingWorkspaceView.swift */; };
 		04F3C864230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04F77D022894CE2600FB3DE2 /* ShortcutRedactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F77D012894CE2600FB3DE2 /* ShortcutRedactorTests.swift */; };
+		04F77D052894E63100FB3DE2 /* AppRatingsPrompterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F77D042894E63100FB3DE2 /* AppRatingsPrompterTests.swift */; };
+		04F77D082894E95100FB3DE2 /* InstanceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F77D072894E95100FB3DE2 /* InstanceHelper.m */; };
+		04F77D0B2894E9BA00FB3DE2 /* InstanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F77D0A2894E9BA00FB3DE2 /* InstanceHelper.swift */; };
 		04FB0963286FE6C600B600A0 /* RedactedWordObservationRotor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB0962286FE6C600B600A0 /* RedactedWordObservationRotor.swift */; };
 		04FB5F2325C7AC8400A5B48D /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		04FB5F2425C7AC8400A5B48D /* Editing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -810,6 +814,12 @@
 		04F3C82B2309F3F500445A8D /* PurchaseReceiptAttributeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReceiptAttributeType.swift; sourceTree = "<group>"; };
 		04F3C859230BC20E00445A8D /* PencilKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PencilKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/PencilKit.framework; sourceTree = DEVELOPER_DIR; };
 		04F3C863230BCBCF00445A8D /* PhotoEditingBrushStrokeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingBrushStrokeView.h; sourceTree = "<group>"; };
+		04F77D012894CE2600FB3DE2 /* ShortcutRedactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRedactorTests.swift; sourceTree = "<group>"; };
+		04F77D042894E63100FB3DE2 /* AppRatingsPrompterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRatingsPrompterTests.swift; sourceTree = "<group>"; };
+		04F77D062894E95000FB3DE2 /* HighlighterTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HighlighterTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		04F77D072894E95100FB3DE2 /* InstanceHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstanceHelper.m; sourceTree = "<group>"; };
+		04F77D092894E96700FB3DE2 /* InstanceHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstanceHelper.h; sourceTree = "<group>"; };
+		04F77D0A2894E9BA00FB3DE2 /* InstanceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceHelper.swift; sourceTree = "<group>"; };
 		04F7AAB42537E5AA0024D3B4 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		04FB0962286FE6C600B600A0 /* RedactedWordObservationRotor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactedWordObservationRotor.swift; sourceTree = "<group>"; };
 		04FC596F27C736580072481B /* PurchaseMarketingHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingHostingController.swift; sourceTree = "<group>"; };
@@ -988,11 +998,13 @@
 		041EFF0C2251A9F50058D8EE /* HighlighterTests */ = {
 			isa = PBXGroup;
 			children = (
-				04899D76231CEC3C002BC1D8 /* Purchasing */,
+				04F77D032894E5E700FB3DE2 /* Application */,
 				048D1350229F7EA300427FE3 /* Callback Actions */,
-				04D68BD32262C52F00D09BBD /* Test Helpers */,
 				04D68BCD2262B9BF00D09BBD /* Photo Selection */,
-				041EFF0F2251A9F50058D8EE /* Info.plist */,
+				04899D76231CEC3C002BC1D8 /* Purchasing */,
+				04F77CFF2894CDDA00FB3DE2 /* Shortcuts */,
+				04D68BD32262C52F00D09BBD /* Test Helpers */,
+				04F77D002894CDF100FB3DE2 /* Supporting Files */,
 			);
 			path = HighlighterTests;
 			sourceTree = "<group>";
@@ -1723,6 +1735,10 @@
 			isa = PBXGroup;
 			children = (
 				04D68BD42262C54600D09BBD /* MockPhotoPermissionsRequester.swift */,
+				04F77D072894E95100FB3DE2 /* InstanceHelper.m */,
+				04F77D092894E96700FB3DE2 /* InstanceHelper.h */,
+				04F77D062894E95000FB3DE2 /* HighlighterTests-Bridging-Header.h */,
+				04F77D0A2894E9BA00FB3DE2 /* InstanceHelper.swift */,
 			);
 			path = "Test Helpers";
 			sourceTree = "<group>";
@@ -1825,6 +1841,30 @@
 				04F3C81F2309E9AB00445A8D /* StringParsing.swift */,
 			);
 			path = Parsing;
+			sourceTree = "<group>";
+		};
+		04F77CFF2894CDDA00FB3DE2 /* Shortcuts */ = {
+			isa = PBXGroup;
+			children = (
+				04F77D012894CE2600FB3DE2 /* ShortcutRedactorTests.swift */,
+			);
+			path = Shortcuts;
+			sourceTree = "<group>";
+		};
+		04F77D002894CDF100FB3DE2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				041EFF0F2251A9F50058D8EE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04F77D032894E5E700FB3DE2 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				04F77D042894E63100FB3DE2 /* AppRatingsPrompterTests.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		04FF8DB522F57A52008CF0E9 /* Auto Redactions */ = {
@@ -2111,6 +2151,7 @@
 					};
 					041EFF082251A9F50058D8EE = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1340;
 						TestTargetID = 041EFEF42251A9F30058D8EE;
 					};
 					043911BF22C461EE00D4AE30 = {
@@ -2457,8 +2498,12 @@
 			files = (
 				04D68BD52262C54600D09BBD /* MockPhotoPermissionsRequester.swift in Sources */,
 				042B7901229A29C9005B7A2A /* PhotoLibraryViewLayoutTests.swift in Sources */,
+				04F77D082894E95100FB3DE2 /* InstanceHelper.m in Sources */,
 				04D68BD22262C45700D09BBD /* PhotoSelectionViewControllerTests.swift in Sources */,
+				04F77D0B2894E9BA00FB3DE2 /* InstanceHelper.swift in Sources */,
 				048D1352229F7EAB00427FE3 /* CallbackActionTests.swift in Sources */,
+				04F77D022894CE2600FB3DE2 /* ShortcutRedactorTests.swift in Sources */,
+				04F77D052894E63100FB3DE2 /* AppRatingsPrompterTests.swift in Sources */,
 				041EFF0E2251A9F50058D8EE /* IntroViewControllerTests.swift in Sources */,
 				04899D78231CEC4F002BC1D8 /* PurchaseValidatorTests.swift in Sources */,
 			);
@@ -2971,8 +3016,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 287EDDET2B;
 				INFOPLIST_FILE = HighlighterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2982,6 +3027,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.HighlighterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HighlighterTests/Test Helpers/HighlighterTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Highlighter.app/Highlighter";
@@ -2993,8 +3042,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 287EDDET2B;
 				INFOPLIST_FILE = HighlighterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3004,6 +3053,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.HighlighterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HighlighterTests/Test Helpers/HighlighterTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Highlighter.app/Highlighter";

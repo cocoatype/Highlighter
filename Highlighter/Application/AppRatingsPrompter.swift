@@ -6,16 +6,20 @@ import Foundation
 import StoreKit
 
 class AppRatingsPrompter: NSObject {
-    static func displayRatingsPrompt(in windowScene: UIWindowScene?) {
-        guard let windowScene = windowScene else { return }
-        let numberOfSaves = Defaults.numberOfSaves % 50
-        if triggeringNumberOfSaves.contains(numberOfSaves) {
-            SKStoreReviewController.requestReview(in: windowScene)
-        }
+    init(requestMethod: @escaping ((UIWindowScene) -> Void) = SKStoreReviewController.requestReview(in:)) {
+        self.requestMethod = requestMethod
+    }
+
+    func displayRatingsPrompt(in windowScene: UIWindowScene?) {
+        guard let windowScene = windowScene,
+              Defaults.numberOfSaves >= Self.minNumberOfSaves
+        else { return }
+
+        requestMethod(windowScene)
     }
 
     // MARK: Boilerplate
 
-    static let triggeringNumberOfSaves = [3, 10, 30]
-    private static let wraparound = 50
+    private static let minNumberOfSaves = 3
+    private let requestMethod: (UIWindowScene) -> Void
 }
