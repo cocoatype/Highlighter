@@ -22,7 +22,9 @@ class AutoRedactionsEditViewController: UIViewController {
 
     @objc func addNewWord() {
         let newWordDialog = AutoRedactionsAdditionDialogFactory.newDialog { [weak self] string in
-            guard let string = string, string.isEmpty == false else { return }
+            guard let string = string?.trimmingCharacters(in: .whitespacesAndNewlines),
+                  string.isEmpty == false
+            else { return }
             var existingWordList = Defaults.autoRedactionsWordList
             existingWordList.append(string)
             Defaults.autoRedactionsWordList = existingWordList
@@ -44,12 +46,6 @@ class AutoRedactionsEditViewController: UIViewController {
        }
     }
 
-    override func willMove(toParent parent: UIViewController?) {
-        let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewWord))
-        parent?.navigationItem.rightBarButtonItems = [addButtonItem]
-        parent?.navigationItem.title = AutoRedactionsEditViewController.navigationTitle
-    }
-
     // MARK: Boilerplate
 
     private static let navigationTitle = NSLocalizedString("AutoRedactionsEditViewController.navigationTitle", comment: "Navigation title for the auto redactions edit view")
@@ -64,12 +60,37 @@ class AutoRedactionsEditViewController: UIViewController {
     }
 }
 
-struct AutoRedactionsEditView: UIViewControllerRepresentable {
+struct AutoRedactionsEditView: View {
+    var body: some View {
+        wrapper
+            .navigationTitle("AutoRedactionsEditViewController.navigationTitle")
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button(action: {
+                        wrapper.addNewWord()
+                    }, label: {
+                        Image(systemName: "plus")
+                            .foregroundColor(.white)
+                    })
+                }
+            }
+    }
+
+    private let wrapper = AutoRedactionsEditViewControllerWrapper()
+}
+
+struct AutoRedactionsEditViewControllerWrapper: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> AutoRedactionsEditViewController {
-        return AutoRedactionsEditViewController()
+        return controller
     }
 
     func updateUIViewController(_ uiViewController: AutoRedactionsEditViewController, context: Context) {}
+
+    func addNewWord() {
+        controller.addNewWord()
+    }
+
+    private let controller = AutoRedactionsEditViewController()
 }
 
 struct AutoRedactionsEditViewPreviews: PreviewProvider {
