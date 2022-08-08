@@ -65,25 +65,27 @@ class RedactActionExportOperation: Operation {
             // draw redactions
             let drawings = redactions.flatMap { redaction -> [(path: NSBezierPath, color: NSColor)] in
                 return redaction.paths
-                  .map(\.dashedPath)
                   .map { (path: $0, color: redaction.color) }
             }
 
             drawings.forEach { drawing in
                 let (path, color) = drawing
-                let stampImage = BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
-                path.forEachPoint { point in
-                    context.saveGState()
-                    defer { context.restoreGState() }
+                let borderBounds = path.strokeBorderPath.bounds
+                let startImage = BrushStampFactory.brushStart(scaledToHeight: borderBounds.height, color: color)
+                let endImage = BrushStampFactory.brushEnd(scaledToHeight: borderBounds.height, color: color)
 
-                    context.translateBy(x: stampImage.size.width * -0.5, y: stampImage.size.height * -0.5)
+                color.setFill()
+                NSBezierPath(rect: borderBounds).fill()
 
-                    let drawContext = NSGraphicsContext(cgContext: context, flipped: false)
-                    NSGraphicsContext.saveGraphicsState()
-                    NSGraphicsContext.current = drawContext
-                    stampImage.draw(at: point, from: CGRect(origin: .zero, size: stampImage.size), operation: .sourceOver, fraction: 1)
-                    NSGraphicsContext.restoreGraphicsState()
-                }
+                let drawContext = NSGraphicsContext(cgContext: context, flipped: false)
+                NSGraphicsContext.saveGraphicsState()
+                NSGraphicsContext.current = drawContext
+                let startRect = CGRect(origin: borderBounds.origin, size: startImage.size).offsetBy(dx: -startImage.size.width, dy: 0)
+                startImage.draw(in: startRect, from: CGRect(origin: .zero, size: startImage.size), operation: .sourceOver, fraction: 1)
+
+                let endRect = CGRect(origin: borderBounds.origin, size: endImage.size).offsetBy(dx: borderBounds.width, dy: 0)
+                endImage.draw(in: endRect, from: CGRect(origin: .zero, size: endImage.size), operation: .sourceOver, fraction: 1)
+                NSGraphicsContext.restoreGraphicsState()
             }
 
             // export image

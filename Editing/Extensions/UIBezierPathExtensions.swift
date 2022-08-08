@@ -5,18 +5,6 @@
 import AppKit
 
 extension NSBezierPath {
-    public var dashedPath: NSBezierPath {
-        let cgPath = self.cgPath
-        let dashedCGPath = cgPath.copy(dashingWithPhase: 0, lengths: [4, 4])
-        let dashedPath = NSBezierPath(cgPath: dashedCGPath)
-        dashedPath.lineWidth = lineWidth
-        return dashedPath
-    }
-
-    public func forEachPoint(_ function: @escaping ((CGPoint) -> Void)) {
-        cgPath.forEachPoint(function)
-    }
-
     convenience init(cgPath: CGPath) {
         self.init()
 
@@ -66,7 +54,51 @@ extension NSBezierPath {
 
         return path
     }
+
+    public var strokeBorderPath: NSBezierPath {
+        let cgPath = self.cgPath
+        let strokedCGPath = cgPath.copy(strokingWithWidth: lineWidth,
+                                        lineCap: lineCapStyle.cgLineCap,
+                                        lineJoin: lineJoinStyle.cgLineJoin,
+                                        miterLimit: miterLimit)
+        return NSBezierPath(cgPath: strokedCGPath)
+    }
+
+    public var dashedPath: NSBezierPath {
+        let cgPath = self.cgPath
+        let dashedCGPath = cgPath.copy(dashingWithPhase: 0, lengths: [4, 4])
+        let dashedPath = NSBezierPath(cgPath: dashedCGPath)
+        dashedPath.lineWidth = lineWidth
+        return dashedPath
+    }
+
+    public func forEachPoint(_ function: @escaping ((CGPoint) -> Void)) {
+        cgPath.forEachPoint(function)
+    }
 }
+
+extension NSBezierPath.LineCapStyle {
+    var cgLineCap: CGLineCap {
+        switch self {
+        case .butt: return .butt
+        case .round: return .round
+        case .square: return .square
+        @unknown default: return .butt
+        }
+    }
+}
+
+extension NSBezierPath.LineJoinStyle {
+    var cgLineJoin: CGLineJoin {
+        switch self {
+        case .round: return .round
+        case .bevel: return .bevel
+        case .miter: return .miter
+        @unknown default: return .round
+        }
+    }
+}
+
 #elseif canImport(UIKit)
 import UIKit
 
@@ -88,22 +120,22 @@ extension UIBezierPath {
     public func forEachPoint(_ function: @escaping ((CGPoint) -> Void)) {
         cgPath.forEachPoint(function)
     }
+
+    public var isRect: Bool {
+        cgPath.isRect(nil)
+    }
 }
 #endif
 
 extension CGPath {
     func forEachPoint(_ function: @escaping ((CGPoint) -> Void)) {
-        withUnsafePointer(to: function) { functionPointer in
-            let rawFunctionPointer = UnsafeMutableRawPointer(mutating: functionPointer)
-            apply(info: rawFunctionPointer) { functionPointer, elementPointer in
-                let function = functionPointer?.assumingMemoryBound(to: ((CGPoint) -> Void).self).pointee
-                let element = elementPointer.pointee
-                let elementType = element.type
-                guard elementType == .moveToPoint || elementType == .addLineToPoint else { return }
+        applyWithBlock { elementPointer in
+            let element = elementPointer.pointee
+            let elementType = element.type
+            guard elementType == .moveToPoint || elementType == .addLineToPoint else { return }
 
-                let elementPoint = element.points.pointee
-                function?(elementPoint)
-            }
+            let elementPoint = element.points.pointee
+            function(elementPoint)
         }
     }
 }

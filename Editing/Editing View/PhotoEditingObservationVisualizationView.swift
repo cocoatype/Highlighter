@@ -118,6 +118,7 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
         didSet {
             setNeedsDisplay()
             animateFullVisualization()
+            addDebugLayers()
         }
     }
 
@@ -129,6 +130,10 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
             guard let characterObservations = textObservation.characterObservations else { return nil }
             return Redaction(characterObservations, color: color)
         }
+    }
+
+    private func addDebugLayers() {
+
     }
 
     // MARK: Boilerplate

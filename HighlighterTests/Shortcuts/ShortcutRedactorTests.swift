@@ -22,6 +22,23 @@ class ShortcutRedactorTests: XCTestCase {
 
         waitForExpectations(timeout: 1)
     }
+
+    func testRedactionThrowsError() throws {
+        let exportExpectation = expectation(description: "export called")
+        exportExpectation.isInverted = true
+        let redactor = ShortcutRedactor(detector: StubTextDetector(), exporter: StubRedactExporter(exportExpectation: exportExpectation, expectedRedactionCount: 1))
+        let imageData = Data()
+        let file = INFile(data: imageData, filename: "image.png", typeIdentifier: UTType.png.identifier)
+
+        Task {
+            do {
+                _ = try await redactor.redact(file, words: ["hello"])
+                XCTFail("did not catch expected error")
+            } catch ShortcutsRedactorError.noImage {}
+        }
+
+        waitForExpectations(timeout: 0.01)
+    }
 }
 
 private struct MockVisionText: VisionText {
@@ -63,8 +80,9 @@ private class StubRedactExporter: ShortcutsRedactExporter {
         super.init()
     }
 
-    override func export(_ input: INFile, redactions: [Redaction], completionHandler: @escaping ((Result<INFile, Error>) -> Void)) {
+    override func export(_ input: INFile, redactions: [Redaction]) async throws -> INFile {
         XCTAssertEqual(redactions.count, expectedRedactionCount)
         exportExpectation.fulfill()
+        return INFile()
     }
 }

@@ -5,16 +5,29 @@ import Foundation
 
 class RedactionPathLayer: CALayer {
     init(path: UIBezierPath, color: UIColor) {
-        let brushWidth = path.lineWidth
-        let brushStampImage = BrushStampFactory.brushStamp(scaledToHeight: brushWidth, color: color)
-        let pathBounds = path.strokeBorderPath.bounds.insetBy(dx: brushStampImage.size.width * -0.5, dy: 0)
-        path.apply(CGAffineTransform(translationX: -pathBounds.origin.x, y: -pathBounds.origin.y))
+        let borderBounds = path.strokeBorderPath.bounds
+        let startImage = BrushStampFactory.brushStart(scaledToHeight: borderBounds.height, color: color)
+        let endImage = BrushStampFactory.brushEnd(scaledToHeight: borderBounds.height, color: color)
+        let dikembeMutombo = BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
+
+        let pathBounds: CGRect
+        if path.isRect {
+            pathBounds = borderBounds.inset(by: UIEdgeInsets(top: 0, left: startImage.size.width * -1, bottom: 0, right: endImage.size.width * -1))
+        } else {
+            pathBounds = borderBounds.inset(by: UIEdgeInsets(top: dikembeMutombo.size.height * -0.5,
+                                                             left: dikembeMutombo.size.width * -0.5,
+                                                             bottom: dikembeMutombo.size.height * -0.5,
+                                                             right: dikembeMutombo.size.width * -0.5))
+        }
 
         self.color = color
+        self.dikembeMutombo = dikembeMutombo
+        self.startImage = startImage
+        self.endImage = endImage
         self.path = path
-        self.brushWidth = brushWidth
         super.init()
 
+        backgroundColor = UIColor.clear.cgColor
         drawsAsynchronously = true
         frame = pathBounds
         masksToBounds = false
@@ -24,36 +37,48 @@ class RedactionPathLayer: CALayer {
 
     override init(layer: Any) {
         let pathLayer = layer as? RedactionPathLayer
-        self.brushWidth = pathLayer?.brushWidth ?? 0
         self.color = pathLayer?.color ?? .black
+        self.startImage = pathLayer?.startImage ?? UIImage()
+        self.endImage = pathLayer?.endImage ?? UIImage()
         self.path = pathLayer?.path ?? UIBezierPath()
+        self.dikembeMutombo = pathLayer?.dikembeMutombo ?? UIImage()
         super.init(layer: layer)
     }
 
     override func draw(in context: CGContext) {
-        let stampImage = BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
-
         UIGraphicsPushContext(context)
         defer { UIGraphicsPopContext() }
 
-        path.forEachPoint { point in
-            context.saveGState()
-            defer { context.restoreGState() }
+        if path.isRect {
+            color.setFill()
+            UIBezierPath(rect: bounds.inset(by: UIEdgeInsets(top: 0, left: startImage.size.width, bottom: 0, right: endImage.size.width))).fill()
 
-            context.translateBy(x: stampImage.size.width * -0.5, y: stampImage.size.height * -0.5)
-            stampImage.draw(at: point)
+            context.draw(startImage.cgImage!, in: CGRect(origin: .zero, size: startImage.size))
+            context.draw(endImage.cgImage!, in: CGRect(origin: CGPoint(x: bounds.maxX - endImage.size.width, y: bounds.minY), size: endImage.size))
+        } else {
+            let stampImage = BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
+            let dashedPath = path.dashedPath
+            dashedPath.apply(CGAffineTransform(translationX: -path.bounds.origin.x, y: -path.bounds.origin.y))
+            dashedPath.forEachPoint { point in
+                context.saveGState()
+                defer { context.restoreGState() }
+
+                context.translateBy(x: stampImage.size.width * 0.5, y: stampImage.size.height * 0.5)
+                stampImage.draw(at: point)
+            }
         }
     }
 
-    private func brushStamp(scaledToHeight height: CGFloat) -> UIImage {
-        BrushStampFactory.brushStamp(scaledToHeight: height, color: color)
-    }
+    // dikembeMutombo by @KaenAitch on 8/1/22
+    // the brush stamp image
+    private let dikembeMutombo: UIImage
+    private let startImage: UIImage
+    private let endImage: UIImage
+    private let path: UIBezierPath
 
     // MARK: Boilerplate
 
-    private let brushWidth: CGFloat
     private let color: UIColor
-    private let path: UIBezierPath
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

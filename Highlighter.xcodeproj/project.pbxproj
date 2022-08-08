@@ -190,6 +190,7 @@
 		048320B125D7F12600355393 /* LaunchActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320B025D7F12600355393 /* LaunchActivity.swift */; };
 		048320C425D7F1CB00355393 /* RecentsMenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320C325D7F1CB00355393 /* RecentsMenuDataSource.swift */; };
 		048320DE25D7F43800355393 /* DesktopSettingsSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */; };
+		04833237287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04833236287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift */; };
 		0489081B24AD7B17005DDEF3 /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
 		04899D78231CEC4F002BC1D8 /* PurchaseValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04899D77231CEC4F002BC1D8 /* PurchaseValidatorTests.swift */; };
@@ -258,8 +259,9 @@
 		04BB710A278D2E4B00F5BAEC /* TabletSeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7109278D2E4B00F5BAEC /* TabletSeekViewController.swift */; };
 		04BB710C278D2FF700F5BAEC /* TabletSeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB710B278D2FF700F5BAEC /* TabletSeekView.swift */; };
 		04BC9FD025C2704300213DBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BC9FC725C2700200213DBC /* libz.tbd */; };
-		04BDC4A7255657CA00BCE982 /* ShortcutsExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */; };
 		04BDC4AF255657CB00BCE982 /* ShortcutsRedactExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */; };
+		04BE62E9288651500070858B /* PhotoExportError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE62E8288651500070858B /* PhotoExportError.swift */; };
+		04BE62ED288651AA0070858B /* PhotoExportRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE62EC288651AA0070858B /* PhotoExportRenderer.swift */; };
 		04CBB08F2658A14300B792A2 /* PreviousPurchasePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB08E2658A14300B792A2 /* PreviousPurchasePublisher.swift */; };
 		04CBB0912658A45D00B792A2 /* FetchProductsPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB0902658A45D00B792A2 /* FetchProductsPublisher.swift */; };
 		04CBB0932658A4D500B792A2 /* PurchaseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB0922658A4D500B792A2 /* PurchaseConstants.swift */; };
@@ -698,6 +700,7 @@
 		048320B025D7F12600355393 /* LaunchActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchActivity.swift; sourceTree = "<group>"; };
 		048320C325D7F1CB00355393 /* RecentsMenuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsMenuDataSource.swift; sourceTree = "<group>"; };
 		048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsSceneDelegate.swift; sourceTree = "<group>"; };
+		04833236287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingObservationDebugView.swift; sourceTree = "<group>"; };
 		048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsRedactOperation.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
 		048909F3226573750048E203 /* PhotoEditorPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorPresenting.swift; sourceTree = "<group>"; };
@@ -743,7 +746,8 @@
 		04BB710B278D2FF700F5BAEC /* TabletSeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabletSeekView.swift; sourceTree = "<group>"; };
 		04BC9FC725C2700200213DBC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsRedactExporter.swift; sourceTree = "<group>"; };
-		04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsExportOperation.swift; sourceTree = "<group>"; };
+		04BE62E8288651500070858B /* PhotoExportError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExportError.swift; sourceTree = "<group>"; };
+		04BE62EC288651AA0070858B /* PhotoExportRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExportRenderer.swift; sourceTree = "<group>"; };
 		04CBB08E2658A14300B792A2 /* PreviousPurchasePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousPurchasePublisher.swift; sourceTree = "<group>"; };
 		04CBB0902658A45D00B792A2 /* FetchProductsPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProductsPublisher.swift; sourceTree = "<group>"; };
 		04CBB0922658A4D500B792A2 /* PurchaseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseConstants.swift; sourceTree = "<group>"; };
@@ -1327,7 +1331,6 @@
 				0464B1E02553A3DE00D00FAC /* IntentHandler.swift */,
 				04CEA1C5283342BF0080E510 /* Redact Detections */,
 				04CEA1C0283341EF0080E510 /* Redact Image */,
-				04BDC49E255657A600BCE982 /* ShortcutsExportOperation.swift */,
 				04BDC4952556576900BCE982 /* ShortcutsRedactExporter.swift */,
 				048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */,
 			);
@@ -1519,7 +1522,7 @@
 				0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */,
 				04AA1D6B252EBBE400B486C7 /* ColorPanel.swift */,
 				042A2B84228D01BD00353414 /* HighlighterTool.swift */,
-				042A2B77228A5B6F00353414 /* PhotoExporter.swift */,
+				04BE62E7288651320070858B /* Export */,
 				04616809263E271700C28B7F /* RestorationImageCache.swift */,
 				049F92EC22CDA48C0090C9BC /* Editing View */,
 				04D68BC3225EE2A500D09BBD /* Extensions */,
@@ -1540,6 +1543,7 @@
 				04FC597627C9E6990072481B /* InputAccessoryHostingViewController.m */,
 				0493D2D524B6BAE400FF99F4 /* ColorPickerViewController.swift */,
 				043CD9D7227531DF0012F5AE /* PhotoEditingObservationVisualizationView.swift */,
+				04833236287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift */,
 				043CD9D52275316E0012F5AE /* PhotoEditingScrollView.swift */,
 				04E192A6229CD38C006F0E56 /* PhotoEditingView.swift */,
 				048909F1226571AB0048E203 /* PhotoEditingViewController.swift */,
@@ -1614,6 +1618,16 @@
 				04BB710B278D2FF700F5BAEC /* TabletSeekView.swift */,
 			);
 			path = Tablet;
+			sourceTree = "<group>";
+		};
+		04BE62E7288651320070858B /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				042A2B77228A5B6F00353414 /* PhotoExporter.swift */,
+				04BE62E8288651500070858B /* PhotoExportError.swift */,
+				04BE62EC288651AA0070858B /* PhotoExportRenderer.swift */,
+			);
+			path = Export;
 			sourceTree = "<group>";
 		};
 		04CEA1C0283341EF0080E510 /* Redact Image */ = {
@@ -2333,7 +2347,6 @@
 				047E913626560BFF0075F6B2 /* SettingsNavigationView.swift in Sources */,
 				047E9121265362CD0075F6B2 /* SettingsHostingController.swift in Sources */,
 				042A2B7A228A642100353414 /* PhotoEditingProtectionAlertController.swift in Sources */,
-				04BDC4A7255657CA00BCE982 /* ShortcutsExportOperation.swift in Sources */,
 				0482C7A72522CEB00013B69E /* DesktopSettingsViewController.swift in Sources */,
 				04DBC83E2314D1D90004F7DB /* AutoRedactionsEmptyView.swift in Sources */,
 				047E9124265363020075F6B2 /* SettingsView.swift in Sources */,
@@ -2571,12 +2584,14 @@
 				04750E8C26D9E12D00E98BB4 /* PhotoEditingViewController.swift in Sources */,
 				049F92F022CDA4C10090C9BC /* PhotoEditingRedactionView.swift in Sources */,
 				041BEA3F22EF879700FF07C2 /* TextRecognitionOperation.swift in Sources */,
+				04833237287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift in Sources */,
 				04DBC841231E0F040004F7DB /* EditingUserActivity.swift in Sources */,
 				04AA1D6C252EBBE400B486C7 /* ColorPanel.swift in Sources */,
 				049F92F722CDA5690090C9BC /* PhotoEditingObservationVisualizationView.swift in Sources */,
 				049F92FA22CDA5D90090C9BC /* NavigationBar.swift in Sources */,
 				045CA3E627719A7500DEA988 /* DesktopSeekBorderView.swift in Sources */,
 				049F92F622CDA54B0090C9BC /* PhotoEditingScrollView.swift in Sources */,
+				04BE62ED288651AA0070858B /* PhotoExportRenderer.swift in Sources */,
 				049F92E522CDA3FF0090C9BC /* TextRectangleDetectionOperation.swift in Sources */,
 				049F92E622CDA3FF0090C9BC /* TextObservation.swift in Sources */,
 				04BB710A278D2E4B00F5BAEC /* TabletSeekViewController.swift in Sources */,
@@ -2605,6 +2620,7 @@
 				04CEA1DA283443060080E510 /* RecognizedTextObservation.swift in Sources */,
 				04431E5E2358117B009FA1F6 /* RedactionSerializer.swift in Sources */,
 				04975D8926106F8B00AA2771 /* HighlighterToolBarButtonItem.swift in Sources */,
+				04BE62E9288651500070858B /* PhotoExportError.swift in Sources */,
 				04FDEA5625257B1900F94CA9 /* SplitViewController.swift in Sources */,
 				04FB0963286FE6C600B600A0 /* RedactedWordObservationRotor.swift in Sources */,
 				04409443275F1A28003155CC /* SeekBarButtonItem.swift in Sources */,

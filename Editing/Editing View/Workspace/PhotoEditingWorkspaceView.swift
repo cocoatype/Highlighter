@@ -6,11 +6,6 @@ import UIKit
 
 class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
     init() {
-        imageView = PhotoEditingImageView()
-        visualizationView = PhotoEditingObservationVisualizationView()
-        redactionView = PhotoEditingRedactionView()
-        brushStrokeView = PhotoEditingCanvasBrushStrokeView()
-
         super.init(frame: .zero)
         isAccessibilityElement = false
         backgroundColor = .appBackground
@@ -18,6 +13,7 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
 
         addSubview(imageView)
         addSubview(visualizationView)
+        addSubview(debugView)
         addSubview(redactionView)
         addSubview(brushStrokeView)
 
@@ -30,6 +26,10 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
             visualizationView.centerYAnchor.constraint(equalTo: centerYAnchor),
             visualizationView.widthAnchor.constraint(equalTo: widthAnchor),
             visualizationView.heightAnchor.constraint(equalTo: heightAnchor),
+            debugView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            debugView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            debugView.widthAnchor.constraint(equalTo: widthAnchor),
+            debugView.heightAnchor.constraint(equalTo: heightAnchor),
             redactionView.centerXAnchor.constraint(equalTo: centerXAnchor),
             redactionView.centerYAnchor.constraint(equalTo: centerYAnchor),
             redactionView.widthAnchor.constraint(equalTo: widthAnchor),
@@ -97,6 +97,7 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
         get { return visualizationView.textObservations }
         set(newTextObservations) {
             visualizationView.textObservations = newTextObservations
+            debugView.textObservations = newTextObservations
         }
     }
 
@@ -198,10 +199,11 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
 
     // MARK: Boilerplate
 
-    private let imageView: PhotoEditingImageView
-    private let visualizationView: PhotoEditingObservationVisualizationView
-    private let redactionView: PhotoEditingRedactionView
-    private let brushStrokeView: UIControl & PhotoEditingBrushStrokeView
+    private let imageView: PhotoEditingImageView = PhotoEditingImageView()
+    private let visualizationView = PhotoEditingObservationVisualizationView()
+    private let debugView = PhotoEditingObservationDebugView()
+    private let redactionView = PhotoEditingRedactionView()
+    private let brushStrokeView: (UIControl & PhotoEditingBrushStrokeView) = PhotoEditingCanvasBrushStrokeView()
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

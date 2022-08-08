@@ -5,11 +5,11 @@ import ErrorHandling
 import UIKit
 
 public class BrushStampFactory: NSObject {
-    public static func brushStamp(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
-        guard let standardImage = UIImage(named: "Brush") else { ErrorHandling.crash("Unable to load brush stamp image") }
+    public static func brushStart(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
+        guard let startImage = UIImage(named: "Brush Start") else { ErrorHandling.crash("Unable to load brush start image") }
 
-        let brushScale = height / standardImage.size.height
-        let scaledBrushSize = standardImage.size * brushScale
+        let brushScale = height / startImage.size.height
+        let scaledBrushSize = startImage.size * brushScale
 
         return UIGraphicsImageRenderer(size: scaledBrushSize).image { context in
             color.setFill()
@@ -18,7 +18,41 @@ public class BrushStampFactory: NSObject {
             let cgContext = context.cgContext
             cgContext.scaleBy(x: brushScale, y: brushScale)
 
-            standardImage.draw(at: .zero, blendMode: .destinationIn, alpha: 1)
+            startImage.draw(at: .zero, blendMode: .destinationIn, alpha: 1)
+        }
+    }
+
+    public static func brushEnd(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
+        guard let endImage = UIImage(named: "Brush End") else { ErrorHandling.crash("Unable to load brush end image") }
+
+        let brushScale = height / endImage.size.height
+        let scaledBrushSize = endImage.size * brushScale
+
+        return UIGraphicsImageRenderer(size: scaledBrushSize).image { context in
+            color.setFill()
+            context.fill(CGRect(origin: .zero, size: scaledBrushSize))
+
+            let cgContext = context.cgContext
+            cgContext.scaleBy(x: brushScale, y: brushScale)
+
+            endImage.draw(at: .zero, blendMode: .destinationIn, alpha: 1)
+        }
+    }
+
+    public static func brushStamp(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
+        guard let stampImage = UIImage(named: "Brush") else { ErrorHandling.crash("Unable to load brush stamp image") }
+
+        let brushScale = height / stampImage.size.height
+        let scaledBrushSize = stampImage.size * brushScale
+
+        return UIGraphicsImageRenderer(size: scaledBrushSize).image { context in
+            color.setFill()
+            context.fill(CGRect(origin: .zero, size: scaledBrushSize))
+
+            let cgContext = context.cgContext
+            cgContext.scaleBy(x: brushScale, y: brushScale)
+
+            stampImage.draw(at: .zero, blendMode: .destinationIn, alpha: 1)
         }
     }
 }
