@@ -8,11 +8,6 @@ import UIKit
 class AutoRedactionsEditViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
-
-        let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewWord))
-        navigationItem.rightBarButtonItems = [addButtonItem]
-        navigationItem.title = AutoRedactionsEditViewController.navigationTitle
-
         embed(initialViewController)
     }
 
@@ -47,6 +42,12 @@ class AutoRedactionsEditViewController: UIViewController {
         } else if let listViewController = listViewController, wordList.count > 0 {
             listViewController.reloadListView()
        }
+    }
+
+    override func willMove(toParent parent: UIViewController?) {
+        let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewWord))
+        parent?.navigationItem.rightBarButtonItems = [addButtonItem]
+        parent?.navigationItem.title = AutoRedactionsEditViewController.navigationTitle
     }
 
     // MARK: Boilerplate
