@@ -16,11 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ErrorHandling.setup()
         PaymentPublisher.shared.setup()
 
-        let window = AppWindow()
-        window.rootViewController = AppViewController()
-        window.makeKeyAndVisible()
-        self.window = window
-
         #if targetEnvironment(macCatalyst)
         UserDefaults.standard.set(true, forKey: "NSQuitAlwaysKeepsWindows")
         #endif
