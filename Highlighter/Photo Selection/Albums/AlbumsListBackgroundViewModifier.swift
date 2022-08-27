@@ -6,7 +6,9 @@ import SwiftUI
 struct AlbumsListBackgroundViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOS 16, *) {
-            content.scrollContentBackground(Color.appPrimary)
+            content
+                .scrollContentBackground(.hidden)
+                .background(Color.appPrimary)
         } else {
             content
                 .introspectTableView { $0.backgroundColor = .primary }
