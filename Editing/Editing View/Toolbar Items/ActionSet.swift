@@ -7,22 +7,39 @@ struct ActionSet {
     @ToolbarBuilder var leadingNavigationItems: [UIBarButtonItem] {
         DismissBarButtonItem()
 
-        if sizeClass == .regular {
+        if #unavailable(iOS 16), sizeClass == .regular {
             UndoBarButtonItem(undoManager: undoManager, target: target)
             RedoBarButtonItem(undoManager: undoManager, target: target)
         }
     }
 
-    @ToolbarBuilder var trailingNavigationItems: [UIBarButtonItem] {
-        ShareBarButtonItem(target: target)
+    @available(iOS 16, *)
+    @ToolbarBuilder var centerNavigationItems: [UIBarButtonItem] {
+        if sizeClass == .regular {
+            UndoBarButtonItem(undoManager: undoManager, target: target)
+            RedoBarButtonItem(undoManager: undoManager, target: target)
+            ColorPickerBarButtonItem(target: target, color: currentColor)
+            SeekBarButtonItem(target: target)
+        }
+    }
 
-        if FeatureFlag.seekAndDestroy, sizeClass == .regular {
+    @ToolbarBuilder var trailingNavigationItems: [UIBarButtonItem] {
+        if #unavailable(iOS 16) {
+            ShareBarButtonItem(target: target)
+        }
+
+        if FeatureFlag.seekAndDestroy, sizeClass == .regular, #unavailable(iOS 16) {
             SeekBarButtonItem(target: target)
         }
 
         if sizeClass == .regular {
-            ColorPickerBarButtonItem(target: target, color: currentColor)
+            if #unavailable(iOS 16) {
+                ColorPickerBarButtonItem(target: target, color: currentColor)
+            }
             HighlighterToolBarButtonItem(tool: selectedTool, target: target)
+            if #available(iOS 16, *) {
+                ShareBarButtonItem(target: target)
+            }
         }
     }
 

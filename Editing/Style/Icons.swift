@@ -20,11 +20,16 @@ public enum Icons {
 
     // MARK: Collections
 
-    public static var favoritesCollection: UIImage? { UIImage(systemName: "suit.heart")?.withRenderingMode(.alwaysTemplate) }
+    public static let favoritesCollection = "suit.heart"
+    public static let recentsCollection = "clock"
+    public static let screenshotsCollection = "camera.viewfinder"
+    public static let standardCollection = "rectangle.stack"
 
-    public static var recentsCollection: UIImage? { UIImage(systemName: "clock")?.withRenderingMode(.alwaysTemplate) }
-
-    public static var screenshotsCollection: UIImage? { UIImage(systemName: "camera.viewfinder")?.withRenderingMode(.alwaysTemplate) }
-
-    public static var standardCollection: UIImage? { UIImage(systemName: "rectangle.stack")?.withRenderingMode(.alwaysTemplate) }
+//    public static var favoritesCollection: UIImage? { UIImage(systemName: "suit.heart")?.withRenderingMode(.alwaysTemplate) }
+//
+//    public static var recentsCollection: UIImage? { UIImage(systemName: "clock")?.withRenderingMode(.alwaysTemplate) }
+//
+//    public static var screenshotsCollection: UIImage? { UIImage(systemName: "camera.viewfinder")?.withRenderingMode(.alwaysTemplate) }
+//
+//    public static var standardCollection: UIImage? { UIImage(systemName: "rectangle.stack")?.withRenderingMode(.alwaysTemplate) }
 }

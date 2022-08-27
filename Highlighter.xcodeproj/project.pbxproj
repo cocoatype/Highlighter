@@ -129,14 +129,7 @@
 		046BEC242470EBAC00FBECD7 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC232470EBAC00FBECD7 /* Collection.swift */; };
 		046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC252470F87200FBECD7 /* CollectionType.swift */; };
 		046BEC282470F89B00FBECD7 /* CollectionsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC272470F89B00FBECD7 /* CollectionsDataSource.swift */; };
-		046BEC2A2470F8BE00FBECD7 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC292470F8BE00FBECD7 /* CollectionTableViewCell.swift */; };
 		046BEC2E2471013900FBECD7 /* SettingsBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BEC2D2471013900FBECD7 /* SettingsBarButtonItem.swift */; };
-		046C405B24761E8A0069E8FB /* CollectionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C405A24761E8A0069E8FB /* CollectionEvent.swift */; };
-		046C405D247F5B3F0069E8FB /* SystemCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C405C247F5B3F0069E8FB /* SystemCollectionTableViewCell.swift */; };
-		046C405F247F5B690069E8FB /* UserCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C405E247F5B690069E8FB /* UserCollectionTableViewCell.swift */; };
-		046C4061247F5B8F0069E8FB /* CollectionTableViewCellLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C4060247F5B8F0069E8FB /* CollectionTableViewCellLabel.swift */; };
-		046C4063247F5BB10069E8FB /* SystemCollectionTableViewCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C4062247F5BB10069E8FB /* SystemCollectionTableViewCellImageView.swift */; };
-		046C4065247F5BCA0069E8FB /* UserCollectionTableViewCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C4064247F5BCA0069E8FB /* UserCollectionTableViewCellImageView.swift */; };
 		046C4067247F60780069E8FB /* AlbumsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C4066247F60780069E8FB /* AlbumsHeaderView.swift */; };
 		046C4069247F60930069E8FB /* AlbumsHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C4068247F60930069E8FB /* AlbumsHeaderLabel.swift */; };
 		046C406B2482075F0069E8FB /* WordObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C406A2482075F0069E8FB /* WordObservationRedaction.swift */; };
@@ -191,6 +184,7 @@
 		048320C425D7F1CB00355393 /* RecentsMenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320C325D7F1CB00355393 /* RecentsMenuDataSource.swift */; };
 		048320DE25D7F43800355393 /* DesktopSettingsSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */; };
 		04833237287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04833236287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift */; };
+		0483323528791A5400CA6A38 /* AlbumsListBackgroundViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483323428791A5400CA6A38 /* AlbumsListBackgroundViewModifier.swift */; };
 		0489081B24AD7B17005DDEF3 /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
 		04899D78231CEC4F002BC1D8 /* PurchaseValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04899D77231CEC4F002BC1D8 /* PurchaseValidatorTests.swift */; };
@@ -638,14 +632,7 @@
 		046BEC232470EBAC00FBECD7 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		046BEC252470F87200FBECD7 /* CollectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionType.swift; sourceTree = "<group>"; };
 		046BEC272470F89B00FBECD7 /* CollectionsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsDataSource.swift; sourceTree = "<group>"; };
-		046BEC292470F8BE00FBECD7 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		046BEC2D2471013900FBECD7 /* SettingsBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBarButtonItem.swift; sourceTree = "<group>"; };
-		046C405A24761E8A0069E8FB /* CollectionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionEvent.swift; sourceTree = "<group>"; };
-		046C405C247F5B3F0069E8FB /* SystemCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemCollectionTableViewCell.swift; sourceTree = "<group>"; };
-		046C405E247F5B690069E8FB /* UserCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionTableViewCell.swift; sourceTree = "<group>"; };
-		046C4060247F5B8F0069E8FB /* CollectionTableViewCellLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCellLabel.swift; sourceTree = "<group>"; };
-		046C4062247F5BB10069E8FB /* SystemCollectionTableViewCellImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemCollectionTableViewCellImageView.swift; sourceTree = "<group>"; };
-		046C4064247F5BCA0069E8FB /* UserCollectionTableViewCellImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionTableViewCellImageView.swift; sourceTree = "<group>"; };
 		046C4066247F60780069E8FB /* AlbumsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsHeaderView.swift; sourceTree = "<group>"; };
 		046C4068247F60930069E8FB /* AlbumsHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsHeaderLabel.swift; sourceTree = "<group>"; };
 		046C406A2482075F0069E8FB /* WordObservationRedaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordObservationRedaction.swift; sourceTree = "<group>"; };
@@ -701,6 +688,7 @@
 		048320C325D7F1CB00355393 /* RecentsMenuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsMenuDataSource.swift; sourceTree = "<group>"; };
 		048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsSceneDelegate.swift; sourceTree = "<group>"; };
 		04833236287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingObservationDebugView.swift; sourceTree = "<group>"; };
+		0483323428791A5400CA6A38 /* AlbumsListBackgroundViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsListBackgroundViewModifier.swift; sourceTree = "<group>"; };
 		048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsRedactOperation.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
 		048909F3226573750048E203 /* PhotoEditorPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorPresenting.swift; sourceTree = "<group>"; };
@@ -1347,6 +1335,7 @@
 				04750E9B26DDE20900E98BB4 /* AlbumsSectionHeader.swift */,
 				04750E9D26DDE23100E98BB4 /* AlbumsRow.swift */,
 				04750E9F26DDE24D00E98BB4 /* AlbumsRowSelectedViewModifier.swift */,
+				0483323428791A5400CA6A38 /* AlbumsListBackgroundViewModifier.swift */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -1357,13 +1346,6 @@
 				046BEC232470EBAC00FBECD7 /* Collection.swift */,
 				046BEC252470F87200FBECD7 /* CollectionType.swift */,
 				046BEC272470F89B00FBECD7 /* CollectionsDataSource.swift */,
-				046BEC292470F8BE00FBECD7 /* CollectionTableViewCell.swift */,
-				046C405A24761E8A0069E8FB /* CollectionEvent.swift */,
-				046C405C247F5B3F0069E8FB /* SystemCollectionTableViewCell.swift */,
-				046C405E247F5B690069E8FB /* UserCollectionTableViewCell.swift */,
-				046C4060247F5B8F0069E8FB /* CollectionTableViewCellLabel.swift */,
-				046C4062247F5BB10069E8FB /* SystemCollectionTableViewCellImageView.swift */,
-				046C4064247F5BCA0069E8FB /* UserCollectionTableViewCellImageView.swift */,
 			);
 			path = Collections;
 			sourceTree = "<group>";
@@ -2342,6 +2324,7 @@
 				047E913826560C390075F6B2 /* SettingsSectionHeader.swift in Sources */,
 				04750E9E26DDE23100E98BB4 /* AlbumsRow.swift in Sources */,
 				0474B07D27C0AE560031210C /* SettingsAlertButton.swift in Sources */,
+				0483323528791A5400CA6A38 /* AlbumsListBackgroundViewModifier.swift in Sources */,
 				048D134F229F7E5100427FE3 /* CallbackAction.swift in Sources */,
 				043C28D02659D8F50054A5A8 /* NavigationWrapper.swift in Sources */,
 				047E913626560BFF0075F6B2 /* SettingsNavigationView.swift in Sources */,
@@ -2352,7 +2335,6 @@
 				047E9124265363020075F6B2 /* SettingsView.swift in Sources */,
 				0464B20C2553A6D900D00FAC /* Intents.intentdefinition in Sources */,
 				0470163224D8FD7F0080DC52 /* DesktopViewController.swift in Sources */,
-				046C405F247F5B690069E8FB /* UserCollectionTableViewCell.swift in Sources */,
 				0482C79F25218D600013B69E /* DesktopSettingsTableView.swift in Sources */,
 				041CFA9A266591BE00042E8E /* PhotoLibraryDataSourceExtraItemsProvider.swift in Sources */,
 				0482C7A325218DB40013B69E /* DesktopSettingsAddRemoveControl.swift in Sources */,
@@ -2371,7 +2353,6 @@
 				046BEC242470EBAC00FBECD7 /* Collection.swift in Sources */,
 				0429C7BD2663847600236D10 /* PurchaseMarketingHeader.swift in Sources */,
 				0474B07227BDEEA60031210C /* DocumentScanningController.swift in Sources */,
-				046C4061247F5B8F0069E8FB /* CollectionTableViewCellLabel.swift in Sources */,
 				04CEA1BF28333D900080E510 /* RedactImageIntentHandler.swift in Sources */,
 				042B7905229A3AC7005B7A2A /* AppRatingsPrompter.swift in Sources */,
 				046BEC262470F87200FBECD7 /* CollectionType.swift in Sources */,
@@ -2396,7 +2377,6 @@
 				048320C425D7F1CB00355393 /* RecentsMenuDataSource.swift in Sources */,
 				041EFF6E225C38800058D8EE /* PhotoSelectionNavigationController.swift in Sources */,
 				0491831524E4D87A004251B1 /* SettingsButton.swift in Sources */,
-				046C405B24761E8A0069E8FB /* CollectionEvent.swift in Sources */,
 				04A606E1251C471F007A2B82 /* DesktopAutoRedactionsListViewController.swift in Sources */,
 				049F292B22875ADD00A335BE /* WebViewController.swift in Sources */,
 				040CFDEA2870003E0055E870 /* PurchaseMarketingTopBarButtonStack.swift in Sources */,
@@ -2424,7 +2404,6 @@
 				04ACC40E255648A10035E3C2 /* ShortcutsRedactOperation.swift in Sources */,
 				041EFEF92251A9F30058D8EE /* AppDelegate.swift in Sources */,
 				047E913E26560CEC0075F6B2 /* PurchaseSubtitle.swift in Sources */,
-				046C4065247F5BCA0069E8FB /* UserCollectionTableViewCellImageView.swift in Sources */,
 				04CEA1CB283345220080E510 /* RedactDetectedIntentResponseCodeExtensions.swift in Sources */,
 				041EFF76225C3DF10058D8EE /* PhotoLibraryViewLayout.swift in Sources */,
 				047F8E7A2786A0C900E1F2A9 /* NewFromClipboardCommand.swift in Sources */,
@@ -2437,7 +2416,6 @@
 				0482C79B25218D090013B69E /* DesktopAutoRedactionsViewDelegate.swift in Sources */,
 				043C28DD265CB2F70054A5A8 /* PurchaseRestoreButton.swift in Sources */,
 				041CFA952665913C00042E8E /* LibraryDataSource.swift in Sources */,
-				046C4063247F5BB10069E8FB /* SystemCollectionTableViewCellImageView.swift in Sources */,
 				04F0910925E7A00000966C1E /* HelpMenuDataSource.swift in Sources */,
 				040CFDEE2870008E0055E870 /* PurchaseMarketingTopBarButtons.swift in Sources */,
 				04F0914225E7B30D00966C1E /* DesktopAppWindow.swift in Sources */,
@@ -2454,7 +2432,6 @@
 				04FF8DB922F57AD9008CF0E9 /* AutoRedactionsDataSource.swift in Sources */,
 				047E913026560B8B0075F6B2 /* SettingsCellViewModifier.swift in Sources */,
 				04DBC8402314D2080004F7DB /* AutoRedactionsListViewController.swift in Sources */,
-				046BEC2A2470F8BE00FBECD7 /* CollectionTableViewCell.swift in Sources */,
 				049E1EB224BFEEE7009DE20D /* AlbumsViewController.swift in Sources */,
 				042A2B7E228CFEDB00353414 /* PhotoEditingNavigationController.swift in Sources */,
 				042A2B7C228A68C900353414 /* PhotoPermissionsRestrictedAlertController.swift in Sources */,
@@ -2462,7 +2439,6 @@
 				04F3C7F32308F37400445A8D /* AsyncOperation.swift in Sources */,
 				04CBB09B2658B40C00B792A2 /* PurchaseStatePublisher.swift in Sources */,
 				041EFF50225303120058D8EE /* PromptLabel.swift in Sources */,
-				046C405D247F5B3F0069E8FB /* SystemCollectionTableViewCell.swift in Sources */,
 				04BDC4AF255657CB00BCE982 /* ShortcutsRedactExporter.swift in Sources */,
 				046C4069247F60930069E8FB /* AlbumsHeaderLabel.swift in Sources */,
 				04750EA026DDE24D00E98BB4 /* AlbumsRowSelectedViewModifier.swift in Sources */,
@@ -2817,6 +2793,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2886,6 +2863,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2955,6 +2933,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Buddy Build (D47V8Y25W5)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development: Buddy Build (D47V8Y25W5)";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 9999;
 				DEVELOPMENT_TEAM = 287EDDET2B;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2988,6 +2967,7 @@
 				CODE_SIGN_ENTITLEMENTS = Highlighter/Highlighter.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 9999;
 				DEVELOPMENT_TEAM = 287EDDET2B;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				FRAMEWORK_SEARCH_PATHS = (
