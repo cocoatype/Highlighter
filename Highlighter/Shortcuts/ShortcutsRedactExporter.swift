@@ -15,7 +15,7 @@ class ShortcutsRedactExporter: NSObject {
 
         os_log("got source image")
 
-        let exportImage = await PhotoExportRenderer(image: sourceImage, redactions: redactions).render()
+        let exportImage = try await PhotoExportRenderer(image: sourceImage, redactions: redactions).render()
 
         os_log("got export image")
 

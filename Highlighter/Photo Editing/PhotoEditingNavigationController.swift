@@ -54,18 +54,24 @@ class PhotoEditingNavigationController: NavigationController, PhotoEditingProtec
     }
 
     func dismissPhotoEditingViewControllerAfterSaving() {
-        photoEditingViewController.exportImage { [weak self] image in
-            guard let image = image else { return }
+        Task {
+            do {
+                let image = try await photoEditingViewController.exportImage()
 
-            PHPhotoLibrary.shared().performChanges({
-                PHAssetChangeRequest.creationRequestForAsset(from: image)
-            }, completionHandler: { [weak self] success, error in
-                assert(success, "an error occurred saving changes: \(error?.localizedDescription ?? "no error")")
-                DispatchQueue.main.async {
-                    self?.dismiss(animated: true)
-                }
-            })
+                try await PHPhotoLibrary.shared().performChanges({
+                    PHAssetChangeRequest.creationRequestForAsset(from: image)
+                })
+                dismiss(animated: true)
+            } catch {
+                presentSaveErrorAlert(for: error)
+                dismiss(animated: true)
+            }
         }
+    }
+
+    func presentSaveErrorAlert(for error: Error) {
+        let alert = PhotoExportErrorAlertFactory.alert(for: error)
+        present(alert, animated: true)
     }
 
     func presentShareDialogInPhotoEditingViewController() {
@@ -81,4 +87,22 @@ class PhotoEditingNavigationController: NavigationController, PhotoEditingProtec
         let className = String(describing: type(of: self))
         fatalError("\(className) does not implement init(coder:)")
     }
+}
+
+extension PHPhotoLibrary {
+    func performChanges(_ changeBlock: @escaping () -> Void) async throws -> Void {
+        return try await withCheckedThrowingContinuation { continuation in
+            performChanges(changeBlock) { success, error in
+                if success {
+                    continuation.resume()
+                } else {
+                    continuation.resume(throwing: error ?? PhotoLibraryError.unknown)
+                }
+            }
+        }
+    }
+}
+
+enum PhotoLibraryError: Error {
+    case unknown
 }

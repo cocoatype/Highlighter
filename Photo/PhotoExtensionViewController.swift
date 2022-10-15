@@ -24,10 +24,11 @@ class PhotoExtensionViewController: UIViewController, PHContentEditingController
     }
 
     func finishContentEditing(completionHandler: @escaping (PHContentEditingOutput?) -> Void) {
-        editingViewController?.exportImage { [weak self] image in
+        Task { [weak self] in
             guard let input = self?.input,
-              let outputImage = image,
-              let outputData = self?.imageOutputData(from: outputImage, typeIdentifier: input.uniformTypeIdentifier)
+                  let editingViewController = editingViewController,
+                  let outputImage = try? await editingViewController.exportImage(),
+                  let outputData = self?.imageOutputData(from: outputImage, typeIdentifier: input.uniformTypeIdentifier)
             else { return completionHandler(nil) }
 
             do {
@@ -42,7 +43,6 @@ class PhotoExtensionViewController: UIViewController, PHContentEditingController
                 completionHandler(output)
             } catch {
                 completionHandler(nil)
-                return
             }
         }
     }

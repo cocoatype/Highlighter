@@ -4,7 +4,7 @@
 import UIKit
 
 class PhotoExporter: NSObject {
-    static func export(_ image: UIImage, redactions: [Redaction]) async -> UIImage {
-        return await PhotoExportRenderer(image: image, redactions: redactions).render()
+    static func export(_ image: UIImage, redactions: [Redaction]) async throws -> UIImage {
+        return try await PhotoExportRenderer(image: image, redactions: redactions).render()
     }
 }
