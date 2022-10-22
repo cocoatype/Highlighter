@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		0401CDF824AD89220011A9BF /* DocumentScanButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401CDF724AD89220011A9BF /* DocumentScanButton.swift */; };
 		0401CDFA24AD8EF50011A9BF /* AssetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401CDF924AD8EF50011A9BF /* AssetButton.swift */; };
-		0406967728FA6B0200EFAD14 /* sample-cats.heic in Resources */ = {isa = PBXBuildFile; fileRef = 0406967428FA66BE00EFAD14 /* sample-cats.heic */; };
-		0406967828FA6B0700EFAD14 /* PhotoExportRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0406967228FA66A200EFAD14 /* PhotoExportRendererTests.swift */; };
 		040CFDEA2870003E0055E870 /* PurchaseMarketingTopBarButtonStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040CFDE92870003E0055E870 /* PurchaseMarketingTopBarButtonStack.swift */; };
 		040CFDEC2870006E0055E870 /* LegacyPurchaseMarketingTopBarButtonStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040CFDEB2870006E0055E870 /* LegacyPurchaseMarketingTopBarButtonStack.swift */; };
 		040CFDEE2870008E0055E870 /* PurchaseMarketingTopBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040CFDED2870008E0055E870 /* PurchaseMarketingTopBarButtons.swift */; };
@@ -194,7 +192,6 @@
 		048320B125D7F12600355393 /* LaunchActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320B025D7F12600355393 /* LaunchActivity.swift */; };
 		048320C425D7F1CB00355393 /* RecentsMenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320C325D7F1CB00355393 /* RecentsMenuDataSource.swift */; };
 		048320DE25D7F43800355393 /* DesktopSettingsSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */; };
-		0483323528791A5400CA6A38 /* AlbumsListBackgroundViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483323428791A5400CA6A38 /* AlbumsListBackgroundViewModifier.swift */; };
 		04833237287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04833236287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift */; };
 		0489081B24AD7B17005DDEF3 /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
@@ -508,8 +505,6 @@
 /* Begin PBXFileReference section */
 		0401CDF724AD89220011A9BF /* DocumentScanButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScanButton.swift; sourceTree = "<group>"; };
 		0401CDF924AD8EF50011A9BF /* AssetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetButton.swift; sourceTree = "<group>"; };
-		0406967228FA66A200EFAD14 /* PhotoExportRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExportRendererTests.swift; sourceTree = "<group>"; };
-		0406967428FA66BE00EFAD14 /* sample-cats.heic */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sample-cats.heic"; sourceTree = "<group>"; };
 		040CFDE92870003E0055E870 /* PurchaseMarketingTopBarButtonStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingTopBarButtonStack.swift; sourceTree = "<group>"; };
 		040CFDEB2870006E0055E870 /* LegacyPurchaseMarketingTopBarButtonStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyPurchaseMarketingTopBarButtonStack.swift; sourceTree = "<group>"; };
 		040CFDED2870008E0055E870 /* PurchaseMarketingTopBarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMarketingTopBarButtons.swift; sourceTree = "<group>"; };
@@ -709,7 +704,6 @@
 		048320B025D7F12600355393 /* LaunchActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchActivity.swift; sourceTree = "<group>"; };
 		048320C325D7F1CB00355393 /* RecentsMenuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsMenuDataSource.swift; sourceTree = "<group>"; };
 		048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsSceneDelegate.swift; sourceTree = "<group>"; };
-		0483323428791A5400CA6A38 /* AlbumsListBackgroundViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsListBackgroundViewModifier.swift; sourceTree = "<group>"; };
 		04833236287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingObservationDebugView.swift; sourceTree = "<group>"; };
 		048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsRedactOperation.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
@@ -1008,7 +1002,6 @@
 		041EFF0C2251A9F50058D8EE /* HighlighterTests */ = {
 			isa = PBXGroup;
 			children = (
-				0406967428FA66BE00EFAD14 /* sample-cats.heic */,
 				04F77D032894E5E700FB3DE2 /* Application */,
 				048D1350229F7EA300427FE3 /* Callback Actions */,
 				04D68BCD2262B9BF00D09BBD /* Photo Selection */,
@@ -1016,7 +1009,6 @@
 				04F77CFF2894CDDA00FB3DE2 /* Shortcuts */,
 				04D68BD32262C52F00D09BBD /* Test Helpers */,
 				04F77D002894CDF100FB3DE2 /* Supporting Files */,
-				0406967228FA66A200EFAD14 /* PhotoExportRendererTests.swift */,
 			);
 			path = HighlighterTests;
 			sourceTree = "<group>";
@@ -2248,7 +2240,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0406967728FA6B0200EFAD14 /* sample-cats.heic in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2521,7 +2512,6 @@
 				04F77D052894E63100FB3DE2 /* AppRatingsPrompterTests.swift in Sources */,
 				041EFF0E2251A9F50058D8EE /* IntroViewControllerTests.swift in Sources */,
 				04899D78231CEC4F002BC1D8 /* PurchaseValidatorTests.swift in Sources */,
-				0406967828FA6B0700EFAD14 /* PhotoExportRendererTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
