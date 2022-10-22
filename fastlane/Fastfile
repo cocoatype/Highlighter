@@ -92,6 +92,7 @@ platform :mac do
 
   desc "Set up developer environment"
   lane :dev do
+    sync_code_signing(platform: "catalyst")
     sync_code_signing
   end
 end
