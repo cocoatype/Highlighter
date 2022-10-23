@@ -183,8 +183,8 @@
 		048320B125D7F12600355393 /* LaunchActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320B025D7F12600355393 /* LaunchActivity.swift */; };
 		048320C425D7F1CB00355393 /* RecentsMenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320C325D7F1CB00355393 /* RecentsMenuDataSource.swift */; };
 		048320DE25D7F43800355393 /* DesktopSettingsSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */; };
-		04833237287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04833236287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift */; };
 		0483323528791A5400CA6A38 /* AlbumsListBackgroundViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483323428791A5400CA6A38 /* AlbumsListBackgroundViewModifier.swift */; };
+		04833237287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04833236287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift */; };
 		0489081B24AD7B17005DDEF3 /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		048909F4226573750048E203 /* PhotoEditorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048909F3226573750048E203 /* PhotoEditorPresenting.swift */; };
 		04899D78231CEC4F002BC1D8 /* PurchaseValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04899D77231CEC4F002BC1D8 /* PurchaseValidatorTests.swift */; };
@@ -687,8 +687,8 @@
 		048320B025D7F12600355393 /* LaunchActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchActivity.swift; sourceTree = "<group>"; };
 		048320C325D7F1CB00355393 /* RecentsMenuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsMenuDataSource.swift; sourceTree = "<group>"; };
 		048320DD25D7F43800355393 /* DesktopSettingsSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopSettingsSceneDelegate.swift; sourceTree = "<group>"; };
-		04833236287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingObservationDebugView.swift; sourceTree = "<group>"; };
 		0483323428791A5400CA6A38 /* AlbumsListBackgroundViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsListBackgroundViewModifier.swift; sourceTree = "<group>"; };
+		04833236287926EF00CA6A38 /* PhotoEditingObservationDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingObservationDebugView.swift; sourceTree = "<group>"; };
 		048416582553AF1100048DE8 /* ShortcutsRedactOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsRedactOperation.swift; sourceTree = "<group>"; };
 		048909F1226571AB0048E203 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
 		048909F3226573750048E203 /* PhotoEditorPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorPresenting.swift; sourceTree = "<group>"; };
@@ -2848,6 +2848,7 @@
 				HEADER_SEARCH_PATHS = "\"${SRCROOT}/libcrypto.xcframework/ios-arm64/Headers\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LIBRARY_SEARCH_PATHS = "${BUILT_PRODUCTS_DIR}";
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2912,6 +2913,7 @@
 				HEADER_SEARCH_PATHS = "\"${SRCROOT}/libcrypto.xcframework/ios-arm64/Headers\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LIBRARY_SEARCH_PATHS = "${BUILT_PRODUCTS_DIR}";
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
