@@ -84,12 +84,9 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     // MARK: Sharing
 
-    public func exportImage(completionHandler: @escaping ((UIImage?) -> Void)) {
-        guard let image = photoEditingView.image else { return completionHandler(nil) }
-        Task {
-            let image = await PhotoExporter.export(image, redactions: photoEditingView.redactions)
-            completionHandler(image)
-        }
+    public func exportImage() async throws -> UIImage {
+        guard let image = photoEditingView.image else { throw PhotoEditingError.noEditingImage }
+        return try await PhotoExporter.export(image, redactions: photoEditingView.redactions)
     }
 
     // MARK: Highlighters
@@ -364,42 +361,45 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     // MARK: Sharing
     @objc public func sharePhoto(_ sender: Any) {
         let imageType = image?.type
-        exportImage { [weak self] image in
-            guard let exportedImage = image else { return }
+        Task {
+            do {
+                let exportedImage = try await exportImage()
 
-            let representedURLName = "\(Self.defaultImageName).\(imageType?.preferredFilenameExtension ?? "png")"
-            let temporaryURL = URL(fileURLWithPath: NSTemporaryDirectory())
-                .appendingPathComponent(representedURLName)
+                let representedURLName = "\(Self.defaultImageName).\(imageType?.preferredFilenameExtension ?? "png")"
+                let temporaryURL = URL(fileURLWithPath: NSTemporaryDirectory())
+                    .appendingPathComponent(representedURLName)
 
-            let data: Data?
+                let data: Data?
 
-            switch imageType {
-            case .jpeg?:
-                data = image?.jpegData(compressionQuality: 0.9)
-            case .png?: fallthrough
-            default:
-                data = image?.pngData()
-            }
-
-            let activityItems: [Any]
-            if let data = data, let _ = try? data.write(to: temporaryURL) {
-                activityItems = [temporaryURL]
-            } else {
-                activityItems = [exportedImage]
-            }
-
-            let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-            activityController.completionWithItemsHandler = { [weak self] _, completed, _, _ in
-                self?.hasMadeEdits = false
-                Defaults.numberOfSaves = Defaults.numberOfSaves + 1
-                DispatchQueue.main.async { [weak self] in
-                    self?.chain(selector: #selector(PhotoEditingActions.displayAppRatingsPrompt))
+                switch imageType {
+                case .jpeg?:
+                    data = image?.jpegData(compressionQuality: 0.9)
+                case .png?: fallthrough
+                default:
+                    data = image?.pngData()
                 }
-            }
 
-            DispatchQueue.main.async { [weak self] in
-                activityController.popoverPresentationController?.barButtonItem = self?.shareBarButtonItem
-                self?.present(activityController, animated: true)
+                let activityItems: [Any]
+                if let data = data, let _ = try? data.write(to: temporaryURL) {
+                    activityItems = [temporaryURL]
+                } else {
+                    activityItems = [exportedImage]
+                }
+
+                let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+                activityController.completionWithItemsHandler = { [weak self] _, completed, _, _ in
+                    self?.hasMadeEdits = false
+                    Defaults.numberOfSaves = Defaults.numberOfSaves + 1
+                    DispatchQueue.main.async { [weak self] in
+                        self?.chain(selector: #selector(PhotoEditingActions.displayAppRatingsPrompt))
+                    }
+                }
+
+                activityController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+                present(activityController, animated: true)
+            } catch {
+                let alert = PhotoExportErrorAlertFactory.alert(for: error)
+                present(alert, animated: true)
             }
         }
     }

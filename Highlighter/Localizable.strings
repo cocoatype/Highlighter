@@ -54,7 +54,7 @@
 
 "DismissBarButtonItem.title" = "Done";
 
-"DocumentScannerNotPurchasedAlertController.dismissButton" = "Okay";
+"DocumentScannerNotPurchasedAlertController.dismissButton" = "OK";
 "DocumentScannerNotPurchasedAlertController.learnMoreButton" = "Learn More…";
 "DocumentScannerNotPurchasedAlertController.hideButton" = "Never Show This";
 "DocumentScannerNotPurchasedAlertController.message" = "Using the document scanner requires the Ultra Highlighter, a one-time purchase.";
@@ -77,7 +77,7 @@
 
 "PageCountAlertFactory.alertTitle" = "Too Many Pages";
 "PageCountAlertFactory.alertMessage" = "Highlighter only supports editing one page at a time. Only the first page of your scan will appear.";
-"PageCountAlertFactory.dismissButtonTitle" = "Okay";
+"PageCountAlertFactory.dismissButtonTitle" = "OK";
 
 "PhotoEditingProtectionAlertController.cancelButtonTitle" = "Cancel";
 "PhotoEditingProtectionAlertController.deleteButtonTitle" = "Delete Changes";
@@ -85,6 +85,10 @@
 "PhotoEditingProtectionAlertController.shareButtonTitle" = "Share Image";
 
 "PhotoEditingViewController.defaultImageName" = "Redacted Image";
+
+"PhotoExportErrorAlertFactory.title" = "Saving Failed";
+"PhotoExportErrorAlertFactory.messageFormat" = "An error occurred while saving: %@. Please contact support if this continues to happen.";
+"PhotoExportErrorAlertFactory.dismissButtonTitle" = "OK";
 
 "PhotoLibraryViewDocumentScannerCell.defaultAccessibilityLabel" = "Scan Document";
 
@@ -148,7 +152,7 @@
 
 "SettingsView.notPurchasedAlertTitle" = "Requires Ultra Highlighter";
 "SettingsView.notPurchasedAlertMessage" = "Automatically hiding words requires the Ultra Highlighter, a one-time purchase.";
-"SettingsView.notPurchasedDismissButton" = "Okay";
+"SettingsView.notPurchasedDismissButton" = "OK";
 "SettingsView.notPurchasedHideButton" = "Never Show This";
 
 "SettingsViewController.navigationTitle" = "Settings";

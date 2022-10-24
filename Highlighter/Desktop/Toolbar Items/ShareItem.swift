@@ -29,7 +29,8 @@ class ShareItem: NSSharingServicePickerToolbarItem, UIActivityItemsConfiguration
 
         let itemProvider = NSItemProvider()
         itemProvider.registerDataRepresentation(forTypeIdentifier: UTType.png.identifier, visibility: .all, loadHandler: { [weak self] loadHandler -> Progress? in
-            self?.delegate?.exportImage { image in
+            Task { [weak self] in
+                let image = await self?.delegate?.exportImage()
                 loadHandler(image?.pngData(), nil)
                 self?.delegate?.didExportImage()
             }
@@ -42,7 +43,7 @@ class ShareItem: NSSharingServicePickerToolbarItem, UIActivityItemsConfiguration
 
 protocol ShareItemDelegate: AnyObject {
     var canExportImage: Bool { get }
-    func exportImage(_ completionHandler: @escaping ((UIImage?) -> Void))
+    func exportImage() async -> UIImage?
     func didExportImage()
 }
 

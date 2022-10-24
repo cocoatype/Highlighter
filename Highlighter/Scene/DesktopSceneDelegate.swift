@@ -99,8 +99,8 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
 
     var canExportImage: Bool { return editingViewController != nil }
 
-    func exportImage(_ completionHandler: @escaping ((UIImage?) -> Void)) {
-        editingViewController?.exportImage(completionHandler: completionHandler)
+    func exportImage() async -> UIImage? {
+        return try? await editingViewController?.exportImage()
     }
 
     func didExportImage() {

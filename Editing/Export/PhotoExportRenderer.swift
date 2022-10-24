@@ -9,7 +9,7 @@ public actor PhotoExportRenderer {
         self.sourceImage = image
     }
 
-    public func render() -> UIImage {
+    public func render() throws -> UIImage {
         let imageSize = sourceImage.size * sourceImage.scale
 
         var tileRect = CGRect.zero
@@ -24,69 +24,74 @@ public actor PhotoExportRenderer {
 
         let overlappingTileRect = CGRect(x: tileRect.minX, y: tileRect.minY, width: tileRect.width, height: tileRect.height + Self.seamOverlap)
 
-        let imageRenderer = UIGraphicsImageRenderer(size: imageSize)
-        return imageRenderer.image { rendererContext in
-            let context = rendererContext.cgContext
+        UIGraphicsBeginImageContextWithOptions(sourceImage.size, false, sourceImage.scale)
+        defer { UIGraphicsEndImageContext() }
+        guard let context = UIGraphicsGetCurrentContext() else { throw PhotoExportRenderError.noCurrentGraphicsContext }
 
-            // draw tiles of source image
-            context.saveGState()
+        // draw tiles of source image
+        context.saveGState()
 
-            let transform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: 0, y: imageSize.height * -1)
-            context.concatenate(transform)
+        let transform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: 0, y: imageSize.height * -1)
+        context.concatenate(transform)
 
-            for y in 0..<iterationCount {
-                autoreleasepool {
-                    NSLog("iteration %d of %d", y, iterationCount)
-                    var currentTileRect = overlappingTileRect
-                    currentTileRect.origin.y = CGFloat(y) * (tileRect.size.height + Self.seamOverlap)
+        for y in 0..<iterationCount {
+            try autoreleasepool {
+                NSLog("iteration %d of %d", y, iterationCount)
+                var currentTileRect = overlappingTileRect
+                currentTileRect.origin.y = CGFloat(y) * (tileRect.size.height + Self.seamOverlap)
 
-                    if (y == iterationCount - 1 && remainder > 0) {
-                        let diffY = currentTileRect.maxY - imageSize.height
-                        currentTileRect.size.height -= diffY
-                    }
-
-                    if let imageRef = sourceImage.cgImage?.cropping(to: currentTileRect) {
-                        context.draw(imageRef, in: currentTileRect)
-                    }
+                if (y == iterationCount - 1 && remainder > 0) {
+                    let diffY = currentTileRect.maxY - imageSize.height
+                    currentTileRect.size.height -= diffY
                 }
-            }
 
-            context.restoreGState()
-
-            // draw redactions
-            let drawings = redactions.flatMap { redaction -> [(path: UIBezierPath, color: UIColor)] in
-                return redaction.paths
-                  .map { (path: $0, color: redaction.color) }
-            }
-
-            drawings.forEach { drawing in
-                let (path, color) = drawing
-                let borderBounds = path.strokeBorderPath.bounds
-                if path.isRect {
-                    let startImage = BrushStampFactory.brushStart(scaledToHeight: borderBounds.height, color: color)
-                    let endImage = BrushStampFactory.brushEnd(scaledToHeight: borderBounds.height, color: color)
-
-                    color.setFill()
-                    UIBezierPath(rect: borderBounds).fill()
-
-                    let startRect = CGRect(origin: borderBounds.origin, size: startImage.size).offsetBy(dx: -startImage.size.width, dy: 0)
-                    context.draw(startImage.cgImage!, in: startRect)
-
-                    let endRect = CGRect(origin: borderBounds.origin, size: endImage.size).offsetBy(dx: borderBounds.width, dy: 0)
-                    context.draw(endImage.cgImage!, in: endRect)
-                } else {
-                    let stampImage = BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
-                    let dashedPath = path.dashedPath
-                    dashedPath.forEachPoint { point in
-                        context.saveGState()
-                        defer { context.restoreGState() }
-
-                        context.translateBy(x: stampImage.size.width * -0.5, y: stampImage.size.height * -0.5)
-                        stampImage.draw(at: point)
-                    }
+                guard let imageRef = sourceImage.cgImage?.cropping(to: currentTileRect) else {
+                    throw PhotoExportRenderError.noCGImage
                 }
+
+                context.draw(imageRef, in: currentTileRect)
             }
         }
+
+        context.restoreGState()
+
+        // draw redactions
+        let drawings = redactions.flatMap { redaction -> [(path: UIBezierPath, color: UIColor)] in
+            return redaction.paths
+                .map { (path: $0, color: redaction.color) }
+        }
+
+        drawings.forEach { drawing in
+            let (path, color) = drawing
+            let borderBounds = path.strokeBorderPath.bounds
+            if path.isRect {
+                let startImage = BrushStampFactory.brushStart(scaledToHeight: borderBounds.height, color: color)
+                let endImage = BrushStampFactory.brushEnd(scaledToHeight: borderBounds.height, color: color)
+
+                color.setFill()
+                UIBezierPath(rect: borderBounds).fill()
+
+                let startRect = CGRect(origin: borderBounds.origin, size: startImage.size).offsetBy(dx: -startImage.size.width, dy: 0)
+                context.draw(startImage.cgImage!, in: startRect)
+
+                let endRect = CGRect(origin: borderBounds.origin, size: endImage.size).offsetBy(dx: borderBounds.width, dy: 0)
+                context.draw(endImage.cgImage!, in: endRect)
+            } else {
+                let stampImage = BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
+                let dashedPath = path.dashedPath
+                dashedPath.forEachPoint { point in
+                    context.saveGState()
+                    defer { context.restoreGState() }
+
+                    context.translateBy(x: stampImage.size.width * -0.5, y: stampImage.size.height * -0.5)
+                    stampImage.draw(at: point)
+                }
+            }
+            //            }
+        }
+
+        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { throw PhotoExportRenderError.noResultImage }
+        return image
     }
 
     // MARK: Boilerplate
@@ -100,4 +105,10 @@ public actor PhotoExportRenderer {
 
     private let redactions: [Redaction]
     private let sourceImage: UIImage
+}
+
+public enum PhotoExportRenderError: Error {
+    case noCurrentGraphicsContext
+    case noCGImage
+    case noResultImage
 }
