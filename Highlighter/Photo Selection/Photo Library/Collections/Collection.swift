@@ -12,7 +12,7 @@ struct CollectionSection {
 
 protocol Collection {
     var title: String? { get }
-    var icon: UIImage? { get }
+    var icon: String { get }
     var identifier: String { get }
 }
 
@@ -24,7 +24,7 @@ struct AssetCollection: Collection {
     }
     var assetCount: Int { return assets.count }
     var assetCollectionSubtype: PHAssetCollectionSubtype { assetCollection.assetCollectionSubtype }
-    var icon: UIImage? {
+    var icon: String {
         switch assetCollection.assetCollectionSubtype {
         case .smartAlbumFavorites: return Icons.favoritesCollection
         case .smartAlbumRecentlyAdded, .smartAlbumUserLibrary: return Icons.recentsCollection
@@ -46,6 +46,6 @@ struct AssetCollection: Collection {
 
 struct EmptyCollection: Collection {
     var title: String? { nil }
-    var icon: UIImage? { nil }
+    var icon: String { Icons.standardCollection }
     var identifier: String { "" }
 }

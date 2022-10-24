@@ -31,6 +31,14 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
         }
     }
 
+    // do not move; controls initial system limited photo picker
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        if viewControllerToPresent is UIImagePickerController {
+            viewControllerToPresent.overrideUserInterfaceStyle = .dark
+        }
+        super.present(viewControllerToPresent, animated: flag, completion: completion)
+    }
+
     private var photoEditingViewController: PhotoEditingViewController? { ((presentedViewController as? NavigationController)?.viewControllers.first as? PhotoEditingViewController) }
     var stateRestorationActivity: NSUserActivity? { photoEditingViewController?.userActivity }
 

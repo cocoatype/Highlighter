@@ -18,7 +18,10 @@ struct AlbumsRow: View {
         } label: {
             Label(
                 title: { Text(collection.title ?? "") },
-                icon: { Image(uiImage: collection.icon ?? UIImage()).foregroundColor(.white) }
+                icon: {
+                    Image(systemName: String(collection.icon))
+                        .foregroundColor(.white)
+                }
             ).font(.sidebarItem)
             .foregroundColor(.white)
             .id(collection.identifier)
