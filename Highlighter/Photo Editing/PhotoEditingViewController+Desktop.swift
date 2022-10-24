@@ -18,7 +18,8 @@ extension PhotoEditingViewController {
         guard let exportURL = fileURLProvider?.representedFileURL else { return saveAs(sender) }
         guard let imageType = imageType else { return present(.missingImageType) }
 
-        exportImage { [weak self] image in
+        Task { [weak self] in
+            let image = try? await exportImage()
             let data: Data?
 
             switch imageType {
@@ -54,7 +55,8 @@ extension PhotoEditingViewController {
         let temporaryURL = URL(fileURLWithPath: NSTemporaryDirectory())
             .appendingPathComponent(representedURLName)
 
-        exportImage { [weak self] image in
+        Task { [weak self] in
+            let image = try? await exportImage()
             let data: Data?
 
             switch imageType {
