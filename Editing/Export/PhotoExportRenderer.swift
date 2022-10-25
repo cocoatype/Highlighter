@@ -10,7 +10,7 @@ public actor PhotoExportRenderer {
     }
 
     public func render() throws -> UIImage {
-        let imageSize = sourceImage.size * sourceImage.scale
+        let imageSize = sourceImage.realSize * sourceImage.scale
 
         var tileRect = CGRect.zero
         tileRect.size.width = imageSize.width
@@ -30,6 +30,15 @@ public actor PhotoExportRenderer {
 
         // draw tiles of source image
         context.saveGState()
+
+        let translateTransform = CGAffineTransform(translationX: sourceImage.size.width / 2, y: sourceImage.size.height / 2)
+        context.concatenate(translateTransform)
+
+        let rotateTransform = CGAffineTransform(rotationAngle: sourceImage.imageOrientation.rotationAngle)
+        context.concatenate(rotateTransform)
+
+        let untranslateTransform = CGAffineTransform(translationX: sourceImage.realSize.width / -2, y: sourceImage.realSize.height / -2)
+        context.concatenate(untranslateTransform)
 
         let transform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: 0, y: imageSize.height * -1)
         context.concatenate(transform)
@@ -87,7 +96,6 @@ public actor PhotoExportRenderer {
                     stampImage.draw(at: point)
                 }
             }
-            //            }
         }
 
         guard let image = UIGraphicsGetImageFromCurrentImageContext() else { throw PhotoExportRenderError.noResultImage }

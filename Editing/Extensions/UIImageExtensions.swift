@@ -11,6 +11,17 @@ extension UIImage {
 
         return UTType(imageTypeString as String)
     }
+
+    public var realSize: CGSize {
+        switch imageOrientation {
+        case .up, .down, .upMirrored, .downMirrored:
+            return size
+        case .left, .right, .leftMirrored, .rightMirrored:
+            return CGSize(width: size.height, height: size.width)
+        @unknown default:
+            return size
+        }
+    }
 }
 
 extension UIImage.Orientation {
@@ -25,6 +36,20 @@ extension UIImage.Orientation {
         case .leftMirrored: return .leftMirrored
         case .rightMirrored: return .rightMirrored
         @unknown default: return .up
+        }
+    }
+
+    public var rotationAngle: CGFloat {
+        switch self {
+        case .up: return 0
+        case .down: return .pi
+        case .left: return  -1 * .pi / 2
+        case .right: return .pi / 2
+        case .upMirrored: return 0
+        case .downMirrored: return .pi
+        case .leftMirrored: return .pi / 2
+        case .rightMirrored: return -1 * .pi / 2
+        @unknown default: return 0
         }
     }
 }
