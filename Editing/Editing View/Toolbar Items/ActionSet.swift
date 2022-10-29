@@ -40,6 +40,8 @@ struct ActionSet {
             if #available(iOS 16, *) {
                 ShareBarButtonItem(target: target)
             }
+        } else if #available(iOS 16, *) {
+            ShareBarButtonItem(target: target)
         }
     }
 
