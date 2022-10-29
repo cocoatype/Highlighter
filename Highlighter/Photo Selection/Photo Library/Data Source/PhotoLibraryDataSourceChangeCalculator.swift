@@ -17,7 +17,8 @@ class PhotoLibraryDataSourceChangeCalculator: NSObject {
 
     func changedResult(for change: PHChange) -> PHFetchResult<PHAsset> {
         guard let changeDetails = details(for: change) else { return fetchResult }
-        return changeDetails.fetchResultAfterChanges
+        fetchResult = changeDetails.fetchResultAfterChanges
+        return fetchResult
     }
 
     func update(_ libraryView: PhotoLibraryView, from change: PHChange) {
@@ -45,5 +46,5 @@ class PhotoLibraryDataSourceChangeCalculator: NSObject {
         }, completion: nil)
     }
 
-    private let fetchResult: PHFetchResult<PHAsset>
+    private(set) var fetchResult: PHFetchResult<PHAsset>
 }
