@@ -373,10 +373,10 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
                 switch imageType {
                 case .jpeg?:
-                    data = image?.jpegData(compressionQuality: 0.9)
+                    data = exportedImage.jpegData(compressionQuality: 0.9)
                 case .png?: fallthrough
                 default:
-                    data = image?.pngData()
+                    data = exportedImage.pngData()
                 }
 
                 let activityItems: [Any]
