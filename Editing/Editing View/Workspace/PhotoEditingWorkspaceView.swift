@@ -101,6 +101,14 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
         }
     }
 
+    var wordObservations: [WordObservation]? {
+        get { return visualizationView.wordObservations }
+        set(newTextObservations) {
+            visualizationView.wordObservations = newTextObservations
+            debugView.wordObservations = newTextObservations
+        }
+    }
+
     func scrollViewDidZoom(to zoomScale: CGFloat) {
         brushStrokeView.updateTool(currentZoomScale: zoomScale)
     }

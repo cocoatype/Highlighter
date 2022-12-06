@@ -42,6 +42,13 @@ class PhotoEditingScrollView: UIScrollView {
         }
     }
 
+    var wordObservations: [WordObservation]? {
+        get { return workspaceView.wordObservations }
+        set(newTextObservations) {
+            workspaceView.wordObservations = newTextObservations
+        }
+    }
+
     // MARK: View Lifecycle
 
     override func layoutSubviews() {

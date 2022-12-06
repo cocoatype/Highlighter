@@ -122,6 +122,10 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
         }
     }
 
+    var wordObservations: [WordObservation]? {
+        didSet {}
+    }
+
     // cannons by @eaglenaut on 4/30/21
     // preview redactions for all text, shown in the full visualization
     private var cannons: [Redaction] {

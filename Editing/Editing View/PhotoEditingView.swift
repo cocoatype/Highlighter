@@ -37,6 +37,7 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
 
     var wordObservations: [WordObservation]? {
         didSet {
+            photoScrollView.wordObservations = wordObservations
             updateAccessibilityElements()
         }
     }

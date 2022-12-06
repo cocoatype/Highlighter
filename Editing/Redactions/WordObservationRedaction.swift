@@ -16,7 +16,7 @@ extension Redaction {
                 currentRect.union(wordObservation.bounds)
             })
         }.map { rect in
-            return UIBezierPath(rect: rect)
+            return UIBezierPath(rect: rect.boundingBox)
         }
         self.color = color
     }

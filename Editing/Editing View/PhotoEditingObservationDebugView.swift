@@ -18,13 +18,21 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
         }
     }
 
+    var wordObservations: [WordObservation]? {
+        didSet {
+            updateDebugLayers()
+            setNeedsDisplay()
+        }
+    }
+
     private func updateDebugLayers() {
         layer.sublayers = debugLayers
     }
 
     private var debugLayers: [CALayer] {
-        guard FeatureFlag.shouldShowDebugOverlay, let textObservations = textObservations else { return [] }
-        return textObservations.flatMap { textObservation -> [CALayer] in
+        guard FeatureFlag.shouldShowDebugOverlay, let textObservations, let wordObservations else { return [] }
+
+        let textLayers = textObservations.flatMap { textObservation -> [CALayer] in
             guard let characterObservations = textObservation.characterObservations else { return [] }
             let characterLayers = characterObservations.map { observation -> CALayer in
                 let layer = CALayer()
@@ -35,9 +43,18 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
 
             let textLayer = CALayer()
             textLayer.backgroundColor = UIColor.systemRed.withAlphaComponent(0.3).cgColor
-            textLayer.frame = textObservation.bounds
+            textLayer.frame = textObservation.bounds.boundingBox
 
             return characterLayers + [textLayer]
         }
+
+        let wordLayers = wordObservations.map { wordObservation in
+            let outlineLayer = CAShapeLayer()
+            outlineLayer.fillColor = UIColor.systemGreen.withAlphaComponent(0.3).cgColor
+            outlineLayer.frame = bounds
+            outlineLayer.path = wordObservation.path
+            return outlineLayer
+        }
+        return textLayers + wordLayers
     }
 }

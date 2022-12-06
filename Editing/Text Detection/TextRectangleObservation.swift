@@ -23,7 +23,7 @@ public struct TextRectangleObservation: TextObservation {
 
     private init(_ textObservation: VNTextObservation, scaledTo imageSize: CGSize) {
         let boundingBox = textObservation.boundingBox
-        self.bounds = CGRect.flippedRect(from: boundingBox, scaledTo: imageSize)
+        self.bounds = Shape(textObservation).scaled(to: imageSize)
 
         let characterObservations = textObservation.characterBoxes?.map {
             CharacterObservation(bounds: CGRect.flippedRect(from: $0.boundingBox, scaledTo: imageSize), textObservationUUID: textObservation.uuid)
@@ -32,6 +32,6 @@ public struct TextRectangleObservation: TextObservation {
         self.characterObservations = characterObservations
     }
 
-    public let bounds: CGRect
+    public let bounds: Shape
     let characterObservations: [CharacterObservation]?
 }
