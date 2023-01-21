@@ -20,18 +20,13 @@ public extension CGPoint {
 
     static func flippedPoint(from point: CGPoint, scaledTo size: CGSize) -> CGPoint {
         var scaledPoint = point
-        print("flippedPoint(from: \(point), scaledTo: \(size))")
-        print(scaledPoint)
 
         #if canImport(UIKit)
         scaledPoint.y = (1.0 - scaledPoint.y)
-        print(scaledPoint)
         #endif
 
         scaledPoint.x *= size.width
-        print(scaledPoint)
         scaledPoint.y *= size.height
-        print(scaledPoint)
 
         return scaledPoint
     }
