@@ -50,6 +50,8 @@
 		041EFF70225C3D830058D8EE /* PhotoLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF6F225C3D830058D8EE /* PhotoLibraryView.swift */; };
 		041EFF74225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF73225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift */; };
 		041EFF76225C3DF10058D8EE /* PhotoLibraryViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF75225C3DF10058D8EE /* PhotoLibraryViewLayout.swift */; };
+		0426FA1D297B991500DC96EC /* RedactableObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426FA1C297B991500DC96EC /* RedactableObservation.swift */; };
+		0426FA1F297B996800DC96EC /* RedactableObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426FA1C297B991500DC96EC /* RedactableObservation.swift */; };
 		0429C7B22661DD2500236D10 /* LimitedLibraryPhotoLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7B12661DD2500236D10 /* LimitedLibraryPhotoLibraryViewCell.swift */; };
 		0429C7B42661E37200236D10 /* DesktopSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7B32661E37200236D10 /* DesktopSettingsView.swift */; };
 		0429C7B62661F55C00236D10 /* LimitedLibraryPhotoLibraryViewCellIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7B52661F55C00236D10 /* LimitedLibraryPhotoLibraryViewCellIconView.swift */; };
@@ -546,6 +548,7 @@
 		041EFF6F225C3D830058D8EE /* PhotoLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryView.swift; sourceTree = "<group>"; };
 		041EFF73225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPhotoLibraryViewCell.swift; sourceTree = "<group>"; };
 		041EFF75225C3DF10058D8EE /* PhotoLibraryViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewLayout.swift; sourceTree = "<group>"; };
+		0426FA1C297B991500DC96EC /* RedactableObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RedactableObservation.swift; path = ../../../RedactableObservation.swift; sourceTree = "<group>"; };
 		0429C7B12661DD2500236D10 /* LimitedLibraryPhotoLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedLibraryPhotoLibraryViewCell.swift; sourceTree = "<group>"; };
 		0429C7B32661E37200236D10 /* DesktopSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesktopSettingsView.swift; sourceTree = "<group>"; };
 		0429C7B52661F55C00236D10 /* LimitedLibraryPhotoLibraryViewCellIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedLibraryPhotoLibraryViewCellIconView.swift; sourceTree = "<group>"; };
@@ -1156,7 +1159,6 @@
 		042A2B7F228D012300353414 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				04A3AEF7227A924D00F21229 /* CharacterObservation.swift */,
 				041EFF5C2255A85F0058D8EE /* NavigationController.swift */,
 				042A2B80228D012F00353414 /* NavigationBar.swift */,
 				042A2B82228D014900353414 /* Toolbar.swift */,
@@ -1212,6 +1214,7 @@
 		043CD9CD226EB0B20012F5AE /* Text Detection */ = {
 			isa = PBXGroup;
 			children = (
+				04A3AEF7227A924D00F21229 /* CharacterObservation.swift */,
 				046C406C248207BB0069E8FB /* StringTagger.swift */,
 				043CD9CE226EB0C70012F5AE /* TextObservation.swift */,
 				04CEA1D228343E030080E510 /* RecognizedText.swift */,
@@ -1223,6 +1226,7 @@
 				04CEA1CC28343D680080E510 /* WordObservation.swift */,
 				04FF8DE022F6D698008CF0E9 /* WordObservationAccessibilityElement.swift */,
 				04FB0962286FE6C600B600A0 /* RedactedWordObservationRotor.swift */,
+				0426FA1C297B991500DC96EC /* RedactableObservation.swift */,
 			);
 			path = "Text Detection";
 			sourceTree = "<group>";
@@ -2537,6 +2541,7 @@
 				041907DC254A6CB700739749 /* Redaction.swift in Sources */,
 				041907E4254A702400739749 /* UIBezierPathExtensions.swift in Sources */,
 				044D4CE02547CC0000701166 /* GeometryExtensions.swift in Sources */,
+				0426FA1F297B996800DC96EC /* RedactableObservation.swift in Sources */,
 				04CEA1BD282F630A0080E510 /* StringExtensions.swift in Sources */,
 				044D4CCE2547CB2800701166 /* TextObservation.swift in Sources */,
 				0419084D254A7FE900739749 /* TextObservationRedaction.swift in Sources */,
@@ -2605,6 +2610,7 @@
 				04975D8926106F8B00AA2771 /* HighlighterToolBarButtonItem.swift in Sources */,
 				04BE62E9288651500070858B /* PhotoExportError.swift in Sources */,
 				04FDEA5625257B1900F94CA9 /* SplitViewController.swift in Sources */,
+				0426FA1D297B991500DC96EC /* RedactableObservation.swift in Sources */,
 				04FB0963286FE6C600B600A0 /* RedactedWordObservationRotor.swift in Sources */,
 				04409443275F1A28003155CC /* SeekBarButtonItem.swift in Sources */,
 				04FF8DB422F57570008CF0E9 /* Defaults.swift in Sources */,

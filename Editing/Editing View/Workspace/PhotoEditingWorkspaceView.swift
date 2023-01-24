@@ -98,6 +98,7 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
         set(newTextObservations) {
             visualizationView.textObservations = newTextObservations
             debugView.textObservations = newTextObservations
+            updateRedactableObservations()
         }
     }
 
@@ -106,7 +107,36 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
         set(newTextObservations) {
             visualizationView.wordObservations = newTextObservations
             debugView.wordObservations = newTextObservations
+            updateRedactableObservations()
         }
+    }
+
+    var redactableCharacterObservations = [CharacterObservation]()
+
+    private func updateRedactableObservations() {
+        let wordObservations = wordObservations ?? []
+        let textCharacterObservations = textObservations?.flatMap(\.characterObservations) ?? []
+        let filteredTextCharacterObservations = textCharacterObservations.filter { characterObservation in
+            let hasIntersection = wordObservations.contains { wordObservation in
+                let wordCGPath = wordObservation.bounds.path
+                let textCGPath = CGPath(rect: characterObservation.bounds, transform: nil)
+
+                let textPath = UIBezierPath(cgPath: textCGPath)
+                let wordPath = UIBezierPath(cgPath: wordCGPath)
+
+                let isContained = textPath.contains(wordPath.currentPoint) || wordPath.contains(textPath.currentPoint)
+                guard isContained == false else { return true }
+
+                let intersections = textPath.intersection(with: wordPath)
+                guard intersections?.count ?? 0 == 0 else { return true }
+
+                return false
+            }
+
+            return !hasIntersection
+        }
+
+        redactableCharacterObservations = wordObservations.flatMap(\.characterObservations) + filteredTextCharacterObservations
     }
 
     func scrollViewDidZoom(to zoomScale: CGFloat) {
@@ -140,11 +170,9 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
     }
 
     private func handleMagicStrokeCompletion() {
-        guard let strokePath = brushStrokeView.currentPath, let textObservations = textObservations else { return }
+        guard let strokePath = brushStrokeView.currentPath else { return }
         let strokeBorderPath = strokePath.strokeBorderPath
-        let redactedCharacterObservations = textObservations
-            .compactMap { $0.characterObservations }
-            .flatMap { $0 }
+        let redactedCharacterObservations = redactableCharacterObservations
             .filter { strokeBorderPath.contains($0.bounds.center) }
 
         if let newRedaction = Redaction(redactedCharacterObservations, color: color) {

@@ -21,10 +21,7 @@ public struct RecognizedTextObservation: TextObservation {
 
     public func wordObservation(for substring: Substring) -> WordObservation? {
         let wordRange = substring.startIndex ..< substring.endIndex
-
-        // shapeThing by @CompileSwift on 11/21/22
-        guard let shapeThing = try? recognizedText.recognizedText.boundingBox(for: wordRange) else { return nil }
-        return WordObservation(bounds: Shape(shapeThing), string: String(substring), imageSize: imageSize, textObservationUUID: recognizedText.uuid)
+        return WordObservation(recognizedText: recognizedText, string: String(substring), range: wordRange, imageSize: imageSize)
     }
 
     public func wordObservations(matching: String) -> [WordObservation] {
@@ -39,11 +36,7 @@ public struct RecognizedTextObservation: TextObservation {
 
     private func wordObservations(matching: ((String, Range<String.Index>) -> Bool)) -> [WordObservation] {
         return recognizedText.string.words.filter(matching).compactMap { word in
-            let (wordString, wordRange) = word
-            guard let shapeThing = try? recognizedText.recognizedText.boundingBox(for: wordRange) else { return nil }
-
-            // Generate (bounding box, word) structs for every word in the string.
-            return WordObservation(bounds: Shape(shapeThing), string: wordString, imageSize: imageSize, textObservationUUID: recognizedText.uuid)
+            return WordObservation(recognizedText: recognizedText, string: word.0, range: word.1, imageSize: imageSize)
         }
     }
 

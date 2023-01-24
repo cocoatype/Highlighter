@@ -131,8 +131,7 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
     private var cannons: [Redaction] {
         guard let textObservations = textObservations else { return [] }
         return textObservations.compactMap { textObservation -> Redaction? in
-            guard let characterObservations = textObservation.characterObservations else { return nil }
-            return Redaction(characterObservations, color: color)
+            return Redaction(textObservation.characterObservations, color: color)
         }
     }
 

@@ -33,16 +33,18 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
     private var debugLayers: [CALayer] {
         guard FeatureFlag.shouldShowDebugOverlay, let textObservations, let wordObservations else { return [] }
 
+        // find words (new system)
         let wordLayers = wordObservations.map { wordObservation in
             let outlineLayer = CAShapeLayer()
-            outlineLayer.fillColor = UIColor.systemGreen.withAlphaComponent(0.3).cgColor
+            outlineLayer.fillColor = UIColor.systemGreen.withAlphaComponent(0.0).cgColor
             outlineLayer.frame = bounds
             outlineLayer.path = wordObservation.path
             return outlineLayer
         }
 
+        // find text (old system)
         let textLayers = textObservations.flatMap { textObservation -> [CAShapeLayer] in
-            guard let characterObservations = textObservation.characterObservations else { return [] }
+            let characterObservations = textObservation.characterObservations
             let characterLayers = characterObservations.map { observation -> CAShapeLayer in
                 let layer = CAShapeLayer()
                 layer.fillColor = UIColor.systemBlue.withAlphaComponent(0.3).cgColor
@@ -79,7 +81,15 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
             return !hasIntersection
         }
 
-        return filteredTextLayers + wordLayers
+        let wordCharacterLayers = wordObservations.flatMap(\.characterObservations).map { (characterObservation: CharacterObservation) -> CAShapeLayer in
+            let textLayer = CAShapeLayer()
+            textLayer.fillColor = UIColor.systemYellow.withAlphaComponent(0.3).cgColor
+            textLayer.frame = bounds
+            textLayer.path = CGPath(rect: characterObservation.bounds, transform: nil)
+            return textLayer
+        }
+
+        return filteredTextLayers + wordLayers + wordCharacterLayers
     }
 }
 

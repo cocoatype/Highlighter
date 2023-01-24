@@ -7,27 +7,46 @@ import AppKit
 import UIKit
 #endif
 
-public struct WordObservation: TextObservation {
-    #if canImport(UIKit)
-    init(bounds: Shape, string: String, in image: UIImage, textObservationUUID: UUID) {
-        let imageSize = image.size * image.scale
-        self.init(bounds: bounds, string: string, imageSize: imageSize, textObservationUUID: textObservationUUID)
-    }
-    #elseif canImport(AppKit)
-    init(bounds: Shape, string: String, in image: NSImage, textObservationUUID: UUID) {
-        self.init(bounds: bounds, string: string, imageSize: image.size, textObservationUUID: textObservationUUID)
-    }
-    #endif
+public struct WordObservation: TextObservation, RedactableObservation {
+    init?(recognizedText: RecognizedText, string: String, range: Range<String.Index>, imageSize: CGSize) {
+        let visionText = recognizedText.recognizedText
+        // shapeThing by @CompileSwift on 11/21/22
+        guard let shapeThing = try? visionText.boundingBox(for: range) else { return nil }
 
-    init(bounds: Shape, string: String, imageSize: CGSize, textObservationUUID: UUID) {
-        self.bounds = bounds.scaled(to: imageSize)
+        self.bounds = Shape(shapeThing).scaled(to: imageSize)
         self.string = string
-        self.textObservationUUID = textObservationUUID
+        self.textObservationUUID = recognizedText.uuid
+
+        self.characterObservations = visionText
+            .string
+            .indices
+            .compactMap { index -> CharacterObservation? in
+                print("evaluating index: \(index.encodedOffset) in substring \"\(string)\" of string \"\(visionText.string)\"")
+                guard range.contains(index) else {
+                    print("range \(range) did not contain index")
+                    return nil
+                }
+                guard index < string.endIndex else {
+                    print("index \(index) was not less than end index \(string.endIndex)")
+                    return nil
+                }
+
+                let characterRange = Range<String.Index>(uncheckedBounds: (index, string.index(after: index)))
+                print("getting bounds for range \(characterRange)")
+                guard let characterShapeThing = try? visionText.boundingBox(for: characterRange) else {
+                    print("text did not have bounding box for range \(characterRange)")
+                    return nil
+                }
+                let bounds = CGRect.flippedRect(from: characterShapeThing.boundingBox, scaledTo: imageSize)
+                return CharacterObservation(bounds: bounds, textObservationUUID: recognizedText.uuid)
+            }
     }
 
     public let bounds: Shape
     public let string: String
     public let textObservationUUID: UUID
+
+    let characterObservations: [CharacterObservation]
 }
 
 extension Array where Element == WordObservation {
@@ -70,6 +89,16 @@ public struct Shape: Equatable {
         else { return .zero }
 
         return CGRect(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
+    }
+
+    var path: CGPath {
+        var path = CGMutablePath()
+        path.move(to: topLeft)
+        path.addLine(to: bottomLeft)
+        path.addLine(to: bottomRight)
+        path.addLine(to: topRight)
+        path.closeSubpath()
+        return path
     }
 
     func union(_ other: Shape) -> Shape {

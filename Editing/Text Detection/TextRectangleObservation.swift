@@ -9,7 +9,7 @@ import AppKit
 import UIKit
 #endif
 
-public struct TextRectangleObservation: TextObservation {
+public struct TextRectangleObservation: TextObservation, RedactableObservation {
     #if canImport(UIKit)
     init(_ textObservation: VNTextObservation, in image: UIImage) {
         let imageSize = image.size * image.scale
@@ -22,16 +22,15 @@ public struct TextRectangleObservation: TextObservation {
     #endif
 
     private init(_ textObservation: VNTextObservation, scaledTo imageSize: CGSize) {
-        let boundingBox = textObservation.boundingBox
         self.bounds = Shape(textObservation).scaled(to: imageSize)
 
         let characterObservations = textObservation.characterBoxes?.map {
             CharacterObservation(bounds: CGRect.flippedRect(from: $0.boundingBox, scaledTo: imageSize), textObservationUUID: textObservation.uuid)
         }
 
-        self.characterObservations = characterObservations
+        self.characterObservations = characterObservations ?? []
     }
 
     public let bounds: Shape
-    let characterObservations: [CharacterObservation]?
+    let characterObservations: [CharacterObservation]
 }

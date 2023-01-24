@@ -19,6 +19,7 @@ struct RecognizedText: Equatable {
     }
 }
 
+// TODO: Handle character-level bounding boxes
 protocol VisionText {
     func boundingBox(for range: Range<String.Index>) throws -> VNRectangleObservation?
     var string: String { get }
