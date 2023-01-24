@@ -138,4 +138,38 @@ extension CGPath {
             function(elementPoint)
         }
     }
+
+    func isEqual(to otherPath: CGPath, accuracy: Double) -> Bool {
+        var ourPathElements = [CGPathElement]()
+        applyWithBlock { elementPointer in
+            ourPathElements.append(elementPointer.pointee)
+        }
+
+        var otherPathElements = [CGPathElement]()
+        otherPath.applyWithBlock { elementPointer in
+            otherPathElements.append(elementPointer.pointee)
+        }
+
+        return ourPathElements.elementsEqual(otherPathElements) { ourElement, otherElement in
+            guard ourElement.type == otherElement.type else { return false }
+
+            switch ourElement.type {
+            case .moveToPoint:
+                return ourElement.points[0].isEqual(to: otherElement.points[0], accuracy: accuracy)
+            case .addLineToPoint:
+                return ourElement.points[0].isEqual(to: otherElement.points[0], accuracy: accuracy)
+            case .addQuadCurveToPoint:
+                return ourElement.points[0].isEqual(to: otherElement.points[0], accuracy: accuracy)
+                && ourElement.points[1].isEqual(to: otherElement.points[1], accuracy: accuracy)
+            case .addCurveToPoint:
+                return ourElement.points[0].isEqual(to: otherElement.points[0], accuracy: accuracy)
+                && ourElement.points[1].isEqual(to: otherElement.points[1], accuracy: accuracy)
+                && ourElement.points[2].isEqual(to: otherElement.points[2], accuracy: accuracy)
+            case .closeSubpath:
+                return true
+            @unknown default:
+                return true
+            }
+        }
+    }
 }

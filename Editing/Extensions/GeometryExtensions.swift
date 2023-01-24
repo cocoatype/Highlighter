@@ -30,6 +30,10 @@ public extension CGPoint {
 
         return scaledPoint
     }
+
+    func isEqual(to otherPoint: CGPoint, accuracy: Double) -> Bool {
+        return (abs(x - otherPoint.x) < accuracy) && (abs(y - otherPoint.y) < accuracy)
+    }
 }
 
 public extension CGRect {

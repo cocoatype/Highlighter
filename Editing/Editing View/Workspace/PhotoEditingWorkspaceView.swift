@@ -102,11 +102,11 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
         }
     }
 
-    var wordObservations: [WordObservation]? {
-        get { return visualizationView.wordObservations }
+    var recognizedTextObservations: [RecognizedTextObservation]? {
+        get { return visualizationView.recognizedTextObservations }
         set(newTextObservations) {
-            visualizationView.wordObservations = newTextObservations
-            debugView.wordObservations = newTextObservations
+            visualizationView.recognizedTextObservations = newTextObservations
+            debugView.recognizedTextObservations = newTextObservations
             updateRedactableObservations()
         }
     }
@@ -114,7 +114,7 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
     var redactableCharacterObservations = [CharacterObservation]()
 
     private func updateRedactableObservations() {
-        let wordObservations = wordObservations ?? []
+        let wordObservations = recognizedTextObservations ?? []
         let textCharacterObservations = textObservations?.flatMap(\.characterObservations) ?? []
         let filteredTextCharacterObservations = textCharacterObservations.filter { characterObservation in
             let hasIntersection = wordObservations.contains { wordObservation in

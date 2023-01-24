@@ -42,10 +42,10 @@ class PhotoEditingScrollView: UIScrollView {
         }
     }
 
-    var wordObservations: [WordObservation]? {
-        get { return workspaceView.wordObservations }
+    var recognizedTextObservations: [RecognizedTextObservation]? {
+        get { return workspaceView.recognizedTextObservations }
         set(newTextObservations) {
-            workspaceView.wordObservations = newTextObservations
+            workspaceView.recognizedTextObservations = newTextObservations
         }
     }
 

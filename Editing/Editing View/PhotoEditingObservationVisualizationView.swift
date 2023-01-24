@@ -122,7 +122,7 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
         }
     }
 
-    var wordObservations: [WordObservation]? {
+    var recognizedTextObservations: [RecognizedTextObservation]? {
         didSet {}
     }
 

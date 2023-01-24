@@ -4,14 +4,26 @@
 import Foundation
 import Vision
 
-public struct RecognizedTextObservation: TextObservation {
+public struct RecognizedTextObservation: TextObservation, RedactableObservation {
     init?(_ recognizedText: RecognizedText, imageSize: CGSize) {
         self.recognizedText = recognizedText
         self.imageSize = imageSize
 
-        let underlyingText = recognizedText.recognizedText
-        guard let boundingBox = try? underlyingText.boundingBox(for: underlyingText.string.startIndex..<underlyingText.string.endIndex) else { return nil }
+        let visionText = recognizedText.recognizedText
+        guard let boundingBox = try? visionText.boundingBox(for: visionText.string.startIndex..<visionText.string.endIndex) else { return nil }
         self.bounds = Shape(boundingBox).scaled(to: imageSize)
+
+        self.characterObservations = visionText
+            .string
+            .indices
+            .compactMap { index -> CharacterObservation? in
+                guard index < visionText.string.endIndex else { return nil }
+
+                let characterRange = Range<String.Index>(uncheckedBounds: (index, visionText.string.index(after: index)))
+                guard let characterShapeThing = try? visionText.boundingBox(for: characterRange) else { return nil }
+                let bounds = CGRect.flippedRect(from: characterShapeThing.boundingBox, scaledTo: imageSize)
+                return CharacterObservation(bounds: bounds, textObservationUUID: recognizedText.uuid)
+            }
     }
 
     public let bounds: Shape
@@ -42,6 +54,8 @@ public struct RecognizedTextObservation: TextObservation {
 
     private let recognizedText: RecognizedText
     private let imageSize: CGSize
+
+    let characterObservations: [CharacterObservation]
 }
 
 extension Shape {

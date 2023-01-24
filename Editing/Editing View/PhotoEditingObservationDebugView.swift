@@ -19,7 +19,7 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
         }
     }
 
-    var wordObservations: [WordObservation]? {
+    var recognizedTextObservations: [RecognizedTextObservation]? {
         didSet {
             updateDebugLayers()
             setNeedsDisplay()
@@ -30,15 +30,16 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
         layer.sublayers = debugLayers
     }
 
-    private var debugLayers: [CALayer] {
-        guard FeatureFlag.shouldShowDebugOverlay, let textObservations, let wordObservations else { return [] }
+    private var debugLayers: [CAShapeLayer] {
+        guard FeatureFlag.shouldShowDebugOverlay, let textObservations, let recognizedTextObservations else { return [] }
 
         // find words (new system)
-        let wordLayers = wordObservations.map { wordObservation in
+        let wordLayers = recognizedTextObservations.map { wordObservation in
             let outlineLayer = CAShapeLayer()
             outlineLayer.fillColor = UIColor.systemGreen.withAlphaComponent(0.0).cgColor
             outlineLayer.frame = bounds
             outlineLayer.path = wordObservation.path
+            print(outlineLayer.path?.svg(color: "#00ff00") ?? "")
             return outlineLayer
         }
 
@@ -50,6 +51,7 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
                 layer.fillColor = UIColor.systemBlue.withAlphaComponent(0.3).cgColor
                 layer.frame = bounds
                 layer.path = CGPath(rect: observation.bounds, transform: nil)
+                print(layer.path?.svg(color: "#0000ff") ?? "")
                 return layer
             }
 
@@ -57,18 +59,21 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
             textLayer.fillColor = UIColor.systemRed.withAlphaComponent(0.3).cgColor
             textLayer.frame = bounds
             textLayer.path = CGPath(rect: textObservation.bounds.boundingBox, transform: nil)
+            print(textLayer.path?.svg(color: "#ff0000") ?? "")
 
             return characterLayers + [textLayer]
         }
 
         let filteredTextLayers = textLayers.filter { textLayer in
-            let hasIntersection = wordLayers.contains { wordLayer in
-                guard let wordCGPath = wordLayer.path, let textCGPath = textLayer.path else {
-                    return false
-                }
+            guard let textCGPath = textLayer.path else { return false }
+            let textPath = UIBezierPath(cgPath: textCGPath)
 
-                let textPath = UIBezierPath(cgPath: textCGPath)
+            let hasIntersection = wordLayers.contains { wordLayer in
+                guard let wordCGPath = wordLayer.path else { return false }
                 let wordPath = UIBezierPath(cgPath: wordCGPath)
+
+                let isEqual = textCGPath.isEqual(to: wordCGPath, accuracy: 0.01)
+                guard isEqual == false else { return true }
 
                 let isContained = textPath.contains(wordPath.currentPoint) || wordPath.contains(textPath.currentPoint)
                 guard isContained == false else { return true }
@@ -76,16 +81,20 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
                 let intersections = textPath.intersection(with: wordPath)
                 guard intersections?.count ?? 0 == 0 else { return true }
 
+                let inverseIntersections = wordPath.intersection(with: textPath)
+                guard inverseIntersections?.count ?? 0 == 0 else { return true }
+
                 return false
             }
             return !hasIntersection
         }
 
-        let wordCharacterLayers = wordObservations.flatMap(\.characterObservations).map { (characterObservation: CharacterObservation) -> CAShapeLayer in
+        let wordCharacterLayers = recognizedTextObservations.flatMap(\.characterObservations).map { (characterObservation: CharacterObservation) -> CAShapeLayer in
             let textLayer = CAShapeLayer()
             textLayer.fillColor = UIColor.systemYellow.withAlphaComponent(0.3).cgColor
             textLayer.frame = bounds
             textLayer.path = CGPath(rect: characterObservation.bounds, transform: nil)
+            print(textLayer.path?.svg(color: "#ffff00") ?? "")
             return textLayer
         }
 
