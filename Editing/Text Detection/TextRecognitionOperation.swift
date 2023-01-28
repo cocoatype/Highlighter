@@ -47,7 +47,7 @@ class TextRecognitionOperation: Operation {
             self?._finished = true
             self?._executing = false
         }
-        imageRequest.recognitionLevel = .fast
+        imageRequest.recognitionLevel = .accurate
         imageRequest.usesLanguageCorrection = true
 
         do {

@@ -36,10 +36,9 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
         // find words (new system)
         let wordLayers = recognizedTextObservations.map { wordObservation in
             let outlineLayer = CAShapeLayer()
-            outlineLayer.fillColor = UIColor.systemGreen.withAlphaComponent(0.0).cgColor
+            outlineLayer.fillColor = UIColor.systemGreen.withAlphaComponent(0.3).cgColor
             outlineLayer.frame = bounds
             outlineLayer.path = wordObservation.path
-            print(outlineLayer.path?.svg(color: "#00ff00") ?? "")
             return outlineLayer
         }
 
@@ -50,8 +49,7 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
                 let layer = CAShapeLayer()
                 layer.fillColor = UIColor.systemBlue.withAlphaComponent(0.3).cgColor
                 layer.frame = bounds
-                layer.path = CGPath(rect: observation.bounds, transform: nil)
-                print(layer.path?.svg(color: "#0000ff") ?? "")
+                layer.path = observation.bounds.path
                 return layer
             }
 
@@ -59,7 +57,6 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
             textLayer.fillColor = UIColor.systemRed.withAlphaComponent(0.3).cgColor
             textLayer.frame = bounds
             textLayer.path = CGPath(rect: textObservation.bounds.boundingBox, transform: nil)
-            print(textLayer.path?.svg(color: "#ff0000") ?? "")
 
             return characterLayers + [textLayer]
         }
@@ -89,12 +86,13 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
             return !hasIntersection
         }
 
-        let wordCharacterLayers = recognizedTextObservations.flatMap(\.characterObservations).map { (characterObservation: CharacterObservation) -> CAShapeLayer in
+        let characterObservations = recognizedTextObservations.flatMap(\.characterObservations)
+        let characterObservationSet = Set(characterObservations)
+        let wordCharacterLayers = characterObservationSet.map { (characterObservation: CharacterObservation) -> CAShapeLayer in
             let textLayer = CAShapeLayer()
             textLayer.fillColor = UIColor.systemYellow.withAlphaComponent(0.3).cgColor
             textLayer.frame = bounds
-            textLayer.path = CGPath(rect: characterObservation.bounds, transform: nil)
-            print(textLayer.path?.svg(color: "#ffff00") ?? "")
+            textLayer.path = characterObservation.bounds.path
             return textLayer
         }
 

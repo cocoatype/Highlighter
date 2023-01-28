@@ -7,7 +7,14 @@ import AppKit
 import UIKit
 #endif
 
-struct CharacterObservation: Equatable {
-    let bounds: CGRect
+struct CharacterObservation: Hashable {
+    let bounds: Shape
     let textObservationUUID: UUID
+}
+
+extension CGPoint: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(x)
+        hasher.combine(y)
+    }
 }

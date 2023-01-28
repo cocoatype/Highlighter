@@ -119,7 +119,7 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
         let filteredTextCharacterObservations = textCharacterObservations.filter { characterObservation in
             let hasIntersection = wordObservations.contains { wordObservation in
                 let wordCGPath = wordObservation.bounds.path
-                let textCGPath = CGPath(rect: characterObservation.bounds, transform: nil)
+                let textCGPath = characterObservation.bounds.path
 
                 let textPath = UIBezierPath(cgPath: textCGPath)
                 let wordPath = UIBezierPath(cgPath: wordCGPath)

@@ -25,7 +25,7 @@ public struct TextRectangleObservation: TextObservation, RedactableObservation {
         self.bounds = Shape(textObservation).scaled(to: imageSize)
 
         let characterObservations = textObservation.characterBoxes?.map {
-            CharacterObservation(bounds: CGRect.flippedRect(from: $0.boundingBox, scaledTo: imageSize), textObservationUUID: textObservation.uuid)
+            CharacterObservation(bounds: Shape($0).scaled(to: imageSize), textObservationUUID: textObservation.uuid)
         }
 
         self.characterObservations = characterObservations ?? []

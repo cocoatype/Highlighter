@@ -17,8 +17,8 @@ extension Redaction {
             siblingObservations.reduce(siblingObservations[0].bounds, { currentRect, characterObservation in
                 currentRect.union(characterObservation.bounds)
             })
-        }.map { rect -> NSBezierPath in
-            return NSBezierPath(rect: rect)
+        }.map { shape -> NSBezierPath in
+            return NSBezierPath(cgPath: shape.path)
         }
 
         self.color = color
@@ -41,8 +41,8 @@ extension Redaction {
             siblingObservations.reduce(siblingObservations[0].bounds, { currentRect, characterObservation in
                 currentRect.union(characterObservation.bounds)
             })
-        }.map { rect in
-            return UIBezierPath(rect: rect)
+        }.map { shape in
+            return UIBezierPath(cgPath: shape.path)
         }
 
         self.color = color

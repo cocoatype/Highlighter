@@ -33,7 +33,7 @@ extension Array where Element == WordObservation {
     }
 }
 
-public struct Shape: Equatable {
+public struct Shape: Hashable {
     let bottomLeft: CGPoint
     let bottomRight: CGPoint
     let topLeft: CGPoint
@@ -66,13 +66,20 @@ public struct Shape: Equatable {
     }
 
     var path: CGPath {
-        var path = CGMutablePath()
+        let path = CGMutablePath()
         path.move(to: topLeft)
         path.addLine(to: bottomLeft)
         path.addLine(to: bottomRight)
         path.addLine(to: topRight)
         path.closeSubpath()
         return path
+    }
+
+    var center: CGPoint {
+        CGPoint(
+            x: (topLeft.x + bottomLeft.x + bottomRight.x + topRight.x) / 4.0,
+            y: (topLeft.y + bottomLeft.y + bottomRight.y + topRight.y) / 4.0
+        )
     }
 
     func union(_ other: Shape) -> Shape {

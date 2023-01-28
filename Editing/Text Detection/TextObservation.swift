@@ -8,13 +8,5 @@ public protocol TextObservation: Equatable {
 }
 
 extension TextObservation {
-    var path: CGPath {
-        let path = CGMutablePath()
-        path.move(to: bounds.topLeft)
-        path.addLine(to: bounds.bottomLeft)
-        path.addLine(to: bounds.bottomRight)
-        path.addLine(to: bounds.topRight)
-        path.closeSubpath()
-        return path
-    }
+    var path: CGPath { bounds.path }
 }
