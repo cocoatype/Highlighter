@@ -96,7 +96,7 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
             return textLayer
         }
 
-        return filteredTextLayers + wordLayers + wordCharacterLayers
+        return textLayers + wordLayers + wordCharacterLayers
     }
 }
 

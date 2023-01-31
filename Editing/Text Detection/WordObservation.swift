@@ -82,8 +82,69 @@ public struct Shape: Hashable {
         )
     }
 
+    func simpleUnion(_ other: Shape) -> Shape {
+        let coordinates = [bottomLeft, bottomRight, topLeft, topRight, other.bottomLeft, other.bottomRight, other.topLeft, other.topRight]
+
+        let xSort = { (lhs: CGPoint, rhs: CGPoint) -> Bool in lhs.x < rhs.x }
+        let ySort = { (lhs: CGPoint, rhs: CGPoint) -> Bool in lhs.y < rhs.y }
+
+        let minX = coordinates.min(by: xSort)!
+        let minY = coordinates.min(by: ySort)!
+        let maxX = coordinates.max(by: xSort)!
+        let maxY = coordinates.max(by: ySort)!
+
+        return Shape(bottomLeft: maxY, bottomRight: maxX, topLeft: minX, topRight: minY)
+    }
+
+    func slopeUnion(_ other: Shape) -> Shape {
+        let horizontallySortedPoints = [bottomLeft, bottomRight, topLeft, topRight, other.bottomLeft, other.bottomRight, other.topLeft, other.topRight].sorted(by: { lhs, rhs in
+            lhs.x < rhs.x
+        })
+
+        let leftPoints = Array(horizontallySortedPoints.prefix(2))
+        let rightPoints = Array(horizontallySortedPoints.suffix(2))
+
+        let dy = (leftPoints[0].y - leftPoints[1].y)
+        let dx = (leftPoints[0].x - leftPoints[1].x)
+
+        if dx == 0 {
+            let (topLeftPoint, bottomLeftPoint) = (leftPoints[0].y < leftPoints[1].y) ? (leftPoints[0], leftPoints[1]) : (leftPoints[1], leftPoints[0])
+            let (topRightPoint, bottomRightPoint) = (rightPoints[0].y < rightPoints[1].y) ? (rightPoints[0], rightPoints[1]) : (rightPoints[1], rightPoints[0])
+
+            return Shape(bottomLeft: bottomLeftPoint, bottomRight: bottomRightPoint, topLeft: topLeftPoint, topRight: topRightPoint)
+        }
+
+        let slope = dy / dx
+
+        if slope > 0 {
+            return Shape(bottomLeft: leftPoints[1], bottomRight: rightPoints[1], topLeft: leftPoints[0], topRight: rightPoints[0])
+        } else {
+            return Shape(bottomLeft: leftPoints[0], bottomRight: rightPoints[0], topLeft: leftPoints[1], topRight: rightPoints[1])
+        }
+    }
+
+    func boundingUnion(_ other: Shape) -> Shape {
+        return Shape(
+            bottomLeft: CGPoint(
+                x: min(bottomLeft.x, other.bottomLeft.x),
+                y: max(bottomLeft.y, other.bottomLeft.y)),
+            bottomRight: CGPoint(
+                x: max(bottomRight.x, other.bottomRight.x),
+                y: max(bottomRight.y, other.bottomRight.y)),
+            topLeft: CGPoint(
+                x: min(topLeft.x, other.topLeft.x),
+                y: min(topLeft.y, other.topLeft.y)),
+            topRight: CGPoint(
+                x: max(topRight.x, other.topRight.x),
+                y: min(topRight.y, other.topRight.y)))
+    }
+
     func union(_ other: Shape) -> Shape {
-        // TODO: FIX ME!!!
-        return self
+        return boundingUnion(other)
+    }
+
+    static let zero = Shape(bottomLeft: .zero, bottomRight: .zero, topLeft: .zero, topRight: .zero)
+    var isNotZero: Bool {
+        self != Self.zero
     }
 }

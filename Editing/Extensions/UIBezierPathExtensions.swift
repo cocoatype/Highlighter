@@ -121,9 +121,17 @@ extension UIBezierPath {
         cgPath.forEachPoint(function)
     }
 
-    public var isRect: Bool {
-        cgPath.isRect(nil)
+    public var isShape: Bool {
+        var ourPathElements = [CGPathElement]()
+        cgPath.applyWithBlock { elementPointer in
+            ourPathElements.append(elementPointer.pointee)
+        }
+
+        return ourPathElements.count == 5 && ((ourPathElements.last?.type == .closeSubpath) ?? false)
     }
+//    public var isRect: Bool {
+//        cgPath.isRect(nil)
+//    }
 }
 #endif
 
