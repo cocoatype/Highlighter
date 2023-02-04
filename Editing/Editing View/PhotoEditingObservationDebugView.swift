@@ -99,37 +99,3 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
         return textLayers + wordLayers + wordCharacterLayers
     }
 }
-
-extension CGPath {
-    func svg(color: String) -> String {
-        var string = ""
-        applyWithBlock { elementPointer in
-            let element = elementPointer.pointee
-            let elementType = element.type
-            switch elementType {
-            case .moveToPoint:
-                string.append("M ")
-                let elementPoint = element.points.pointee
-                string.append("\(elementPoint.x),\(elementPoint.y)")
-                string.append("\n")
-            case .addLineToPoint:
-                string.append("L ")
-                let elementPoint = element.points.pointee
-                string.append("\(elementPoint.x),\(elementPoint.y)")
-                string.append("\n")
-            case .addCurveToPoint:
-                string.append("C ")
-                string.append("\n")
-                // TODO: Implement me!
-            case .addQuadCurveToPoint:
-                string.append("Q ")
-                string.append("\n")
-                // TODO: Implement me!
-            case .closeSubpath:
-                string.append("Z\n")
-            @unknown default: break
-            }
-        }
-        return "<path d=\"\(string)\" fill=\"\(color)\" fill-opacity=\"0.3\"/>"
-    }
-}

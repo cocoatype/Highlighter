@@ -75,6 +75,32 @@ public struct Shape: Hashable {
         return path
     }
 
+    var angle: Double {
+        let centerLeft = CGPoint(
+            x: (topLeft.x + bottomLeft.x) / 2.0,
+            y: (topLeft.y + bottomLeft.y) / 2.0
+        )
+        let centerRight = CGPoint(
+            x: (topRight.x + bottomRight.x) / 2.0,
+            y: (topRight.y + bottomRight.y) / 2.0
+        )
+
+        // leftyLoosey by @KaenAitch on 2/3/22
+        // the point that defines the right angle
+        let leftyLoosey: CGPoint
+
+        if centerRight.y < centerLeft.y {
+            leftyLoosey = CGPoint(x: centerRight.x, y: centerLeft.y)
+        } else {
+            leftyLoosey = CGPoint(x: centerLeft.x, y: centerRight.y)
+        }
+
+        let hypotenuseDistance = centerLeft.distance(to: centerRight)
+        let adjacentDistance = leftyLoosey.x - centerLeft.x
+
+        return cos(adjacentDistance / hypotenuseDistance)
+    }
+
     var center: CGPoint {
         CGPoint(
             x: (topLeft.x + bottomLeft.x + bottomRight.x + topRight.x) / 4.0,
@@ -92,6 +118,25 @@ public struct Shape: Hashable {
         let minY = coordinates.min(by: ySort)!
         let maxX = coordinates.max(by: xSort)!
         let maxY = coordinates.max(by: ySort)!
+
+        return Shape(bottomLeft: maxY, bottomRight: maxX, topLeft: minX, topRight: minY)
+    }
+
+    func simpleUnionV2(_ other: Shape) -> Shape {
+        var transform = CGAffineTransformMakeTranslation(0, 0);
+        transform = CGAffineTransformRotate(transform, angle);
+        transform = CGAffineTransformTranslate(transform,-0,-0);
+
+        let coordinates = [bottomLeft, bottomRight, topLeft, topRight, other.bottomLeft, other.bottomRight, other.topLeft, other.topRight].map { $0.applying(transform) }
+
+        let xSort = { (lhs: CGPoint, rhs: CGPoint) -> Bool in lhs.x < rhs.x }
+        let ySort = { (lhs: CGPoint, rhs: CGPoint) -> Bool in lhs.y < rhs.y }
+
+        let unrotateTransform = CGAffineTransformMakeRotation(-angle)
+        let minX = coordinates.min(by: xSort)!.applying(unrotateTransform)
+        let minY = coordinates.min(by: ySort)!.applying(unrotateTransform)
+        let maxX = coordinates.max(by: xSort)!.applying(unrotateTransform)
+        let maxY = coordinates.max(by: ySort)!.applying(unrotateTransform)
 
         return Shape(bottomLeft: maxY, bottomRight: maxX, topLeft: minX, topRight: minY)
     }
@@ -140,7 +185,7 @@ public struct Shape: Hashable {
     }
 
     func union(_ other: Shape) -> Shape {
-        return boundingUnion(other)
+        return simpleUnionV2(other)
     }
 
     static let zero = Shape(bottomLeft: .zero, bottomRight: .zero, topLeft: .zero, topRight: .zero)

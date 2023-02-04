@@ -34,6 +34,18 @@ public extension CGPoint {
     func isEqual(to otherPoint: CGPoint, accuracy: Double) -> Bool {
         return (abs(x - otherPoint.x) < accuracy) && (abs(y - otherPoint.y) < accuracy)
     }
+
+    func distance(to otherPoint: CGPoint) -> Double {
+        func CGPointDistanceSquared(from: CGPoint, to: CGPoint) -> CGFloat {
+            return (from.x - to.x) * (from.x - to.x) + (from.y - to.y) * (from.y - to.y)
+        }
+
+        func CGPointDistance(from: CGPoint, to: CGPoint) -> CGFloat {
+            return sqrt(CGPointDistanceSquared(from: from, to: to))
+        }
+
+        return CGPointDistance(from: self, to: otherPoint)
+    }
 }
 
 public extension CGRect {
