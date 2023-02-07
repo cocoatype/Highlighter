@@ -10,13 +10,14 @@ extension Redaction: Codable {
         let pathsData = try container.decode([Data].self, forKey: .paths)
 
         color = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData) ?? .black
-        paths = try pathsData.compactMap { try NSKeyedUnarchiver.unarchivedObject(ofClass: UIBezierPath.self, from: $0) }
+        let paths = try pathsData.compactMap { try NSKeyedUnarchiver.unarchivedObject(ofClass: UIBezierPath.self, from: $0) }
+        parts = RedactionSerializer.parts(from: paths)
     }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         let colorData = try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: true)
-        let pathsData = paths.compactMap { try? NSKeyedArchiver.archivedData(withRootObject: $0, requiringSecureCoding: true) }
+        let pathsData = parts.map(\.path).compactMap { try? NSKeyedArchiver.archivedData(withRootObject: $0, requiringSecureCoding: true) }
 
         try container.encode(colorData, forKey: .color)
         try container.encode(pathsData, forKey: .paths)

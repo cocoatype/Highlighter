@@ -96,7 +96,7 @@
          <EnvironmentVariable
             key = "SHOW_DEBUG_OVERLAY"
             value = "1"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
       <StoreKitConfigurationFileReference

@@ -8,7 +8,7 @@ extension Redaction {
     public init<ObservationType: TextObservation>(_ textObservation: ObservationType, color: NSColor) {
         let rect = textObservation.bounds
         let path = NSBezierPath(rect: rect.boundingBox)
-        self.paths = [path]
+        self.parts = [.path(path)]
 
         self.color = color
     }
@@ -21,7 +21,7 @@ extension Redaction {
     public init<ObservationType: TextObservation>(_ textObservation: ObservationType, color: UIColor) {
         let rect = textObservation.bounds
         let path = UIBezierPath(rect: rect.boundingBox)
-        self.paths = [path]
+        self.parts = [.path(path)]
 
         self.color = color
     }

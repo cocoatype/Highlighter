@@ -250,6 +250,7 @@
 		04ACC40F255648A10035E3C2 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464B1E02553A3DE00D00FAC /* IntentHandler.swift */; };
 		04AE0A07298DFF3B00CB5A24 /* CGPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE0A06298DFF3B00CB5A24 /* CGPathExtensions.swift */; };
 		04AE0A08298E009900CB5A24 /* CGPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE0A06298DFF3B00CB5A24 /* CGPathExtensions.swift */; };
+		04AE0A41298E69F100CB5A24 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE0A40298E69F100CB5A24 /* Shape.swift */; };
 		04B198F42623ADDD001A275B /* ClippingBezier in Frameworks */ = {isa = PBXBuildFile; productRef = 04B198F32623ADDD001A275B /* ClippingBezier */; };
 		04B19927262410D5001A275B /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		04B199542624117A001A275B /* PhotoEditingWorkspaceViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B1994426241162001A275B /* PhotoEditingWorkspaceViewTests.swift */; };
@@ -734,6 +735,7 @@
 		04AA1D6B252EBBE400B486C7 /* ColorPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPanel.swift; sourceTree = "<group>"; };
 		04ABC8DC2528207400F5BA6A /* CollectionPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPresenting.swift; sourceTree = "<group>"; };
 		04AE0A06298DFF3B00CB5A24 /* CGPathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPathExtensions.swift; sourceTree = "<group>"; };
+		04AE0A40298E69F100CB5A24 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		04B19922262410D5001A275B /* EditingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EditingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B19926262410D5001A275B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04B1994426241162001A275B /* PhotoEditingWorkspaceViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingWorkspaceViewTests.swift; sourceTree = "<group>"; };
@@ -1227,6 +1229,7 @@
 				043CD9C8226EB0400012F5AE /* TextDetector.swift */,
 				04CEA1CF28343DC30080E510 /* TextRectangleObservation.swift */,
 				04CEA1CC28343D680080E510 /* WordObservation.swift */,
+				04AE0A40298E69F100CB5A24 /* Shape.swift */,
 				04FF8DE022F6D698008CF0E9 /* WordObservationAccessibilityElement.swift */,
 				04FB0962286FE6C600B600A0 /* RedactedWordObservationRotor.swift */,
 				0426FA1C297B991500DC96EC /* RedactableObservation.swift */,
@@ -2599,6 +2602,7 @@
 				046C406B2482075F0069E8FB /* WordObservationRedaction.swift in Sources */,
 				046C406F24820C720069E8FB /* StringExtensions.swift in Sources */,
 				041BEA3722EF75E800FF07C2 /* Icons.swift in Sources */,
+				04AE0A41298E69F100CB5A24 /* Shape.swift in Sources */,
 				049F92E822CDA43F0090C9BC /* UIViewControllerExtensions.swift in Sources */,
 				049F92FB22CDA5D90090C9BC /* Toolbar.swift in Sources */,
 				04FF8DE122F6D698008CF0E9 /* WordObservationAccessibilityElement.swift in Sources */,

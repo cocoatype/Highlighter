@@ -53,6 +53,14 @@ public extension CGRect {
         return CGRect(x: rect.origin.x * multiplier, y: rect.origin.y * multiplier, width: rect.size.width * multiplier, height: rect.size.height * multiplier)
     }
 
+    init(_ pointA: CGPoint, _ pointB: CGPoint) {
+        let width = pointB.x - pointA.x
+        let height = pointB.y - pointA.y
+        let nonstandardRect = CGRect(origin: pointA, size: CGSize(width: width, height: height))
+        let standardRect = nonstandardRect.standardized
+        self.init(origin: standardRect.origin, size: standardRect.size)
+    }
+
     var center: CGPoint {
         return CGPoint(x: midX, y: midY)
     }

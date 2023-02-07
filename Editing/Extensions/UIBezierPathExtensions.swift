@@ -122,15 +122,23 @@ extension UIBezierPath {
     }
 
     public var isShape: Bool {
+        return shape != nil
+    }
+
+    var shape: Shape? {
         var ourPathElements = [CGPathElement]()
         cgPath.applyWithBlock { elementPointer in
             ourPathElements.append(elementPointer.pointee)
         }
 
-        return ourPathElements.count == 5 && ((ourPathElements.last?.type == .closeSubpath) ?? false)
+        guard ourPathElements.count == 5 && ((ourPathElements.last?.type == .closeSubpath) ?? false) else { return nil }
+
+        return Shape(
+            bottomLeft: ourPathElements[1].points.pointee,
+            bottomRight: ourPathElements[2].points.pointee,
+            topLeft: ourPathElements[0].points.pointee,
+            topRight: ourPathElements[3].points.pointee
+        )
     }
-//    public var isRect: Bool {
-//        cgPath.isRect(nil)
-//    }
 }
 #endif
