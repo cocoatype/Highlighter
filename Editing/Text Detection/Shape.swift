@@ -53,20 +53,11 @@ public struct Shape: Hashable {
     }
 
     var angle: Double {
+        guard (centerRight.x - centerLeft.x) != 0 else { return .pi / 2 }
         // leftyLoosey by @KaenAitch on 2/3/22
-        // the point that defines the right angle
-        let leftyLoosey: CGPoint
-
-        if centerRight.y < centerLeft.y {
-            leftyLoosey = CGPoint(x: centerRight.x, y: centerLeft.y)
-        } else {
-            leftyLoosey = CGPoint(x: centerLeft.x, y: centerRight.y)
-        }
-
-        let hypotenuseDistance = centerLeft.distance(to: centerRight)
-        let adjacentDistance = leftyLoosey.x - centerLeft.x
-
-        return cos(adjacentDistance / hypotenuseDistance)
+        // the slope of the primary axis of the shape
+        let leftyLoosey = Double((centerRight.y - centerLeft.y) / (centerRight.x - centerLeft.x))
+        return atan(leftyLoosey)
     }
 
     var center: CGPoint {

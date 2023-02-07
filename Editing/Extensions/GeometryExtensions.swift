@@ -18,6 +18,10 @@ public extension CGPoint {
         return CGPoint(x:point.x * multiplier, y: point.y * multiplier)
     }
 
+    static func + (point: CGPoint, size: CGSize) -> CGPoint {
+        return CGPoint(x: point.x + size.width, y: point.y + size.height)
+    }
+
     static func flippedPoint(from point: CGPoint, scaledTo size: CGSize) -> CGPoint {
         var scaledPoint = point
 

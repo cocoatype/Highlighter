@@ -251,6 +251,7 @@
 		04AE0A07298DFF3B00CB5A24 /* CGPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE0A06298DFF3B00CB5A24 /* CGPathExtensions.swift */; };
 		04AE0A08298E009900CB5A24 /* CGPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE0A06298DFF3B00CB5A24 /* CGPathExtensions.swift */; };
 		04AE0A41298E69F100CB5A24 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE0A40298E69F100CB5A24 /* Shape.swift */; };
+		04AE0A422991F79B00CB5A24 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE0A40298E69F100CB5A24 /* Shape.swift */; };
 		04B198F42623ADDD001A275B /* ClippingBezier in Frameworks */ = {isa = PBXBuildFile; productRef = 04B198F32623ADDD001A275B /* ClippingBezier */; };
 		04B19927262410D5001A275B /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		04B199542624117A001A275B /* PhotoEditingWorkspaceViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B1994426241162001A275B /* PhotoEditingWorkspaceViewTests.swift */; };
@@ -2552,6 +2553,7 @@
 				0426FA1F297B996800DC96EC /* RedactableObservation.swift in Sources */,
 				04CEA1BD282F630A0080E510 /* StringExtensions.swift in Sources */,
 				044D4CCE2547CB2800701166 /* TextObservation.swift in Sources */,
+				04AE0A422991F79B00CB5A24 /* Shape.swift in Sources */,
 				0419084D254A7FE900739749 /* TextObservationRedaction.swift in Sources */,
 				044D4CBC2547C92800701166 /* TextDetector.swift in Sources */,
 				04CEA1D528343E750080E510 /* CharacterObservation.swift in Sources */,

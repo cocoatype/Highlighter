@@ -14,20 +14,23 @@ class RedactionPathLayer: CALayer {
             let endHeight = shape.topRight.distance(to: shape.bottomRight)
             let endImage = BrushStampFactory.brushEnd(scaledToHeight: endHeight, color: color)
 
-            let startHyp = startImage.size.width
-            let startRise = startHyp * sin(shape.angle) // different based on angle?
-            let startRun = startHyp * cos(shape.angle)
-            let startPoint = CGPoint(x: shape.centerLeft.x - startRun, y: shape.centerLeft.y + startRise)
-            dump(startPoint)
-
-            let endHyp = endImage.size.width
-            let endRise = endHyp * sin(shape.angle)
-            let endRun = endHyp * cos(shape.angle)
-            let endPoint = CGPoint(x: shape.centerRight.x + endRun, y: shape.centerRight.y - endRise)
-            dump(endPoint)
+            let angle = shape.angle
+            let startVector = CGSize(
+                width: startImage.size.width * -1 * cos(angle),
+                height: startImage.size.width * -1 * sin(angle)
+            )
+            let endVector = CGSize(
+                width: endImage.size.width * CoreGraphics.cos(angle),
+                height: endImage.size.width * sin(angle)
+            )
 
             // need to actually draw a larger extent on the corner
-            pathBounds = CGRect(startPoint, endPoint)
+            let outsetShape = Shape(
+                bottomLeft: shape.bottomLeft + startVector,
+                bottomRight: shape.bottomRight + endVector,
+                topLeft: shape.topLeft + startVector,
+                topRight: shape.topRight + endVector)
+            pathBounds = outsetShape.boundingBox
 
             self.part = Part.shape(shape: shape, startImage: startImage, endImage: endImage)
         case .path(let path):
@@ -70,10 +73,20 @@ class RedactionPathLayer: CALayer {
             let offsetPath = UIBezierPath(cgPath: shape.path)
             offsetPath.apply(offsetTransform)
             offsetPath.fill()
-//            UIBezierPath(rect: bounds.inset(by: UIEdgeInsets(top: 0, left: startImage.size.width, bottom: 0, right: endImage.size.width))).fill()
-//
-//            context.draw(startImage.cgImage!, in: CGRect(origin: .zero, size: startImage.size))
-//            context.draw(endImage.cgImage!, in: CGRect(origin: CGPoint(x: bounds.maxX - endImage.size.width, y: bounds.minY), size: endImage.size))
+
+            context.saveGState()
+            context.translateBy(x: shape.topLeft.x - frame.origin.x, y: shape.topLeft.y - frame.origin.y)
+            context.rotate(by: shape.angle)
+            context.translateBy(x: -startImage.size.width, y: 0)
+            context.draw(startImage.cgImage!, in: CGRect(origin: .zero, size: startImage.size))
+            context.restoreGState()
+
+            context.saveGState()
+            context.translateBy(x: shape.topRight.x - frame.origin.x, y: shape.topRight.y - frame.origin.y)
+            context.rotate(by: shape.angle)
+            context.draw(endImage.cgImage!, in: CGRect(origin: .zero, size: endImage.size))
+            context.restoreGState()
+
         case let .path(path, dikembeMutombo):
             let dashedPath = path.dashedPath
             dashedPath.apply(CGAffineTransform(translationX: -path.bounds.origin.x, y: -path.bounds.origin.y))
