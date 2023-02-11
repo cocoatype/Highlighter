@@ -213,12 +213,15 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     }
 
     @objc public func seekBarDidChangeText(_ sender: UISearchTextField) {
-        // FIXME: Find actual word observations here
-//        guard let wordObservations = photoEditingView.recognizedTextObservations,
-//              let text = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-//        else { return }
-//
-//        photoEditingView.seekPreviewObservations = wordObservations.matching([text])
+        guard let recognizedTextObservations = photoEditingView.recognizedTextObservations,
+              let text = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        else { return }
+
+        let wordObservations = recognizedTextObservations.flatMap { recognizedTextObservation -> [WordObservation] in
+            recognizedTextObservation.wordObservations(matching: text)
+        }
+
+        photoEditingView.seekPreviewObservations = wordObservations
     }
 
     open override var canResignFirstResponder: Bool { true }

@@ -22,7 +22,6 @@ public struct RecognizedTextObservation: TextObservation, RedactableObservation 
                 let characterRange = Range<String.Index>(uncheckedBounds: (index, visionText.string.index(after: index)))
                 guard let characterShapeThing = try? visionText.boundingBox(for: characterRange) else { return nil }
                 let shape = Shape(characterShapeThing).scaled(to: imageSize)
-//                let bounds = CGRect.flippedRect(from: characterShapeThing.boundingBox, scaledTo: imageSize)
                 return CharacterObservation(bounds: shape, textObservationUUID: recognizedText.uuid)
             }
     }

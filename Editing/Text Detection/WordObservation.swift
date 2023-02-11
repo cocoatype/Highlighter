@@ -23,8 +23,8 @@ public struct WordObservation: TextObservation {
     public let textObservationUUID: UUID
 }
 
-extension Array where Element == WordObservation {
-    func matching(_ strings: [String]) -> [WordObservation] {
+extension Array where Element == RecognizedTextObservation {
+    func matching(_ strings: [String]) -> [RecognizedTextObservation] {
         return filter { observation in
             strings.contains(where: { wordListString in
                 wordListString.compare(observation.string, options: [.caseInsensitive, .diacriticInsensitive]) == .orderedSame
