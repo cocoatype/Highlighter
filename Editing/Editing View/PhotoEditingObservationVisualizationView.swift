@@ -106,7 +106,7 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
 
     var seekPreviewObservations = [WordObservation]() {
         didSet {
-            seekPreviewRedactions = seekPreviewObservations.map { Redaction($0, color: color) }
+            seekPreviewRedactions = seekPreviewObservations.map { Redaction([$0], color: color) }
         }
     }
 
