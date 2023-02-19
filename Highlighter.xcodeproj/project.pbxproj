@@ -50,8 +50,6 @@
 		041EFF70225C3D830058D8EE /* PhotoLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF6F225C3D830058D8EE /* PhotoLibraryView.swift */; };
 		041EFF74225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF73225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift */; };
 		041EFF76225C3DF10058D8EE /* PhotoLibraryViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF75225C3DF10058D8EE /* PhotoLibraryViewLayout.swift */; };
-		0426FA1D297B991500DC96EC /* RedactableObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426FA1C297B991500DC96EC /* RedactableObservation.swift */; };
-		0426FA1F297B996800DC96EC /* RedactableObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426FA1C297B991500DC96EC /* RedactableObservation.swift */; };
 		0429C7B22661DD2500236D10 /* LimitedLibraryPhotoLibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7B12661DD2500236D10 /* LimitedLibraryPhotoLibraryViewCell.swift */; };
 		0429C7B42661E37200236D10 /* DesktopSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7B32661E37200236D10 /* DesktopSettingsView.swift */; };
 		0429C7B62661F55C00236D10 /* LimitedLibraryPhotoLibraryViewCellIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C7B52661F55C00236D10 /* LimitedLibraryPhotoLibraryViewCellIconView.swift */; };
@@ -271,6 +269,8 @@
 		04CBB0972658ABB200B792A2 /* ProductPricePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB0962658ABB200B792A2 /* ProductPricePublisher.swift */; };
 		04CBB0992658AF5800B792A2 /* LogPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB0982658AF5800B792A2 /* LogPublisher.swift */; };
 		04CBB09B2658B40C00B792A2 /* PurchaseStatePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB09A2658B40C00B792A2 /* PurchaseStatePublisher.swift */; };
+		04CE5EF929A28A72007E7407 /* RedactableObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE5EF829A28A72007E7407 /* RedactableObservation.swift */; };
+		04CE5EFA29A28A8C007E7407 /* RedactableObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE5EF829A28A72007E7407 /* RedactableObservation.swift */; };
 		04CEA1BD282F630A0080E510 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C406E24820C720069E8FB /* StringExtensions.swift */; };
 		04CEA1BF28333D900080E510 /* RedactImageIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CEA1BE28333D900080E510 /* RedactImageIntentHandler.swift */; };
 		04CEA1C2283342050080E510 /* RedactImageIntentResponseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CEA1C1283342050080E510 /* RedactImageIntentResponseExtensions.swift */; };
@@ -552,7 +552,6 @@
 		041EFF6F225C3D830058D8EE /* PhotoLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryView.swift; sourceTree = "<group>"; };
 		041EFF73225C3DD20058D8EE /* AssetPhotoLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPhotoLibraryViewCell.swift; sourceTree = "<group>"; };
 		041EFF75225C3DF10058D8EE /* PhotoLibraryViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewLayout.swift; sourceTree = "<group>"; };
-		0426FA1C297B991500DC96EC /* RedactableObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RedactableObservation.swift; path = ../../../RedactableObservation.swift; sourceTree = "<group>"; };
 		0429C7B12661DD2500236D10 /* LimitedLibraryPhotoLibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedLibraryPhotoLibraryViewCell.swift; sourceTree = "<group>"; };
 		0429C7B32661E37200236D10 /* DesktopSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesktopSettingsView.swift; sourceTree = "<group>"; };
 		0429C7B52661F55C00236D10 /* LimitedLibraryPhotoLibraryViewCellIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedLibraryPhotoLibraryViewCellIconView.swift; sourceTree = "<group>"; };
@@ -756,6 +755,7 @@
 		04CBB0962658ABB200B792A2 /* ProductPricePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPricePublisher.swift; sourceTree = "<group>"; };
 		04CBB0982658AF5800B792A2 /* LogPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogPublisher.swift; sourceTree = "<group>"; };
 		04CBB09A2658B40C00B792A2 /* PurchaseStatePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseStatePublisher.swift; sourceTree = "<group>"; };
+		04CE5EF829A28A72007E7407 /* RedactableObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactableObservation.swift; sourceTree = "<group>"; };
 		04CEA1BE28333D900080E510 /* RedactImageIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactImageIntentHandler.swift; sourceTree = "<group>"; };
 		04CEA1C1283342050080E510 /* RedactImageIntentResponseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactImageIntentResponseExtensions.swift; sourceTree = "<group>"; };
 		04CEA1C3283342320080E510 /* RedactImageIntentResponseCodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactImageIntentResponseCodeExtensions.swift; sourceTree = "<group>"; };
@@ -1221,6 +1221,7 @@
 			isa = PBXGroup;
 			children = (
 				04A3AEF7227A924D00F21229 /* CharacterObservation.swift */,
+				04CE5EF829A28A72007E7407 /* RedactableObservation.swift */,
 				046C406C248207BB0069E8FB /* StringTagger.swift */,
 				043CD9CE226EB0C70012F5AE /* TextObservation.swift */,
 				04CEA1D228343E030080E510 /* RecognizedText.swift */,
@@ -1233,7 +1234,6 @@
 				04AE0A40298E69F100CB5A24 /* Shape.swift */,
 				04FF8DE022F6D698008CF0E9 /* WordObservationAccessibilityElement.swift */,
 				04FB0962286FE6C600B600A0 /* RedactedWordObservationRotor.swift */,
-				0426FA1C297B991500DC96EC /* RedactableObservation.swift */,
 			);
 			path = "Text Detection";
 			sourceTree = "<group>";
@@ -2543,6 +2543,7 @@
 				04CEA1D428343E320080E510 /* RecognizedText.swift in Sources */,
 				04CEA1CE28343D900080E510 /* WordObservation.swift in Sources */,
 				044D4D0C2547D4CC00701166 /* TextRecognitionOperation.swift in Sources */,
+				04CE5EFA29A28A8C007E7407 /* RedactableObservation.swift in Sources */,
 				04190845254A7F0A00739749 /* CharacterObservationRedaction.swift in Sources */,
 				044D4CC52547CA2400701166 /* TextRectangleDetectionOperation.swift in Sources */,
 				04CEA1DB283446860080E510 /* RecognizedTextObservation.swift in Sources */,
@@ -2550,7 +2551,6 @@
 				041907E4254A702400739749 /* UIBezierPathExtensions.swift in Sources */,
 				04AE0A08298E009900CB5A24 /* CGPathExtensions.swift in Sources */,
 				044D4CE02547CC0000701166 /* GeometryExtensions.swift in Sources */,
-				0426FA1F297B996800DC96EC /* RedactableObservation.swift in Sources */,
 				04CEA1BD282F630A0080E510 /* StringExtensions.swift in Sources */,
 				044D4CCE2547CB2800701166 /* TextObservation.swift in Sources */,
 				04AE0A422991F79B00CB5A24 /* Shape.swift in Sources */,
@@ -2606,6 +2606,7 @@
 				041BEA3722EF75E800FF07C2 /* Icons.swift in Sources */,
 				04AE0A41298E69F100CB5A24 /* Shape.swift in Sources */,
 				049F92E822CDA43F0090C9BC /* UIViewControllerExtensions.swift in Sources */,
+				04CE5EF929A28A72007E7407 /* RedactableObservation.swift in Sources */,
 				049F92FB22CDA5D90090C9BC /* Toolbar.swift in Sources */,
 				04FF8DE122F6D698008CF0E9 /* WordObservationAccessibilityElement.swift in Sources */,
 				041907F3254A703700739749 /* UIBezierPathExtensions.swift in Sources */,
@@ -2621,7 +2622,6 @@
 				04975D8926106F8B00AA2771 /* HighlighterToolBarButtonItem.swift in Sources */,
 				04BE62E9288651500070858B /* PhotoExportError.swift in Sources */,
 				04FDEA5625257B1900F94CA9 /* SplitViewController.swift in Sources */,
-				0426FA1D297B991500DC96EC /* RedactableObservation.swift in Sources */,
 				04FB0963286FE6C600B600A0 /* RedactedWordObservationRotor.swift in Sources */,
 				04409443275F1A28003155CC /* SeekBarButtonItem.swift in Sources */,
 				04FF8DB422F57570008CF0E9 /* Defaults.swift in Sources */,
