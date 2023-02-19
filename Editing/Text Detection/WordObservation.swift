@@ -8,30 +8,23 @@ import UIKit
 #endif
 
 public struct WordObservation: TextObservation {
-    #if canImport(UIKit)
-    init(bounds: CGRect, string: String, in image: UIImage, textObservationUUID: UUID) {
-        let imageSize = image.size * image.scale
-        self.init(bounds: bounds, string: string, imageSize: imageSize, textObservationUUID: textObservationUUID)
-    }
-    #elseif canImport(AppKit)
-    init(bounds: CGRect, string: String, in image: NSImage, textObservationUUID: UUID) {
-        self.init(bounds: bounds, string: string, imageSize: image.size, textObservationUUID: textObservationUUID)
-    }
-    #endif
+    init?(recognizedText: RecognizedText, string: String, range: Range<String.Index>, imageSize: CGSize) {
+        let visionText = recognizedText.recognizedText
+        // shapeThing by @CompileSwift on 11/21/22
+        guard let shapeThing = try? visionText.boundingBox(for: range) else { return nil }
 
-    init(bounds: CGRect, string: String, imageSize: CGSize, textObservationUUID: UUID) {
-        self.bounds = CGRect.flippedRect(from: bounds, scaledTo: imageSize)
+        self.bounds = Shape(shapeThing).scaled(to: imageSize)
         self.string = string
-        self.textObservationUUID = textObservationUUID
+        self.textObservationUUID = recognizedText.uuid
     }
 
-    public let bounds: CGRect
+    public let bounds: Shape
     public let string: String
     public let textObservationUUID: UUID
 }
 
-extension Array where Element == WordObservation {
-    func matching(_ strings: [String]) -> [WordObservation] {
+extension Array where Element == RecognizedTextObservation {
+    func matching(_ strings: [String]) -> [RecognizedTextObservation] {
         return filter { observation in
             strings.contains(where: { wordListString in
                 wordListString.compare(observation.string, options: [.caseInsensitive, .diacriticInsensitive]) == .orderedSame

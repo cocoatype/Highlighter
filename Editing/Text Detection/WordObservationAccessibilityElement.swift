@@ -10,7 +10,7 @@ class WordObservationAccessibilityElement: UIAccessibilityElement {
         super.init(accessibilityContainer: workspaceView)
 
         accessibilityLabel = wordObservation.string
-        accessibilityFrameInContainerSpace = wordObservation.bounds
+        accessibilityFrameInContainerSpace = wordObservation.bounds.boundingBox
         accessibilityTraits = .button
         accessibilityValue = isRedacted ? Self.redactedValue : nil
     }

@@ -213,11 +213,15 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     }
 
     @objc public func seekBarDidChangeText(_ sender: UISearchTextField) {
-        guard let wordObservations = photoEditingView.wordObservations,
+        guard let recognizedTextObservations = photoEditingView.recognizedTextObservations,
               let text = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         else { return }
 
-        photoEditingView.seekPreviewObservations = wordObservations.matching([text])
+        let wordObservations = recognizedTextObservations.flatMap { recognizedTextObservation -> [WordObservation] in
+            recognizedTextObservation.wordObservations(matching: text)
+        }
+
+        photoEditingView.seekPreviewObservations = wordObservations
     }
 
     open override var canResignFirstResponder: Bool { true }
@@ -311,19 +315,20 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
         }
 
         textRectangleDetector.detectText(in: image) { [weak self] recognizedTextObservations in
-            guard let observations = recognizedTextObservations else { return }
+            guard let recognizedTextObservations else { return }
             Task { [weak self] in
                 await MainActor.run { [weak self] in
-                    self?.updateWordObservations(from: observations)
-                    self?.autoRedact(using: observations)
+                    self?.updateRecognizedTextObservations(from: recognizedTextObservations)
+                    self?.autoRedact(using: recognizedTextObservations)
                 }
             }
         }
     }
 
     @MainActor
-    private func updateWordObservations(from textObservations: [RecognizedTextObservation]) {
-        photoEditingView.wordObservations = textObservations.flatMap(\.allWordObservations)
+    private func updateRecognizedTextObservations(from textObservations: [RecognizedTextObservation]) {
+        // store recognized text observations
+        photoEditingView.recognizedTextObservations = textObservations
     }
 
     @MainActor

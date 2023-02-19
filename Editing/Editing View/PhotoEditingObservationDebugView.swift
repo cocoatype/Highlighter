@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 7/8/22.
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
+@_implementationOnly import ClippingBezier
 import UIKit
 
 class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
@@ -18,26 +19,83 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
         }
     }
 
+    var recognizedTextObservations: [RecognizedTextObservation]? {
+        didSet {
+            updateDebugLayers()
+            setNeedsDisplay()
+        }
+    }
+
     private func updateDebugLayers() {
         layer.sublayers = debugLayers
     }
 
-    private var debugLayers: [CALayer] {
-        guard FeatureFlag.shouldShowDebugOverlay, let textObservations = textObservations else { return [] }
-        return textObservations.flatMap { textObservation -> [CALayer] in
-            guard let characterObservations = textObservation.characterObservations else { return [] }
-            let characterLayers = characterObservations.map { observation -> CALayer in
-                let layer = CALayer()
-                layer.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.3).cgColor
-                layer.frame = observation.bounds
+    private var debugLayers: [CAShapeLayer] {
+        guard FeatureFlag.shouldShowDebugOverlay, let textObservations, let recognizedTextObservations else { return [] }
+
+        // find words (new system)
+        let wordLayers = recognizedTextObservations.map { wordObservation in
+            let outlineLayer = CAShapeLayer()
+            outlineLayer.fillColor = UIColor.systemGreen.withAlphaComponent(0.3).cgColor
+            outlineLayer.frame = bounds
+            outlineLayer.path = wordObservation.path
+            return outlineLayer
+        }
+
+        // find text (old system)
+        let textLayers = textObservations.flatMap { textObservation -> [CAShapeLayer] in
+            let characterObservations = textObservation.characterObservations
+            let characterLayers = characterObservations.map { observation -> CAShapeLayer in
+                let layer = CAShapeLayer()
+                layer.fillColor = UIColor.systemBlue.withAlphaComponent(0.3).cgColor
+                layer.frame = bounds
+                layer.path = observation.bounds.path
                 return layer
             }
 
-            let textLayer = CALayer()
-            textLayer.backgroundColor = UIColor.systemRed.withAlphaComponent(0.3).cgColor
-            textLayer.frame = textObservation.bounds
+            let textLayer = CAShapeLayer()
+            textLayer.fillColor = UIColor.systemRed.withAlphaComponent(0.3).cgColor
+            textLayer.frame = bounds
+            textLayer.path = CGPath(rect: textObservation.bounds.boundingBox, transform: nil)
 
             return characterLayers + [textLayer]
         }
+
+        let filteredTextLayers = textLayers.filter { textLayer in
+            guard let textCGPath = textLayer.path else { return false }
+            let textPath = UIBezierPath(cgPath: textCGPath)
+
+            let hasIntersection = wordLayers.contains { wordLayer in
+                guard let wordCGPath = wordLayer.path else { return false }
+                let wordPath = UIBezierPath(cgPath: wordCGPath)
+
+                let isEqual = textCGPath.isEqual(to: wordCGPath, accuracy: 0.01)
+                guard isEqual == false else { return true }
+
+                let isContained = textPath.contains(wordPath.currentPoint) || wordPath.contains(textPath.currentPoint)
+                guard isContained == false else { return true }
+
+                let intersections = textPath.intersection(with: wordPath)
+                guard intersections?.count ?? 0 == 0 else { return true }
+
+                let inverseIntersections = wordPath.intersection(with: textPath)
+                guard inverseIntersections?.count ?? 0 == 0 else { return true }
+
+                return false
+            }
+            return !hasIntersection
+        }
+
+        let characterObservations = recognizedTextObservations.flatMap(\.characterObservations)
+        let characterObservationSet = Set(characterObservations)
+        let wordCharacterLayers = characterObservationSet.map { (characterObservation: CharacterObservation) -> CAShapeLayer in
+            let textLayer = CAShapeLayer()
+            textLayer.fillColor = UIColor.systemYellow.withAlphaComponent(0.3).cgColor
+            textLayer.frame = bounds
+            textLayer.path = characterObservation.bounds.path
+            return textLayer
+        }
+
+        return textLayers + wordLayers + wordCharacterLayers
     }
 }

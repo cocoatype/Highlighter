@@ -50,8 +50,8 @@ public class PhotoEditingRedactionView: UIView {
 
     private func updateDisplay() {
         layer.sublayers = redactions.flatMap { redaction -> [RedactionPathLayer] in
-            return redaction.paths
-              .map { RedactionPathLayer(path: $0, color: redaction.color)}
+            return redaction.parts
+              .map { RedactionPathLayer(part: $0, color: redaction.color)}
         }
     }
 

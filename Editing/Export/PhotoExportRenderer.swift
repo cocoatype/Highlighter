@@ -73,7 +73,7 @@ public actor PhotoExportRenderer {
         drawings.forEach { drawing in
             let (path, color) = drawing
             let borderBounds = path.strokeBorderPath.bounds
-            if path.isRect {
+            if path.isShape {
                 let startImage = BrushStampFactory.brushStart(scaledToHeight: borderBounds.height, color: color)
                 let endImage = BrushStampFactory.brushEnd(scaledToHeight: borderBounds.height, color: color)
 

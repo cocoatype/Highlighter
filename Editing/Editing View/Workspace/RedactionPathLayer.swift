@@ -4,27 +4,46 @@
 import Foundation
 
 class RedactionPathLayer: CALayer {
-    init(path: UIBezierPath, color: UIColor) {
-        let borderBounds = path.strokeBorderPath.bounds
-        let startImage = BrushStampFactory.brushStart(scaledToHeight: borderBounds.height, color: color)
-        let endImage = BrushStampFactory.brushEnd(scaledToHeight: borderBounds.height, color: color)
-        let dikembeMutombo = BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
-
+    init(part: RedactionPart, color: UIColor) {
         let pathBounds: CGRect
-        if path.isRect {
-            pathBounds = borderBounds.inset(by: UIEdgeInsets(top: 0, left: startImage.size.width * -1, bottom: 0, right: endImage.size.width * -1))
-        } else {
+        
+        switch part {
+        case .shape(let shape):
+            let startHeight = shape.topLeft.distance(to: shape.bottomLeft)
+            let startImage = BrushStampFactory.brushStart(scaledToHeight: startHeight, color: color)
+            let endHeight = shape.topRight.distance(to: shape.bottomRight)
+            let endImage = BrushStampFactory.brushEnd(scaledToHeight: endHeight, color: color)
+
+            let angle = shape.angle
+            let startVector = CGSize(
+                width: startImage.size.width * -1 * cos(angle),
+                height: startImage.size.width * -1 * sin(angle)
+            )
+            let endVector = CGSize(
+                width: endImage.size.width * CoreGraphics.cos(angle),
+                height: endImage.size.width * sin(angle)
+            )
+
+            // need to actually draw a larger extent on the corner
+            let outsetShape = Shape(
+                bottomLeft: shape.bottomLeft + startVector,
+                bottomRight: shape.bottomRight + endVector,
+                topLeft: shape.topLeft + startVector,
+                topRight: shape.topRight + endVector)
+            pathBounds = outsetShape.boundingBox
+
+            self.part = Part.shape(shape: shape, startImage: startImage, endImage: endImage)
+        case .path(let path):
+            let dikembeMutombo = BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
+            let borderBounds = path.strokeBorderPath.bounds
             pathBounds = borderBounds.inset(by: UIEdgeInsets(top: dikembeMutombo.size.height * -0.5,
                                                              left: dikembeMutombo.size.width * -0.5,
                                                              bottom: dikembeMutombo.size.height * -0.5,
                                                              right: dikembeMutombo.size.width * -0.5))
+            self.part = Part.path(path: path, dikembeMutombo: dikembeMutombo)
         }
 
         self.color = color
-        self.dikembeMutombo = dikembeMutombo
-        self.startImage = startImage
-        self.endImage = endImage
-        self.path = path
         super.init()
 
         backgroundColor = UIColor.clear.cgColor
@@ -38,10 +57,7 @@ class RedactionPathLayer: CALayer {
     override init(layer: Any) {
         let pathLayer = layer as? RedactionPathLayer
         self.color = pathLayer?.color ?? .black
-        self.startImage = pathLayer?.startImage ?? UIImage()
-        self.endImage = pathLayer?.endImage ?? UIImage()
-        self.path = pathLayer?.path ?? UIBezierPath()
-        self.dikembeMutombo = pathLayer?.dikembeMutombo ?? UIImage()
+        self.part = pathLayer?.part ?? .path(path: UIBezierPath(), dikembeMutombo: UIImage())
         super.init(layer: layer)
     }
 
@@ -49,32 +65,50 @@ class RedactionPathLayer: CALayer {
         UIGraphicsPushContext(context)
         defer { UIGraphicsPopContext() }
 
-        if path.isRect {
+        switch part {
+        case let .shape(shape, startImage, endImage):
             color.setFill()
-            UIBezierPath(rect: bounds.inset(by: UIEdgeInsets(top: 0, left: startImage.size.width, bottom: 0, right: endImage.size.width))).fill()
 
+            let offsetTransform = CGAffineTransformMakeTranslation(-frame.origin.x, -frame.origin.y)
+            let offsetPath = UIBezierPath(cgPath: shape.path)
+            offsetPath.apply(offsetTransform)
+            offsetPath.fill()
+
+            context.saveGState()
+            context.translateBy(x: shape.topLeft.x - frame.origin.x, y: shape.topLeft.y - frame.origin.y)
+            context.rotate(by: shape.angle)
+            context.translateBy(x: -startImage.size.width, y: 0)
             context.draw(startImage.cgImage!, in: CGRect(origin: .zero, size: startImage.size))
-            context.draw(endImage.cgImage!, in: CGRect(origin: CGPoint(x: bounds.maxX - endImage.size.width, y: bounds.minY), size: endImage.size))
-        } else {
-            let stampImage = BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
+            context.restoreGState()
+
+            context.saveGState()
+            context.translateBy(x: shape.topRight.x - frame.origin.x, y: shape.topRight.y - frame.origin.y)
+            context.rotate(by: shape.angle)
+            context.draw(endImage.cgImage!, in: CGRect(origin: .zero, size: endImage.size))
+            context.restoreGState()
+
+        case let .path(path, dikembeMutombo):
             let dashedPath = path.dashedPath
             dashedPath.apply(CGAffineTransform(translationX: -path.bounds.origin.x, y: -path.bounds.origin.y))
-            dashedPath.forEachPoint { point in
+            dashedPath.forEachPoint { [dikembeMutombo] point in
                 context.saveGState()
                 defer { context.restoreGState() }
 
-                context.translateBy(x: stampImage.size.width * 0.5, y: stampImage.size.height * 0.5)
-                stampImage.draw(at: point)
+                context.translateBy(x: dikembeMutombo.size.width * 0.5, y: dikembeMutombo.size.height * 0.5)
+                dikembeMutombo.draw(at: point)
             }
         }
     }
 
-    // dikembeMutombo by @KaenAitch on 8/1/22
-    // the brush stamp image
-    private let dikembeMutombo: UIImage
-    private let startImage: UIImage
-    private let endImage: UIImage
-    private let path: UIBezierPath
+    private enum Part {
+        case shape(shape: Shape, startImage: UIImage, endImage: UIImage)
+
+        // dikembeMutombo by @KaenAitch on 8/1/22
+        // the brush stamp image
+        case path(path: UIBezierPath, dikembeMutombo: UIImage)
+    }
+
+    private let part: RedactionPathLayer.Part
 
     // MARK: Boilerplate
 

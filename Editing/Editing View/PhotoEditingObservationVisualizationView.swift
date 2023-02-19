@@ -106,7 +106,7 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
 
     var seekPreviewObservations = [WordObservation]() {
         didSet {
-            seekPreviewRedactions = seekPreviewObservations.map { Redaction($0, color: color) }
+            seekPreviewRedactions = seekPreviewObservations.map { Redaction([$0], color: color) }
         }
     }
 
@@ -118,22 +118,79 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
         didSet {
             setNeedsDisplay()
             animateFullVisualization()
-            addDebugLayers()
+        }
+    }
+
+    var recognizedTextObservations: [RecognizedTextObservation]? {
+        didSet {
+            setNeedsDisplay()
+            animateFullVisualization()
         }
     }
 
     // cannons by @eaglenaut on 4/30/21
     // preview redactions for all text, shown in the full visualization
     private var cannons: [Redaction] {
-        guard let textObservations = textObservations else { return [] }
-        return textObservations.compactMap { textObservation -> Redaction? in
-            guard let characterObservations = textObservation.characterObservations else { return nil }
-            return Redaction(characterObservations, color: color)
+        guard let textObservations, let recognizedTextObservations else { return [] }
+
+        // get all character observations from recognized text
+        let recognizedCharacterObservations = recognizedTextObservations.flatMap(\.characterObservations).filter(\.bounds.isNotZero)
+
+        // get all character observations from detected text
+        let detectedCharacterObservations = textObservations.flatMap(\.characterObservations).filter(\.bounds.isNotZero)
+
+        // do intersection detection to override detected with recognized text
+        let filteredDetectedObservations = detectedCharacterObservations.filter { detectedObservation in
+            let detectedCGPath = detectedObservation.bounds.path
+            let detectedPath = UIBezierPath(cgPath: detectedCGPath)
+
+            let hasIntersection = recognizedCharacterObservations.contains { recognizedObservation in
+                let recognizedCGPath = recognizedObservation.bounds.path
+                let recognizedPath = UIBezierPath(cgPath: recognizedCGPath)
+
+                let isEqual = detectedCGPath.isEqual(to: recognizedCGPath, accuracy: 0.01)
+                guard isEqual == false else { return true }
+
+                let isContained = detectedPath.contains(recognizedPath.currentPoint) || recognizedPath.contains(detectedPath.currentPoint)
+                guard isContained == false else { return true }
+
+                let intersections = detectedPath.intersection(with: recognizedPath)
+                guard intersections?.count ?? 0 == 0 else { return true }
+
+                let inverseIntersections = recognizedPath.intersection(with: detectedPath)
+                guard inverseIntersections?.count ?? 0 == 0 else { return true }
+
+                return false
+            }
+
+            return !hasIntersection
         }
-    }
 
-    private func addDebugLayers() {
+        // unique by adding to set
+        let characterObservationSet = Set(filteredDetectedObservations + recognizedCharacterObservations)
 
+        // reduce into dictionary by textObservationUUID
+        let observationsByUUID = characterObservationSet.reduce(Dictionary<UUID, [CharacterObservation]>()) { dictionary, observation in
+            var observationsByUUID: [CharacterObservation]
+            if let existing = dictionary[observation.textObservationUUID] {
+                observationsByUUID = existing
+            } else {
+                observationsByUUID = []
+            }
+
+            observationsByUUID.append(observation)
+
+            var newDictionary = dictionary
+            newDictionary[observation.textObservationUUID] = observationsByUUID
+            return newDictionary
+        }
+
+        // map dictionary keys into redactions
+        let redactions = observationsByUUID.compactMap { (key: UUID, value: [CharacterObservation]) in
+            return Redaction(value, color: color)
+        }
+
+        return redactions
     }
 
     // MARK: Boilerplate

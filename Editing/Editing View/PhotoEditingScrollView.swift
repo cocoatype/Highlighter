@@ -42,6 +42,13 @@ class PhotoEditingScrollView: UIScrollView {
         }
     }
 
+    var recognizedTextObservations: [RecognizedTextObservation]? {
+        get { return workspaceView.recognizedTextObservations }
+        set(newTextObservations) {
+            workspaceView.recognizedTextObservations = newTextObservations
+        }
+    }
+
     // MARK: View Lifecycle
 
     override func layoutSubviews() {

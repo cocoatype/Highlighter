@@ -35,8 +35,9 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
         }
     }
 
-    var wordObservations: [WordObservation]? {
+    var recognizedTextObservations: [RecognizedTextObservation]? {
         didSet {
+            photoScrollView.recognizedTextObservations = recognizedTextObservations
             updateAccessibilityElements()
         }
     }
@@ -87,7 +88,8 @@ public class PhotoEditingView: UIView, UIScrollViewDelegate {
     // MARK: Accessibility
 
     private func updateAccessibilityElements() {
-        let accessibilityElements = wordObservations?.map { observation in
+        let wordObservations = recognizedTextObservations?.flatMap(\.allWordObservations) ?? []
+        let accessibilityElements = wordObservations.map { observation in
             WordObservationAccessibilityElement(observation, in: workspaceView) { [weak self] observation, isRedacted -> Bool in
                 if isRedacted {
                     self?.unredact(observation)

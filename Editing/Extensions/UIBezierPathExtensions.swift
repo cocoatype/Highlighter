@@ -121,21 +121,24 @@ extension UIBezierPath {
         cgPath.forEachPoint(function)
     }
 
-    public var isRect: Bool {
-        cgPath.isRect(nil)
+    public var isShape: Bool {
+        return shape != nil
+    }
+
+    var shape: Shape? {
+        var ourPathElements = [CGPathElement]()
+        cgPath.applyWithBlock { elementPointer in
+            ourPathElements.append(elementPointer.pointee)
+        }
+
+        guard ourPathElements.count == 5 && ((ourPathElements.last?.type == .closeSubpath) ?? false) else { return nil }
+
+        return Shape(
+            bottomLeft: ourPathElements[1].points.pointee,
+            bottomRight: ourPathElements[2].points.pointee,
+            topLeft: ourPathElements[0].points.pointee,
+            topRight: ourPathElements[3].points.pointee
+        )
     }
 }
 #endif
-
-extension CGPath {
-    func forEachPoint(_ function: @escaping ((CGPoint) -> Void)) {
-        applyWithBlock { elementPointer in
-            let element = elementPointer.pointee
-            let elementType = element.type
-            guard elementType == .moveToPoint || elementType == .addLineToPoint else { return }
-
-            let elementPoint = element.points.pointee
-            function(elementPoint)
-        }
-    }
-}

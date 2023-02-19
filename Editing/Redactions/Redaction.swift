@@ -4,15 +4,33 @@
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
 
-public struct Redaction: Equatable {
-    public let color: NSColor
-    public let paths: [NSBezierPath]
-}
+public typealias RedactionColor = NSColor
+public typealias RedactionPath = NSBezierPath
 #elseif canImport(UIKit)
 import UIKit
 
-public struct Redaction: Equatable {
-    public let color: UIColor
-    public let paths: [UIBezierPath]
-}
+public typealias RedactionColor = UIColor
+public typealias RedactionPath = UIBezierPath
+
 #endif
+
+public enum RedactionPart: Equatable {
+    case path(RedactionPath)
+    case shape(Shape)
+
+    var path: RedactionPath {
+        switch self {
+        case .path(let path): return path
+        case .shape(let shape): return RedactionPath(cgPath: shape.path)
+        }
+    }
+}
+
+public struct Redaction: Equatable {
+    public let color: RedactionColor
+    public let parts: [RedactionPart]
+
+    public var paths: [RedactionPath] {
+        parts.map(\.path)
+    }
+}

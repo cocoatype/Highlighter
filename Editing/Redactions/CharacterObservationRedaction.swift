@@ -8,7 +8,7 @@ extension Redaction {
     init?(_ characterObservations: [CharacterObservation], color: NSColor) {
         guard characterObservations.count > 0 else { return nil }
 
-        self.paths = characterObservations.reduce(into: [UUID: [CharacterObservation]]()) { result, characterObservation in
+        self.parts = characterObservations.reduce(into: [UUID: [CharacterObservation]]()) { result, characterObservation in
             let textObservationUUID = characterObservation.textObservationUUID
             var siblingObservations = result[textObservationUUID] ?? []
             siblingObservations.append(characterObservation)
@@ -17,9 +17,7 @@ extension Redaction {
             siblingObservations.reduce(siblingObservations[0].bounds, { currentRect, characterObservation in
                 currentRect.union(characterObservation.bounds)
             })
-        }.map { rect -> NSBezierPath in
-            return NSBezierPath(rect: rect)
-        }
+        }.map(RedactionPart.shape)
 
         self.color = color
     }
@@ -32,7 +30,7 @@ extension Redaction {
     init?(_ characterObservations: [CharacterObservation], color: UIColor) {
         guard characterObservations.count > 0 else { return nil }
 
-        self.paths = characterObservations.reduce(into: [UUID: [CharacterObservation]]()) { result, characterObservation in
+        self.parts = characterObservations.reduce(into: [UUID: [CharacterObservation]]()) { result, characterObservation in
             let textObservationUUID = characterObservation.textObservationUUID
             var siblingObservations = result[textObservationUUID] ?? []
             siblingObservations.append(characterObservation)
@@ -41,9 +39,7 @@ extension Redaction {
             siblingObservations.reduce(siblingObservations[0].bounds, { currentRect, characterObservation in
                 currentRect.union(characterObservation.bounds)
             })
-        }.map { rect in
-            return UIBezierPath(rect: rect)
-        }
+        }.map(RedactionPart.shape)
 
         self.color = color
     }
