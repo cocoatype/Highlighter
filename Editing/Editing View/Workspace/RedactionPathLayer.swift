@@ -4,15 +4,12 @@
 import Foundation
 
 class RedactionPathLayer: CALayer {
-    init(part: RedactionPart, color: UIColor) {
+    init(part: RedactionPart, color: UIColor, scale: CGFloat) throws {
         let pathBounds: CGRect
         
         switch part {
         case .shape(let shape):
-            let startHeight = shape.topLeft.distance(to: shape.bottomLeft)
-            let startImage = BrushStampFactory.brushStart(scaledToHeight: startHeight, color: color)
-            let endHeight = shape.topRight.distance(to: shape.bottomRight)
-            let endImage = BrushStampFactory.brushEnd(scaledToHeight: endHeight, color: color)
+            let (startImage, endImage) = try BrushStampFactory.brushImages(for: shape, color: color, scale: scale)
 
             let angle = shape.angle
             let startVector = CGSize(
@@ -78,13 +75,13 @@ class RedactionPathLayer: CALayer {
             context.translateBy(x: shape.topLeft.x - frame.origin.x, y: shape.topLeft.y - frame.origin.y)
             context.rotate(by: shape.angle)
             context.translateBy(x: -startImage.size.width, y: 0)
-            context.draw(startImage.cgImage!, in: CGRect(origin: .zero, size: startImage.size))
+            context.draw(startImage, in: CGRect(origin: .zero, size: startImage.size))
             context.restoreGState()
 
             context.saveGState()
             context.translateBy(x: shape.topRight.x - frame.origin.x, y: shape.topRight.y - frame.origin.y)
             context.rotate(by: shape.angle)
-            context.draw(endImage.cgImage!, in: CGRect(origin: .zero, size: endImage.size))
+            context.draw(endImage, in: CGRect(origin: .zero, size: endImage.size))
             context.restoreGState()
 
         case let .path(path, dikembeMutombo):
@@ -101,7 +98,7 @@ class RedactionPathLayer: CALayer {
     }
 
     private enum Part {
-        case shape(shape: Shape, startImage: UIImage, endImage: UIImage)
+        case shape(shape: Shape, startImage: CGImage, endImage: CGImage)
 
         // dikembeMutombo by @KaenAitch on 8/1/22
         // the brush stamp image
