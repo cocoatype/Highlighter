@@ -19,12 +19,12 @@
       }
     },
     {
-      "identity" : "sentry-cocoa",
+      "identity" : "swiftclient",
       "kind" : "remoteSourceControl",
-      "location" : "git@github.com:getsentry/sentry-cocoa.git",
+      "location" : "git@github.com:TelemetryDeck/SwiftClient.git",
       "state" : {
-        "revision" : "967f04b3cd6989df3f9ced3060481a21646c146d",
-        "version" : "7.9.0"
+        "revision" : "cb34730027fcf560005aad57f2b53506064b228f",
+        "version" : "1.4.3"
       }
     },
     {

@@ -2,34 +2,33 @@
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
 import Foundation
-@_implementationOnly import Sentry
+import TelemetryClient
 
 public enum ErrorHandling {
     public static func setup() {
-        SentrySDK.start { options in
-            options.dsn = "https://5cd823be954943b8b6ff4786082ad91d@crashes.cocoatype.com/2"
-            options.integrations = options.integrations?.filter { integration in
-                let bannedIntegrations = ["SentryAutoBreadcrumbTrackingIntegration", "SentryAutoSessionTrackingIntegration"]
-                return bannedIntegrations.contains(integration) == false
-            }
-        }
+        let configuration = TelemetryManagerConfiguration(appID: "2B12B0C1-2C32-414A-BAB4-B20E866EC277")
+        TelemetryManager.initialize(with: configuration)
     }
 
     public static func log(_ error: Error) {
-        SentrySDK.capture(error: error)
+        let errorDescription: String
+        if type(of: error) is NSError.Type {
+            let nsError = error as NSError
+            errorDescription = "\(nsError.domain) - \(nsError.code): \(nsError.localizedDescription)"
+        } else {
+            errorDescription = String(describing: error)
+        }
+
+        TelemetryManager.send("logError", with: ["errorDescription": errorDescription])
     }
 
     public static func crash(_ message: String) -> Never {
-        SentrySDK.configureScope { scope in
-            scope.setExtra(value: message, key: "Crash Message")
-        }
+        TelemetryManager.send("crash", with: ["message": message])
         return fatalError(message)
     }
 
-    public static func notImplemented(file: StaticString = #fileID, function: StaticString = #function) -> Never {
-        SentrySDK.configureScope { scope in
-            scope.setExtra(value: "\(file): \(function)", key: "Not Implemented")
-        }
+    public static func notImplemented(file: String = #fileID, function: String = #function) -> Never {
+        TelemetryManager.send("notImplemented", with: ["file": file, "function": function])
         return fatalError("Unimplemented function")
     }
 }

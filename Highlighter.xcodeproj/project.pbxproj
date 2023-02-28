@@ -97,6 +97,7 @@
 		04431E5B2355749F009FA1F6 /* Aleo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF572255A2EE0058D8EE /* Aleo-Regular.otf */; };
 		04431E5E2358117B009FA1F6 /* RedactionSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04431E5C23581116009FA1F6 /* RedactionSerializer.swift */; };
 		0445AA592371208B00EB2A7B /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA582371208B00EB2A7B /* ImageDownloader.swift */; };
+		0447266E29ADAD72000345F8 /* TelemetryClient in Frameworks */ = {isa = PBXBuildFile; productRef = 0447266D29ADAD72000345F8 /* TelemetryClient */; };
 		044D4C1F2547B7BD00701166 /* main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044D4C1D2547B7BD00701166 /* main.xib */; };
 		044D4C232547B7BD00701166 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 044D4C212547B7BD00701166 /* InfoPlist.strings */; };
 		044D4C4C2547C06600701166 /* RedactAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D4C4B2547C06600701166 /* RedactAction.swift */; };
@@ -111,7 +112,6 @@
 		044EF9F727A66DD300ECAC5D /* PurchaseMarketingTopBarHeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044EF9F627A66DD300ECAC5D /* PurchaseMarketingTopBarHeadline.swift */; };
 		044EF9F927A66DF200ECAC5D /* PurchaseMarketingTopBarSubheadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044EF9F827A66DF200ECAC5D /* PurchaseMarketingTopBarSubheadline.swift */; };
 		044EF9FF27A8E88600ECAC5D /* MenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044EF9FE27A8E88600ECAC5D /* MenuBuilder.swift */; };
-		0453B0C82654E71600EFE68A /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 0453B0C72654E71600EFE68A /* Sentry */; };
 		045CA3AA2771823D00DEA988 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3A92771823D00DEA988 /* URLExtensions.swift */; };
 		045CA3D827718E5D00DEA988 /* DesktopSeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3D727718E5D00DEA988 /* DesktopSeekViewController.swift */; };
 		045CA3DA27718F4400DEA988 /* DesktopSeekContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA3D927718F4400DEA988 /* DesktopSeekContainerView.swift */; };
@@ -305,7 +305,6 @@
 		04DE87B9265213F40002BA42 /* ErrorHandling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DE87B2265213F40002BA42 /* ErrorHandling.framework */; };
 		04DE87BA265213F40002BA42 /* ErrorHandling.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04DE87B2265213F40002BA42 /* ErrorHandling.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04DE87BF2652140B0002BA42 /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DE87BE2652140B0002BA42 /* ErrorHandling.swift */; };
-		04DE87C3265218C10002BA42 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 04DE87C2265218C10002BA42 /* Sentry */; };
 		04DEE6FA27AB7AE300A1BA15 /* PurchaseMarketingTopBarCompact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEE6F927AB7AE300A1BA15 /* PurchaseMarketingTopBarCompact.swift */; };
 		04EA0ADE25D4EA6C00D98138 /* FileIconFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EA0ADD25D4EA6C00D98138 /* FileIconFetcher.m */; };
 		04EF55BA22D6DB9400C6600D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF55B922D6DB9400C6600D /* SceneDelegate.swift */; };
@@ -861,7 +860,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				049F92FC22CDA6870090C9BC /* Editing.framework in Frameworks */,
-				04DE87C3265218C10002BA42 /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -911,7 +909,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0453B0C82654E71600EFE68A /* Sentry in Frameworks */,
+				0447266E29ADAD72000345F8 /* TelemetryClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1985,7 +1983,6 @@
 			);
 			name = Action;
 			packageProductDependencies = (
-				04DE87C2265218C10002BA42 /* Sentry */,
 			);
 			productName = Action;
 			productReference = 043911C022C461EE00D4AE30 /* Action.appex */;
@@ -2108,7 +2105,7 @@
 			);
 			name = ErrorHandling;
 			packageProductDependencies = (
-				0453B0C72654E71600EFE68A /* Sentry */,
+				0447266D29ADAD72000345F8 /* TelemetryClient */,
 			);
 			productName = ErrorHandling;
 			productReference = 04DE87B2265213F40002BA42 /* ErrorHandling.framework */;
@@ -2195,7 +2192,7 @@
 			packageReferences = (
 				04B198E92623ADCA001A275B /* XCRemoteSwiftPackageReference "ClippingBezier" */,
 				043C28CC2659D7E30054A5A8 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
-				04DE879E265209CC0002BA42 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
+				0447266A29ADAB16000345F8 /* XCRemoteSwiftPackageReference "SwiftClient" */,
 			);
 			productRefGroup = 041EFEF62251A9F30058D8EE /* Products */;
 			projectDirPath = "";
@@ -3130,9 +3127,6 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				OTHER_SWIFT_FLAGS = "-Xcc -fmodule-map-file=$(PROJECT_TEMP_ROOT)/GeneratedModuleMaps-iphoneos/Sentry.modulemap";
-				"OTHER_SWIFT_FLAGS[sdk=iphoneos*]" = "-Xcc -fmodule-map-file=$(PROJECT_TEMP_ROOT)/GeneratedModuleMaps-iphoneos/Sentry.modulemap";
-				"OTHER_SWIFT_FLAGS[sdk=iphonesimulator*]" = "-Xcc -fmodule-map-file=$(PROJECT_TEMP_ROOT)/GeneratedModuleMaps-iphonesimulator/Sentry.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Photo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cocoatype.Highlighter.Photo";
@@ -3154,7 +3148,6 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				OTHER_SWIFT_FLAGS = "-Xcc -fmodule-map-file=$(PROJECT_TEMP_ROOT)/GeneratedModuleMaps-iphoneos/Sentry.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Photo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cocoatype.Highlighter.Photo";
@@ -3625,6 +3618,14 @@
 				minimumVersion = 0.1.3;
 			};
 		};
+		0447266A29ADAB16000345F8 /* XCRemoteSwiftPackageReference "SwiftClient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:TelemetryDeck/SwiftClient.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		04B198E92623ADCA001A275B /* XCRemoteSwiftPackageReference "ClippingBezier" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:adamwulf/ClippingBezier.git";
@@ -3649,10 +3650,10 @@
 			package = 043C28CC2659D7E30054A5A8 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
 		};
-		0453B0C72654E71600EFE68A /* Sentry */ = {
+		0447266D29ADAD72000345F8 /* TelemetryClient */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 04DE879E265209CC0002BA42 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
+			package = 0447266A29ADAB16000345F8 /* XCRemoteSwiftPackageReference "SwiftClient" */;
+			productName = TelemetryClient;
 		};
 		04B198F32623ADDD001A275B /* ClippingBezier */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -3663,11 +3664,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04B198E92623ADCA001A275B /* XCRemoteSwiftPackageReference "ClippingBezier" */;
 			productName = ClippingBezier;
-		};
-		04DE87C2265218C10002BA42 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04DE879E265209CC0002BA42 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
 		};
 		04DE87CE265224850002BA42 /* Sentry */ = {
 			isa = XCSwiftPackageProductDependency;
