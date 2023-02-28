@@ -4,7 +4,6 @@
 import Editing
 import ErrorHandling
 import Intents
-import Sentry
 import UniformTypeIdentifiers
 import UIKit
 
