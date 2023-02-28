@@ -364,7 +364,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     }
 
     // MARK: Sharing
-    @objc public func sharePhoto(_ sender: Any) {
+    @objc @MainActor public func sharePhoto(_ sender: Any) {
         let imageType = image?.type
         Task {
             do {
@@ -400,7 +400,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
                     }
                 }
 
-                activityController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+                activityController.popoverPresentationController?.barButtonItem = shareBarButtonItem
                 present(activityController, animated: true)
             } catch {
                 let alert = PhotoExportErrorAlertFactory.alert(for: error)
