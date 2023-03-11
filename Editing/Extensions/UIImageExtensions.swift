@@ -22,6 +22,19 @@ extension UIImage {
             return size
         }
     }
+
+    public func cgImage(scale: CGFloat) -> CGImage? {
+        if abs(scale - self.scale) < 0.01 {
+            return cgImage
+        }
+
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = scale
+        let scaledImage = UIGraphicsImageRenderer(size: size, format: format).image { _ in
+            self.draw(at: .zero)
+        }
+        return scaledImage.cgImage
+    }
 }
 
 extension UIImage.Orientation {

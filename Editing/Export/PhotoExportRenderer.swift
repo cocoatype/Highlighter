@@ -65,27 +65,33 @@ public actor PhotoExportRenderer {
         context.restoreGState()
 
         // draw redactions
-        let drawings = redactions.flatMap { redaction -> [(path: UIBezierPath, color: UIColor)] in
-            return redaction.paths
-                .map { (path: $0, color: redaction.color) }
+        let drawings = redactions.flatMap { redaction -> [(part: RedactionPart, color: UIColor)] in
+            return redaction.parts
+                .map { (part: $0, color: redaction.color) }
         }
 
-        drawings.forEach { drawing in
-            let (path, color) = drawing
-            let borderBounds = path.strokeBorderPath.bounds
-            if path.isShape {
-                let startImage = BrushStampFactory.brushStart(scaledToHeight: borderBounds.height, color: color)
-                let endImage = BrushStampFactory.brushEnd(scaledToHeight: borderBounds.height, color: color)
+        try drawings.forEach { drawing in
+            let (part, color) = drawing
+            switch part {
+            case .shape(let shape):
+                let (startImage, endImage) = try BrushStampFactory.brushImages(for: shape, color: color, scale: 1)
 
                 color.setFill()
-                UIBezierPath(rect: borderBounds).fill()
+                UIBezierPath(cgPath: shape.path).fill()
 
-                let startRect = CGRect(origin: borderBounds.origin, size: startImage.size).offsetBy(dx: -startImage.size.width, dy: 0)
-                context.draw(startImage.cgImage!, in: startRect)
+                context.saveGState()
+                context.translateBy(x: shape.topLeft.x, y: shape.topLeft.y)
+                context.rotate(by: shape.angle)
+                context.translateBy(x: -startImage.size.width, y: 0)
+                context.draw(startImage, in: CGRect(origin: .zero, size: startImage.size))
+                context.restoreGState()
 
-                let endRect = CGRect(origin: borderBounds.origin, size: endImage.size).offsetBy(dx: borderBounds.width, dy: 0)
-                context.draw(endImage.cgImage!, in: endRect)
-            } else {
+                context.saveGState()
+                context.translateBy(x: shape.topRight.x, y: shape.topRight.y)
+                context.rotate(by: shape.angle)
+                context.draw(endImage, in: CGRect(origin: .zero, size: endImage.size))
+                context.restoreGState()
+            case .path(let path):
                 let stampImage = BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
                 let dashedPath = path.dashedPath
                 dashedPath.forEachPoint { point in

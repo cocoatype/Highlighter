@@ -5,7 +5,20 @@ import ErrorHandling
 import UIKit
 
 public class BrushStampFactory: NSObject {
-    public static func brushStart(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
+    public static func brushImages(for shape: Shape, color: UIColor, scale: CGFloat) throws -> (CGImage, CGImage) {
+        let startHeight = shape.topLeft.distance(to: shape.bottomLeft)
+        let startImage = BrushStampFactory.brushStart(scaledToHeight: startHeight, color: color)
+        let endHeight = shape.topRight.distance(to: shape.bottomRight)
+        let endImage = BrushStampFactory.brushEnd(scaledToHeight: endHeight, color: color)
+
+        guard let startCGImage = startImage.cgImage(scale: scale),
+              let endCGImage = endImage.cgImage(scale: scale)
+        else { throw BrushStampFactoryError.cannotGenerateCGImage }
+
+        return (startCGImage, endCGImage)
+    }
+
+    private static func brushStart(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
         guard let startImage = UIImage(named: "Brush Start") else { ErrorHandling.crash("Unable to load brush start image") }
 
         let brushScale = height / startImage.size.height
@@ -22,7 +35,7 @@ public class BrushStampFactory: NSObject {
         }
     }
 
-    public static func brushEnd(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
+    private static func brushEnd(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
         guard let endImage = UIImage(named: "Brush End") else { ErrorHandling.crash("Unable to load brush end image") }
 
         let brushScale = height / endImage.size.height
@@ -55,4 +68,8 @@ public class BrushStampFactory: NSObject {
             stampImage.draw(at: .zero, blendMode: .destinationIn, alpha: 1)
         }
     }
+}
+
+enum BrushStampFactoryError: Error {
+    case cannotGenerateCGImage
 }

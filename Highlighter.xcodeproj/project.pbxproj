@@ -98,6 +98,7 @@
 		04431E5E2358117B009FA1F6 /* RedactionSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04431E5C23581116009FA1F6 /* RedactionSerializer.swift */; };
 		0445AA592371208B00EB2A7B /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445AA582371208B00EB2A7B /* ImageDownloader.swift */; };
 		0447266E29ADAD72000345F8 /* TelemetryClient in Frameworks */ = {isa = PBXBuildFile; productRef = 0447266D29ADAD72000345F8 /* TelemetryClient */; };
+		0447267029ADB84E000345F8 /* CGImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447266F29ADB84E000345F8 /* CGImageExtensions.swift */; };
 		044D4C1F2547B7BD00701166 /* main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044D4C1D2547B7BD00701166 /* main.xib */; };
 		044D4C232547B7BD00701166 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 044D4C212547B7BD00701166 /* InfoPlist.strings */; };
 		044D4C4C2547C06600701166 /* RedactAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D4C4B2547C06600701166 /* RedactAction.swift */; };
@@ -611,6 +612,7 @@
 		04431E5823556AC2009FA1F6 /* PhotoExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExtensionViewController.swift; sourceTree = "<group>"; };
 		04431E5C23581116009FA1F6 /* RedactionSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactionSerializer.swift; sourceTree = "<group>"; };
 		0445AA582371208B00EB2A7B /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		0447266F29ADB84E000345F8 /* CGImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImageExtensions.swift; sourceTree = "<group>"; };
 		044D4C182547B7BC00701166 /* AutomatorActions.action */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutomatorActions.action; sourceTree = BUILT_PRODUCTS_DIR; };
 		044D4C1E2547B7BD00701166 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/main.xib; sourceTree = "<group>"; };
 		044D4C202547B7BD00701166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1672,6 +1674,7 @@
 				041EFF182251AAFE0058D8EE /* UIViewControllerExtensions.swift */,
 				04D68BC4225EE2C000D09BBD /* GeometryExtensions.swift */,
 				043CD9D0226EB0F60012F5AE /* UIImageExtensions.swift */,
+				0447266F29ADB84E000345F8 /* CGImageExtensions.swift */,
 				04A3AEF5227A8CE700F21229 /* UIBezierPathExtensions.swift */,
 				046C406E24820C720069E8FB /* StringExtensions.swift */,
 				045CA3A92771823D00DEA988 /* URLExtensions.swift */,
@@ -2572,6 +2575,7 @@
 				04750E9A26D9EF1900E98BB4 /* UndoBarButtonItem.swift in Sources */,
 				04750E9826D9EF0700E98BB4 /* RedoBarButtonItem.swift in Sources */,
 				04975D5926106DC100AA2771 /* PhotoEditingCanvasView.m in Sources */,
+				0447267029ADB84E000345F8 /* CGImageExtensions.swift in Sources */,
 				045CA3E827719A9E00DEA988 /* DesktopSeekBackgroundView.swift in Sources */,
 				0474B07627C0A2880031210C /* DefaultsValue.swift in Sources */,
 				0493D2D624B6BAE400FF99F4 /* ColorPickerViewController.swift in Sources */,
