@@ -34,9 +34,10 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if libraryView.contentOffset.y <= 0 {
+        if shouldScrollToBottom {
             libraryView.layoutIfNeeded()
             libraryView.scrollToItem(at: dataSource.lastItemIndexPath, at: .bottom, animated: false)
+            shouldScrollToBottom = false
         }
 
         let cellCount = libraryView.numberOfItems(inSection: 0)
@@ -54,7 +55,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         set(newCollection) {
             let newDataSource = PhotoLibraryDataSource(newCollection)
             dataSource = newDataSource
-            libraryView.reloadData()
+            shouldScrollToBottom = true
         }
     }
 
@@ -127,6 +128,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
     private let libraryView = PhotoLibraryView()
     private var purchaseStateObserver: Any?
     private var hideDocumentScannerObserver: Any?
+    private var shouldScrollToBottom = true
 
     deinit {
         purchaseStateObserver.map(NotificationCenter.default.removeObserver)
