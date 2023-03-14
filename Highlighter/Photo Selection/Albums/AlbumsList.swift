@@ -4,11 +4,12 @@
 import SwiftUI
 
 struct AlbumsList: View {
-    @State private var selectedCollectionIdentifier: String? = CollectionType.library.defaultCollection.identifier
+    @State private var selectedCollectionIdentifier: String?
     var navigationWrapper = NavigationWrapper.empty
     let data: [CollectionSection]
-    init(data: [CollectionSection]) {
+    init(data: [CollectionSection], selectedCollectionIdentifier: String? = CollectionType.library.defaultCollection.identifier) {
         self.data = data
+        self.selectedCollectionIdentifier = selectedCollectionIdentifier
     }
 
     var body: some View {
@@ -39,7 +40,7 @@ struct AlbumsList_Previews: PreviewProvider {
     ]
 
     static var previews: some View {
-        AlbumsList(data: fakeData)
+        AlbumsList(data: fakeData, selectedCollectionIdentifier: nil)
             .preferredColorScheme(.dark)
     }
 }
