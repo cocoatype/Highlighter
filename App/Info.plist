@@ -88,19 +88,19 @@
 					<key>UISceneConfigurationName</key>
 					<string>Highlighter</string>
 					<key>UISceneDelegateClassName</key>
-					<string>Highlighter.SceneDelegate</string>
+					<string>Core.SceneDelegate</string>
 				</dict>
 				<dict>
 					<key>UISceneConfigurationName</key>
 					<string>Settings</string>
 					<key>UISceneDelegateClassName</key>
-					<string>Highlighter.DesktopSettingsSceneDelegate</string>
+					<string>Core.DesktopSettingsSceneDelegate</string>
 				</dict>
 				<dict>
 					<key>UISceneConfigurationName</key>
 					<string>Desktop</string>
 					<key>UISceneDelegateClassName</key>
-					<string>$(PRODUCT_NAME).DesktopSceneDelegate</string>
+					<string>Core.DesktopSceneDelegate</string>
 				</dict>
 			</array>
 		</dict>

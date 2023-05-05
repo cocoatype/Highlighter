@@ -7,7 +7,7 @@ import Vision
 import XCTest
 
 @testable import Editing
-@testable import Highlighter
+@testable import Core
 
 class ShortcutRedactorTests: XCTestCase {
     func testRedactWordsUsesInputWordList() throws {

@@ -2,7 +2,7 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Photos
-@testable import Highlighter
+@testable import Core
 
 class MockPhotoPermissionsRequester: PhotoPermissionsRequester {
     init(desiredAuthorizationStatus: PHAuthorizationStatus) {
