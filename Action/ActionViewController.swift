@@ -10,7 +10,6 @@ import UIKit
 class ActionViewController: UIHostingController<ActionView> {
     init() {
         super.init(rootView: ActionView())
-        ErrorHandling.setup()
     }
 
     override func loadView() {

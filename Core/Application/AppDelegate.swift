@@ -12,7 +12,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        ErrorHandling.setup()
         PaymentPublisher.shared.setup()
 
         #if targetEnvironment(macCatalyst)

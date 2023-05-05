@@ -2,13 +2,10 @@
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
 import Foundation
-import TelemetryClient
+import Logging
 
 public enum ErrorHandling {
-    public static func setup() {
-        let configuration = TelemetryManagerConfiguration(appID: "2B12B0C1-2C32-414A-BAB4-B20E866EC277")
-        TelemetryManager.initialize(with: configuration)
-    }
+    public static var logger: Logger = TelemetryLogger()
 
     public static func log(_ error: Error) {
         let errorDescription: String
@@ -19,18 +16,24 @@ public enum ErrorHandling {
             errorDescription = String(describing: error)
         }
 
-        TelemetryManager.send("logError", with: ["errorDescription": errorDescription])
+        logger.log(Event(name: logError, info: ["errorDescription": errorDescription]))
     }
 
     public static func crash(_ message: String) -> Never {
-        TelemetryManager.send("crash", with: ["message": message])
+        logger.log(Event(name: crash, info: ["message": message]))
         return fatalError(message)
     }
 
     public static func notImplemented(file: String = #fileID, function: String = #function) -> Never {
-        TelemetryManager.send("notImplemented", with: ["file": file, "function": function])
+        logger.log(Event(name: notImplemented, info: ["file": file, "function": function]))
         return fatalError("Unimplemented function")
     }
+
+    // MARK: Event Names
+
+    private static let logError = Event.Name("logError")
+    private static let crash = Event.Name("crash")
+    private static let notImplemented = Event.Name("notImplemented")
 }
 
 @objc(ErrorHandling)
