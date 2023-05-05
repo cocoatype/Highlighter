@@ -4,7 +4,7 @@
 import Foundation
 import XCTest
 
-@testable import Highlighter
+@testable import Core
 @testable import Receipts
 
 class PurchaseValidatorTests: XCTestCase {

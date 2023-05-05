@@ -37,12 +37,13 @@
       </EnvironmentVariables>
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "NO"
+            parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "041EFF082251A9F50058D8EE"
-               BuildableName = "HighlighterTests.xctest"
-               BlueprintName = "HighlighterTests"
+               BlueprintIdentifier = "04634D6A2A05189C00569D5C"
+               BuildableName = "CoreTests.xctest"
+               BlueprintName = "CoreTests"
                ReferencedContainer = "container:Highlighter.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -100,7 +101,7 @@
          </EnvironmentVariable>
       </EnvironmentVariables>
       <StoreKitConfigurationFileReference
-         identifier = "../../Highlighter/Configuration.storekit">
+         identifier = "../../App/Configuration.storekit">
       </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction

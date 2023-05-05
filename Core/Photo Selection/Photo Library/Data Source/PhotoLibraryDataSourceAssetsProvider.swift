@@ -3,6 +3,7 @@
 
 import ErrorHandling
 import Photos
+import UIKit
 
 class PhotoLibraryDataSourceAssetsProvider: NSObject {
     var photosCount: Int { allPhotos.count }
