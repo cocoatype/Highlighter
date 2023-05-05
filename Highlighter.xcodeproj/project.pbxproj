@@ -253,6 +253,7 @@
 		04634E702A05382A00569D5C /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04634E6F2A05382A00569D5C /* EventTests.swift */; };
 		04634E862A05C37300569D5C /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04634E852A05C37300569D5C /* ErrorHandler.swift */; };
 		04634E892A05C4AC00569D5C /* ErrorHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04634E882A05C4AC00569D5C /* ErrorHandlerTests.swift */; };
+		04634E8B2A05CE3300569D5C /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 04634E8A2A05CE2F00569D5C /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0464B18725529CC000D00FAC /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
 		0464B19025529DC500D00FAC /* AutomatorActions.action in Embed Automator Actions */ = {isa = PBXBuildFile; fileRef = 044D4C182547B7BC00701166 /* AutomatorActions.action */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		046C406B2482075F0069E8FB /* WordObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C406A2482075F0069E8FB /* WordObservationRedaction.swift */; };
@@ -732,6 +733,7 @@
 		04634E852A05C37300569D5C /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		04634E872A05C44300569D5C /* ErrorHandling.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ErrorHandling.xctestplan; sourceTree = "<group>"; };
 		04634E882A05C4AC00569D5C /* ErrorHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlerTests.swift; sourceTree = "<group>"; };
+		04634E8A2A05CE2F00569D5C /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		0464B1E02553A3DE00D00FAC /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		0464B1F22553A41300D00FAC /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		046BEC232470EBAC00FBECD7 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
@@ -1664,6 +1666,7 @@
 		048909F0226571830048E203 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				04634E8A2A05CE2F00569D5C /* Core.h */,
 				041EFF4A225300030058D8EE /* Localizable.strings */,
 			);
 			name = "Supporting Files";
@@ -2118,6 +2121,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04634E202A051A5400569D5C /* FileIconFetcher.h in Headers */,
+				04634E8B2A05CE3300569D5C /* Core.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3599,7 +3603,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Redacting/Info.plist;
+				INFOPLIST_FILE = Modules/Legacy/Redacting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3626,7 +3630,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Redacting/Info.plist;
+				INFOPLIST_FILE = Modules/Legacy/Redacting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3770,13 +3774,9 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Buddy Build (D47V8Y25W5)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development: Buddy Build (D47V8Y25W5)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 287EDDET2B;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -3810,10 +3810,9 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 287EDDET2B;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -3885,9 +3884,9 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 287EDDET2B;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
@@ -3905,9 +3904,9 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 287EDDET2B;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;

@@ -26,7 +26,7 @@ class DesktopViewController: UIViewController, FileURLProvider {
             do {
                 try loadRepresentedURL()
                 updateURLRepresentation()
-            } catch { ErrorHandling.log(error) }
+            } catch { ErrorHandler().log(error) }
         } else if image != nil {
             loadImage()
         }
@@ -40,7 +40,7 @@ class DesktopViewController: UIViewController, FileURLProvider {
                 try loadRepresentedURL()
                 updateURLRepresentation()
             } catch {
-                ErrorHandling.log(error)
+                ErrorHandler().log(error)
             }
         }
     }
@@ -99,11 +99,10 @@ class DesktopViewController: UIViewController, FileURLProvider {
     // MARK: Boilerplate
 
     private let initialRedactions: [Redaction]?
-    private var windowScene: UIWindowScene? { return view.window?.windowScene }
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        ErrorHandling.notImplemented()
+        ErrorHandler().notImplemented()
     }
 
     private enum LoadError: Error {
@@ -121,7 +120,7 @@ class DesktopView: UIView {
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        ErrorHandling.notImplemented()
+        ErrorHandler().notImplemented()
     }
 }
 #endif
