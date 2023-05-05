@@ -4,7 +4,7 @@
 import Editing
 import XCTest
 
-@testable import Highlighter
+@testable import Core
 
 class AppRatingsPrompterTests: XCTestCase {
     func testDisplayingPromptOnFirstAttemptDoesNotPrompt() throws {

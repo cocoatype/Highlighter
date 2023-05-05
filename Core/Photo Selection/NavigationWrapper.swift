@@ -1,8 +1,8 @@
 //  Created by Geoff Pado on 5/22/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
-import Foundation
 import Photos
+import UIKit
 
 class NavigationWrapper: NSObject, ObservableObject {
     typealias NavigationObject = (SettingsPresenting & PhotoEditorPresenting & DocumentScannerPresenting & CollectionPresenting & LimitedLibraryPresenting)

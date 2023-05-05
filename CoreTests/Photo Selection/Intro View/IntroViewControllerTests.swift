@@ -3,7 +3,7 @@
 
 import Photos
 import XCTest
-@testable import Highlighter
+@testable import Core
 
 class IntroViewControllerTests: XCTestCase {
 }

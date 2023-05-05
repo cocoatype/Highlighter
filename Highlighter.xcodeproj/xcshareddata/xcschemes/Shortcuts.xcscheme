@@ -53,6 +53,17 @@
                ReferencedContainer = "container:Highlighter.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "04634D6A2A05189C00569D5C"
+               BuildableName = "CoreTests.xctest"
+               BlueprintName = "CoreTests"
+               ReferencedContainer = "container:Highlighter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -95,15 +106,6 @@
          BundleIdentifier = "com.apple.shortcuts"
          RemotePath = "/var/containers/Bundle/Application/AE4249EA-15AB-4313-BF09-1952F377D742/Shortcuts.app">
       </RemoteRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "041EFEF42251A9F30058D8EE"
-            BuildableName = "Highlighter.app"
-            BlueprintName = "Highlighter"
-            ReferencedContainer = "container:Highlighter.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
