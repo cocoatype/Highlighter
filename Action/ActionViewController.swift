@@ -43,7 +43,7 @@ class ActionViewController: UIHostingController<ActionView> {
                 self?.chain(selector: #selector(ActionViewController.openURL(_:)), object: callbackURL)
                 self?.extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
             } catch {
-                ErrorHandling.log(error)
+                ErrorHandler().log(error)
             }
         }
     }

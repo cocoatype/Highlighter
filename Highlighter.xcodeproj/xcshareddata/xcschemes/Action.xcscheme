@@ -75,6 +75,17 @@
                ReferencedContainer = "container:Highlighter.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "04634E7A2A05C2D300569D5C"
+               BuildableName = "ErrorHandlingTests.xctest"
+               BlueprintName = "ErrorHandlingTests"
+               ReferencedContainer = "container:Highlighter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
