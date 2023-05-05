@@ -62,6 +62,7 @@ class PhotoEditingNavigationController: NavigationController, PhotoEditingProtec
                     PHAssetChangeRequest.creationRequestForAsset(from: image)
                 })
                 dismiss(animated: true)
+                chain(selector: #selector(AppViewController.displayAppRatingsPrompt))
             } catch {
                 presentSaveErrorAlert(for: error)
                 dismiss(animated: true)

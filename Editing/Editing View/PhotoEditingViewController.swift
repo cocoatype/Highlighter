@@ -443,5 +443,5 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
 @objc protocol PhotoEditingActions: NSObjectProtocol {
     func dismissPhotoEditingViewController(_ sender: UIBarButtonItem)
-    func displayAppRatingsPrompt()
+    func displayAppRatingsPrompt(_ sender: Any)
 }

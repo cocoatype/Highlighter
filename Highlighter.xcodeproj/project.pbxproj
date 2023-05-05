@@ -75,6 +75,7 @@
 		04389E05262AC8AE004D49B7 /* HelpMenuPrivacyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04389E04262AC8AE004D49B7 /* HelpMenuPrivacyAction.swift */; };
 		043911C322C461F000D4AE30 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 043911C222C461F000D4AE30 /* Media.xcassets */; };
 		043911CC22C461F000D4AE30 /* Action.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 043911C022C461EE00D4AE30 /* Action.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		043B65CB2A02CE4D0060DE3B /* WindowSceneProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B65CA2A02CE4D0060DE3B /* WindowSceneProvider.swift */; };
 		043C28D02659D8F50054A5A8 /* NavigationWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C28CF2659D8F50054A5A8 /* NavigationWrapper.swift */; };
 		043C28D22659E1720054A5A8 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 043C28D12659E1720054A5A8 /* Introspect */; };
 		043C28DB265C97240054A5A8 /* PaymentPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C28DA265C97240054A5A8 /* PaymentPublisher.swift */; };
@@ -589,6 +590,7 @@
 		043911C922C461F000D4AE30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0439D78224A687B1001BB6A0 /* Highlighter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Highlighter.entitlements; sourceTree = "<group>"; };
 		0439D78324A687B1001BB6A0 /* Action.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Action.entitlements; sourceTree = "<group>"; };
+		043B65CA2A02CE4D0060DE3B /* WindowSceneProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSceneProvider.swift; sourceTree = "<group>"; };
 		043C28CF2659D8F50054A5A8 /* NavigationWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationWrapper.swift; sourceTree = "<group>"; };
 		043C28DA265C97240054A5A8 /* PaymentPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPublisher.swift; sourceTree = "<group>"; };
 		043C28DC265CB2F70054A5A8 /* PurchaseRestoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRestoreButton.swift; sourceTree = "<group>"; };
@@ -1169,6 +1171,7 @@
 				042A2B80228D012F00353414 /* NavigationBar.swift */,
 				042A2B82228D014900353414 /* Toolbar.swift */,
 				04FDEA5525257B1900F94CA9 /* SplitViewController.swift */,
+				043B65CA2A02CE4D0060DE3B /* WindowSceneProvider.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -2574,6 +2577,7 @@
 				045CA3DC27718FC000DEA988 /* DesktopSeekView.swift in Sources */,
 				04750E9A26D9EF1900E98BB4 /* UndoBarButtonItem.swift in Sources */,
 				04750E9826D9EF0700E98BB4 /* RedoBarButtonItem.swift in Sources */,
+				043B65CB2A02CE4D0060DE3B /* WindowSceneProvider.swift in Sources */,
 				04975D5926106DC100AA2771 /* PhotoEditingCanvasView.m in Sources */,
 				0447267029ADB84E000345F8 /* CGImageExtensions.swift in Sources */,
 				045CA3E827719A9E00DEA988 /* DesktopSeekBackgroundView.swift in Sources */,
