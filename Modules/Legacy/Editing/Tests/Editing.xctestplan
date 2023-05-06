@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "3AD890F4-ABBC-45B1-AC16-F57457827138",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "04B19921262410D5001A275B",
+        "name" : "EditingTests"
+      }
+    }
+  ],
+  "version" : 1
+}

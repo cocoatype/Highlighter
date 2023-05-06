@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1340"
+   LastUpgradeVersion = "1430"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "049F92D622CDA3DB0090C9BC"
-               BuildableName = "Editing.framework"
-               BlueprintName = "Editing"
+               BlueprintIdentifier = "04634E902A05CEBF00569D5C"
+               BuildableName = "AppRatings.framework"
+               BlueprintName = "AppRatings"
                ReferencedContainer = "container:Highlighter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,7 +29,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:Modules/Legacy/Editing/Tests/Editing.xctestplan"
+            reference = "container:Modules/Capabilities/AppRatings/Tests/AppRatings.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -54,9 +54,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "049F92D622CDA3DB0090C9BC"
-            BuildableName = "Editing.framework"
-            BlueprintName = "Editing"
+            BlueprintIdentifier = "04634E902A05CEBF00569D5C"
+            BuildableName = "AppRatings.framework"
+            BlueprintName = "AppRatings"
             ReferencedContainer = "container:Highlighter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

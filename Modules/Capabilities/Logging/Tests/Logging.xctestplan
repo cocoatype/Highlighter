@@ -1,0 +1,33 @@
+{
+  "configurations" : [
+    {
+      "id" : "81209DB1-D487-4499-AB3F-7C9ABC41DD16",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "04634E432A052C4400569D5C",
+          "name" : "Logging"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "04634E4A2A052C4400569D5C",
+        "name" : "LoggingTests"
+      }
+    }
+  ],
+  "version" : 1
+}

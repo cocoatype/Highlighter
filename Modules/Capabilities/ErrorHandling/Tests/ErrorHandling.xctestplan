@@ -1,0 +1,34 @@
+{
+  "configurations" : [
+    {
+      "id" : "573AEE5C-4281-4821-9E87-EF11C0127911",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "04DE87B1265213F40002BA42",
+          "name" : "ErrorHandling"
+        }
+      ]
+    },
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "04634E7A2A05C2D300569D5C",
+        "name" : "ErrorHandlingTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "F9C3721D-C6AC-49A8-8D0B-5D4E550D035E",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "04634D6A2A05189C00569D5C",
+        "name" : "CoreTests"
+      }
+    }
+  ],
+  "version" : 1
+}
