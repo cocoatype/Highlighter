@@ -245,7 +245,6 @@
 		04634E642A05307900569D5C /* TelemetryLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04634E632A05307900569D5C /* TelemetryLogger.swift */; };
 		04634E662A05309400569D5C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04634E652A05309400569D5C /* Event.swift */; };
 		04634E672A05311D00569D5C /* Logging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04634E442A052C4400569D5C /* Logging.framework */; };
-		04634E682A05311D00569D5C /* Logging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04634E442A052C4400569D5C /* Logging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04634E6E2A0533F200569D5C /* TelemetrySending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04634E6D2A0533F200569D5C /* TelemetrySending.swift */; };
 		04634E702A05382A00569D5C /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04634E6F2A05382A00569D5C /* EventTests.swift */; };
 		04634E862A05C37300569D5C /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04634E852A05C37300569D5C /* ErrorHandler.swift */; };
@@ -269,21 +268,13 @@
 		04634EEC2A05D1FC00569D5C /* DefaultsValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474B07427C0A2740031210C /* DefaultsValue.swift */; };
 		04634EED2A05D1FF00569D5C /* DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474B07727C0A2EE0031210C /* DefaultsKey.swift */; };
 		04634EEE2A05D26C00569D5C /* AppRatings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04634E912A05CEBF00569D5C /* AppRatings.framework */; };
-		04634EEF2A05D26C00569D5C /* AppRatings.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04634E912A05CEBF00569D5C /* AppRatings.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04634EF22A05D26D00569D5C /* Defaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04634ECD2A05D16A00569D5C /* Defaults.framework */; };
-		04634EF32A05D26D00569D5C /* Defaults.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04634ECD2A05D16A00569D5C /* Defaults.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04634EF62A05D26D00569D5C /* ErrorHandling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DE87B2265213F40002BA42 /* ErrorHandling.framework */; };
-		04634EF72A05D26D00569D5C /* ErrorHandling.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04DE87B2265213F40002BA42 /* ErrorHandling.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04634EFA2A05D28300569D5C /* AppRatings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04634E912A05CEBF00569D5C /* AppRatings.framework */; };
-		04634EFB2A05D28300569D5C /* AppRatings.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04634E912A05CEBF00569D5C /* AppRatings.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04634EFE2A05D28400569D5C /* Defaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04634ECD2A05D16A00569D5C /* Defaults.framework */; };
-		04634EFF2A05D28400569D5C /* Defaults.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04634ECD2A05D16A00569D5C /* Defaults.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04634F052A05D8BA00569D5C /* Defaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04634ECD2A05D16A00569D5C /* Defaults.framework */; };
-		04634F062A05D8BA00569D5C /* Defaults.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04634ECD2A05D16A00569D5C /* Defaults.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04634F0A2A05D8C500569D5C /* ErrorHandling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DE87B2265213F40002BA42 /* ErrorHandling.framework */; };
-		04634F0B2A05D8C500569D5C /* ErrorHandling.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04DE87B2265213F40002BA42 /* ErrorHandling.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04634F0E2A05D8C500569D5C /* Logging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04634E442A052C4400569D5C /* Logging.framework */; };
-		04634F0F2A05D8C500569D5C /* Logging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04634E442A052C4400569D5C /* Logging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0464B18725529CC000D00FAC /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A39AC22811F87009C1C07 /* Redaction.swift */; };
 		0464B19025529DC500D00FAC /* AutomatorActions.action in Embed Automator Actions */ = {isa = PBXBuildFile; fileRef = 044D4C182547B7BC00701166 /* AutomatorActions.action */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		046C406B2482075F0069E8FB /* WordObservationRedaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C406A2482075F0069E8FB /* WordObservationRedaction.swift */; };
@@ -665,42 +656,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		04634E6B2A05311D00569D5C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				04634E682A05311D00569D5C /* Logging.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04634F022A05D28400569D5C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				04634EFF2A05D28400569D5C /* Defaults.framework in Embed Frameworks */,
-				04634EFB2A05D28300569D5C /* AppRatings.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04634F092A05D8BA00569D5C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				04634F0B2A05D8C500569D5C /* ErrorHandling.framework in Embed Frameworks */,
-				04634F062A05D8BA00569D5C /* Defaults.framework in Embed Frameworks */,
-				04634F0F2A05D8C500569D5C /* Logging.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0464B18F25529D9500D00FAC /* Embed Automator Actions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -726,19 +681,6 @@
 				04634E582A052C4400569D5C /* Logging.framework in Embed Frameworks */,
 				04634EE12A05D16A00569D5C /* Defaults.framework in Embed Frameworks */,
 				04634D782A05189C00569D5C /* Core.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04B7EE532619E8B4002875CA /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				04634EF32A05D26D00569D5C /* Defaults.framework in Embed Frameworks */,
-				04634EEF2A05D26C00569D5C /* AppRatings.framework in Embed Frameworks */,
-				04634EF72A05D26D00569D5C /* ErrorHandling.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2584,7 +2526,6 @@
 				04634D602A05189B00569D5C /* Sources */,
 				04634D612A05189B00569D5C /* Frameworks */,
 				04634D622A05189B00569D5C /* Resources */,
-				04634F022A05D28400569D5C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2682,7 +2623,6 @@
 				04634E8D2A05CEBF00569D5C /* Sources */,
 				04634E8E2A05CEBF00569D5C /* Frameworks */,
 				04634E8F2A05CEBF00569D5C /* Resources */,
-				04634F092A05D8BA00569D5C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2778,7 +2718,6 @@
 				049F92D322CDA3DB0090C9BC /* Sources */,
 				049F92D422CDA3DB0090C9BC /* Frameworks */,
 				049F92D522CDA3DB0090C9BC /* Resources */,
-				04B7EE532619E8B4002875CA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2824,7 +2763,6 @@
 				04DE87AE265213F40002BA42 /* Sources */,
 				04DE87AF265213F40002BA42 /* Frameworks */,
 				04DE87B0265213F40002BA42 /* Resources */,
-				04634E6B2A05311D00569D5C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3970,7 +3908,6 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development: Buddy Build (D47V8Y25W5)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 9999;
-				DEVELOPMENT_TEAM = 287EDDET2B;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4003,7 +3940,6 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 9999;
-				DEVELOPMENT_TEAM = 287EDDET2B;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4018,7 +3954,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cocoatype.Highlighter";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match AppStore com.cocoatype.Highlighter macos";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match AppStore com.cocoatype.Highlighter catalyst";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";
@@ -4355,7 +4291,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Logging;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Logging;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -4391,7 +4327,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Logging;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatype.Highlighter.Logging;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
