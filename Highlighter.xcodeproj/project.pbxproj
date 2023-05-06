@@ -2896,7 +2896,6 @@
 					};
 					04634E4A2A052C4400569D5C = {
 						CreatedOnToolsVersion = 14.3;
-						TestTargetID = 041EFEF42251A9F30058D8EE;
 					};
 					04634E7A2A05C2D300569D5C = {
 						CreatedOnToolsVersion = 14.3;
@@ -2916,7 +2915,6 @@
 					};
 					04634ED32A05D16A00569D5C = {
 						CreatedOnToolsVersion = 14.3;
-						TestTargetID = 041EFEF42251A9F30058D8EE;
 					};
 					049F92D622CDA3DB0090C9BC = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -4416,6 +4414,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 287EDDET2B;
@@ -4427,7 +4426,6 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Highlighter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Highlighter";
 			};
 			name = Debug;
 		};
@@ -4436,6 +4434,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 287EDDET2B;
@@ -4447,7 +4446,6 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Highlighter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Highlighter";
 			};
 			name = Release;
 		};
@@ -4747,7 +4745,6 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Highlighter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Highlighter";
 			};
 			name = Debug;
 		};
@@ -4768,7 +4765,6 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Highlighter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Highlighter";
 			};
 			name = Release;
 		};
