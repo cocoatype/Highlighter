@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 3/31/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import AppRatings
 import Editing
 import ErrorHandling
 import Photos

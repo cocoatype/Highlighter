@@ -1,16 +1,20 @@
 //  Created by Geoff Pado on 5/25/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
-import Editing
+import Defaults
 import Foundation
 import StoreKit
 
-class AppRatingsPrompter: NSObject {
+public struct AppRatingsPrompter {
+    public init() {
+        self.init(requestMethod: SKStoreReviewController.requestReview(in:))
+    }
+
     init(requestMethod: @escaping ((UIWindowScene) -> Void) = SKStoreReviewController.requestReview(in:)) {
         self.requestMethod = requestMethod
     }
 
-    func displayRatingsPrompt(in windowScene: UIWindowScene?) {
+    public func displayRatingsPrompt(in windowScene: UIWindowScene?) {
         guard let windowScene = windowScene,
               Defaults.numberOfSaves >= Self.minNumberOfSaves
         else { return }

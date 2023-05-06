@@ -69,6 +69,28 @@
                ReferencedContainer = "container:Highlighter.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "04634E972A05CEC000569D5C"
+               BuildableName = "AppRatingsTests.xctest"
+               BlueprintName = "AppRatingsTests"
+               ReferencedContainer = "container:Highlighter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "04634ED32A05D16A00569D5C"
+               BuildableName = "DefaultsTests.xctest"
+               BlueprintName = "DefaultsTests"
+               ReferencedContainer = "container:Highlighter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

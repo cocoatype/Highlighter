@@ -1,6 +1,8 @@
 //  Created by Geoff Pado on 8/10/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+import AppRatings
+import Defaults
 import Editing
 import UIKit
 import UniformTypeIdentifiers

@@ -1,0 +1,33 @@
+{
+  "configurations" : [
+    {
+      "id" : "D73EDFC0-D0B8-4694-AF23-75BFE87F4D06",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "04634E902A05CEBF00569D5C",
+          "name" : "AppRatings"
+        }
+      ]
+    },
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "04634E972A05CEC000569D5C",
+        "name" : "AppRatingsTests"
+      }
+    }
+  ],
+  "version" : 1
+}
