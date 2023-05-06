@@ -39,7 +39,6 @@ struct SettingsViewPreviews: PreviewProvider {
         ForEach(states) { state in
             SettingsView(purchaseState: state, readableWidth: 288, dismissAction: {})
                 .previewDevice("iPhone 12 Pro Max")
-                .preferredColorScheme(.dark)
         }
     }
 
