@@ -13,8 +13,7 @@ for_platform :ios do
                    "com.cocoatype.Highlighter",
                    "com.cocoatype.Highlighter.Action",
                    "com.cocoatype.Highlighter.Photo",
-                   "com.cocoatype.Highlighter.Shortcuts",
-                   "com.cocoatype.Highlighter.CoreTests"
+                   "com.cocoatype.Highlighter.Shortcuts"
                  ])
 end
 
@@ -22,8 +21,7 @@ for_platform :mac do
   platform "macos"
   additional_cert_types ["mac_installer_distribution"]
   app_identifier [
-    "com.cocoatype.Highlighter",
-    "com.cocoatype.Highlighter.CoreTests"
+    "com.cocoatype.Highlighter"
   ]
 end
                    
