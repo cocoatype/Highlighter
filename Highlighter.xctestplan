@@ -1,0 +1,59 @@
+{
+  "configurations" : [
+    {
+      "id" : "D0434396-3984-4592-B215-602398318AB8",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "04634E972A05CEC000569D5C",
+        "name" : "AppRatingsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "04634D6A2A05189C00569D5C",
+        "name" : "CoreTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "04634ED32A05D16A00569D5C",
+        "name" : "DefaultsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "04B19921262410D5001A275B",
+        "name" : "EditingTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "04634E7A2A05C2D300569D5C",
+        "name" : "ErrorHandlingTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "04634E4A2A052C4400569D5C",
+        "name" : "LoggingTests"
+      }
+    }
+  ],
+  "version" : 1
+}
