@@ -53,9 +53,7 @@ platform :mac do
 
   desc "Submit a new beta build to Apple TestFlight"
   lane :beta do
-    # Sync twice to get Catalyst and macOS profiles
     sync_code_signing(platform: "catalyst")
-    sync_code_signing
 
     # Set the build number to the number of Git commits
     build_number = sh "git log --oneline | wc -l"
@@ -95,6 +93,5 @@ platform :mac do
   desc "Set up developer environment"
   lane :dev do
     sync_code_signing(platform: "catalyst")
-    sync_code_signing
   end
 end
