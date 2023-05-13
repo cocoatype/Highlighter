@@ -62,3 +62,7 @@ mac_beta:
     - "bundle exec fastlane mac beta"
   tags:
     - xcode
+  only:
+    - master
+    - /^release\/(.*)$/
+    - /^future\/(.*)$/
