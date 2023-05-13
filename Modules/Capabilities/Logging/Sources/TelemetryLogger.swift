@@ -4,7 +4,7 @@
 import TelemetryClient
 
 public struct TelemetryLogger: Logger {
-    private static func initializeTelemetry() {
+    public static func initializeTelemetry() {
         guard TelemetryManager.isInitialized == false else { return }
         let configuration = TelemetryManagerConfiguration(appID: "2B12B0C1-2C32-414A-BAB4-B20E866EC277")
         TelemetryManager.initialize(with: configuration)
