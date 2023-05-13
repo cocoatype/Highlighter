@@ -4,6 +4,7 @@
 import Defaults
 import Editing
 import ErrorHandling
+import Logging
 import Intents
 import UniformTypeIdentifiers
 import UIKit
@@ -14,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         PaymentPublisher.shared.setup()
+        TelemetryLogger.initializeTelemetry()
 
         #if targetEnvironment(macCatalyst)
         UserDefaults.standard.set(true, forKey: "NSQuitAlwaysKeepsWindows")
