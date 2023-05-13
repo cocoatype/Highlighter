@@ -53,6 +53,13 @@ platform :mac do
 
   desc "Submit a new beta build to Apple TestFlight"
   lane :beta do
+    # We MUST sync codesigning twice. The app must be codesigned with
+    # a macOS provisioning profile; if it is signed with a Catalyst
+    # profile, the embedded Automator action gets an invalid entitlement.
+    #
+    # However, we need the Catalyst profile for the final export, or the
+    # App Store upload will be rejected.
+    sync_code_signing
     sync_code_signing(platform: "catalyst")
 
     # Set the build number to the number of Git commits
@@ -92,6 +99,7 @@ platform :mac do
 
   desc "Set up developer environment"
   lane :dev do
+    sync_code_signing
     sync_code_signing(platform: "catalyst")
   end
 end
