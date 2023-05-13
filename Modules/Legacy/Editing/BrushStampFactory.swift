@@ -13,13 +13,20 @@ public class BrushStampFactory: NSObject {
 
         guard let startCGImage = startImage.cgImage(scale: scale),
               let endCGImage = endImage.cgImage(scale: scale)
-        else { throw BrushStampFactoryError.cannotGenerateCGImage }
+        else {
+            throw BrushStampFactoryError.cannotGenerateCGImage(
+                shape: shape,
+                color: color,
+                scale: scale
+            )
+        }
 
         return (startCGImage, endCGImage)
     }
 
     private static func brushStart(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
-        guard let startImage = UIImage(named: "Brush Start") else { ErrorHandler().crash("Unable to load brush start image") }
+        guard let startImage = UIImage(named: "Brush Start", in: Bundle(for: BrushStampFactory.self), compatibleWith: nil)
+        else { ErrorHandler().crash("Unable to load brush start image") }
 
         let brushScale = height / startImage.size.height
         let scaledBrushSize = startImage.size * brushScale
@@ -36,7 +43,8 @@ public class BrushStampFactory: NSObject {
     }
 
     private static func brushEnd(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
-        guard let endImage = UIImage(named: "Brush End") else { ErrorHandler().crash("Unable to load brush end image") }
+        guard let endImage = UIImage(named: "Brush End", in: Bundle(for: BrushStampFactory.self), compatibleWith: nil)
+        else { ErrorHandler().crash("Unable to load brush end image") }
 
         let brushScale = height / endImage.size.height
         let scaledBrushSize = endImage.size * brushScale
@@ -71,5 +79,5 @@ public class BrushStampFactory: NSObject {
 }
 
 enum BrushStampFactoryError: Error {
-    case cannotGenerateCGImage
+    case cannotGenerateCGImage(shape: Shape, color: UIColor, scale: CGFloat)
 }

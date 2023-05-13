@@ -24,9 +24,8 @@ extension UIImage {
     }
 
     public func cgImage(scale: CGFloat) -> CGImage? {
-        if abs(scale - self.scale) < 0.01 {
-            return cgImage
-        }
+        guard abs(scale - self.scale) >= 0.01
+        else { return cgImage }
 
         let format = UIGraphicsImageRendererFormat()
         format.scale = scale
