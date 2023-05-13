@@ -31,6 +31,8 @@
 		043C28E7265F47E00054A5A8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF542255A0B00058D8EE /* Colors.swift */; };
 		043C28E9265F49150054A5A8 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EFF5A2255A39D0058D8EE /* Fonts.swift */; };
 		043CC2E22A0616B200DEE5B6 /* SettingsListBackgroundViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CC2E12A0616B200DEE5B6 /* SettingsListBackgroundViewModifier.swift */; };
+		043CC2EA2A0FA19200DEE5B6 /* BrushStampFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CC2E92A0FA19200DEE5B6 /* BrushStampFactoryTests.swift */; };
+		043CC2ED2A0FA4F800DEE5B6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 043CC2EB2A0FA3E800DEE5B6 /* Media.xcassets */; };
 		044074BF23BE9BCD00D3CB99 /* RedactionPathLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044074BE23BE9BCD00D3CB99 /* RedactionPathLayer.swift */; };
 		04409440275F1694003155CC /* ToolbarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440943F275F1694003155CC /* ToolbarBuilder.swift */; };
 		04409441275F170F003155CC /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440943D275F0A5D003155CC /* FeatureFlag.swift */; };
@@ -775,6 +777,8 @@
 		043C28E5265F47A20054A5A8 /* ActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
 		043CC2462A05DA2E00DEE5B6 /* Editing.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Editing.xctestplan; sourceTree = "<group>"; };
 		043CC2E12A0616B200DEE5B6 /* SettingsListBackgroundViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListBackgroundViewModifier.swift; sourceTree = "<group>"; };
+		043CC2E92A0FA19200DEE5B6 /* BrushStampFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushStampFactoryTests.swift; sourceTree = "<group>"; };
+		043CC2EB2A0FA3E800DEE5B6 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		043CD9C8226EB0400012F5AE /* TextDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetector.swift; sourceTree = "<group>"; };
 		043CD9CA226EB0830012F5AE /* TextRectangleDetectionOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRectangleDetectionOperation.swift; sourceTree = "<group>"; };
 		043CD9CE226EB0C70012F5AE /* TextObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservation.swift; sourceTree = "<group>"; };
@@ -1985,6 +1989,7 @@
 				04B19923262410D5001A275B /* Tests */,
 				043CD9CD226EB0B20012F5AE /* Text Detection */,
 				04CEA1E22834DC600080E510 /* StandardImageRequestOptions.swift */,
+				043CC2EB2A0FA3E800DEE5B6 /* Media.xcassets */,
 			);
 			path = Editing;
 			sourceTree = "<group>";
@@ -2044,6 +2049,7 @@
 				04B1994226241141001A275B /* Editing View */,
 				04B19926262410D5001A275B /* Info.plist */,
 				04B1995C262411DC001A275B /* TestHelpers.swift */,
+				043CC2E92A0FA19200DEE5B6 /* BrushStampFactoryTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -3043,6 +3049,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				043CC2ED2A0FA4F800DEE5B6 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3496,6 +3503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B199542624117A001A275B /* PhotoEditingWorkspaceViewTests.swift in Sources */,
+				043CC2EA2A0FA19200DEE5B6 /* BrushStampFactoryTests.swift in Sources */,
 				04B199A726241697001A275B /* PhotoEditingViewTests.swift in Sources */,
 				04B1996C26241234001A275B /* TestHelpers.swift in Sources */,
 				04B199B02624177F001A275B /* PhotoEditingScrollViewTests.swift in Sources */,
@@ -4694,6 +4702,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
@@ -4733,6 +4743,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
