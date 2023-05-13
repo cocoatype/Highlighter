@@ -46,6 +46,7 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
     }
 
     func animateFullVisualization() {
+        guard cannons.count > 0 else { return }
         removeAllRedactions()
         add(cannons)
 
