@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -257,8 +257,6 @@
 		04634EA52A05CEC000569D5C /* AppRatings.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04634E912A05CEBF00569D5C /* AppRatings.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04634EAF2A05CF0900569D5C /* AppRatingsPrompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B7904229A3AC7005B7A2A /* AppRatingsPrompter.swift */; };
 		04634EB02A05CF0C00569D5C /* AppRatingsPrompterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F77D042894E63100FB3DE2 /* AppRatingsPrompterTests.swift */; };
-		04634EBD2A05CF8D00569D5C /* TestHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04634EB72A05CF8D00569D5C /* TestHelpers.framework */; };
-		04634EBE2A05CF8D00569D5C /* TestHelpers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04634EB72A05CF8D00569D5C /* TestHelpers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04634EC22A05CFB300569D5C /* InstanceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F77D072894E95100FB3DE2 /* InstanceHelper.m */; };
 		04634EC32A05CFB600569D5C /* InstanceHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F77D092894E96700FB3DE2 /* InstanceHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04634EC42A05CFBD00569D5C /* InstanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F77D0A2894E9BA00FB3DE2 /* InstanceHelper.swift */; };
@@ -507,13 +505,6 @@
 			remoteGlobalIDString = 04634E902A05CEBF00569D5C;
 			remoteInfo = AppRatings;
 		};
-		04634EBB2A05CF8D00569D5C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 04634EB62A05CF8D00569D5C;
-			remoteInfo = TestHelpers;
-		};
 		04634ED62A05D16A00569D5C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
@@ -679,7 +670,6 @@
 				04FB5F2425C7AC8400A5B48D /* Editing.framework in Embed Frameworks */,
 				04DE87BA265213F40002BA42 /* ErrorHandling.framework in Embed Frameworks */,
 				04634EA52A05CEC000569D5C /* AppRatings.framework in Embed Frameworks */,
-				04634EBE2A05CF8D00569D5C /* TestHelpers.framework in Embed Frameworks */,
 				04634E582A052C4400569D5C /* Logging.framework in Embed Frameworks */,
 				04634EE12A05D16A00569D5C /* Defaults.framework in Embed Frameworks */,
 				04634D782A05189C00569D5C /* Core.framework in Embed Frameworks */,
@@ -1058,7 +1048,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04634EBD2A05CF8D00569D5C /* TestHelpers.framework in Frameworks */,
 				04634EA42A05CEC000569D5C /* AppRatings.framework in Frameworks */,
 				04634E572A052C4400569D5C /* Logging.framework in Frameworks */,
 				04634EE02A05D16A00569D5C /* Defaults.framework in Frameworks */,
@@ -2436,7 +2425,6 @@
 				04634D762A05189C00569D5C /* PBXTargetDependency */,
 				04634E562A052C4400569D5C /* PBXTargetDependency */,
 				04634EA32A05CEC000569D5C /* PBXTargetDependency */,
-				04634EBC2A05CF8D00569D5C /* PBXTargetDependency */,
 				04634EDF2A05D16A00569D5C /* PBXTargetDependency */,
 			);
 			name = Highlighter;
@@ -3622,11 +3610,6 @@
 			isa = PBXTargetDependency;
 			target = 04634E902A05CEBF00569D5C /* AppRatings */;
 			targetProxy = 04634EA22A05CEC000569D5C /* PBXContainerItemProxy */;
-		};
-		04634EBC2A05CF8D00569D5C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 04634EB62A05CF8D00569D5C /* TestHelpers */;
-			targetProxy = 04634EBB2A05CF8D00569D5C /* PBXContainerItemProxy */;
 		};
 		04634ED72A05D16A00569D5C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
