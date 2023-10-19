@@ -100,6 +100,7 @@ extension NSBezierPath.LineJoinStyle {
 }
 
 #elseif canImport(UIKit)
+import SwiftUI
 import UIKit
 
 extension UIBezierPath {
@@ -126,19 +127,32 @@ extension UIBezierPath {
     }
 
     var shape: Shape? {
-        var ourPathElements = [CGPathElement]()
-        cgPath.applyWithBlock { elementPointer in
-            ourPathElements.append(elementPointer.pointee)
+        let path = Path(self.cgPath)
+        var elements = [Path.Element]()
+        path.forEach { element in
+            elements.append(element)
         }
 
-        guard ourPathElements.count == 5 && ((ourPathElements.last?.type == .closeSubpath) ?? false) else { return nil }
+        let points = elements.compactMap(\.point)
 
         return Shape(
-            bottomLeft: ourPathElements[1].points.pointee,
-            bottomRight: ourPathElements[2].points.pointee,
-            topLeft: ourPathElements[0].points.pointee,
-            topRight: ourPathElements[3].points.pointee
+            bottomLeft: points[1],
+            bottomRight: points[2],
+            topLeft: points[0],
+            topRight: points[3]
         )
+    }
+}
+
+private extension Path.Element {
+    var point: CGPoint? {
+        switch self {
+        case .move(let to): return to
+        case .line(let to): return to
+        case .quadCurve: return nil
+        case .curve: return nil
+        case .closeSubpath: return nil
+        }
     }
 }
 #endif

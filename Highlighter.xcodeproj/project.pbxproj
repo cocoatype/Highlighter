@@ -295,6 +295,12 @@
 		0489081B24AD7B17005DDEF3 /* Editing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F92D722CDA3DB0090C9BC /* Editing.framework */; };
 		0493D2D624B6BAE400FF99F4 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493D2D524B6BAE400FF99F4 /* ColorPickerViewController.swift */; };
 		0493D2D824B6BD0000FF99F4 /* BrushStampFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */; };
+		04956B372AE1215700881F69 /* CharacterObservationRedactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04956B362AE1215700881F69 /* CharacterObservationRedactionTests.swift */; };
+		04956B3A2AE125AD00881F69 /* ShapeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04956B392AE125AD00881F69 /* ShapeTests.swift */; };
+		04956B3C2AE12A0E00881F69 /* WordObservationRedactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04956B3B2AE12A0E00881F69 /* WordObservationRedactionTests.swift */; };
+		04956B3E2AE12D6C00881F69 /* TextObservationRedactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04956B3D2AE12D6C00881F69 /* TextObservationRedactionTests.swift */; };
+		04956B432AE134FC00881F69 /* UIBezierPathExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04956B422AE134FC00881F69 /* UIBezierPathExtensionsTests.swift */; };
+		04956B452AE1374100881F69 /* RestoredRedactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04956B442AE1374100881F69 /* RestoredRedactionTests.swift */; };
 		04975D1E26106D6800AA2771 /* PhotoEditingCanvasBrushStrokeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EB2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04975D3726106D8700AA2771 /* PhotoEditingCanvasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A8A5EF231659BA006CE411 /* PhotoEditingCanvasView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04975D5826106DC100AA2771 /* PhotoEditingCanvasBrushStrokeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8A5EC2316589E006CE411 /* PhotoEditingCanvasBrushStrokeView.m */; };
@@ -924,6 +930,12 @@
 		0493D2D524B6BAE400FF99F4 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		0493D2D724B6BD0000FF99F4 /* BrushStampFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushStampFactory.swift; sourceTree = "<group>"; };
 		04953B5724E2405500877800 /* PhotoEditingViewController+Desktop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditingViewController+Desktop.swift"; sourceTree = "<group>"; };
+		04956B362AE1215700881F69 /* CharacterObservationRedactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterObservationRedactionTests.swift; sourceTree = "<group>"; };
+		04956B392AE125AD00881F69 /* ShapeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeTests.swift; sourceTree = "<group>"; };
+		04956B3B2AE12A0E00881F69 /* WordObservationRedactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordObservationRedactionTests.swift; sourceTree = "<group>"; };
+		04956B3D2AE12D6C00881F69 /* TextObservationRedactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextObservationRedactionTests.swift; sourceTree = "<group>"; };
+		04956B422AE134FC00881F69 /* UIBezierPathExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtensionsTests.swift; sourceTree = "<group>"; };
+		04956B442AE1374100881F69 /* RestoredRedactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoredRedactionTests.swift; sourceTree = "<group>"; };
 		04975D8826106F8B00AA2771 /* HighlighterToolBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlighterToolBarButtonItem.swift; sourceTree = "<group>"; };
 		049E1EB124BFEEE7009DE20D /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		049E1EB324BFEF09009DE20D /* AlbumsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsList.swift; sourceTree = "<group>"; };
@@ -1943,6 +1955,33 @@
 			path = "Library Items";
 			sourceTree = "<group>";
 		};
+		04956B352AE120F700881F69 /* Redactions */ = {
+			isa = PBXGroup;
+			children = (
+				04956B362AE1215700881F69 /* CharacterObservationRedactionTests.swift */,
+				04956B3B2AE12A0E00881F69 /* WordObservationRedactionTests.swift */,
+				04956B3D2AE12D6C00881F69 /* TextObservationRedactionTests.swift */,
+				04956B442AE1374100881F69 /* RestoredRedactionTests.swift */,
+			);
+			path = Redactions;
+			sourceTree = "<group>";
+		};
+		04956B382AE1259F00881F69 /* Text Detection */ = {
+			isa = PBXGroup;
+			children = (
+				04956B392AE125AD00881F69 /* ShapeTests.swift */,
+			);
+			path = "Text Detection";
+			sourceTree = "<group>";
+		};
+		04956B412AE134F000881F69 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				04956B422AE134FC00881F69 /* UIBezierPathExtensionsTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		04975D8726106F6D00AA2771 /* Toolbar Items */ = {
 			isa = PBXGroup;
 			children = (
@@ -2034,6 +2073,9 @@
 		04B19923262410D5001A275B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				04956B412AE134F000881F69 /* Extensions */,
+				04956B382AE1259F00881F69 /* Text Detection */,
+				04956B352AE120F700881F69 /* Redactions */,
 				043CC2462A05DA2E00DEE5B6 /* Editing.xctestplan */,
 				04B1994226241141001A275B /* Editing View */,
 				04B19926262410D5001A275B /* Info.plist */,
@@ -3490,9 +3532,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04956B3A2AE125AD00881F69 /* ShapeTests.swift in Sources */,
+				04956B432AE134FC00881F69 /* UIBezierPathExtensionsTests.swift in Sources */,
 				04B199542624117A001A275B /* PhotoEditingWorkspaceViewTests.swift in Sources */,
+				04956B3C2AE12A0E00881F69 /* WordObservationRedactionTests.swift in Sources */,
 				043CC2EA2A0FA19200DEE5B6 /* BrushStampFactoryTests.swift in Sources */,
+				04956B452AE1374100881F69 /* RestoredRedactionTests.swift in Sources */,
+				04956B372AE1215700881F69 /* CharacterObservationRedactionTests.swift in Sources */,
 				04B199A726241697001A275B /* PhotoEditingViewTests.swift in Sources */,
+				04956B3E2AE12D6C00881F69 /* TextObservationRedactionTests.swift in Sources */,
 				04B1996C26241234001A275B /* TestHelpers.swift in Sources */,
 				04B199B02624177F001A275B /* PhotoEditingScrollViewTests.swift in Sources */,
 			);
