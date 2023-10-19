@@ -6,7 +6,7 @@ import UIKit
 #if canImport(UIKit)
 extension Redaction {
     init(_ wordObservations: [WordObservation], color: UIColor) {
-        self.parts = wordObservations.reduce(into: [UUID: [WordObservation]]()) { result, wordObservation in
+        let parts = wordObservations.reduce(into: [UUID: [WordObservation]]()) { result, wordObservation in
             let textObservationUUID = wordObservation.textObservationUUID
             var siblingObservations = result[textObservationUUID] ?? []
             siblingObservations.append(wordObservation)
@@ -16,7 +16,8 @@ extension Redaction {
                 currentRect.union(wordObservation.bounds)
             })
         }.map(RedactionPart.shape)
-        self.color = color
+
+        self.init(color: color, parts: parts)
     }
 }
 #endif

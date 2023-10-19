@@ -9,9 +9,11 @@ extension Redaction: Codable {
         let colorData = try container.decode(Data.self, forKey: .color)
         let pathsData = try container.decode([Data].self, forKey: .paths)
 
-        color = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData) ?? .black
+        let color = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData) ?? .black
         let paths = try pathsData.compactMap { try NSKeyedUnarchiver.unarchivedObject(ofClass: UIBezierPath.self, from: $0) }
-        parts = RedactionSerializer.parts(from: paths)
+        let parts = RedactionSerializer.parts(from: paths)
+
+        self.init(color: color, parts: parts)
     }
 
     public func encode(to encoder: Encoder) throws {

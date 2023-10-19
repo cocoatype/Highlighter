@@ -98,4 +98,19 @@ public struct Shape: Hashable {
     var isNotZero: Bool {
         self != Self.zero
     }
+
+    var isNotEmpty: Bool {
+        // https://math.stackexchange.com/a/1259133
+        let shoelace =
+        bottomLeft.x * bottomRight.y +
+        bottomRight.x * topRight.y +
+        topRight.x * topLeft.y +
+        topLeft.x * bottomLeft.y -
+        bottomRight.x * bottomLeft.y -
+        topRight.x * bottomRight.y -
+        topLeft.x * topRight.y -
+        bottomLeft.x * topLeft.y
+        let area = 0.5 * abs(shoelace)
+        return abs(area) > 0.01
+    }
 }

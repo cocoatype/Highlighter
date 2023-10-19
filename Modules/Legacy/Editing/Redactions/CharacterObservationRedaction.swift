@@ -8,7 +8,7 @@ extension Redaction {
     init?(_ characterObservations: [CharacterObservation], color: NSColor) {
         guard characterObservations.count > 0 else { return nil }
 
-        self.parts = characterObservations.reduce(into: [UUID: [CharacterObservation]]()) { result, characterObservation in
+        let parts = characterObservations.reduce(into: [UUID: [CharacterObservation]]()) { result, characterObservation in
             let textObservationUUID = characterObservation.textObservationUUID
             var siblingObservations = result[textObservationUUID] ?? []
             siblingObservations.append(characterObservation)
@@ -19,7 +19,7 @@ extension Redaction {
             })
         }.map(RedactionPart.shape)
 
-        self.color = color
+        self.init(color: color, parts: parts)
     }
 }
 
@@ -30,7 +30,7 @@ extension Redaction {
     init?(_ characterObservations: [CharacterObservation], color: UIColor) {
         guard characterObservations.count > 0 else { return nil }
 
-        self.parts = characterObservations.reduce(into: [UUID: [CharacterObservation]]()) { result, characterObservation in
+        let parts = characterObservations.reduce(into: [UUID: [CharacterObservation]]()) { result, characterObservation in
             let textObservationUUID = characterObservation.textObservationUUID
             var siblingObservations = result[textObservationUUID] ?? []
             siblingObservations.append(characterObservation)
@@ -41,7 +41,7 @@ extension Redaction {
             })
         }.map(RedactionPart.shape)
 
-        self.color = color
+        self.init(color: color, parts: parts)
     }
 }
 #endif

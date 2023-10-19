@@ -7,9 +7,7 @@ import AppKit
 extension Redaction {
     public init<ObservationType: TextObservation>(_ textObservation: ObservationType, color: NSColor) {
         let shape = textObservation.bounds
-        self.parts = [.shape(shape)]
-
-        self.color = color
+        self.init(color: color, parts: [.shape(shape)])
     }
 }
 
@@ -19,9 +17,7 @@ import UIKit
 extension Redaction {
     public init<ObservationType: TextObservation>(_ textObservation: ObservationType, color: UIColor) {
         let shape = textObservation.bounds
-        self.parts = [.shape(shape)]
-
-        self.color = color
+        self.init(color: color, parts: [.shape(shape)])
     }
 }
 #endif

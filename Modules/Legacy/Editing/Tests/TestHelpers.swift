@@ -3,6 +3,8 @@
 
 import XCTest
 
+@testable import Editing
+
 enum TestHelpers {
     static func runOnMacCatalyst() throws {
         #if targetEnvironment(macCatalyst)
@@ -24,4 +26,18 @@ enum TestHelpers {
     static func performInDarkMode(_ actions: (() -> Void)) {
         UITraitCollection(userInterfaceStyle: .dark).performAsCurrent(actions)
     }
+
+    static let shape = Shape(
+        bottomLeft: CGPoint(x: 0, y: 5),
+        bottomRight: CGPoint(x: 5, y: 5),
+        topLeft: CGPoint(x: 0, y: 0),
+        topRight: CGPoint(x: 5, y: 0)
+    )
+
+    static let emptyShape = Shape(
+        bottomLeft: CGPoint(x: 5, y: 5),
+        bottomRight: CGPoint(x: 5, y: 5),
+        topLeft: CGPoint(x: 5, y: 5),
+        topRight: CGPoint(x: 5, y: 5)
+    )
 }
