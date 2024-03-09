@@ -10,11 +10,15 @@ enum MenuBuilder {
     static func buildMenu(with builder: UIMenuBuilder) {
         guard builder.system == .main else { return }
 
-        builder.replaceChildren(ofMenu: .close) { existingChildren in
-            existingChildren + [
-                UIKeyCommand(title: Self.saveMenuItemTitle, action: #selector(PhotoEditingViewController.save(_:)), input: "S", modifierFlags: [.command]),
-                UIKeyCommand(title: Self.saveAsMenuItemTitle, action: #selector(PhotoEditingViewController.saveAs(_:)), input: "S", modifierFlags: [.command, .shift])
-            ]
+        let documentChildren = [
+            UIKeyCommand(title: Self.saveMenuItemTitle, action: #selector(PhotoEditingViewController.save(_:)), input: "S", modifierFlags: [.command]),
+            UIKeyCommand(title: Self.saveAsMenuItemTitle, action: #selector(PhotoEditingViewController.saveAs(_:)), input: "S", modifierFlags: [.command, .shift])
+        ]
+
+        if #available(macCatalyst 16.0, *) {
+            builder.replaceChildren(ofMenu: .document) { _ in documentChildren }
+        } else {
+            builder.insertSibling(UIMenu(options: .displayInline, children: documentChildren), afterMenu: .close)
         }
 
         #if targetEnvironment(macCatalyst)
