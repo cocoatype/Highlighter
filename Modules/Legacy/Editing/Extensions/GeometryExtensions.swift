@@ -11,6 +11,10 @@ public extension CGSize {
     static func * (size: CGSize, multiplier: CGFloat) -> CGSize {
         return CGSize(width: size.width * multiplier, height: size.height * multiplier)
     }
+
+    var integral: CGSize {
+        CGSize(width: floor(width), height: floor(height))
+    }
 }
 
 public extension CGPoint {

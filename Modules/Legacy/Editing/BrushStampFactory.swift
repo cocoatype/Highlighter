@@ -29,7 +29,7 @@ public class BrushStampFactory: NSObject {
         else { ErrorHandler().crash("Unable to load brush start image") }
 
         let brushScale = height / startImage.size.height
-        let scaledBrushSize = startImage.size * brushScale
+        let scaledBrushSize = (startImage.size * brushScale).integral
 
         return UIGraphicsImageRenderer(size: scaledBrushSize).image { context in
             color.setFill()
@@ -47,7 +47,7 @@ public class BrushStampFactory: NSObject {
         else { ErrorHandler().crash("Unable to load brush end image") }
 
         let brushScale = height / endImage.size.height
-        let scaledBrushSize = endImage.size * brushScale
+        let scaledBrushSize = (endImage.size * brushScale).integral
 
         return UIGraphicsImageRenderer(size: scaledBrushSize).image { context in
             color.setFill()
