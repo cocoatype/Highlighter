@@ -22,6 +22,7 @@
 		0419088E254A8D4D00739749 /* RedactActionExportError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419087E254A8D3C00739749 /* RedactActionExportError.swift */; };
 		041BEA3722EF75E800FF07C2 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3622EF75E800FF07C2 /* Icons.swift */; };
 		041BEA3F22EF879700FF07C2 /* TextRecognitionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BEA3E22EF879700FF07C2 /* TextRecognitionOperation.swift */; };
+		041E139A2BAD898D00384EFE /* TestHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04634EB72A05CF8D00569D5C /* TestHelpers.framework */; };
 		041EFF4B225300030058D8EE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 041EFF4A225300030058D8EE /* Localizable.strings */; };
 		043911C322C461F000D4AE30 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 043911C222C461F000D4AE30 /* Media.xcassets */; };
 		043911CC22C461F000D4AE30 /* Action.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 043911C022C461EE00D4AE30 /* Action.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -406,7 +407,7 @@
 			remoteGlobalIDString = 044D4C9A2547C8EE00701166;
 			remoteInfo = Redacting;
 		};
-		0435CA982BA012C100EDDC32 /* PBXContainerItemProxy */ = {
+		041E13982BAD898700384EFE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 041EFEED2251A9F30058D8EE /* Project object */;
 			proxyType = 1;
@@ -1164,6 +1165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041E139A2BAD898D00384EFE /* TestHelpers.framework in Frameworks */,
 				04634E992A05CEC000569D5C /* AppRatings.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2690,7 +2692,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				0435CA992BA012C100EDDC32 /* PBXTargetDependency */,
+				041E13992BAD898700384EFE /* PBXTargetDependency */,
 				04634E9B2A05CEC000569D5C /* PBXTargetDependency */,
 				04634E9D2A05CEC000569D5C /* PBXTargetDependency */,
 			);
@@ -3591,10 +3593,10 @@
 			target = 044D4C9A2547C8EE00701166 /* Redacting */;
 			targetProxy = 0419085D254A86F400739749 /* PBXContainerItemProxy */;
 		};
-		0435CA992BA012C100EDDC32 /* PBXTargetDependency */ = {
+		041E13992BAD898700384EFE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 04634EB62A05CF8D00569D5C /* TestHelpers */;
-			targetProxy = 0435CA982BA012C100EDDC32 /* PBXContainerItemProxy */;
+			targetProxy = 041E13982BAD898700384EFE /* PBXContainerItemProxy */;
 		};
 		043911CB22C461F000D4AE30 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
