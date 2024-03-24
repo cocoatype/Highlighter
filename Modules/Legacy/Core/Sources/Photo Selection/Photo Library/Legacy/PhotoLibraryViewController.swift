@@ -4,6 +4,7 @@
 import Defaults
 import Editing
 import Photos
+import Purchasing
 import UIKit
 
 class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate, PHPhotoLibraryChangeObserver {
@@ -30,6 +31,10 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         libraryView.addInteraction(dropInteraction)
 
         view = libraryView
+
+        Task {
+            await reloadData()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -43,11 +48,14 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
 
         let cellCount = libraryView.numberOfItems(inSection: 0)
         if cellCount != dataSource.itemsCount {
-            libraryView.reloadData()
+            Task {
+                await reloadData()
+            }
         }
     }
 
-    func reloadData() {
+    func reloadData() async {
+        await dataSource.refresh()
         libraryView.reloadData()
     }
 
@@ -57,6 +65,10 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
             let newDataSource = PhotoLibraryDataSource(newCollection)
             dataSource = newDataSource
             shouldScrollToBottom = true
+
+            Task {
+                await reloadData()
+            }
         }
     }
 
@@ -127,12 +139,10 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         }
     }
     private let libraryView = PhotoLibraryView()
-    private var purchaseStateObserver: Any?
     private var hideDocumentScannerObserver: Any?
     private var shouldScrollToBottom = true
 
     deinit {
-        purchaseStateObserver.map(NotificationCenter.default.removeObserver)
         hideDocumentScannerObserver.map { NotificationCenter.default.removeObserver($0) }
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
     }

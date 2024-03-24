@@ -3,6 +3,7 @@
 
 import Editing
 import Photos
+import Purchasing
 import UIKit
 
 class LibrarySplitViewController: SplitViewController, CollectionPresenting, LimitedLibraryPresenting {
@@ -27,7 +28,9 @@ class LibrarySplitViewController: SplitViewController, CollectionPresenting, Lim
     }
 
     @objc func refreshLibrary(_ sender: AnyObject) {
-        photoLibraryViewController?.reloadData()
+        Task {
+            await photoLibraryViewController?.reloadData()
+        }
     }
 
     // MARK: Limited Library

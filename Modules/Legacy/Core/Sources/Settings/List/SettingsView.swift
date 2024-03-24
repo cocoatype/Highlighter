@@ -3,6 +3,7 @@
 
 import Editing
 import Introspect
+import Purchasing
 import StoreKit
 import SwiftUI
 
@@ -49,7 +50,7 @@ struct SettingsViewPreviews: PreviewProvider {
 }
 
 extension PurchaseState: Identifiable, Hashable {
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         switch self {
         case .loading: hasher.combine("loading")
         case .purchased: hasher.combine("purchased")
@@ -62,7 +63,7 @@ extension PurchaseState: Identifiable, Hashable {
         }
     }
 
-    static func == (lhs: PurchaseState, rhs: PurchaseState) -> Bool {
+    public static func == (lhs: PurchaseState, rhs: PurchaseState) -> Bool {
         switch (lhs, rhs) {
         case (.loading, .loading): return true
         case (.loading, _): return false
@@ -79,5 +80,5 @@ extension PurchaseState: Identifiable, Hashable {
         }
     }
 
-    var id: PurchaseState { return self }
+    public var id: PurchaseState { return self }
 }

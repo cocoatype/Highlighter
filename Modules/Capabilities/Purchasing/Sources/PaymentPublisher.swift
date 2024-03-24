@@ -4,18 +4,18 @@
 import Combine
 import StoreKit
 
-class PaymentPublisher: NSObject, Publisher, SKPaymentTransactionObserver {
-    typealias Output = State
-    typealias Failure = Swift.Error
+public class PaymentPublisher: NSObject, Publisher, SKPaymentTransactionObserver {
+    public typealias Output = State
+    public typealias Failure = Swift.Error
 
-    static let shared = PaymentPublisher()
+    public static let shared = PaymentPublisher()
 
     private override init() {
         super.init()
         SKPaymentQueue.default().add(self)
     }
 
-    func setup() {}
+    public func setup() {}
 
     func purchase(_ product: SKProduct) {
         SKPaymentQueue.default().add(SKPayment(product: product))
@@ -25,11 +25,11 @@ class PaymentPublisher: NSObject, Publisher, SKPaymentTransactionObserver {
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
 
-    func receive<S>(subscriber: S) where S : Subscriber, Swift.Error == S.Failure, State == S.Input {
+    public func receive<S>(subscriber: S) where S : Subscriber, Swift.Error == S.Failure, State == S.Input {
         stateSubject.receive(subscriber: subscriber)
     }
 
-    enum State {
+    public enum State {
         case ready
         case purchasing
         case purchased(SKPaymentTransaction)
@@ -44,7 +44,7 @@ class PaymentPublisher: NSObject, Publisher, SKPaymentTransactionObserver {
 
     // MARK: SKPaymentTransactionObserver
 
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+    public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         guard let transaction = transactions.first else { return }
         switch transaction.transactionState {
         case .purchasing:
@@ -65,11 +65,11 @@ class PaymentPublisher: NSObject, Publisher, SKPaymentTransactionObserver {
         }
     }
 
-    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Swift.Error) {
+    public func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Swift.Error) {
         stateSubject.send(.failed(error))
     }
 
-    func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool {
+    public func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool {
         return true
     }
 

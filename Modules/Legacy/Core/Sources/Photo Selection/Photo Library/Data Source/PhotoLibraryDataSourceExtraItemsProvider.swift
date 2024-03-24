@@ -4,18 +4,33 @@
 import Defaults
 import Editing
 import ErrorHandling
+import Purchasing
 import VisionKit
 
-class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
+class PhotoLibraryDataSourceExtraItemsProvider {
     var itemsCount: Int { extraItems.count }
     func item(atIndex index: Int) -> PhotoLibraryItem {
         extraItems[index]
     }
+    
+    init() {
+        self.extraItems = []
+    }
 
     // MARK: Document Scanning
-    private var shouldShowDocumentScannerCell: Bool {
-        let hasPurchased = (try? PreviousPurchasePublisher.hasUserPurchasedProduct().get()) ?? false
-        return VNDocumentCameraViewController.isSupported && (hideDocumentScanner == false || hasPurchased)
+    private static var documentScannerSupported: Bool {
+        guard ProcessInfo.processInfo.environment.keys.contains("FORCE_DOCUMENT_SCANNER_SUPPORTED") == false else {
+            return true
+        }
+
+        return VNDocumentCameraViewController.isSupported
+    }
+
+    private static var shouldShowDocumentScannerCell: Bool {
+        get async {
+            let hasPurchased = await PurchaseVerifier().hasUserPurchased
+            return documentScannerSupported && (hideDocumentScanner == false || hasPurchased)
+        }
     }
 
     func documentScannerCell(for collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
@@ -24,7 +39,7 @@ class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
 
     // MARK: Limited Library
 
-    private var shouldShowLimitedLibraryCell: Bool {
+    private static var shouldShowLimitedLibraryCell: Bool {
         permissionsRequester.authorizationStatus() == .limited
     }
 
@@ -36,13 +51,14 @@ class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
         #endif
     }
 
-    // MARK: Boilerplate
+    // MARK: Items Cache
 
-    @Defaults.Value(key: .hideDocumentScanner) private var hideDocumentScanner: Bool
-    private var extraItems: [PhotoLibraryItem] {
+    private(set) var extraItems: [PhotoLibraryItem]
+
+    private static func generateExtraItems() async -> [PhotoLibraryItem] {
         var extraItems = [PhotoLibraryItem]()
 
-        if shouldShowDocumentScannerCell {
+        if await shouldShowDocumentScannerCell {
             extraItems.append(.documentScan)
         }
 
@@ -53,5 +69,13 @@ class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
         return extraItems
     }
 
-    private let permissionsRequester = PhotoPermissionsRequester()
+    func refresh() async {
+        self.extraItems = await Self.generateExtraItems()
+    }
+
+    // MARK: Boilerplate
+
+    @Defaults.Value(key: .hideDocumentScanner) private static var hideDocumentScanner: Bool
+
+    private static let permissionsRequester = PhotoPermissionsRequester()
 }

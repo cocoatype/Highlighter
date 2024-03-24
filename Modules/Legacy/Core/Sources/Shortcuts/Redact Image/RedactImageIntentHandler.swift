@@ -2,15 +2,13 @@
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
 import Intents
-import os.log
+import OSLog
+import Purchasing
 import UIKit
 
 class RedactImageIntentHandler: NSObject {
     func handle(intent: RedactImageIntent) async -> RedactImageIntentResponse {
-        guard
-            case .success(let hasPurchased) = PreviousPurchasePublisher.hasUserPurchasedProduct(),
-            hasPurchased
-        else { return .unpurchased }
+        guard await PurchaseVerifier().hasUserPurchased else { return .unpurchased }
 
         os_log("handling redact intent")
         guard let sourceImages = intent.sourceImages, let redactedWords = intent.redactedWords else { return .failure }

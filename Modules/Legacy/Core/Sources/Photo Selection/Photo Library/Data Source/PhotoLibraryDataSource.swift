@@ -4,17 +4,23 @@
 import Combine
 import ErrorHandling
 import Photos
+import Purchasing
 import SwiftUI
 import UIKit
 import VisionKit
 
-class PhotoLibraryDataSource: NSObject, LibraryDataSource, UICollectionViewDataSource {
+@MainActor class PhotoLibraryDataSource: NSObject, LibraryDataSource, UICollectionViewDataSource {
     let collection: Collection
     init(_ collection: Collection) {
         self.collection = collection
         self.assetsProvider = PhotoLibraryDataSourceAssetsProvider(collection: collection)
         self.changeCalculator = PhotoLibraryDataSourceChangeCalculator(collection: collection)
+        self.extraItemsProvider = PhotoLibraryDataSourceExtraItemsProvider()
         super.init()
+    }
+
+    func refresh() async {
+        await extraItemsProvider.refresh()
     }
 
     func calculateChange(in libraryView: PhotoLibraryView, from change: PHChange) {
@@ -42,7 +48,7 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, UICollectionViewDataS
 
     // MARK: Photos
 
-    var itemsCount: Int { assetsProvider.photosCount + extraItemsProvider.itemsCount }
+    var itemsCount: Int { assetsProvider.photosCount + extraItemsProvider.extraItems.count }
 
     func item(at index: Int) -> PhotoLibraryItem {
         let photosCount = assetsProvider.photosCount
@@ -61,6 +67,6 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, UICollectionViewDataS
     // MARK: Providers
 
     private let assetsProvider: PhotoLibraryDataSourceAssetsProvider
-    private let extraItemsProvider = PhotoLibraryDataSourceExtraItemsProvider()
+    private var extraItemsProvider: PhotoLibraryDataSourceExtraItemsProvider
     private let changeCalculator: PhotoLibraryDataSourceChangeCalculator
 }

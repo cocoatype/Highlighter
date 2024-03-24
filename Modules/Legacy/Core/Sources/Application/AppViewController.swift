@@ -5,6 +5,7 @@ import AppRatings
 import Editing
 import ErrorHandling
 import Photos
+import Purchasing
 import UIKit
 import VisionKit
 import SwiftUI
@@ -22,6 +23,12 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
 
     @objc func showPhotoLibrary() {
         transition(to: preferredViewController)
+    }
+
+    private func refreshLibrary() {
+        if let libraryController = children.first as? LibrarySplitViewController {
+            libraryController.refreshLibrary(self)
+        }
     }
 
     private let permissionsRequester: PhotoPermissionsRequester
@@ -58,7 +65,12 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
     private lazy var documentScanningController = DocumentScanningController(delegate: self)
 
     @objc func presentDocumentCameraViewController() {
-        present(documentScanningController.cameraViewController(), animated: true)
+        Task { [weak self] in
+            guard let self else { return }
+            await present(documentScanningController.cameraViewController(), animated: true) { [weak self] in
+                self?.refreshLibrary()
+            }
+        }
     }
 
     func dismissDocumentScanner() {
@@ -86,6 +98,8 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
     @objc func dismissSettingsViewController() {
         guard presentedViewController is SettingsHostingController else { return }
         dismiss(animated: true)
+
+        refreshLibrary()
     }
 
     // MARK: Status Bar

@@ -6,6 +6,7 @@ import Editing
 import ErrorHandling
 import Logging
 import Intents
+import Purchasing
 import UniformTypeIdentifiers
 import UIKit
 

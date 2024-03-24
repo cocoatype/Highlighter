@@ -2,16 +2,14 @@
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
 import Intents
-import os.log
+import OSLog
+import Purchasing
 
 class RedactDetectedIntentHandler: NSObject {
     // 💩 by @eaglenaut on 5/16/22
     // the intent being handled
     func handle(💩: RedactDetectedIntent) async -> RedactDetectedIntentResponse {
-        guard
-            case .success(let hasPurchased) = PreviousPurchasePublisher.hasUserPurchasedProduct(),
-            hasPurchased
-        else { return .unpurchased }
+        guard await PurchaseVerifier().hasUserPurchased else { return .unpurchased }
 
         os_log("handling redact 💩")
         guard let sourceImages = 💩.sourceImages else { return .failure }

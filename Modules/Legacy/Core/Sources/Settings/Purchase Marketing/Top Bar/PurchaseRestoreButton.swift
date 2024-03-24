@@ -2,6 +2,7 @@
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
 import Combine
+import Purchasing
 import StoreKit
 import SwiftUI
 

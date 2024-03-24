@@ -4,19 +4,21 @@
 import Combine
 import StoreKit
 
-class PurchaseStatePublisher: Publisher {
-    typealias Output = PurchaseState
-    typealias Failure = Never
+public class PurchaseStatePublisher: Publisher {
+    public typealias Output = PurchaseState
+    public typealias Failure = Never
 
-    func receive<S>(subscriber: S) where S : Subscriber, Never == S.Failure, PurchaseState == S.Input {
+    public init() {}
+
+    public func receive<S>(subscriber: S) where S : Subscriber, Never == S.Failure, PurchaseState == S.Input {
         statePublisher.receive(subscriber: subscriber)
     }
 
-    func purchase(_ product: SKProduct) {
+    public func purchase(_ product: SKProduct) {
         paymentPublisher.purchase(product)
     }
 
-    func restore() {
+    public func restore() {
         paymentPublisher.restore()
     }
 

@@ -4,7 +4,7 @@
 import Foundation
 import StoreKit
 
-enum PurchaseState {
+public enum PurchaseState {
     case loading
     case readyForPurchase(product: SKProduct)
     case purchasing//(operation: PurchaseOperation)
@@ -12,7 +12,7 @@ enum PurchaseState {
     case purchased
     case unavailable
 
-    var product: SKProduct? {
+    public var product: SKProduct? {
         switch self {
         case .readyForPurchase(let product): return product
         default: return nil

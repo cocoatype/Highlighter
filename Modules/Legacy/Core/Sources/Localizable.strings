@@ -56,7 +56,7 @@
 
 "DocumentScannerNotPurchasedAlertController.dismissButton" = "OK";
 "DocumentScannerNotPurchasedAlertController.learnMoreButton" = "Learn More…";
-"DocumentScannerNotPurchasedAlertController.hideButton" = "Never Show This";
+"DocumentScannerNotPurchasedAlertController.hideButton" = "Hide This Feature";
 "DocumentScannerNotPurchasedAlertController.message" = "Using the document scanner requires the Ultra Highlighter, a one-time purchase.";
 "DocumentScannerNotPurchasedAlertController.title" = "Requires Ultra Highlighter";
 
@@ -153,7 +153,7 @@
 "SettingsView.notPurchasedAlertTitle" = "Requires Ultra Highlighter";
 "SettingsView.notPurchasedAlertMessage" = "Automatically hiding words requires the Ultra Highlighter, a one-time purchase.";
 "SettingsView.notPurchasedDismissButton" = "OK";
-"SettingsView.notPurchasedHideButton" = "Never Show This";
+"SettingsView.notPurchasedHideButton" = "Hide This Feature";
 
 "SettingsViewController.navigationTitle" = "Settings";
 

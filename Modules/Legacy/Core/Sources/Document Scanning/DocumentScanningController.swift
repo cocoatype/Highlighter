@@ -2,6 +2,7 @@
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
 import Editing
+import Purchasing
 import UIKit
 import VisionKit
 
@@ -11,8 +12,8 @@ class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelega
         super.init()
     }
 
-    func cameraViewController() -> UIViewController {
-        if purchased {
+    @MainActor func cameraViewController() async -> UIViewController {
+        if await purchased {
             let cameraViewController = VNDocumentCameraViewController()
             cameraViewController.delegate = self
             cameraViewController.overrideUserInterfaceStyle = .dark
@@ -24,9 +25,9 @@ class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelega
     }
 
     private var purchased: Bool {
-        do {
-            return try PreviousPurchasePublisher.hasUserPurchasedProduct().get()
-        } catch { return false }
+        get async {
+            return await PurchaseVerifier().hasUserPurchased
+        }
     }
 
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
