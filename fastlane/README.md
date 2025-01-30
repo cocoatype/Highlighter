@@ -47,6 +47,14 @@ Submit a new beta build to the public TestFlight beta
 
 Set up developer environment
 
+### ios renew
+
+```sh
+[bundle exec] fastlane ios renew
+```
+
+Renew signing certs
+
 ----
 
 
@@ -83,6 +91,14 @@ Submit a new beta build to the public TestFlight beta
 ```
 
 Set up developer environment
+
+### mac renew
+
+```sh
+[bundle exec] fastlane mac renew
+```
+
+Renew signing certs
 
 ----
 
