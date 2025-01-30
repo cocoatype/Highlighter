@@ -11,7 +11,11 @@ struct ReviewButton: View {
         Button {
             UIApplication.shared.open(URL(staticString: "https://itunes.apple.com/us/app/appName/id1215283742?mt=8&action=write-review"))
         } label: {
-            ButtonLabel(title: Strings.appStoreTitle, subtitle: Strings.appStoreSubtitle, imageName: "App Store")
+            ButtonLabel(
+                title: Strings.appStoreTitle,
+                subtitle: Strings.appStoreSubtitle,
+                asset: SettingsUIAsset.appStore
+            )
         }
         .settingsCell()
     }

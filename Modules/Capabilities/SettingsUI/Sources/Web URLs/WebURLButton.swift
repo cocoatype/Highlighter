@@ -7,18 +7,18 @@ import SwiftUI
 public struct WebURLButton: View {
     private let title: String
     private let subtitle: String?
-    private let imageName: String?
+    private let asset: SettingsUIImages?
     private let url: URL
 
-    init(title: String, subtitle: String? = nil, imageName: String? = nil, url: URL) {
+    init(title: String, subtitle: String? = nil, asset: SettingsUIImages? = nil, url: URL) {
         self.title = title
         self.subtitle = subtitle
-        self.imageName = imageName
+        self.asset = asset
         self.url = url
     }
 
     init(title: String, subtitle: String? = nil, path: StaticString) {
-        self.init(title: title, subtitle: subtitle, imageName: nil, url: URL(websitePath: path))
+        self.init(title: title, subtitle: subtitle, asset: nil, url: URL(websitePath: path))
     }
 
     @State private var selected = false
@@ -26,7 +26,7 @@ public struct WebURLButton: View {
         Button {
             selected = true
         } label: {
-            ButtonLabel(title: title, subtitle: subtitle, imageName: imageName)
+            ButtonLabel(title: title, subtitle: subtitle, asset: asset)
         }.sheet(isPresented: $selected) {
             WebView(url: url)
                 .ignoresSafeArea()

@@ -4,13 +4,13 @@
 import SwiftUI
 
 struct ContinuousCornerImage: View {
-    private let name: String
-    init(name: String) {
-        self.name = name
+    private let asset: SettingsUIImages
+    init(asset: SettingsUIImages) {
+        self.asset = asset
     }
 
     var body: some View {
-        Image(decorative: name, bundle: .module)
+        Image(decorative: asset)
             .clipShape(RoundedRectangle(cornerRadius: 5.6, style: .continuous))
     }
 }

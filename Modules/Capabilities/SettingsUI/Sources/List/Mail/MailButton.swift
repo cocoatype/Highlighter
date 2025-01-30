@@ -25,7 +25,11 @@ struct MailButton: View {
                 isMailPresented = true
             }
         } label: {
-            ButtonLabel(title: Strings.emailTitle, subtitle: Strings.emailSubtitle, imageName: "Mail")
+            ButtonLabel(
+                title: Strings.emailTitle,
+                subtitle: Strings.emailSubtitle,
+                asset: SettingsUIAsset.mail
+            )
         }.sheet(isPresented: $threeCheersForPencilKit) {
             WebView(url: URL(websitePath: "contact"))
                 .ignoresSafeArea()

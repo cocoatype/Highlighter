@@ -6,17 +6,17 @@ import SwiftUI
 struct ButtonLabel: View {
     private let title: String
     private let subtitle: String?
-    private let imageName: String?
+    private let asset: SettingsUIImages?
 
-    init(title: String, subtitle: String? = nil, imageName: String? = nil) {
+    init(title: String, subtitle: String? = nil, asset: SettingsUIImages? = nil) {
         self.title = title
         self.subtitle = subtitle
-        self.imageName = imageName
+        self.asset = asset
     }
 
     var body: some View {
         HStack(spacing: 12) {
-            if let imageName { ContinuousCornerImage(name: imageName) }
+            if let asset { ContinuousCornerImage(asset: asset) }
             VStack(alignment: .leading) {
                 TitleText(title)
                 if let subtitle { SubtitleText(subtitle) }

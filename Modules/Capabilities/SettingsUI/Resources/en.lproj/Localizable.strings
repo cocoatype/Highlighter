@@ -14,8 +14,12 @@
 
 "SettingsContentContactSection.appStoreTitle" = "App Store";
 "SettingsContentContactSection.appStoreSubtitle" = "Write a Review";
+"SettingsContentContactSection.blueskyTitle" = "Bluesky";
+"SettingsContentContactSection.blueskySubtitle" = "@blackhighlighter.app";
 "SettingsContentContactSection.emailTitle" = "E-mail";
 "SettingsContentContactSection.emailSubtitle" = "hello@cocoatype.com";
+"SettingsContentContactSection.facebookTitle" = "Facebook";
+"SettingsContentContactSection.facebookSubtitle" = "Black Highlighter";
 "SettingsContentContactSection.header" = "Contact the Developer";
 "SettingsContentContactSection.threadsTitle" = "Threads";
 "SettingsContentContactSection.threadsSubtitle" = "@blackhighlighterapp";
