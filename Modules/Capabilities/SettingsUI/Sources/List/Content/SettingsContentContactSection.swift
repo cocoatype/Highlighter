@@ -13,8 +13,10 @@ struct SettingsContentContactSection: View {
         Section(header: SettingsSectionHeader(Strings.header)) {
             MailButton()
             ReviewButton()
-            WebURLButton(title: Strings.threadsTitle, subtitle: Strings.threadsSubtitle, imageName: "Threads", url: URL(staticString: "https://threads.net/@blackhighlighterapp"))
-            WebURLButton(title: Strings.twitterTitle, subtitle: Strings.twitterSubtitle, imageName: "X", url: URL(staticString: "https://x.com/BlkHighlighter"))
+            BlueskyURLButton()
+            FacebookURLButton()
+            ThreadsURLButton()
+            XURLButton()
         }
     }
 

@@ -8,11 +8,13 @@ struct OtherAppButton: View {
     private let name: String
     private let subtitle: String
     private let id: String
+    private let asset: SettingsUIImages
 
-    init(name: String, subtitle: String, id: String) {
+    init(name: String, subtitle: String, id: String, asset: SettingsUIImages) {
         self.name = name
         self.subtitle = subtitle
         self.id = id
+        self.asset = asset
     }
 
     private var url: URL {
@@ -25,13 +27,18 @@ struct OtherAppButton: View {
         Button {
             UIApplication.shared.open(url)
         } label: {
-            ButtonLabel(title: name, subtitle: subtitle, imageName: name)
+            ButtonLabel(title: name, subtitle: subtitle, asset: asset)
         }.settingsCell()
     }
 }
 
 enum OtherAppButton_Previews: PreviewProvider {
     static var previews: some View {
-        OtherAppButton(name: "Kineo", subtitle: "Create flipbook-style animations", id: "286948844").preferredColorScheme(.dark).previewLayout(.sizeThatFits)
+        OtherAppButton(
+            name: "Kineo",
+            subtitle: "Create flipbook-style animations",
+            id: "286948844",
+            asset: SettingsUIAsset.kineo
+        ).preferredColorScheme(.dark).previewLayout(.sizeThatFits)
     }
 }
