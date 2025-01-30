@@ -64,6 +64,11 @@ platform :ios do
   lane :dev do
     sync_code_signing
   end
+
+  desc "Renew signing certs"
+  lane :renew do
+    sync_code_signing(readonly: false)
+  end
 end
 
 platform :mac do
@@ -148,5 +153,11 @@ platform :mac do
   lane :dev do
     sync_code_signing
     sync_code_signing(platform: "catalyst")
+  end
+
+  desc "Renew signing certs"
+  lane :renew do
+    sync_code_signing(readonly: false)
+    sync_code_signing(platform: "catalyst", readonly: false)
   end
 end
