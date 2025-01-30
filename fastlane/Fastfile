@@ -62,7 +62,7 @@ platform :ios do
 
   desc "Set up developer environment"
   lane :dev do
-    sync_code_signing
+    sync_code_signing(readonly: false)
   end
 end
 
@@ -146,7 +146,7 @@ platform :mac do
 
   desc "Set up developer environment"
   lane :dev do
-    sync_code_signing
-    sync_code_signing(platform: "catalyst")
+    sync_code_signing(readonly: false)
+    sync_code_signing(platform: "catalyst", readonly: false)
   end
 end
