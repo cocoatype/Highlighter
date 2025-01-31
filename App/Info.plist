@@ -75,11 +75,6 @@
 	</array>
 	<key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
 	<true/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Aleo-Bold.otf</string>
-		<string>Aleo-Regular.otf</string>
-	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

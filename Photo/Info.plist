@@ -34,10 +34,5 @@
 		<key>NSExtensionPrincipalClass</key>
 		<string>Photo.PhotoExtensionViewController</string>
 	</dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Aleo-Bold.otf</string>
-		<string>Aleo-Regular.otf</string>
-	</array>
 </dict>
 </plist>

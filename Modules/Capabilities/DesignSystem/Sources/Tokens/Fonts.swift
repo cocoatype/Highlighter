@@ -34,40 +34,18 @@ public extension UIFont {
         return regularFont(for: .subheadline)
     }
 
-    // MARK: Font Loading
-
-    static let fontsRegistered: () = {
-        guard let fontURLs = Bundle.module.urls(forResourcesWithExtension: "otf", subdirectory: nil) else { return }
-        fontURLs.forEach { url in
-            guard let fontDataProvider = CGDataProvider(url: url as CFURL),
-                  let font = CGFont(fontDataProvider)
-            else { return }
-
-            CTFontManagerRegisterGraphicsFont(font, nil)
-        }
-    }()
-
     // MARK: Boilerplate
 
-    fileprivate static let boldFontName = "Aleo-Bold"
-    fileprivate static let regularFontName = "Aleo-Regular"
-
     private static func boldFont(for textStyle: UIFont.TextStyle) -> UIFont {
-        return standardFont(named: UIFont.boldFontName, for: textStyle)
+        return standardFont(family: DesignSystemFontFamily.Aleo.bold, for: textStyle)
     }
 
     private static func regularFont(for textStyle: UIFont.TextStyle) -> UIFont {
-        return standardFont(named: UIFont.regularFontName, for: textStyle)
+        return standardFont(family: DesignSystemFontFamily.Aleo.regular, for: textStyle)
     }
 
-    private static func standardFont(named name: String, for textStyle: UIFont.TextStyle) -> UIFont {
-        _ = fontsRegistered
-        let size = standardFontSize(for: textStyle)
-        guard let appFont = UIFont(name: name, size: size) else {
-            ErrorHandler().crash("Couldn't get regular font")
-        }
-
-        return appFont
+    private static func standardFont(family: DesignSystemFontConvertible, for textStyle: UIFont.TextStyle) -> UIFont {
+        family.font(size: standardFontSize(for: textStyle))
     }
 
     fileprivate static func standardFontSize(for textStyle: UIFont.TextStyle) -> CGFloat {
@@ -115,17 +93,17 @@ public extension UIFont {
 
 extension Font {
     public static func app(textStyle: UIFont.TextStyle) -> Font {
-        let fontName: String
+        let family: DesignSystemFontConvertible
         switch textStyle {
         case .headline, .title2, .title3, .largeTitle:
-            fontName = UIFont.boldFontName
+            family = DesignSystemFontFamily.Aleo.bold
         default:
-            fontName = UIFont.regularFontName
+            family = DesignSystemFontFamily.Aleo.regular
         }
 
         let fontSize = UIFont.standardFontSize(for: textStyle)
 
-        return Font.custom(fontName, size: fontSize, relativeTo: textStyle.swiftUI)
+        return family.swiftUIFont(size: fontSize, relativeTo: textStyle.swiftUI)
     }
 
     // MARK: Special
