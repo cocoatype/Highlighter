@@ -3,6 +3,7 @@
 
 import AppNavigation
 import Editing
+import Logging
 import Purchasing
 import UIKit
 import Unpurchased
@@ -11,10 +12,12 @@ import VisionKit
 class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelegate {
     init(
         delegate: DocumentScanningDelegate?,
+        logger: any Logger = TelemetryLogger(),
         purchaseRepository: any PurchaseRepository = Purchasing.repository
     ) {
         self.delegate = delegate
         self.🍺 = purchaseRepository
+        self.logger = logger
         super.init()
     }
 
@@ -54,7 +57,8 @@ class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelega
         }
     }
 
-    func dismissAndEdit(_ image: UIImage) {
+    private func dismissAndEdit(_ image: UIImage) {
+        logger.log(EventFactory().editorPresentationEvent(for: .documentScanner))
         delegate?.dismissDocumentScanner()
         delegate?.presentPhotoEditingViewController(for: image, redactions: nil, animated: true, completionHandler: nil)
     }
@@ -64,6 +68,7 @@ class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelega
     // 🍺 by @KaenAitch on 2024-05-15
     // the purchase repository
     private let 🍺: any PurchaseRepository
+    private let logger: any Logger
 }
 
 protocol DocumentScanningDelegate: AnyObject, PhotoEditorPresenting {

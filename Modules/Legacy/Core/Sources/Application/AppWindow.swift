@@ -3,14 +3,33 @@
 
 import Editing
 import ErrorHandling
+import Logging
 import UIKit
 import UserActivities
 
 class AppWindow: UIWindow {
-    init() {
-        super.init(frame: UIScreen.main.bounds)
+    private let appViewController: AppViewController
+    private let logger: any Logger
+    init(windowScene: UIWindowScene, logger: any Logger) {
+        self.appViewController = AppViewController(logger: logger)
+        self.logger = logger
+        super.init(windowScene: windowScene)
         setup()
     }
+
+    required init?(coder: NSCoder) {
+        self.logger = TelemetryLogger()
+        self.appViewController = AppViewController(logger: logger)
+        super.init(coder: coder)
+        setup()
+    }
+
+    private func setup() {
+        rootViewController = appViewController
+        isOpaque = false
+    }
+
+    // MARK: State Restoration
 
     var stateRestorationActivity: NSUserActivity? {
         return appViewController.stateRestorationActivity
@@ -27,8 +46,10 @@ class AppWindow: UIWindow {
     }
 
     private func restore(fromEditingActivity editingActivity: EditingUserActivity) {
+        let event = EventFactory().editorPresentationEvent(for: .stateRestoration)
         if let localIdentifier = editingActivity.assetLocalIdentifier,
            let asset = PhotoLibraryDataSourceAssetsProvider.photo(withIdentifier: localIdentifier) {
+            logger.log(event)
             appViewController.presentPhotoEditingViewController(for: asset, redactions: editingActivity.redactions, animated: false)
         } else if let imageBookmarkData = editingActivity.imageBookmarkData {
             do {
@@ -44,6 +65,7 @@ class AppWindow: UIWindow {
                     throw StateRestorationError.invalidImageData
                 }
 
+                logger.log(event)
                 appViewController.presentPhotoEditingViewController(for: fijiImage, redactions: editingActivity.redactions, animated: false)
             } catch {
                 ErrorHandler().log(error)
@@ -54,26 +76,5 @@ class AppWindow: UIWindow {
     private func restore(fromLibraryActivity libraryActivity: LibraryUserActivity) {
         let collection = libraryActivity.chumbawamba
         appViewController.libraryViewController?.present(collection)
-    }
-
-    // MARK: Boilerplate
-
-    private let appViewController = AppViewController()
-
-    init(scene: UIWindowScene) {
-        super.init(frame: scene.coordinateSpace.bounds)
-        setup()
-        windowScene = scene
-    }
-
-    private func setup() {
-        rootViewController = appViewController
-        isOpaque = false
-    }
-
-    @available(*, unavailable)
-    required init(coder: NSCoder) {
-        let className = String(describing: type(of: self))
-        fatalError("\(className) does not implement init(coder:)")
     }
 }

@@ -1,12 +1,17 @@
 //  Created by Geoff Pado on 4/1/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Logging
 import PhotosUI
 import SwiftUI
 import UIKit
 
 class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
-    init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
+    init(
+        logger: any Logger = TelemetryLogger(),
+        permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()
+    ) {
+        self.logger = logger
         self.permissionsRequester = permissionsRequester
         super.init(rootView: IntroView())
         self.rootView = IntroView(permissionAction: requestPermission, importAction: importPhoto)
@@ -46,13 +51,15 @@ class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
         DispatchQueue.main.async { [weak self] in
             self?.dismiss(animated: true)
 
-            guard let image = image else { return }
+            guard let image else { return }
+            self?.logger.log(EventFactory().editorPresentationEvent(for: .photoPicker))
             self?.photoEditorPresenter?.presentPhotoEditingViewController(for: image, redactions: nil, animated: true, completionHandler: nil)
         }
     }
 
     // MARK: Boilerplate
 
+    private let logger: any Logger
     private let permissionsRequester: PhotoPermissionsRequester
 
     private lazy var photoPicker: PhotoPicker = {

@@ -21,10 +21,6 @@ public class NavigationWrapper: NSObject, ObservableObject {
         navigationObject?.presentSettingsViewController()
     }
 
-    public func presentEditor(for asset: PHAsset) {
-        navigationObject?.presentPhotoEditingViewController(for: asset, redactions: nil, animated: true)
-    }
-
     public func presentDocumentScanner() {
         navigationObject?.presentDocumentCameraViewController()
     }

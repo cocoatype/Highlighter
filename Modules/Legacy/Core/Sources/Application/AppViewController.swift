@@ -6,6 +6,7 @@ import AppNavigation
 import AppRatings
 import Editing
 import ErrorHandling
+import Logging
 import Photos
 import PurchaseMarketing
 import Redactions
@@ -15,7 +16,13 @@ import SettingsUI
 import SwiftUI
 
 class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, SettingsPresenting, Navigator {
-    init(permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()) {
+    private let logger: any Logger
+    private let permissionsRequester: PhotoPermissionsRequester
+    init(
+        logger: any Logger,
+        permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()
+    ) {
+        self.logger = logger
         self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
 
@@ -33,7 +40,6 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
         transition(to: preferredViewController)
     }
 
-    private let permissionsRequester: PhotoPermissionsRequester
     private var preferredViewController: UIViewController {
         switch permissionsRequester.authorizationStatus() {
         case .authorized, .limited: return LibrarySplitViewController()
@@ -115,6 +121,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
 
         switch route {
         case .editor(let image, let redactions):
+            logger.log(EventFactory().editorPresentationEvent(for: .appIntent))
             presentPhotoEditingViewController(for: image, redactions: redactions)
         }
     }
