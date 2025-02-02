@@ -5,6 +5,7 @@ import AlbumsData
 import Photos
 import UIKit
 
+@MainActor
 public class NavigationWrapper: NSObject, ObservableObject {
     public typealias NavigationObject = (SettingsPresenting & PhotoEditorPresenting & DocumentScannerPresenting & PhotoCollectionPresenting & LimitedLibraryPresenting)
     public init(navigationObject: NavigationObject) {
