@@ -5,6 +5,7 @@ public enum Redactions {
         Target.capabilitiesTarget(
             name: "Redactions",
             sdk: sdk,
+            usesMaxSwiftVersion: true,
             dependencies: [
                 .target(Geometry.target(sdk: sdk)),
                 .target(Observations.target(sdk: sdk)),

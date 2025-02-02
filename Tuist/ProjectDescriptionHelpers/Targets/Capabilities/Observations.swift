@@ -5,6 +5,7 @@ public enum Observations {
         Target.capabilitiesTarget(
             name: "Observations",
             sdk: sdk,
+            usesMaxSwiftVersion: true,
             dependencies: [
                 .target(Geometry.target(sdk: sdk)),
             ]
