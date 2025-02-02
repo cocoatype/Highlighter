@@ -4,7 +4,7 @@
 import CoreGraphics
 import Foundation
 
-public struct Shape: Hashable {
+public struct Shape: Hashable, Sendable {
     public let bottomLeft: CGPoint
     public let bottomRight: CGPoint
     public let topLeft: CGPoint

@@ -5,6 +5,7 @@ public enum Geometry {
         Target.capabilitiesTarget(
             name: "Geometry",
             sdk: sdk,
+            usesMaxSwiftVersion: true,
             dependencies: [
             ]
         )
