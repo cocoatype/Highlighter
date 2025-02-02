@@ -6,6 +6,7 @@ public enum Brushes {
             name: "Brushes",
             sdk: sdk,
             hasResources: true,
+            usesMaxSwiftVersion: true,
             dependencies: [
                 .target(ErrorHandling.target(sdk: sdk)),
                 .target(Geometry.target(sdk: sdk)),
