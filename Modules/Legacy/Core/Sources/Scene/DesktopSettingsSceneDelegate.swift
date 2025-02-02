@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 2/13/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
+import Logging
 import SettingsUI
 import UIKit
 
@@ -16,7 +17,7 @@ class DesktopSettingsSceneDelegate: NSObject, UIWindowSceneDelegate {
 
         scene.title = CoreStrings.DesktopSettingsSceneDelegate.windowTitle
 
-        let window = AppWindow(scene: scene)
+        let window = AppWindow(windowScene: scene, logger: TelemetryLogger())
         let settingsViewController = DesktopSettingsViewController()
         window.rootViewController = settingsViewController
         window.makeKeyAndVisible()

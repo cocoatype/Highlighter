@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 7/10/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Logging
 import UIKit
 import URLParsing
 
@@ -10,7 +11,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
 
-        let window = AppWindow(scene: scene)
+        let window = AppWindow(windowScene: scene, logger: logger)
         window.makeKeyAndVisible()
         self.window = window
 
@@ -53,8 +54,10 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         guard let appViewController else { return false }
         switch action {
         case .open(let image):
+            logger.log(EventFactory().editorPresentationEvent(for: .xCallbackURL))
             appViewController.presentPhotoEditingViewController(for: image, animated: false)
         case .edit(let image, let successURL):
+            logger.log(EventFactory().editorPresentationEvent(for: .xCallbackURL))
             appViewController.presentPhotoEditingViewController(for: image, animated: false) { editedImage in
                 guard let successURL = successURL,
                   var callbackURLComponents = URLComponents(url: successURL, resolvingAgainstBaseURL: true),
@@ -78,6 +81,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
               let image = UIImage(data: imageData)
         else { return false }
 
+        logger.log(EventFactory().editorPresentationEvent(for: .fileURL))
         appViewController.presentPhotoEditingViewController(for: image, animated: false)
         return true
     }
@@ -89,4 +93,5 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     }
 
     private var appViewController: AppViewController? { return window?.rootViewController as? AppViewController }
+    private let logger = TelemetryLogger()
 }

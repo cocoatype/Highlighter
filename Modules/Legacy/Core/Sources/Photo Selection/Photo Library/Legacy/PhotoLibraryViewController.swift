@@ -4,12 +4,17 @@
 import AlbumsData
 import Defaults
 import Editing
+import Logging
 import Photos
 import UIKit
 import UserActivities
 
 class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate, PHPhotoLibraryChangeObserver {
-    init(collection: PhotoCollection) {
+    init(
+        collection: PhotoCollection,
+        logger: any Logger = TelemetryLogger()
+    ) {
+        self.logger = logger
         self.dataSource = PhotoLibraryDataSource(collection)
         super.init(nibName: nil, bundle: nil)
 
@@ -93,6 +98,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
         session.loadObjects(ofClass: UIImage.self) { [weak self] dropItems in
             guard let image = (dropItems.first as? UIImage) else { return }
+            self?.logger.log(EventFactory().editorPresentationEvent(for: .dragAndDrop))
             self?.photoEditorPresenter?.presentPhotoEditingViewController(for: image, redactions: nil, animated: true, completionHandler: nil)
         }
     }
@@ -102,6 +108,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch dataSource.item(at: indexPath) {
         case .asset(let asset):
+            self.logger.log(EventFactory().editorPresentationEvent(for: .library))
             photoEditorPresenter?.presentPhotoEditingViewController(for: asset, redactions: nil, animated: true)
         case .documentScan:
             documentScannerPresenter?.presentDocumentCameraViewController()
@@ -128,6 +135,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         }
     }
     private let libraryView = PhotoLibraryView()
+    private let logger: any Logger
     private var purchaseStateObserver: Any?
     private var hideDocumentScannerObserver: Any?
     private var shouldScrollToBottom = true
