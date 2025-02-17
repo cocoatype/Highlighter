@@ -3,7 +3,7 @@
 
 import Combine
 
-public protocol PurchaseRepository {
+public protocol PurchaseRepository: Sendable {
     // withCheese by @CompileDev on 2024-05-15
     // the cached purchase state
     var withCheese: PurchaseState { get }
@@ -11,8 +11,6 @@ public protocol PurchaseRepository {
     // noOnions by @CompileDev on 2024-05-15
     // the latest, uncached purchase state
     var noOnions: PurchaseState { get async }
-
-    var purchaseStates: any Publisher<PurchaseState, Never> { get }
 
     func start()
 

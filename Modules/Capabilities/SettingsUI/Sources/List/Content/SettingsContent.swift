@@ -7,13 +7,13 @@ import SafariServices
 import SwiftUI
 
 struct SettingsContent: View {
-    private let purchaseState: PurchaseState
-    init(state: PurchaseState) {
-        self.purchaseState = state
+    @Binding private var purchaseState: PurchaseState
+    init(state: Binding<PurchaseState>) {
+        _purchaseState = state
     }
 
     var body: some View {
-        SettingsContentPurchasedFeaturesSection(state: purchaseState)
+        SettingsContentPurchasedFeaturesSection(state: $purchaseState)
         SettingsContentInformationSection()
         SettingsContentContactSection()
         SettingsContentOtherAppsSection()

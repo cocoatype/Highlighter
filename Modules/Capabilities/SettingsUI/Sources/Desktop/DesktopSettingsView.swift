@@ -24,13 +24,10 @@ public struct DesktopSettingsView: View {
             if purchaseState == .purchased {
                 DesktopAutoRedactionsListViewControllerRepresentable()
             } else if #available(iOS 16.0, *) {
-                PurchaseMarketingView()
+                PurchaseMarketingView(purchaseState: $purchaseState)
             }
         }
         .environment(\.readableWidth, readableWidth)
-        .onReceive(purchaseRepository.purchaseStates.eraseToAnyPublisher()) { newState in
-            purchaseState = newState
-        }
     }
 }
 

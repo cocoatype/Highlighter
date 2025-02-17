@@ -11,7 +11,10 @@ import XCTest
 final class PurchaseMarketingTests: XCTestCase {
     func testWhenOnAppearThenAppearanceLogged() throws {
         let logger = SpyLogger()
-        let view = PurchaseMarketingView(logger: logger)
+        let view = PurchaseMarketingView(
+            purchaseState: .constant(.loading),
+            logger: logger
+        )
 
         try view.inspect().implicitAnyView().geometryReader().callOnAppear()
 
