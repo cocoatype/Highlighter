@@ -25,14 +25,16 @@ public struct SettingsView: View {
     public var body: some View {
         SettingsNavigationView {
             SettingsList(dismissAction: dismissAction) {
-                SettingsContent(state: purchaseState)
+                SettingsContent(state: $purchaseState)
             }
             .navigationTitle(SettingsUIStrings.SettingsViewController.navigationTitle)
             .navigationBarTitleDisplayMode(.inline)
         }
         .environment(\.readableWidth, readableWidth)
-        .onReceive(purchaseRepository.purchaseStates.eraseToAnyPublisher()) { newState in
-            purchaseState = newState
+        .onAppear {
+            Task { @MainActor in
+                purchaseState = await purchaseRepository.noOnions
+            }
         }
     }
 }

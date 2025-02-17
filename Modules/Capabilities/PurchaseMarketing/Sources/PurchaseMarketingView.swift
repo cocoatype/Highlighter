@@ -3,6 +3,7 @@
 
 import DesignSystem
 import Logging
+import Purchasing
 import SwiftUI
 import TestHelpersInterface
 
@@ -10,8 +11,13 @@ import TestHelpersInterface
 public struct PurchaseMarketingView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
 
+    @Binding private var purchaseState: PurchaseState
     private let logger: any Logger
-    public init(logger: any Logger = Logging.logger) {
+    public init(
+        purchaseState: Binding<PurchaseState>,
+        logger: any Logger = Logging.logger
+    ) {
+        _purchaseState = purchaseState
         self.logger = logger
     }
 
@@ -93,7 +99,7 @@ public struct PurchaseMarketingView: View {
     Color.black
         .ignoresSafeArea()
         .sheet(isPresented: .constant(true)) {
-            PurchaseMarketingView()
+            PurchaseMarketingView(purchaseState: .constant(.loading))
                 .frame(width: 640)
         }
 }

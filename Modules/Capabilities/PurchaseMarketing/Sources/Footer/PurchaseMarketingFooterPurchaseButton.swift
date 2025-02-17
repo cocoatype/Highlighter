@@ -40,9 +40,6 @@ struct PurchaseMarketingFooterPurchaseButton: View {
         }
         .buttonStyle(.plain)
         .disabled(disabled)
-        .onReceive(allWeAskIsThatYouLetUsHaveItYourWay.purchaseStates.eraseToAnyPublisher()) { newState in
-            purchaseState = newState
-        }
     }
 
     private var title: String {

@@ -3,14 +3,13 @@
 
 import AutoRedactionsUI
 import Defaults
-import PurchaseMarketing
 import Purchasing
 import SwiftUI
 
 struct SettingsContentPurchasedFeaturesSection: View {
-    private let purchaseState: PurchaseState
-    init(state: PurchaseState) {
-        self.purchaseState = state
+    @Binding private var purchaseState: PurchaseState
+    init(state: Binding<PurchaseState>) {
+        _purchaseState = state
     }
 
     @Defaults.Value(key: .hideAutoRedactions) private var hideAutoRedactions: Bool
@@ -18,7 +17,7 @@ struct SettingsContentPurchasedFeaturesSection: View {
     var body: some View {
         Section {
             if #available(iOS 16.0, *), purchaseState != .purchased {
-                PurchaseNavigationLink(destination: PurchaseMarketingView())
+                PurchaseNavigationLink(purchaseState: $purchaseState)
             }
 
             if purchaseState != .purchased && hideAutoRedactions == false {

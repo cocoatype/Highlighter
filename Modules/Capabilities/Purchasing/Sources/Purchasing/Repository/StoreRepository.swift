@@ -6,7 +6,7 @@ import ErrorHandling
 import StoreKit
 
 @available(iOS 16.0, *)
-class StoreRepository: PurchaseRepository {
+final class StoreRepository: PurchaseRepository {
     init(
         productProvider: any ProductProvider = StoreProductProvider(),
         versionProvider: any PurchaseVersionProvider = AppPurchaseVersionProvider()
@@ -21,10 +21,6 @@ class StoreRepository: PurchaseRepository {
                 refresh()
             }
         }
-    }
-
-    var purchaseStates: any Publisher<PurchaseState, Never> {
-        _withCheese.projectedValue.receive(on: DispatchQueue.main)
     }
 
     var noOnions: PurchaseState {
