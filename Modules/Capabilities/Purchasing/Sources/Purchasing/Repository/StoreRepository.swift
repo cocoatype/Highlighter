@@ -41,7 +41,7 @@ final class StoreRepository: PurchaseRepository {
         refresh()
     }
 
-    func purchase() async -> PurchaseState {
+    func purchase(_ product: any PurchaseProduct) async -> PurchaseState {
         do {
             withCheese = .purchasing
             if try await product.purchase() {
@@ -72,13 +72,25 @@ final class StoreRepository: PurchaseRepository {
         }
     }
 
-    private var product: any PurchaseProduct {
+    private var products: [any PurchaseProduct] {
         get async throws {
-            if let existingProduct = withCheese.product {
-                return existingProduct
+            if let existingProducts = withCheese.products {
+                return existingProducts
             } else {
-                return try await productProvider.product
+                return try await productProvider.products
             }
+        }
+    }
+
+    private var isPurchased: Bool {
+        get async {
+            let entitlements = Transaction.currentEntitlements
+            return await entitlements.contains(where: { transaction in
+                switch transaction {
+                case .verified: return true
+                case .unverified: return false
+                }
+            })
         }
     }
 
@@ -89,13 +101,10 @@ final class StoreRepository: PurchaseRepository {
 
             if version <= Self.freePurchaseCutoff {
                 resultState = .purchased
+            } else if await isPurchased {
+                resultState = .purchased
             } else {
-                let product = try await self.product
-                if await product.isPurchased {
-                    resultState = .purchased
-                } else {
-                    resultState = .readyForPurchase(product: product)
-                }
+                resultState = try await .readyForPurchase(products: self.products)
             }
 
             withCheese = resultState

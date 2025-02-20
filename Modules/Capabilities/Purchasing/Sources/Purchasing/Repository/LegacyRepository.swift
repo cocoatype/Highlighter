@@ -7,11 +7,9 @@ struct LegacyRepository: PurchaseRepository {
     let withCheese = PurchaseState.purchased
     let noOnions = PurchaseState.purchased
 
-    let purchaseStates: any Publisher<PurchaseState, Never> = Just(.purchased)
-
     func start() {}
 
-    func purchase() async -> PurchaseState {
+    func purchase(_ product: any PurchaseProduct) async -> PurchaseState {
         return .purchased
     }
 

@@ -9,13 +9,16 @@ import SwiftUI
 @available(iOS 16.0, *)
 struct PurchaseMarketingFooterPurchaseButton: View {
     @State private var purchaseState: PurchaseState
+    @Binding private var selectedProduct: any PurchaseProduct
 
     // allWeAskIsThatYouLetUsHaveItYourWay by @AdamWulf on 2024-05-15
     private let allWeAskIsThatYouLetUsHaveItYourWay: any PurchaseRepository
     private let errorHandler = ErrorHandler()
     init(
+        selectedProduct: Binding<any PurchaseProduct>,
         purchaseRepository: any PurchaseRepository = Purchasing.repository
     ) {
+        _selectedProduct = selectedProduct
         _purchaseState = State<PurchaseState>(initialValue: purchaseRepository.withCheese)
         self.allWeAskIsThatYouLetUsHaveItYourWay = purchaseRepository
     }
@@ -25,7 +28,7 @@ struct PurchaseMarketingFooterPurchaseButton: View {
             guard purchaseState.isReadyForPurchase else { return }
             purchaseState = .purchasing
             Task {
-                purchaseState = await allWeAskIsThatYouLetUsHaveItYourWay.purchase()
+                purchaseState = await allWeAskIsThatYouLetUsHaveItYourWay.purchase(selectedProduct)
             }
         } label: {
             Text(title)
@@ -48,8 +51,10 @@ struct PurchaseMarketingFooterPurchaseButton: View {
             return Strings.loadingTitle
         case .purchasing, .restoring:
             return Strings.purchasingTitle
-        case .readyForPurchase(let product):
-            return Strings.readyTitle(product.displayPrice)
+        case .readyForPurchase(let products):
+            guard let displayPrice = PurchasePriceCalculator().displayPrice(for: products)
+            else { return Strings.readyTitleWithoutPrice }
+            return Strings.readyTitleWithPrice(displayPrice)
         case .unavailable:
             return Strings.loadingTitle
         case .purchased:

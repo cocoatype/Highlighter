@@ -5,14 +5,13 @@ import StoreKit
 
 @available(iOS 15.0, *)
 struct StoreProductProvider: ProductProvider {
-    var product: any PurchaseProduct {
+    var products: [any PurchaseProduct] {
         get async throws {
-            let products = try await Product.products(for: [PurchaseConstants.productIdentifier])
-            guard let product = products.first else {
-                throw PurchaseError.productNotFound(identifier: PurchaseConstants.productIdentifier)
-            }
-
-            return product
+            return try await Product.products(for: [
+                PurchaseConstants.oneTimeProductIdentifier,
+                PurchaseConstants.annualProductIdentifier,
+                PurchaseConstants.monthlyProductIdentifier,
+            ])
         }
     }
 }

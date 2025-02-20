@@ -7,6 +7,7 @@ import StoreKit
 
 public struct PreviewProduct: PurchaseProduct {
     public let id: String
+    public let displayName = "Preview Product"
     public let displayPrice = "$1.99"
     public let isPurchased = false
 

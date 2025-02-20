@@ -6,7 +6,7 @@ import Purchasing
 public struct StubProductProvider: ProductProvider {
     public init() {}
 
-    public var product: any PurchaseProduct {
-        PreviewProduct()
+    public var products: [any PurchaseProduct] {
+        [PreviewProduct()]
     }
 }

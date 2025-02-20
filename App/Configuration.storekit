@@ -1,22 +1,32 @@
 {
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
   "identifier" : "48596355",
   "nonRenewingSubscriptions" : [
 
   ],
   "products" : [
     {
-      "displayPrice" : "5.99",
+      "displayPrice" : "19.99",
       "familyShareable" : false,
       "internalID" : "F7423F26",
       "localizations" : [
         {
           "description" : "This is a test.",
-          "displayName" : "Test Highlighter",
+          "displayName" : "One-Time",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.cocoatype.Highlighter.unlock",
-      "referenceName" : "Test Highlighter",
+      "referenceName" : "One-Time",
       "type" : "NonConsumable"
     }
   ],
@@ -75,14 +85,78 @@
     ]
   },
   "subscriptionGroups" : [
+    {
+      "id" : "EC69F2BC",
+      "localizations" : [
 
+      ],
+      "name" : "Ultra",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "4.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "C14F02E7",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "This is annual test.",
+              "displayName" : "Annual",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "highlighter_499_1y_14d0",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Annual $4.99, 14-day free",
+          "subscriptionGroupID" : "EC69F2BC",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "FD0DEFA1",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "This is monthly test.",
+              "displayName" : "Monthly",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "highlighter_099_1m_0d0",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly $0.99, no free trial",
+          "subscriptionGroupID" : "EC69F2BC",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    }
   ],
   "subscriptionOffersKeyPair" : {
     "id" : "439A1A74",
     "privateKey" : "MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgURFeyUUG7V+lJqVrfdDVGcV3iDiEBFQ76WIAK7MBH9agCgYIKoZIzj0DAQehRANCAATT6yZ9zEMzSiqYoWeZx8IHxX3ShGI73VlCUJZMt8WEzwdzWjSGGXD0zkLdWahaUrgZXOiTvOWYKWXPmHrqnlEP"
   },
   "version" : {
-    "major" : 3,
+    "major" : 4,
     "minor" : 0
   }
 }

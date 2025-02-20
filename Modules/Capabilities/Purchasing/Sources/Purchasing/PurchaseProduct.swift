@@ -6,6 +6,7 @@ import StoreKit
 
 public protocol PurchaseProduct: Hashable, Identifiable {
     var id: String { get }
+    var displayName: String { get }
     var displayPrice: String { get }
     var isPurchased: Bool { get async }
 

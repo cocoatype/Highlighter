@@ -20,9 +20,11 @@ struct PurchaseSubtitle: View {
     }
 
     private var text: String {
-        guard let product = purchaseState.product else { return Strings.withoutProduct }
+        guard let products = purchaseState.products,
+              let displayPrice = PurchasePriceCalculator().displayPrice(for: products)
+        else { return Strings.withoutProduct }
 
-        return Strings.withProduct(product.displayPrice)
+        return Strings.withProduct(displayPrice)
     }
 
     private typealias Strings = SettingsUIStrings.PurchaseSubtitle
@@ -33,8 +35,16 @@ import PurchasingDoubles
 enum PurchaseSubtitlePreviews: PreviewProvider {
     static var previews: some View {
         VStack {
-            PurchaseSubtitle(state: .loading).preferredColorScheme(.dark)
-            PurchaseSubtitle(state: .readyForPurchase(product: PreviewProduct())).preferredColorScheme(.dark)
+            PurchaseSubtitle(
+                state: .loading
+            )
+            .preferredColorScheme(.dark)
+            PurchaseSubtitle(
+                state: .readyForPurchase(
+                    products: [PreviewProduct()]
+                )
+            )
+            .preferredColorScheme(.dark)
         }
     }
 }

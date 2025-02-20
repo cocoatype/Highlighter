@@ -14,7 +14,7 @@ public protocol PurchaseRepository: Sendable {
 
     func start()
 
-    func purchase() async -> PurchaseState
+    func purchase(_ product: any PurchaseProduct) async -> PurchaseState
 
     func restore() async -> PurchaseState
 }

@@ -39,7 +39,9 @@ enum PurchaseNavigationLinkPreviews: PreviewProvider {
             )
             PurchaseNavigationLink(
                 purchaseState: .constant(
-                    .readyForPurchase(product: PreviewProduct())
+                    .readyForPurchase(
+                        products: [PreviewProduct()]
+                    )
                 )
             )
         }.preferredColorScheme(.dark)
