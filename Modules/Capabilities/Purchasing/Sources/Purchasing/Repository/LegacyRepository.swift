@@ -6,6 +6,7 @@ import Combine
 struct LegacyRepository: PurchaseRepository {
     let withCheese = PurchaseState.purchased
     let noOnions = PurchaseState.purchased
+    var products: [any PurchaseProduct] { [] }
 
     func start() {}
 

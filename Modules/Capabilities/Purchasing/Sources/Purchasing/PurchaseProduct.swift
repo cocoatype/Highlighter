@@ -8,6 +8,8 @@ public protocol PurchaseProduct: Hashable, Identifiable {
     var id: String { get }
     var displayName: String { get }
     var displayPrice: String { get }
+    var price: Decimal { get }
+    var duration: PurchaseDuration { get }
     var isPurchased: Bool { get async }
 
     func purchase() async throws -> Bool
@@ -40,6 +42,16 @@ extension Product: PurchaseProduct {
             fallthrough
         @unknown default:
             return false
+        }
+    }
+
+    public var duration: PurchaseDuration {
+        guard let subscription else { return .oneTime }
+        let period = subscription.subscriptionPeriod
+        switch (period.value, period.unit) {
+        case (1, .year): return .annual
+        case (1, .month): return .monthly
+        default: return .unknown
         }
     }
 }

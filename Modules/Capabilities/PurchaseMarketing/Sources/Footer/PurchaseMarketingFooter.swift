@@ -27,7 +27,7 @@ struct PurchaseMarketingFooter: View {
                 PurchaseMarketingFooterContents(products: products)
             }
         }.task {
-            if let products = await purchaseRepository.noOnions.products {
+            if let products = try? await purchaseRepository.products {
                 viewState = .unpurchased(products)
             }
         }
@@ -38,3 +38,15 @@ struct PurchaseMarketingFooter: View {
         case unpurchased([any PurchaseProduct])
     }
 }
+
+#if DEBUG
+import PurchasingDoubles
+@available(iOS 16.0, *)
+enum PurchaseMarketingFooterPreviews: PreviewProvider {
+    static var previews: some View {
+        PurchaseMarketingFooter(purchaseRepository: PreviewRepository(purchaseState: .readyForPurchase(products: [
+            PreviewProduct(),
+        ])))
+    }
+}
+#endif

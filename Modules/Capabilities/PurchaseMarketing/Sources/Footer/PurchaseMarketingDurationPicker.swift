@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 10/15/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import DesignSystem
 import Purchasing
 import SwiftUI
 
@@ -23,13 +24,22 @@ struct PurchaseMarketingDurationPicker: View {
     var body: some View {
         Picker(selection: $selectedOption) {
             ForEach(options) { option in
-                Button(option.product.displayName) {}
+                Text(option.product.displayName)
                     .tag(option)
             }
         } label: {
             Text("Purchase Option")
         }
         .pickerStyle(.segmented)
+        .introspect(.picker(style: .segmented), on: .iOS(.v13, .v14, .v15, .v16, .v17, .v18), customize: { segmentedControl in
+            segmentedControl.backgroundColor = .primary
+            segmentedControl.selectedSegmentTintColor = .primaryLight
+            segmentedControl.setTitleTextAttributes([
+                .foregroundColor: UIColor.white,
+                .font: UIFont.appFont(forTextStyle: .caption1)
+            ], for: .normal)
+            print(segmentedControl)
+        })
         .onChange(of: selectedOption) {
             selectedProduct = $0.product
         }

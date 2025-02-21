@@ -1,9 +1,7 @@
 // Title for the purchase button on the purchase marketing view when loading
 "PurchaseButton.loadingTitle" = "Purchase";
 // Title for the purchase button on the purchase marketing view when ready (with price)
-"PurchaseButton.readyTitleWithPrice" = "Purchase for %@";
-// Title for the purchase button on the purchase marketing view when ready (without price)
-"PurchaseButton.readyTitleWithoutPrice" = "Purchase";
+"PurchaseButton.readyTitle" = "Purchase for %@";
 // Title for the purchase button on the purchase marketing view when purchasing
 "PurchaseButton.purchasingTitle" = "Purchasing…";
 // Title for the purchase button on the purchase marketing view when purchased

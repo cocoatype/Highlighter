@@ -72,7 +72,7 @@ final class StoreRepository: PurchaseRepository {
         }
     }
 
-    private var products: [any PurchaseProduct] {
+    var products: [any PurchaseProduct] {
         get async throws {
             if let existingProducts = withCheese.products {
                 return existingProducts

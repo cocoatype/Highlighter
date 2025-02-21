@@ -7,6 +7,7 @@ import Combine
 public struct PreviewRepository: PurchaseRepository {
     public var withCheese: PurchaseState
     public var noOnions: PurchaseState { withCheese }
+    public var products: [any PurchaseProduct] { withCheese.products ?? [] }
     public init(purchaseState: PurchaseState) {
         withCheese = purchaseState
     }

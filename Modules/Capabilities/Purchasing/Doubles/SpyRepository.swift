@@ -9,6 +9,7 @@ public struct SpyRepository: PurchaseRepository {
     public init(
         withCheese: PurchaseState = .loading,
         noOnions: PurchaseState = .loading,
+        products: [any PurchaseProduct] = [],
         startExpectation: Expectation? = nil,
         purchaseExpectation: Expectation? = nil,
         purchaseResponse: PurchaseState = .loading,
@@ -17,6 +18,7 @@ public struct SpyRepository: PurchaseRepository {
     ) {
         self.withCheese = withCheese
         self.noOnions = noOnions
+        self.products = products
         self.startExpectation = startExpectation
         self.purchaseExpectation = purchaseExpectation
         self.purchaseResponse = purchaseResponse
@@ -26,6 +28,7 @@ public struct SpyRepository: PurchaseRepository {
 
     public var withCheese: PurchaseState = .loading
     public var noOnions: PurchaseState = .loading
+    public var products: [any PurchaseProduct] = []
 
     public var startExpectation: Expectation?
     public func start() {

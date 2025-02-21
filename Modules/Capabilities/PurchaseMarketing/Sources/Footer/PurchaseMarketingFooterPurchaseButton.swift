@@ -32,13 +32,14 @@ struct PurchaseMarketingFooterPurchaseButton: View {
             }
         } label: {
             Text(title)
+                .font(.app(textStyle: .headline))
                 .fontWeight(.bold)
-                .foregroundStyle(Color.black)
+                .foregroundStyle(Color.white)
                 .padding(12)
                 .frame(maxWidth: .infinity, minHeight: 44)
                 .background {
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color.white)
+                        .fill(Color.primaryLight)
                 }
         }
         .buttonStyle(.plain)
@@ -51,10 +52,8 @@ struct PurchaseMarketingFooterPurchaseButton: View {
             return Strings.loadingTitle
         case .purchasing, .restoring:
             return Strings.purchasingTitle
-        case .readyForPurchase(let products):
-            guard let displayPrice = PurchasePriceCalculator().displayPrice(for: products)
-            else { return Strings.readyTitleWithoutPrice }
-            return Strings.readyTitleWithPrice(displayPrice)
+        case .readyForPurchase:
+            return Strings.readyTitle(selectedProduct.displayPrice)
         case .unavailable:
             return Strings.loadingTitle
         case .purchased:
@@ -71,3 +70,17 @@ struct PurchaseMarketingFooterPurchaseButton: View {
 
     private typealias Strings = PurchaseMarketingStrings.PurchaseButton
 }
+
+#if DEBUG
+import PurchasingDoubles
+@available(iOS 16.0, *)
+#Preview {
+    let repository = PreviewRepository(purchaseState: .readyForPurchase(products: [
+        PreviewProduct(),
+    ]))
+    PurchaseMarketingFooterPurchaseButton(
+        selectedProduct: .constant(PreviewProduct()),
+        purchaseRepository: repository
+    )
+}
+#endif
