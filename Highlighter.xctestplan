@@ -9,6 +9,195 @@
     }
   ],
   "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "9EA68D862BF12B8F287C3F49",
+          "name" : "AlbumsData"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "84E6804E4D99D920B24A3F68",
+          "name" : "AlbumsUI"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "0ABF67847DE6EC39BBBD9FA4",
+          "name" : "AppNavigation"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "8EFA894C6B28BE1E4C8E010A",
+          "name" : "AppRatings"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "F1CD7359C083F3293CB190F0",
+          "name" : "AutoRedactionsUI"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "4A0E5160E6C49DC51F9E11C9",
+          "name" : "Brushes"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "7AA4B6F1867D582F2DEFAD5C",
+          "name" : "BrushesMac"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "619535A22AA80D4F075D6C37",
+          "name" : "Core"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "A720C3D427F414F1F59125C6",
+          "name" : "DebugOverlay"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "08220D11055BE3252309E885",
+          "name" : "Defaults"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "EBA48CDC6ED4EEE2B3A94FED",
+          "name" : "DesignSystem"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "9F8CF52A1DFD85BF611BAEA1",
+          "name" : "Detections"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "4E9CADC5FBE10487F2347A7F",
+          "name" : "DetectionsMac"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "389704E2C6DE6EDBB0ECA2D4",
+          "name" : "Editing"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "F48A8CEBD488537B62B38200",
+          "name" : "ErrorHandling"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "1181ECADAE372FAEC16F7AFE",
+          "name" : "ErrorHandlingMac"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "4CBE9AEFC4011160AF0FBB10",
+          "name" : "Exporting"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "D4506203DCFD7282B5B1158F",
+          "name" : "Geometry"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "DCE2BCD11D46D936583FCE07",
+          "name" : "GeometryMac"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "5E040A936A384EB47A9D3B38",
+          "name" : "Logging"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "6BB86E84C851E779F7D1D919",
+          "name" : "LoggingMac"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "8DE7A186F818CE62B5C6BEDC",
+          "name" : "Observations"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "AE01374A7EC37FE5B5AB517B",
+          "name" : "ObservationsMac"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "610450CDE9DCC3F1C0C7EEDB",
+          "name" : "PurchaseMarketing"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "3FAC6C894722C852BF843D41",
+          "name" : "Purchasing"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "6488C7FA3465E1BE1453E672",
+          "name" : "Redacting"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "6E7E14A488735CD0BBBC3C78",
+          "name" : "Redactions"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "216BAA9077C2935D03C4FF37",
+          "name" : "RedactionsMac"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "9DFF499E80136CC33E8AC248",
+          "name" : "Rendering"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "3D4E523088C71B443D3AFF3E",
+          "name" : "RenderingMac"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "DC8BB770072739724B4FD2C1",
+          "name" : "Scenes"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "485744ADA1D181B0F10EFC1E",
+          "name" : "SettingsUI"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "1483D3127EF6377D60773B09",
+          "name" : "Shortcuts"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "7078B4BEEBF28C088BB83F87",
+          "name" : "Tools"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "37BD0E955B58AAF1CAC09744",
+          "name" : "Unpurchased"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "1133AB00756AE0F8D6E7360E",
+          "name" : "URLParsing"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "03A4FF2B5ECB9A9EBD6E73D9",
+          "name" : "UserActivities"
+        }
+      ]
+    },
     "commandLineArgumentEntries" : [
       {
         "argument" : "-FeatureFlag.autoRedactInEdit YES"
