@@ -36,7 +36,7 @@ struct PurchaseMarketingDurationPicker: View {
             segmentedControl.selectedSegmentTintColor = .primaryLight
             segmentedControl.setTitleTextAttributes([
                 .foregroundColor: UIColor.white,
-                .font: UIFont.appFont(forTextStyle: .caption1)
+                .font: UIFont.appFont(forTextStyle: .caption1),
             ], for: .normal)
             print(segmentedControl)
         })
