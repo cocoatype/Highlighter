@@ -1,10 +1,10 @@
-// Title for the purchase button on the purchase marketing view
+// Title for the purchase button on the purchase marketing view when loading
 "PurchaseButton.loadingTitle" = "Purchase";
-// Title for the purchase button on the purchase marketing view
+// Title for the purchase button on the purchase marketing view when ready (with price)
 "PurchaseButton.readyTitle" = "Purchase for %@";
-// Title for the purchase button on the purchase marketing view
+// Title for the purchase button on the purchase marketing view when purchasing
 "PurchaseButton.purchasingTitle" = "Purchasing…";
-// Title for the purchase button on the purchase marketing view
+// Title for the purchase button on the purchase marketing view when purchased
 "PurchaseButton.purchasedTitle" = "Thank You!";
 
 // Text separating the two purchase buttons

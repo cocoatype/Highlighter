@@ -16,7 +16,7 @@ struct PurchaseMarketingFooterLink: View {
         Button(title, action: action)
             .buttonStyle(.plain)
             .lineLimit(nil)
-            .font(.footnote)
-            .tint(.white)
+            .font(.app(textStyle: .footnote))
+            .foregroundStyle(.white)
     }
 }

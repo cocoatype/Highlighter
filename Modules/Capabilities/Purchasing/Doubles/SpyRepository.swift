@@ -9,7 +9,7 @@ public struct SpyRepository: PurchaseRepository {
     public init(
         withCheese: PurchaseState = .loading,
         noOnions: PurchaseState = .loading,
-        purchaseStates: any Publisher<PurchaseState, Never> = Just(.loading),
+        products: [any PurchaseProduct] = [],
         startExpectation: Expectation? = nil,
         purchaseExpectation: Expectation? = nil,
         purchaseResponse: PurchaseState = .loading,
@@ -18,7 +18,7 @@ public struct SpyRepository: PurchaseRepository {
     ) {
         self.withCheese = withCheese
         self.noOnions = noOnions
-        self.purchaseStates = purchaseStates
+        self.products = products
         self.startExpectation = startExpectation
         self.purchaseExpectation = purchaseExpectation
         self.purchaseResponse = purchaseResponse
@@ -28,7 +28,7 @@ public struct SpyRepository: PurchaseRepository {
 
     public var withCheese: PurchaseState = .loading
     public var noOnions: PurchaseState = .loading
-    public var purchaseStates: any Publisher<PurchaseState, Never>
+    public var products: [any PurchaseProduct] = []
 
     public var startExpectation: Expectation?
     public func start() {
@@ -37,7 +37,7 @@ public struct SpyRepository: PurchaseRepository {
 
     public var purchaseExpectation: Expectation?
     public var purchaseResponse: PurchaseState = .loading
-    public func purchase() async -> PurchaseState {
+    public func purchase(_ product: any PurchaseProduct) async -> PurchaseState {
         purchaseExpectation?.fulfill()
         return purchaseResponse
     }

@@ -19,10 +19,24 @@ struct PurchaseSubtitle: View {
             .truncationMode(.middle)
     }
 
-    private var text: String {
-        guard let product = purchaseState.product else { return Strings.withoutProduct }
+    private func displayPrice(for products: [any PurchaseProduct]) -> String? {
+        guard let selectedProduct = products.first(where: { $0.duration == .annual }) ?? products.first
+        else { return nil }
+        let addendum = switch selectedProduct.duration {
+        case .monthly: Strings.monthly
+        case .annual: Strings.annual
+        case .oneTime: Strings.oneTime
+        case .unknown: Strings.unknown
+        }
+        return selectedProduct.displayPrice + addendum
+    }
 
-        return Strings.withProduct(product.displayPrice)
+    private var text: String {
+        guard let products = purchaseState.products,
+              let displayPrice = displayPrice(for: products)
+        else { return Strings.withoutProduct }
+
+        return Strings.withProduct(displayPrice)
     }
 
     private typealias Strings = SettingsUIStrings.PurchaseSubtitle
@@ -33,8 +47,16 @@ import PurchasingDoubles
 enum PurchaseSubtitlePreviews: PreviewProvider {
     static var previews: some View {
         VStack {
-            PurchaseSubtitle(state: .loading).preferredColorScheme(.dark)
-            PurchaseSubtitle(state: .readyForPurchase(product: PreviewProduct())).preferredColorScheme(.dark)
+            PurchaseSubtitle(
+                state: .loading
+            )
+            .preferredColorScheme(.dark)
+            PurchaseSubtitle(
+                state: .readyForPurchase(
+                    products: [PreviewProduct()]
+                )
+            )
+            .preferredColorScheme(.dark)
         }
     }
 }

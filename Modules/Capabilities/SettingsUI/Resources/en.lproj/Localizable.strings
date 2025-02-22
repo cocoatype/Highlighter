@@ -11,6 +11,14 @@
 "PurchaseSubtitle.withoutProduct" = "More Highlighting Power";
 // Subtitle for the purchase settings content item with space for the product price
 "PurchaseSubtitle.withProduct" = "Ultimate Highlight Power — %@";
+// Subtitle addendum for one-time purchase
+"PurchaseSubtitle.oneTime" = "";
+// Subtitle addendum for annual purchase
+"PurchaseSubtitle.annual" = " / year";
+// Subtitle addendum for monthly purchase
+"PurchaseSubtitle.monthly" = " / month";
+// Subtitle addendum for unknown purchase duration
+"PurchaseSubtitle.unknown" = "";
 
 "SettingsContentContactSection.appStoreTitle" = "App Store";
 "SettingsContentContactSection.appStoreSubtitle" = "Write a Review";

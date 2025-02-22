@@ -4,5 +4,7 @@
 import StoreKit
 
 enum PurchaseConstants {
-    static let productIdentifier = "com.cocoatype.Highlighter.unlock"
+    static let annualProductIdentifier = "highlighter_499_1y_14d0"
+    static let monthlyProductIdentifier = "highlighter_099_1m_0d0"
+    static let oneTimeProductIdentifier = "com.cocoatype.Highlighter.unlock"
 }

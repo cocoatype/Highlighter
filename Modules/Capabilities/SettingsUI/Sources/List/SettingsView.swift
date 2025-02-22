@@ -6,13 +6,13 @@ import StoreKit
 import SwiftUI
 
 public struct SettingsView: View {
-    private let purchaseRepository: PurchaseRepository
+    private let purchaseRepository: any PurchaseRepository
     @State private var purchaseState: PurchaseState
     private let dismissAction: () -> Void
     private let readableWidth: CGFloat
 
     init(
-        purchaseRepository: PurchaseRepository = Purchasing.repository,
+        purchaseRepository: any PurchaseRepository = Purchasing.repository,
         readableWidth: CGFloat = .zero,
         dismissAction: @escaping (() -> Void)
     ) {

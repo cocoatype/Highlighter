@@ -19,8 +19,8 @@ class TransactionUpdateObserver {
                 }
 
                 if transaction.revocationDate != nil {
-                    if let product = try? await Product.products(for: [transaction.productID]).first {
-                        continuation.yield(.readyForPurchase(product: product))
+                    if let products = try? await Product.products(for: [transaction.productID]) {
+                        continuation.yield(.readyForPurchase(products: products))
                     } else {
                         continuation.yield(.loading)
                     }

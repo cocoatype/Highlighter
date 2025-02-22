@@ -7,12 +7,12 @@ import Combine
 public struct PreviewRepository: PurchaseRepository {
     public var withCheese: PurchaseState
     public var noOnions: PurchaseState { withCheese }
-    public var purchaseStates: any Publisher<PurchaseState, Never> { Just(withCheese) }
+    public var products: [any PurchaseProduct] { withCheese.products ?? [] }
     public init(purchaseState: PurchaseState) {
         withCheese = purchaseState
     }
 
     public func start() {}
-    public func purchase() async -> PurchaseState { withCheese }
+    public func purchase(_ product: any PurchaseProduct) async -> PurchaseState { withCheese }
     public func restore() async -> PurchaseState { withCheese }
 }

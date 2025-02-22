@@ -12,9 +12,11 @@ public protocol PurchaseRepository: Sendable {
     // the latest, uncached purchase state
     var noOnions: PurchaseState { get async }
 
+    var products: [any PurchaseProduct] { get async throws }
+
     func start()
 
-    func purchase() async -> PurchaseState
+    func purchase(_ product: any PurchaseProduct) async -> PurchaseState
 
     func restore() async -> PurchaseState
 }

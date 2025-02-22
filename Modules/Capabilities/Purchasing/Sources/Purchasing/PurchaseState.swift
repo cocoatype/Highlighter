@@ -6,15 +6,15 @@ import StoreKit
 
 public enum PurchaseState: Identifiable, Hashable {
     case loading
-    case readyForPurchase(product: any PurchaseProduct)
+    case readyForPurchase(products: [any PurchaseProduct])
     case purchasing
     case restoring
     case purchased
     case unavailable
 
-    public var product: (any PurchaseProduct)? {
+    public var products: [any PurchaseProduct]? {
         switch self {
-        case .readyForPurchase(let product): return product
+        case .readyForPurchase(let products): return products
         default: return nil
         }
     }
@@ -33,7 +33,8 @@ public enum PurchaseState: Identifiable, Hashable {
     public static func == (lhs: PurchaseState, rhs: PurchaseState) -> Bool {
         switch (lhs, rhs) {
         case (.loading, .loading): true
-        case (.readyForPurchase(let lhsProduct), .readyForPurchase(let rhsProduct)): lhsProduct.id == rhsProduct.id
+        case (.readyForPurchase(let lhsProducts), .readyForPurchase(let rhsProducts)):
+            lhsProducts.map(\.id) == rhsProducts.map(\.id)
         case (.purchasing, .purchasing): true
         case (.restoring, .restoring): true
         case (.purchased, .purchased): true
@@ -51,8 +52,10 @@ public enum PurchaseState: Identifiable, Hashable {
 
     public func hash(into hasher: inout Hasher) {
         switch self {
-        case .readyForPurchase(let product):
-            hasher.combine(product)
+        case .readyForPurchase(let products):
+            for product in products {
+                hasher.combine(product)
+            }
         case .loading, .purchasing, .restoring, .purchased, .unavailable:
             hasher.combine(String(describing: self))
         }

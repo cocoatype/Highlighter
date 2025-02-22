@@ -2,49 +2,44 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 import StoreKit
-import XCTest
+import Testing
 
 @testable import Purchasing
 
-class PurchaseStateTests: XCTestCase {
-    func testProductReturnsIfReadyForPurchase() {
+struct PurchaseStateTests {
+    @Test func productsReturnsIfReadyForPurchase() {
         let product = TestProduct()
-        let state = PurchaseState.readyForPurchase(product: product)
+        let state = PurchaseState.readyForPurchase(products: [product])
 
-        XCTAssertEqual(state.product as? TestProduct, product)
+        #expect((state.products as? [TestProduct]) == [product])
     }
 
-    func testProductIsNilIfNotReadyForPurchase() {
-        for state in PurchaseState.nonProductStates {
-            XCTAssertNil(state.product)
-        }
+    @Test(arguments: PurchaseState.nonProductStates)
+    func productsIsNilIfNotReadyForPurchase(state: PurchaseState) {
+        #expect(state.products == nil)
     }
 
-    func testIsReadyForPurchaseIfReadyForPurchase() {
-        let state = PurchaseState.readyForPurchase(product: TestProduct())
-        XCTAssertTrue(state.isReadyForPurchase)
+    @Test func isReadyForPurchaseIfReadyForPurchase() {
+        let state = PurchaseState.readyForPurchase(products: [TestProduct()])
+        #expect(state.isReadyForPurchase == true)
     }
 
-    func testIsNotReadyForPurchaseIfNotReadyForPurchase() {
-        for state in PurchaseState.nonProductStates {
-            XCTAssertFalse(state.isReadyForPurchase)
-        }
+    @Test(arguments: PurchaseState.nonProductStates)
+    func isNotReadyForPurchaseIfNotReadyForPurchase(state: PurchaseState) {
+        #expect(state.isReadyForPurchase == false)
     }
 
-    func testReadyForPurchaseIdentifier() {
-        let state = PurchaseState.readyForPurchase(product: TestProduct())
-        XCTAssertEqual(state, state.id)
-    }
-
-    func testNonProductStateIdentifiers() {
-        for state in PurchaseState.nonProductStates {
-            XCTAssertEqual(state, state.id)
-        }
+    @Test(arguments: PurchaseState.nonProductStates + [.readyForPurchase(products: [])])
+    func id(for state: PurchaseState) {
+        #expect(state == state.id)
     }
 
     private struct TestProduct: PurchaseProduct {
         let id = "test"
-        let displayPrice = ""
+        let displayName = "Test Product"
+        let displayPrice = "$1.99"
+        let price: Decimal = 1.99
+        let duration = PurchaseDuration.unknown
         let isPurchased = false
         func purchase() -> Bool { false }
     }

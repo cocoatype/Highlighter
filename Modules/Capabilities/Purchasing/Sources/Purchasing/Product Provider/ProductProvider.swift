@@ -3,5 +3,5 @@
 
 @available(iOS 15.0, *)
 public protocol ProductProvider {
-    var product: any PurchaseProduct { get async throws }
+    var products: [any PurchaseProduct] { get async throws }
 }
