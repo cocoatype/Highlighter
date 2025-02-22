@@ -3,7 +3,7 @@
 
 import UIKit
 
-public enum PencilMenuInteractionPhase {
+public enum PencilMenuInteractionPhase: Sendable {
     case began
     case changed
     case ended
