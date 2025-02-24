@@ -20,35 +20,32 @@ public class UnpurchasedAlertControllerFactory {
 
         if let learnMoreAction = feature.learnMoreAction {
             alertController.addAction(
-                UIAlertAction(
+                UnpurchasedAlertAction.action(
                     title: Strings.learnMoreButton,
-                    style: .default,
-                    handler: { _ in
-                        learnMoreAction()
-                    }
-                )
+                    style: .default
+                ) {
+                    learnMoreAction()
+                }
             )
         }
 
         if let hideFeatureKey = feature.hideFeatureKey {
             @Defaults.Value(key: hideFeatureKey) var hideFeature: Bool
             alertController.addAction(
-                UIAlertAction(
+                UnpurchasedAlertAction.action(
                     title: Strings.hideButton,
-                    style: .default,
-                    handler: { _ in
-                        hideFeature = true
-                    }
-                )
+                    style: .default
+                ) {
+                    hideFeature = true
+                }
             )
         }
 
         alertController.addAction(
-            UIAlertAction(
+            UnpurchasedAlertAction.action(
                 title: Strings.dismissButton,
-                style: .cancel,
-                handler: { _ in }
-            )
+                style: .cancel
+            ) {}
         )
 
         return alertController
