@@ -4,7 +4,7 @@
 import UIKit
 
 class UnpurchasedAlertAction: UIAlertAction {
-    var action: (() -> Void)? = nil
+    var action: (() -> Void)?
     class func action(
         title: String,
         style: UIAlertAction.Style,

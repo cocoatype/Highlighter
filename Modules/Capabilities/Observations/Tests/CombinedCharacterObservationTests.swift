@@ -14,7 +14,7 @@ struct CombinedCharacterObservationTests {
                 bounds: .sample,
                 textObservationUUID: uuid,
                 associatedString: "string"
-            )
+            ),
         ])
 
         #expect(combinedObservation?.textObservationUUID == uuid)
