@@ -21,6 +21,7 @@ struct PhotoEditingWorkspaceViewTelemetryEventFactory {
     private func value(for tool: HighlighterTool) -> String {
         switch tool {
         case .magic: "magic"
+        case .lasso: "lasso"
         case .manual: "manual"
         case .eraser: "eraser"
         }
@@ -34,7 +35,7 @@ struct PhotoEditingWorkspaceViewTelemetryEventFactory {
 fileprivate extension HighlighterTool {
     var logsColor: Bool {
         switch self {
-        case .magic, .manual: true
+        case .magic, .lasso, .manual: true
         case .eraser: false
         }
     }

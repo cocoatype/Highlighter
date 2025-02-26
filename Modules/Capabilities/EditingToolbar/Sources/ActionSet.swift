@@ -2,13 +2,15 @@
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
 import Defaults
+import FeatureFlags
 import Photos
 import Purchasing
 import Tools
 import UIKit
 
-struct ActionSet {
-    @ToolbarBuilder var leadingNavigationItems: [UIBarButtonItem] {
+@MainActor
+public struct ActionSet {
+    @ToolbarBuilder public var leadingNavigationItems: [UIBarButtonItem] {
         DismissBarButtonItem(asset: asset)
 
         if #unavailable(iOS 16), sizeClass == .regular {
@@ -18,7 +20,7 @@ struct ActionSet {
     }
 
     @available(iOS 16, *)
-    @ToolbarBuilder var centerNavigationItems: [UIBarButtonItem] {
+    @ToolbarBuilder public var centerNavigationItems: [UIBarButtonItem] {
         if sizeClass == .regular {
             UndoBarButtonItem(undoManager: undoManager, target: target)
             RedoBarButtonItem(undoManager: undoManager, target: target)
@@ -32,7 +34,7 @@ struct ActionSet {
     // 🧑‍💻👋👋👋🧑‍💻🏠🕖🤣💜😍💜😍🕙😒😒😒🕙👋😍🤣 by @Eskeminha on 2024-05-03
     // the standard set of trailing navigation items
     @ToolbarBuilder private var 🧑‍💻👋👋👋🧑‍💻🏠🕖🤣💜😍💜😍🕙😒😒😒🕙👋😍🤣: [UIBarButtonItem] {
-        if FeatureFlag.shouldShowDebugOverlay { DebugPreferencesBarButtonItem(target: target) }
+        if featureFlagProvider.shouldShowDebugOverlay { DebugPreferencesBarButtonItem(target: target) }
 
         ShareBarButtonItem(target: target)
 
@@ -41,7 +43,7 @@ struct ActionSet {
         if shouldShowQuickRedact { QuickRedactBarButtonItem(target: target) }
     }
 
-    @ToolbarBuilder var trailingNavigationItems: [UIBarButtonItem] {
+    @ToolbarBuilder public var trailingNavigationItems: [UIBarButtonItem] {
         if #unavailable(iOS 16) {
             🧑‍💻👋👋👋🧑‍💻🏠🕖🤣💜😍💜😍🕙😒😒😒🕙👋😍🤣
         }
@@ -64,15 +66,14 @@ struct ActionSet {
         }
     }
 
-    @ToolbarBuilder var toolbarItems: [UIBarButtonItem] {
+    @ToolbarBuilder public var toolbarItems: [UIBarButtonItem] {
         if sizeClass != .regular {
             UndoBarButtonItem(undoManager: undoManager, target: target)
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            UIBarButtonItem.flexibleSpace()
             RedoBarButtonItem(undoManager: undoManager, target: target)
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-
+            UIBarButtonItem.flexibleSpace()
             ColorPickerBarButtonItem(target: target, color: currentColor)
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            UIBarButtonItem.flexibleSpace()
             HighlighterToolBarButtonItem(tool: selectedTool, target: target)
         }
     }
@@ -87,13 +88,14 @@ struct ActionSet {
 
     // MARK: Boilerplate
 
-    init(
+    public init(
         for target: AnyObject,
         undoManager: UndoManager?,
         selectedTool: HighlighterTool,
         sizeClass: UIUserInterfaceSizeClass,
         currentColor: UIColor,
         asset: PHAsset?,
+        featureFlagProvider: any FeatureFlagProvider = FeatureFlags.provider,
         purchaseRepository: any PurchaseRepository = Purchasing.repository
     ) {
         self.target = target
@@ -102,6 +104,7 @@ struct ActionSet {
         self.sizeClass = sizeClass
         self.currentColor = currentColor
         self.asset = asset
+        self.featureFlagProvider = featureFlagProvider
         allTextIsSpecial = purchaseRepository
     }
 
@@ -111,6 +114,7 @@ struct ActionSet {
     private let sizeClass: UIUserInterfaceSizeClass
     private let currentColor: UIColor
     private let asset: PHAsset?
+    private let featureFlagProvider: any FeatureFlagProvider
 
     // allTextIsSpecial by @ThisGuyNZ on 2024-05-15
     // the purchase repository

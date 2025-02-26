@@ -5,12 +5,14 @@ import UIKit
 
 public enum HighlighterTool: CaseIterable, Equatable, Sendable {
     case magic
+    case lasso
     case manual
     case eraser
 
     public var toolsImage: ToolsImages {
         switch self {
         case .magic: return ToolsAsset.highlighterMagic
+        case .lasso: return ToolsAsset.lassoMagic
         case .manual: return ToolsAsset.highlighterManual
         case .eraser: return ToolsAsset.highlighterEraser
         }

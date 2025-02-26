@@ -175,6 +175,7 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
     @objc func handleStrokeCompletion() {
         switch highlighterTool {
         case .magic: handleMagicStrokeCompletion()
+        case .lasso: handleLassoCompletion()
         case .manual: handleManualStrokeCompletion()
         case .eraser: handleEraserCompletion()
         }
@@ -195,6 +196,8 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
             feedbackGenerator?.pathCompleted(at: newRedaction.paths.last?.currentPoint ?? bounds.center)
         }
     }
+
+    private func handleLassoCompletion() {}
 
     private func handleManualStrokeCompletion() {
         guard let strokePath = brushStrokeView.currentPath else { return }

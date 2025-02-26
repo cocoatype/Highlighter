@@ -3,9 +3,10 @@
 
 import UIKit
 
+@MainActor
 class DebugPreferencesBarButtonItem: UIBarButtonItem {
     convenience init(target: AnyObject?) {
         self.init(image: UIImage(systemName: "ladybug"), style: .plain, target: target, action: #selector(ActionsBuilderActions.showDebugPreferences(_:)))
-        accessibilityLabel = EditingStrings.DebugPreferencesBarButtonItem.accessibilityLabel
+        accessibilityLabel = EditingToolbarStrings.DebugPreferencesBarButtonItem.accessibilityLabel
     }
 }

@@ -1,0 +1,25 @@
+// Accessibility label for the color picker toolbar item
+"ColorPickerBarButtonItem.accessibilityLabel" = "Color Picker";
+
+// Accessibility label for the debug preferences toolbar item
+"DebugPreferencesBarButtonItem.accessibilityLabel" = "Debug Overlay";
+
+// Title for the dismiss button
+"DismissBarButtonItem.title" = "Done";
+
+// Title for the tool button
+"HighlighterToolBarButtonItem.buttonTitle" = "Tools";
+// Menu item for the eraser highlighter tool
+"HighlighterToolBarButtonItem.eraserToolItem" = "Eraser";
+// Menu item for the lasso highlighter tool
+"HighlighterToolBarButtonItem.lassoToolItem" = "Magic Lasso";
+// Menu item for the magic highlighter tool
+"HighlighterToolBarButtonItem.magicToolItem" = "Magic Highlighter";
+// Menu item for the manual highlighter tool
+"HighlighterToolBarButtonItem.manualToolItem" = "Manual Highlighter";
+
+//  Accessibility label for the quick redact toolbar item
+"QuickRedactBarButtonItem.accessibilityLabel" = "Auto-Hidden Words";
+
+// Accessibility label for the seek toolbar item
+"SeekBarButtonItem.accessibilityLabel" = "Search";

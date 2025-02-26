@@ -5,6 +5,7 @@ import AutoRedactionsUI
 import DebugOverlay
 import Defaults
 import Detections
+import EditingToolbar
 import ErrorHandling
 import Exporting
 import Geometry
@@ -582,6 +583,5 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 }
 
 @objc protocol PhotoEditingActions: NSObjectProtocol {
-    func dismissPhotoEditingViewController(_ sender: UIBarButtonItem, event: DismissEvent)
     func displayAppRatingsPrompt(_ sender: Any)
 }

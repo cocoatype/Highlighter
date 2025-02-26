@@ -3,12 +3,12 @@
 
 import UIKit
 
-class ColorPickerBarButtonItem: UIBarButtonItem {
+public class ColorPickerBarButtonItem: UIBarButtonItem {
     convenience init(target: AnyObject?, color: UIColor) {
         self.init(customView: ColorWell(target: target, color: color))
 
         UIView.appearance(whenContainedInInstancesOf: [UIColorPickerViewController.self]).overrideUserInterfaceStyle = .dark
-        accessibilityLabel = EditingStrings.ColorPickerBarButtonItem.accessibilityLabel
+        accessibilityLabel = EditingToolbarStrings.ColorPickerBarButtonItem.accessibilityLabel
         accessibilityValue = color.accessibilityName
     }
 

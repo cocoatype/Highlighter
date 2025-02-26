@@ -14,6 +14,7 @@ public enum Editing {
             .target(Brushes.target(sdk: .catalyst)),
             .target(DebugOverlay.target),
             .target(Detections.target(sdk: .catalyst)),
+            .target(EditingToolbar.target),
             .target(ErrorHandling.target(sdk: .catalyst)),
             .target(Exporting.target),
             .target(Observations.target(sdk: .catalyst)),

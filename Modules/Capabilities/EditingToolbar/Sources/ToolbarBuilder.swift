@@ -4,7 +4,7 @@
 import UIKit
 
 protocol ToolbarSection {
-    var barButtonItems: [UIBarButtonItem] { get }
+    @MainActor var barButtonItems: [UIBarButtonItem] { get }
 }
 
 extension UIBarButtonItem: ToolbarSection {
@@ -15,7 +15,7 @@ extension Array: ToolbarSection where Element == UIBarButtonItem {
     var barButtonItems: [UIBarButtonItem] { self }
 }
 
-@resultBuilder
+@MainActor @resultBuilder
 struct ToolbarBuilder {
     static func buildBlock(_ components: ToolbarSection...) -> [UIBarButtonItem] {
         components.flatMap(\.barButtonItems)

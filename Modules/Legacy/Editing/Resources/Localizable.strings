@@ -1,23 +1,5 @@
-// Accessibility label for the color picker toolbar item
-"ColorPickerBarButtonItem.accessibilityLabel" = "Color Picker";
-
-// Accessibility label for the debug preferences toolbar item
-"DebugPreferencesBarButtonItem.accessibilityLabel" = "Debug Overlay";
-
 // Title for the finalize button on seek and destroy
 "DesktopSeekButton.title" = "Hide";
-
-// Title for the dismiss button
-"DismissBarButtonItem.title" = "Done";
-
-// Title for the tool button
-"HighlighterToolBarButtonItem.buttonTitle" = "Tools";
-// Menu item for the eraser highlighter tool
-"HighlighterToolBarButtonItem.eraserToolItem" = "Eraser";
-// Menu item for the magic highlighter tool
-"HighlighterToolBarButtonItem.magicToolItem" = "Magic Highlighter";
-// Menu item for the manual highlighter tool
-"HighlighterToolBarButtonItem.manualToolItem" = "Manual Highlighter";
 
 "PhotoEditingViewController.defaultImageName" = "Redacted Image";
 
@@ -26,14 +8,8 @@
 // Discovery title for the undo key command
 "PhotoEditingViewController.undoKeyCommandDiscoverabilityTitle" = "Undo Redaction";
 
-//  Accessibility label for the quick redact toolbar item
-"QuickRedactBarButtonItem.accessibilityLabel" = "Auto-Hidden Words";
-
 // Name for the redacted words custom accessibility rotor
 "RedactedWordObservationRotor.name" = "Redacted Words";
-
-// Accessibility label for the seek toolbar item
-"SeekBarButtonItem.accessibilityLabel" = "Search";
 
 // Redacted accessibility value
 "WordObservationAccessibilityElement.redactedValue" = "Redacted";
