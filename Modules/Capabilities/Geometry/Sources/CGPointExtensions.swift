@@ -41,3 +41,10 @@ public extension CGPoint {
         return (abs(x - otherPoint.x) < accuracy) && (abs(y - otherPoint.y) < accuracy)
     }
 }
+
+extension CGPoint: @retroactive Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(x)
+        hasher.combine(y)
+    }
+}
