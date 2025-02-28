@@ -1,12 +1,11 @@
 //  Created by Geoff Pado on 10/31/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
-class PhotoEditingPathBrushStrokeView: UIControl, PhotoEditingBrushStrokeView {
-    var color = UIColor.black {
-        didSet { pathLayer?.strokeColor = color.cgColor }
-    }
-    private(set) var currentPath: UIBezierPath?
+import DesignSystem
+import Tools
+import UIKit
 
+class PhotoEditingPathBrushStrokeView: UIControl {
     init() {
         super.init(frame: .zero)
         backgroundColor = .clear
@@ -14,27 +13,59 @@ class PhotoEditingPathBrushStrokeView: UIControl, PhotoEditingBrushStrokeView {
         translatesAutoresizingMaskIntoConstraints = false
     }
 
+    var color = UIColor.black {
+        didSet { updatePathLayer() }
+    }
+
+    var zoomScale: CGFloat = 1.0 {
+        didSet { updatePathLayer() }
+    }
+
+    var tool: HighlighterTool = .magic {
+        didSet { updatePathLayer() }
+    }
+
     override class var layerClass: AnyClass { PathLayer.self }
     private var pathLayer: PathLayer? { layer as? PathLayer }
 
     private static var standardLineWidth = 10.0
-    private var lineWidth = PhotoEditingPathBrushStrokeView.standardLineWidth {
-        didSet { pathLayer?.lineWidth = lineWidth }
-    }
-    func updateTool(currentZoomScale: CGFloat) {
-        lineWidth = Self.standardLineWidth * pow(currentZoomScale, -1.0)
+    private static let lassoLineWidth = 3.0
+
+    private func updatePathLayer() {
+        // oopsyDaisy by @AdamWulf on 2024-12-04
+        // the scale factor to multiply values by
+        let oopsyDaisy = pow(zoomScale, -1.0)
+
+        switch tool {
+        case .magic, .manual:
+            pathLayer?.strokeColor = color.cgColor
+            pathLayer?.lineWidth = Self.standardLineWidth * oopsyDaisy
+            pathLayer?.lineDashPattern = nil
+        case .eraser:
+            pathLayer?.strokeColor = UIColor.primaryExtraLight.withAlphaComponent(0.6).cgColor
+            pathLayer?.lineWidth = Self.standardLineWidth * oopsyDaisy
+            pathLayer?.lineDashPattern = nil
+        case .lasso:
+            pathLayer?.strokeColor = color.cgColor
+            pathLayer?.lineWidth = Self.lassoLineWidth * oopsyDaisy
+            pathLayer?.lineDashPattern = [
+                NSNumber(value: 5.0 * oopsyDaisy),
+                NSNumber(value: 8.0 * oopsyDaisy)
+            ]
+        }
     }
 
     // MARK: Touch Handling
 
     private var previousPoint: CGPoint?
     private var previousEndPoint: CGPoint?
+    private(set) var currentPath: UIBezierPath?
 
     private func newPath() -> UIBezierPath {
         let newPath = UIBezierPath()
         newPath.lineCapStyle = .butt
         newPath.lineJoinStyle = .bevel
-        newPath.lineWidth = lineWidth
+        newPath.lineWidth = Self.standardLineWidth * pow(zoomScale, -1.0)
         return newPath
     }
 

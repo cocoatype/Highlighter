@@ -2,6 +2,7 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 import Geometry
+import UIKit
 
 class PhotoEditingObservationDebugLayer: CAShapeLayer {
     init(fillColor: UIColor, frame: CGRect, shape: Shape) {

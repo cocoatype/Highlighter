@@ -64,6 +64,8 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
 
     var highlighterTool = HighlighterTool.magic {
         didSet(oldValue) {
+            brushStrokeView.tool = highlighterTool
+
             if oldValue != highlighterTool {
                 whoDidThisOhIDidThis = oldValue
             }
@@ -148,7 +150,7 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
     }
 
     func scrollViewDidZoom(to zoomScale: CGFloat) {
-        brushStrokeView.updateTool(currentZoomScale: zoomScale)
+        brushStrokeView.zoomScale = zoomScale
     }
 
     // MARK: Seek and Destroy
@@ -258,7 +260,7 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
     private let visualizationView = PhotoEditingObservationVisualizationView()
     private let debugView = PhotoEditingObservationDebugView()
     private let redactionView = PhotoEditingRedactionView()
-    private let brushStrokeView: (UIControl & PhotoEditingBrushStrokeView) = PhotoEditingPathBrushStrokeView()
+    private let brushStrokeView = PhotoEditingPathBrushStrokeView()
     private let pencilDelegate = PhotoEditingWorkspacePencilDelegate()
 
     @available(*, unavailable)

@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 6/11/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import CoreGraphics
 import Observations
 
 @available(iOS 16.0, *)

@@ -26,6 +26,7 @@ class ToolPickerItem: NSMenuToolbarItem {
     private var selectedToolImage: UIImage? {
         switch delegate.highlighterTool {
         case .magic: return HighlighterTool.magic.image.applyingSymbolConfiguration(.init(scale: .large))
+        case .lasso: return HighlighterTool.lasso.image.applyingSymbolConfiguration(.init(scale: .large))
         case .manual: return HighlighterTool.manual.image.applyingSymbolConfiguration(.init(scale: .large))
         case .eraser: return HighlighterTool.eraser.image.applyingSymbolConfiguration(.init(scale: .large))
         }
@@ -46,6 +47,7 @@ class ToolPickerItem: NSMenuToolbarItem {
         static func title(for tool: HighlighterTool) -> String {
             switch tool {
             case .magic: Strings.magicToolItem
+            case .lasso: Strings.lassoToolItem
             case .manual: Strings.manualToolItem
             case .eraser: Strings.eraserToolItem
             }

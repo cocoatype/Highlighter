@@ -8,7 +8,6 @@ public enum Editing {
         bundleId: "com.cocoatype.Highlighter.Editing",
         sources: ["Modules/Legacy/Editing/Sources/**"],
         resources: ["Modules/Legacy/Editing/Resources/**"],
-        headers: .headers(public: ["Modules/Legacy/Editing/Headers/**"]),
         dependencies: [
             .target(AutoRedactionsUI.target),
             .target(Brushes.target(sdk: .catalyst)),
