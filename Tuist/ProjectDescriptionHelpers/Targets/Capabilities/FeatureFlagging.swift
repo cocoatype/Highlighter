@@ -1,15 +1,15 @@
 import ProjectDescription
 
-public enum FeatureFlags {
+public enum FeatureFlagging {
     public static let target = Target.capabilitiesTarget(
-        name: "FeatureFlags",
+        name: "FeatureFlagging",
         usesMaxSwiftVersion: true,
         dependencies: [
         ]
     )
 
     public static let testTarget = Target.capabilitiesTestTarget(
-        name: "FeatureFlags",
+        name: "FeatureFlagging",
         dependencies: [
         ]
     )

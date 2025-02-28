@@ -4,7 +4,7 @@
 @_implementationOnly import ClippingBezier
 import Combine
 import Defaults
-import FeatureFlags
+import FeatureFlagging
 import Geometry
 import Observations
 import UIKit
@@ -12,7 +12,7 @@ import UIKit
 class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
     private let flagProvider: any FeatureFlagProvider
     init(
-        flagProvider: any FeatureFlagProvider = FeatureFlags.provider
+        flagProvider: any FeatureFlagProvider = FeatureFlagging.provider
     ) {
         self.flagProvider = flagProvider
         super.init()

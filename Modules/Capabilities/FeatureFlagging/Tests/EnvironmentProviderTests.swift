@@ -3,7 +3,7 @@
 
 import Testing
 
-@testable import FeatureFlags
+@testable import FeatureFlagging
 
 struct EnvironmentProviderTests {
     @Test

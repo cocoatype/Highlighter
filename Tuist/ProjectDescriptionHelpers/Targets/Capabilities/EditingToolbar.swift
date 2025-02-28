@@ -6,7 +6,7 @@ public enum EditingToolbar {
         hasResources: true,
         usesMaxSwiftVersion: true,
         dependencies: [
-            .target(FeatureFlags.target),
+            .target(FeatureFlagging.target),
         ]
     )
 

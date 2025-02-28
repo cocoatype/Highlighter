@@ -2,7 +2,7 @@
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
 import Defaults
-import FeatureFlags
+import FeatureFlagging
 import Photos
 import Purchasing
 import Tools
@@ -95,7 +95,7 @@ public struct ActionSet {
         sizeClass: UIUserInterfaceSizeClass,
         currentColor: UIColor,
         asset: PHAsset?,
-        featureFlagProvider: any FeatureFlagProvider = FeatureFlags.provider,
+        featureFlagProvider: any FeatureFlagProvider = FeatureFlagging.provider,
         purchaseRepository: any PurchaseRepository = Purchasing.repository
     ) {
         self.target = target
