@@ -5,6 +5,7 @@ public enum Scenes {
         name: "Scenes",
         usesMaxSwiftVersion: true,
         dependencies: [
+            .target(Redactions.target(sdk: .catalyst)),
             .target(UserActivities.target),
         ]
     )

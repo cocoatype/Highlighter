@@ -14,8 +14,10 @@ public enum Unpurchased {
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Unpurchased",
         dependencies: [
+            .target(Defaults.target),
             .target(DesignSystem.target),
             .target(Logging.doublesTarget),
+            .external(name: "ViewInspector"),
         ]
     )
 }

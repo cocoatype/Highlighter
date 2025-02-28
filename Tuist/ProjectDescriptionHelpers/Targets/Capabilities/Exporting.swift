@@ -18,7 +18,9 @@ public enum Exporting {
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Exporting",
         dependencies: [
+            .target(Defaults.target),
             .target(Logging.doublesTarget),
+            .target(Logging.target(sdk: .catalyst)),
         ]
     )
 }

@@ -5,9 +5,11 @@ public enum AlbumsUI {
         name: "AlbumsUI",
         hasResources: true,
         dependencies: [
+            .target(AlbumsData.target),
             .target(AppNavigation.target),
             .target(DesignSystem.target),
             .target(Redactions.target(sdk: .catalyst)),
+            .external(name: "SwiftUIIntrospect"),
         ]
     )
 

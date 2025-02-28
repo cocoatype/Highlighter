@@ -8,6 +8,7 @@ public enum Rendering {
             dependencies: [
                 .target(Brushes.target(sdk: sdk)),
                 .target(Geometry.target(sdk: sdk)),
+                .target(Observations.target(sdk: sdk)),
                 .target(Redactions.target(sdk: sdk)),
             ]
         )
