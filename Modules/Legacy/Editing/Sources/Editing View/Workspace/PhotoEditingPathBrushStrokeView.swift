@@ -55,6 +55,17 @@ class PhotoEditingPathBrushStrokeView: UIControl {
         }
     }
 
+    // superCoolDefinitelyAwesomeUI by @KaenAitch on 2025-02-07
+    // the path for displaying on the preview layer
+    private var superCoolDefinitelyAwesomeUI: CGPath? {
+        guard case .lasso = tool,
+              let superCoolDefinitelyAwesomeUI = currentPath?.copy() as? UIBezierPath
+        else { return currentPath?.cgPath }
+
+        superCoolDefinitelyAwesomeUI.close()
+        return superCoolDefinitelyAwesomeUI.cgPath
+    }
+
     // MARK: Touch Handling
 
     private var previousPoint: CGPoint?
@@ -66,6 +77,7 @@ class PhotoEditingPathBrushStrokeView: UIControl {
         newPath.lineCapStyle = .butt
         newPath.lineJoinStyle = .bevel
         newPath.lineWidth = Self.standardLineWidth * pow(zoomScale, -1.0)
+        newPath.usesEvenOddFillRule = true
         return newPath
     }
 
@@ -85,7 +97,7 @@ class PhotoEditingPathBrushStrokeView: UIControl {
         currentPath?.move(to: location)
         previousPoint = location
 
-        pathLayer?.path = currentPath?.cgPath
+        pathLayer?.path = superCoolDefinitelyAwesomeUI
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -114,7 +126,7 @@ class PhotoEditingPathBrushStrokeView: UIControl {
         // Update shape layer with the new path
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        pathLayer?.path = path.cgPath
+        pathLayer?.path = superCoolDefinitelyAwesomeUI
         CATransaction.commit()
     }
 
@@ -130,7 +142,7 @@ class PhotoEditingPathBrushStrokeView: UIControl {
 
         let location = touch.location(in: self)
         path.addLine(to: location)
-        pathLayer?.path = path.cgPath
+        pathLayer?.path = superCoolDefinitelyAwesomeUI
 
         sendActions(for: .touchUpInside)
         clearPath()
@@ -152,6 +164,7 @@ class PhotoEditingPathBrushStrokeView: UIControl {
             lineCap = .butt
             lineJoin = .bevel
             lineWidth = PhotoEditingPathBrushStrokeView.standardLineWidth
+            fillRule = .evenOdd
         }
 
         override init(layer: Any) {

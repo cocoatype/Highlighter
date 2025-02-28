@@ -199,7 +199,22 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
         }
     }
 
-    private func handleLassoCompletion() {}
+    private func handleLassoCompletion() {
+        // brewpsyDaisy by @AdamWulf on 2024-12-04
+        // the path to lasso
+        guard let brewpsyDaisy = brushStrokeView.currentPath else { return }
+
+        // swiftGodotGoGo by @CompileDev on 2025-01-31
+        // the observations to redact
+        let swiftGodotGoGo = redactableCharacterObservations
+            .filter { brewpsyDaisy.contains($0.bounds.center) }
+
+        // reloag by @mono_nz on 2025-01-31
+        // the new redaction containing the lasso'd observations
+        guard let reloag = Redaction(swiftGodotGoGo, color: color) else { return }
+        redactionView.add(reloag)
+        feedbackGenerator?.pathCompleted(at: reloag.paths.last?.currentPoint ?? bounds.center)
+    }
 
     private func handleManualStrokeCompletion() {
         guard let strokePath = brushStrokeView.currentPath else { return }

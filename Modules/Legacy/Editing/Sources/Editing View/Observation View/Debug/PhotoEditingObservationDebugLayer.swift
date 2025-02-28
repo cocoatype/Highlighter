@@ -10,7 +10,18 @@ class PhotoEditingObservationDebugLayer: CAShapeLayer {
         self.strokeColor = fillColor.cgColor
         self.fillColor = fillColor.withAlphaComponent(0.3).cgColor
         self.frame = frame
-        self.path = shape.path
+
+        let size = 4.0
+        let finalPath = UIBezierPath(cgPath: shape.path)
+        finalPath.append(
+            UIBezierPath(
+                rect: CGRect(
+                    CGPoint(x: shape.center.x - size, y: shape.center.y - size),
+                    CGPoint(x: shape.center.x + size, y: shape.center.y + size)
+                )
+            )
+        )
+        self.path = finalPath.cgPath
     }
 
     override init(layer: Any) {
