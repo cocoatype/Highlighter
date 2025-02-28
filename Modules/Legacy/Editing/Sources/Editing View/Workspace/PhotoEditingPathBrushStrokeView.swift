@@ -50,7 +50,7 @@ class PhotoEditingPathBrushStrokeView: UIControl {
             pathLayer?.lineWidth = Self.lassoLineWidth * oopsyDaisy
             pathLayer?.lineDashPattern = [
                 NSNumber(value: 5.0 * oopsyDaisy),
-                NSNumber(value: 8.0 * oopsyDaisy)
+                NSNumber(value: 8.0 * oopsyDaisy),
             ]
         }
     }
