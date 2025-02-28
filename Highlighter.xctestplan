@@ -195,6 +195,16 @@
           "containerPath" : "container:Highlighter.xcodeproj",
           "identifier" : "03A4FF2B5ECB9A9EBD6E73D9",
           "name" : "UserActivities"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "B3813A80D5119034C06913F0",
+          "name" : "EditingToolbar"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "CC10AA7BDBA0CA8B6E1BF5C2",
+          "name" : "FeatureFlags"
         }
       ]
     },
@@ -215,8 +225,141 @@
     {
       "target" : {
         "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "F94B4B52A4D8EB0AFAC24486",
+        "name" : "RenderingTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "E7EB7246A46AEDD50E04A6A0",
+        "name" : "UserActivitiesTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "AB94737BB65B38D6AD869B5F",
+        "name" : "ExportingTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "B6DC51055F4C558AC1C5C422",
+        "name" : "GeometryTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "983FCA5AE887D0F8F0871B52",
+        "name" : "AlbumsDataTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "D511BD3660BA1CD7A06AEBC1",
+        "name" : "AutoRedactionsUITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "97F888315DF72D8A476D3EF9",
+        "name" : "LoggingTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "01DFAD838BA78F4380404D93",
+        "name" : "FeatureFlagsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "3325AE717395B260A81B611F",
+        "name" : "ScenesTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
         "identifier" : "B5E4762CECC52CCD6E2B0990",
         "name" : "RedactionsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "4246008D146FDCE34C32DD40",
+        "name" : "ShortcutsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "2B4661F6B9957A37CFC75AF1",
+        "name" : "ObservationsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "DB97A2E09C66FD6696FBAF5A",
+        "name" : "SettingsUITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "FFC529CC7C03FA34AB5A20B3",
+        "name" : "CoreTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "DE152677D2304DC58677782F",
+        "name" : "DetectionsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "E8CCAE4C408A436B716A3CDD",
+        "name" : "URLParsingTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "77D525B0D7498E1676A96CC5",
+        "name" : "UnpurchasedTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "C4AABEDBC85179F534B47EDC",
+        "name" : "ToolsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "55437D0117D8027C4D7EAECE",
+        "name" : "BrushesTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "910982A7E99C9ABDF0342BA3",
+        "name" : "EditingToolbarTests"
       }
     },
     {
@@ -236,50 +379,8 @@
     {
       "target" : {
         "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "AB94737BB65B38D6AD869B5F",
-        "name" : "ExportingTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "97F888315DF72D8A476D3EF9",
-        "name" : "LoggingTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "FFC529CC7C03FA34AB5A20B3",
-        "name" : "CoreTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "3325AE717395B260A81B611F",
-        "name" : "ScenesTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "2B4661F6B9957A37CFC75AF1",
-        "name" : "ObservationsTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "77D525B0D7498E1676A96CC5",
-        "name" : "UnpurchasedTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "E8CCAE4C408A436B716A3CDD",
-        "name" : "URLParsingTests"
+        "identifier" : "7C98246E8C096DC5B09B72A0",
+        "name" : "EditingTests"
       }
     },
     {
@@ -292,62 +393,6 @@
     {
       "target" : {
         "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "C4AABEDBC85179F534B47EDC",
-        "name" : "ToolsTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "D511BD3660BA1CD7A06AEBC1",
-        "name" : "AutoRedactionsUITests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "DB97A2E09C66FD6696FBAF5A",
-        "name" : "SettingsUITests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "CDF6EE4AB5693C601A1982E2",
-        "name" : "AlbumsUITests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "E7EB7246A46AEDD50E04A6A0",
-        "name" : "UserActivitiesTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "55437D0117D8027C4D7EAECE",
-        "name" : "BrushesTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "F94B4B52A4D8EB0AFAC24486",
-        "name" : "RenderingTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "983FCA5AE887D0F8F0871B52",
-        "name" : "AlbumsDataTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
         "identifier" : "2475A1B3C4289BC5302DD4C4",
         "name" : "PurchaseMarketingTests"
       }
@@ -355,29 +400,8 @@
     {
       "target" : {
         "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "4246008D146FDCE34C32DD40",
-        "name" : "ShortcutsTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "DE152677D2304DC58677782F",
-        "name" : "DetectionsTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "B6DC51055F4C558AC1C5C422",
-        "name" : "GeometryTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Highlighter.xcodeproj",
-        "identifier" : "7C98246E8C096DC5B09B72A0",
-        "name" : "EditingTests"
+        "identifier" : "CDF6EE4AB5693C601A1982E2",
+        "name" : "AlbumsUITests"
       }
     }
   ],

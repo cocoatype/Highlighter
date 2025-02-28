@@ -3,17 +3,6 @@
 
 import CoreGraphics
 
-struct PathElement {
-    let points: [CGPoint]
-    let type: CGPathElementType
-
-    init(elementPointer: UnsafePointer<CGPathElement>) {
-        let element = elementPointer.pointee
-        type = element.type
-        points = Array(UnsafeBufferPointer(start: element.points, count: type.pointCount))
-    }
-}
-
 extension CGPathElementType {
     var pointCount: Int {
         switch self {

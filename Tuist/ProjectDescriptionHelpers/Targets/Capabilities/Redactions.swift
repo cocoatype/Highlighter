@@ -16,6 +16,7 @@ public enum Redactions {
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Redactions",
         dependencies: [
+            .target(Geometry.target(sdk: .catalyst)),
             .target(Observations.target(sdk: .catalyst)),
             .target(TestHelpers.target),
         ]

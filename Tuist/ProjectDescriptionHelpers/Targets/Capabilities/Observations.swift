@@ -12,5 +12,10 @@ public enum Observations {
         )
     }
 
-    public static let testTarget = Target.capabilitiesTestTarget(name: "Observations")
+    public static let testTarget = Target.capabilitiesTestTarget(
+        name: "Observations",
+        dependencies: [
+            .target(Geometry.target(sdk: .catalyst)),
+        ]
+    )
 }

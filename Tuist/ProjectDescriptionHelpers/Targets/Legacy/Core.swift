@@ -10,6 +10,7 @@ public enum Core {
         resources: ["Modules/Legacy/Core/Resources/**"],
         headers: .headers(public: ["Modules/Legacy/Core/Headers/**"]),
         dependencies: [
+            .target(AlbumsData.target),
             .target(AlbumsUI.target),
             .target(AppNavigation.target),
             .target(AppRatings.target),
@@ -17,10 +18,15 @@ public enum Core {
             .target(DesignSystem.target),
             .target(Detections.target(sdk: .catalyst)),
             .target(Editing.target),
+            .target(EditingToolbar.target),
+            .target(ErrorHandling.target(sdk: .catalyst)),
+            .target(Exporting.target),
+            .target(Geometry.target(sdk: .catalyst)),
             .target(Logging.target(sdk: .catalyst)),
             .target(PurchaseMarketing.target),
             .target(Purchasing.target),
             .target(Purchasing.doublesTarget),
+            .target(Redactions.target(sdk: .catalyst)),
             .target(Scenes.target),
             .target(SettingsUI.target),
             .target(Tools.target),
@@ -44,9 +50,11 @@ public enum Core {
         sdk: .catalyst,
         type: "Legacy",
         dependencies: [
+            .target(Defaults.target),
             .target(DesignSystem.doublesTarget),
             .target(Logging.doublesTarget),
             .target(Purchasing.doublesTarget),
+            .target(TestHelpers.target),
         ]
     )
 }

@@ -15,6 +15,7 @@ public enum ErrorHandling {
         name: "ErrorHandling",
         dependencies: [
             .target(Logging.doublesTarget),
+            .target(Logging.target(sdk: .catalyst)),
         ]
     )
 }

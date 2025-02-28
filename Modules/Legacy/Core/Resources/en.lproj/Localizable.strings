@@ -101,6 +101,8 @@
 "ToolPickerItem.menuTitle" = "Tools";
 // Menu item for the eraser highlighter tool
 "ToolPickerItem.eraserToolItem" = "Eraser";
+// Menu item for the lasso tool
+"ToolPickerItem.lassoToolItem" = "Magic Lasso";
 // Menu item for the magic highlighter tool
 "ToolPickerItem.magicToolItem" = "Magic Highlighter";
 // Menu item for the manual highlighter tool

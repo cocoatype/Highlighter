@@ -20,6 +20,7 @@ public enum Action {
         ] + Shared.resources),
         entitlements: "Action/Action.entitlements",
         dependencies: [
+            .target(DesignSystem.target),
             .target(Editing.target),
             .target(ErrorHandling.target(sdk: .catalyst)),
         ],

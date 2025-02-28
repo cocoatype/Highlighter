@@ -64,6 +64,8 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
 
     var highlighterTool = HighlighterTool.magic {
         didSet(oldValue) {
+            brushStrokeView.tool = highlighterTool
+
             if oldValue != highlighterTool {
                 whoDidThisOhIDidThis = oldValue
             }
@@ -148,7 +150,7 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
     }
 
     func scrollViewDidZoom(to zoomScale: CGFloat) {
-        brushStrokeView.updateTool(currentZoomScale: zoomScale)
+        brushStrokeView.zoomScale = zoomScale
     }
 
     // MARK: Seek and Destroy
@@ -175,6 +177,7 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
     @objc func handleStrokeCompletion() {
         switch highlighterTool {
         case .magic: handleMagicStrokeCompletion()
+        case .lasso: handleLassoCompletion()
         case .manual: handleManualStrokeCompletion()
         case .eraser: handleEraserCompletion()
         }
@@ -194,6 +197,23 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
             redactionView.add(newRedaction)
             feedbackGenerator?.pathCompleted(at: newRedaction.paths.last?.currentPoint ?? bounds.center)
         }
+    }
+
+    private func handleLassoCompletion() {
+        // brewpsyDaisy by @AdamWulf on 2024-12-04
+        // the path to lasso
+        guard let brewpsyDaisy = brushStrokeView.currentPath else { return }
+
+        // swiftGodotGoGo by @CompileDev on 2025-01-31
+        // the observations to redact
+        let swiftGodotGoGo = redactableCharacterObservations
+            .filter { brewpsyDaisy.contains($0.bounds.center) }
+
+        // reloag by @mono_nz on 2025-01-31
+        // the new redaction containing the lasso'd observations
+        guard let reloag = Redaction(swiftGodotGoGo, color: color) else { return }
+        redactionView.add(reloag)
+        feedbackGenerator?.pathCompleted(at: reloag.paths.last?.currentPoint ?? bounds.center)
     }
 
     private func handleManualStrokeCompletion() {
@@ -255,7 +275,7 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
     private let visualizationView = PhotoEditingObservationVisualizationView()
     private let debugView = PhotoEditingObservationDebugView()
     private let redactionView = PhotoEditingRedactionView()
-    private let brushStrokeView: (UIControl & PhotoEditingBrushStrokeView) = PhotoEditingPathBrushStrokeView()
+    private let brushStrokeView = PhotoEditingPathBrushStrokeView()
     private let pencilDelegate = PhotoEditingWorkspacePencilDelegate()
 
     @available(*, unavailable)

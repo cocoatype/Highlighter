@@ -8,12 +8,12 @@ public enum Editing {
         bundleId: "com.cocoatype.Highlighter.Editing",
         sources: ["Modules/Legacy/Editing/Sources/**"],
         resources: ["Modules/Legacy/Editing/Resources/**"],
-        headers: .headers(public: ["Modules/Legacy/Editing/Headers/**"]),
         dependencies: [
             .target(AutoRedactionsUI.target),
             .target(Brushes.target(sdk: .catalyst)),
             .target(DebugOverlay.target),
             .target(Detections.target(sdk: .catalyst)),
+            .target(EditingToolbar.target),
             .target(ErrorHandling.target(sdk: .catalyst)),
             .target(Exporting.target),
             .target(Observations.target(sdk: .catalyst)),
@@ -44,7 +44,11 @@ public enum Editing {
         type: "Legacy",
         dependencies: [
             .target(AutoRedactionsUI.target),
+            .target(Geometry.target(sdk: .catalyst)),
+            .target(Logging.doublesTarget),
+            .target(Logging.target(sdk: .catalyst)),
             .target(Purchasing.doublesTarget),
+            .target(Tools.target),
         ]
     )
 }

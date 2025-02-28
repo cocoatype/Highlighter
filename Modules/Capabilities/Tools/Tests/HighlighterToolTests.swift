@@ -8,6 +8,7 @@ import Testing
 struct HighlighterToolTests {
     @Test(arguments: [
         (HighlighterTool.magic, ToolsAsset.highlighterMagic),
+        (.lasso, ToolsAsset.lassoMagic),
         (.manual, ToolsAsset.highlighterManual),
         (.eraser, ToolsAsset.highlighterEraser),
     ])
@@ -17,6 +18,7 @@ struct HighlighterToolTests {
 
     @Test(arguments: [
         (HighlighterTool.magic, ToolsAsset.highlighterMagic),
+        (.lasso, ToolsAsset.lassoMagic),
         (.manual, ToolsAsset.highlighterManual),
         (.eraser, ToolsAsset.highlighterEraser),
     ])
@@ -25,7 +27,8 @@ struct HighlighterToolTests {
     }
 
     @Test(arguments: [
-        (HighlighterTool.magic, HighlighterTool.manual),
+        (HighlighterTool.magic, HighlighterTool.lasso),
+        (.lasso, .manual),
         (.manual, .eraser),
         (.eraser, .magic),
     ])

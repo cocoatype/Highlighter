@@ -2,6 +2,7 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Editing
+import EditingToolbar
 import Exporting
 import Photos
 import Redactions
@@ -41,7 +42,10 @@ class PhotoEditingNavigationController: NavigationController, PhotoEditingProtec
 
     // MARK: Dismissal
 
-    @objc func dismissPhotoEditingViewController(_ sender: UIBarButtonItem, event: DismissEvent) {
+    @objc func dismissPhotoEditingViewController(
+        _ sender: UIBarButtonItem,
+        event: DismissBarButtonItem.Event
+    ) {
         guard photoEditingViewController.hasMadeEdits else {
             if let image = photoEditingViewController.image {
                 photoEditingViewController.completionHandler?(image)

@@ -4,12 +4,17 @@
 @_implementationOnly import ClippingBezier
 import Combine
 import Defaults
+import FeatureFlagging
 import Geometry
 import Observations
 import UIKit
 
 class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
-    override init() {
+    private let flagProvider: any FeatureFlagProvider
+    init(
+        flagProvider: any FeatureFlagProvider = FeatureFlagging.provider
+    ) {
+        self.flagProvider = flagProvider
         super.init()
         isUserInteractionEnabled = false
         subscribeToUpdates()
@@ -63,7 +68,7 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
 
     private var debugLayers: [CAShapeLayer] {
         get async {
-            guard FeatureFlag.shouldShowDebugOverlay, let textObservations, let recognizedTextObservations else { return [] }
+            guard flagProvider.shouldShowDebugOverlay, let textObservations, let recognizedTextObservations else { return [] }
 
             // find words (new system)
             let wordLayers: [PhotoEditingObservationDebugLayer]

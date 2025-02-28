@@ -89,6 +89,10 @@ class MinimumAreaShapeFinderTests: XCTestCase {
         XCTAssertEqual(unionShape, expectedShape, accuracy: 0.01)
     }
 
+    func testMinimumAreaForZeroShapes() {
+        XCTAssertEqual(MinimumAreaShapeFinder.minimumAreaShape(for: []), Shape.zero, accuracy: 0.01)
+    }
+
     func testMinimumAreaForFiveShapes() {
         let shapes = [
               Shape(

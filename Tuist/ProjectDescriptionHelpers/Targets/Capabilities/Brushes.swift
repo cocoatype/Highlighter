@@ -17,6 +17,7 @@ public enum Brushes {
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Brushes",
         dependencies: [
+            .target(Geometry.target(sdk: .catalyst)),
         ]
     )
 }
