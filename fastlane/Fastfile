@@ -67,7 +67,15 @@ platform :ios do
 
   desc "Renew signing certs"
   lane :renew do
-    sync_code_signing(readonly: false)
+    sync_code_signing(
+      type: "development",
+      readonly: false
+    )
+
+    sync_code_signing(
+      type: "appstore",
+      readonly: false
+    )
   end
 end
 
@@ -157,7 +165,24 @@ platform :mac do
 
   desc "Renew signing certs"
   lane :renew do
-    sync_code_signing(readonly: false)
-    sync_code_signing(platform: "catalyst", readonly: false)
+    sync_code_signing(
+      type: "development",
+      readonly: false
+    )
+    sync_code_signing(
+      platform: "catalyst",
+      type: "development",
+      readonly: false
+    )
+
+    sync_code_signing(
+      type: "appstore",
+      readonly: false
+    )
+    sync_code_signing(
+      platform: "catalyst",
+      type: "appstore",
+      readonly: false
+    )
   end
 end
