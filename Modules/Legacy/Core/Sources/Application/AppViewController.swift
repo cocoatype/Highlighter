@@ -23,7 +23,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
     private let permissionsRequester: PhotoPermissionsRequester
     init(
         logger: any Logger,
-        permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()
+        permissionsRequester: any PhotoPermissionsRequester = PhotoLibraryPermissionsRequester()
     ) {
         self.logger = logger
         self.permissionsRequester = permissionsRequester

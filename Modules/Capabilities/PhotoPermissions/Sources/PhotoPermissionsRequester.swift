@@ -4,7 +4,12 @@
 import Photos
 
 @MainActor
-public struct PhotoPermissionsRequester {
+public protocol PhotoPermissionsRequester {
+    func authorizationStatus() -> PHAuthorizationStatus
+    func requestAuthorization() async -> PHAuthorizationStatus
+}
+
+public struct PhotoLibraryPermissionsRequester: PhotoPermissionsRequester {
     public init() {
         self.init(photoLibraryType: PHPhotoLibrary.self)
     }

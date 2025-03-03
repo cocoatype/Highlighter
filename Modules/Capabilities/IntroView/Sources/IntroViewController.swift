@@ -13,12 +13,19 @@ import UIKit
 public class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
     public init(
         logger: any Logger = TelemetryLogger(),
-        permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()
+        permissionsRequester: any PhotoPermissionsRequester = PhotoLibraryPermissionsRequester()
     ) {
         self.logger = logger
         self.permissionsRequester = permissionsRequester
         super.init(rootView: IntroView())
-        self.rootView = IntroView(permissionAction: requestPermission, importAction: importPhoto)
+        self.rootView = IntroView(
+            permissionAction: { [weak self] in
+                Task { [weak self] in
+                    await self?.requestPermission()
+                }
+            },
+            importAction: importPhoto
+        )
 
         navigationItem.rightBarButtonItem = SettingsBarButtonItem.standard
     }
@@ -28,25 +35,23 @@ public class IntroViewController: UIHostingController<IntroView>, PhotoPickerDel
         view.backgroundColor = .primary
     }
 
-    @objc func requestPermission() {
-        Task {
-            let status = await permissionsRequester.requestAuthorization()
-            switch status {
-            case .authorized, .limited:
-                UIApplication.shared.sendAction(#selector(Actions.showPhotoLibrary), to: nil, from: self, for: nil)
-            case .restricted:
-                present(PhotoPermissionsRestrictedAlertFactory().alert(), animated: true)
-            case .denied:
-                present(PhotoPermissionsDeniedAlertFactory().alert(), animated: true)
-            case .notDetermined:
-                fallthrough
-            @unknown default:
-                break
-            }
+    func requestPermission() async {
+        let status = await permissionsRequester.requestAuthorization()
+        switch status {
+        case .authorized, .limited:
+            UIApplication.shared.sendAction(#selector(Actions.showPhotoLibrary), to: nil, from: self, for: nil)
+        case .restricted:
+            present(PhotoPermissionsRestrictedAlertFactory().alert(), animated: true)
+        case .denied:
+            present(PhotoPermissionsDeniedAlertFactory().alert(), animated: true)
+        case .notDetermined:
+            fallthrough
+        @unknown default:
+            break
         }
     }
 
-    @objc func importPhoto() {
+    func importPhoto() {
         present(photoPicker.pickerViewController, animated: true)
     }
 

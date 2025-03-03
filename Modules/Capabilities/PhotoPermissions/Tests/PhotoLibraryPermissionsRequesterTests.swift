@@ -7,15 +7,15 @@ import Testing
 @testable import PhotoPermissions
 
 @MainActor
-struct PhotoPermissionsRequesterTests {
+struct PhotoLibraryPermissionsRequesterTests {
     @Test
     func authorizationStatus() {
-        #expect(PhotoPermissionsRequester(photoLibraryType: MockPhotoLibrary.self).authorizationStatus() == .authorized)
+        #expect(PhotoLibraryPermissionsRequester(photoLibraryType: MockPhotoLibrary.self).authorizationStatus() == .authorized)
     }
 
     @Test
     func requestAuthorization() async {
-        await #expect(PhotoPermissionsRequester(photoLibraryType: MockPhotoLibrary.self).requestAuthorization() == .authorized)
+        await #expect(PhotoLibraryPermissionsRequester(photoLibraryType: MockPhotoLibrary.self).requestAuthorization() == .authorized)
     }
 
     enum MockPhotoLibrary: PhotoLibrary {
