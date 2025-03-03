@@ -21,15 +21,20 @@ public class PhotoPicker: NSObject, PHPickerViewControllerDelegate {
 
     // MARK: Delegate Methods
 
-    private let imageLoader = PhotoPickerResultImageLoader()
     public func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         guard let delegate = delegate else { return }
-        guard let result = results.first else {
+        guard let provider = results.first?.itemProvider else {
             return delegate.picker(self, didSelectImage: nil)
         }
 
-        Task {
-            await delegate.picker(self, didSelectImage: imageLoader.loadImage(for: result))
+        provider.loadObject(ofClass: UIImage.self) { [weak self] loadedObject, _ in
+            guard let image = loadedObject as? UIImage else { return }
+            Task { [weak self] in
+                await MainActor.run { [weak self] in
+                    guard let picker = self, let delegate = picker.delegate else { return }
+                    delegate.picker(picker, didSelectImage: image)
+                }
+            }
         }
     }
 }
