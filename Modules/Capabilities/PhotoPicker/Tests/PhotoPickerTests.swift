@@ -5,4 +5,16 @@ import Testing
 
 @testable import PhotoPicker
 
-struct PhotoPickerTests {}
+@MainActor
+struct PhotoPickerTests {
+    @Test
+    func pickerViewController() {
+        let picker = PhotoPicker()
+        let pickerViewController = picker.pickerViewController
+
+        #expect(pickerViewController.configuration.selectionLimit == 1)
+        #expect(pickerViewController.configuration.filter == .images)
+        #expect(pickerViewController.overrideUserInterfaceStyle == .dark)
+        #expect(pickerViewController.delegate === picker)
+    }
+}
