@@ -1,0 +1,15 @@
+// Title for the photo permissions denied alert
+"PhotoPermissionsDeniedAlertFactory.alertTitle" = "No Access to Your Photos";
+// Message for the photo permissions denied alert
+"PhotoPermissionsDeniedAlertFactory.alertMessage" = "Black Highlighter needs permission to edit your photos. Open Settings to grant access.";
+// Title for the settings button on the photo permissions denied alert
+"PhotoPermissionsDeniedAlertFactory.actionButtonTitle" = "Open Settings";
+// Title for the cancel button on the photo permissions denied alert
+"PhotoPermissionsDeniedAlertFactory.cancelButtonTitle" = "Dismiss";
+
+// Title for the photo permissions restricted alert
+"PhotoPermissionsRestrictedAlertFactory.alertTitle" = "Photos Access Restricted";
+// Message for the photo permissions restricted alert
+"PhotoPermissionsRestrictedAlertFactory.alertMessage" = "Black Highlighter needs permission to edit your photos. However, restrictions on your device prevent that access. Ask whoever controls permissions for you to grant access to the photo library to Black Highlighter.";
+// Title for the cancel button on the photo permissions restricted alert
+"PhotoPermissionsRestrictedAlertFactory.dismissButtonTitle" = "Dismiss";

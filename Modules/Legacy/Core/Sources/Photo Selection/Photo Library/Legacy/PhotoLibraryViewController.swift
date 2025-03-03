@@ -6,6 +6,7 @@ import Defaults
 import Editing
 import Logging
 import Photos
+import SettingsUI
 import UIKit
 import UserActivities
 

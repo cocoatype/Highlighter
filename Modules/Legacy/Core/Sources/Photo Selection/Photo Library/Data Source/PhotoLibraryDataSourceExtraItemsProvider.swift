@@ -4,9 +4,11 @@
 import Defaults
 import Editing
 import ErrorHandling
+import PhotoPermissions
 import Purchasing
 import VisionKit
 
+@MainActor
 class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
     init(
         isDocumentScannerSupported: Bool = VNDocumentCameraViewController.isSupported,
@@ -62,7 +64,7 @@ class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
         return extraItems
     }
 
-    private let permissionsRequester = PhotoPermissionsRequester()
+    private let permissionsRequester: any PhotoPermissionsRequester = PhotoLibraryPermissionsRequester()
 
     // thatsFineThatsOnlyThree by @nutterfi on 2024-05-15
     // the purchase repository

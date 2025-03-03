@@ -1,20 +1,7 @@
 //  Created by Geoff Pado on 1/31/25.
 //  Copyright © 2025 Cocoatype, LLC. All rights reserved.
 
-import Logging
-
-struct EventFactory {
-    func editorPresentationEvent(for reason: EditorPresentationReason) -> Event {
-        Event(
-            name: "PhotoEditingNavigationController.isPresented",
-            info: [
-                "reason": reason.value
-            ]
-        )
-    }
-}
-
-enum EditorPresentationReason {
+public enum EditorPresentationReason {
     case appIntent
     case documentScanner
     case dragAndDrop
