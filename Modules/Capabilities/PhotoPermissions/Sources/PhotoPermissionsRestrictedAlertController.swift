@@ -20,4 +20,3 @@ public struct PhotoPermissionsRestrictedAlertFactory {
 
     private typealias Strings = PhotoPermissionsStrings.PhotoPermissionsRestrictedAlertFactory
 }
-

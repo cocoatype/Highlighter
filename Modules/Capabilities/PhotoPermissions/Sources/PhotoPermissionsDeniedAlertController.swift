@@ -39,7 +39,7 @@ public struct PhotoPermissionsDeniedAlertFactory {
 protocol URLOpening {
     @MainActor func open(
         _ url: URL,
-        options: [UIApplication.OpenExternalURLOptionsKey : Any],
+        options: [UIApplication.OpenExternalURLOptionsKey: Any],
         completionHandler completion: (@MainActor @Sendable (Bool) -> Void)?
     )
 }

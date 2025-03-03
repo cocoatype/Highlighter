@@ -21,7 +21,7 @@ struct PhotoPermissionsDeniedAlertControllerTests {
             let urlOpened: Confirmation
             func open(
                 _ url: URL,
-                options: [UIApplication.OpenExternalURLOptionsKey : Any],
+                options: [UIApplication.OpenExternalURLOptionsKey: Any],
                 completionHandler completion: (@MainActor @Sendable (Bool) -> Void)?
             ) { urlOpened() }
         }
