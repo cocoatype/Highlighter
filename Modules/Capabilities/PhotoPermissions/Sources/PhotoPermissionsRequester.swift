@@ -4,12 +4,28 @@
 import Photos
 
 @MainActor
-public class PhotoPermissionsRequester: NSObject {
+public struct PhotoPermissionsRequester {
+    public init() {
+        self.init(photoLibraryType: PHPhotoLibrary.self)
+    }
+
+    private let photoLibraryType: any PhotoLibrary.Type
+    init(photoLibraryType: any PhotoLibrary.Type) {
+        self.photoLibraryType = photoLibraryType
+    }
+
     public func authorizationStatus() -> PHAuthorizationStatus {
-        PHPhotoLibrary.authorizationStatus(for: .readWrite)
+        photoLibraryType.authorizationStatus(for: .readWrite)
     }
 
     public func requestAuthorization() async -> PHAuthorizationStatus {
-        return await PHPhotoLibrary.requestAuthorization(for: .readWrite)
+        return await photoLibraryType.requestAuthorization(for: .readWrite)
     }
 }
+
+protocol PhotoLibrary {
+    static func authorizationStatus(for type: PHAccessLevel) -> PHAuthorizationStatus
+    static func requestAuthorization(for type: PHAccessLevel) async -> PHAuthorizationStatus
+}
+
+extension PHPhotoLibrary: PhotoLibrary {}

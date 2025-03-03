@@ -4,9 +4,11 @@
 import UIKit
 
 @MainActor
-public class PhotoPermissionsRestrictedAlertFactory: NSObject {
-    public static func alert() -> PhotoPermissionsRestrictedAlertController {
-        let alertController = PhotoPermissionsRestrictedAlertController(title: Strings.alertTitle, message: Strings.alertMessage, preferredStyle: .alert)
+public struct PhotoPermissionsRestrictedAlertFactory {
+    public init() {}
+
+    public func alert() -> UIAlertController {
+        let alertController = UIAlertController(title: Strings.alertTitle, message: Strings.alertMessage, preferredStyle: .alert)
         alertController.view.tintColor = .controlTint
 
         alertController.addAction(dismissAction)
@@ -14,9 +16,8 @@ public class PhotoPermissionsRestrictedAlertFactory: NSObject {
         return alertController
     }
 
-    private static let dismissAction = UIAlertAction(title: Strings.dismissButtonTitle, style: .cancel, handler: nil)
+    private let dismissAction = PhotoPermissionsAlertAction.action(title: Strings.dismissButtonTitle, style: .cancel, handlerBody: nil)
 
     private typealias Strings = PhotoPermissionsStrings.PhotoPermissionsRestrictedAlertFactory
 }
 
-public class PhotoPermissionsRestrictedAlertController: UIAlertController {}

@@ -5,23 +5,42 @@ import DesignSystem
 import UIKit
 
 @MainActor
-public class PhotoPermissionsDeniedAlertFactory: NSObject {
-    public static func alert() -> PhotoPermissionsDeniedAlertController {
-        let alertController = PhotoPermissionsDeniedAlertController(title: Strings.alertTitle, message: Strings.alertMessage, preferredStyle: .alert)
+public struct PhotoPermissionsDeniedAlertFactory {
+    public init() {
+        self.init(urlOpener: UIApplication.shared)
+    }
+
+    private let urlOpener: any URLOpening
+    init(urlOpener: any URLOpening) {
+        self.urlOpener = urlOpener
+    }
+
+    public func alert() -> UIAlertController {
+        let alertController = UIAlertController(title: Strings.alertTitle, message: Strings.alertMessage, preferredStyle: .alert)
         alertController.view.tintColor = .controlTint
 
-        alertController.addAction(settingsAction)
+        alertController.addAction(settingsAction())
+        alertController.addAction(cancelAction)
 
         return alertController
     }
 
-    private static let settingsAction = UIAlertAction(title: Strings.actionButtonTitle, style: .default, handler: { _ in
-        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
-        UIApplication.shared.open(settingsURL)
-    })
-    private static let cancelAction = UIAlertAction(title: Strings.cancelButtonTitle, style: .cancel, handler: nil)
+    private func settingsAction() -> PhotoPermissionsAlertAction {
+        PhotoPermissionsAlertAction.action(title: Strings.actionButtonTitle, style: .default) {
+            guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+            urlOpener.open(settingsURL, options: [:], completionHandler: nil)
+        }
+    }
+    private let cancelAction = PhotoPermissionsAlertAction.action(title: Strings.cancelButtonTitle, style: .cancel, handlerBody: nil)
 
     typealias Strings = PhotoPermissionsStrings.PhotoPermissionsDeniedAlertFactory
 }
 
-public class PhotoPermissionsDeniedAlertController: UIAlertController {}
+protocol URLOpening {
+    @MainActor func open(
+        _ url: URL,
+        options: [UIApplication.OpenExternalURLOptionsKey : Any],
+        completionHandler completion: (@MainActor @Sendable (Bool) -> Void)?
+    )
+}
+extension UIApplication: URLOpening {}

@@ -35,9 +35,9 @@ public class IntroViewController: UIHostingController<IntroView>, PhotoPickerDel
             case .authorized, .limited:
                 UIApplication.shared.sendAction(#selector(Actions.showPhotoLibrary), to: nil, from: self, for: nil)
             case .restricted:
-                present(PhotoPermissionsRestrictedAlertFactory.alert(), animated: true)
+                present(PhotoPermissionsRestrictedAlertFactory().alert(), animated: true)
             case .denied:
-                present(PhotoPermissionsDeniedAlertFactory.alert(), animated: true)
+                present(PhotoPermissionsDeniedAlertFactory().alert(), animated: true)
             case .notDetermined:
                 fallthrough
             @unknown default:
