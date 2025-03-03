@@ -4,9 +4,11 @@
 import Defaults
 import Editing
 import ErrorHandling
+import PhotoPermissions
 import Purchasing
 import VisionKit
 
+@MainActor
 class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
     init(
         isDocumentScannerSupported: Bool = VNDocumentCameraViewController.isSupported,

@@ -22,7 +22,9 @@ public enum Core {
             .target(ErrorHandling.target(sdk: .catalyst)),
             .target(Exporting.target),
             .target(Geometry.target(sdk: .catalyst)),
+            .target(IntroView.target),
             .target(Logging.target(sdk: .catalyst)),
+            .target(PhotoPermissions.target),
             .target(PurchaseMarketing.target),
             .target(Purchasing.target),
             .target(Purchasing.doublesTarget),
@@ -37,6 +39,10 @@ public enum Core {
         settings: .settings(
             base: [
                 "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": false,
+                "OTHER_SWIFT_FLAGS": [
+                    "-enable-upcoming-feature",
+                    "IsolatedDefaultValues",
+                ],
             ],
             defaultSettings: .recommended(excluding: [
                 "CODE_SIGN_IDENTITY",

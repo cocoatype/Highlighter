@@ -1,10 +1,12 @@
 //  Created by Geoff Pado on 4/13/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import DesignSystem
 import UIKit
 
-class PhotoPermissionsDeniedAlertFactory: NSObject {
-    static func alert() -> PhotoPermissionsDeniedAlertController {
+@MainActor
+public class PhotoPermissionsDeniedAlertFactory: NSObject {
+    public static func alert() -> PhotoPermissionsDeniedAlertController {
         let alertController = PhotoPermissionsDeniedAlertController(title: Strings.alertTitle, message: Strings.alertMessage, preferredStyle: .alert)
         alertController.view.tintColor = .controlTint
 
@@ -19,7 +21,7 @@ class PhotoPermissionsDeniedAlertFactory: NSObject {
     })
     private static let cancelAction = UIAlertAction(title: Strings.cancelButtonTitle, style: .cancel, handler: nil)
 
-    typealias Strings = CoreStrings.PhotoPermissionsDeniedAlertFactory
+    typealias Strings = PhotoPermissionsStrings.PhotoPermissionsDeniedAlertFactory
 }
 
-class PhotoPermissionsDeniedAlertController: UIAlertController {}
+public class PhotoPermissionsDeniedAlertController: UIAlertController {}

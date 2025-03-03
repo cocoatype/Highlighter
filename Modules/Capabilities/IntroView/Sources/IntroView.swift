@@ -4,13 +4,13 @@
 import DesignSystem
 import SwiftUI
 
-struct IntroView: View {
+public struct IntroView: View {
     init(permissionAction: @escaping (() -> Void) = {}, importAction: @escaping (() -> Void) = {}) {
         self.permissionAction = permissionAction
         self.importAction = importAction
     }
 
-    var body: some View {
+    public var body: some View {
         VStack(alignment: .leading, spacing: 3) {
             IntroLabel(Strings.permissionLabelText)
             IntroButton(Strings.permissionButtonTitle, action: permissionAction)
@@ -25,5 +25,5 @@ struct IntroView: View {
     private let permissionAction: (() -> Void)
     private let importAction: (() -> Void)
 
-    private typealias Strings = CoreStrings.IntroView
+    private typealias Strings = IntroViewStrings.IntroView
 }

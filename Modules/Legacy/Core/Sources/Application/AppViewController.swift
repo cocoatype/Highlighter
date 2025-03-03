@@ -6,7 +6,9 @@ import AppNavigation
 import AppRatings
 import Editing
 import ErrorHandling
+import IntroView
 import Logging
+import PhotoPermissions
 import Photos
 import PurchaseMarketing
 import Redactions
@@ -15,7 +17,8 @@ import VisionKit
 import SettingsUI
 import SwiftUI
 
-class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, SettingsPresenting, Navigator {
+@MainActor
+class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, IntroViewController.Actions, SettingsBarButtonItem.Actions, SettingsPresenting, Navigator {
     private let logger: any Logger
     private let permissionsRequester: PhotoPermissionsRequester
     init(

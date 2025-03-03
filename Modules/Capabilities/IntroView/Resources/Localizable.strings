@@ -1,0 +1,6 @@
+// Text describing the permissions required to launch Black Highlighter
+"IntroView.permissionLabelText" = "Black Highlighter needs permission to edit your photos.";
+//
+"IntroView.permissionButtonTitle" = "Grant Access";
+"IntroView.importLabelText" = "Or, select a single photo.";
+"IntroView.importButtonTitle" = "Select Photo";

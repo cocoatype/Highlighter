@@ -7,6 +7,7 @@ import XCTest
 @testable import Core
 @testable import Defaults
 
+@MainActor
 class PhotoLibraryDataSourceExtraItemsProviderTests: XCTestCase {
     @Defaults.Value(key: .hideDocumentScanner) var hideDocumentScanner: Bool
     override func tearDown() {

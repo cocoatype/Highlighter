@@ -22,13 +22,6 @@
 // Accessibility label for the document scanner cell
 "DocumentScannerPhotoLibraryViewCell.defaultAccessibilityLabel" = "Scan Document";
 
-// Text describing the permissions required to launch Black Highlighter
-"IntroView.permissionLabelText" = "Black Highlighter needs permission to edit your photos.";
-//
-"IntroView.permissionButtonTitle" = "Grant Access";
-"IntroView.importLabelText" = "Or, select a single photo.";
-"IntroView.importButtonTitle" = "Select Photo";
-
 // Accessibility label for the document scanner cell
 "LimitedLibraryPhotoLibraryViewCell.defaultAccessibilityLabel" = "Change Selected Photos";
 
@@ -65,22 +58,6 @@
 // Navigation title for the photo library
 "PhotoLibraryViewController.navigationItemTitle" = "Photos";
 
-// Title for the photo permissions denied alert
-"PhotoPermissionsDeniedAlertFactory.alertTitle" = "No Access to Your Photos";
-// Message for the photo permissions denied alert
-"PhotoPermissionsDeniedAlertFactory.alertMessage" = "Black Highlighter needs permission to edit your photos. Open Settings to grant access.";
-// Title for the settings button on the photo permissions denied alert
-"PhotoPermissionsDeniedAlertFactory.actionButtonTitle" = "Open Settings";
-// Title for the cancel button on the photo permissions denied alert
-"PhotoPermissionsDeniedAlertFactory.cancelButtonTitle" = "Dismiss";
-
-// Title for the photo permissions restricted alert
-"PhotoPermissionsRestrictedAlertFactory.alertTitle" = "Photos Access Restricted";
-// Message for the photo permissions restricted alert
-"PhotoPermissionsRestrictedAlertFactory.alertMessage" = "Black Highlighter needs permission to edit your photos. However, restrictions on your device prevent that access. Ask whoever controls permissions for you to grant access to the photo library to Black Highlighter.";
-// Title for the cancel button on the photo permissions restricted alert
-"PhotoPermissionsRestrictedAlertFactory.dismissButtonTitle" = "Dismiss";
-
 // Title for the clear recents menu item
 "RecentsMenuDataSource.clearMenuItemTitle" = "Clear Menu";
 // Title for the Open Recent menu
@@ -88,9 +65,6 @@
 
 // Label for the seek and destroy toolbar item
 "SeekItem.label" = "Search";
-
-// Accessibility label for the button to get to settings
-"SettingsBarButtonItem.accessibilityLabel" = "Help";
 
 // Label for the share toolbar item
 "ShareItem.label" = "Share";

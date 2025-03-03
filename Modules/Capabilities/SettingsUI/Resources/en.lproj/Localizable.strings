@@ -20,6 +20,9 @@
 // Subtitle addendum for unknown purchase duration
 "PurchaseSubtitle.unknown" = "";
 
+// Accessibility label for the button to get to settings
+"SettingsBarButtonItem.accessibilityLabel" = "Help";
+
 "SettingsContentContactSection.appStoreTitle" = "App Store";
 "SettingsContentContactSection.appStoreSubtitle" = "Write a Review";
 "SettingsContentContactSection.blueskyTitle" = "Bluesky";

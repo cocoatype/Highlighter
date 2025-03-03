@@ -3,8 +3,9 @@
 
 import UIKit
 
-class PhotoPermissionsRestrictedAlertFactory: NSObject {
-    static func alert() -> PhotoPermissionsRestrictedAlertController {
+@MainActor
+public class PhotoPermissionsRestrictedAlertFactory: NSObject {
+    public static func alert() -> PhotoPermissionsRestrictedAlertController {
         let alertController = PhotoPermissionsRestrictedAlertController(title: Strings.alertTitle, message: Strings.alertMessage, preferredStyle: .alert)
         alertController.view.tintColor = .controlTint
 
@@ -15,7 +16,7 @@ class PhotoPermissionsRestrictedAlertFactory: NSObject {
 
     private static let dismissAction = UIAlertAction(title: Strings.dismissButtonTitle, style: .cancel, handler: nil)
 
-    private typealias Strings = CoreStrings.PhotoPermissionsRestrictedAlertFactory
+    private typealias Strings = PhotoPermissionsStrings.PhotoPermissionsRestrictedAlertFactory
 }
 
-class PhotoPermissionsRestrictedAlertController: UIAlertController {}
+public class PhotoPermissionsRestrictedAlertController: UIAlertController {}

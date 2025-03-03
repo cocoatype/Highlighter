@@ -1,13 +1,17 @@
 //  Created by Geoff Pado on 4/1/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import AppNavigation
 import Logging
+import PhotoPermissions
+import PhotoPicker
 import PhotosUI
+import SettingsUI
 import SwiftUI
 import UIKit
 
-class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
-    init(
+public class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
+    public init(
         logger: any Logger = TelemetryLogger(),
         permissionsRequester: PhotoPermissionsRequester = PhotoPermissionsRequester()
     ) {
@@ -19,20 +23,21 @@ class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
         navigationItem.rightBarButtonItem = SettingsBarButtonItem.standard
     }
 
-    override func viewWillLayoutSubviews() {
+    public override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         view.backgroundColor = .primary
     }
 
     @objc func requestPermission() {
-        permissionsRequester.requestAuthorization { [weak self] status in
+        Task {
+            let status = await permissionsRequester.requestAuthorization()
             switch status {
             case .authorized, .limited:
-                UIApplication.shared.sendAction(#selector(AppViewController.showPhotoLibrary), to: nil, from: self, for: nil)
+                UIApplication.shared.sendAction(#selector(Actions.showPhotoLibrary), to: nil, from: self, for: nil)
             case .restricted:
-                self?.present(PhotoPermissionsRestrictedAlertFactory.alert(), animated: true)
+                present(PhotoPermissionsRestrictedAlertFactory.alert(), animated: true)
             case .denied:
-                self?.present(PhotoPermissionsDeniedAlertFactory.alert(), animated: true)
+                present(PhotoPermissionsDeniedAlertFactory.alert(), animated: true)
             case .notDetermined:
                 fallthrough
             @unknown default:
@@ -47,14 +52,18 @@ class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
 
     // MARK: PhotoPickerDelegate
 
-    func picker(_ picker: PhotoPicker, didSelectImage image: UIImage?) {
-        DispatchQueue.main.async { [weak self] in
-            self?.dismiss(animated: true)
+    public func picker(_ picker: PhotoPicker, didSelectImage image: UIImage?) {
+        dismiss(animated: true)
 
-            guard let image else { return }
-            self?.logger.log(EventFactory().editorPresentationEvent(for: .photoPicker))
-            self?.photoEditorPresenter?.presentPhotoEditingViewController(for: image, redactions: nil, animated: true, completionHandler: nil)
-        }
+        guard let image else { return }
+        logger.log(EventFactory().editorPresentationEvent(for: .photoPicker))
+        photoEditorPresenter?.presentPhotoEditingViewController(for: image, redactions: nil, animated: true, completionHandler: nil)
+    }
+
+    // MARK: Actions
+
+    @objc public protocol Actions {
+        func showPhotoLibrary()
     }
 
     // MARK: Boilerplate
