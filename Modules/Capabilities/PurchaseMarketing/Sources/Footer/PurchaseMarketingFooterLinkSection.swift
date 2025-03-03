@@ -11,12 +11,16 @@ struct PurchaseMarketingFooterLinkSection: View {
             HStack {
                 PurchaseMarketingFooterRestoreLink(usesShortTitle: false)
                 PurchaseMarketingFooterLinkSeparator()
+                PurchaseMarketingFooterTermsLink(usesShortTitle: false)
+                PurchaseMarketingFooterLinkSeparator()
                 PurchaseMarketingFooterPrivacyLink(usesShortTitle: false)
             }
 
             // Restore — Terms & Conditions — Privacy Policy
             HStack {
                 PurchaseMarketingFooterRestoreLink(usesShortTitle: true)
+                PurchaseMarketingFooterLinkSeparator()
+                PurchaseMarketingFooterTermsLink(usesShortTitle: false)
                 PurchaseMarketingFooterLinkSeparator()
                 PurchaseMarketingFooterPrivacyLink(usesShortTitle: false)
             }
@@ -25,12 +29,16 @@ struct PurchaseMarketingFooterLinkSection: View {
             HStack {
                 PurchaseMarketingFooterRestoreLink(usesShortTitle: true)
                 PurchaseMarketingFooterLinkSeparator()
+                PurchaseMarketingFooterTermsLink(usesShortTitle: false)
+                PurchaseMarketingFooterLinkSeparator()
                 PurchaseMarketingFooterPrivacyLink(usesShortTitle: true)
             }
 
             // Restore — Terms — Privacy
             HStack {
                 PurchaseMarketingFooterRestoreLink(usesShortTitle: true)
+                PurchaseMarketingFooterLinkSeparator()
+                PurchaseMarketingFooterTermsLink(usesShortTitle: true)
                 PurchaseMarketingFooterLinkSeparator()
                 PurchaseMarketingFooterPrivacyLink(usesShortTitle: true)
             }
@@ -39,6 +47,8 @@ struct PurchaseMarketingFooterLinkSection: View {
             VStack {
                 PurchaseMarketingFooterRestoreLink(usesShortTitle: false)
                 PurchaseMarketingFooterLinkSeparator()
+                PurchaseMarketingFooterTermsLink(usesShortTitle: false)
+                PurchaseMarketingFooterLinkSeparator()
                 PurchaseMarketingFooterPrivacyLink(usesShortTitle: false)
             }
             .frame(maxWidth: .infinity)
@@ -46,6 +56,8 @@ struct PurchaseMarketingFooterLinkSection: View {
             // Restore — Terms & Conditions — Privacy Policy
             VStack {
                 PurchaseMarketingFooterRestoreLink(usesShortTitle: true)
+                PurchaseMarketingFooterLinkSeparator()
+                PurchaseMarketingFooterTermsLink(usesShortTitle: false)
                 PurchaseMarketingFooterLinkSeparator()
                 PurchaseMarketingFooterPrivacyLink(usesShortTitle: false)
             }
@@ -55,6 +67,8 @@ struct PurchaseMarketingFooterLinkSection: View {
             VStack {
                 PurchaseMarketingFooterRestoreLink(usesShortTitle: true)
                 PurchaseMarketingFooterLinkSeparator()
+                PurchaseMarketingFooterTermsLink(usesShortTitle: false)
+                PurchaseMarketingFooterLinkSeparator()
                 PurchaseMarketingFooterPrivacyLink(usesShortTitle: true)
             }
             .frame(maxWidth: .infinity)
@@ -62,6 +76,8 @@ struct PurchaseMarketingFooterLinkSection: View {
             // Restore — Terms — Privacy
             VStack {
                 PurchaseMarketingFooterRestoreLink(usesShortTitle: true)
+                PurchaseMarketingFooterLinkSeparator()
+                PurchaseMarketingFooterTermsLink(usesShortTitle: true)
                 PurchaseMarketingFooterLinkSeparator()
                 PurchaseMarketingFooterPrivacyLink(usesShortTitle: true)
             }

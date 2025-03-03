@@ -16,6 +16,9 @@
 "PurchaseMarketingFooterRestoreLink.shortTitle" = "Restore";
 "PurchaseMarketingFooterRestoreLink.title" = "Restore Purchases";
 
+"PurchaseMarketingFooterTermsLink.shortTitle" = "Terms";
+"PurchaseMarketingFooterTermsLink.title" = "Terms & Conditions";
+
 // Text for the headline in purchase marketing
 "PurchaseMarketingTopBarHeadlineLabel.text" = "Ultra Highlighter";
 
