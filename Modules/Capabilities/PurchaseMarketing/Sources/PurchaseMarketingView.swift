@@ -63,6 +63,7 @@ public struct PurchaseMarketingView: View {
             .fill()
             .navigationBarHidden(true)
         }.safeAreaInset(edge: .bottom) {
+            // this line causes a previews crash because of the purchase repository
             PurchaseMarketingFooter()
                 .background(Color.appPrimary, ignoresSafeAreaEdges: .bottom)
         }
