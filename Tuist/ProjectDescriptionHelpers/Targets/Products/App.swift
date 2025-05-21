@@ -30,6 +30,7 @@ public enum App {
         ],
         settings: .settings(
             base: [
+                "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "Accent Color",
                 "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": "NO",
                 "TARGETED_DEVICE_FAMILY": "1,2,6",
             ],

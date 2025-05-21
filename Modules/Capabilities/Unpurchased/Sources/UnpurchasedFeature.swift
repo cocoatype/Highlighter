@@ -5,7 +5,7 @@ import Defaults
 import Foundation
 
 public struct UnpurchasedFeature {
-    public typealias LearnMoreAction = () -> Void
+    public typealias LearnMoreAction = @MainActor () -> Void
 
     public static func autoRedactions(learnMoreAction: LearnMoreAction? = nil) -> UnpurchasedFeature {
         UnpurchasedFeature(

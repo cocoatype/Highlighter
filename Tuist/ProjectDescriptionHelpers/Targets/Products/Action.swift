@@ -27,6 +27,7 @@ public enum Action {
         settings: .settings(
             base: [
                 "ASSETCATALOG_COMPILER_APPICON_NAME": "ActionIcon",
+                "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "Accent Color",
                 "SKIP_INSTALL": "YES",
             ],
             debug: [

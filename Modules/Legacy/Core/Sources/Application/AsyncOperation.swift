@@ -3,7 +3,7 @@
 
 import Foundation
 
-class AsyncOperation<ResultSuccess, ResultFailure: Error>: Operation {
+class AsyncOperation<ResultSuccess, ResultFailure: Error>: Operation, @unchecked Sendable {
     var result: Result<ResultSuccess, ResultFailure>?
     override var isAsynchronous: Bool { return true }
 

@@ -1,7 +1,8 @@
 //  Created by Geoff Pado on 6/11/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
-@_implementationOnly import ClippingBezier
+private import ClippingBezier
+import CoreGraphics
 import Observations
 
 struct PhotoEditingLibraryIntersectionFinder: PhotoEditingIntersectionFinder {

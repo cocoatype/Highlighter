@@ -11,7 +11,7 @@ import UIKit
 
 import Vision
 
-public struct TextRectangleObservation: TextObservation, RedactableObservation {
+public struct TextRectangleObservation: TextObservation, RedactableObservation, Sendable {
     #if canImport(UIKit)
     public init(_ textObservation: VNTextObservation, in image: UIImage) {
         let imageSize = image.size * image.scale

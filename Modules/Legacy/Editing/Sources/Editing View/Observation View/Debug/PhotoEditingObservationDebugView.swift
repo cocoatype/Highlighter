@@ -1,7 +1,7 @@
 //  Created by Geoff Pado on 7/8/22.
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
-@_implementationOnly import ClippingBezier
+private import ClippingBezier
 import Combine
 import Defaults
 import FeatureFlagging

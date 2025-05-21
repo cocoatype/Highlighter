@@ -10,7 +10,7 @@ import UIKit
 import AppKit
 #endif
 
-class TextRectangleDetectionOperation: Operation {
+class TextRectangleDetectionOperation: Operation, @unchecked Sendable {
     #if canImport(UIKit)
     init?(image: UIImage) {
         guard let cgImage = image.cgImage else { return nil }

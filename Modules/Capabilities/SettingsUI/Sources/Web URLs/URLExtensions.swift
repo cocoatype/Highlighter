@@ -16,7 +16,7 @@ public extension URL {
 
     private static let websiteBaseURL = URL(staticString: "https://blackhighlighter.app/")
 
-    public static func url(forPath path: String) -> URL {
+    static func url(forPath path: String) -> URL {
         URL.websiteBaseURL.appendingPathComponent(path)
     }
 }

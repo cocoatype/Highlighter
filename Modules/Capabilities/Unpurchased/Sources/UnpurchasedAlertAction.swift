@@ -8,7 +8,7 @@ class UnpurchasedAlertAction: UIAlertAction {
     class func action(
         title: String,
         style: UIAlertAction.Style,
-        action: @escaping () -> Void
+        action: @escaping @MainActor () -> Void
     ) -> UnpurchasedAlertAction {
         let alertAction = self.init(title: title, style: style) { _ in
             action()

@@ -3,7 +3,7 @@
 
 import UIKit
 
-public protocol DocumentScannerPresenting {
+@MainActor public protocol DocumentScannerPresenting {
     func presentDocumentCameraViewController()
 }
 

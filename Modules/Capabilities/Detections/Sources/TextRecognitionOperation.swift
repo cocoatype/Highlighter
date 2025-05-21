@@ -11,7 +11,7 @@ import AppKit
 import UIKit
 #endif
 
-class TextRecognitionOperation: Operation {
+class TextRecognitionOperation: Operation, @unchecked Sendable {
     #if canImport(AppKit) && !targetEnvironment(macCatalyst)
     init(image: NSImage) throws {
         var imageRect = NSRect(origin: .zero, size: image.size)

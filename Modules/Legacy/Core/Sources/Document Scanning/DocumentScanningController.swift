@@ -44,20 +44,29 @@ class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelega
     }
 
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
-        guard scan.pageCount > 0 else { return delegate?.dismissDocumentScanner() ?? () }
+        guard scan.pageCount > 0 else {
+            Task { @MainActor [weak self] in
+                self?.delegate?.dismissDocumentScanner()
+            }
+            return
+        }
         let pageImage = scan.imageOfPage(at: 0)
 
         if scan.pageCount > 1 {
             let alert = PageCountAlertFactory.alert { [weak self] in
-                self?.dismissAndEdit(pageImage)
+                Task { @MainActor [weak self] in
+                    self?.dismissAndEdit(pageImage)
+                }
             }
             controller.present(alert, animated: true)
         } else {
-            dismissAndEdit(pageImage)
+            Task { @MainActor [weak self] in
+                self?.dismissAndEdit(pageImage)
+            }
         }
     }
 
-    private func dismissAndEdit(_ image: UIImage) {
+    @MainActor private func dismissAndEdit(_ image: UIImage) {
         logger.log(EventFactory().editorPresentationEvent(for: .documentScanner))
         delegate?.dismissDocumentScanner()
         delegate?.presentPhotoEditingViewController(for: image, redactions: nil, animated: true, completionHandler: nil)
@@ -71,7 +80,7 @@ class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelega
     private let logger: any Logger
 }
 
-protocol DocumentScanningDelegate: AnyObject, PhotoEditorPresenting {
+@MainActor protocol DocumentScanningDelegate: AnyObject, PhotoEditorPresenting {
     func presentPurchaseMarketing()
     func dismissDocumentScanner()
 }

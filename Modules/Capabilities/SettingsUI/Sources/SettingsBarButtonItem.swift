@@ -12,7 +12,7 @@ public class SettingsBarButtonItem: UIBarButtonItem {
     }
 
     @objc public protocol Actions {
-        func presentSettingsViewController()
+        @MainActor func presentSettingsViewController()
     }
 
     // MARK: Boilerplate

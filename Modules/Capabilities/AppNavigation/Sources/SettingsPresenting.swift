@@ -4,7 +4,7 @@
 import UIKit
 
 public protocol SettingsPresenting {
-    func presentSettingsViewController()
+    @MainActor func presentSettingsViewController()
 }
 
 extension UIResponder {

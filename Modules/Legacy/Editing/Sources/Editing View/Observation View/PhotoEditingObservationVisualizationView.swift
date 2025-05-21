@@ -48,21 +48,18 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
     }
 
     func animateFullVisualization() {
-        Task.detached { [weak self] in
+        Task { @MainActor [weak self] in
             guard let self else { return }
             let redactions = await cannons
             guard redactions.count > 0 else { return }
 
-            await MainActor.run { [weak self] in
-                guard let self else { return }
-                removeAllRedactions()
-                add(redactions)
+            removeAllRedactions()
+            add(redactions)
 
-                if UIAccessibility.isReduceMotionEnabled {
-                    performReducedMotionVisualization()
-                } else {
-                    performFullMotionVisualization()
-                }
+            if UIAccessibility.isReduceMotionEnabled {
+                performReducedMotionVisualization()
+            } else {
+                performFullMotionVisualization()
             }
         }
     }
