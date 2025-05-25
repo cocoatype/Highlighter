@@ -3,25 +3,26 @@
 
 import LoggingDoubles
 import ViewInspector
-import XCTest
+import Testing
 
 @testable import PurchaseMarketing
 
-@available(iOS 16.0, *)
-final class PurchaseMarketingTests: XCTestCase {
-    func testWhenOnAppearThenAppearanceLogged() throws {
+@MainActor
+struct PurchaseMarketingTests {
+    @available(iOS 16.0, *)
+    @Test func appearanceLoggedOnAppear() throws {
         let logger = SpyLogger()
         let view = PurchaseMarketingView(
             purchaseState: .constant(.loading),
             logger: logger
         )
 
-        try view.inspect().implicitAnyView().geometryReader().callOnAppear()
+        try view.inspect().find(ViewType.GeometryReader.self).callOnAppear()
 
         let matchingEvents = logger.loggedEvents.count { event in
             event.name == .purchaseMarketingDisplayed
         }
 
-        XCTAssertEqual(matchingEvents, 1)
+        #expect(matchingEvents == 1)
     }
 }

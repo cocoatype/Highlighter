@@ -4,26 +4,26 @@
 import LoggingDoubles
 import SwiftUI
 import ViewInspector
-import XCTest
+import Testing
 
 @testable import Unpurchased
 
-class UnpurchasedAlertViewModifierTests: XCTestCase {
-    @MainActor func testWhenIsPresentedTrueThenEventLogged() throws {
+@MainActor struct UnpurchasedAlertViewModifierTests {
+    @Test func whenIsPresentedTrueThenEventLogged() throws {
         let logger = SpyLogger()
         let modifier = UnpurchasedAlertViewModifier(for: .autoRedactions(), isPresented: .constant(false), logger: logger)
 
-        try modifier.inspect().implicitAnyView().viewModifierContent().callOnChange(newValue: true)
+        try modifier.inspect().viewModifierContent().callOnChange(newValue: true)
 
-        XCTAssert(logger.loggedEvents.contains(where: { $0.name == "UnpurchasedAlertViewModifier.isPresented" }))
+        #expect(logger.loggedEvents.contains(where: { $0.name == "UnpurchasedAlertViewModifier.isPresented" }) == true)
     }
 
-    @MainActor func testWhenIsPresentedFalseThenEventNotLogged() throws {
+    @Test func whenIsPresentedFalseThenEventNotLogged() throws {
         let logger = SpyLogger()
         let modifier = UnpurchasedAlertViewModifier(for: .autoRedactions(), isPresented: .constant(false), logger: logger)
 
-        try modifier.inspect().implicitAnyView().viewModifierContent().callOnChange(newValue: false)
+        try modifier.inspect().viewModifierContent().callOnChange(newValue: false)
 
-        XCTAssertFalse(logger.loggedEvents.contains(where: { $0.name == "UnpurchasedAlertViewModifier.isPresented" }))
+        #expect(logger.loggedEvents.contains(where: { $0.name == "UnpurchasedAlertViewModifier.isPresented" }) == false)
     }
 }
