@@ -68,7 +68,7 @@ public class IntroViewController: UIHostingController<IntroView>, PhotoPickerDel
     // MARK: Actions
 
     @objc public protocol Actions {
-        func showPhotoLibrary()
+        @MainActor func showPhotoLibrary()
     }
 
     // MARK: Boilerplate

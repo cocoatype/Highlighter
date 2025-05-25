@@ -48,7 +48,7 @@ struct IntroViewTests {
     @Test
     func vStack() throws {
         let introView = try IntroView().inspect()
-        let vStack = try introView.view(IntroView.self).implicitAnyView().vStack()
+        let vStack = try introView.find(ViewType.VStack.self)
         let (_, _, maxWidth, _, _, _, _) = try vStack.flexFrame()
         #expect(maxWidth == 240)
     }

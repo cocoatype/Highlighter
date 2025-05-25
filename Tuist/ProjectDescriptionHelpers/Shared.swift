@@ -6,7 +6,6 @@ public enum Shared {
     ]
 
     public static let settings: Settings = .settings(base: [
-        "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "Accent Color",
         "CODE_SIGN_STYLE": "Manual",
         "CURRENT_PROJECT_VERSION": "0",
         "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": "NO",

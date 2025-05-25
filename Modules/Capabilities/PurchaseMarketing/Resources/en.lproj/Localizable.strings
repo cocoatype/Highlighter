@@ -26,14 +26,14 @@
 "PurchaseMarketingTopBarSubheadlineLabel.text" = "Unlock these powerful new abilities for Black Highlighter.";
 
 "PurchaseMarketingView.autoRedactionsHeader" = "Seek and destroy.";
-"PurchaseMarketingView.autoRedactionsText" = "Choose things you never want to see, and Black Highlighter will find them for you.";
+"PurchaseMarketingView.autoRedactionsText" = "Automatically hide your most private information, ensuring you never overlook sensitive details.";
 "PurchaseMarketingView.crossPlatformHeader" = "Always ready when you are.";
-"PurchaseMarketingView.crossPlatformText" = "Black Highlighter is right at home on iOS, iPadOS, and macOS.";
+"PurchaseMarketingView.crossPlatformText" = "Protection that adapts to your workflow, on iPhone, iPad, or Mac.";
 "PurchaseMarketingView.documentScanningHeader" = "Not digital? Not a problem.";
-"PurchaseMarketingView.documentScanningText" = "Scan documents with your phone’s camera and redact them with Black Highlighter.";
+"PurchaseMarketingView.documentScanningText" = "Turn private paper documents into shareable digital files in seconds — minus your sensitive information.";
 "PurchaseMarketingView.shortcutsHeader" = "Plays well with others.";
-"PurchaseMarketingView.shortcutsText" = "Build workflows in Shortcuts to combine Black Highlighter with other apps.";
+"PurchaseMarketingView.shortcutsText" = "Save time with Shortcuts by connecting Black Highlighter to your favorite apps.";
 "PurchaseMarketingView.supportDevelopmentHeader" = "Help keep the (high)lights on.";
-"PurchaseMarketingView.supportDevelopmentText" = "Your support helps keep updates to Black Highlighter coming!";
+"PurchaseMarketingView.supportDevelopmentText" = "Support an indie developer building tools focused on your privacy needs.";
 
 "PurchaseRestoreButton.title" = "Restore";

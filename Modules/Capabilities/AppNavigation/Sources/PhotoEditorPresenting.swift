@@ -5,6 +5,7 @@ import Photos
 import Redactions
 import UIKit
 
+@MainActor
 public protocol PhotoEditorPresenting {
     func presentPhotoEditingViewController(for asset: PHAsset, redactions: [Redaction]?, animated: Bool)
     func presentPhotoEditingViewController(for image: UIImage, redactions: [Redaction]?, animated: Bool, completionHandler: ((UIImage) -> Void)?)

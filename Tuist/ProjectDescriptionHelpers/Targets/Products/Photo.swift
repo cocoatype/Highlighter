@@ -27,6 +27,7 @@ public enum Photo {
         ],
         settings: .settings(
             base: [
+                "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "Accent Color",
                 "ASSETCATALOG_COMPILER_APPICON_NAME": "AppIcon",
                 "SKIP_INSTALL": "YES",
             ],
