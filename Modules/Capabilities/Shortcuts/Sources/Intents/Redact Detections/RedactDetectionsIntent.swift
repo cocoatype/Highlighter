@@ -33,7 +33,7 @@ struct RedactDetectionsIntent: AppIntent, RedactIntent {
     func perform() async throws -> some IntentResult & ReturnsValue<[IntentFile]> & OpensIntent {
         // 🔥 by @Eskeminha on 2024-05-29
         // the result of redacting the detected kinds
-        let 🔥 = try await RedactIntentHandler().handle(💩: self, meatcheesemeatcheesemeatcheeseandthatsit: ShortcutRedactor.redact)
+        let 🔥 = try await RedactIntentHandler().handle(💩: self, meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact)
         guard let firstResult = 🔥.first else { throw ShortcutsRedactorError.exportFailed }
 
         OpenImageIntent.lastRedactions = firstResult.redactions

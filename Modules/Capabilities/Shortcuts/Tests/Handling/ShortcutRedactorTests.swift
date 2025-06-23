@@ -17,7 +17,7 @@ struct ShortcutRedactorTests {
     @Test @available(iOS 16, *)
     func redactWordsUsesInputWordList() async throws {
         let exporter = SpyRedactExporter()
-        let redactor = ShortcutRedactor(
+        let redactor = ShortcutsRedactor(
             detector: StubTextDetector(recognizedStrings: ["hello", "world"]),
             exporter: exporter
         )
@@ -31,7 +31,7 @@ struct ShortcutRedactorTests {
     @Test @available(iOS 16, *)
     func redactionThrowsError() async throws {
         let exporter = SpyRedactExporter()
-        let redactor = ShortcutRedactor(
+        let redactor = ShortcutsRedactor(
             detector: StubTextDetector(recognizedStrings: ["hello", "world"]),
             exporter: exporter
         )

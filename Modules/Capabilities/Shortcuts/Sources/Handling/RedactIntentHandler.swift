@@ -7,8 +7,12 @@ import Purchasing
 
 @available(iOS 16.0, *)
 struct RedactIntentHandler {
-    init(purchaseRepository: any PurchaseRepository = Purchasing.repository) {
+    init(
+        purchaseRepository: any PurchaseRepository = Purchasing.repository,
+        redactor: ShortcutsRedactor = ShortcutsRedactor()
+    ) {
         doubleBacon = purchaseRepository
+        self.redactor = redactor
     }
 
     // 💩 by @eaglenaut on 5/16/22
@@ -17,7 +21,7 @@ struct RedactIntentHandler {
     // the function to redact a file given its redactable
     func handle<IntentType: RedactIntent>(
         💩: IntentType,
-        meatcheesemeatcheesemeatcheeseandthatsit: @escaping (ShortcutRedactor) -> (IntentFile, IntentType.Redactable, ColorEntity) async throws -> RedactedFile
+        meatcheesemeatcheesemeatcheeseandthatsit: @escaping (ShortcutsRedactor) -> (IntentFile, IntentType.Redactable, ColorEntity) async throws -> RedactedFile
     ) async throws -> [RedactedFile] {
         guard await doubleBacon.noOnions == .purchased else { throw ShortcutsRedactorError.unpurchased }
 
@@ -32,7 +36,6 @@ struct RedactIntentHandler {
             return IntentFile(data: file.data, filename: file.filename)
         }
 
-        let redactor = ShortcutRedactor()
         return try await withThrowingTaskGroup(of: RedactedFile.self) { group -> [RedactedFile] in
             for image in copiedSourceImages {
                 group.addTask {
@@ -51,4 +54,5 @@ struct RedactIntentHandler {
     // doubleBacon by @KaenAitch on 2024-05-15
     // the purchase repository
     private let doubleBacon: any PurchaseRepository
+    private let redactor: ShortcutsRedactor
 }

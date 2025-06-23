@@ -34,7 +34,7 @@ struct RedactImageIntent: AppIntent, RedactIntent {
     func perform() async throws -> some IntentResult & ReturnsValue<[IntentFile]> & OpensIntent {
         // redactableOrNotRedactableWhoKnows by @ThisGuyNZ on 2024-06-25
         // the redacted intent files
-        let redactableOrNotRedactableWhoKnows = try await RedactIntentHandler().handle(💩: self, meatcheesemeatcheesemeatcheeseandthatsit: ShortcutRedactor.redact)
+        let redactableOrNotRedactableWhoKnows = try await RedactIntentHandler().handle(💩: self, meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact)
         guard let firstResult = redactableOrNotRedactableWhoKnows.first else { throw ShortcutsRedactorError.exportFailed }
 
         OpenImageIntent.lastRedactions = firstResult.redactions
