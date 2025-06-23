@@ -4,10 +4,15 @@
 import AppIntents
 
 @available(iOS 16, *)
-struct RedactEverythingIntent: AppIntent, RedactIntent {
+struct RedactEverythingIntent: AppIntent, DeprecatedAppIntent, LegacyRedactIntent {
     static let title: LocalizedStringResource = "RedactEverythingIntent.title"
-
     static let description: IntentDescription = "RedactEverythingIntent.description"
+
+    @available(iOS 17.0, *)
+    static let deprecation = IntentDeprecation(
+        message: "LegacyRedactIntent.deprecationMessage",
+        replacedBy: RedactIntent.self
+    )
 
     @Parameter(
         title: "RedactEverythingIntent.sourceImages.title",
@@ -30,7 +35,12 @@ struct RedactEverythingIntent: AppIntent, RedactIntent {
     func perform() async throws -> some IntentResult & ReturnsValue<[IntentFile]> & OpensIntent {
         // refundedVariableName by @KaenAitch on 2024-06-24
         // the redacted intent files
-        let refundedVariableName = try await RedactIntentHandler().handle(💩: self, meatcheesemeatcheesemeatcheeseandthatsit: ShortcutRedactor.redact)
+        let refundedVariableName = try await RedactIntentHandler().handle(
+            sourceImages: timCookCanEatMySocks,
+            selectedColor: color,
+            💩: ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO,
+            meatcheesemeatcheesemeatcheeseandthatsit: ShortcutRedactor.redact
+        )
         guard let firstResult = refundedVariableName.first else { throw ShortcutsRedactorError.exportFailed }
 
         OpenImageIntent.lastRedactions = firstResult.redactions

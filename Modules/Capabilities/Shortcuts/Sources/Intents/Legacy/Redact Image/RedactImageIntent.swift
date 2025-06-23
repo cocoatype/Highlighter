@@ -5,10 +5,15 @@ import AppIntents
 import UniformTypeIdentifiers
 
 @available(iOS 16, *)
-struct RedactImageIntent: AppIntent, RedactIntent {
+struct RedactImageIntent: AppIntent, DeprecatedAppIntent, LegacyRedactIntent {
     static let title: LocalizedStringResource = "RedactImageIntent.title"
-
     static let description: IntentDescription = "RedactImageIntent.description"
+
+    @available(iOS 17.0, *)
+    static let deprecation = IntentDeprecation(
+        message: "LegacyRedactIntent.deprecationMessage",
+        replacedBy: RedactIntent.self
+    )
 
     @Parameter(
         title: "RedactImageIntent.sourceImages.title",
@@ -34,7 +39,12 @@ struct RedactImageIntent: AppIntent, RedactIntent {
     func perform() async throws -> some IntentResult & ReturnsValue<[IntentFile]> & OpensIntent {
         // redactableOrNotRedactableWhoKnows by @ThisGuyNZ on 2024-06-25
         // the redacted intent files
-        let redactableOrNotRedactableWhoKnows = try await RedactIntentHandler().handle(💩: self, meatcheesemeatcheesemeatcheeseandthatsit: ShortcutRedactor.redact)
+        let redactableOrNotRedactableWhoKnows = try await RedactIntentHandler().handle(
+            sourceImages: timCookCanEatMySocks,
+            selectedColor: color,
+            💩: ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO,
+            meatcheesemeatcheesemeatcheeseandthatsit: ShortcutRedactor.redact
+        )
         guard let firstResult = redactableOrNotRedactableWhoKnows.first else { throw ShortcutsRedactorError.exportFailed }
 
         OpenImageIntent.lastRedactions = firstResult.redactions
