@@ -18,6 +18,7 @@ public enum Shared {
         "SWIFT_VERSION": "5.0",
         "SWIFT_MAX_VERSION_1500": "5.0",
         "SWIFT_MAX_VERSION_1600": "6.0",
+        "SWIFT_MAX_VERSION_2600": "6.0",
         "SWIFT_MAX_VERSION": "$(SWIFT_MAX_VERSION_$(XCODE_VERSION_MAJOR))",
         "TARGETED_DEVICE_FAMILY": "1,2,6",
     ], debug: [
