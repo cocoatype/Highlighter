@@ -4,7 +4,7 @@
 import ErrorHandling
 import StoreKit
 
-public protocol PurchaseProduct: Hashable, Identifiable {
+public protocol PurchaseProduct: Hashable, Identifiable, Sendable {
     var id: String { get }
     var displayName: String { get }
     var displayPrice: String { get }
