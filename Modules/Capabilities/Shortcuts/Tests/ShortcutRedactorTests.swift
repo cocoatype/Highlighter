@@ -2,48 +2,46 @@
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
 import AppIntents
+import UIKit
+import UniformTypeIdentifiers
+import Vision
+import Testing
+
 import Detections
 import Observations
 import Redactions
-import UniformTypeIdentifiers
-import Vision
-import XCTest
 
 @testable import Shortcuts
 
-class ShortcutRedactorTests: XCTestCase {
-    func testRedactWordsUsesInputWordList() throws {
-        guard #available(iOS 16, *) else { throw XCTSkip() }
-
-        let exportExpectation = expectation(description: "export called")
-        let redactor = ShortcutRedactor(detector: StubTextDetector(), exporter: StubRedactExporter(exportExpectation: exportExpectation, expectedRedactionCount: 1))
-        let imageData = try XCTUnwrap(UIImage(systemName: "bolt")?.pngData())
+struct ShortcutRedactorTests {
+    @Test @available(iOS 16, *)
+    func redactWordsUsesInputWordList() async throws {
+        let exporter = SpyRedactExporter()
+        let redactor = ShortcutRedactor(
+            detector: StubTextDetector(),
+            exporter: exporter
+        )
+        let imageData = try #require(UIImage(systemName: "bolt")?.pngData())
         let file = IntentFile(data: imageData, filename: "image.png", type: .png)
 
-        Task {
-            try await redactor.redact(file, words: ["hello"], color: .black)
-        }
-
-        waitForExpectations(timeout: 1)
+        _ = try await redactor.redact(file, words: ["hello"], color: .black)
+        #expect(exporter.redactionCount == 1)
     }
 
-    func testRedactionThrowsError() throws {
-        guard #available(iOS 16, *) else { throw XCTSkip() }
+    @Test @available(iOS 16, *)
+    func redactionThrowsError() async throws {
+        let exporter = SpyRedactExporter()
+        let redactor = ShortcutRedactor(
+            detector: StubTextDetector(),
+            exporter: exporter
+        )
 
-        let exportExpectation = expectation(description: "export called")
-        exportExpectation.isInverted = true
-        let redactor = ShortcutRedactor(detector: StubTextDetector(), exporter: StubRedactExporter(exportExpectation: exportExpectation, expectedRedactionCount: 1))
         let imageData = Data()
         let file = IntentFile(data: imageData, filename: "image.png", type: .png)
 
-        Task {
-            do {
-                _ = try await redactor.redact(file, words: ["hello"], color: .black)
-                XCTFail("did not catch expected error")
-            } catch ShortcutsRedactorError.noImage {}
+        await #expect(throws: ShortcutsRedactorError.noImage(imageData)) {
+            _ = try await redactor.redact(file, words: ["hello"], color: .black)
         }
-
-        waitForExpectations(timeout: 0.01)
     }
 }
 
@@ -62,8 +60,8 @@ private struct MockVisionText: VisionText {
 private class StubTextDetector: TextDetector {
     override func recognizeText(in image: UIImage) async throws -> [Observations.RecognizedTextObservation] {
         return try [
-            XCTUnwrap(RecognizedTextObservation("hello")),
-            XCTUnwrap(RecognizedTextObservation("world")),
+            #require(RecognizedTextObservation("hello")),
+            #require(RecognizedTextObservation("world")),
         ]
     }
 }
@@ -77,19 +75,11 @@ private extension Observations.RecognizedTextObservation {
 }
 
 @available(iOS 16.0, *)
-private class StubRedactExporter: ShortcutsRedactExporter {
-    let exportExpectation: XCTestExpectation
-    let expectedRedactionCount: Int
-
-    init(exportExpectation: XCTestExpectation, expectedRedactionCount: Int) {
-        self.exportExpectation = exportExpectation
-        self.expectedRedactionCount = expectedRedactionCount
-        super.init()
-    }
+private class SpyRedactExporter: ShortcutsRedactExporter {
+    var redactionCount = 0
 
     override func export(_ input: IntentFile, redactions: [Redaction]) async throws -> IntentFile {
-        XCTAssertEqual(redactions.count, expectedRedactionCount)
-        exportExpectation.fulfill()
+        redactionCount += redactions.count
         return input
     }
 }

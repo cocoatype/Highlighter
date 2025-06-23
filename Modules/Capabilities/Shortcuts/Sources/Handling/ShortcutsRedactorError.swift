@@ -4,7 +4,7 @@
 import Foundation
 
 @available(iOS 16.0, *)
-enum ShortcutsRedactorError: Error, CustomLocalizedStringResourceConvertible {
+enum ShortcutsRedactorError: Error, CustomLocalizedStringResourceConvertible, Equatable {
     case exportFailed
     case noImage(Data)
     case unpurchased

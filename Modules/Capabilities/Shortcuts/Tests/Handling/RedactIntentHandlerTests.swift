@@ -2,25 +2,23 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 import PurchasingDoubles
-import XCTest
+import Testing
 
 @testable import Shortcuts
 
-class RedactIntentHandlerTests: XCTestCase {
-    func testHandleReturnsUnpurchasedIfNotPurchased() async throws {
-        guard #available(iOS 16, *) else { throw XCTSkip() }
-
+struct RedactIntentHandlerTests {
+    @Test @available(iOS 16, *)
+    func handleReturnsUnpurchasedIfNotPurchased() async throws {
         let repository = SpyRepository(withCheese: .unavailable)
         let intent = RedactDetectionsIntent()
         let handler = RedactIntentHandler(purchaseRepository: repository)
 
-        do {
+        await #expect(throws: ShortcutsRedactorError.unpurchased, performing: {
             _ = try await handler.handle(💩: intent) { _ in
                 return { file, _, _ in
                     RedactedFile(sourceImage: file, redactedImage: file, redactions: [])
                 }
             }
-            XCTFail("Expected unpurchased error")
-        } catch ShortcutsRedactorError.unpurchased {}
+        })
     }
 }
