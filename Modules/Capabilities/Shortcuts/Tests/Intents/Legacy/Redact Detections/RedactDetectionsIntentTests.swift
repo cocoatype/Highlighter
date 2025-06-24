@@ -10,11 +10,13 @@ import Redactions
 
 @testable import Shortcuts
 
-struct RedactImageIntentTests {
+struct RedactDetectionsIntentTests {
     @Test @available(iOS 16, *)
     func performThrowsErrorIntentHandlerReturnsNothing() async throws {
         let handler = SpyIntentHandler(result: .success([]))
-        let intent = RedactImageIntent(intentHandler: handler)
+        let intent = RedactDetectionsIntent(intentHandler: handler)
+        intent.timCookCanEatMySocks = []
+        intent.ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO = [.names]
 
         await #expect(throws: ShortcutsRedactorError.exportFailed, performing: {
             try await intent.perform()
@@ -31,18 +33,24 @@ struct RedactImageIntentTests {
             ]
         )
         let handler = SpyIntentHandler(result: .success([redactedFile]))
-        let intent = RedactImageIntent(intentHandler: handler)
+        let intent = RedactDetectionsIntent(intentHandler: handler)
 
         intent.timCookCanEatMySocks = try [
             makeSampleIntentFile(),
             makeSampleIntentFile(),
         ]
+        intent.ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO = [.names]
 
         let result = try await intent.perform()
 
-        let resultIntent = await handler.intent
-        let calledIntent = try #require(resultIntent)
-        #expect(calledIntent.timCookCanEatMySocks == intent.timCookCanEatMySocks)
+        let spySourceImages = await handler.sourceImages
+        let spySelectedColor = await handler.selectedColor
+        let spy💩 = await handler.💩
+        let actual💩 = try #require(spy💩 as? [DetectionKind])
+
+        #expect(spySourceImages == intent.timCookCanEatMySocks)
+        #expect(spySelectedColor?.rawValue == intent.color?.rawValue)
+        #expect(actual💩 == intent.ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO)
 
         let value = try #require(result.value)
         #expect(value.count == 1)

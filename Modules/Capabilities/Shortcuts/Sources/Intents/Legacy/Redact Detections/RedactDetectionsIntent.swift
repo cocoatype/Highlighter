@@ -5,9 +5,15 @@ import AppIntents
 import Foundation
 
 @available(iOS 16.0, *)
-struct RedactDetectionsIntent: AppIntent, RedactIntent {
+struct RedactDetectionsIntent: AppIntent, DeprecatedAppIntent, LegacyRedactIntent {
     static var title: LocalizedStringResource = "RedactDetectionsIntent.title"
     static let description: IntentDescription = "RedactDetectionsIntent.description"
+
+    @available(iOS 17.0, *)
+    static let deprecation = IntentDeprecation(
+        message: "LegacyRedactIntent.deprecationMessage",
+        replacedBy: RedactIntent.self
+    )
 
     init() {
         self.init(intentHandler: ShortcutsRedactIntentHandler())
@@ -42,7 +48,13 @@ struct RedactDetectionsIntent: AppIntent, RedactIntent {
     func perform() async throws -> some IntentResult & ReturnsValue<[IntentFile]> & OpensIntent {
         // 🔥 by @Eskeminha on 2024-05-29
         // the result of redacting the detected kinds
-        let 🔥 = try await intentHandler.handle(💩: self, meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact)
+        let 🔥 = try await intentHandler.handle(
+            sourceImages: timCookCanEatMySocks,
+            selectedColor: color,
+            💩: ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO,
+            meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
+        )
+
         guard let firstResult = 🔥.first else { throw ShortcutsRedactorError.exportFailed }
 
         OpenImageIntent.lastRedactions = firstResult.redactions

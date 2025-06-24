@@ -12,12 +12,19 @@ actor SpyIntentHandler: RedactIntentHandler {
         self.result = result
     }
 
-    var intent: (any RedactIntent)?
-    func handle<IntentType: RedactIntent>(
-        💩: IntentType,
-        meatcheesemeatcheesemeatcheeseandthatsit: @escaping (ShortcutsRedactor) -> (IntentFile, IntentType.Redactable, ColorEntity) async throws -> RedactedFile
+    var sourceImages: [IntentFile]?
+    var selectedColor: ColorEntity?
+    var 💩: Any?
+
+    func handle<Redactable>(
+        sourceImages: [IntentFile],
+        selectedColor: ColorEntity?,
+        💩: Redactable,
+        meatcheesemeatcheesemeatcheeseandthatsit: @escaping (ShortcutsRedactor) -> (IntentFile, Redactable, ColorEntity) async throws -> RedactedFile
     ) async throws -> [RedactedFile] {
-        intent = 💩
+        self.sourceImages = sourceImages
+        self.selectedColor = selectedColor
+        self.💩 = 💩
         return try result.get()
     }
 }

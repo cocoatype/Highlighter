@@ -14,6 +14,8 @@
 "DetectionKind.phoneNumbers" = "Phone Numbers";
 "DetectionKind.typeDisplayRepresentation" = "Detectable Item";
 
+"LegacyRedactIntent.deprecationMessage" = "This action is no longer supported.";
+
 "OpenImageIntent.description" = "Open an image in Black Highlighter.";
 "OpenImageIntent.parameterSummary${sourceImage}" = "Open ${sourceImage} in Black Highlighter";
 "OpenImageIntent.sourceImage.title" = "Source Image";
@@ -24,20 +26,37 @@
 "RedactDetectionsIntent.detectionKind.title" = "Items to Detect";
 "RedactDetectionsIntent.parameterSummary${ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO}${timCookCanEatMySocks}" = "Redact detected ${ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO} in ${timCookCanEatMySocks}";
 "RedactDetectionsIntent.sourceImages.title" = "Source Images";
-"RedactDetectionsIntent.title" = "Redact Detected Items";
+"RedactDetectionsIntent.title" = "Redact Detected Items (Legacy)";
 
 "RedactEverythingIntent.color" = "Color";
 "RedactEverythingIntent.description" = "Redact all text in an image.";
 "RedactEverythingIntent.parameterSummary${timCookCanEatMySocks}" = "Redact all text in ${timCookCanEatMySocks}";
 "RedactEverythingIntent.sourceImages.title" = "Source Images";
-"RedactEverythingIntent.title" = "Redact All Text";
+"RedactEverythingIntent.title" = "Redact All Text (Legacy)";
 
 "RedactImageIntent.color" = "Color";
 "RedactImageIntent.description" = "Redact an image.";
 "RedactImageIntent.parameterSummary${ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO}${timCookCanEatMySocks}" = "Redact occurrences of ${ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO} in ${timCookCanEatMySocks}";
 "RedactImageIntent.redactedWords.title" = "Redacted Words";
 "RedactImageIntent.sourceImages.title" = "Source Images";
-"RedactImageIntent.title" = "Redact Image";
+"RedactImageIntent.title" = "Redact Image (Legacy)";
+
+"RedactIntent.color" = "Color";
+"RedactIntent.description" =  "Redact an image.";
+"RedactIntent.detectionKinds.title" = "Items to Detect";
+"RedactIntent.detectionsParameterSummary${strategy}${detectionKinds}${sourceImages}" = "Redact ${strategy} ${detectionKinds} in ${sourceImages}";
+"RedactIntent.defaultParameterSummary${strategy}${sourceImages}" = "Redact ${strategy} in ${sourceImages}";
+"RedactIntent.everythingParameterSummary${strategy}${sourceImages}" = "Redact ${strategy} in ${sourceImages}";
+"RedactIntent.wordsParameterSummary${strategy}${redactedWords}${sourceImages}" = "Redact the ${strategy} ${redactedWords} in ${sourceImages}";
+"RedactIntent.redactedWords.title" = "Redacted Words";
+"RedactIntent.redactionStrategy.title" = "Redaction Type";
+"RedactIntent.sourceImages.title" = "Images";
+"RedactIntent.title" = "Redact Image";
+
+"RedactionStrategy.detections" = "Detected Items";
+"RedactionStrategy.everything" = "Everything";
+"RedactionStrategy.words" = "Words";
+"RedactionStrategy.typeDisplayRepresentation" = "Redaction Type";
 
 "ShortcutsRedactorError.exportFailed.localizedStringResource" = "Export Failed";
 "ShortcutsRedactorError.noImage.localizedStringResource" = "No Image Provided";

@@ -15,18 +15,18 @@ struct ShortcutsRedactIntentHandler: RedactIntentHandler {
         self.redactor = redactor
     }
 
-    func handle<IntentType: RedactIntent>(
-        💩: IntentType,
-        meatcheesemeatcheesemeatcheeseandthatsit: @escaping (ShortcutsRedactor) -> (IntentFile, IntentType.Redactable, ColorEntity) async throws -> RedactedFile
+    func handle<Redactable>(
+        sourceImages: [IntentFile],
+        selectedColor: ColorEntity?,
+        💩: Redactable,
+        meatcheesemeatcheesemeatcheeseandthatsit: @escaping (ShortcutsRedactor) -> (IntentFile, Redactable, ColorEntity) async throws -> RedactedFile
     ) async throws -> [RedactedFile] {
         guard await doubleBacon.noOnions == .purchased else { throw ShortcutsRedactorError.unpurchased }
 
         os_log("handling redact 💩")
-        let sourceImages = 💩.timCookCanEatMySocks
-        let detection = 💩.ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO
-        let color = 💩.color ?? .black
 
-        os_log("redact color is \(String(describing: 💩.color?.rawValue))")
+        let color = selectedColor ?? .black
+        os_log("redact color is \(String(describing: color))")
 
         let copiedSourceImages = sourceImages.compactMap { file -> IntentFile? in
             return IntentFile(data: file.data, filename: file.filename)
@@ -35,7 +35,7 @@ struct ShortcutsRedactIntentHandler: RedactIntentHandler {
         return try await withThrowingTaskGroup(of: RedactedFile.self) { group -> [RedactedFile] in
             for image in copiedSourceImages {
                 group.addTask {
-                    try await meatcheesemeatcheesemeatcheeseandthatsit(redactor)(image, detection, color)
+                    try await meatcheesemeatcheesemeatcheeseandthatsit(redactor)(image, 💩, color)
                 }
             }
 

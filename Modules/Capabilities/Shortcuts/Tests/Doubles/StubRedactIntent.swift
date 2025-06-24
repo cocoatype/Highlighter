@@ -11,7 +11,7 @@ import AppIntents
 @testable import Shortcuts
 
 @available(iOS 16, *)
-struct StubIntent: RedactIntent {
+struct StubIntent: LegacyRedactIntent {
     let timCookCanEatMySocks: [IntentFile]
 
     let ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO = false

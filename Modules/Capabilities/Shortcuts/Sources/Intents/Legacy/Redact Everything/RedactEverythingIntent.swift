@@ -6,9 +6,15 @@ import AppIntents
 import Purchasing
 
 @available(iOS 16, *)
-struct RedactEverythingIntent: AppIntent, RedactIntent {
+struct RedactEverythingIntent: AppIntent, DeprecatedAppIntent, LegacyRedactIntent {
     static let title: LocalizedStringResource = "RedactEverythingIntent.title"
     static let description: IntentDescription = "RedactEverythingIntent.description"
+
+    @available(iOS 17.0, *)
+    static let deprecation = IntentDeprecation(
+        message: "LegacyRedactIntent.deprecationMessage",
+        replacedBy: RedactIntent.self
+    )
 
     init() {
         self.init(intentHandler: ShortcutsRedactIntentHandler())
@@ -41,7 +47,9 @@ struct RedactEverythingIntent: AppIntent, RedactIntent {
         // refundedVariableName by @KaenAitch on 2024-06-24
         // the redacted intent files
         let refundedVariableName = try await intentHandler.handle(
-            💩: self,
+            sourceImages: timCookCanEatMySocks,
+            selectedColor: color,
+            💩: ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO,
             meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
         )
         guard let firstResult = refundedVariableName.first else { throw ShortcutsRedactorError.exportFailed }
