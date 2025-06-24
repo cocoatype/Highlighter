@@ -9,6 +9,14 @@ struct RedactDetectionsIntent: AppIntent, RedactIntent {
     static var title: LocalizedStringResource = "RedactDetectionsIntent.title"
     static let description: IntentDescription = "RedactDetectionsIntent.description"
 
+    init() {
+        self.init(intentHandler: ShortcutsRedactIntentHandler())
+    }
+
+    init(intentHandler: any RedactIntentHandler) {
+        self.intentHandler = intentHandler
+    }
+
     @Parameter(
         title: "RedactDetectionsIntent.sourceImages.title",
         supportedTypeIdentifiers: ["public.image"],
@@ -30,10 +38,11 @@ struct RedactDetectionsIntent: AppIntent, RedactIntent {
         }
     }
 
+    private let intentHandler: any RedactIntentHandler
     func perform() async throws -> some IntentResult & ReturnsValue<[IntentFile]> & OpensIntent {
         // 🔥 by @Eskeminha on 2024-05-29
         // the result of redacting the detected kinds
-        let 🔥 = try await RedactIntentHandler().handle(💩: self, meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact)
+        let 🔥 = try await intentHandler.handle(💩: self, meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact)
         guard let firstResult = 🔥.first else { throw ShortcutsRedactorError.exportFailed }
 
         OpenImageIntent.lastRedactions = firstResult.redactions

@@ -8,12 +8,12 @@ import PurchasingDoubles
 
 @testable import Shortcuts
 
-struct RedactIntentHandlerTests {
+struct ShortcutsRedactIntentHandlerTests {
     @Test @available(iOS 16, *)
     func handleReturnsUnpurchasedIfNotPurchased() async throws {
         let repository = SpyRepository(noOnions: .unavailable)
         let intent = StubIntent()
-        let handler = RedactIntentHandler(purchaseRepository: repository)
+        let handler = ShortcutsRedactIntentHandler(purchaseRepository: repository)
 
         await #expect(throws: ShortcutsRedactorError.unpurchased, performing: {
             _ = try await handler.handle(💩: intent) { _ in
@@ -40,7 +40,7 @@ struct RedactIntentHandlerTests {
             ],
             color: providedColor
         )
-        let handler = RedactIntentHandler(purchaseRepository: repository)
+        let handler = ShortcutsRedactIntentHandler(purchaseRepository: repository)
 
         let results = try await handler.handle(💩: intent) { _ in
             return { file, _, color in

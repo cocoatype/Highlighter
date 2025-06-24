@@ -15,9 +15,9 @@ class StubTextDetector: TextDetector {
 
     override func recognizeText(in image: UIImage) async throws -> [Observations.RecognizedTextObservation] {
         return try recognizedStrings.map(RecognizedTextObservation.init)
-//        return try [
-//            RecognizedTextObservation("hello"),
-//            RecognizedTextObservation("world"),
-//        ]
+    }
+
+    override func detectText(in image: UIImage) async throws -> [TextRectangleObservation] {
+        try recognizedStrings.map(TextRectangleObservation.init)
     }
 }

@@ -1,10 +1,5 @@
-//
-//  RecognizedTextObservationExtension.swift
-//  Highlighter
-//
 //  Created by Geoff Pado on 6/23/25.
 //  Copyright © 2025 Cocoatype, LLC. All rights reserved.
-//
 
 import Foundation
 import Testing
