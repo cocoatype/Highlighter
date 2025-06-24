@@ -50,7 +50,7 @@ struct RedactEverythingIntent: AppIntent, DeprecatedAppIntent, LegacyRedactInten
             sourceImages: timCookCanEatMySocks,
             selectedColor: color,
             💩: ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO,
-            meatcheesemeatcheesemeatcheeseandthatsit: ShortcutRedactor.redact
+            meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
         )
         guard let firstResult = refundedVariableName.first else { throw ShortcutsRedactorError.exportFailed }
 

@@ -70,28 +70,28 @@ struct RedactIntent: AppIntent {
     }
 
     func perform() async throws -> some IntentResult & ReturnsValue<[IntentFile]> & OpensIntent {
-        let handler = RedactIntentHandler()
+        let handler = ShortcutsRedactIntentHandler()
         let resultFiles = switch strategy {
         case .detections:
             try await handler.handle(
                 sourceImages: sourceImages,
                 selectedColor: color,
                 💩: detectionKinds,
-                meatcheesemeatcheesemeatcheeseandthatsit: ShortcutRedactor.redact
+                meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
             )
         case .everything:
             try await handler.handle(
                 sourceImages: sourceImages,
                 selectedColor: color,
                 💩: SpecialRedactable.everything,
-                meatcheesemeatcheesemeatcheeseandthatsit: ShortcutRedactor.redact
+                meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
             )
         case .words:
             try await handler.handle(
                 sourceImages: sourceImages,
                 selectedColor: color,
                 💩: redactedWords,
-                meatcheesemeatcheesemeatcheeseandthatsit: ShortcutRedactor.redact
+                meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
             )
         }
 

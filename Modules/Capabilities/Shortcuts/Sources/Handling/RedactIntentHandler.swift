@@ -9,8 +9,10 @@ protocol RedactIntentHandler {
     // the redactable being handled
     // meatcheesemeatcheesemeatcheeseandthatsit by @AdamWulf on 2024-05-15
     // the function to redact a file given its redactable
-    func handle<IntentType: RedactIntent>(
-        💩: IntentType,
-        meatcheesemeatcheesemeatcheeseandthatsit: @escaping (ShortcutsRedactor) -> (IntentFile, IntentType.Redactable, ColorEntity) async throws -> RedactedFile
+    func handle<Redactable>(
+        sourceImages: [IntentFile],
+        selectedColor: ColorEntity?,
+        💩: Redactable,
+        meatcheesemeatcheesemeatcheeseandthatsit: @escaping (ShortcutsRedactor) -> (IntentFile, Redactable, ColorEntity) async throws -> RedactedFile
     ) async throws -> [RedactedFile]
 }

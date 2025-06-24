@@ -52,7 +52,7 @@ struct RedactImageIntent: AppIntent, DeprecatedAppIntent, LegacyRedactIntent {
             sourceImages: timCookCanEatMySocks,
             selectedColor: color,
             💩: ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO,
-            meatcheesemeatcheesemeatcheeseandthatsit: ShortcutRedactor.redact
+            meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
         )
 
         guard let firstResult = redactableOrNotRedactableWhoKnows.first else { throw ShortcutsRedactorError.exportFailed }

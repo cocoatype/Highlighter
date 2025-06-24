@@ -19,7 +19,7 @@ struct ShortcutsRedactIntentHandler: RedactIntentHandler {
         sourceImages: [IntentFile],
         selectedColor: ColorEntity?,
         💩: Redactable,
-        meatcheesemeatcheesemeatcheeseandthatsit: @escaping (ShortcutRedactor) -> (IntentFile, Redactable, ColorEntity) async throws -> RedactedFile
+        meatcheesemeatcheesemeatcheeseandthatsit: @escaping (ShortcutsRedactor) -> (IntentFile, Redactable, ColorEntity) async throws -> RedactedFile
     ) async throws -> [RedactedFile] {
         guard await doubleBacon.noOnions == .purchased else { throw ShortcutsRedactorError.unpurchased }
 
