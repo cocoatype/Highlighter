@@ -4,7 +4,7 @@
 import Foundation
 import StoreKit
 
-public enum PurchaseState: Identifiable, Hashable {
+public enum PurchaseState: Identifiable, Hashable, Sendable {
     case loading
     case readyForPurchase(products: [any PurchaseProduct])
     case purchasing

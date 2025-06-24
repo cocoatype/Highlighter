@@ -34,7 +34,7 @@ open class TextDetector: NSObject {
         }
     }
     #elseif canImport(UIKit)
-    public func detectText(in image: UIImage) async throws -> [TextRectangleObservation] {
+    open func detectText(in image: UIImage) async throws -> [TextRectangleObservation] {
         guard let detectionOperation = TextRectangleDetectionOperation(image: image) else {
             throw TextDetectorError.cannotCreateOperation
         }

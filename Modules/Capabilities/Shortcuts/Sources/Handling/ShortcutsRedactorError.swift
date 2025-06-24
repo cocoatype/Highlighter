@@ -4,19 +4,34 @@
 import Foundation
 
 @available(iOS 16.0, *)
-enum ShortcutsRedactorError: Error, CustomLocalizedStringResourceConvertible {
+enum ShortcutsRedactorError: Error, CustomLocalizedStringResourceConvertible, Equatable {
     case exportFailed
     case noImage(Data)
     case unpurchased
 
     var localizedStringResource: LocalizedStringResource {
-        switch self {
+        return switch self {
         case .exportFailed:
-            LocalizedStringResource("ShortcutsRedactorError.exportFailed.localizedStringResource", bundle: .forClass(ShortcutRedactor.self))
+            LocalizedStringResource(
+                "ShortcutsRedactorError.exportFailed.localizedStringResource",
+                bundle: .module
+            )
         case .noImage:
-            LocalizedStringResource("ShortcutsRedactorError.noImage.localizedStringResource", bundle: .forClass(ShortcutRedactor.self))
+            LocalizedStringResource(
+                "ShortcutsRedactorError.noImage.localizedStringResource",
+                bundle: .module
+            )
         case .unpurchased:
-            LocalizedStringResource("ShortcutsRedactorError.unpurchased.localizedStringResource", bundle: .forClass(ShortcutRedactor.self))
+            LocalizedStringResource(
+                "ShortcutsRedactorError.unpurchased.localizedStringResource",
+                bundle: .module
+            )
         }
     }
+}
+
+@available(iOS 16, *)
+private extension LocalizedStringResource.BundleDescription {
+    static let module = LocalizedStringResource.BundleDescription
+        .atURL(Bundle.module.bundleURL)
 }

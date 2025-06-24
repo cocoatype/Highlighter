@@ -3,11 +3,20 @@
 
 import AppIntents
 
+import Purchasing
+
 @available(iOS 16, *)
 struct RedactEverythingIntent: AppIntent, RedactIntent {
     static let title: LocalizedStringResource = "RedactEverythingIntent.title"
-
     static let description: IntentDescription = "RedactEverythingIntent.description"
+
+    init() {
+        self.init(intentHandler: ShortcutsRedactIntentHandler())
+    }
+
+    init(intentHandler: any RedactIntentHandler) {
+        self.intentHandler = intentHandler
+    }
 
     @Parameter(
         title: "RedactEverythingIntent.sourceImages.title",
@@ -27,10 +36,14 @@ struct RedactEverythingIntent: AppIntent, RedactIntent {
         }
     }
 
+    private let intentHandler: any RedactIntentHandler
     func perform() async throws -> some IntentResult & ReturnsValue<[IntentFile]> & OpensIntent {
         // refundedVariableName by @KaenAitch on 2024-06-24
         // the redacted intent files
-        let refundedVariableName = try await RedactIntentHandler().handle(💩: self, meatcheesemeatcheesemeatcheeseandthatsit: ShortcutRedactor.redact)
+        let refundedVariableName = try await intentHandler.handle(
+            💩: self,
+            meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
+        )
         guard let firstResult = refundedVariableName.first else { throw ShortcutsRedactorError.exportFailed }
 
         OpenImageIntent.lastRedactions = firstResult.redactions

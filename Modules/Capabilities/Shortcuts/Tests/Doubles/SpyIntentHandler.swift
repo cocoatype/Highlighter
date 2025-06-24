@@ -3,14 +3,21 @@
 
 import AppIntents
 
+@testable import Shortcuts
+
 @available(iOS 16, *)
-protocol RedactIntentHandler {
-    // 💩 by @eaglenaut on 5/16/22
-    // the intent being handled
-    // meatcheesemeatcheesemeatcheeseandthatsit by @AdamWulf on 2024-05-15
-    // the function to redact a file given its redactable
+actor SpyIntentHandler: RedactIntentHandler {
+    private let result: Result<[RedactedFile], Error>
+    init(result: Result<[RedactedFile], Error>) {
+        self.result = result
+    }
+
+    var intent: (any RedactIntent)?
     func handle<IntentType: RedactIntent>(
         💩: IntentType,
         meatcheesemeatcheesemeatcheeseandthatsit: @escaping (ShortcutsRedactor) -> (IntentFile, IntentType.Redactable, ColorEntity) async throws -> RedactedFile
-    ) async throws -> [RedactedFile]
+    ) async throws -> [RedactedFile] {
+        intent = 💩
+        return try result.get()
+    }
 }
