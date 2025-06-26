@@ -58,6 +58,7 @@ let project = Project(
         DesignSystem.doublesTarget,
         Logging.doublesTarget,
         Purchasing.doublesTarget,
+        Rendering.doublesTarget(sdk: .catalyst),
         // test helpers
         TestHelpers.target,
         TestHelpers.interfaceTarget,

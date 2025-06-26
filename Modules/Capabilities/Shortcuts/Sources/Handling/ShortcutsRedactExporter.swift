@@ -10,14 +10,24 @@ import UniformTypeIdentifiers
 
 @available(iOS 16.0, *)
 class ShortcutsRedactExporter: NSObject {
-    func export(_ input: IntentFile, redactions: [Redaction]) async throws -> IntentFile {
+    private let renderer: any PhotoRenderer
+    init(renderer: any PhotoRenderer = Rendering.renderer) {
+        self.renderer = renderer
+    }
+
+    func export(
+        _ input: IntentFile,
+        redactions: [Redaction],
+        outputFormat: OutputFormat
+    ) async throws -> IntentFile {
         os_log("starting export with redactions: %{public}@", String(describing: redactions))
         guard let sourceImage = UIImage(data: input.data)
         else { throw ShortcutsExportError.noImageForInput }
 
         os_log("got source image")
 
-        let exportImage = try await PhotoRenderer(image: sourceImage, redactions: redactions).render()
+        let exportImage = try await renderer
+            .render(image: sourceImage, redactions: redactions)
 
         os_log("got export image")
 

@@ -12,12 +12,11 @@ struct ShortcutsRedactIntentHandlerTests {
     @Test @available(iOS 16, *)
     func handleReturnsUnpurchasedIfNotPurchased() async throws {
         let repository = SpyRepository(noOnions: .unavailable)
-        let intent = StubIntent()
         let handler = ShortcutsRedactIntentHandler(purchaseRepository: repository)
 
         await #expect(throws: ShortcutsRedactorError.unpurchased, performing: {
-            _ = try await handler.handle(sourceImages: [], selectedColor: nil, 💩: []) { _ in
-                return { file, _, _ in
+            _ = try await handler.handle(sourceImages: [], selectedColor: nil, outputFormat: .png, 💩: []) { _ in
+                return { file, _, _, _ in
                     RedactedFile(sourceImage: file, redactedImage: file, redactions: [])
                 }
             }
@@ -45,9 +44,10 @@ struct ShortcutsRedactIntentHandlerTests {
         let results = try await handler.handle(
             sourceImages: intent.timCookCanEatMySocks,
             selectedColor: intent.color,
+            outputFormat: .png,
             💩: intent.ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO
         ) { _ in
-            return { file, _, color in
+            return { file, _, color, _ in
                 #expect(color == expectedColor)
                 return RedactedFile(sourceImage: file, redactedImage: file, redactions: [])
             }

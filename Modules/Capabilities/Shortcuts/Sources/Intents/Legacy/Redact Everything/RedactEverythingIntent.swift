@@ -49,6 +49,7 @@ struct RedactEverythingIntent: AppIntent, DeprecatedAppIntent, LegacyRedactInten
         let refundedVariableName = try await intentHandler.handle(
             sourceImages: timCookCanEatMySocks,
             selectedColor: color,
+            outputFormat: .png,
             💩: ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO,
             meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
         )

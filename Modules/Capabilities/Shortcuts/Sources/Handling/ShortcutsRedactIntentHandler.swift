@@ -18,8 +18,9 @@ struct ShortcutsRedactIntentHandler: RedactIntentHandler {
     func handle<Redactable>(
         sourceImages: [IntentFile],
         selectedColor: ColorEntity?,
+        outputFormat: OutputFormat,
         💩: Redactable,
-        meatcheesemeatcheesemeatcheeseandthatsit: @escaping (ShortcutsRedactor) -> (IntentFile, Redactable, ColorEntity) async throws -> RedactedFile
+        meatcheesemeatcheesemeatcheeseandthatsit: @escaping (ShortcutsRedactor) -> (IntentFile, Redactable, ColorEntity, OutputFormat) async throws -> RedactedFile
     ) async throws -> [RedactedFile] {
         guard await doubleBacon.noOnions == .purchased else { throw ShortcutsRedactorError.unpurchased }
 
@@ -35,7 +36,7 @@ struct ShortcutsRedactIntentHandler: RedactIntentHandler {
         return try await withThrowingTaskGroup(of: RedactedFile.self) { group -> [RedactedFile] in
             for image in copiedSourceImages {
                 group.addTask {
-                    try await meatcheesemeatcheesemeatcheeseandthatsit(redactor)(image, 💩, color)
+                    try await meatcheesemeatcheesemeatcheeseandthatsit(redactor)(image, 💩, color, outputFormat)
                 }
             }
 

@@ -20,7 +20,8 @@ struct ShortcutsRedactor {
     func redact(
         _ input: IntentFile,
         words wordList: [String],
-        color: ColorEntity
+        color: ColorEntity,
+        outputFormat: OutputFormat
     ) async throws -> RedactedFile {
         guard let image = UIImage(data: input.data) else {
             throw ShortcutsRedactorError.noImage(input.data)
@@ -35,14 +36,16 @@ struct ShortcutsRedactor {
         return try await redact(
             input,
             wordObservations: wordObservations,
-            color: color
+            color: color,
+            outputFormat: outputFormat
         )
     }
 
     func redact(
         _ input: IntentFile,
         detections: [DetectionKind],
-        color: ColorEntity
+        color: ColorEntity,
+        outputFormat: OutputFormat
     ) async throws -> RedactedFile {
         guard let image = UIImage(data: input.data) else {
             throw ShortcutsRedactorError.noImage(input.data)
@@ -56,14 +59,16 @@ struct ShortcutsRedactor {
         return try await redact(
             input,
             wordObservations: wordObservations,
-            color: color
+            color: color,
+            outputFormat: outputFormat
         )
     }
 
     func redact(
         _ input: IntentFile,
         special: SpecialRedactable,
-        color: ColorEntity
+        color: ColorEntity,
+        outputFormat: OutputFormat
     ) async throws -> RedactedFile {
         guard let image = UIImage(data: input.data) else {
             throw ShortcutsRedactorError.noImage(input.data)
@@ -73,7 +78,11 @@ struct ShortcutsRedactor {
         let redactions = texts.map { Redaction($0, color: color.color) }
         return try await RedactedFile(
             sourceImage: input,
-            redactedImage: exporter.export(input, redactions: redactions),
+            redactedImage: exporter.export(
+                input,
+                redactions: redactions,
+                outputFormat: outputFormat
+            ),
             redactions: redactions
         )
     }
@@ -81,7 +90,8 @@ struct ShortcutsRedactor {
     private func redact(
         _ input: IntentFile,
         wordObservations: [WordObservation],
-        color: ColorEntity
+        color: ColorEntity,
+        outputFormat: OutputFormat
     ) async throws -> RedactedFile {
         let redactions = wordObservations.map {
             Redaction($0, color: color.color)
@@ -89,7 +99,11 @@ struct ShortcutsRedactor {
 
         return try await RedactedFile(
             sourceImage: input,
-            redactedImage: exporter.export(input, redactions: redactions),
+            redactedImage: exporter.export(
+                input,
+                redactions: redactions,
+                outputFormat: outputFormat
+            ),
             redactions: redactions
         )
     }

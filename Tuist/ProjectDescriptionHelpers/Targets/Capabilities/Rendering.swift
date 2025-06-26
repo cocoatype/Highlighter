@@ -19,4 +19,11 @@ public enum Rendering {
         dependencies: [
         ]
     )
+
+    public static func doublesTarget(sdk: SDK) -> Target {
+        Target.capabilitiesDoublesTarget(
+            name: "Rendering",
+            sdk: sdk
+        )
+    }
 }

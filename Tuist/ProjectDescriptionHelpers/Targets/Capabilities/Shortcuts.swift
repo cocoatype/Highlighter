@@ -22,6 +22,7 @@ public enum Shortcuts {
             .target(Observations.target(sdk: .catalyst)),
             .target(Purchasing.doublesTarget),
             .target(Redactions.target(sdk: .catalyst)),
+            .target(Rendering.doublesTarget(sdk: .catalyst)),
         ]
     )
 }

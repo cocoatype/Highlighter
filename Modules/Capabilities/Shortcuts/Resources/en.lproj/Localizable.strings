@@ -21,6 +21,12 @@
 "OpenImageIntent.sourceImage.title" = "Source Image";
 "OpenImageIntent.title" = "Open Image";
 
+"OutputFormat.typeDisplayRepresentation" = "Output Format";
+"OutputFormat.matchInput" = "Match Input";
+"OutputFormat.jpeg" = "JPEG";
+"OutputFormat.heic" = "HEIC";
+"OutputFormat.png" = "PNG";
+
 "RedactDetectionsIntent.color" = "Color";
 "RedactDetectionsIntent.description" = "Redact detected items in an image.";
 "RedactDetectionsIntent.detectionKind.title" = "Items to Detect";

@@ -19,8 +19,9 @@ actor SpyIntentHandler: RedactIntentHandler {
     func handle<Redactable>(
         sourceImages: [IntentFile],
         selectedColor: ColorEntity?,
+        outputFormat: OutputFormat,
         💩: Redactable,
-        meatcheesemeatcheesemeatcheeseandthatsit: @escaping (ShortcutsRedactor) -> (IntentFile, Redactable, ColorEntity) async throws -> RedactedFile
+        meatcheesemeatcheesemeatcheeseandthatsit: @escaping (ShortcutsRedactor) -> (IntentFile, Redactable, ColorEntity, OutputFormat) async throws -> RedactedFile
     ) async throws -> [RedactedFile] {
         self.sourceImages = sourceImages
         self.selectedColor = selectedColor

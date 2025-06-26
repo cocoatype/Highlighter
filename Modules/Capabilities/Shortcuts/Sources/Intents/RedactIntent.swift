@@ -21,6 +21,12 @@ struct RedactIntent: AppIntent {
     var color: ColorEntity?
 
     @Parameter(
+        title: "RedactIntent.outputFormat",
+        default: .matchInput
+    )
+    var outputFormat: OutputFormat
+
+    @Parameter(
         title: "RedactIntent.redactionStrategy.title",
         default: .everything
     )
@@ -49,21 +55,25 @@ struct RedactIntent: AppIntent {
             Case(.detections) {
                 Summary("RedactIntent.detectionsParameterSummary\(\.$strategy)\(\.$detectionKinds)\(\.$sourceImages)") {
                     \.$color
+                    \.$outputFormat
                 }
             }
             Case(.everything) {
                 Summary("RedactIntent.everythingParameterSummary\(\.$strategy)\(\.$sourceImages)") {
                     \.$color
+                    \.$outputFormat
                 }
             }
             Case(.words) {
                 Summary("RedactIntent.wordsParameterSummary\(\.$strategy)\(\.$redactedWords)\(\.$sourceImages)") {
                     \.$color
+                    \.$outputFormat
                 }
             }
             DefaultCase {
                 Summary("RedactIntent.defaultParameterSummary\(\.$strategy)\(\.$sourceImages)") {
                     \.$color
+                    \.$outputFormat
                 }
             }
         }
@@ -76,6 +86,7 @@ struct RedactIntent: AppIntent {
             try await handler.handle(
                 sourceImages: sourceImages,
                 selectedColor: color,
+                outputFormat: outputFormat,
                 💩: detectionKinds,
                 meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
             )
@@ -83,6 +94,7 @@ struct RedactIntent: AppIntent {
             try await handler.handle(
                 sourceImages: sourceImages,
                 selectedColor: color,
+                outputFormat: outputFormat,
                 💩: SpecialRedactable.everything,
                 meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
             )
@@ -90,6 +102,7 @@ struct RedactIntent: AppIntent {
             try await handler.handle(
                 sourceImages: sourceImages,
                 selectedColor: color,
+                outputFormat: outputFormat,
                 💩: redactedWords,
                 meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
             )
