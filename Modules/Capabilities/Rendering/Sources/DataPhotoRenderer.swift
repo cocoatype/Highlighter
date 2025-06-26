@@ -80,6 +80,32 @@ actor DataPhotoRenderer: PhotoRenderer {
     }
     #endif
 
+    func render(
+        imageSource: CGImageSource,
+        redactions: [Redaction]
+    ) throws -> CGImage {
+        guard let sourceImage = imageSource.image
+        else { throw PhotoRenderError.noCGImage }
+
+        UIGraphicsBeginImageContextWithOptions(
+            sourceImage.size,
+            false,
+            1
+        )
+        defer { UIGraphicsEndImageContext() }
+
+        guard let context = UIGraphicsGetCurrentContext()
+        else { throw PhotoRenderError.noCurrentGraphicsContext }
+
+        return try render(
+            sourceImage: sourceImage,
+            redactions: redactions,
+            context: context,
+            orientation: imageSource.imageOrientation ?? .up,
+            flipped: true
+        )
+    }
+
     #warning("#62: Simplify this method")
     // swiftlint:disable:next function_body_length
     private func render(

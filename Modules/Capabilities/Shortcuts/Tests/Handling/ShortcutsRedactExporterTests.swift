@@ -12,19 +12,51 @@ import RenderingDoubles
 
 struct ShortcutsRedactExporterTests {
     @available(iOS 17, *)
+    private func data(for type: UTType) throws -> Data {
+        let inputImage = try #require(UIImage(systemName: "star"))
+        let data: Data? = switch type {
+        case .png: inputImage.pngData()
+        case .jpeg: inputImage.jpegData(compressionQuality: 0.8)
+        case .heic: inputImage.heicData()
+        default: nil
+        }
+        return try #require(data)
+    }
+
+    @available(iOS 17, *)
     @Test(arguments: [
-        ({ (image: UIImage) in image.pngData() }, UTType.png),
-        ({ (image: UIImage) in image.jpegData(compressionQuality: 0.8) }, UTType.jpeg),
-        ({ (image: UIImage) in image.heicData() }, UTType.heic),
-    ]) func exportMatchingInput(dataGenerator: (UIImage) -> Data?, expectedType: UTType) async throws {
+        (UTType.png, OutputFormat.matchInput, UTType.png),
+        (.jpeg, .matchInput, .jpeg),
+        (.heic, .matchInput, .heic),
+        (.png, .png, .png),
+        (.jpeg, .png, .png),
+        (.heic, .png, .png),
+        (.png, .jpeg, .jpeg),
+        (.jpeg, .jpeg, .jpeg),
+        (.heic, .jpeg, .jpeg),
+        (.png, .heic, .heic),
+        (.jpeg, .heic, .heic),
+        (.heic, .heic, .heic),
+    ]) func export(
+        inputType: UTType,
+        outputFormat: OutputFormat,
+        expectedType: UTType
+    ) async throws {
         let renderer = StubPhotoRenderer()
         let exporter = ShortcutsRedactExporter(renderer: renderer)
 
-        let inputImage = try #require(UIImage(systemName: "star"))
-        let inputImageData = try #require(dataGenerator(inputImage))
-        let inputFile = IntentFile(data: inputImageData, filename: "image")
+        let inputData = try data(for: inputType)
+        let inputFile = IntentFile(data: inputData, filename: "image")
+        let outputFile = try await exporter.export(
+            inputFile,
+            redactions: [],
+            outputFormat: outputFormat
+        )
 
-        let outputFile = try await exporter.export(inputFile, redactions: [], outputFormat: .matchInput)
-        #expect((outputFile.filename as NSString).pathExtension == expectedType.preferredFilenameExtension)
+        let pathExtension = (outputFile.filename as NSString).pathExtension
+        #expect(pathExtension == expectedType.preferredFilenameExtension)
+
+        let outputType = try #require(CGImageSource.create(outputFile.data)?.type)
+        #expect(outputType == expectedType)
     }
 }

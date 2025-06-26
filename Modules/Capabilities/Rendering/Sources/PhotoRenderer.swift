@@ -11,7 +11,9 @@ import Redactions
 public typealias PhotoRendererImage = UIImage
 #endif
 
+import ImageIO
 
 public protocol PhotoRenderer {
     func render(image: PhotoRendererImage, redactions: [Redaction]) async throws -> PhotoRendererImage
+    func render(imageSource: CGImageSource, redactions: [Redaction]) async throws -> CGImage
 }

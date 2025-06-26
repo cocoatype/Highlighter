@@ -21,29 +21,59 @@ class ShortcutsRedactExporter: NSObject {
         outputFormat: OutputFormat
     ) async throws -> IntentFile {
         os_log("starting export with redactions: %{public}@", String(describing: redactions))
-        guard let sourceImage = UIImage(data: input.data)
+        guard let imageSource = CGImageSource.create(input.data)
         else { throw ShortcutsExportError.noImageForInput }
+
+        let outputType: UTType
+        switch outputFormat {
+        case .matchInput:
+            guard let inputType = imageSource.type
+            else { throw ShortcutsExportError.unknownImageType }
+            outputType = inputType
+        case .jpeg:
+            outputType = .jpeg
+        case .heic:
+            outputType = .heic
+        case .png:
+            outputType = .png
+        }
 
         os_log("got source image")
 
         let exportImage = try await renderer
-            .render(image: sourceImage, redactions: redactions)
+            .render(imageSource: imageSource, redactions: redactions)
 
         os_log("got export image")
 
-        guard let imageData = exportImage.pngData()
-        else { throw ShortcutsExportError.failedToRenderImage }
+        let imageData = try data(for: exportImage, fileType: outputType)
 
         os_log("got rendered image data")
 
-        let filename = ((input.filename as NSString)
-            .deletingPathExtension as NSString)
-            .appendingPathExtension(for: UTType.png)
-        return IntentFile(data: imageData, filename: filename, type: .png)
+        let filename = input.filename
+            .deletingPathExtension
+            .appendingPathExtension(for: outputType)
+        return IntentFile(data: imageData, filename: filename, type: outputType)
+    }
+
+    private func data(
+        for exportImage: CGImage,
+        fileType: UTType
+    ) throws -> Data {
+        let data = NSMutableData()
+
+        guard let destination = CGImageDestination.create(data: data, fileType: fileType)
+        else { throw ShortcutsExportError.failedToCreateDestination }
+
+        destination.add(exportImage)
+        try destination.finalize()
+
+        return data as Data
     }
 }
 
 enum ShortcutsExportError: Error {
+    case failedToCreateDestination
     case failedToRenderImage
     case noImageForInput
+    case unknownImageType
 }

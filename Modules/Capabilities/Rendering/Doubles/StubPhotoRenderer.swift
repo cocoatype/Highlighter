@@ -15,6 +15,14 @@ public struct StubPhotoRenderer: PhotoRenderer {
 
         return image
     }
+
+    public func render(imageSource: CGImageSource, redactions: [Redaction]) async throws -> CGImage {
+        guard let image = UIImage(systemName: "bolt"),
+              let cgImage = image.cgImage
+        else { throw StubPhotoRendererError.systemImageMissing }
+
+        return cgImage
+    }
 }
 
 enum StubPhotoRendererError: Error {
