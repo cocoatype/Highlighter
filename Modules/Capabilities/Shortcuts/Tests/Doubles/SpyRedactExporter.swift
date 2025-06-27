@@ -11,7 +11,11 @@ import Redactions
 class SpyRedactExporter: ShortcutsRedactExporter {
     var redactionCount = 0
 
-    override func export(_ input: IntentFile, redactions: [Redaction]) async throws -> IntentFile {
+    override func export(
+        _ input: IntentFile,
+        redactions: [Redaction],
+        outputFormat: OutputFormat
+    ) async throws -> IntentFile {
         redactionCount += redactions.count
         return input
     }

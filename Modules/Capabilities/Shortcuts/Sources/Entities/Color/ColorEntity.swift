@@ -6,7 +6,7 @@ import DesignSystem
 import UIKit
 
 @available(iOS 16.0, *)
-struct ColorEntity: AppEntity, RawRepresentable, Identifiable {
+struct ColorEntity: AppEntity, RawRepresentable, Identifiable, ExpressibleByIntegerLiteral {
     static let typeDisplayRepresentation: TypeDisplayRepresentation = "ColorEntity.TypeDisplayRepresentation"
 
     static let black = ColorEntity(color: .black)
@@ -30,6 +30,10 @@ struct ColorEntity: AppEntity, RawRepresentable, Identifiable {
     }
 
     var rawValue: String { color.hexString }
+
+    init(integerLiteral value: Int) {
+        self.init(color: UIColor(hexLiteral: value))
+    }
 
     private var colorName: String {
         let baseName = switch color {

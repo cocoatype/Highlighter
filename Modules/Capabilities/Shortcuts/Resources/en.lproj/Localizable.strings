@@ -21,6 +21,12 @@
 "OpenImageIntent.sourceImage.title" = "Source Image";
 "OpenImageIntent.title" = "Open Image";
 
+"OutputFormat.typeDisplayRepresentation" = "Output Format";
+"OutputFormat.matchInput" = "Match Input";
+"OutputFormat.jpeg" = "JPEG";
+"OutputFormat.heic" = "HEIC";
+"OutputFormat.png" = "PNG";
+
 "RedactDetectionsIntent.color" = "Color";
 "RedactDetectionsIntent.description" = "Redact detected items in an image.";
 "RedactDetectionsIntent.detectionKind.title" = "Items to Detect";
@@ -47,11 +53,12 @@
 "RedactIntent.detectionsParameterSummary${strategy}${detectionKinds}${sourceImages}" = "Redact ${strategy} ${detectionKinds} in ${sourceImages}";
 "RedactIntent.defaultParameterSummary${strategy}${sourceImages}" = "Redact ${strategy} in ${sourceImages}";
 "RedactIntent.everythingParameterSummary${strategy}${sourceImages}" = "Redact ${strategy} in ${sourceImages}";
-"RedactIntent.wordsParameterSummary${strategy}${redactedWords}${sourceImages}" = "Redact the ${strategy} ${redactedWords} in ${sourceImages}";
+"RedactIntent.outputFormat.title" = "Output Format";
 "RedactIntent.redactedWords.title" = "Redacted Words";
 "RedactIntent.redactionStrategy.title" = "Redaction Type";
 "RedactIntent.sourceImages.title" = "Images";
 "RedactIntent.title" = "Redact Image";
+"RedactIntent.wordsParameterSummary${strategy}${redactedWords}${sourceImages}" = "Redact the ${strategy} ${redactedWords} in ${sourceImages}";
 
 "RedactionStrategy.detections" = "Detected Items";
 "RedactionStrategy.everything" = "Everything";

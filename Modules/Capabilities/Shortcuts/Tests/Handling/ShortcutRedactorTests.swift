@@ -24,7 +24,7 @@ struct ShortcutRedactorTests {
         let imageData = try #require(UIImage(systemName: "bolt")?.pngData())
         let file = IntentFile(data: imageData, filename: "img.png", type: .png)
 
-        _ = try await redactor.redact(file, words: ["hello"], color: .black)
+        _ = try await redactor.redact(file, words: ["hello"], color: .black, outputFormat: .png)
         #expect(exporter.redactionCount == 1)
     }
 
@@ -40,7 +40,8 @@ struct ShortcutRedactorTests {
         let file = IntentFile(data: imageData, filename: "img.png", type: .png)
 
         await #expect(throws: ShortcutsRedactorError.noImage(imageData)) {
-            _ = try await redactor.redact(file, words: ["hello"], color: .black)
+            _ = try await redactor
+                .redact(file, words: ["hello"], color: .black, outputFormat: .png)
         }
     }
 
@@ -54,7 +55,12 @@ struct ShortcutRedactorTests {
         let imageData = try #require(UIImage(systemName: "bolt")?.pngData())
         let file = IntentFile(data: imageData, filename: "img.png", type: .png)
 
-        _ = try await redactor.redact(file, detections: [.phoneNumbers], color: .black)
+        _ = try await redactor.redact(
+            file,
+            detections: [.phoneNumbers],
+            color: .black,
+            outputFormat: .png
+        )
         #expect(exporter.redactionCount == 1)
     }
 
@@ -70,7 +76,12 @@ struct ShortcutRedactorTests {
         let file = IntentFile(data: imageData, filename: "img.png", type: .png)
 
         await #expect(throws: ShortcutsRedactorError.noImage(imageData)) {
-            _ = try await redactor.redact(file, detections: [.phoneNumbers], color: .black)
+            _ = try await redactor.redact(
+                file,
+                detections: [.phoneNumbers],
+                color: .black,
+                outputFormat: .png
+            )
         }
     }
 
@@ -84,7 +95,12 @@ struct ShortcutRedactorTests {
         let imageData = try #require(UIImage(systemName: "bolt")?.pngData())
         let file = IntentFile(data: imageData, filename: "img.png", type: .png)
 
-        _ = try await redactor.redact(file, special: .everything, color: .black)
+        _ = try await redactor.redact(
+            file,
+            special: .everything,
+            color: .black,
+            outputFormat: .png
+        )
         #expect(exporter.redactionCount == 2)
     }
 
@@ -100,7 +116,12 @@ struct ShortcutRedactorTests {
         let file = IntentFile(data: imageData, filename: "img.png", type: .png)
 
         await #expect(throws: ShortcutsRedactorError.noImage(imageData)) {
-            _ = try await redactor.redact(file, special: .everything, color: .black)
+            _ = try await redactor.redact(
+                file,
+                special: .everything,
+                color: .black,
+                outputFormat: .png
+            )
         }
     }
 }

@@ -51,6 +51,7 @@ struct RedactDetectionsIntent: AppIntent, DeprecatedAppIntent, LegacyRedactInten
         let 🔥 = try await intentHandler.handle(
             sourceImages: timCookCanEatMySocks,
             selectedColor: color,
+            outputFormat: .png,
             💩: ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO,
             meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
         )

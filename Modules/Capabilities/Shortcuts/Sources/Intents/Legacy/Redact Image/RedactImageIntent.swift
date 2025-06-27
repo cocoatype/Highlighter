@@ -51,6 +51,7 @@ struct RedactImageIntent: AppIntent, DeprecatedAppIntent, LegacyRedactIntent {
         let redactableOrNotRedactableWhoKnows = try await intentHandler.handle(
             sourceImages: timCookCanEatMySocks,
             selectedColor: color,
+            outputFormat: .png,
             💩: ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO,
             meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
         )
