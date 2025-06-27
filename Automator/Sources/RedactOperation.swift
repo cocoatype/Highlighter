@@ -33,7 +33,7 @@ class RedactOperation: Operation, @unchecked Sendable {
                 let redactions = matchingObservations.map { Redaction($0, color: .black) }
 
                 guard let inputImage = input.image else { throw RedactActionExportError.noImageForInput }
-                let redactedImage = try await PhotoRenderer(image: inputImage, redactions: redactions).render()
+                let redactedImage = try await Rendering.renderer.render(image: inputImage, redactions: redactions)
                 let writeURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString, conformingTo: input.fileType ?? .png)
 
                 os_log("export representations: %{public}@", String(describing: redactedImage.representations))

@@ -24,21 +24,7 @@ actor DataPhotoRenderer: PhotoRenderer {
         else { throw PhotoRenderError.noCGImage }
 
         let imageSize = sourceImage.size
-        guard let imageRep = NSBitmapImageRep(
-            bitmapDataPlanes: nil,
-            pixelsWide: Int(imageSize.width),
-            pixelsHigh: Int(imageSize.height),
-            bitsPerSample: 8,
-            samplesPerPixel: 4,
-            hasAlpha: true,
-            isPlanar: false,
-            colorSpaceName: .deviceRGB,
-            bytesPerRow: Int(imageSize.width) * 4,
-            bitsPerPixel: 32
-        ),
-              let graphicsContext = NSGraphicsContext(bitmapImageRep: imageRep)
-        else { throw PhotoRenderError.noCurrentGraphicsContext }
-        let context = graphicsContext.cgContext
+        let context = try createImageContext(size: sourceImage.size, scale: 1)
 
         let cgImage = try render(
             sourceImage: sourceImage,
@@ -49,6 +35,29 @@ actor DataPhotoRenderer: PhotoRenderer {
         )
         return NSImage(cgImage: cgImage, size: imageSize)
     }
+
+    private func createImageContext(
+        size: CGSize,
+        scale: CGFloat
+    ) throws -> CGContext {
+        guard let imageRep = NSBitmapImageRep(
+            bitmapDataPlanes: nil,
+            pixelsWide: Int(size.width),
+            pixelsHigh: Int(size.height),
+            bitsPerSample: 8,
+            samplesPerPixel: 4,
+            hasAlpha: true,
+            isPlanar: false,
+            colorSpaceName: .deviceRGB,
+            bytesPerRow: Int(size.width) * 4,
+            bitsPerPixel: 32
+        ),
+              let graphicsContext = NSGraphicsContext(bitmapImageRep: imageRep)
+        else { throw PhotoRenderError.noCurrentGraphicsContext }
+        return graphicsContext.cgContext
+    }
+
+    private func discardImageContext() {}
     #elseif canImport(UIKit)
     public init() {}
 
@@ -59,15 +68,11 @@ actor DataPhotoRenderer: PhotoRenderer {
         guard let sourceImage = image.cgImage
         else { throw PhotoRenderError.noCGImage }
 
-        UIGraphicsBeginImageContextWithOptions(
-            sourceImage.size,
-            false,
-            image.scale
+        let context = try createImageContext(
+            size: sourceImage.size,
+            scale: image.scale
         )
-        defer { UIGraphicsEndImageContext() }
-
-        guard let context = UIGraphicsGetCurrentContext()
-        else { throw PhotoRenderError.noCurrentGraphicsContext }
+        defer { discardImageContext() }
 
         let cgImage = try render(
             sourceImage: sourceImage,
@@ -78,6 +83,20 @@ actor DataPhotoRenderer: PhotoRenderer {
         )
         return UIImage(cgImage: cgImage)
     }
+
+    private func createImageContext(
+        size: CGSize,
+        scale: CGFloat
+    ) throws -> CGContext {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        guard let context = UIGraphicsGetCurrentContext()
+        else { throw PhotoRenderError.noCurrentGraphicsContext }
+        return context
+    }
+
+    private func discardImageContext() {
+        UIGraphicsEndImageContext()
+    }
     #endif
 
     func render(
@@ -87,15 +106,8 @@ actor DataPhotoRenderer: PhotoRenderer {
         guard let sourceImage = imageSource.image
         else { throw PhotoRenderError.noCGImage }
 
-        UIGraphicsBeginImageContextWithOptions(
-            sourceImage.size,
-            false,
-            1
-        )
-        defer { UIGraphicsEndImageContext() }
-
-        guard let context = UIGraphicsGetCurrentContext()
-        else { throw PhotoRenderError.noCurrentGraphicsContext }
+        let context = try createImageContext(size: sourceImage.size, scale: 1)
+        defer { discardImageContext() }
 
         return try render(
             sourceImage: sourceImage,
