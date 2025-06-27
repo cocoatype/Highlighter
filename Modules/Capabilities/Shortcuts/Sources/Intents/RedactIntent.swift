@@ -17,18 +17,21 @@ struct RedactIntent: AppIntent {
     )
     var sourceImages: [IntentFile]
 
-    @Parameter(title: "RedactIntent.color")
-    var color: ColorEntity?
+    @Parameter(
+        title: "RedactIntent.color",
+        default: 0x000000
+    )
+    var color: ColorEntity
 
     @Parameter(
-        title: "RedactIntent.outputFormat",
+        title: "RedactIntent.outputFormat.title",
         default: .matchInput
     )
     var outputFormat: OutputFormat
 
     @Parameter(
         title: "RedactIntent.redactionStrategy.title",
-        default: .everything
+        default: .words
     )
     var strategy: RedactionStrategy
 
