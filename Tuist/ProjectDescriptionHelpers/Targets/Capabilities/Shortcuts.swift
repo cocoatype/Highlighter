@@ -6,6 +6,7 @@ public enum Shortcuts {
         hasResources: true,
         dependencies: [
             .target(AppNavigation.target),
+            .target(Defaults.target),
             .target(DesignSystem.target),
             .target(Detections.target(sdk: .catalyst)),
             .target(Observations.target(sdk: .catalyst)),
