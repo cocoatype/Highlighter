@@ -68,7 +68,7 @@ struct UnpurchasedAlertControllerFactoryTests {
             hideFeatureKey: key
         )
         let defaults = StubDefaultsProvider()
-        let factory = UnpurchasedAlertControllerFactory()
+        let factory = UnpurchasedAlertControllerFactory(defaults: defaults)
         let alert = factory.alertController(for: feature)
 
         #expect(alert.actions.count == 2)

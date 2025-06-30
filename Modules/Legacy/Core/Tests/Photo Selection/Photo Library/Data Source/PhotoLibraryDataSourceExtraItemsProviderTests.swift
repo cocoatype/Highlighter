@@ -35,8 +35,9 @@ struct PhotoLibraryDataSourceExtraItemsProviderTests {
         )
         let isIncluded = (0..<provider.itemsCount)
             .contains(where: {
-                if case .documentScan = provider.item(atIndex: $0) { true }
-                else { false }
+                if case .documentScan = provider.item(atIndex: $0) {
+                    return true
+                } else { return false }
             })
         #expect(isIncluded == shouldBeIncluded)
     }
