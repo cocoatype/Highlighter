@@ -18,6 +18,7 @@ public enum EditingToolbar {
         name: "EditingToolbar",
         dependencies: [
             .target(Defaults.target),
+            .target(Defaults.doublesTarget),
             .target(Purchasing.doublesTarget),
             .target(Purchasing.target),
             .target(Tools.target),

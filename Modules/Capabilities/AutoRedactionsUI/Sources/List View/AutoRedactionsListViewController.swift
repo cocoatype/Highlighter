@@ -5,7 +5,13 @@ import Defaults
 import UIKit
 
 public class AutoRedactionsListViewController: UIViewController {
-    public init() {
+    private let defaults: any DefaultsProvider
+    private let dataSource: AutoRedactionsDataSource
+    public init(
+        defaults: any DefaultsProvider = Defaults.provider
+    ) {
+        self.defaults = defaults
+        self.dataSource = AutoRedactionsDataSource(defaults: defaults)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -35,9 +41,9 @@ public class AutoRedactionsListViewController: UIViewController {
               string.isEmpty == false
         else { return }
 
-        var existingWordList = Defaults.autoRedactionsWordList
-        existingWordList.append(string)
-        Defaults.autoRedactionsWordList = existingWordList
+        var redactionsSet = defaults.value(for: Keys.autoRedactionsSet) ?? [:]
+        redactionsSet[string] = true
+        defaults.set(redactionsSet, for: Keys.autoRedactionsSet)
 
         sender.text = nil
 
@@ -46,7 +52,6 @@ public class AutoRedactionsListViewController: UIViewController {
 
     // MARK: Boilerplate
 
-    private let dataSource = AutoRedactionsDataSource()
     private var editView: AutoRedactionsListView? { return view as? AutoRedactionsListView }
 
     @available(*, unavailable)

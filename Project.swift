@@ -55,6 +55,7 @@ let project = Project(
         URLParsing.target,
         UserActivities.target,
         // doubles
+        Defaults.doublesTarget,
         DesignSystem.doublesTarget,
         Logging.doublesTarget,
         Purchasing.doublesTarget,
@@ -67,6 +68,7 @@ let project = Project(
         AutoRedactionsUI.testTarget,
         Brushes.testTarget,
         Core.testTarget,
+        Defaults.testTarget,
         Editing.testTarget,
         EditingToolbar.testTarget,
         ErrorHandling.testTarget,

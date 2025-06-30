@@ -21,7 +21,7 @@ class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelega
         super.init()
     }
 
-    func cameraViewController() -> UIViewController {
+    @MainActor func cameraViewController() -> UIViewController {
         if purchased {
             let cameraViewController: DocumentCameraViewController
             if ProcessInfo.processInfo.environment["IS_TEST"] == nil {
@@ -35,7 +35,8 @@ class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelega
             cameraViewController.view.tintColor = .controlTint
             return cameraViewController
         } else {
-            return UnpurchasedAlertControllerFactory().alertController(for: .documentScanner(learnMoreAction: delegate?.presentPurchaseMarketing))
+            return UnpurchasedAlertControllerFactory()
+                .alertController(for: .documentScanner(learnMoreAction: delegate?.presentPurchaseMarketing))
         }
     }
 

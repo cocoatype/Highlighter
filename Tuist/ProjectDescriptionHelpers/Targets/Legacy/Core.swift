@@ -57,6 +57,7 @@ public enum Core {
         type: "Legacy",
         dependencies: [
             .target(Defaults.target),
+            .target(Defaults.doublesTarget),
             .target(DesignSystem.doublesTarget),
             .target(Logging.doublesTarget),
             .target(Purchasing.doublesTarget),

@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 5/16/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import DefaultsDoubles
 import DesignSystemDoubles
 import LoggingDoubles
 import PurchasingDoubles
@@ -10,10 +11,11 @@ import XCTest
 @testable import Core
 
 class AppDelegateTests: XCTestCase {
-    func testWillFinishLaunchingCallsStartOnPurchaseRepository() {
+    @MainActor func testWillFinishLaunchingCallsStartOnPurchaseRepository() {
         let repository = SpyRepository(startExpectation: expectation(description: "start called"))
         let logger = SpyLogger()
         let delegate = AppDelegate(
+            defaults: StubDefaultsProvider(),
             purchaseRepository: repository,
             logger: logger,
             appearanceWriter: StubAppearanceWriter()

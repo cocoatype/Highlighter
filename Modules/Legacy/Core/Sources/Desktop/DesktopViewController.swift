@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 8/3/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+import Defaults
 import Editing
 import ErrorHandling
 import Redactions
@@ -11,10 +12,15 @@ import UIKit
 class DesktopViewController: UIViewController, FileURLProvider {
     var editingViewController: PhotoEditingViewController? { children.first as? PhotoEditingViewController }
 
-    init(dependencies: SceneDependencies) {
+    private let defaults: any DefaultsProvider
+    init(
+        dependencies: SceneDependencies,
+        defaults: any DefaultsProvider = Defaults.provider
+    ) {
         self.initialRedactions = dependencies.redactions
         self.representedURL = dependencies.representedURL
         self.image = dependencies.image
+        self.defaults = defaults
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -63,7 +69,7 @@ class DesktopViewController: UIViewController, FileURLProvider {
             return
         }
 
-        RecentsMenuDataSource.addRecentItem(representedURL)
+        RecentsMenuDataSource.addRecentItem(representedURL, defaults: defaults)
 
         windowScene?.titlebar?.representedURL = representedURL
         windowScene?.title = representedURL.lastPathComponent

@@ -1,67 +1,43 @@
 //  Created by Geoff Pado on 5/16/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import Testing
+
+import DefaultsDoubles
+import Purchasing
 import PurchasingDoubles
-import XCTest
 
 @testable import Core
 @testable import Defaults
 
 @MainActor
-class PhotoLibraryDataSourceExtraItemsProviderTests: XCTestCase {
-    @Defaults.Value(key: .hideDocumentScanner) var hideDocumentScanner: Bool
-    override func tearDown() {
-        hideDocumentScanner = false
-        super.tearDown()
-    }
-
-    func testDocumentScannerIsIncludedIfPurchasedAndSupportedAndNotHidden() {
-        let repository = SpyRepository(withCheese: .purchased)
-        let provider = PhotoLibraryDataSourceExtraItemsProvider(isDocumentScannerSupported: true, purchaseRepository: repository)
-        hideDocumentScanner = false
-        XCTAssertTrue(provider.extraItems.contains(where: \.isDocumentScan))
-    }
-
-    func testDocumentScannerIsIncludedIfNotPurchasedAndNotHidden() {
-        let repository = SpyRepository(withCheese: .unavailable)
-        let provider = PhotoLibraryDataSourceExtraItemsProvider(isDocumentScannerSupported: true, purchaseRepository: repository)
-        hideDocumentScanner = false
-        XCTAssertTrue(provider.extraItems.contains(where: \.isDocumentScan))
-    }
-
-    func testDocumentScannerIsIncludedIfPurchasedAndHidden() {
-        let repository = SpyRepository(withCheese: .purchased)
-        let provider = PhotoLibraryDataSourceExtraItemsProvider(isDocumentScannerSupported: true, purchaseRepository: repository)
-        hideDocumentScanner = true
-        XCTAssertTrue(provider.extraItems.contains(where: \.isDocumentScan))
-    }
-
-    func testDocumentScannerIsNotIncludedIfNotPurchasedAndHidden() {
-        let repository = SpyRepository(withCheese: .unavailable)
-        let provider = PhotoLibraryDataSourceExtraItemsProvider(isDocumentScannerSupported: true, purchaseRepository: repository)
-        hideDocumentScanner = true
-        XCTAssertFalse(provider.extraItems.contains(where: \.isDocumentScan))
-    }
-
-    func testDocumentScannerIsNotIncludedIfNotSupported() {
-        let repository = SpyRepository(withCheese: .purchased)
-        let provider = PhotoLibraryDataSourceExtraItemsProvider(isDocumentScannerSupported: false, purchaseRepository: repository)
-        hideDocumentScanner = false
-        XCTAssertFalse(provider.extraItems.contains(where: \.isDocumentScan))
-    }
-}
-
-private extension PhotoLibraryItem {
-    var isDocumentScan: Bool {
-        switch self {
-        case .documentScan: return true
-        case .asset, .limitedLibrary: return false
-        }
-    }
-}
-
-private extension PhotoLibraryDataSourceExtraItemsProvider {
-    var extraItems: [PhotoLibraryItem] {
-        (0..<itemsCount).map { item(atIndex: $0) }
+struct PhotoLibraryDataSourceExtraItemsProviderTests {
+    @Test(arguments: [
+        (true, false, PurchaseState.purchased, true),
+        (true, false, .unavailable, true),
+        (true, true, .purchased, true),
+        (true, true, .unavailable, false),
+        (false, false, .purchased, false),
+        (false, false, .unavailable, false),
+        (false, true, .purchased, false),
+        (false, true, .unavailable, false),
+    ])
+    func scannerIsIncluded(
+        isDocumentScannerSupported: Bool,
+        hideDocumentScanner: Bool,
+        purchaseState: PurchaseState,
+        shouldBeIncluded: Bool
+    ) {
+        let provider = PhotoLibraryDataSourceExtraItemsProvider(
+            isDocumentScannerSupported: isDocumentScannerSupported,
+            defaults: StubDefaultsProvider(hideDocumentScanner: hideDocumentScanner),
+            purchaseRepository: SpyRepository(withCheese: purchaseState)
+        )
+        let isIncluded = (0..<provider.itemsCount)
+            .contains(where: {
+                if case .documentScan = provider.item(atIndex: $0) { true }
+                else { false }
+            })
+        #expect(isIncluded == shouldBeIncluded)
     }
 }

@@ -6,7 +6,11 @@ import Defaults
 import SwiftUI
 
 class DesktopAutoRedactionsListViewController: UIViewController, DesktopAutoRedactionsViewDelegate {
-    init() {
+    private let defaults: any DefaultsProvider
+    init(
+        defaults: any DefaultsProvider = Defaults.provider
+    ) {
+        self.defaults = defaults
         super.init(nibName: nil, bundle: nil)
         edgesForExtendedLayout = UIRectEdge()
         preferredContentSize = CGSize(width: 500, height: 640)
@@ -19,21 +23,19 @@ class DesktopAutoRedactionsListViewController: UIViewController, DesktopAutoReda
 
     private func addNewWord() {
         let newWordDialog = AutoRedactionsAdditionDialogFactory.newDialog { [weak self] string in
-            guard let string = string, string.isEmpty == false else { return }
-            var existingSet = Defaults.autoRedactionsSet
-            existingSet[string] = true
-            Defaults.autoRedactionsSet = existingSet
+            guard let string, string.isEmpty == false,
+                  let self else { return }
 
-            self?.settingsView.appendRow()
-//            self?.rootView.wordList = existingWordList
+            redactionsSet[string] = true
+            settingsView.appendRow()
         }
         present(newWordDialog, animated: true)
     }
 
     private func removeSelectedWord() {
         guard let selectedIndex = settingsView.selectedIndex else { return }
-        let selectedWord = Defaults.autoRedactionsWordList[selectedIndex]
-        Defaults.autoRedactionsSet[selectedWord] = nil
+        let selectedWord = autoRedactionWord(at: selectedIndex)
+        redactionsSet[selectedWord] = nil
         settingsView.removeRow(at: selectedIndex)
     }
 
@@ -47,11 +49,25 @@ class DesktopAutoRedactionsListViewController: UIViewController, DesktopAutoReda
         }
     }
 
+    private var redactionsSet: [String: Bool] {
+        get {
+            defaults.value(for: Keys.autoRedactionsSet) ?? [:]
+        }
+        set {
+            defaults.set(newValue, for: Keys.autoRedactionsSet)
+        }
+    }
+
     // MARK: Delegate
 
-    var autoRedactionWordsCount: Int { return Defaults.autoRedactionsWordList.count }
-    func autoRedactionWord(at index: IndexPath) -> String {
-        return Defaults.autoRedactionsWordList[index.row]
+    var autoRedactionWordsCount: Int { redactionsSet.count }
+
+    func autoRedactionWord(at indexPath: IndexPath) -> String {
+        return autoRedactionWord(at: indexPath.row)
+    }
+
+    private func autoRedactionWord(at index: Int) -> String {
+        Array(redactionsSet.keys.sorted())[index]
     }
 
     // MARK: Boilerplate

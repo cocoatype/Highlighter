@@ -11,14 +11,20 @@ import StoreKit
 
 public struct AppRatingsPrompter {
     public init() {
-        self.init(logger: TelemetryLogger(), ratingRequestMethod: SKStoreReviewController.requestReview(in:))
+        self.init(
+            defaults: Defaults.provider,
+            logger: TelemetryLogger(),
+            ratingRequestMethod: SKStoreReviewController.requestReview(in:)
+        )
     }
 
     init(
-        logger: Logger,
+        defaults: any DefaultsProvider,
+        logger: any Logger,
         ratingRequestMethod: @escaping ((UIWindowScene) -> Void) = SKStoreReviewController.requestReview(in:),
         repository: any PurchaseRepository = Purchasing.repository
     ) {
+        self.defaults = defaults
         self.logger = logger
         self.ratingRequestMethod = ratingRequestMethod
         self.repository = repository
@@ -31,10 +37,12 @@ public struct AppRatingsPrompter {
             return
         }
 
-        if (Defaults.numberOfSaves > 0) && (Defaults.numberOfSaves % Self.ratingNumberOfSavesCadence == 0) {
+        let numberOfSaves = defaults.value(for: Keys.numberOfSaves)
+
+        if (numberOfSaves > 0) && (numberOfSaves % Self.ratingNumberOfSavesCadence == 0) {
             ratingRequestMethod(windowScene)
             logger.log(Event(name: .requestedRating, info: [:]))
-        } else if Defaults.numberOfSaves == Self.paywallNumberOfSaves, #available(iOS 16.0, *) {
+        } else if numberOfSaves == Self.paywallNumberOfSaves, #available(iOS 16.0, *) {
             guard let topViewController = windowScene.windows.first?.rootViewController,
                   await repository.noOnions != .purchased
             else { return }
@@ -47,7 +55,8 @@ public struct AppRatingsPrompter {
 
     private static let ratingNumberOfSavesCadence = 3
     private static let paywallNumberOfSaves = 10
-    private let logger: Logger
+    private let defaults: any DefaultsProvider
+    private let logger: any Logger
     private let ratingRequestMethod: (UIWindowScene) -> Void
     private let repository: any PurchaseRepository
 }

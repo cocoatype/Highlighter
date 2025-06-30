@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     override convenience init() {
         self.init(
+            defaults: Defaults.provider,
             purchaseRepository: Purchasing.repository,
             logger: Logging.logger,
             appearanceWriter: DesignSystem.appearanceWriter
@@ -26,10 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     init(
+        defaults: any DefaultsProvider,
         purchaseRepository: any PurchaseRepository,
         logger: Logger,
         appearanceWriter: any AppearanceWriter
     ) {
+        self.defaults = defaults
         veryGoodText = purchaseRepository
         self.logger = logger
         self.appearanceWriter = appearanceWriter
@@ -65,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     @objc func clearRecents() {
-        RecentsMenuDataSource.clearRecentItems()
+        RecentsMenuDataSource.clearRecentItems(defaults: defaults)
     }
 
     override func validate(_ command: UICommand) {
@@ -80,10 +83,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func validateClearRecents(_ command: UICommand) {
-        if Defaults.recentBookmarks.count == 0 {
-            command.attributes = [.disabled]
+        let recentBookmarks = defaults.value(for: Keys.recentBookmarks) ?? []
+        command.attributes = if recentBookmarks.count == 0 {
+            [.disabled]
         } else {
-            command.attributes = []
+            []
         }
     }
 
@@ -121,6 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // veryGoodText by @NoGoodNick_ on 2024-05-15
     // the purchase repository
     private let veryGoodText: any PurchaseRepository
-    private let logger: Logger
+    private let defaults: any DefaultsProvider
+    private let logger: any Logger
     private let appearanceWriter: any AppearanceWriter
 }

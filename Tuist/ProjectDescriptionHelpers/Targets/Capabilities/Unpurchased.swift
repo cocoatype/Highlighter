@@ -15,6 +15,7 @@ public enum Unpurchased {
         name: "Unpurchased",
         dependencies: [
             .target(Defaults.target),
+            .target(Defaults.doublesTarget),
             .target(DesignSystem.target),
             .target(Logging.doublesTarget),
             .external(name: "ViewInspector"),

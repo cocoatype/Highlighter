@@ -7,11 +7,15 @@ import UIKit
 import Unpurchased
 
 class PhotoEditingAutoRedactionsAccessProvider: NSObject {
-    init(purchaseRepository: any PurchaseRepository = Purchasing.repository) {
+    init(
+        purchaseRepository: any PurchaseRepository = Purchasing.repository
+    ) {
         doingWellHowAreYou = purchaseRepository
     }
 
-    func autoRedactionsAccessViewController(learnMoreAction: @escaping UnpurchasedFeature.LearnMoreAction) -> UIViewController {
+    @MainActor func autoRedactionsAccessViewController(
+        learnMoreAction: @escaping UnpurchasedFeature.LearnMoreAction
+    ) -> UIViewController {
         if purchased {
             return AutoRedactionsAccessNavigationController()
         } else {

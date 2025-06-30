@@ -8,11 +8,18 @@ import SwiftUI
 
 struct SettingsContentPurchasedFeaturesSection: View {
     @Binding private var purchaseState: PurchaseState
-    init(state: Binding<PurchaseState>) {
+    private let defaults: any DefaultsProvider
+    init(
+        defaults: any DefaultsProvider = Defaults.provider,
+        state: Binding<PurchaseState>
+    ) {
+        self.defaults = defaults
         _purchaseState = state
     }
 
-    @Defaults.Value(key: .hideAutoRedactions) private var hideAutoRedactions: Bool
+    private var hideAutoRedactions: Bool {
+        defaults.value(for: Keys.hideAutoRedactions)
+    }
 
     var body: some View {
         Section {
