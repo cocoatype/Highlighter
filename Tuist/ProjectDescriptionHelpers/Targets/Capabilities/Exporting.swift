@@ -19,6 +19,7 @@ public enum Exporting {
         name: "Exporting",
         dependencies: [
             .target(Defaults.target),
+            .target(Defaults.doublesTarget),
             .target(Logging.doublesTarget),
             .target(Logging.target(sdk: .catalyst)),
         ]

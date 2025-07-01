@@ -58,8 +58,9 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         return try await editingViewController?.preparedURL
     }
 
+    private let defaults = Defaults.provider
     func didExportImage() {
-        Defaults.numberOfSaves = Defaults.numberOfSaves + 1
+        defaults.set(defaults.value(for: Keys.numberOfSaves) + 1, for: Keys.numberOfSaves)
         Task { [weak self] in
             await AppRatingsPrompter().displayRatingsPrompt(in: self?.window?.windowScene)
         }

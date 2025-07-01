@@ -1,3 +1,15 @@
+// Dismiss button for the save error alert
+"DesktopSaveAlertController.dismissButtonTitle" = "OK";
+
+// Message for the missing represented URL alert
+"DesktopSaveError.alertMessage" = "There was an unexpected error when saving the image. If this continues to happen, please contact support at hello@cocoatype.com.";
+// Title for the missing represented URL alert
+"DesktopSaveError.missingRepresentedURLTitle" = "Invalid Image";
+// Title for the missing image type alert
+"DesktopSaveError.missingImageTypeTitle" = "Unknown Image Type";
+// Title for the no export data alert
+"DesktopSaveError.noImageDataTitle" = "Export Failed";
+
 // Title for the finalize button on seek and destroy
 "DesktopSeekButton.title" = "Hide";
 

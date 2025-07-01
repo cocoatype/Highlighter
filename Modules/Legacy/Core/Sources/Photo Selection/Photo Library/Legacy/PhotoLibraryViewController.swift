@@ -13,8 +13,10 @@ import UserActivities
 class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate, PHPhotoLibraryChangeObserver {
     init(
         collection: PhotoCollection,
+        defaults: any DefaultsProvider = Defaults.provider,
         logger: any Logger = TelemetryLogger()
     ) {
+        self.defaults = defaults
         self.logger = logger
         self.dataSource = PhotoLibraryDataSource(collection)
         super.init(nibName: nil, bundle: nil)
@@ -24,7 +26,9 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         navigationItem.title = collection.title ?? CoreStrings.PhotoLibraryViewController.navigationItemTitle
         navigationItem.rightBarButtonItem = SettingsBarButtonItem.standard
 
-        hideDocumentScannerObserver = NotificationCenter.default.addObserver(forName: _hideDocumentScanner.valueDidChange, object: nil, queue: nil) { [weak self] _ in
+        hideDocumentScannerObserver = NotificationCenter.default.addObserver(
+            for: Keys.hideDocumentScanner
+        ) { [weak self] in
             self?.libraryView.reloadData()
         }
     }
@@ -129,7 +133,8 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
 
     // MARK: Boilerplate
 
-    @Defaults.Value(key: .hideDocumentScanner) private var hideDocumentScanner: Bool
+    private var hideDocumentScanner: Bool { defaults.value(for: Keys.hideDocumentScanner) }
+    private let defaults: any DefaultsProvider
     private var dataSource: PhotoLibraryDataSource {
         didSet {
             libraryView.dataSource = dataSource

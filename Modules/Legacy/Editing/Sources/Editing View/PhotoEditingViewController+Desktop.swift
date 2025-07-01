@@ -3,7 +3,6 @@
 
 import AppRatings
 import Defaults
-import Editing
 import ErrorHandling
 import Exporting
 import UIKit
@@ -18,7 +17,7 @@ extension PhotoEditingViewController {
         return UTType(imageTypeString as String)
     }
 
-    @objc func save(_ sender: Any) {
+    @objc public func save(_ sender: Any) {
         guard let exportURL = fileURLProvider?.representedFileURL else { return saveAs(sender) }
 
         Task { @MainActor [weak self] in
@@ -28,7 +27,7 @@ extension PhotoEditingViewController {
                 try await FileManager.default.copyItem(at: preparedURL, to: exportURL)
                 clearHasMadeEdits()
 
-                Defaults.numberOfSaves += 1
+                defaults.set(defaults.value(for: Keys.numberOfSaves) + 1, for: Keys.numberOfSaves)
                 await AppRatingsPrompter().displayRatingsPrompt(in: view.window?.windowScene)
             } catch {
                 ErrorHandler().log(error)
@@ -36,13 +35,13 @@ extension PhotoEditingViewController {
         }
     }
 
-    @objc func saveAs(_ sender: Any) {
+    @objc @MainActor public func saveAs(_ sender: Any) {
         Task { @MainActor [weak self] in
             do {
-                self?.clearHasMadeEdits()
-
-                Defaults.numberOfSaves += 1
                 guard let self else { return }
+                clearHasMadeEdits()
+
+                defaults.set(defaults.value(for: Keys.numberOfSaves) + 1, for: Keys.numberOfSaves)
                 let temporaryURL = try await preparedURL
                 let saveViewController = DesktopSaveViewController(url: temporaryURL) { [weak self] urls in
                     Task {

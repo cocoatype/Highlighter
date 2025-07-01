@@ -10,10 +10,13 @@ import Observations
 import UIKit
 
 class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
+    private let defaults: any DefaultsProvider
     private let flagProvider: any FeatureFlagProvider
     init(
+        defaults: any DefaultsProvider = Defaults.provider,
         flagProvider: any FeatureFlagProvider = FeatureFlagging.provider
     ) {
+        self.defaults = defaults
         self.flagProvider = flagProvider
         super.init()
         isUserInteractionEnabled = false
@@ -42,20 +45,20 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
 
     // MARK: Preferences
 
-    @Defaults.Value(key: .showDetectedTextOverlay) private var isDetectedTextOverlayEnabled: Bool
-    @Defaults.Value(key: .showDetectedCharactersOverlay) private var isDetectedCharactersOverlayEnabled: Bool
-    @Defaults.Value(key: .showRecognizedTextOverlay) private var isRecognizedTextOverlayEnabled: Bool
-    @Defaults.Value(key: .showCalculatedOverlay) private var isCalculatedOverlayEnabled: Bool
-    @Defaults.Value(key: .showCombinedOverlay) private var isCombinedOverlayEnabled: Bool
+    private var isDetectedTextOverlayEnabled: Bool { defaults.value(for: Keys.showDetectedTextOverlay) }
+    private var isDetectedCharactersOverlayEnabled: Bool { defaults.value(for: Keys.showDetectedCharactersOverlay) }
+    private var isRecognizedTextOverlayEnabled: Bool { defaults.value(for: Keys.showRecognizedTextOverlay) }
+    private var isCalculatedOverlayEnabled: Bool { defaults.value(for: Keys.showCalculatedOverlay) }
+    private var isCombinedOverlayEnabled: Bool { defaults.value(for: Keys.showCombinedOverlay) }
     private var cancellables = [any NSObjectProtocol]()
 
     private func subscribeToUpdates() {
         let update: @MainActor @Sendable () -> Void = { [weak self] in self?.updateDebugLayers() }
-        cancellables.append(NotificationCenter.default.addObserver(for: _isDetectedTextOverlayEnabled, block: update))
-        cancellables.append(NotificationCenter.default.addObserver(for: _isDetectedCharactersOverlayEnabled, block: update))
-        cancellables.append(NotificationCenter.default.addObserver(for: _isRecognizedTextOverlayEnabled, block: update))
-        cancellables.append(NotificationCenter.default.addObserver(for: _isCalculatedOverlayEnabled, block: update))
-        cancellables.append(NotificationCenter.default.addObserver(for: _isCombinedOverlayEnabled, block: update))
+        cancellables.append(NotificationCenter.default.addObserver(for: Keys.showDetectedTextOverlay, block: update))
+        cancellables.append(NotificationCenter.default.addObserver(for: Keys.showDetectedCharactersOverlay, block: update))
+        cancellables.append(NotificationCenter.default.addObserver(for: Keys.showRecognizedTextOverlay, block: update))
+        cancellables.append(NotificationCenter.default.addObserver(for: Keys.showCalculatedOverlay, block: update))
+        cancellables.append(NotificationCenter.default.addObserver(for: Keys.showCombinedOverlay, block: update))
     }
 
     private func updateDebugLayers() {
@@ -88,7 +91,7 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
                     }
                 } else { characterLayers = [] }
 
-                if Defaults.Value(key: .showDetectedTextOverlay).wrappedValue {
+                if isDetectedTextOverlayEnabled {
                     let textLayer = PhotoEditingObservationDebugLayer(fillColor: .systemRed, frame: bounds, shape: textObservation.bounds)
 
                     return characterLayers + [textLayer]

@@ -4,23 +4,30 @@
 import Defaults
 import Detections
 
-struct AutoRedactionsCategoryDefaultsMapper {
-    private func defaults(for category: Category) -> Defaults.Value<Bool> {
-        switch category {
-        case .names:
-            return Defaults.Value(key: .autoRedactionsCategoryNames)
-        case .addresses:
-            return Defaults.Value(key: .autoRedactionsCategoryAddresses)
-        case .phoneNumbers:
-            return Defaults.Value(key: .autoRedactionsCategoryPhoneNumbers)
-        }
+@MainActor struct AutoRedactionsCategoryDefaultsMapper {
+    private let defaults: any DefaultsProvider
+    init(
+        defaults: any DefaultsProvider = Defaults.provider
+    ) {
+        self.defaults = defaults
     }
 
     func value(for category: Category) -> Bool {
-        defaults(for: category).wrappedValue
+        defaults.value(for: key(for: category))
     }
 
     func set(_ value: Bool, for category: Category) {
-        defaults(for: category).wrappedValue = value
+        defaults.set(value, for: key(for: category))
+    }
+
+    private func key(for category: Category) -> Key<Bool> {
+        switch category {
+        case .names:
+            return Keys.autoRedactionsCategoryNames
+        case .addresses:
+            return Keys.autoRedactionsCategoryAddresses
+        case .phoneNumbers:
+            return Keys.autoRedactionsCategoryPhoneNumbers
+        }
     }
 }

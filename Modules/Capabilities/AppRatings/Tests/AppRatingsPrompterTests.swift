@@ -2,6 +2,7 @@
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
 import Defaults
+import DefaultsDoubles
 import Editing
 import LoggingDoubles
 import TestHelpers
@@ -10,12 +11,15 @@ import XCTest
 @testable import AppRatings
 @testable import Logging
 
+@MainActor
 class AppRatingsPrompterTests: XCTestCase {
     func testDisplayingPromptOnFirstAttemptDoesNotPrompt() async throws {
-        Defaults.numberOfSaves = 1
         let promptExpectation = expectation(description: "prompted")
         promptExpectation.isInverted = true
-        let prompter = AppRatingsPrompter(logger: SpyLogger()) { _ in
+        let prompter = AppRatingsPrompter(
+            defaults: StubDefaultsProvider(numberOfSaves: 1),
+            logger: SpyLogger()
+        ) { _ in
             promptExpectation.fulfill()
         }
 
@@ -26,9 +30,11 @@ class AppRatingsPrompterTests: XCTestCase {
     }
 
     func testDisplayingPromptOnThirdAttemptPrompts() async throws {
-        Defaults.numberOfSaves = 3
         let promptExpectation = expectation(description: "prompted")
-        let prompter = AppRatingsPrompter(logger: SpyLogger()) { _ in
+        let prompter = AppRatingsPrompter(
+            defaults: StubDefaultsProvider(numberOfSaves: 3),
+            logger: SpyLogger()
+        ) { _ in
             promptExpectation.fulfill()
         }
 
@@ -39,10 +45,12 @@ class AppRatingsPrompterTests: XCTestCase {
     }
 
     func testDisplayingPromptOnFifthAttemptDoesNotPrompt() async throws {
-        Defaults.numberOfSaves = 5
         let promptExpectation = expectation(description: "prompted")
         promptExpectation.isInverted = true
-        let prompter = AppRatingsPrompter(logger: SpyLogger()) { _ in
+        let prompter = AppRatingsPrompter(
+            defaults: StubDefaultsProvider(numberOfSaves: 5),
+            logger: SpyLogger()
+        ) { _ in
             promptExpectation.fulfill()
         }
 
@@ -53,9 +61,11 @@ class AppRatingsPrompterTests: XCTestCase {
     }
 
     func testDisplayingPromptOnSixthAttemptPrompts() async throws {
-        Defaults.numberOfSaves = 6
         let promptExpectation = expectation(description: "prompted")
-        let prompter = AppRatingsPrompter(logger: SpyLogger()) { _ in
+        let prompter = AppRatingsPrompter(
+            defaults: StubDefaultsProvider(numberOfSaves: 6),
+            logger: SpyLogger()
+        ) { _ in
             promptExpectation.fulfill()
         }
 
@@ -67,7 +77,10 @@ class AppRatingsPrompterTests: XCTestCase {
 
     func testDisplayingPromptWithNoWindowSceneLogsError() async throws {
         let spy = SpyLogger()
-        let prompter = AppRatingsPrompter(logger: spy) { _ in }
+        let prompter = AppRatingsPrompter(
+            defaults: StubDefaultsProvider(numberOfSaves: 1),
+            logger: spy
+        ) { _ in }
 
         await prompter.displayRatingsPrompt(in: nil)
 
@@ -77,9 +90,11 @@ class AppRatingsPrompterTests: XCTestCase {
     }
 
     func testDisplayingPromptLogsEvent() async throws {
-        Defaults.numberOfSaves = 999
         let spy = SpyLogger()
-        let prompter = AppRatingsPrompter(logger: spy) { _ in }
+        let prompter = AppRatingsPrompter(
+            defaults: StubDefaultsProvider(numberOfSaves: 999),
+            logger: spy
+        ) { _ in }
         let windowScene = try InstanceHelper.create(UIWindowScene.self)
 
         await prompter.displayRatingsPrompt(in: windowScene)

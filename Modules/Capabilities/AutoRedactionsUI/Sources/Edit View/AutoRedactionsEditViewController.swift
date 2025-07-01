@@ -6,7 +6,11 @@ import DesignSystem
 import UIKit
 
 public class AutoRedactionsEditViewController: UIViewController {
-    public init() {
+    private let defaults: any DefaultsProvider
+    public init(
+        defaults: any DefaultsProvider = Defaults.provider
+    ) {
+        self.defaults = defaults
         super.init(nibName: nil, bundle: nil)
 
         navigationItem.title = Self.navigationTitle
@@ -16,7 +20,7 @@ public class AutoRedactionsEditViewController: UIViewController {
     }
 
     private lazy var initialViewController: UIViewController = {
-        let wordList = Defaults.autoRedactionsWordList
+        let wordList = defaults.value(for: Keys.autoRedactionsSet) ?? [:]
         if wordList.count == 0 {
             return AutoRedactionsEmptyViewController()
         } else {

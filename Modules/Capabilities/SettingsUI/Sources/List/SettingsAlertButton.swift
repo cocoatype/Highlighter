@@ -11,10 +11,12 @@ struct SettingsAlertButton: View {
     init(
         _ title: String,
         _ subtitle: String? = nil,
+        defaults: any DefaultsProvider = Defaults.provider,
         purchaseRepository: any PurchaseRepository = Purchasing.repository
     ) {
         self.title = title
         self.subtitle = subtitle
+        self.defaults = defaults
         haveYourDucksInARow = purchaseRepository
     }
 
@@ -37,11 +39,14 @@ struct SettingsAlertButton: View {
     private let title: String
     private let subtitle: String?
 
-    @Defaults.Value(key: .hideAutoRedactions) private var hideAutoRedactions: Bool
+    private var hideAutoRedactions: Bool {
+        defaults.value(for: Keys.hideAutoRedactions)
+    }
 
     // haveYourDucksInARow by @Eskeminha on 2024-05-15
     // the purchase repository
     private let haveYourDucksInARow: any PurchaseRepository
+    private let defaults: any DefaultsProvider
 }
 
 enum SettingsAlertButtonPreviews: PreviewProvider {

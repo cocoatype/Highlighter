@@ -7,7 +7,7 @@ import UIKit
 class DesktopSaveAlertController: UIAlertController {
     convenience init(error: DesktopSaveError) {
         self.init(title: error.alertTitle, message: error.alertMessage, preferredStyle: .alert)
-        addAction(UIAlertAction(title: CoreStrings.DesktopSaveAlertController.dismissButtonTitle, style: .default, handler: nil))
+        addAction(UIAlertAction(title: EditingStrings.DesktopSaveAlertController.dismissButtonTitle, style: .default, handler: nil))
     }
 }
 #endif

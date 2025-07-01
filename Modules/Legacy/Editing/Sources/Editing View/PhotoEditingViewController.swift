@@ -22,10 +22,17 @@ import UserActivities
 // swiftlint:disable file_length
 // swiftlint:disable:next type_body_length
 public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, UIColorPickerViewControllerDelegate, UIPopoverPresentationControllerDelegate, HighlighterToolSelectionHandler {
-    public init(asset: PHAsset? = nil, image: UIImage? = nil, redactions: [Redaction]? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
+    public init(
+        asset: PHAsset? = nil,
+        image: UIImage? = nil,
+        redactions: [Redaction]? = nil,
+        defaults: any DefaultsProvider = Defaults.provider,
+        completionHandler: ((UIImage) -> Void)? = nil
+    ) {
         self.asset = asset
         self.image = image
         self.completionHandler = completionHandler
+        self.defaults = defaults
         super.init(nibName: nil, bundle: nil)
 
         definesPresentationContext = true
@@ -37,23 +44,23 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
             self?.updateToolbarItems()
         })
 
-        viewerNamesAreNotRidiculous = NotificationCenter.default.addObserver(for: _tuBrute) { [weak self] in
+        viewerNamesAreNotRidiculous = NotificationCenter.default.addObserver(for: Keys.autoRedactionsSet) { [weak self] in
             self?.updateAutoRedactions()
         }
 
-        thatsNotEvenValidSwiftMono = NotificationCenter.default.addObserver(for: _autoRedactionsCategoryNames) { [weak self] in
+        thatsNotEvenValidSwiftMono = NotificationCenter.default.addObserver(for: Keys.autoRedactionsCategoryNames) { [weak self] in
             self?.updateAutoRedactions()
         }
 
-        🥥 = NotificationCenter.default.addObserver(for: _autoRedactionsCategoryAddresses) { [weak self] in
+        🥥 = NotificationCenter.default.addObserver(for: Keys.autoRedactionsCategoryAddresses) { [weak self] in
             self?.updateAutoRedactions()
         }
 
-        phoneNumbersRedactionChangeObserver = NotificationCenter.default.addObserver(for: _autoRedactionsCategoryPhoneNumbers) { [weak self] in
+        phoneNumbersRedactionChangeObserver = NotificationCenter.default.addObserver(for: Keys.autoRedactionsCategoryPhoneNumbers) { [weak self] in
             self?.updateAutoRedactions()
         }
 
-        hideAutoRedactionsChangeObserver = NotificationCenter.default.addObserver(for: _hideAutoRedactions) { [weak self] in
+        hideAutoRedactionsChangeObserver = NotificationCenter.default.addObserver(for: Keys.hideAutoRedactions) { [weak self] in
             self?.updateToolbarItems()
         }
 
@@ -525,13 +532,25 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     // MARK: Boilerplate
 
+    var defaults: any DefaultsProvider
+
     // tuBrute by @AdamWulf on 2024-04-29
     // the auto-redactions word list
-    @Defaults.Value(key: .autoRedactionsSet) private var tuBrute: [String: Bool]
-    @Defaults.Value(key: .hideAutoRedactions) private var hideAutoRedactions: Bool
-    @Defaults.Value(key: .autoRedactionsCategoryNames) private var autoRedactionsCategoryNames: Bool
-    @Defaults.Value(key: .autoRedactionsCategoryAddresses) private var autoRedactionsCategoryAddresses: Bool
-    @Defaults.Value(key: .autoRedactionsCategoryPhoneNumbers) private var autoRedactionsCategoryPhoneNumbers: Bool
+    private var tuBrute: [String: Bool] {
+        defaults.value(for: Keys.autoRedactionsSet) ?? [:]
+    }
+    private var hideAutoRedactions: Bool {
+        defaults.value(for: Keys.hideAutoRedactions)
+    }
+    private var autoRedactionsCategoryNames: Bool {
+        defaults.value(for: Keys.autoRedactionsCategoryNames)
+    }
+    private var autoRedactionsCategoryAddresses: Bool {
+        defaults.value(for: Keys.autoRedactionsCategoryAddresses)
+    }
+    private var autoRedactionsCategoryPhoneNumbers: Bool {
+        defaults.value(for: Keys.autoRedactionsCategoryPhoneNumbers)
+    }
 
     public let completionHandler: ((UIImage) -> Void)?
     public var redactions: [Redaction] { return photoEditingView.redactions }

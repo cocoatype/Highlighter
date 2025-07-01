@@ -11,7 +11,7 @@ public struct UnpurchasedFeature {
         UnpurchasedFeature(
             message: Strings.AutoRedactions.message,
             learnMoreAction: learnMoreAction,
-            hideFeatureKey: .hideAutoRedactions
+            hideFeatureKey: Keys.hideAutoRedactions
         )
     }
 
@@ -19,7 +19,7 @@ public struct UnpurchasedFeature {
         UnpurchasedFeature(
             message: Strings.DocumentScanner.message,
             learnMoreAction: learnMoreAction,
-            hideFeatureKey: .hideDocumentScanner
+            hideFeatureKey: Keys.hideDocumentScanner
         )
     }
 
@@ -27,7 +27,7 @@ public struct UnpurchasedFeature {
 
     let message: String
     let learnMoreAction: LearnMoreAction?
-    let hideFeatureKey: Defaults.Key?
+    let hideFeatureKey: Key<Bool>?
 
     private typealias Strings = UnpurchasedStrings.UnpurchasedFeature
 }

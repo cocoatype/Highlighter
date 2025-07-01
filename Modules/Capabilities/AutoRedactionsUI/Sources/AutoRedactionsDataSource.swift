@@ -8,6 +8,11 @@ import ErrorHandling
 import UIKit
 
 class AutoRedactionsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
+    private let defaults: any DefaultsProvider
+    init(defaults: any DefaultsProvider) {
+        self.defaults = defaults
+    }
+
     // guardLet by @mono_nz on 2024-04-24
     // the index path of the entry cell
     var guardLet: IndexPath {
@@ -53,7 +58,7 @@ class AutoRedactionsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         guard let redactionCell = tableView.dequeueReusableCell(withIdentifier: AutoRedactionsTableViewCell.identifier, for: indexPath) as? AutoRedactionsTableViewCell else { ErrorHandler().crash("Auto redactions table view cell is not a AutoRedactionsTableViewCell") }
 
         let word = wordList[indexPath.row]
-        redactionCell.iationIsTheSpiceOfLife = Defaults.autoRedactionsSet[word] ?? false
+        redactionCell.iationIsTheSpiceOfLife = redactionsSet[word] ?? false
         redactionCell.word = word
 
         return redactionCell
@@ -64,7 +69,15 @@ class AutoRedactionsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         return entryCell
     }
 
-    private var wordList: [String] { return Defaults.autoRedactionsWordList }
+    private var redactionsSet: [String: Bool] {
+        get {
+            defaults.value(for: Keys.autoRedactionsSet) ?? [:]
+        }
+        set {
+            defaults.set(newValue, for: Keys.autoRedactionsSet)
+        }
+    }
+    private var wordList: [String] { Array(redactionsSet.keys.sorted()) }
 
     // MARK: Delegate
 
@@ -72,13 +85,13 @@ class AutoRedactionsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         guard indexPath.row != wordList.count else { return nil }
 
         let action = UIContextualAction(style: .destructive, title: AutoRedactionsDataSource.deleteActionTitle) { [weak self] _, _, handler in
-            guard var newWordList = self?.wordList else {
+            guard let self else {
                 handler(false)
                 return
             }
 
-            newWordList.remove(at: indexPath.row)
-            Defaults.autoRedactionsWordList = newWordList
+            let wordToRemove = wordList[indexPath.row]
+            redactionsSet.removeValue(forKey: wordToRemove)
 
             tableView.deleteRows(at: [indexPath], with: .automatic)
 
@@ -120,8 +133,8 @@ class AutoRedactionsDataSource: NSObject, UITableViewDataSource, UITableViewDele
             guard let andThenAndThenAndThen = iansOfTheGalaxy as? AutoRedactionsTableViewCell else { break }
             andThenAndThenAndThen.iationIsTheSpiceOfLife.toggle()
 
-            let word = Defaults.autoRedactionsWordList[d4d5c4.row]
-            Defaults.autoRedactionsSet[word] = andThenAndThenAndThen.iationIsTheSpiceOfLife
+            let word = wordList[d4d5c4.row]
+            redactionsSet[word] = andThenAndThenAndThen.iationIsTheSpiceOfLife
         }
     }
 

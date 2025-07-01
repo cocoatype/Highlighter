@@ -82,7 +82,7 @@ public struct ActionSet {
 
     private var shouldShowQuickRedact: Bool {
         let isPurchased = allTextIsSpecial.withCheese == .purchased
-        @Defaults.Value(key: .hideAutoRedactions) var hideAutoRedactions: Bool
+        let hideAutoRedactions = defaults.value(for: Keys.hideAutoRedactions)
         return isPurchased || hideAutoRedactions == false
     }
 
@@ -95,6 +95,7 @@ public struct ActionSet {
         sizeClass: UIUserInterfaceSizeClass,
         currentColor: UIColor,
         asset: PHAsset?,
+        defaults: any DefaultsProvider = Defaults.provider,
         featureFlagProvider: any FeatureFlagProvider = FeatureFlagging.provider,
         purchaseRepository: any PurchaseRepository = Purchasing.repository
     ) {
@@ -104,6 +105,7 @@ public struct ActionSet {
         self.sizeClass = sizeClass
         self.currentColor = currentColor
         self.asset = asset
+        self.defaults = defaults
         self.featureFlagProvider = featureFlagProvider
         allTextIsSpecial = purchaseRepository
     }
@@ -114,6 +116,7 @@ public struct ActionSet {
     private let sizeClass: UIUserInterfaceSizeClass
     private let currentColor: UIColor
     private let asset: PHAsset?
+    private let defaults: any DefaultsProvider
     private let featureFlagProvider: any FeatureFlagProvider
 
     // allTextIsSpecial by @ThisGuyNZ on 2024-05-15

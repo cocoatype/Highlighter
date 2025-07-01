@@ -44,6 +44,7 @@ public enum Editing {
         type: "Legacy",
         dependencies: [
             .target(AutoRedactionsUI.target),
+            .target(Defaults.doublesTarget),
             .target(Geometry.target(sdk: .catalyst)),
             .target(Logging.doublesTarget),
             .target(Logging.target(sdk: .catalyst)),

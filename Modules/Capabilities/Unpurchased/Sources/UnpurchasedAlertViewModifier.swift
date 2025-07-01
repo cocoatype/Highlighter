@@ -8,27 +8,29 @@ import SwiftUI
 public struct UnpurchasedAlertViewModifier: ViewModifier {
     @Binding private var isPresented: Bool
     private let feature: UnpurchasedFeature
+    private let defaults: any DefaultsProvider
     private let logger: any Logger
     init(
         for feature: UnpurchasedFeature,
         isPresented: Binding<Bool>,
+        defaults: any DefaultsProvider = Defaults.provider,
         logger: any Logger = Logging.logger
     ) {
         _isPresented = isPresented
         self.feature = feature
+        self.defaults = defaults
         self.logger = logger
     }
 
     public func body(content: Content) -> some View {
         content.alert(isPresented: $isPresented) {
             if let hideFeatureKey = feature.hideFeatureKey {
-                @Defaults.Value(key: hideFeatureKey) var hideFeature: Bool
                 return Alert(
                     title: Text(Strings.title),
                     message: Text(feature.message),
                     primaryButton: .cancel(Text(Strings.dismissButton)),
                     secondaryButton: .default(Text(Strings.hideButton)) {
-                        hideFeature = true
+                        defaults.set(true, for: hideFeatureKey)
                     }
                 )
             } else {

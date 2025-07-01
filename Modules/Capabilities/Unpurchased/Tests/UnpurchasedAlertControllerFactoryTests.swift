@@ -2,6 +2,7 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 import Defaults
+import DefaultsDoubles
 import DesignSystem
 import Testing
 
@@ -60,17 +61,14 @@ struct UnpurchasedAlertControllerFactoryTests {
     }
 
     @Test func alertControllerAddsActionForHideFeature() throws {
-        let key = Defaults.Key.hideAutoRedactions
-        @Defaults.Value(key: key) var value: Bool
-        value = false
-        #expect(value == false) // check property-wrapper is working
-
+        let key = Keys.hideAutoRedactions
         let feature = UnpurchasedFeature(
             message: "",
             learnMoreAction: nil,
             hideFeatureKey: key
         )
-        let factory = UnpurchasedAlertControllerFactory()
+        let defaults = StubDefaultsProvider()
+        let factory = UnpurchasedAlertControllerFactory(defaults: defaults)
         let alert = factory.alertController(for: feature)
 
         #expect(alert.actions.count == 2)
@@ -79,6 +77,6 @@ struct UnpurchasedAlertControllerFactoryTests {
         #expect(hideAction.style == .default)
         let handler = try #require((hideAction as? UnpurchasedAlertAction)?.action)
         handler()
-        #expect(value == true)
+        #expect(defaults.value(for: key) == true)
     }
 }
