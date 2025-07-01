@@ -13,6 +13,7 @@ public enum Shortcuts {
             .target(Purchasing.target),
             .target(Redactions.target(sdk: .catalyst)),
             .target(Rendering.target(sdk: .catalyst)),
+            .external(name: "FactoryKit"),
         ]
     )
 
@@ -25,6 +26,8 @@ public enum Shortcuts {
             .target(Purchasing.doublesTarget),
             .target(Redactions.target(sdk: .catalyst)),
             .target(Rendering.doublesTarget(sdk: .catalyst)),
+            .external(name: "FactoryKit"),
+            .external(name: "FactoryTesting"),
         ]
     )
 }

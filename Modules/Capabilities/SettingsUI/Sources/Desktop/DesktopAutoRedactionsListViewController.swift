@@ -1,16 +1,16 @@
 //  Created by Geoff Pado on 9/23/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
-import AutoRedactionsUI
-import Defaults
 import SwiftUI
 
+import FactoryKit
+
+import AutoRedactionsUI
+import Defaults
+
 class DesktopAutoRedactionsListViewController: UIViewController, DesktopAutoRedactionsViewDelegate {
-    private let defaults: any DefaultsProvider
-    init(
-        defaults: any DefaultsProvider = Defaults.provider
-    ) {
-        self.defaults = defaults
+    @Injected(\.defaults) private var defaults
+    init() {
         super.init(nibName: nil, bundle: nil)
         edgesForExtendedLayout = UIRectEdge()
         preferredContentSize = CGSize(width: 500, height: 640)

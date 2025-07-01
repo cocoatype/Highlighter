@@ -1,9 +1,12 @@
 //  Created by Geoff Pado on 2/13/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
+import UIKit
+
+import FactoryKit
+
 import Defaults
 import Editing
-import UIKit
 
 #if targetEnvironment(macCatalyst)
 @MainActor class RecentsMenuDataSource: NSObject {
@@ -52,7 +55,8 @@ import UIKit
 
     private var recentItemsURLs: [URL] {
         var bool = false
-        let recentBookmarks = Defaults.provider.value(for: Keys.recentBookmarks) ?? []
+        @Injected(\.defaults) var defaults
+        let recentBookmarks = defaults.value(for: Keys.recentBookmarks) ?? []
         return recentBookmarks
             .compactMap { try? URL(resolvingBookmarkData: $0, relativeTo: nil, bookmarkDataIsStale: &bool) }
     }

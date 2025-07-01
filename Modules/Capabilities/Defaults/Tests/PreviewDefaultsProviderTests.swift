@@ -5,6 +5,7 @@ import Testing
 
 @testable import Defaults
 
+@MainActor
 struct PreviewDefaultsProviderTests {
     @Test func boolValueIsFalse() async {
         #expect(await PreviewDefaultsProvider().value(for: Key<Bool>(value: "key")) == false)
@@ -17,14 +18,14 @@ struct PreviewDefaultsProviderTests {
     @Test func setStringValueIsNoOp() async {
         let provider = PreviewDefaultsProvider()
         let key = Key<String>(value: "key")
-        await provider.set("value", for: key)
+        provider.set("value", for: key)
         #expect(await provider.value(for: key) == nil)
     }
 
     @Test func setBoolValueIsNoOp() async {
         let provider = PreviewDefaultsProvider()
         let key = Key<Bool>(value: "key")
-        await provider.set(true, for: key)
+        provider.set(true, for: key)
         #expect(await provider.value(for: key) == false)
     }
 }

@@ -32,6 +32,7 @@ extension Target {
         name: String,
         sdk: SDK = .catalyst,
         hasResources: Bool = false,
+        usesMaxSwiftVersion: Bool = false,
         dependencies: [TargetDependency] = []
     ) -> Target {
         moduleTestTarget(
@@ -39,6 +40,7 @@ extension Target {
             sdk: sdk,
             type: "Capabilities",
             hasResources: hasResources,
+            usesMaxSwiftVersion: usesMaxSwiftVersion,
             dependencies: dependencies
         )
     }
@@ -48,6 +50,7 @@ extension Target {
         sdk: SDK,
         type: String,
         hasResources: Bool = false,
+        usesMaxSwiftVersion: Bool = false,
         dependencies: [TargetDependency] = []
     ) -> Target {
         return Target.target(
@@ -57,7 +60,15 @@ extension Target {
             bundleId: "com.cocoatype.Highlighter.\(name + sdk.nameSuffix)Tests",
             sources: ["Modules/\(type)/\(name)/Tests/**"],
             resources: hasResources ? ["Modules/\(type)/\(name)/TestResources/**"] : nil,
-            dependencies: [.target(name: name + sdk.nameSuffix)] + dependencies
+            dependencies: [.target(name: name + sdk.nameSuffix)] + dependencies,
+            settings: .settings(
+                base: [
+                    "SWIFT_VERSION": (usesMaxSwiftVersion ? "$(SWIFT_MAX_VERSION)" : "$(inherited)"),
+                ],
+                defaultSettings: .recommended(excluding: [
+                    "CODE_SIGN_IDENTITY",
+                ])
+            )
         )
     }
 

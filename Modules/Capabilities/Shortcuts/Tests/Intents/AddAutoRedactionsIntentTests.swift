@@ -3,12 +3,16 @@
 
 import Testing
 
+import FactoryKit
+import FactoryTesting
+
 import Defaults
 import DefaultsDoubles
 
 @testable import Shortcuts
 
-@MainActor struct AddAutoRedactionsIntentTests {
+@MainActor @Suite(.container)
+struct AddAutoRedactionsIntentTests {
     @available(iOS 16, *) @Test(arguments: [
         (true, ["goodbye", "hello", "world"]),
         (false, ["hello", "world"]),
@@ -18,7 +22,8 @@ import DefaultsDoubles
         addedWords: [String]
     ) async throws {
         let defaults = StubDefaultsProvider(autoRedactions: [:])
-        let intent = AddAutoRedactionsIntent(defaults: defaults)
+        Container.shared.defaults.register { defaults }
+        let intent = AddAutoRedactionsIntent()
         intent.isActive = isActive
         intent.addedWords = addedWords
 
@@ -37,8 +42,9 @@ import DefaultsDoubles
             "true": true,
             "false": true,
         ])
+        Container.shared.defaults.register { defaults }
 
-        let intent = AddAutoRedactionsIntent(defaults: defaults)
+        let intent = AddAutoRedactionsIntent()
         intent.isActive = false
         intent.addedWords = ["false"]
 

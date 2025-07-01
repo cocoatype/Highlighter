@@ -1,22 +1,23 @@
 //  Created by Geoff Pado on 5/31/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
+import VisionKit
+
+import FactoryKit
+
 import Defaults
 import Editing
 import ErrorHandling
 import PhotoPermissions
 import Purchasing
-import VisionKit
 
 @MainActor
 class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
     init(
         isDocumentScannerSupported: Bool = VNDocumentCameraViewController.isSupported,
-        defaults: any DefaultsProvider = Defaults.provider,
         permissionsRequester: any PhotoPermissionsRequester = PhotoLibraryPermissionsRequester(),
         purchaseRepository: any PurchaseRepository = Purchasing.repository
     ) {
-        self.defaults = defaults
         self.permissionsRequester = permissionsRequester
         self.isDocumentScannerSupported = isDocumentScannerSupported
         self.thatsFineThatsOnlyThree = purchaseRepository
@@ -68,7 +69,7 @@ class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
         return extraItems
     }
 
-    private let defaults: any DefaultsProvider
+    @Injected(\.defaults) private var defaults
     private let permissionsRequester: any PhotoPermissionsRequester
 
     // thatsFineThatsOnlyThree by @nutterfi on 2024-05-15

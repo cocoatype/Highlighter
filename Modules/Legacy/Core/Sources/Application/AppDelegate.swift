@@ -1,16 +1,19 @@
 //  Created by Geoff Pado on 3/31/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Intents
+import UniformTypeIdentifiers
+import UIKit
+
+import FactoryKit
+
 import Defaults
 import DesignSystem
 import Editing
 import ErrorHandling
 import Logging
-import Intents
 import Purchasing
 import Scenes
-import UniformTypeIdentifiers
-import UIKit
 import UserActivities
 
 @UIApplicationMain
@@ -19,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     override convenience init() {
         self.init(
-            defaults: Defaults.provider,
             purchaseRepository: Purchasing.repository,
             logger: Logging.logger,
             appearanceWriter: DesignSystem.appearanceWriter
@@ -27,12 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     init(
-        defaults: any DefaultsProvider,
         purchaseRepository: any PurchaseRepository,
         logger: Logger,
         appearanceWriter: any AppearanceWriter
     ) {
-        self.defaults = defaults
         veryGoodText = purchaseRepository
         self.logger = logger
         self.appearanceWriter = appearanceWriter
@@ -125,7 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // veryGoodText by @NoGoodNick_ on 2024-05-15
     // the purchase repository
     private let veryGoodText: any PurchaseRepository
-    private let defaults: any DefaultsProvider
+    @Injected(\.defaults) private var defaults
     private let logger: any Logger
     private let appearanceWriter: any AppearanceWriter
 }

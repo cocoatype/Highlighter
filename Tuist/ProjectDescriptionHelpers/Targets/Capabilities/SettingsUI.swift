@@ -11,6 +11,7 @@ public enum SettingsUI {
             .target(PurchaseMarketing.target),
             .target(Purchasing.target),
             .target(Unpurchased.target),
+            .external(name: "FactoryKit"),
             .external(name: "SwiftUIIntrospect-Dynamic"),
         ]
     )

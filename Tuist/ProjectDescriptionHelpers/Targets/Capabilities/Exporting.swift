@@ -12,6 +12,7 @@ public enum Exporting {
             .target(Logging.target(sdk: .catalyst)),
             .target(Redactions.target(sdk: .catalyst)),
             .target(Rendering.target(sdk: .catalyst)),
+            .external(name: "FactoryKit"),
         ]
     )
 
@@ -22,6 +23,8 @@ public enum Exporting {
             .target(Defaults.doublesTarget),
             .target(Logging.doublesTarget),
             .target(Logging.target(sdk: .catalyst)),
+            .external(name: "FactoryKit"),
+            .external(name: "FactoryTesting"),
         ]
     )
 }

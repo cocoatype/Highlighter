@@ -1,14 +1,18 @@
 //  Created by Geoff Pado on 5/11/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import Testing
+
+import FactoryKit
+import FactoryTesting
+
 import Defaults
 import DefaultsDoubles
 import DesignSystem
-import Testing
 
 @testable import Unpurchased
 
-@MainActor
+@MainActor @Suite(.container)
 struct UnpurchasedAlertControllerFactoryTests {
     @Test func alertControllerHasCorrectTint() {
         let feature = UnpurchasedFeature(message: "", learnMoreAction: nil, hideFeatureKey: nil)
@@ -68,7 +72,8 @@ struct UnpurchasedAlertControllerFactoryTests {
             hideFeatureKey: key
         )
         let defaults = StubDefaultsProvider()
-        let factory = UnpurchasedAlertControllerFactory(defaults: defaults)
+        Container.shared.defaults.register { defaults }
+        let factory = UnpurchasedAlertControllerFactory()
         let alert = factory.alertController(for: feature)
 
         #expect(alert.actions.count == 2)

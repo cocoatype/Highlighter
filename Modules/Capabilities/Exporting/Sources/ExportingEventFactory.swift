@@ -1,6 +1,8 @@
 //  Created by Geoff Pado on 12/5/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import FactoryKit
+
 import Defaults
 import Logging
 
@@ -14,13 +16,15 @@ struct ExportingEventFactory {
     private static let eventName: Event.Name = "Exporting.successfulExport"
     private static let styleKey = "style"
     private static let exportCountKey = "exportCount"
+
+    @Injected(\.defaults) private var defaults
     func event(style: OutputStyle) -> Event {
         let styleValue = switch style {
         case .inPlace: "inPlace"
         case .copy: "copy"
         }
 
-        let numberOfSaves = Defaults.provider.value(for: Keys.numberOfSaves)
+        let numberOfSaves = defaults.value(for: Keys.numberOfSaves)
 
         return Event(
             name: Self.eventName,

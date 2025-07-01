@@ -1,17 +1,17 @@
 //  Created by Geoff Pado on 8/26/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
-import Defaults
 import UIKit
 
+import FactoryKit
+
+import Defaults
+
 public class AutoRedactionsListViewController: UIViewController {
-    private let defaults: any DefaultsProvider
+    @Injected(\.defaults) private var defaults
     private let dataSource: AutoRedactionsDataSource
-    public init(
-        defaults: any DefaultsProvider = Defaults.provider
-    ) {
-        self.defaults = defaults
-        self.dataSource = AutoRedactionsDataSource(defaults: defaults)
+    public init() {
+        self.dataSource = AutoRedactionsDataSource()
         super.init(nibName: nil, bundle: nil)
     }
 

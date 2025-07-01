@@ -11,17 +11,21 @@ public enum EditingToolbar {
             .target(FeatureFlagging.target),
             .target(Purchasing.target),
             .target(Tools.target),
+            .external(name: "FactoryKit"),
         ]
     )
 
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "EditingToolbar",
+        usesMaxSwiftVersion: true,
         dependencies: [
             .target(Defaults.target),
             .target(Defaults.doublesTarget),
             .target(Purchasing.doublesTarget),
             .target(Purchasing.target),
             .target(Tools.target),
+            .external(name: "FactoryKit"),
+            .external(name: "FactoryTesting"),
         ]
     )
 }

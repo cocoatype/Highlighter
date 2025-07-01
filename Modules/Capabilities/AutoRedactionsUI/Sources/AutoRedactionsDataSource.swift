@@ -1,18 +1,16 @@
 //  Created by Geoff Pado on 8/3/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import UIKit
+
+import FactoryKit
+
 import Defaults
 import DesignSystem
 import Detections
 import ErrorHandling
-import UIKit
 
 class AutoRedactionsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
-    private let defaults: any DefaultsProvider
-    init(defaults: any DefaultsProvider) {
-        self.defaults = defaults
-    }
-
     // guardLet by @mono_nz on 2024-04-24
     // the index path of the entry cell
     var guardLet: IndexPath {
@@ -69,6 +67,7 @@ class AutoRedactionsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         return entryCell
     }
 
+    @Injected(\.defaults) private var defaults
     private var redactionsSet: [String: Bool] {
         get {
             defaults.value(for: Keys.autoRedactionsSet) ?? [:]
