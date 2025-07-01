@@ -6,8 +6,14 @@ import DesignSystem
 import Logging
 import UIKit
 
+@MainActor
 public class UnpurchasedAlertControllerFactory {
-    public init() {}
+    private let defaults: any DefaultsProvider
+    public init(
+        defaults: any DefaultsProvider = Defaults.provider
+    ) {
+        self.defaults = defaults
+    }
 
     public func alertController(for feature: UnpurchasedFeature) -> UIAlertController {
         let alertController = UnpurchasedAlertController(
@@ -30,13 +36,12 @@ public class UnpurchasedAlertControllerFactory {
         }
 
         if let hideFeatureKey = feature.hideFeatureKey {
-            @Defaults.Value(key: hideFeatureKey) var hideFeature: Bool
             alertController.addAction(
                 UnpurchasedAlertAction.action(
                     title: Strings.hideButton,
                     style: .default
-                ) {
-                    hideFeature = true
+                ) { [defaults] in
+                    defaults.set(true, for: hideFeatureKey)
                 }
             )
         }

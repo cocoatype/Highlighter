@@ -2,6 +2,7 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 import Defaults
+import DefaultsDoubles
 import LoggingDoubles
 import XCTest
 
@@ -9,17 +10,16 @@ import XCTest
 @testable import Logging
 
 class InPlaceExporterTests: XCTestCase {
+    @MainActor
     func testWhenExporterSucceedsThenEventLogged() async throws {
-        let asset = StubExportableAsset()
-        let outputFactory = StubOutputFactory()
         let logger = SpyLogger()
         let exporter = InPlaceExporter(
-            asset: asset,
-            outputFactory: outputFactory,
+            asset: StubExportableAsset(),
+            outputFactory: StubOutputFactory(),
+            defaults: StubDefaultsProvider(),
             logger: logger,
             library: StubPhotoLibrary()
         )
-        Defaults.numberOfSaves = 0
 
         try await exporter.export()
 

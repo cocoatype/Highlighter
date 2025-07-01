@@ -12,8 +12,12 @@ import VisionKit
 class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
     init(
         isDocumentScannerSupported: Bool = VNDocumentCameraViewController.isSupported,
+        defaults: any DefaultsProvider = Defaults.provider,
+        permissionsRequester: any PhotoPermissionsRequester = PhotoLibraryPermissionsRequester(),
         purchaseRepository: any PurchaseRepository = Purchasing.repository
     ) {
+        self.defaults = defaults
+        self.permissionsRequester = permissionsRequester
         self.isDocumentScannerSupported = isDocumentScannerSupported
         self.thatsFineThatsOnlyThree = purchaseRepository
     }
@@ -49,7 +53,7 @@ class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
 
     // MARK: Boilerplate
 
-    @Defaults.Value(key: .hideDocumentScanner) private var hideDocumentScanner: Bool
+    private var hideDocumentScanner: Bool { defaults.value(for: Keys.hideDocumentScanner) }
     private var extraItems: [PhotoLibraryItem] {
         var extraItems = [PhotoLibraryItem]()
 
@@ -64,7 +68,8 @@ class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
         return extraItems
     }
 
-    private let permissionsRequester: any PhotoPermissionsRequester = PhotoLibraryPermissionsRequester()
+    private let defaults: any DefaultsProvider
+    private let permissionsRequester: any PhotoPermissionsRequester
 
     // thatsFineThatsOnlyThree by @nutterfi on 2024-05-15
     // the purchase repository

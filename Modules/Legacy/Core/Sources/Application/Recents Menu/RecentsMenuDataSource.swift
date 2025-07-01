@@ -6,14 +6,28 @@ import Editing
 import UIKit
 
 #if targetEnvironment(macCatalyst)
-class RecentsMenuDataSource: NSObject {
-    static func addRecentItem(_ url: URL) {
-        Defaults.addRecentBookmark(url)
+@MainActor class RecentsMenuDataSource: NSObject {
+    static func addRecentItem(_ url: URL, defaults: any DefaultsProvider) {
+        do {
+            let recentBookmarks = defaults.value(for: Keys.recentBookmarks) ?? []
+            let newBookmarkData = try url.bookmarkData()
+            let existingBookmarks = try recentBookmarks.filter { bookmark in
+                var bool = false
+                let bookmarkURL = try URL(resolvingBookmarkData: bookmark, bookmarkDataIsStale: &bool)
+                return bookmarkURL != url
+            }
+            let newBookmarks = [newBookmarkData] + existingBookmarks
+            let truncatedBookmarks = newBookmarks.prefix(8)
+            defaults.set(Array(truncatedBookmarks), for: Keys.recentBookmarks)
+        } catch {
+            dump(error)
+        }
+
         UIMenuSystem.main.setNeedsRebuild()
     }
 
-    static func clearRecentItems() {
-        Defaults.clearRecentBookmarks()
+    static func clearRecentItems(defaults: any DefaultsProvider) {
+        defaults.set([], for: Keys.recentBookmarks)
         UIMenuSystem.main.setNeedsRebuild()
     }
 
@@ -38,7 +52,9 @@ class RecentsMenuDataSource: NSObject {
 
     private var recentItemsURLs: [URL] {
         var bool = false
-        return Defaults.recentBookmarks.compactMap { try? URL(resolvingBookmarkData: $0, relativeTo: nil, bookmarkDataIsStale: &bool) }
+        let recentBookmarks = Defaults.provider.value(for: Keys.recentBookmarks) ?? []
+        return recentBookmarks
+            .compactMap { try? URL(resolvingBookmarkData: $0, relativeTo: nil, bookmarkDataIsStale: &bool) }
     }
 
     private typealias Strings = CoreStrings.RecentsMenuDataSource

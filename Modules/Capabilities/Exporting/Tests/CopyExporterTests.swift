@@ -2,6 +2,7 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 import Defaults
+import DefaultsDoubles
 import LoggingDoubles
 import XCTest
 
@@ -9,14 +10,15 @@ import XCTest
 @testable import Logging
 
 class CopyExporterTests: XCTestCase {
+    @MainActor
     func testWhenExporterSucceedsThenEventLogged() async throws {
         let logger = SpyLogger()
         let exporter = CopyExporter(
             preparedURL: URL(fileURLWithPath: "/"),
+            defaults: StubDefaultsProvider(),
             logger: logger,
             library: StubPhotoLibrary()
         )
-        Defaults.numberOfSaves = 0
 
         try await exporter.export()
 

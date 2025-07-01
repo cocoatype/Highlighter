@@ -24,16 +24,19 @@ public class InPlaceExporter: NSObject {
 
     private let asset: any ExportableAsset
     private let outputFactory: any OutputFactory
+    private let defaults: any DefaultsProvider
     private let logger: any Logger
     private let library: any PhotoLibrary
     init(
         asset: any ExportableAsset,
         outputFactory: any OutputFactory,
+        defaults: any DefaultsProvider = Defaults.provider,
         logger: any Logger = Logging.logger,
         library: any PhotoLibrary
     ) {
         self.asset = asset
         self.outputFactory = outputFactory
+        self.defaults = defaults
         self.logger = logger
         self.library = library
     }
@@ -49,8 +52,8 @@ public class InPlaceExporter: NSObject {
                 asset.changeRequest.contentEditingOutput = output
             }
 
-            Defaults.numberOfSaves = Defaults.numberOfSaves + 1
-            logger.log(ExportingEventFactory().event(style: .inPlace))
+            await defaults.set(defaults.value(for: Keys.numberOfSaves) + 1, for: Keys.numberOfSaves)
+            await logger.log(ExportingEventFactory().event(style: .inPlace))
         } catch {
             ErrorHandler().log(error)
             throw error

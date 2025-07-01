@@ -13,14 +13,17 @@ public class CopyExporter: NSObject {
         self.init(preparedURL: preparedURL, logger: Logging.logger, library: PHPhotoLibrary.shared())
     }
 
+    private let defaults: any DefaultsProvider
     private let logger: any Logger
     private let library: any PhotoLibrary
     init(
         preparedURL: URL,
+        defaults: any DefaultsProvider = Defaults.provider,
         logger: any Logger,
         library: any PhotoLibrary
     ) {
         self.preparedURL = preparedURL
+        self.defaults = defaults
         self.logger = logger
         self.library = library
     }
@@ -30,7 +33,7 @@ public class CopyExporter: NSObject {
             PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: preparedURL)
         }
 
-        Defaults.numberOfSaves = Defaults.numberOfSaves + 1
-        logger.log(ExportingEventFactory().event(style: .copy))
+        await defaults.set(defaults.value(for: Keys.numberOfSaves) + 1, for: Keys.numberOfSaves)
+        await logger.log(ExportingEventFactory().event(style: .copy))
     }
 }

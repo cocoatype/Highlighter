@@ -4,6 +4,7 @@
 import Defaults
 import Logging
 
+@MainActor
 struct ExportingEventFactory {
     enum OutputStyle {
         case inPlace
@@ -19,11 +20,13 @@ struct ExportingEventFactory {
         case .copy: "copy"
         }
 
+        let numberOfSaves = Defaults.provider.value(for: Keys.numberOfSaves)
+
         return Event(
             name: Self.eventName,
             info: [
                 Self.styleKey: styleValue,
-                Self.exportCountKey: String(Defaults.numberOfSaves),
+                Self.exportCountKey: String(numberOfSaves),
             ]
         )
     }

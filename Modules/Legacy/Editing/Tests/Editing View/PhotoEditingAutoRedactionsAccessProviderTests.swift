@@ -7,6 +7,7 @@ import XCTest
 
 @testable import Editing
 
+@MainActor
 class PhotoEditingAutoRedactionsAccessProviderTests: XCTestCase {
     func testAutoRedactionsAccessViewControllerIsNavigationControllerWhenPurchased() {
         let provider = PhotoEditingAutoRedactionsAccessProvider(purchaseRepository: PreviewRepository(purchaseState: .purchased))

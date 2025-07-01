@@ -16,6 +16,7 @@ public enum AppRatings {
         name: "AppRatings",
         dependencies: [
             .target(Defaults.target),
+            .target(Defaults.doublesTarget),
             .target(Editing.target),
             .target(Logging.doublesTarget),
             .target(Logging.target(sdk: .catalyst)),

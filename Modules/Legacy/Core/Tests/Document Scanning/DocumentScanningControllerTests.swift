@@ -7,6 +7,7 @@ import XCTest
 
 @testable import Core
 
+@MainActor
 class DocumentScanningControllerTests: XCTestCase {
     func testCameraViewControllerIsReturnedIfPurchased() {
         let repository = SpyRepository(withCheese: .purchased)

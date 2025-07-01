@@ -7,11 +7,18 @@ import SwiftUI
 
 @available(iOS 15.0, *)
 public struct OverlayPreferencesView: View {
-    @Defaults.Binding(key: .showDetectedTextOverlay) private var isDetectedTextOverlayEnabled: Bool
-    @Defaults.Binding(key: .showDetectedCharactersOverlay) private var isDetectedCharactersOverlayEnabled: Bool
-    @Defaults.Binding(key: .showRecognizedTextOverlay) private var isRecognizedTextOverlayEnabled: Bool
-    @Defaults.Binding(key: .showCalculatedOverlay) private var isCalculatedOverlayEnabled: Bool
-    @Defaults.Binding(key: .showCombinedOverlay) private var isCombinedOverlayEnabled: Bool
+    @Binding private var isDetectedTextOverlayEnabled: Bool
+    @Binding private var isDetectedCharactersOverlayEnabled: Bool
+    @Binding private var isRecognizedTextOverlayEnabled: Bool
+    @Binding private var isCalculatedOverlayEnabled: Bool
+    @Binding private var isCombinedOverlayEnabled: Bool
+    init(defaults: any DefaultsProvider = Defaults.provider) {
+        _isDetectedTextOverlayEnabled = Self.binding(for: Keys.showDetectedTextOverlay, in: defaults)
+        _isDetectedCharactersOverlayEnabled = Self.binding(for: Keys.showDetectedCharactersOverlay, in: defaults)
+        _isRecognizedTextOverlayEnabled = Self.binding(for: Keys.showRecognizedTextOverlay, in: defaults)
+        _isCalculatedOverlayEnabled = Self.binding(for: Keys.showCalculatedOverlay, in: defaults)
+        _isCombinedOverlayEnabled = Self.binding(for: Keys.showCombinedOverlay, in: defaults)
+    }
 
     public var body: some View {
         List {
@@ -32,6 +39,17 @@ public struct OverlayPreferencesView: View {
             Toggle(isOn: $isOn) {
                 Text(title)
             }.tint(color)
+        }
+    }
+
+    private static func binding(
+        for key: Key<Bool>,
+        in defaults: any DefaultsProvider
+    ) -> Binding<Bool> {
+        Binding {
+            defaults.value(for: key)
+        } set: { newValue in
+            defaults.set(newValue, for: key)
         }
     }
 }
