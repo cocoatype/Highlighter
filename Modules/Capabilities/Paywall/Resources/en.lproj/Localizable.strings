@@ -1,0 +1,39 @@
+// Title for the purchase button on the purchase marketing view when loading
+"PurchaseButton.loadingTitle" = "Purchase";
+// Title for the purchase button on the purchase marketing view when ready (with price)
+"PurchaseButton.readyTitle" = "Purchase for %@";
+// Title for the purchase button on the purchase marketing view when purchasing
+"PurchaseButton.purchasingTitle" = "Purchasing…";
+// Title for the purchase button on the purchase marketing view when purchased
+"PurchaseButton.purchasedTitle" = "Thank You!";
+
+// Text separating the two purchase buttons
+"PurchaseButtonSeparator.text" = "or";
+
+"FooterPrivacyLink.shortTitle" = "Privacy";
+"FooterPrivacyLink.title" = "Privacy Policy";
+
+"FooterRestoreLink.shortTitle" = "Restore";
+"FooterRestoreLink.title" = "Restore Purchases";
+
+"FooterTermsLink.shortTitle" = "Terms";
+"FooterTermsLink.title" = "Terms & Conditions";
+
+// Text for the headline in purchase marketing
+"TopBarHeadline.text" = "Ultra Highlighter";
+
+// Text for the subheadline in purchase marketing
+"TopBarSubheadline.text" = "Unlock these powerful new abilities for Black Highlighter.";
+
+"PaywallView.autoRedactionsHeader" = "Seek and destroy.";
+"PaywallView.autoRedactionsText" = "Automatically hide your most private information, ensuring you never overlook sensitive details.";
+"PaywallView.crossPlatformHeader" = "Always ready when you are.";
+"PaywallView.crossPlatformText" = "Protection that adapts to your workflow, on iPhone, iPad, or Mac.";
+"PaywallView.documentScanningHeader" = "Not digital? Not a problem.";
+"PaywallView.documentScanningText" = "Turn private paper documents into shareable digital files in seconds — minus your sensitive information.";
+"PaywallView.shortcutsHeader" = "Plays well with others.";
+"PaywallView.shortcutsText" = "Save time with Shortcuts by connecting Black Highlighter to your favorite apps.";
+"PaywallView.supportDevelopmentHeader" = "Help keep the (high)lights on.";
+"PaywallView.supportDevelopmentText" = "Support an indie developer building tools focused on your privacy needs.";
+
+"PurchaseRestoreButton.title" = "Restore";

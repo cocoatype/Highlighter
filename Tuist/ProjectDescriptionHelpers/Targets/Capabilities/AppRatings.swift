@@ -7,8 +7,8 @@ public enum AppRatings {
             .target(Defaults.target),
             .target(ErrorHandling.target(sdk: .catalyst)),
             .target(Logging.target(sdk: .catalyst)),
+            .target(Paywall.target),
             .target(Purchasing.target),
-            .target(PurchaseMarketing.target),
             .external(name: "FactoryKit"),
         ]
     )

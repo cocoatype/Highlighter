@@ -2,7 +2,7 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 import AutoRedactionsUI
-import PurchaseMarketing
+import Paywall
 import ViewInspector
 import XCTest
 

@@ -17,7 +17,7 @@ public enum Editing {
             .target(ErrorHandling.target(sdk: .catalyst)),
             .target(Exporting.target),
             .target(Observations.target(sdk: .catalyst)),
-            .target(PurchaseMarketing.target),
+            .target(Paywall.target),
             .target(Purchasing.doublesTarget),
             .target(Redactions.target(sdk: .catalyst)),
             .target(Rendering.target(sdk: .catalyst)),

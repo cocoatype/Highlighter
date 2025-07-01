@@ -10,7 +10,7 @@ import IntroView
 import Logging
 import PhotoPermissions
 import Photos
-import PurchaseMarketing
+import Paywall
 import Redactions
 import UIKit
 import VisionKit
@@ -98,7 +98,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
 
     @objc func presentPurchaseMarketing() {
         if #available(iOS 16.0, *) {
-            present(PurchaseMarketingHostingController(), animated: true)
+            present(PaywallHostingController(), animated: true)
         }
     }
 

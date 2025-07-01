@@ -1,24 +1,24 @@
 import ProjectDescription
 
-public enum SettingsUI {
+public enum Paywall {
     public static let target = Target.capabilitiesTarget(
-        name: "SettingsUI",
+        name: "Paywall",
         hasResources: true,
         dependencies: [
-            .target(AutoRedactionsUI.target),
-            .target(Defaults.target),
+            .target(DesignSystem.target),
             .target(ErrorHandling.target(sdk: .catalyst)),
-            .target(Paywall.target),
+            .target(Logging.target(sdk: .catalyst)),
             .target(Purchasing.target),
-            .target(Unpurchased.target),
-            .external(name: "FactoryKit"),
-            .external(name: "SwiftUIIntrospect-Dynamic"),
+            .target(Purchasing.doublesTarget),
+            .target(TestHelpers.interfaceTarget),
         ]
     )
 
     public static let testTarget = Target.capabilitiesTestTarget(
-        name: "SettingsUI",
+        name: "Paywall",
         dependencies: [
+            .target(Purchasing.doublesTarget),
+            .target(Logging.doublesTarget),
             .external(name: "ViewInspector"),
         ]
     )
