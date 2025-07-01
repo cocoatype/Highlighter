@@ -3,8 +3,6 @@ default_platform(:ios)
 platform :ios do
   desc "Runs all the tests"
   lane :test do
-    test_value = "Hello, world!"
-    sh("buildkite-agent", "annotate", "Testing annotation: #{test_value}", "--style", "info")
     run_tests(
       device: "iPhone 15",
       scheme: "Highlighter"
