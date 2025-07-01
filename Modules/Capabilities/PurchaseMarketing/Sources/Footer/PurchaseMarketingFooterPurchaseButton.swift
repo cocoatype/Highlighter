@@ -26,6 +26,7 @@ struct PurchaseMarketingFooterPurchaseButton: View {
 
     var body: some View {
         Button {
+            Task { await makePurchase() }
         } label: {
             PurchaseMarketingFooterPurchaseButtonLabel(title: title)
         }
