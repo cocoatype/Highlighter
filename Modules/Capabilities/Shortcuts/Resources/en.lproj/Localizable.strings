@@ -14,6 +14,11 @@
 "ColorEntity.colorName.systemPurple" = "Purple";
 "ColorEntity.displayRepresentation.title%@" = "%@";
 
+"DeleteAutoRedactionsIntent.description" = "Removes words from the list of auto-hidden words.";
+"DeleteAutoRedactionsIntent.title" = "Remove Auto-hidden Words";
+"DeleteAutoRedactionsIntent.deletedWords.title" = "Words";
+"DeleteAutoRedactionsIntent.parameterSummary${addedWords})" = "Remove ${words} from auto-hidden words";
+
 "DetectionKind.addresses" = "Addresses";
 "DetectionKind.names" = "Names";
 "DetectionKind.phoneNumbers" = "Phone Numbers";
