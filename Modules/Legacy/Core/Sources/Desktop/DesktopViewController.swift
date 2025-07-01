@@ -1,26 +1,27 @@
 //  Created by Geoff Pado on 8/3/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+import UIKit
+
+import FactoryKit
+
 import Defaults
 import Editing
 import ErrorHandling
 import Redactions
 import Scenes
-import UIKit
 
 #if targetEnvironment(macCatalyst)
 class DesktopViewController: UIViewController, FileURLProvider {
     var editingViewController: PhotoEditingViewController? { children.first as? PhotoEditingViewController }
 
-    private let defaults: any DefaultsProvider
+    @Injected(\.defaults) private var defaults
     init(
-        dependencies: SceneDependencies,
-        defaults: any DefaultsProvider = Defaults.provider
+        dependencies: SceneDependencies
     ) {
         self.initialRedactions = dependencies.redactions
         self.representedURL = dependencies.representedURL
         self.image = dependencies.image
-        self.defaults = defaults
         super.init(nibName: nil, bundle: nil)
     }
 

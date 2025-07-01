@@ -1,16 +1,13 @@
 //  Created by Geoff Pado on 5/31/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import FactoryKit
+
 import Defaults
 import Detections
 
 @MainActor struct AutoRedactionsCategoryDefaultsMapper {
-    private let defaults: any DefaultsProvider
-    init(
-        defaults: any DefaultsProvider = Defaults.provider
-    ) {
-        self.defaults = defaults
-    }
+    @Injected(\.defaults) private var defaults
 
     func value(for category: Category) -> Bool {
         defaults.value(for: key(for: category))

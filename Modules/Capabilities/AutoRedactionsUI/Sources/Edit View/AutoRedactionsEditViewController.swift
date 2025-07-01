@@ -1,16 +1,15 @@
 //  Created by Geoff Pado on 8/3/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
-import Defaults
-import DesignSystem
 import UIKit
 
+import FactoryKit
+
+import Defaults
+import DesignSystem
+
 public class AutoRedactionsEditViewController: UIViewController {
-    private let defaults: any DefaultsProvider
-    public init(
-        defaults: any DefaultsProvider = Defaults.provider
-    ) {
-        self.defaults = defaults
+    public init() {
         super.init(nibName: nil, bundle: nil)
 
         navigationItem.title = Self.navigationTitle
@@ -19,6 +18,7 @@ public class AutoRedactionsEditViewController: UIViewController {
         embed(initialViewController)
     }
 
+    @Injected(\.defaults) private var defaults
     private lazy var initialViewController: UIViewController = {
         let wordList = defaults.value(for: Keys.autoRedactionsSet) ?? [:]
         if wordList.count == 0 {

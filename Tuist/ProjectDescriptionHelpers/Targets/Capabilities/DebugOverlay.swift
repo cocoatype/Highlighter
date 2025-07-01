@@ -7,6 +7,7 @@ public enum DebugOverlay {
         dependencies: [
             .target(Defaults.target),
             .target(DesignSystem.target),
+            .external(name: "FactoryKit"),
         ]
     )
 }

@@ -1,22 +1,23 @@
 //  Created by Geoff Pado on 7/8/22.
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
-private import ClippingBezier
 import Combine
+import UIKit
+
+private import ClippingBezier
+import FactoryKit
+
 import Defaults
 import FeatureFlagging
 import Geometry
 import Observations
-import UIKit
 
 class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
-    private let defaults: any DefaultsProvider
+    @Injected(\.defaults) private var defaults
     private let flagProvider: any FeatureFlagProvider
     init(
-        defaults: any DefaultsProvider = Defaults.provider,
         flagProvider: any FeatureFlagProvider = FeatureFlagging.provider
     ) {
-        self.defaults = defaults
         self.flagProvider = flagProvider
         super.init()
         isUserInteractionEnabled = false

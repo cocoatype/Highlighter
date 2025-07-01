@@ -1,30 +1,30 @@
 //  Created by Geoff Pado on 5/25/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Foundation
+import StoreKit
+
+import FactoryKit
+
 import Defaults
 import ErrorHandling
-import Foundation
 import Logging
 import PurchaseMarketing
 import Purchasing
-import StoreKit
 
 public struct AppRatingsPrompter {
     public init() {
         self.init(
-            defaults: Defaults.provider,
             logger: TelemetryLogger(),
             ratingRequestMethod: SKStoreReviewController.requestReview(in:)
         )
     }
 
     init(
-        defaults: any DefaultsProvider,
         logger: any Logger,
         ratingRequestMethod: @escaping ((UIWindowScene) -> Void) = SKStoreReviewController.requestReview(in:),
         repository: any PurchaseRepository = Purchasing.repository
     ) {
-        self.defaults = defaults
         self.logger = logger
         self.ratingRequestMethod = ratingRequestMethod
         self.repository = repository
@@ -55,7 +55,7 @@ public struct AppRatingsPrompter {
 
     private static let ratingNumberOfSavesCadence = 3
     private static let paywallNumberOfSaves = 10
-    private let defaults: any DefaultsProvider
+    @Injected(\.defaults) private var defaults
     private let logger: any Logger
     private let ratingRequestMethod: (UIWindowScene) -> Void
     private let repository: any PurchaseRepository

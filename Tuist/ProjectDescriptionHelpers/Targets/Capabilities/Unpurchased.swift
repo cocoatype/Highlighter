@@ -8,6 +8,7 @@ public enum Unpurchased {
             .target(Defaults.target),
             .target(DesignSystem.target),
             .target(Logging.target(sdk: .catalyst)),
+            .external(name: "FactoryKit"),
         ]
     )
 
@@ -18,6 +19,8 @@ public enum Unpurchased {
             .target(Defaults.doublesTarget),
             .target(DesignSystem.target),
             .target(Logging.doublesTarget),
+            .external(name: "FactoryKit"),
+            .external(name: "FactoryTesting"),
             .external(name: "ViewInspector"),
         ]
     )

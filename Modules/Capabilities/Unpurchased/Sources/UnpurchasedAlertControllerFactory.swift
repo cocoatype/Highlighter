@@ -1,19 +1,17 @@
 //  Created by Geoff Pado on 2/18/22.
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
+import UIKit
+
+import FactoryKit
+
 import Defaults
 import DesignSystem
 import Logging
-import UIKit
 
 @MainActor
 public class UnpurchasedAlertControllerFactory {
-    private let defaults: any DefaultsProvider
-    public init(
-        defaults: any DefaultsProvider = Defaults.provider
-    ) {
-        self.defaults = defaults
-    }
+    public init() {}
 
     public func alertController(for feature: UnpurchasedFeature) -> UIAlertController {
         let alertController = UnpurchasedAlertController(
@@ -40,7 +38,8 @@ public class UnpurchasedAlertControllerFactory {
                 UnpurchasedAlertAction.action(
                     title: Strings.hideButton,
                     style: .default
-                ) { [defaults] in
+                ) {
+                    @Injected(\.defaults) var defaults
                     defaults.set(true, for: hideFeatureKey)
                 }
             )

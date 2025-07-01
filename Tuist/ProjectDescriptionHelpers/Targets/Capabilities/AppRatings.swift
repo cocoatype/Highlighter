@@ -9,6 +9,7 @@ public enum AppRatings {
             .target(Logging.target(sdk: .catalyst)),
             .target(Purchasing.target),
             .target(PurchaseMarketing.target),
+            .external(name: "FactoryKit"),
         ]
     )
 
@@ -21,6 +22,8 @@ public enum AppRatings {
             .target(Logging.doublesTarget),
             .target(Logging.target(sdk: .catalyst)),
             .target(TestHelpers.target),
+            .external(name: "FactoryKit"),
+            .external(name: "FactoryTesting"),
         ]
     )
 }

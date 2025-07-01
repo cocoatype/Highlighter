@@ -1,19 +1,18 @@
 //  Created by Geoff Pado on 6/29/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import SwiftUI
+
+import FactoryKit
+
 import AutoRedactionsUI
 import Defaults
 import Purchasing
-import SwiftUI
 
 struct SettingsContentPurchasedFeaturesSection: View {
     @Binding private var purchaseState: PurchaseState
-    private let defaults: any DefaultsProvider
-    init(
-        defaults: any DefaultsProvider = Defaults.provider,
-        state: Binding<PurchaseState>
-    ) {
-        self.defaults = defaults
+    @Injected(\.defaults) private var defaults
+    init(state: Binding<PurchaseState>) {
         _purchaseState = state
     }
 

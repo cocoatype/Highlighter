@@ -1,12 +1,15 @@
 //  Created by Geoff Pado on 8/27/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
+import Photos
+import UIKit
+
+import FactoryKit
+
 import Defaults
 import FeatureFlagging
-import Photos
 import Purchasing
 import Tools
-import UIKit
 
 @MainActor
 public struct ActionSet {
@@ -95,7 +98,6 @@ public struct ActionSet {
         sizeClass: UIUserInterfaceSizeClass,
         currentColor: UIColor,
         asset: PHAsset?,
-        defaults: any DefaultsProvider = Defaults.provider,
         featureFlagProvider: any FeatureFlagProvider = FeatureFlagging.provider,
         purchaseRepository: any PurchaseRepository = Purchasing.repository
     ) {
@@ -105,7 +107,6 @@ public struct ActionSet {
         self.sizeClass = sizeClass
         self.currentColor = currentColor
         self.asset = asset
-        self.defaults = defaults
         self.featureFlagProvider = featureFlagProvider
         allTextIsSpecial = purchaseRepository
     }
@@ -116,7 +117,7 @@ public struct ActionSet {
     private let sizeClass: UIUserInterfaceSizeClass
     private let currentColor: UIColor
     private let asset: PHAsset?
-    private let defaults: any DefaultsProvider
+    @Injected(\.defaults) private var defaults
     private let featureFlagProvider: any FeatureFlagProvider
 
     // allTextIsSpecial by @ThisGuyNZ on 2024-05-15

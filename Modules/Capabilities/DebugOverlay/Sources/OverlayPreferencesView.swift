@@ -1,9 +1,12 @@
 //  Created by Geoff Pado on 6/17/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import SwiftUI
+
+import FactoryKit
+
 import Defaults
 import DesignSystem
-import SwiftUI
 
 @available(iOS 15.0, *)
 public struct OverlayPreferencesView: View {
@@ -12,7 +15,8 @@ public struct OverlayPreferencesView: View {
     @Binding private var isRecognizedTextOverlayEnabled: Bool
     @Binding private var isCalculatedOverlayEnabled: Bool
     @Binding private var isCombinedOverlayEnabled: Bool
-    init(defaults: any DefaultsProvider = Defaults.provider) {
+    init() {
+        @Injected(\.defaults) var defaults
         _isDetectedTextOverlayEnabled = Self.binding(for: Keys.showDetectedTextOverlay, in: defaults)
         _isDetectedCharactersOverlayEnabled = Self.binding(for: Keys.showDetectedCharactersOverlay, in: defaults)
         _isRecognizedTextOverlayEnabled = Self.binding(for: Keys.showRecognizedTextOverlay, in: defaults)

@@ -1,3 +1,4 @@
+
 import ProjectDescription
 
 public enum Core {
@@ -35,6 +36,7 @@ public enum Core {
             .target(Unpurchased.target),
             .target(URLParsing.target),
             .target(UserActivities.target),
+            .external(name: "FactoryKit"),
         ],
         settings: .settings(
             base: [
@@ -62,6 +64,8 @@ public enum Core {
             .target(Logging.doublesTarget),
             .target(Purchasing.doublesTarget),
             .target(TestHelpers.target),
+            .external(name: "FactoryKit"),
+            .external(name: "FactoryTesting"),
         ]
     )
 }

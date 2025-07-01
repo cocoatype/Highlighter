@@ -1,30 +1,38 @@
 //  Created by Geoff Pado on 12/8/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import Foundation
+import Testing
+
+import FactoryKit
+import FactoryTesting
+
 import Defaults
 import DefaultsDoubles
 import LoggingDoubles
-import XCTest
 
 @testable import Exporting
 @testable import Logging
 
-class CopyExporterTests: XCTestCase {
-    @MainActor
-    func testWhenExporterSucceedsThenEventLogged() async throws {
+@MainActor @Suite(.container)
+struct CopyExporterTests {
+    @Test("When export succeeds, an event is logged")
+    func exportSucceeds() async throws {
+        Container.shared.defaults.register { @MainActor in
+            StubDefaultsProvider()
+        }
         let logger = SpyLogger()
         let exporter = CopyExporter(
             preparedURL: URL(fileURLWithPath: "/"),
-            defaults: StubDefaultsProvider(),
             logger: logger,
             library: StubPhotoLibrary()
         )
 
         try await exporter.export()
 
-        let loggedEvent = try XCTUnwrap(logger.loggedEvents.first)
-        XCTAssertEqual(loggedEvent.name, "Exporting.successfulExport")
-        XCTAssertEqual(loggedEvent.info["style"], "copy")
-        XCTAssertEqual(loggedEvent.info["exportCount"], "1")
+        let loggedEvent = try #require(logger.loggedEvents.first)
+        #expect(loggedEvent.name == "Exporting.successfulExport")
+        #expect(loggedEvent.info["style"] == "copy")
+        #expect(loggedEvent.info["exportCount"] == "1")
     }
 }

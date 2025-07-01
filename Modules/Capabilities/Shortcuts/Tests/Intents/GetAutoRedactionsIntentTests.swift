@@ -1,11 +1,16 @@
 //  Created by Geoff Pado on 6/30/25.
 //  Copyright © 2025 Cocoatype, LLC. All rights reserved.
 
-import DefaultsDoubles
 import Testing
+
+import FactoryKit
+import FactoryTesting
+
+import DefaultsDoubles
 
 @testable import Shortcuts
 
+@MainActor @Suite(.container)
 struct GetAutoRedactionsIntentTests {
     @MainActor @available(iOS 16, *) @Test(arguments: [
         (true, ["goodbye", "hello", "world"]),
@@ -20,7 +25,8 @@ struct GetAutoRedactionsIntentTests {
             "goodbye": false,
             "world": true,
         ])
-        let intent = GetAutoRedactionsIntent(defaults: defaults)
+        Container.shared.defaults.register { defaults }
+        let intent = GetAutoRedactionsIntent()
         intent.includeInactive = includeInactive
 
         let result = try await intent.perform()

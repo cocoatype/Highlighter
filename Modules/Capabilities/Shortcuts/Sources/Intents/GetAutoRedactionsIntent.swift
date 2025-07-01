@@ -2,21 +2,15 @@
 //  Copyright © 2025 Cocoatype, LLC. All rights reserved.
 
 import AppIntents
+
+import FactoryKit
+
 import Defaults
 
 @available(iOS 16, *)
 struct GetAutoRedactionsIntent: AppIntent {
     static let title: LocalizedStringResource = "GetAutoRedactionsIntent.title"
     static let description: IntentDescription = "GetAutoRedactionsIntent.description"
-
-    private let defaults: any DefaultsProvider
-    init(defaults: any DefaultsProvider) {
-        self.defaults = defaults
-    }
-
-    init() {
-        self.init(defaults: Defaults.provider)
-    }
 
     @Parameter(
         title: "GetAutoRedactionsIntent.includeInactive.title",
@@ -31,6 +25,7 @@ struct GetAutoRedactionsIntent: AppIntent {
     }
 
     @MainActor func perform() async throws -> some IntentResult & ReturnsValue<[String]> {
+        @Injected(\.defaults) var defaults
         let autoRedactionsSet = defaults.value(for: Keys.autoRedactionsSet) ?? [:]
         let words = autoRedactionsSet
             .filter {

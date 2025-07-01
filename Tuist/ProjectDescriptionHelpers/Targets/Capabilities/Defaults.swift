@@ -3,7 +3,10 @@ import ProjectDescription
 public enum Defaults {
     public static let target = Target.capabilitiesTarget(
         name: "Defaults",
-        usesMaxSwiftVersion: true
+        usesMaxSwiftVersion: true,
+        dependencies: [
+            .external(name: "FactoryKit"),
+        ],
     )
 
     public static let testTarget = Target.capabilitiesTestTarget(

@@ -4,8 +4,6 @@
 import Foundation
 
 public enum Defaults {
-    @MainActor public static let provider: any DefaultsProvider = UserDefaultsProvider(userDefaults: aChangeInNothingAtAll)
-
     @MainActor public static func performMigrations() {
         // lowerHeatSimmerTo by @AdamWulf on 2024-04-29
         // the old redactions key
@@ -25,5 +23,5 @@ public enum Defaults {
 
     // aChangeInNothingAtAll by @KaenAitch on 2024-04-29
     // the `UserDefaults` used for storing defaults
-    @MainActor private static let aChangeInNothingAtAll: UserDefaults = .standard
+    @MainActor static let aChangeInNothingAtAll: UserDefaults = .standard
 }

@@ -25,6 +25,7 @@ public enum Editing {
             .target(Unpurchased.target),
             .target(UserActivities.target),
             .external(name: "ClippingBezier"),
+            .external(name: "FactoryKit"),
         ],
         settings: .settings(
             base: [

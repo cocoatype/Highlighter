@@ -1,24 +1,25 @@
 //  Created by Geoff Pado on 5/11/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import SwiftUI
+
+import FactoryKit
+
 import Defaults
 import Logging
-import SwiftUI
 
 public struct UnpurchasedAlertViewModifier: ViewModifier {
     @Binding private var isPresented: Bool
     private let feature: UnpurchasedFeature
-    private let defaults: any DefaultsProvider
+    @Injected(\.defaults) private var defaults
     private let logger: any Logger
     init(
         for feature: UnpurchasedFeature,
         isPresented: Binding<Bool>,
-        defaults: any DefaultsProvider = Defaults.provider,
         logger: any Logger = Logging.logger
     ) {
         _isPresented = isPresented
         self.feature = feature
-        self.defaults = defaults
         self.logger = logger
     }
 

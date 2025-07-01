@@ -1,13 +1,16 @@
 //  Created by Geoff Pado on 7/12/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import Foundation
+import Photos
+import UIKit
+
+import FactoryKit
+
 import Defaults
 import ErrorHandling
-import Foundation
 import Logging
-import Photos
 import Redactions
-import UIKit
 
 public class InPlaceExporter: NSObject {
     public convenience init(
@@ -24,19 +27,17 @@ public class InPlaceExporter: NSObject {
 
     private let asset: any ExportableAsset
     private let outputFactory: any OutputFactory
-    private let defaults: any DefaultsProvider
+    @Injected(\.defaults) private var defaults
     private let logger: any Logger
     private let library: any PhotoLibrary
     init(
         asset: any ExportableAsset,
         outputFactory: any OutputFactory,
-        defaults: any DefaultsProvider = Defaults.provider,
         logger: any Logger = Logging.logger,
         library: any PhotoLibrary
     ) {
         self.asset = asset
         self.outputFactory = outputFactory
-        self.defaults = defaults
         self.logger = logger
         self.library = library
     }

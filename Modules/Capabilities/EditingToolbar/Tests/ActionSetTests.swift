@@ -1,21 +1,26 @@
 //  Created by Geoff Pado on 5/16/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import Testing
+import UIKit
+
+import FactoryKit
+import FactoryTesting
+
 import Defaults
 import DefaultsDoubles
 import Purchasing
 import PurchasingDoubles
-import Testing
-import UIKit
 
 @testable import EditingToolbar
 
-@MainActor
-class ActionSetTests {
+@MainActor @Suite(.container)
+struct ActionSetTests {
     // MARK: - Leading Items
 
     @available(iOS 16.0, *) @Test
     func leadingNavigationItemsContainsOnlyDismiss() {
+        registerDependencies()
         let set = ActionSet(purchaseState: .unavailable)
 
         #expect(set.leadingNavigationItems.count == 1)
@@ -26,14 +31,15 @@ class ActionSetTests {
 
     @available(iOS 16.0, *) @Test
     func compactCenterItemsIsEmpty() {
+        registerDependencies()
         let set = ActionSet()
         #expect(set.centerNavigationItems.isEmpty)
     }
 
     @available(iOS 16.0, *) @Test
     func regularCenterItemsContainsRedactWhenPurchasedAndNotHidden() {
+        registerDependencies(hideAutoRedactions: false)
         let set = ActionSet(
-            hideAutoRedactions: false,
             sizeClass: .regular,
             purchaseState: .purchased
         )
@@ -44,8 +50,8 @@ class ActionSetTests {
 
     @available(iOS 16.0, *) @Test
     func regularCenterItemsContainsRedactWhenPurchasedAndHidden() {
+        registerDependencies(hideAutoRedactions: true)
         let set = ActionSet(
-            hideAutoRedactions: true,
             sizeClass: .regular,
             purchaseState: .purchased
         )
@@ -56,8 +62,8 @@ class ActionSetTests {
 
     @available(iOS 16.0, *) @Test
     func regularCenterItemsContainsRedactWhenNotPurchasedAndNotHidden() {
+        registerDependencies(hideAutoRedactions: false)
         let set = ActionSet(
-            hideAutoRedactions: false,
             sizeClass: .regular,
             purchaseState: .unavailable
         )
@@ -68,7 +74,8 @@ class ActionSetTests {
 
     @available(iOS 16.0, *) @Test
     func regularCenterItemsDoesNotContainRedactWhenNotPurchasedAndHidden() {
-        let set = ActionSet(hideAutoRedactions: true, sizeClass: .regular)
+        registerDependencies(hideAutoRedactions: true)
+        let set = ActionSet(sizeClass: .regular)
 
         let trailingItems = set.centerNavigationItems
         #expect(trailingItems.contains(QuickRedactBarButtonItem.self) == false)
@@ -78,7 +85,8 @@ class ActionSetTests {
 
     @Test
     func compactTrailingItemsContainsRedactWhenPurchasedAndNotHidden() {
-        let set = ActionSet(hideAutoRedactions: false, purchaseState: .purchased)
+        registerDependencies(hideAutoRedactions: false)
+        let set = ActionSet(purchaseState: .purchased)
 
         let trailingItems = set.trailingNavigationItems
         #expect(trailingItems.contains(QuickRedactBarButtonItem.self))
@@ -86,7 +94,8 @@ class ActionSetTests {
 
     @Test
     func compactTrailingItemsContainsRedactWhenPurchasedAndHidden() {
-        let set = ActionSet(hideAutoRedactions: true, purchaseState: .purchased)
+        registerDependencies(hideAutoRedactions: true)
+        let set = ActionSet(purchaseState: .purchased)
 
         let trailingItems = set.trailingNavigationItems
         #expect(trailingItems.contains(QuickRedactBarButtonItem.self))
@@ -94,7 +103,8 @@ class ActionSetTests {
 
     @Test
     func compactTrailingItemsContainsRedactWhenNotPurchasedAndNotHidden() {
-        let set = ActionSet(hideAutoRedactions: false, purchaseState: .unavailable)
+        registerDependencies(hideAutoRedactions: false)
+        let set = ActionSet(purchaseState: .unavailable)
 
         let trailingItems = set.trailingNavigationItems
         #expect(trailingItems.contains(QuickRedactBarButtonItem.self))
@@ -102,7 +112,8 @@ class ActionSetTests {
 
     @Test
     func compactTrailingItemsDoesNotContainRedactWhenNotPurchasedAndHidden() {
-        let set = ActionSet(hideAutoRedactions: true)
+        registerDependencies(hideAutoRedactions: true)
+        let set = ActionSet()
 
         let trailingItems = set.trailingNavigationItems
         #expect(trailingItems.contains(QuickRedactBarButtonItem.self) == false)
@@ -110,6 +121,7 @@ class ActionSetTests {
 
     @Test
     func regularTrailingItemsContainsToolAndShareButtons() {
+        registerDependencies()
         let set = ActionSet(sizeClass: .regular)
         let trailingItems = set.trailingNavigationItems
 
@@ -120,11 +132,13 @@ class ActionSetTests {
     // MARK: - Toolbar Items
 
     @Test func regularToolbarItemsIsEmpty() {
+        registerDependencies()
         let set = ActionSet(sizeClass: .regular)
         #expect(set.toolbarItems.count == 0)
     }
 
     @Test func compactToolbarItemsContainsEverything() throws {
+        registerDependencies()
         let set = ActionSet()
         try #require(set.toolbarItems.count == 7)
 
@@ -133,13 +147,22 @@ class ActionSetTests {
         #expect(set.toolbarItems[4] is ColorPickerBarButtonItem)
         #expect(set.toolbarItems[6] is HighlighterToolBarButtonItem)
     }
+
+    // MARK: - Helpers
+
+    private func registerDependencies(
+        hideAutoRedactions: Bool = false
+    ) {
+        Container.shared.defaults.register { @MainActor in
+            StubDefaultsProvider(hideAutoRedactions: hideAutoRedactions)
+        }
+    }
 }
 
 private extension ActionSet {
     private class Target {}
 
     init(
-        hideAutoRedactions: Bool = false,
         sizeClass: UIUserInterfaceSizeClass = .compact,
         purchaseState: PurchaseState = .loading
     ) {
@@ -150,7 +173,6 @@ private extension ActionSet {
             sizeClass: sizeClass,
             currentColor: .black,
             asset: nil,
-            defaults: StubDefaultsProvider(hideAutoRedactions: hideAutoRedactions),
             purchaseRepository: SpyRepository(withCheese: purchaseState)
         )
     }

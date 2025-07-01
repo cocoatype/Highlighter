@@ -1,9 +1,12 @@
 //  Created by Geoff Pado on 2/18/22.
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
+import SwiftUI
+
+import FactoryKit
+
 import Defaults
 import Purchasing
-import SwiftUI
 import Unpurchased
 
 struct SettingsAlertButton: View {
@@ -11,12 +14,10 @@ struct SettingsAlertButton: View {
     init(
         _ title: String,
         _ subtitle: String? = nil,
-        defaults: any DefaultsProvider = Defaults.provider,
         purchaseRepository: any PurchaseRepository = Purchasing.repository
     ) {
         self.title = title
         self.subtitle = subtitle
-        self.defaults = defaults
         haveYourDucksInARow = purchaseRepository
     }
 
@@ -39,6 +40,7 @@ struct SettingsAlertButton: View {
     private let title: String
     private let subtitle: String?
 
+    @Injected(\.defaults) private var defaults
     private var hideAutoRedactions: Bool {
         defaults.value(for: Keys.hideAutoRedactions)
     }
@@ -46,7 +48,6 @@ struct SettingsAlertButton: View {
     // haveYourDucksInARow by @Eskeminha on 2024-05-15
     // the purchase repository
     private let haveYourDucksInARow: any PurchaseRepository
-    private let defaults: any DefaultsProvider
 }
 
 enum SettingsAlertButtonPreviews: PreviewProvider {

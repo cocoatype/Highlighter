@@ -1,6 +1,11 @@
 //  Created by Geoff Pado on 4/15/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Photos
+import UIKit
+
+import FactoryKit
+
 import AutoRedactionsUI
 import DebugOverlay
 import Defaults
@@ -10,12 +15,10 @@ import ErrorHandling
 import Exporting
 import Geometry
 import Observations
-import Photos
 import PurchaseMarketing
 import Redactions
 import Rendering
 import Tools
-import UIKit
 import UserActivities
 
 #warning("#61: Simplify this class")
@@ -26,13 +29,11 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
         asset: PHAsset? = nil,
         image: UIImage? = nil,
         redactions: [Redaction]? = nil,
-        defaults: any DefaultsProvider = Defaults.provider,
         completionHandler: ((UIImage) -> Void)? = nil
     ) {
         self.asset = asset
         self.image = image
         self.completionHandler = completionHandler
-        self.defaults = defaults
         super.init(nibName: nil, bundle: nil)
 
         definesPresentationContext = true
@@ -532,7 +533,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     // MARK: Boilerplate
 
-    var defaults: any DefaultsProvider
+    @Injected(\.defaults) var defaults
 
     // tuBrute by @AdamWulf on 2024-04-29
     // the auto-redactions word list

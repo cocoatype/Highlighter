@@ -3,6 +3,9 @@
 
 import Testing
 
+import FactoryKit
+import FactoryTesting
+
 import DefaultsDoubles
 import Purchasing
 import PurchasingDoubles
@@ -10,7 +13,7 @@ import PurchasingDoubles
 @testable import Core
 @testable import Defaults
 
-@MainActor
+@MainActor @Suite(.container)
 struct PhotoLibraryDataSourceExtraItemsProviderTests {
     @Test(arguments: [
         (true, false, PurchaseState.purchased, true),
@@ -28,9 +31,12 @@ struct PhotoLibraryDataSourceExtraItemsProviderTests {
         purchaseState: PurchaseState,
         shouldBeIncluded: Bool
     ) {
+        Container.shared.defaults.register { @MainActor in
+            StubDefaultsProvider(hideDocumentScanner: hideDocumentScanner)
+        }
+
         let provider = PhotoLibraryDataSourceExtraItemsProvider(
             isDocumentScannerSupported: isDocumentScannerSupported,
-            defaults: StubDefaultsProvider(hideDocumentScanner: hideDocumentScanner),
             purchaseRepository: SpyRepository(withCheese: purchaseState)
         )
         let isIncluded = (0..<provider.itemsCount)

@@ -1,28 +1,33 @@
 //  Created by Geoff Pado on 5/16/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import Testing
+
+import FactoryKit
+import FactoryTesting
+
 import DefaultsDoubles
 import DesignSystemDoubles
 import LoggingDoubles
 import PurchasingDoubles
 import TestHelpers
-import XCTest
 
 @testable import Core
 
-class AppDelegateTests: XCTestCase {
-    @MainActor func testWillFinishLaunchingCallsStartOnPurchaseRepository() {
-        let repository = SpyRepository(startExpectation: expectation(description: "start called"))
-        let logger = SpyLogger()
-        let delegate = AppDelegate(
-            defaults: StubDefaultsProvider(),
-            purchaseRepository: repository,
-            logger: logger,
-            appearanceWriter: StubAppearanceWriter()
-        )
+@MainActor @Suite(.container)
+struct AppDelegateTests {
+    @Test func willFinishLaunchingCallsStartOnPurchaseRepository() async {
+        await confirmation { confirmation in
+            let repository = SpyRepository(startExpectation: confirmation)
+            let logger = SpyLogger()
+            Container.shared.defaults.register { @MainActor in StubDefaultsProvider() }
+            let delegate = AppDelegate(
+                purchaseRepository: repository,
+                logger: logger,
+                appearanceWriter: StubAppearanceWriter()
+            )
 
-        _ = delegate.application(UIApplication.shared, willFinishLaunchingWithOptions: nil)
-
-        waitForExpectations(timeout: 1)
+            _ = delegate.application(UIApplication.shared, willFinishLaunchingWithOptions: nil)
+        }
     }
 }

@@ -1,13 +1,16 @@
 //  Created by Geoff Pado on 8/3/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+import UIKit
+
+import FactoryKit
+
 import AppRatings
 import Defaults
 import Editing
 import Redactions
 import Scenes
 import Tools
-import UIKit
 import UserActivities
 
 #if targetEnvironment(macCatalyst)
@@ -58,7 +61,7 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         return try await editingViewController?.preparedURL
     }
 
-    private let defaults = Defaults.provider
+    @Injected(\.defaults) private var defaults
     func didExportImage() {
         defaults.set(defaults.value(for: Keys.numberOfSaves) + 1, for: Keys.numberOfSaves)
         Task { [weak self] in

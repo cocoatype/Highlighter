@@ -3,19 +3,24 @@
 
 import Testing
 
+import FactoryKit
+import FactoryTesting
+
 import Defaults
 import DefaultsDoubles
 
 @testable import Shortcuts
 
-@MainActor struct DeleteAutoRedactionsIntentTests {
+@MainActor @Suite(.container)
+struct DeleteAutoRedactionsIntentTests {
     @available(iOS 16, *) @Test
     func perform() async throws {
         let defaults = StubDefaultsProvider(autoRedactions: [
             "hello": true,
             "goodbye": false,
         ])
-        let intent = DeleteAutoRedactionsIntent(defaults: defaults)
+        Container.shared.defaults.register { defaults }
+        let intent = DeleteAutoRedactionsIntent()
         intent.deletedWords = ["goodbye"]
 
         let expectedWords = ["hello": true]
@@ -31,8 +36,9 @@ import DefaultsDoubles
             "false": false,
         ]
         let defaults = StubDefaultsProvider(autoRedactions: expectedWords)
+        Container.shared.defaults.register { defaults }
 
-        let intent = DeleteAutoRedactionsIntent(defaults: defaults)
+        let intent = DeleteAutoRedactionsIntent()
         intent.deletedWords = ["burger"]
 
         _ = try await intent.perform()
