@@ -12,11 +12,13 @@ public struct PreviewProduct: PurchaseProduct {
     public let price: Decimal
     public let duration: PurchaseDuration
     public let isPurchased = false
+    public let isTrialEligible: Bool
 
     public init(
         displayName: String = "Preview Product",
         price: Decimal = 1.99,
-        duration: PurchaseDuration = .oneTime
+        duration: PurchaseDuration = .oneTime,
+        isTrialEligible: Bool = false
     ) {
         id = UUID().uuidString
         self.displayName = displayName
@@ -27,6 +29,7 @@ public struct PreviewProduct: PurchaseProduct {
         }
         self.price = price
         self.duration = duration
+        self.isTrialEligible = isTrialEligible
     }
 
     public func purchase() -> Bool {
