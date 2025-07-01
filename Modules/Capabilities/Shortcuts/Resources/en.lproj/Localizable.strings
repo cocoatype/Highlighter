@@ -1,7 +1,8 @@
 "AddAutoRedactionsIntent.description" = "Adds words to the list of auto-hidden words.";
 "AddAutoRedactionsIntent.title" = "Add Auto-hidden Words";
 "AddAutoRedactionsIntent.addedWords.title" = "Words";
-"AddAutoRedactionsIntent.parameterSummary${addedWords})" = "Add ${words} to auto-hidden words";
+"AddAutoRedactionsIntent.isActive.title" = "Make Active";
+"AddAutoRedactionsIntent.parameterSummary${addedWords}" = "Add ${addedWords} to auto-hidden words";
 
 "ColorEntity.colorName.black" = "Black";
 "ColorEntity.colorName.white" = "White";
@@ -17,7 +18,7 @@
 "DeleteAutoRedactionsIntent.description" = "Removes words from the list of auto-hidden words.";
 "DeleteAutoRedactionsIntent.title" = "Remove Auto-hidden Words";
 "DeleteAutoRedactionsIntent.deletedWords.title" = "Words";
-"DeleteAutoRedactionsIntent.parameterSummary${addedWords})" = "Remove ${words} from auto-hidden words";
+"DeleteAutoRedactionsIntent.parameterSummary${deletedWords}" = "Remove ${deletedWords} from auto-hidden words";
 
 "DetectionKind.addresses" = "Addresses";
 "DetectionKind.names" = "Names";
