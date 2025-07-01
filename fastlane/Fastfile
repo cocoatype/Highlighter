@@ -3,6 +3,8 @@ default_platform(:ios)
 platform :ios do
   desc "Runs all the tests"
   lane :test do
+    test_value = "Hello, world!"
+    sh("buildkite-agent" "annotate" "Testing annotation: #{test_value}" "--style" "'info'") 
     run_tests(
       device: "iPhone 15",
       scheme: "Highlighter"
@@ -20,8 +22,12 @@ platform :ios do
     # Set the marketing number to the release branch name
     release_branch = ENV['CI_COMMIT_BRANCH'] || ENV['BUILDKITE_BRANCH']
     match = /release\/(.*)/.match(release_branch)
-    unless match.nil?
-      increment_version_number(version_number: match[1])
+    if match.nil?
+      sh("buildkite-agent" "annotate" "Build number: #{build_number}" "--style" "'info'") 
+    else
+      marketing_number = match[1]
+      increment_version_number(version_number: marketing_number)
+      sh("buildkite-agent" "annotate" "Version: #{marketing_number} (#{build_number})" "--style" "'info'") 
     end
 
     # Build the app for App Store
@@ -107,8 +113,12 @@ platform :mac do
     # Set the marketing number to the release branch name
     release_branch = ENV['CI_COMMIT_BRANCH'] || ENV['BUILDKITE_BRANCH']
     match = /release\/(.*)/.match(release_branch)
-    unless match.nil?
-      increment_version_number(version_number: match[1])
+    if match.nil?
+      sh("buildkite-agent" "annotate" "Build number: #{build_number}" "--style" "'info'") 
+    else
+      marketing_number = match[1]
+      increment_version_number(version_number: marketing_number)
+      sh("buildkite-agent" "annotate" "Version: #{marketing_number} (#{build_number})" "--style" "'info'") 
     end
 
     # Build the app for App Store
