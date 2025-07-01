@@ -8,7 +8,11 @@ public class AutoRedactionsAccessViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
 
         navigationItem.title = Self.navigationTitle
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(AutoRedactionsAccessActions.hideAutoRedactAccess(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: nil,
+            action: #selector(AutoRedactionsAccessActions.hideAutoRedactAccess(_:))
+        )
 
         embed(AutoRedactionsListViewController())
     }

@@ -15,7 +15,7 @@ import ErrorHandling
 import Exporting
 import Geometry
 import Observations
-import PurchaseMarketing
+import Paywall
 import Redactions
 import Rendering
 import Tools
@@ -336,7 +336,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
             PhotoEditingAutoRedactionsAccessProvider()
                 .autoRedactionsAccessViewController { [weak self] in
                     if #available(iOS 16, *) {
-                        self?.present(PurchaseMarketingHostingController(), animated: true)
+                        self?.present(PaywallHostingController(), animated: true)
                     }
                 },
             animated: true

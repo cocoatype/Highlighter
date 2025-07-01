@@ -9,7 +9,7 @@ import FactoryKit
 import Defaults
 import ErrorHandling
 import Logging
-import PurchaseMarketing
+import Paywall
 import Purchasing
 
 public struct AppRatingsPrompter {
@@ -47,7 +47,7 @@ public struct AppRatingsPrompter {
                   await repository.noOnions != .purchased
             else { return }
 
-            topViewController.present(PurchaseMarketingHostingController(), animated: true)
+            topViewController.present(PaywallHostingController(), animated: true)
         }
     }
 

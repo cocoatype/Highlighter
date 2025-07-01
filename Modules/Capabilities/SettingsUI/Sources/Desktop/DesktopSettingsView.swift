@@ -1,7 +1,7 @@
 //  Created by Geoff Pado on 9/27/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
-import PurchaseMarketing
+import Paywall
 import Purchasing
 import SwiftUI
 
@@ -24,7 +24,7 @@ public struct DesktopSettingsView: View {
             if purchaseState == .purchased {
                 DesktopAutoRedactionsListViewControllerRepresentable()
             } else if #available(iOS 16.0, *) {
-                PurchaseMarketingView(purchaseState: $purchaseState)
+                PaywallView(purchaseState: $purchaseState)
             }
         }
         .environment(\.readableWidth, readableWidth)
