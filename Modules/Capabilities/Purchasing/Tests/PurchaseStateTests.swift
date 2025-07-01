@@ -41,6 +41,7 @@ struct PurchaseStateTests {
         let price: Decimal = 1.99
         let duration = PurchaseDuration.unknown
         let isPurchased = false
+        let isTrialEligible = false
         func purchase() -> Bool { false }
     }
 }

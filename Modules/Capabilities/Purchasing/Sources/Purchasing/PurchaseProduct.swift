@@ -11,6 +11,7 @@ public protocol PurchaseProduct: Hashable, Identifiable, Sendable {
     var price: Decimal { get }
     var duration: PurchaseDuration { get }
     var isPurchased: Bool { get async }
+    var isTrialEligible: Bool { get async }
 
     func purchase() async throws -> Bool
 }
@@ -52,6 +53,13 @@ extension Product: PurchaseProduct {
         case (1, .year): return .annual
         case (1, .month): return .monthly
         default: return .unknown
+        }
+    }
+
+    public var isTrialEligible: Bool {
+        get async {
+            guard let subscription else { return false }
+            return await subscription.isEligibleForIntroOffer
         }
     }
 }

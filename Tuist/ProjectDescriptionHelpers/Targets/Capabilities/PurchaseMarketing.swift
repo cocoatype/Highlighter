@@ -17,6 +17,7 @@ public enum PurchaseMarketing {
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "PurchaseMarketing",
         dependencies: [
+            .target(Purchasing.doublesTarget),
             .target(Logging.doublesTarget),
             .external(name: "ViewInspector"),
         ]

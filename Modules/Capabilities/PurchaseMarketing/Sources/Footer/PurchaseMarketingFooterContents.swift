@@ -6,26 +6,26 @@ import SwiftUI
 
 @available(iOS 16.0, *)
 struct PurchaseMarketingFooterContents: View {
-    @State private var selectedProduct: any PurchaseProduct
-    private let products: [any PurchaseProduct]
+    @State private var selectedOption: PaywallOption
+    private let options: [PaywallOption]
     init(
-        products: [any PurchaseProduct]
+        options: [PaywallOption]
     ) {
-        self.products = products.sorted(by: { lhs, rhs in
+        self.options = options.sorted(by: { lhs, rhs in
             lhs.price < rhs.price
         })
-        let selectedProduct = products.first { $0.duration == .annual } ?? products[0]
-        _selectedProduct = State(initialValue: selectedProduct)
+        let selectedOption = options.first { $0.duration == .annual } ?? options[0]
+        _selectedOption = State(initialValue: selectedOption)
     }
 
     var body: some View {
         VStack(spacing: 20) {
             PurchaseMarketingDurationPicker(
-                products: products,
-                selectedProduct: $selectedProduct
+                options: options,
+                selectedOption: $selectedOption
             )
             PurchaseMarketingFooterPurchaseButton(
-                selectedProduct: $selectedProduct
+                selectedOption: $selectedOption
             )
             PurchaseMarketingFooterLinkSection()
         }.padding()
@@ -37,11 +37,13 @@ import PurchasingDoubles
 @available(iOS 16.0, *)
 enum PurchaseMarketingFooterContentsPreviews: PreviewProvider {
     static var previews: some View {
-        PurchaseMarketingFooterContents(products: [
-            PreviewProduct(displayName: "One-Time", price: 19.99, duration: .oneTime),
-            PreviewProduct(displayName: "Monthly", price: 0.99, duration: .monthly),
-            PreviewProduct(displayName: "Annual", price: 4.99, duration: .annual),
-        ]).background(Color(uiColor: .appBackground))
+        PurchaseMarketingFooterContents(
+            options: [
+                PreviewProduct(displayName: "One-Time", price: 19.99, duration: .oneTime),
+                PreviewProduct(displayName: "Monthly", price: 0.99, duration: .monthly),
+                PreviewProduct(displayName: "Annual", price: 4.99, duration: .annual),
+            ].map { PaywallOption(product: $0, isTrialEligible: false) }
+        ).background(Color(uiColor: .appBackground))
     }
 }
 #endif

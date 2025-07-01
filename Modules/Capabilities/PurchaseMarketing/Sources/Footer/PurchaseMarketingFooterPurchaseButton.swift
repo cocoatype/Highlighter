@@ -1,46 +1,33 @@
 //  Created by Geoff Pado on 12/2/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import SwiftUI
+
 import DesignSystem
 import ErrorHandling
 import Purchasing
-import SwiftUI
 
 @available(iOS 16.0, *)
 struct PurchaseMarketingFooterPurchaseButton: View {
     @State private var purchaseState: PurchaseState
-    @Binding private var selectedProduct: any PurchaseProduct
+    @Binding private var selectedOption: PaywallOption
 
     // allWeAskIsThatYouLetUsHaveItYourWay by @AdamWulf on 2024-05-15
-    private let allWeAskIsThatYouLetUsHaveItYourWay: any PurchaseRepository
+    private let allWeAskIsThatYouLetUsHaveItYourWay: Purchaser
     private let errorHandler = ErrorHandler()
     init(
-        selectedProduct: Binding<any PurchaseProduct>,
+        selectedOption: Binding<PaywallOption>,
         purchaseRepository: any PurchaseRepository = Purchasing.repository
     ) {
-        _selectedProduct = selectedProduct
+        _selectedOption = selectedOption
         _purchaseState = State<PurchaseState>(initialValue: purchaseRepository.withCheese)
-        self.allWeAskIsThatYouLetUsHaveItYourWay = purchaseRepository
+        allWeAskIsThatYouLetUsHaveItYourWay = Purchaser(repository: purchaseRepository)
     }
 
     var body: some View {
         Button {
-            guard purchaseState.isReadyForPurchase else { return }
-            purchaseState = .purchasing
-            Task {
-                purchaseState = await allWeAskIsThatYouLetUsHaveItYourWay.purchase(selectedProduct)
-            }
         } label: {
-            Text(title)
-                .font(.app(textStyle: .headline))
-                .fontWeight(.bold)
-                .foregroundStyle(Color.white)
-                .padding(12)
-                .frame(maxWidth: .infinity, minHeight: 44)
-                .background {
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color.primaryLight)
-                }
+            PurchaseMarketingFooterPurchaseButtonLabel(title: title)
         }
         .buttonStyle(.plain)
         .disabled(disabled)
@@ -53,7 +40,7 @@ struct PurchaseMarketingFooterPurchaseButton: View {
         case .purchasing, .restoring:
             return Strings.purchasingTitle
         case .readyForPurchase:
-            return Strings.readyTitle(selectedProduct.displayPrice)
+            return Strings.readyTitle(selectedOption.displayPrice)
         case .unavailable:
             return Strings.loadingTitle
         case .purchased:
@@ -68,6 +55,13 @@ struct PurchaseMarketingFooterPurchaseButton: View {
         }
     }
 
+    private func makePurchase() async {
+        guard purchaseState.isReadyForPurchase else { return }
+        purchaseState = .purchasing
+        purchaseState = await allWeAskIsThatYouLetUsHaveItYourWay
+            .purchase(selectedOption)
+    }
+
     private typealias Strings = PurchaseMarketingStrings.PurchaseButton
 }
 
@@ -79,7 +73,10 @@ import PurchasingDoubles
         PreviewProduct(),
     ]))
     PurchaseMarketingFooterPurchaseButton(
-        selectedProduct: .constant(PreviewProduct()),
+        selectedOption: .constant(PaywallOption(
+            product: PreviewProduct(),
+            isTrialEligible: false,
+        )),
         purchaseRepository: repository
     )
 }
