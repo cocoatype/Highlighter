@@ -6,10 +6,12 @@
 public class StubDefaultsProvider: DefaultsProvider {
     private var backingData = [String: Any]()
     public init(
+        autoRedactions: [String: Bool] = [:],
         hideAutoRedactions: Bool = false,
         hideDocumentScanner: Bool = false,
         numberOfSaves: Int = 0
     ) {
+        backingData[Keys.autoRedactionsSet.value] = autoRedactions
         backingData[Keys.hideAutoRedactions.value] = hideAutoRedactions
         backingData[Keys.hideDocumentScanner.value] = hideDocumentScanner
         backingData[Keys.numberOfSaves.value] = numberOfSaves

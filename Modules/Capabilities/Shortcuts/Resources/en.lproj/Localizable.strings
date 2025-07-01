@@ -14,6 +14,11 @@
 "DetectionKind.phoneNumbers" = "Phone Numbers";
 "DetectionKind.typeDisplayRepresentation" = "Detectable Item";
 
+"GetAutoRedactionsIntent.title" = "Get Auto-hidden Words";
+"GetAutoRedactionsIntent.description" = "Returns the list of auto-hidden words";
+"GetAutoRedactionsIntent.includeInactive.title" = "Include Inactive Words";
+"GetAutoRedactionsIntent.parameterSummary" = "Get auto-hidden words";
+
 "LegacyRedactIntent.deprecationMessage" = "This action is no longer supported.";
 
 "OpenImageIntent.description" = "Open an image in Black Highlighter.";

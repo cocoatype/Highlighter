@@ -6,6 +6,7 @@ public enum Shortcuts {
         hasResources: true,
         dependencies: [
             .target(AppNavigation.target),
+            .target(Defaults.target),
             .target(DesignSystem.target),
             .target(Detections.target(sdk: .catalyst)),
             .target(Observations.target(sdk: .catalyst)),
@@ -18,6 +19,7 @@ public enum Shortcuts {
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Shortcuts",
         dependencies: [
+            .target(Defaults.doublesTarget),
             .target(Detections.target(sdk: .catalyst)),
             .target(Observations.target(sdk: .catalyst)),
             .target(Purchasing.doublesTarget),
