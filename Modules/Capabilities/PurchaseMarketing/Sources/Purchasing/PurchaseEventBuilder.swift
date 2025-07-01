@@ -10,7 +10,7 @@ struct PurchaseEventBuilder {
             name: "Paywall.purchaseStarted",
             info: [
                 "duration": durationInfo(for: option),
-                "trialEligible": trialInfo(for: option)
+                "trialEligible": trialInfo(for: option),
             ]
         )
     }

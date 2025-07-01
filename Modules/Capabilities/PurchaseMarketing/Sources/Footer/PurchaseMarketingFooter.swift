@@ -32,7 +32,7 @@ struct PurchaseMarketingFooter: View {
                         return await PaywallOption(product: product)
                     }
                 }
-                
+
                 var options = [PaywallOption]()
                 for await option in group {
                     options.append(option)
