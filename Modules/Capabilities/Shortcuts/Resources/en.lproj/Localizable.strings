@@ -1,3 +1,8 @@
+"AddAutoRedactionsIntent.description" = "Adds words to the list of auto-hidden words.";
+"AddAutoRedactionsIntent.title" = "Add Auto-hidden Words";
+"AddAutoRedactionsIntent.addedWords.title" = "Words";
+"AddAutoRedactionsIntent.parameterSummary${addedWords})" = "Add ${words} to auto-hidden words";
+
 "ColorEntity.colorName.black" = "Black";
 "ColorEntity.colorName.white" = "White";
 "ColorEntity.colorName.systemGray" = "Gray";
@@ -15,13 +20,13 @@
 "DetectionKind.typeDisplayRepresentation" = "Detectable Item";
 
 "GetAutoRedactionsIntent.title" = "Get Auto-hidden Words";
-"GetAutoRedactionsIntent.description" = "Returns the list of auto-hidden words";
+"GetAutoRedactionsIntent.description" = "Returns the list of auto-hidden words.";
 "GetAutoRedactionsIntent.includeInactive.title" = "Include Inactive Words";
 "GetAutoRedactionsIntent.parameterSummary" = "Get auto-hidden words";
 
 "LegacyRedactIntent.deprecationMessage" = "This action is no longer supported.";
 
-"OpenImageIntent.description" = "Open an image in Black Highlighter.";
+"OpenImageIntent.description" = "Opens an image in Black Highlighter.";
 "OpenImageIntent.parameterSummary${sourceImage}" = "Open ${sourceImage} in Black Highlighter";
 "OpenImageIntent.sourceImage.title" = "Source Image";
 "OpenImageIntent.title" = "Open Image";
@@ -33,27 +38,27 @@
 "OutputFormat.png" = "PNG";
 
 "RedactDetectionsIntent.color" = "Color";
-"RedactDetectionsIntent.description" = "Redact detected items in an image.";
+"RedactDetectionsIntent.description" = "Redacts detected items in an image.";
 "RedactDetectionsIntent.detectionKind.title" = "Items to Detect";
 "RedactDetectionsIntent.parameterSummary${ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO}${timCookCanEatMySocks}" = "Redact detected ${ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO} in ${timCookCanEatMySocks}";
 "RedactDetectionsIntent.sourceImages.title" = "Source Images";
 "RedactDetectionsIntent.title" = "Redact Detected Items (Legacy)";
 
 "RedactEverythingIntent.color" = "Color";
-"RedactEverythingIntent.description" = "Redact all text in an image.";
+"RedactEverythingIntent.description" = "Redacts all text in an image.";
 "RedactEverythingIntent.parameterSummary${timCookCanEatMySocks}" = "Redact all text in ${timCookCanEatMySocks}";
 "RedactEverythingIntent.sourceImages.title" = "Source Images";
 "RedactEverythingIntent.title" = "Redact All Text (Legacy)";
 
 "RedactImageIntent.color" = "Color";
-"RedactImageIntent.description" = "Redact an image.";
+"RedactImageIntent.description" = "Redacts words in an image.";
 "RedactImageIntent.parameterSummary${ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO}${timCookCanEatMySocks}" = "Redact occurrences of ${ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO} in ${timCookCanEatMySocks}";
 "RedactImageIntent.redactedWords.title" = "Redacted Words";
 "RedactImageIntent.sourceImages.title" = "Source Images";
 "RedactImageIntent.title" = "Redact Image (Legacy)";
 
 "RedactIntent.color" = "Color";
-"RedactIntent.description" =  "Redact an image.";
+"RedactIntent.description" =  "Redacts an image.";
 "RedactIntent.detectionKinds.title" = "Items to Detect";
 "RedactIntent.detectionsParameterSummary${strategy}${detectionKinds}${sourceImages}" = "Redact ${strategy} ${detectionKinds} in ${sourceImages}";
 "RedactIntent.defaultParameterSummary${strategy}${sourceImages}" = "Redact ${strategy} in ${sourceImages}";

@@ -11,7 +11,7 @@ struct GetAutoRedactionsIntentTests {
         (true, ["goodbye", "hello", "world"]),
         (false, ["hello", "world"]),
     ])
-    func performWithInactive(
+    func perform(
         includeInactive: Bool,
         expectedWords: [String]
     ) async throws {
