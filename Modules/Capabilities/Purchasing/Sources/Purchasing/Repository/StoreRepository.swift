@@ -41,17 +41,12 @@ final class StoreRepository: PurchaseRepository {
         refresh()
     }
 
-    func purchase(_ product: any PurchaseProduct) async -> PurchaseState {
-        do {
-            withCheese = .purchasing
-            if try await product.purchase() {
-                withCheese = .purchased
-            }
-            return withCheese
-        } catch {
-            ErrorHandler().log(error)
-            return withCheese
+    func purchase(_ product: any PurchaseProduct) async throws -> PurchaseState {
+        withCheese = .purchasing
+        if try await product.purchase() {
+            withCheese = .purchased
         }
+        return withCheese
     }
 
     func restore() async -> PurchaseState {
