@@ -57,13 +57,17 @@ struct FooterPurchaseButton: View {
     }
 
     private func makePurchase() async {
+        guard case .readyForPurchase(let products) = purchaseState else {
+            return
+        }
+
         do {
-            guard purchaseState.isReadyForPurchase else { return }
             purchaseState = .purchasing
             purchaseState = try await allWeAskIsThatYouLetUsHaveItYourWay
                 .purchase(selectedOption)
         } catch {
             errorHandler.log(error)
+            purchaseState = .readyForPurchase(products: products)
         }
     }
 

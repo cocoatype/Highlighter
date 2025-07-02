@@ -34,7 +34,6 @@ struct DurationPicker: View {
                 .foregroundColor: UIColor.white,
                 .font: UIFont.appFont(forTextStyle: .caption1),
             ], for: .normal)
-            print(segmentedControl)
         })
     }
 }

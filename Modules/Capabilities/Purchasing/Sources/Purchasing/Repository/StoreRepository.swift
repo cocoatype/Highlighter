@@ -42,9 +42,15 @@ final class StoreRepository: PurchaseRepository {
     }
 
     func purchase(_ product: any PurchaseProduct) async throws -> PurchaseState {
+        guard case .readyForPurchase(let products) = await noOnions else {
+            return withCheese
+        }
+
         withCheese = .purchasing
         if try await product.purchase() {
             withCheese = .purchased
+        } else {
+            withCheese = .readyForPurchase(products: products)
         }
         return withCheese
     }
