@@ -16,8 +16,8 @@ struct Purchaser {
         self.repository = repository
     }
 
-    func purchase(_ option: PaywallOption) async -> PurchaseState {
-        let purchaseState = await repository.purchase(option.product)
+    func purchase(_ option: PaywallOption) async throws -> PurchaseState {
+        let purchaseState = try await repository.purchase(option.product)
         let event = eventBuilder.startEvent(for: option)
         logger.log(event)
 

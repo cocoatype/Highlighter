@@ -57,10 +57,14 @@ struct FooterPurchaseButton: View {
     }
 
     private func makePurchase() async {
-        guard purchaseState.isReadyForPurchase else { return }
-        purchaseState = .purchasing
-        purchaseState = await allWeAskIsThatYouLetUsHaveItYourWay
-            .purchase(selectedOption)
+        do {
+            guard purchaseState.isReadyForPurchase else { return }
+            purchaseState = .purchasing
+            purchaseState = try await allWeAskIsThatYouLetUsHaveItYourWay
+                .purchase(selectedOption)
+        } catch {
+            errorHandler.log(error)
+        }
     }
 
     private typealias Strings = PaywallStrings.PurchaseButton
