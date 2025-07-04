@@ -126,6 +126,8 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
         case .editor(let image, let redactions):
             logger.log(EventFactory().editorPresentationEvent(for: .appIntent))
             presentPhotoEditingViewController(for: image, redactions: redactions)
+        case .documentScanner:
+            presentDocumentCameraViewController()
         }
     }
 

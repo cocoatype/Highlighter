@@ -32,6 +32,10 @@
 
 "LegacyRedactIntent.deprecationMessage" = "This action is no longer supported.";
 
+"OpenDocumentScannerIntent.description" = "Opens the document scanner.";
+"OpenDocumentScannerIntent.parameterSummary" = "Open the document scanner";
+"OpenDocumentScannerIntent.title" = "Open Document Scanner";
+
 "OpenImageIntent.description" = "Opens an image in Black Highlighter.";
 "OpenImageIntent.parameterSummary${sourceImage}" = "Open ${sourceImage} in Black Highlighter";
 "OpenImageIntent.sourceImage.title" = "Source Image";

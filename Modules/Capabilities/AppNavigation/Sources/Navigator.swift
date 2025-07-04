@@ -4,10 +4,11 @@
 import Redactions
 import UIKit
 
-public protocol Navigator {
-    @MainActor func navigate(to route: Route)
+@MainActor public protocol Navigator: Sendable {
+    func navigate(to route: Route)
 }
 
 public enum Route {
+    case documentScanner
     case editor(UIImage, [Redaction])
 }
