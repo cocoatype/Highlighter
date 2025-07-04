@@ -21,7 +21,7 @@ struct OpenImageIntent: AppIntent {
     // this exists because we can't pass redactions between intents without redactions being a parameter
     static var lastRedactions: [Redaction]?
 
-    @AppDependency private var navigator: Navigator
+    @AppDependency private var navigator: any Navigator
 
     @Parameter(
         title: "OpenImageIntent.sourceImage.title",
