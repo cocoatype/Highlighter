@@ -2,5 +2,5 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 public enum Logging {
-    public static let logger = TelemetryLogger()
+    public static let logger: any Logger = TelemetryLogger()
 }

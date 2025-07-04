@@ -93,5 +93,5 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     }
 
     private var appViewController: AppViewController? { return window?.rootViewController as? AppViewController }
-    private let logger = TelemetryLogger()
+    private let logger = Logging.logger
 }

@@ -15,7 +15,7 @@ import Purchasing
 public struct AppRatingsPrompter {
     public init() {
         self.init(
-            logger: TelemetryLogger(),
+            logger: Logging.logger,
             ratingRequestMethod: SKStoreReviewController.requestReview(in:)
         )
     }

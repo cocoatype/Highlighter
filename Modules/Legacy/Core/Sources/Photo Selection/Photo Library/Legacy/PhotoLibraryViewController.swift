@@ -16,7 +16,7 @@ import UserActivities
 class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate, PHPhotoLibraryChangeObserver {
     init(
         collection: PhotoCollection,
-        logger: any Logger = TelemetryLogger()
+        logger: any Logger = Logging.logger
     ) {
         self.logger = logger
         self.dataSource = PhotoLibraryDataSource(collection)

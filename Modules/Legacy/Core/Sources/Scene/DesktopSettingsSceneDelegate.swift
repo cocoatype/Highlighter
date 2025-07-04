@@ -17,7 +17,7 @@ class DesktopSettingsSceneDelegate: NSObject, UIWindowSceneDelegate {
 
         scene.title = CoreStrings.DesktopSettingsSceneDelegate.windowTitle
 
-        let window = AppWindow(windowScene: scene, logger: TelemetryLogger())
+        let window = AppWindow(windowScene: scene, logger: Logging.logger)
         let settingsViewController = DesktopSettingsViewController()
         window.rootViewController = settingsViewController
         window.makeKeyAndVisible()

@@ -18,7 +18,7 @@ class AppWindow: UIWindow {
     }
 
     required init?(coder: NSCoder) {
-        self.logger = TelemetryLogger()
+        self.logger = Logging.logger
         self.appViewController = AppViewController(logger: logger)
         super.init(coder: coder)
         setup()

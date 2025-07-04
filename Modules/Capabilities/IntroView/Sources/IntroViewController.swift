@@ -12,7 +12,7 @@ import UIKit
 
 public class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
     public init(
-        logger: any Logger = TelemetryLogger(),
+        logger: any Logger = Logging.logger,
         permissionsRequester: any PhotoPermissionsRequester = PhotoLibraryPermissionsRequester()
     ) {
         self.logger = logger

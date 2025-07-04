@@ -18,7 +18,7 @@ public struct ErrorHandler: ErrorHandling {
     }
 
     public init() {
-        self.init(logger: TelemetryLogger())
+        self.init(logger: Logging.logger)
     }
 
     init(logger: Logger, exit: @escaping (String) -> Never) {

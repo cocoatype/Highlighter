@@ -12,7 +12,7 @@ import VisionKit
 class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelegate {
     init(
         delegate: DocumentScanningDelegate?,
-        logger: any Logger = TelemetryLogger(),
+        logger: any Logger = Logging.logger,
         purchaseRepository: any PurchaseRepository = Purchasing.repository
     ) {
         self.delegate = delegate

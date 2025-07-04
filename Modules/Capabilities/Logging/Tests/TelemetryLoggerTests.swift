@@ -1,38 +1,36 @@
 //  Created by Geoff Pado on 5/5/23.
 //  Copyright © 2023 Cocoatype, LLC. All rights reserved.
 
+import Synchronization
+import Testing
+
 import TelemetryClient
-import XCTest
+
 @testable import Logging
 
-final class TelemetryLoggerTests: XCTestCase {
-    func testBareInitInitializesTelemetryManager() {
-        XCTAssertFalse(TelemetryManager.isInitialized)
+struct TelemetryLoggerTests {
+    @Test func bareInitInitializesTelemetryManager() {
+        #expect(TelemetryManager.isInitialized == false)
 
-        let logger = TelemetryLogger()
+        _ = TelemetryLogger()
 
-        XCTAssertTrue(TelemetryManager.isInitialized)
+        #expect(TelemetryManager.isInitialized == true)
     }
 
-    func testLogSendsEventNameAndInfo() throws {
-        let spy = SpySender()
-        let logger = TelemetryLogger(manager: spy)
+    @available(iOS 18, *)
+    @Test func logSendsEventNameAndInfo() throws {
+        let signaledName = Mutex<String?>(nil)
+        let signaledInfo = Mutex<[String: String]?>(nil)
+        let logger = TelemetryLogger { name, parameters, _, _ in
+            signaledName.withLock { $0 = name }
+            signaledInfo.withLock { $0 = parameters }
+        }
 
         logger.log(Event(name: "test", info: ["key": "value"]))
 
-        let spyName = try XCTUnwrap(spy.name)
-        let spyInfo = try XCTUnwrap(spy.info)
-        XCTAssertEqual(spyName, "test")
-        XCTAssertEqual(spyInfo, ["key": "value"])
-    }
-}
-
-private final class SpySender: TelemetrySending {
-    var name: String?
-    var info: [String: String]?
-
-    func send(_ signalType: TelemetryClient.TelemetrySignalType, for clientUser: String?, floatValue: Double?, with additionalPayload: [String: String]) {
-        name = signalType
-        info = additionalPayload
+        let spyName = try #require(signaledName.withLock { $0 })
+        let spyInfo = try #require(signaledInfo.withLock { $0 })
+        #expect(spyName == "test")
+        #expect(spyInfo == ["key": "value"])
     }
 }
