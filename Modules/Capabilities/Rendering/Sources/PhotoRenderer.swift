@@ -13,7 +13,7 @@ public typealias PhotoRendererImage = UIImage
 
 import ImageIO
 
-public protocol PhotoRenderer {
+public protocol PhotoRenderer: Sendable {
     func render(image: PhotoRendererImage, redactions: [Redaction]) async throws -> PhotoRendererImage
     func render(imageSource: CGImageSource, redactions: [Redaction]) async throws -> CGImage
 }
