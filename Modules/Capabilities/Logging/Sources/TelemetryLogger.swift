@@ -10,7 +10,7 @@ struct TelemetryLogger: Logger {
         TelemetryDeck.initialize(config: configuration)
     }
 
-    typealias SignalFunction = @Sendable (String, [String : String], Double?, String?) -> ()
+    typealias SignalFunction = @Sendable (String, [String: String], Double?, String?) -> Void
     private let signalFunction: SignalFunction
     init(signalFunction: @escaping SignalFunction) {
         self.signalFunction = signalFunction
