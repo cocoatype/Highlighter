@@ -13,19 +13,17 @@ import Redactions
 public class CopyExporter: NSObject {
     private let preparedURL: URL
     public convenience init(preparedURL: URL) {
-        self.init(preparedURL: preparedURL, logger: Logging.logger, library: PHPhotoLibrary.shared())
+        self.init(preparedURL: preparedURL, library: PHPhotoLibrary.shared())
     }
 
     @Injected(\.defaults) private var defaults
-    private let logger: any Logger
+    @Injected(\.logger) private var logger
     private let library: any PhotoLibrary
     init(
         preparedURL: URL,
-        logger: any Logger,
         library: any PhotoLibrary
     ) {
         self.preparedURL = preparedURL
-        self.logger = logger
         self.library = library
     }
 

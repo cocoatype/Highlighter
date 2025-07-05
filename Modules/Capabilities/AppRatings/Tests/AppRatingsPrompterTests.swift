@@ -28,11 +28,10 @@ struct AppRatingsPrompterTests {
         Container.shared.defaults.register { @MainActor in
             StubDefaultsProvider(numberOfSaves: numberOfSaves)
         }
+        Container.shared.logger.register { SpyLogger() }
         let expectedCount = shouldDisplay ? 1 : 0
         try await confirmation(expectedCount: expectedCount) { confirmation in
-            let prompter = AppRatingsPrompter(
-                logger: SpyLogger()
-            ) { _ in
+            let prompter = AppRatingsPrompter { _ in
                 confirmation.confirm()
             }
 
@@ -46,9 +45,8 @@ struct AppRatingsPrompterTests {
             StubDefaultsProvider(numberOfSaves: 1)
         }
         let spy = SpyLogger()
-        let prompter = AppRatingsPrompter(
-            logger: spy
-        ) { _ in }
+        Container.shared.logger.register { spy }
+        let prompter = AppRatingsPrompter { _ in }
 
         await prompter.displayRatingsPrompt(in: nil)
 
@@ -59,12 +57,11 @@ struct AppRatingsPrompterTests {
 
     @Test func displayingPromptLogsEvent() async throws {
         let spy = SpyLogger()
+        Container.shared.logger.register { spy }
         Container.shared.defaults.register { @MainActor in
             StubDefaultsProvider(numberOfSaves: 999)
         }
-        let prompter = AppRatingsPrompter(
-            logger: spy
-        ) { _ in }
+        let prompter = AppRatingsPrompter { _ in }
         let windowScene = try InstanceHelper.create(UIWindowScene.self)
 
         await prompter.displayRatingsPrompt(in: windowScene)

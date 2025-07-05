@@ -1,21 +1,22 @@
 //  Created by Geoff Pado on 4/1/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import PhotosUI
+import SwiftUI
+import UIKit
+
+import FactoryKit
+
 import AppNavigation
 import Logging
 import PhotoPermissions
 import PhotoPicker
-import PhotosUI
 import SettingsUI
-import SwiftUI
-import UIKit
 
 public class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
     public init(
-        logger: any Logger = TelemetryLogger(),
         permissionsRequester: any PhotoPermissionsRequester = PhotoLibraryPermissionsRequester()
     ) {
-        self.logger = logger
         self.permissionsRequester = permissionsRequester
         super.init(rootView: IntroView())
         self.rootView = IntroView(
@@ -73,7 +74,7 @@ public class IntroViewController: UIHostingController<IntroView>, PhotoPickerDel
 
     // MARK: Boilerplate
 
-    private let logger: any Logger
+    @Injected(\.logger) private var logger
     private let permissionsRequester: PhotoPermissionsRequester
 
     private lazy var photoPicker: PhotoPicker = {

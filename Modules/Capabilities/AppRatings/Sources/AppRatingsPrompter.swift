@@ -15,17 +15,14 @@ import Purchasing
 public struct AppRatingsPrompter {
     public init() {
         self.init(
-            logger: TelemetryLogger(),
             ratingRequestMethod: SKStoreReviewController.requestReview(in:)
         )
     }
 
     init(
-        logger: any Logger,
         ratingRequestMethod: @escaping ((UIWindowScene) -> Void) = SKStoreReviewController.requestReview(in:),
         repository: any PurchaseRepository = Purchasing.repository
     ) {
-        self.logger = logger
         self.ratingRequestMethod = ratingRequestMethod
         self.repository = repository
     }
@@ -33,7 +30,8 @@ public struct AppRatingsPrompter {
     @MainActor
     public func displayRatingsPrompt(in windowScene: UIWindowScene?) async {
         guard let windowScene else {
-            ErrorHandler(logger: logger).log(AppRatingsError.missingWindowScene)
+            ErrorHandler()
+                .log(AppRatingsError.missingWindowScene)
             return
         }
 
@@ -56,7 +54,7 @@ public struct AppRatingsPrompter {
     private static let ratingNumberOfSavesCadence = 3
     private static let paywallNumberOfSaves = 10
     @Injected(\.defaults) private var defaults
-    private let logger: any Logger
+    @Injected(\.logger) private var logger
     private let ratingRequestMethod: (UIWindowScene) -> Void
     private let repository: any PurchaseRepository
 }

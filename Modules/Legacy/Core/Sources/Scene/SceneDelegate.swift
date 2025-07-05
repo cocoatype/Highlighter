@@ -1,8 +1,11 @@
 //  Created by Geoff Pado on 7/10/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
-import Logging
 import UIKit
+
+import FactoryKit
+
+import Logging
 import URLParsing
 
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
@@ -11,7 +14,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
 
-        let window = AppWindow(windowScene: scene, logger: logger)
+        let window = AppWindow(windowScene: scene)
         window.makeKeyAndVisible()
         self.window = window
 
@@ -93,5 +96,5 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     }
 
     private var appViewController: AppViewController? { return window?.rootViewController as? AppViewController }
-    private let logger = TelemetryLogger()
+    @Injected(\.logger) private var logger
 }

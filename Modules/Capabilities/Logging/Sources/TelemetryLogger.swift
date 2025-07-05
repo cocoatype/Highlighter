@@ -3,24 +3,25 @@
 
 import TelemetryClient
 
-public struct TelemetryLogger: Logger {
-    public static func initializeTelemetry() {
+struct TelemetryLogger: Logger {
+    static func initializeTelemetry() {
         guard TelemetryManager.isInitialized == false else { return }
         let configuration = TelemetryManagerConfiguration(appID: "2B12B0C1-2C32-414A-BAB4-B20E866EC277")
-        TelemetryManager.initialize(with: configuration)
+        TelemetryDeck.initialize(config: configuration)
     }
 
-    private let manager: TelemetrySending
-    init(manager: TelemetrySending) {
-        self.manager = manager
+    typealias SignalFunction = @Sendable (String, [String: String], Double?, String?) -> Void
+    private let signalFunction: SignalFunction
+    init(signalFunction: @escaping SignalFunction) {
+        self.signalFunction = signalFunction
     }
 
-    public init() {
+    init() {
         Self.initializeTelemetry()
-        self.init(manager: TelemetryManager.shared)
+        self.init(signalFunction: TelemetryDeck.signal(_:parameters:floatValue:customUserID:))
     }
 
-    public func log(_ event: Event) {
-        manager.send(event.value, for: nil, floatValue: nil, with: event.info)
+    func log(_ event: Event) {
+        signalFunction(event.value, event.info, nil, nil)
     }
 }

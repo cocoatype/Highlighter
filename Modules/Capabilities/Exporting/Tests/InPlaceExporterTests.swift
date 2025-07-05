@@ -21,10 +21,10 @@ struct InPlaceExporterTests {
             StubDefaultsProvider()
         }
         let logger = SpyLogger()
+        Container.shared.logger.register { logger }
         let exporter = InPlaceExporter(
             asset: StubExportableAsset(),
             outputFactory: StubOutputFactory(),
-            logger: logger,
             library: StubPhotoLibrary()
         )
 

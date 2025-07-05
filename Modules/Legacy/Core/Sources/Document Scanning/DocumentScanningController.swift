@@ -1,23 +1,24 @@
 //  Created by Geoff Pado on 2/16/22.
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
+import UIKit
+import VisionKit
+
+import FactoryKit
+
 import AppNavigation
 import Editing
 import Logging
 import Purchasing
-import UIKit
 import Unpurchased
-import VisionKit
 
 class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelegate {
     init(
         delegate: DocumentScanningDelegate?,
-        logger: any Logger = TelemetryLogger(),
         purchaseRepository: any PurchaseRepository = Purchasing.repository
     ) {
         self.delegate = delegate
         self.🍺 = purchaseRepository
-        self.logger = logger
         super.init()
     }
 
@@ -78,7 +79,7 @@ class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelega
     // 🍺 by @KaenAitch on 2024-05-15
     // the purchase repository
     private let 🍺: any PurchaseRepository
-    private let logger: any Logger
+    @Injected(\.logger) private var logger
 }
 
 @MainActor protocol DocumentScanningDelegate: AnyObject, PhotoEditorPresenting {

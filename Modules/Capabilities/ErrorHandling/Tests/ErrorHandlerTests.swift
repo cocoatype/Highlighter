@@ -1,83 +1,76 @@
 //  Created by Geoff Pado on 5/5/23.
 //  Copyright © 2023 Cocoatype, LLC. All rights reserved.
 
+import Foundation
+import Testing
+
+import FactoryKit
+import FactoryTesting
+
 import LoggingDoubles
-import XCTest
 
 @testable import ErrorHandling
 @testable import Logging
 
-final class ErrorHandlerTests: XCTestCase {
-    func testLoggingSwiftErrorLogsDescription() throws {
+@Suite(.container)
+struct ErrorHandlerTests {
+    @Test func loggingSwiftErrorLogsDescription() throws {
         let logger = SpyLogger()
-        let handler = ErrorHandler(logger: logger)
+        Container.shared.logger.register { logger }
+        let handler = ErrorHandler()
 
         handler.log(SampleError.sample)
-        let event = try XCTUnwrap(logger.loggedEvents.first)
+        let event = try #require(logger.loggedEvents.first)
 
-        XCTAssertEqual(event.value, "TelemetryDeck.Error.occurred")
-        XCTAssertEqual(event.info["TelemetryDeck.Error.id"], "sample")
+        #expect(event.value == "TelemetryDeck.Error.occurred")
+        #expect(event.info["TelemetryDeck.Error.id"] == "sample")
     }
 
-    func testLoggingNSErrorLogsInformation() throws {
+    @Test func loggingNSErrorLogsInformation() throws {
         let logger = SpyLogger()
-        let handler = ErrorHandler(logger: logger)
+        Container.shared.logger.register { logger }
+        let handler = ErrorHandler()
         let error = NSError(domain: "sample", code: 19)
 
         handler.log(error)
-        let event = try XCTUnwrap(logger.loggedEvents.first)
+        let event = try #require(logger.loggedEvents.first)
 
-        XCTAssertEqual(event.value, "TelemetryDeck.Error.occurred")
-        XCTAssertEqual(event.info, [
+        #expect(event.value == "TelemetryDeck.Error.occurred")
+        #expect(event.info == [
             "TelemetryDeck.Error.id": "sample - 19",
             "errorDescription": "The operation couldn’t be completed. (sample error 19.)",
         ])
     }
 
-    func testCrashingLogsMessage() throws {
-        let logger = SpyLogger()
-        let crashExpectation = expectation(description: "exit method called")
-        let handler = ErrorHandler(logger: logger) { message in
-            guard let event = logger.loggedEvents.first else { return Self.stubbedExit() }
-            XCTAssertEqual(event.value, "crash")
-            XCTAssertEqual(event.info, ["message": "crash"])
-            XCTAssertEqual(message, "crash")
-            crashExpectation.fulfill()
-            return Self.stubbedExit()
-        }
-
-        DispatchQueue.global(qos: .userInitiated).async {
+#if compiler(>=6.2) && os(macOS)
+    @Test func crashingLogsMessage() async throws {
+        await #expect(processExitsWith: .failure) {
+            let logger = SpyLogger()
+            Container.shared.logger.register { logger }
+            let handler = ErrorHandler { _ in
+                let event = logger.loggedEvents.first
+                #expect(event?.value == "crash")
+                #expect(event?.info == ["message": "crash"])
+            }
             handler.crash("crash")
         }
-
-        waitForExpectations(timeout: 1)
     }
 
-    func testNotImplementedLogsMessage() throws {
-        let logger = SpyLogger()
-        let crashExpectation = expectation(description: "exit method called")
-        let handler = ErrorHandler(logger: logger) { message in
-            guard let event = logger.loggedEvents.first else { return Self.stubbedExit() }
-            XCTAssertEqual(event.value, "notImplemented")
-            XCTAssertEqual(event.info["file"], #fileID)
-            XCTAssertEqual(event.info["function"], #function)
-            XCTAssertEqual(message, "Unimplemented function")
-            crashExpectation.fulfill()
-            return Self.stubbedExit()
-        }
-
-        DispatchQueue.global(qos: .userInitiated).async {
+    @Test func notImplementedLogsMessage() async {
+        await #expect(processExitsWith: .failure) {
+            let logger = SpyLogger()
+            Container.shared.logger.register { logger }
+            let handler = ErrorHandler { message in
+                let event = logger.loggedEvents.first
+                #expect(event?.value == "notImplemented")
+                #expect(event?.info["file"] == #fileID)
+                #expect(event?.info["function"] == #function)
+                #expect(message == "Unimplemented function")
+            }
             handler.notImplemented()
         }
-
-        waitForExpectations(timeout: 1)
     }
-
-    private static func stubbedExit() -> Never {
-        repeat {
-            RunLoop.current.run()
-        } while (true)
-    }
+#endif
 }
 
 private enum SampleError: Error {

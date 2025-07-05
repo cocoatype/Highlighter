@@ -1,17 +1,19 @@
 //  Created by Geoff Pado on 4/17/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import UIKit
+
 private import ClippingBezier
+import FactoryKit
+
 import Logging
 import Observations
 import Redactions
 import Tools
-import UIKit
 
 class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
-    private let logger: any Logger
-    init(logger: any Logger = Logging.logger) {
-        self.logger = logger
+    @Injected(\.logger) private var logger
+    init() {
         super.init(frame: .zero)
         isAccessibilityElement = false
         backgroundColor = .appBackground

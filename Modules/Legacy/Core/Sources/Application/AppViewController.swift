@@ -2,6 +2,13 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import AppIntents
+import Photos
+import SwiftUI
+import UIKit
+import VisionKit
+
+import FactoryKit
+
 import AppNavigation
 import AppRatings
 import Editing
@@ -9,23 +16,17 @@ import ErrorHandling
 import IntroView
 import Logging
 import PhotoPermissions
-import Photos
 import Paywall
 import Redactions
-import UIKit
-import VisionKit
 import SettingsUI
-import SwiftUI
 
 @MainActor
 class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, IntroViewController.Actions, SettingsBarButtonItem.Actions, SettingsPresenting, Navigator {
-    private let logger: any Logger
+    @Injected(\.logger) private var logger
     private let permissionsRequester: PhotoPermissionsRequester
     init(
-        logger: any Logger,
         permissionsRequester: any PhotoPermissionsRequester = PhotoLibraryPermissionsRequester()
     ) {
-        self.logger = logger
         self.permissionsRequester = permissionsRequester
         super.init(nibName: nil, bundle: nil)
 
