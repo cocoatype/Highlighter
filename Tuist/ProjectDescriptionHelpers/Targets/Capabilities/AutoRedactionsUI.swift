@@ -4,6 +4,7 @@ public enum AutoRedactionsUI {
     public static let target = Target.capabilitiesTarget(
         name: "AutoRedactionsUI",
         hasResources: true,
+        usesMaxSwiftVersion: true,
         dependencies: [
             .target(Defaults.target),
             .target(DesignSystem.target),
@@ -13,5 +14,8 @@ public enum AutoRedactionsUI {
         ]
     )
 
-    public static let testTarget = Target.capabilitiesTestTarget(name: "AutoRedactionsUI")
+    public static let testTarget = Target.capabilitiesTestTarget(
+        name: "AutoRedactionsUI",
+        usesMaxSwiftVersion: true,
+    )
 }
