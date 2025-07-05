@@ -7,7 +7,7 @@ import FactoryKit
 
 import Logging
 
-final class UnpurchasedAlertController: UIAlertController {
+@MainActor final class UnpurchasedAlertController: UIAlertController {
     @Injected(\.logger) private var logger
 
     override func viewDidAppear(_ animated: Bool) {

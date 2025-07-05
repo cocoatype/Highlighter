@@ -10,7 +10,7 @@ import LoggingDoubles
 
 @testable import Unpurchased
 
-@Suite(.container)
+@MainActor @Suite(.container)
 struct UnpurchasedAlertControllerTests {
     @Test func viewDidAppear() {
         let logger = SpyLogger()
