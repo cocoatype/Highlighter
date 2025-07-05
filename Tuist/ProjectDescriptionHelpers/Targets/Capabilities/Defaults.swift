@@ -12,6 +12,7 @@ public enum Defaults {
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Defaults",
         dependencies: [
+            .target(TestHelpers.target),
         ]
     )
 

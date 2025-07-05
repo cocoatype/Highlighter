@@ -15,10 +15,8 @@ import UserActivities
 
 class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate, PHPhotoLibraryChangeObserver {
     init(
-        collection: PhotoCollection,
-        logger: any Logger = Logging.logger
+        collection: PhotoCollection
     ) {
-        self.logger = logger
         self.dataSource = PhotoLibraryDataSource(collection)
         super.init(nibName: nil, bundle: nil)
 
@@ -142,7 +140,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         }
     }
     private let libraryView = PhotoLibraryView()
-    private let logger: any Logger
+    @Injected(\.logger) private var logger
     private var purchaseStateObserver: Any?
     private var hideDocumentScannerObserver: Any?
     private var shouldScrollToBottom = true

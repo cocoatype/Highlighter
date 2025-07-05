@@ -12,15 +12,13 @@ public struct UnpurchasedAlertViewModifier: ViewModifier {
     @Binding private var isPresented: Bool
     private let feature: UnpurchasedFeature
     @Injected(\.defaults) private var defaults
-    private let logger: any Logger
+    @Injected(\.logger) private var logger
     init(
         for feature: UnpurchasedFeature,
-        isPresented: Binding<Bool>,
-        logger: any Logger = Logging.logger
+        isPresented: Binding<Bool>
     ) {
         _isPresented = isPresented
         self.feature = feature
-        self.logger = logger
     }
 
     public func body(content: Content) -> some View {

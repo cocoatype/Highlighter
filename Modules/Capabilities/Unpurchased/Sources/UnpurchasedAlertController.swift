@@ -1,11 +1,14 @@
 //  Created by Geoff Pado on 12/4/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
-import Logging
 import UIKit
 
+import FactoryKit
+
+import Logging
+
 final class UnpurchasedAlertController: UIAlertController {
-    var logger: any Logger = Logging.logger
+    @Injected(\.logger) private var logger
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

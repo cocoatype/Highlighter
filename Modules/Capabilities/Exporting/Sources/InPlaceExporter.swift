@@ -28,17 +28,15 @@ public class InPlaceExporter: NSObject {
     private let asset: any ExportableAsset
     private let outputFactory: any OutputFactory
     @Injected(\.defaults) private var defaults
-    private let logger: any Logger
+    @Injected(\.logger) private var logger
     private let library: any PhotoLibrary
     init(
         asset: any ExportableAsset,
         outputFactory: any OutputFactory,
-        logger: any Logger = Logging.logger,
         library: any PhotoLibrary
     ) {
         self.asset = asset
         self.outputFactory = outputFactory
-        self.logger = logger
         self.library = library
     }
 

@@ -1,29 +1,34 @@
 //  Created by Geoff Pado on 12/4/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
-import LoggingDoubles
 import SwiftUI
-import ViewInspector
 import Testing
+
+import FactoryKit
+import FactoryTesting
+import ViewInspector
+
+import LoggingDoubles
 
 @testable import Unpurchased
 
-@MainActor struct UnpurchasedAlertViewModifierTests {
-    @Test func whenIsPresentedTrueThenEventLogged() throws {
+@MainActor @Suite(.container)
+struct UnpurchasedAlertViewModifierTests {
+    @Test(arguments: [true, false])
+    func presentationEventLog(isPresented: Bool) throws {
         let logger = SpyLogger()
-        let modifier = UnpurchasedAlertViewModifier(for: .autoRedactions(), isPresented: .constant(false), logger: logger)
+        Container.shared.logger.register { logger }
+        let modifier = UnpurchasedAlertViewModifier(
+            for: .autoRedactions(),
+            isPresented: .constant(false)
+        )
 
-        try modifier.inspect().viewModifierContent().callOnChange(newValue: true)
+        try modifier.inspect().viewModifierContent()
+            .callOnChange(newValue: isPresented)
 
-        #expect(logger.loggedEvents.contains(where: { $0.name == "UnpurchasedAlertViewModifier.isPresented" }) == true)
-    }
-
-    @Test func whenIsPresentedFalseThenEventNotLogged() throws {
-        let logger = SpyLogger()
-        let modifier = UnpurchasedAlertViewModifier(for: .autoRedactions(), isPresented: .constant(false), logger: logger)
-
-        try modifier.inspect().viewModifierContent().callOnChange(newValue: false)
-
-        #expect(logger.loggedEvents.contains(where: { $0.name == "UnpurchasedAlertViewModifier.isPresented" }) == false)
+        let containsEvent = logger.loggedEvents.contains(where: {
+            $0.name == "UnpurchasedAlertViewModifier.isPresented"
+        })
+        #expect(containsEvent == isPresented)
     }
 }

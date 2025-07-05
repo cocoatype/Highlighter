@@ -22,9 +22,9 @@ struct CopyExporterTests {
             StubDefaultsProvider()
         }
         let logger = SpyLogger()
+        Container.shared.logger.register { logger }
         let exporter = CopyExporter(
             preparedURL: URL(fileURLWithPath: "/"),
-            logger: logger,
             library: StubPhotoLibrary()
         )
 

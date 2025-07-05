@@ -1,8 +1,12 @@
 //  Created by Geoff Pado on 4/11/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
-import LoggingDoubles
 import XCTest
+
+import FactoryKit
+import FactoryTesting
+
+import LoggingDoubles
 
 @testable import Editing
 @testable import Logging
@@ -66,7 +70,9 @@ class PhotoEditingWorkspaceViewTests: XCTestCase {
 
     func testWhenHandleStrokeCompletionThenEventLogged() throws {
         let logger = SpyLogger()
-        let workspaceView = PhotoEditingWorkspaceView(logger: logger)
+        Container.shared.logger.register { logger }
+        defer { Container.shared.reset() }
+        let workspaceView = PhotoEditingWorkspaceView()
         workspaceView.handleStrokeCompletion()
 
         let loggedEvent = try XCTUnwrap(logger.loggedEvents.first)

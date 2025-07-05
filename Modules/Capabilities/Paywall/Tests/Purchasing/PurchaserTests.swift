@@ -3,6 +3,9 @@
 
 import Testing
 
+import FactoryKit
+import FactoryTesting
+
 import LoggingDoubles
 import Purchasing
 import PurchasingDoubles
@@ -10,14 +13,14 @@ import PurchasingDoubles
 @testable import Logging
 @testable import Paywall
 
-@MainActor
+@MainActor @Suite(.container)
 struct PurchaserTests {
     @available(iOS 18.0, *)
     @Test("Making purchase sends purchase started log")
     func purchaseStartedLog() async throws {
         let logger = SpyLogger()
-        _ = await Purchaser(
-            logger: logger,
+        Container.shared.logger.register { logger }
+        _ = try await Purchaser(
             repository: SpyRepository()
         ).purchase(
             PaywallOption(

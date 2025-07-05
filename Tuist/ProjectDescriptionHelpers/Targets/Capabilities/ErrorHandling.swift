@@ -7,6 +7,7 @@ public enum ErrorHandling {
             sdk: sdk,
             dependencies: [
                 .target(Logging.target(sdk: sdk)),
+                .external(name: "FactoryKit"),
             ]
         )
     }
@@ -16,6 +17,8 @@ public enum ErrorHandling {
         dependencies: [
             .target(Logging.doublesTarget),
             .target(Logging.target(sdk: .catalyst)),
+            .external(name: "FactoryKit"),
+            .external(name: "FactoryTesting"),
         ]
     )
 }

@@ -1,19 +1,27 @@
 //  Created by Geoff Pado on 12/4/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import Testing
+
+import FactoryKit
+import FactoryTesting
+
 import LoggingDoubles
-import XCTest
 
 @testable import Unpurchased
 
-class UnpurchasedAlertControllerTests: XCTestCase {
-    func testWhenViewDidAppearThenEventLogged() {
+@Suite(.container)
+struct UnpurchasedAlertControllerTests {
+    @Test func viewDidAppear() {
         let logger = SpyLogger()
-        let alertController = UnpurchasedAlertController()
-        alertController.logger = logger
+        Container.shared.logger.register { logger }
 
+        let alertController = UnpurchasedAlertController()
         alertController.viewDidAppear(false)
 
-        XCTAssert(logger.loggedEvents.contains(where: { $0.name == "UnpurchasedAlertController.viewDidAppear" }))
+        let containsExpectedEvent = logger.loggedEvents.contains {
+            $0.name == "UnpurchasedAlertController.viewDidAppear"
+        }
+        #expect(containsExpectedEvent == true)
     }
 }

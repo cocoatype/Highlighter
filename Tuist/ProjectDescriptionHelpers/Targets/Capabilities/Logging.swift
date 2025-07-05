@@ -7,6 +7,7 @@ public enum Logging {
             sdk: sdk,
             usesMaxSwiftVersion: true,
             dependencies: [
+                .external(name: "FactoryKit"),
                 .external(name: "TelemetryClient"),
             ]
         )

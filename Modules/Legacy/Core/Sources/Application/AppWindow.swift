@@ -1,25 +1,26 @@
 //  Created by Geoff Pado on 3/31/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import UIKit
+
+import FactoryKit
+
 import Editing
 import ErrorHandling
 import Logging
-import UIKit
 import UserActivities
 
 class AppWindow: UIWindow {
     private let appViewController: AppViewController
-    private let logger: any Logger
-    init(windowScene: UIWindowScene, logger: any Logger) {
-        self.appViewController = AppViewController(logger: logger)
-        self.logger = logger
+    @Injected(\.logger) private var logger
+    override init(windowScene: UIWindowScene) {
+        self.appViewController = AppViewController()
         super.init(windowScene: windowScene)
         setup()
     }
 
     required init?(coder: NSCoder) {
-        self.logger = Logging.logger
-        self.appViewController = AppViewController(logger: logger)
+        self.appViewController = AppViewController()
         super.init(coder: coder)
         setup()
     }

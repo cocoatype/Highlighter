@@ -12,6 +12,7 @@ public enum IntroView {
             .target(PhotoPermissions.target),
             .target(PhotoPicker.target),
             .target(SettingsUI.target),
+            .external(name: "FactoryKit"),
         ]
     )
 

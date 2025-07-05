@@ -1,10 +1,13 @@
 //  Created by Geoff Pado on 5/18/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
+import SwiftUI
+
+import FactoryKit
+
 import DesignSystem
 import Logging
 import Purchasing
-import SwiftUI
 import TestHelpersInterface
 
 @available(iOS 16.0, *)
@@ -12,13 +15,11 @@ public struct PaywallView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
 
     @Binding private var purchaseState: PurchaseState
-    private let logger: any Logger
+    @Injected(\.logger) private var logger
     public init(
-        purchaseState: Binding<PurchaseState>,
-        logger: any Logger = Logging.logger
+        purchaseState: Binding<PurchaseState>
     ) {
         _purchaseState = purchaseState
-        self.logger = logger
     }
 
     public var body: some View {

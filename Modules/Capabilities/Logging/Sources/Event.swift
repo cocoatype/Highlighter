@@ -1,7 +1,7 @@
 //  Created by Geoff Pado on 5/5/23.
 //  Copyright © 2023 Cocoatype, LLC. All rights reserved.
 
-public struct Event {
+public struct Event: Sendable {
     public let name: Name
     let info: [String: String]
     var value: String { String(name.value) }
@@ -11,7 +11,7 @@ public struct Event {
         self.info = info
     }
 
-    public struct Name: Equatable, ExpressibleByStringLiteral {
+    public struct Name: Equatable, ExpressibleByStringLiteral, Sendable {
         fileprivate let value: StaticString
         public init(_ value: StaticString) {
             self.value = value

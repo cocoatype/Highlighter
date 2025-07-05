@@ -9,8 +9,7 @@ import LoggingMac
 import Logging
 #endif
 
-public protocol ErrorHandling {
-    init(logger: Logger)
+public protocol ErrorHandling: Sendable {
     func log(_ error: Error)
     func crash(_ message: String) -> Never
     func notImplemented(file: String, function: String) -> Never

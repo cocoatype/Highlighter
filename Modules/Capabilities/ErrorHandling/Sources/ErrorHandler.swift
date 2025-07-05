@@ -3,6 +3,8 @@
 
 import Foundation
 
+import FactoryKit
+
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import LoggingMac
 #else
@@ -10,20 +12,15 @@ import Logging
 #endif
 
 public struct ErrorHandler: ErrorHandling {
-    private var logger: Logger
-    private var exit: (String) -> Never
-
-    public init(logger: Logger) {
-        self.init(logger: logger, exit: { fatalError($0) })
-    }
+    @Injected(\.logger) private var logger
+    private var onExit: @Sendable (String) -> Void
 
     public init() {
-        self.init(logger: Logging.logger)
+        self.init(onExit: {_ in})
     }
 
-    init(logger: Logger, exit: @escaping (String) -> Never) {
-        self.logger = logger
-        self.exit = exit
+    init(onExit: @escaping @Sendable (String) -> Void) {
+        self.onExit = onExit
     }
 
     public func log(_ error: Error) {
@@ -43,12 +40,14 @@ public struct ErrorHandler: ErrorHandling {
 
     public func crash(_ message: String) -> Never {
         logger.log(Event(name: Self.crash, info: ["message": message]))
-        return exit(message)
+        onExit(message)
+        fatalError(message)
     }
 
     public func notImplemented(file: String = #fileID, function: String = #function) -> Never {
         logger.log(Event(name: Self.notImplemented, info: ["file": file, "function": function]))
-        return exit("Unimplemented function")
+        onExit("Unimplemented function")
+        fatalError("Unimplemented function")
     }
 
     // MARK: Event Names

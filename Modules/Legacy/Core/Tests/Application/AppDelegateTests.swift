@@ -21,9 +21,9 @@ struct AppDelegateTests {
             let repository = SpyRepository(startExpectation: confirmation)
             let logger = SpyLogger()
             Container.shared.defaults.register { @MainActor in StubDefaultsProvider() }
+            Container.shared.logger.register { logger }
             let delegate = AppDelegate(
                 purchaseRepository: repository,
-                logger: logger,
                 appearanceWriter: StubAppearanceWriter()
             )
 

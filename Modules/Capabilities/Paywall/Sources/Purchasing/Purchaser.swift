@@ -1,18 +1,18 @@
 //  Created by Geoff Pado on 6/30/25.
 //  Copyright © 2025 Cocoatype, LLC. All rights reserved.
 
+import FactoryKit
+
 import Logging
 import Purchasing
 
 struct Purchaser {
     private let eventBuilder = PurchaseEventBuilder()
-    private let logger: any Logger
+    @Injected(\.logger) private var logger
     private let repository: any PurchaseRepository
     init(
-        logger: any Logger = Logging.logger,
         repository: any PurchaseRepository
     ) {
-        self.logger = logger
         self.repository = repository
     }
 
