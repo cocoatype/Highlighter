@@ -24,12 +24,14 @@ struct FooterPurchaseButton: View {
         allWeAskIsThatYouLetUsHaveItYourWay = Purchaser(repository: purchaseRepository)
     }
 
+    @State private var isErrorAlertPresented = false
     var body: some View {
         Button {
             Task { await makePurchase() }
         } label: {
             FooterPurchaseButtonLabel(title: title)
         }
+        .errorAlert(isPresented: $isErrorAlertPresented)
         .buttonStyle(.plain)
         .disabled(disabled)
     }
@@ -68,6 +70,7 @@ struct FooterPurchaseButton: View {
         } catch {
             errorHandler.log(error)
             purchaseState = .readyForPurchase(products: products)
+            isErrorAlertPresented = true
         }
     }
 
