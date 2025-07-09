@@ -9,11 +9,11 @@ struct PreviewRepository: PurchaseRepository {
     var products: [any PurchaseProduct] { [] }
 
     func start() {}
-    
+
     func purchase(_ product: any PurchaseProduct) async throws -> PurchaseState {
         withCheese
     }
-    
+
     func restore() async -> PurchaseState {
         withCheese
     }
