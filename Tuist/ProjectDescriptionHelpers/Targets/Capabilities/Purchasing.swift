@@ -5,6 +5,7 @@ public enum Purchasing {
         name: "Purchasing",
         dependencies: [
             .target(ErrorHandling.target(sdk: .catalyst)),
+            .external(name: "FactoryKit"),
         ]
     )
 

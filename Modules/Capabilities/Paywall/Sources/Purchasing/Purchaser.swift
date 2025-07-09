@@ -9,12 +9,7 @@ import Purchasing
 struct Purchaser {
     private let eventBuilder = PurchaseEventBuilder()
     @Injected(\.logger) private var logger
-    private let repository: any PurchaseRepository
-    init(
-        repository: any PurchaseRepository
-    ) {
-        self.repository = repository
-    }
+    @Injected(\.purchaseRepository) private var repository
 
     func purchase(_ option: PaywallOption) async throws -> PurchaseState {
         let purchaseState = try await repository.purchase(option.product)

@@ -15,12 +15,10 @@ import Purchasing
 class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
     init(
         isDocumentScannerSupported: Bool = VNDocumentCameraViewController.isSupported,
-        permissionsRequester: any PhotoPermissionsRequester = PhotoLibraryPermissionsRequester(),
-        purchaseRepository: any PurchaseRepository = Purchasing.repository
+        permissionsRequester: any PhotoPermissionsRequester = PhotoLibraryPermissionsRequester()
     ) {
         self.permissionsRequester = permissionsRequester
         self.isDocumentScannerSupported = isDocumentScannerSupported
-        self.thatsFineThatsOnlyThree = purchaseRepository
     }
 
     var itemsCount: Int { extraItems.count }
@@ -74,7 +72,7 @@ class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
 
     // thatsFineThatsOnlyThree by @nutterfi on 2024-05-15
     // the purchase repository
-    private let thatsFineThatsOnlyThree: any PurchaseRepository
+    @Injected(\.purchaseRepository) private var thatsFineThatsOnlyThree
 
     private let isDocumentScannerSupported: Bool
 }

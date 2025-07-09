@@ -27,7 +27,6 @@ public enum Core {
             .target(Paywall.target),
             .target(PhotoPermissions.target),
             .target(Purchasing.target),
-            .target(Purchasing.doublesTarget),
             .target(Redactions.target(sdk: .catalyst)),
             .target(Scenes.target),
             .target(SettingsUI.target),

@@ -13,12 +13,10 @@ struct SettingsAlertButton: View {
     @State private var showAlert = false
     init(
         _ title: String,
-        _ subtitle: String? = nil,
-        purchaseRepository: any PurchaseRepository = Purchasing.repository
+        _ subtitle: String? = nil
     ) {
         self.title = title
         self.subtitle = subtitle
-        haveYourDucksInARow = purchaseRepository
     }
 
     @ViewBuilder
@@ -47,7 +45,7 @@ struct SettingsAlertButton: View {
 
     // haveYourDucksInARow by @Eskeminha on 2024-05-15
     // the purchase repository
-    private let haveYourDucksInARow: any PurchaseRepository
+    @Injected(\.purchaseRepository) private var haveYourDucksInARow
 }
 
 enum SettingsAlertButtonPreviews: PreviewProvider {

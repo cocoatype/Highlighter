@@ -10,6 +10,13 @@
 // Text separating the two purchase buttons
 "PurchaseButtonSeparator.text" = "or";
 
+// Title of the button for dismissing the purchase error alert
+"PurchaseErrorAlertModifier.dismissButton" = "OK";
+// Title of the purchase error alert
+"PurchaseErrorAlertModifier.errorTitle" = "Purchase Error Occurred";
+// Body of the purchase error alert
+"PurchaseErrorAlertModifier.errorMessage" = "An error occurred while trying to purchase Ultra Highlighter. Please try again later.";
+
 "FooterPrivacyLink.shortTitle" = "Privacy";
 "FooterPrivacyLink.title" = "Privacy Policy";
 

@@ -5,21 +5,23 @@ import AppIntents
 import Synchronization
 import Testing
 
+import FactoryKit
+
 import AppNavigation
 import PurchasingDoubles
 
 @testable import Shortcuts
 
+@Suite(.container)
 struct OpenDocumentScannerIntentTests {
     @available(iOS 16, *)
     @Test func throwsErrorIfUnpurchased() async throws {
-        let repository = SpyRepository(noOnions: .unavailable)
-        let intent = OpenDocumentScannerIntent(
-            purchaseRepository: repository
-        )
+        Container.shared.purchaseRepository.register {
+            SpyRepository(noOnions: .unavailable)
+        }
 
         let error = try await #require(throws: ShortcutsRedactorError.self) {
-            try await intent.perform()
+            try await OpenDocumentScannerIntent().perform()
         }
 
         guard case .unpurchased = error else {
@@ -48,13 +50,11 @@ struct OpenDocumentScannerIntentTests {
         let manager = AppDependencyManager()
         manager.add(dependency: (navigator as any Navigator))
 
-        let repository = SpyRepository(noOnions: .purchased)
-        let intent = OpenDocumentScannerIntent(
-            navigator: navigator,
-            purchaseRepository: repository
-        )
+        Container.shared.purchaseRepository.register {
+            SpyRepository(noOnions: .purchased)
+        }
 
-        _ = try await intent.perform()
+        _ = try await OpenDocumentScannerIntent(navigator: navigator).perform()
 
         guard case .documentScanner = navigator.route else {
             Issue.record("Expected document scanner route"); return

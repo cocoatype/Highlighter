@@ -20,11 +20,9 @@ public struct AppRatingsPrompter {
     }
 
     init(
-        ratingRequestMethod: @escaping ((UIWindowScene) -> Void) = SKStoreReviewController.requestReview(in:),
-        repository: any PurchaseRepository = Purchasing.repository
+        ratingRequestMethod: @escaping ((UIWindowScene) -> Void) = SKStoreReviewController.requestReview(in:)
     ) {
         self.ratingRequestMethod = ratingRequestMethod
-        self.repository = repository
     }
 
     @MainActor
@@ -56,7 +54,7 @@ public struct AppRatingsPrompter {
     @Injected(\.defaults) private var defaults
     @Injected(\.logger) private var logger
     private let ratingRequestMethod: (UIWindowScene) -> Void
-    private let repository: any PurchaseRepository
+    @Injected(\.purchaseRepository) private var repository
 }
 
 private enum AppRatingsError: Error {

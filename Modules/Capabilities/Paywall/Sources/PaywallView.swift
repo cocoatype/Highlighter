@@ -13,14 +13,9 @@ import TestHelpersInterface
 @available(iOS 16.0, *)
 public struct PaywallView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
-
-    @Binding private var purchaseState: PurchaseState
     @Injected(\.logger) private var logger
-    public init(
-        purchaseState: Binding<PurchaseState>
-    ) {
-        _purchaseState = purchaseState
-    }
+
+    public init() {}
 
     public var body: some View {
         GeometryReader { proxy in
@@ -101,7 +96,7 @@ public struct PaywallView: View {
     Color.black
         .ignoresSafeArea()
         .sheet(isPresented: .constant(true)) {
-            PaywallView(purchaseState: .constant(.loading))
+            PaywallView()
                 .frame(width: 640)
         }
 }

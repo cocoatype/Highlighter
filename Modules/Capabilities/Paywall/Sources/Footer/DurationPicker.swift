@@ -43,11 +43,11 @@ import PurchasingDoubles
 #Preview {
     DurationPicker(
         options: [
-            PreviewProduct(),
-            PreviewProduct(),
+            StubProduct(),
+            StubProduct(),
         ].map { PaywallOption(product: $0, isTrialEligible: false) },
         selectedOption: .constant(
-            PaywallOption(product: PreviewProduct(), isTrialEligible: false),
+            PaywallOption(product: StubProduct(), isTrialEligible: false),
         )
     )
 }

@@ -45,7 +45,7 @@ struct PurchaseEventBuilderTests {
         isEligibleForTrial: Bool
     ) -> PaywallOption {
         PaywallOption(
-            product: PreviewProduct(
+            product: StubProduct(
                 duration: duration
             ),
             isTrialEligible: isEligibleForTrial

@@ -53,7 +53,7 @@ enum PurchaseSubtitlePreviews: PreviewProvider {
             .preferredColorScheme(.dark)
             PurchaseSubtitle(
                 state: .readyForPurchase(
-                    products: [PreviewProduct()]
+                    products: [StubProduct()]
                 )
             )
             .preferredColorScheme(.dark)

@@ -1,23 +1,35 @@
 //  Created by Geoff Pado on 5/15/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import Testing
+import UIKit
+
+import FactoryKit
+
 import AutoRedactionsUI
 import PurchasingDoubles
-import XCTest
 
 @testable import Editing
 
-@MainActor
-class PhotoEditingAutoRedactionsAccessProviderTests: XCTestCase {
-    func testAutoRedactionsAccessViewControllerIsNavigationControllerWhenPurchased() {
-        let provider = PhotoEditingAutoRedactionsAccessProvider(purchaseRepository: PreviewRepository(purchaseState: .purchased))
+@MainActor @Suite(.container)
+struct PhotoEditingAutoRedactionsAccessProviderTests {
+    @Test func autoRedactionsAccessViewControllerIsNavigationControllerWhenPurchased() {
+        Container.shared.purchaseRepository.register {
+            SpyRepository(withCheese: .purchased)
+        }
+        let provider = PhotoEditingAutoRedactionsAccessProvider()
 
-        XCTAssert(provider.autoRedactionsAccessViewController {} is AutoRedactionsAccessNavigationController)
+        let controller = provider.autoRedactionsAccessViewController {}
+        #expect(controller is AutoRedactionsAccessNavigationController)
     }
 
-    func testAutoRedactionsAccessViewControllerIsAlertControllerWhenNotPurchased() {
-        let provider = PhotoEditingAutoRedactionsAccessProvider(purchaseRepository: PreviewRepository(purchaseState: .unavailable))
+    @Test func autoRedactionsAccessViewControllerIsAlertControllerWhenNotPurchased() {
+        Container.shared.purchaseRepository.register {
+            SpyRepository(withCheese: .unavailable)
+        }
+        let provider = PhotoEditingAutoRedactionsAccessProvider()
 
-        XCTAssert(provider.autoRedactionsAccessViewController {} is UIAlertController)
+        let controller = provider.autoRedactionsAccessViewController {}
+        #expect(controller is UIAlertController)
     }
 }

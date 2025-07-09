@@ -18,12 +18,12 @@ import TestHelpers
 struct AppDelegateTests {
     @Test func willFinishLaunchingCallsStartOnPurchaseRepository() async {
         await confirmation { confirmation in
-            let repository = SpyRepository(startExpectation: confirmation)
-            let logger = SpyLogger()
             Container.shared.defaults.register { @MainActor in StubDefaultsProvider() }
-            Container.shared.logger.register { logger }
+            Container.shared.logger.register { SpyLogger() }
+            Container.shared.purchaseRepository.register {
+                SpyRepository(startExpectation: confirmation)
+            }
             let delegate = AppDelegate(
-                purchaseRepository: repository,
                 appearanceWriter: StubAppearanceWriter()
             )
 

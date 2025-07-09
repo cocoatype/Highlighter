@@ -34,10 +34,12 @@ struct PhotoLibraryDataSourceExtraItemsProviderTests {
         Container.shared.defaults.register { @MainActor in
             StubDefaultsProvider(hideDocumentScanner: hideDocumentScanner)
         }
+        Container.shared.purchaseRepository.register {
+            SpyRepository(withCheese: purchaseState)
+        }
 
         let provider = PhotoLibraryDataSourceExtraItemsProvider(
-            isDocumentScannerSupported: isDocumentScannerSupported,
-            purchaseRepository: SpyRepository(withCheese: purchaseState)
+            isDocumentScannerSupported: isDocumentScannerSupported
         )
         let isIncluded = (0..<provider.itemsCount)
             .contains(where: {

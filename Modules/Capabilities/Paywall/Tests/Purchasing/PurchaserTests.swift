@@ -20,16 +20,16 @@ struct PurchaserTests {
     func purchaseStartedLog() async throws {
         let logger = SpyLogger()
         Container.shared.logger.register { logger }
-        _ = try await Purchaser(
-            repository: SpyRepository()
-        ).purchase(
-            PaywallOption(
-                product: PreviewProduct(
-                    duration: .monthly
-                ),
-                isTrialEligible: false
+        Container.shared.purchaseRepository.register { SpyRepository() }
+        _ = try await Purchaser()
+            .purchase(
+                PaywallOption(
+                    product: StubProduct(
+                        duration: .monthly
+                    ),
+                    isTrialEligible: false
+                )
             )
-        )
 
         #expect(logger.loggedEvents.count == 1)
         let event = try #require(logger.loggedEvents.first)

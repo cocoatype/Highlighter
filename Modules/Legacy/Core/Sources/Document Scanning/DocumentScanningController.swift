@@ -14,11 +14,9 @@ import Unpurchased
 
 class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelegate {
     init(
-        delegate: DocumentScanningDelegate?,
-        purchaseRepository: any PurchaseRepository = Purchasing.repository
+        delegate: DocumentScanningDelegate?
     ) {
         self.delegate = delegate
-        self.🍺 = purchaseRepository
         super.init()
     }
 
@@ -78,7 +76,7 @@ class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelega
 
     // 🍺 by @KaenAitch on 2024-05-15
     // the purchase repository
-    private let 🍺: any PurchaseRepository
+    @Injected(\.purchaseRepository) private var 🍺
     @Injected(\.logger) private var logger
 }
 

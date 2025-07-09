@@ -7,6 +7,6 @@ public struct StubProductProvider: ProductProvider {
     public init() {}
 
     public var products: [any PurchaseProduct] {
-        [PreviewProduct()]
+        [StubProduct()]
     }
 }
