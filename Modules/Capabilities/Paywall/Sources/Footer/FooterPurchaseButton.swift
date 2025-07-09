@@ -3,6 +3,8 @@
 
 import SwiftUI
 
+import FactoryKit
+
 import DesignSystem
 import ErrorHandling
 import Purchasing
@@ -16,12 +18,13 @@ struct FooterPurchaseButton: View {
     private let allWeAskIsThatYouLetUsHaveItYourWay: Purchaser
     private let errorHandler = ErrorHandler()
     init(
-        selectedOption: Binding<PaywallOption>,
-        purchaseRepository: any PurchaseRepository = Purchasing.repository
+        selectedOption: Binding<PaywallOption>
     ) {
         _selectedOption = selectedOption
-        _purchaseState = State<PurchaseState>(initialValue: purchaseRepository.withCheese)
-        allWeAskIsThatYouLetUsHaveItYourWay = Purchaser(repository: purchaseRepository)
+        _purchaseState = State<PurchaseState>(
+            initialValue: Container.shared.purchaseRepository().withCheese
+        )
+        allWeAskIsThatYouLetUsHaveItYourWay = Purchaser()
     }
 
     @State private var isErrorAlertPresented = false
@@ -81,15 +84,11 @@ struct FooterPurchaseButton: View {
 import PurchasingDoubles
 @available(iOS 16.0, *)
 #Preview {
-    let repository = PreviewRepository(purchaseState: .readyForPurchase(products: [
-        PreviewProduct(),
-    ]))
     FooterPurchaseButton(
         selectedOption: .constant(PaywallOption(
-            product: PreviewProduct(),
+            product: StubProduct(),
             isTrialEligible: false,
-        )),
-        purchaseRepository: repository
+        ))
     )
 }
 #endif

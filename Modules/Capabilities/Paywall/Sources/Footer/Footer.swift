@@ -1,21 +1,22 @@
 //  Created by Geoff Pado on 12/2/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import SwiftUI
+
+import FactoryKit
+
 import ErrorHandling
 import Purchasing
-import SwiftUI
 
 @available(iOS 16.0, *)
 struct Footer: View {
     @State private var viewState: ViewState = .loading
     private let errorHandler: ErrorHandler
-    private let purchaseRepository: any PurchaseRepository
+    @Injected(\.purchaseRepository) private var purchaseRepository
     init(
-        errorHandler: ErrorHandler = ErrorHandler(),
-        purchaseRepository: any PurchaseRepository = Purchasing.repository
+        errorHandler: ErrorHandler = ErrorHandler()
     ) {
         self.errorHandler = errorHandler
-        self.purchaseRepository = purchaseRepository
     }
 
     var body: some View {
@@ -61,13 +62,10 @@ struct Footer: View {
 }
 
 #if DEBUG
-import PurchasingDoubles
 @available(iOS 16.0, *)
 enum PurchaseMarketingFooterPreviews: PreviewProvider {
     static var previews: some View {
-        Footer(purchaseRepository: PreviewRepository(purchaseState: .readyForPurchase(products: [
-            PreviewProduct(),
-        ])))
+        Footer()
     }
 }
 #endif

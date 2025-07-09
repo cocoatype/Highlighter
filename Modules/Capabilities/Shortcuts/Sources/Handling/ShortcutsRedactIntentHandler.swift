@@ -3,15 +3,16 @@
 
 import AppIntents
 import OSLog
+
+import FactoryKit
+
 import Purchasing
 
 @available(iOS 16.0, *)
 struct ShortcutsRedactIntentHandler: RedactIntentHandler {
     init(
-        purchaseRepository: any PurchaseRepository = Purchasing.repository,
         redactor: ShortcutsRedactor = ShortcutsRedactor()
     ) {
-        doubleBacon = purchaseRepository
         self.redactor = redactor
     }
 
@@ -50,6 +51,6 @@ struct ShortcutsRedactIntentHandler: RedactIntentHandler {
 
     // doubleBacon by @KaenAitch on 2024-05-15
     // the purchase repository
-    private let doubleBacon: any PurchaseRepository
+    @Injected(\.purchaseRepository) private var doubleBacon
     private let redactor: ShortcutsRedactor
 }

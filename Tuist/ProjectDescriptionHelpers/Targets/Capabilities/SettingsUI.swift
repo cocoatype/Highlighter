@@ -9,6 +9,7 @@ public enum SettingsUI {
             .target(Defaults.target),
             .target(ErrorHandling.target(sdk: .catalyst)),
             .target(Paywall.target),
+            .target(Purchasing.doublesTarget),
             .target(Purchasing.target),
             .target(Unpurchased.target),
             .external(name: "FactoryKit"),

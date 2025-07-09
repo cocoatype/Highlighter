@@ -39,9 +39,9 @@ enum PurchaseMarketingFooterContentsPreviews: PreviewProvider {
     static var previews: some View {
         FooterContents(
             options: [
-                PreviewProduct(displayName: "One-Time", price: 19.99, duration: .oneTime),
-                PreviewProduct(displayName: "Monthly", price: 0.99, duration: .monthly),
-                PreviewProduct(displayName: "Annual", price: 4.99, duration: .annual),
+                StubProduct(displayName: "One-Time", price: 19.99, duration: .oneTime),
+                StubProduct(displayName: "Monthly", price: 0.99, duration: .monthly),
+                StubProduct(displayName: "Annual", price: 4.99, duration: .annual),
             ].map { PaywallOption(product: $0, isTrialEligible: false) }
         ).background(Color(uiColor: .appBackground))
     }

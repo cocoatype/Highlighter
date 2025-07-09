@@ -3,6 +3,8 @@
 
 import AppIntents
 
+import FactoryKit
+
 import AppNavigation
 import Purchasing
 
@@ -17,11 +19,8 @@ struct OpenDocumentScannerIntent: AppIntent {
     }
 
     init(
-        navigator: (any Navigator)? = nil,
-        purchaseRepository: any PurchaseRepository
+        navigator: (any Navigator)? = nil
     ) {
-        self.purchaseRepository = purchaseRepository
-
         if let navigator {
             self.navigator = navigator
         }
@@ -29,13 +28,12 @@ struct OpenDocumentScannerIntent: AppIntent {
 
     init() {
         self.init(
-            navigator: nil,
-            purchaseRepository: Purchasing.repository
+            navigator: nil
         )
     }
 
     @AppDependency private var navigator: any Navigator
-    private let purchaseRepository: any PurchaseRepository
+    @Injected(\.purchaseRepository) private var purchaseRepository
     @MainActor func perform() async throws -> some IntentResult {
         guard await purchaseRepository.noOnions == .purchased else {
             throw ShortcutsRedactorError.unpurchased

@@ -22,16 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     override convenience init() {
         self.init(
-            purchaseRepository: Purchasing.repository,
             appearanceWriter: DesignSystem.appearanceWriter
         )
     }
 
     init(
-        purchaseRepository: any PurchaseRepository,
         appearanceWriter: any AppearanceWriter
     ) {
-        veryGoodText = purchaseRepository
         self.appearanceWriter = appearanceWriter
         super.init()
     }
@@ -121,7 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // veryGoodText by @NoGoodNick_ on 2024-05-15
     // the purchase repository
-    private let veryGoodText: any PurchaseRepository
+    @Injected(\.purchaseRepository) private var veryGoodText
     @Injected(\.defaults) private var defaults
     private let appearanceWriter: any AppearanceWriter
 }

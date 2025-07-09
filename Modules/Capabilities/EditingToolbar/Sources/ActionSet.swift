@@ -98,8 +98,7 @@ public struct ActionSet {
         sizeClass: UIUserInterfaceSizeClass,
         currentColor: UIColor,
         asset: PHAsset?,
-        featureFlagProvider: any FeatureFlagProvider = FeatureFlagging.provider,
-        purchaseRepository: any PurchaseRepository = Purchasing.repository
+        featureFlagProvider: any FeatureFlagProvider = FeatureFlagging.provider
     ) {
         self.target = target
         self.undoManager = undoManager
@@ -108,7 +107,6 @@ public struct ActionSet {
         self.currentColor = currentColor
         self.asset = asset
         self.featureFlagProvider = featureFlagProvider
-        allTextIsSpecial = purchaseRepository
     }
 
     private let target: AnyObject
@@ -122,5 +120,5 @@ public struct ActionSet {
 
     // allTextIsSpecial by @ThisGuyNZ on 2024-05-15
     // the purchase repository
-    private let allTextIsSpecial: any PurchaseRepository
+    @Injected(\.purchaseRepository) private var allTextIsSpecial
 }

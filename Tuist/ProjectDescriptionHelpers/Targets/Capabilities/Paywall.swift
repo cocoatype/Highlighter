@@ -8,8 +8,8 @@ public enum Paywall {
             .target(DesignSystem.target),
             .target(ErrorHandling.target(sdk: .catalyst)),
             .target(Logging.target(sdk: .catalyst)),
-            .target(Purchasing.target),
             .target(Purchasing.doublesTarget),
+            .target(Purchasing.target),
             .target(TestHelpers.interfaceTarget),
             .external(name: "FactoryKit"),
         ]

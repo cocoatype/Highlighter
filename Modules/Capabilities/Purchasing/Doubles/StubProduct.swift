@@ -5,7 +5,7 @@ import Foundation
 import Purchasing
 import StoreKit
 
-public struct PreviewProduct: PurchaseProduct {
+public struct StubProduct: PurchaseProduct {
     public let id: String
     public let displayName: String
     public let displayPrice: String
