@@ -80,6 +80,7 @@
 "RedactIntent.title" = "Redact Image";
 "RedactIntent.wordsParameterSummary${strategy}${redactedWords}${sourceImages}" = "Redact the ${strategy} ${redactedWords} in ${sourceImages}";
 
+"RedactionStrategy.autoRedactions" = "Auto-Hidden Words";
 "RedactionStrategy.detections" = "Detected Items";
 "RedactionStrategy.everything" = "Everything";
 "RedactionStrategy.words" = "Words";

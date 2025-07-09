@@ -3,6 +3,10 @@
 
 import AppIntents
 
+import FactoryKit
+
+import Defaults
+
 @available(iOS 17.0, *)
 struct RedactIntent: AppIntent {
     static let title: LocalizedStringResource = "RedactIntent.title"
@@ -82,9 +86,27 @@ struct RedactIntent: AppIntent {
         }
     }
 
+    private var autoRedactions: [String] {
+        get async {
+            @Injected(\.defaults) var defaults
+            let autoRedactionsSet = await defaults.value(for: Keys.autoRedactionsSet) ?? [:]
+            return autoRedactionsSet.compactMap { (word, isActive) in
+                isActive ? word : nil
+            }
+        }
+    }
+
     func perform() async throws -> some IntentResult & ReturnsValue<[IntentFile]> & OpensIntent {
         let handler = ShortcutsRedactIntentHandler()
         let resultFiles = switch strategy {
+        case .autoRedactions:
+            try await handler.handle(
+                sourceImages: sourceImages,
+                selectedColor: color,
+                outputFormat: outputFormat,
+                💩: autoRedactions,
+                meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
+            )
         case .detections:
             try await handler.handle(
                 sourceImages: sourceImages,
