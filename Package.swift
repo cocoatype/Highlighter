@@ -9,17 +9,22 @@ let packageSettings = PackageSettings(
     productTypes: [
         "FactoryKit": .framework,
         "TelemetryClient": .framework,
+        "TelemetryDeck": .framework,
         "SwiftUIIntrospect": .framework,
     ],
     baseSettings: Shared.settings,
     targetSettings: [
         "FactoryKit": [
             "SWIFT_VERSION": "6.0",
+            "UNINSTALLED_PRODUCTS_DIR": "$(TEMP_ROOT)/UninstalledProducts$(EFFECTIVE_PLATFORM_NAME)",
         ],
         "FactoryTesting": [
             "SWIFT_VERSION": "6.0",
         ],
         "TelemetryClient": [
+            "UNINSTALLED_PRODUCTS_DIR": "$(TEMP_ROOT)/UninstalledProducts$(EFFECTIVE_PLATFORM_NAME)",
+        ],
+        "TelemetryDeck": [
             "UNINSTALLED_PRODUCTS_DIR": "$(TEMP_ROOT)/UninstalledProducts$(EFFECTIVE_PLATFORM_NAME)",
         ],
     ]
