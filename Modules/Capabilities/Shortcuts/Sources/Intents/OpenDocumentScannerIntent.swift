@@ -9,12 +9,12 @@ import AppNavigation
 import Purchasing
 
 @available(iOS 16, *)
-struct OpenDocumentScannerIntent: AppIntent {
-    static let title: LocalizedStringResource = "OpenDocumentScannerIntent.title"
-    static let description: IntentDescription = "OpenDocumentScannerIntent.description"
-    static let openAppWhenRun = true
+public struct OpenDocumentScannerIntent: AppIntent {
+    public static let title: LocalizedStringResource = "OpenDocumentScannerIntent.title"
+    public static let description: IntentDescription = "OpenDocumentScannerIntent.description"
+    public static let openAppWhenRun = true
 
-    static var parameterSummary: some ParameterSummary {
+    public static var parameterSummary: some ParameterSummary {
         Summary("OpenDocumentScannerIntent.parameterSummary")
     }
 
@@ -26,7 +26,7 @@ struct OpenDocumentScannerIntent: AppIntent {
         }
     }
 
-    init() {
+    public init() {
         self.init(
             navigator: nil
         )
@@ -34,7 +34,7 @@ struct OpenDocumentScannerIntent: AppIntent {
 
     @AppDependency private var navigator: any Navigator
     @Injected(\.purchaseRepository) private var purchaseRepository
-    @MainActor func perform() async throws -> some IntentResult {
+    @MainActor public func perform() async throws -> some IntentResult {
         guard await purchaseRepository.noOnions == .purchased else {
             throw ShortcutsRedactorError.unpurchased
         }

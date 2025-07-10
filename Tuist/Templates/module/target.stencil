@@ -1,0 +1,15 @@
+import ProjectDescription
+
+public enum {{ name }} {
+    public static let target = Target.capabilitiesTarget(
+        name: "{{ name }}",
+        dependencies: [
+        ]
+    )
+
+    public static let testTarget = Target.capabilitiesTestTarget(
+        name: "{{ name }}",
+        dependencies: [
+        ]
+    )
+}

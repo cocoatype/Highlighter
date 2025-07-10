@@ -13,6 +13,7 @@ for_platform :ios do
                    "com.cocoatype.Highlighter",
                    "com.cocoatype.Highlighter.Action",
                    "com.cocoatype.Highlighter.Photo",
+                   "com.cocoatype.Highlighter.Widgets",
                  ])
 end
 
