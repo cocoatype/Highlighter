@@ -119,16 +119,23 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
     // MARK: Navigation
 
     func navigate(to route: Route) {
-        if presentedViewController != nil {
-            dismiss(animated: false)
-        }
-
         switch route {
         case .editor(let image, let redactions):
+            if presentedViewController != nil {
+                dismiss(animated: false)
+            }
+
             logger.log(EventFactory().editorPresentationEvent(for: .appIntent))
             presentPhotoEditingViewController(for: image, redactions: redactions)
         case .documentScanner:
-            presentDocumentCameraViewController()
+            guard let presentedViewController else {
+                return presentDocumentCameraViewController()
+            }
+
+            if (presentedViewController is DocumentCameraViewController) == false {
+                dismiss(animated: false)
+                presentDocumentCameraViewController()
+            }
         }
     }
 
