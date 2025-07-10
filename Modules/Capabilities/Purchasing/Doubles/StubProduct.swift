@@ -23,7 +23,7 @@ public struct StubProduct: PurchaseProduct {
         id = UUID().uuidString
         self.displayName = displayName
         if #available(iOS 15, *) {
-            self.displayPrice = price.formatted()
+            self.displayPrice = price.formatted(.currency(code: "USD"))
         } else {
             self.displayPrice = String(describing: price)
         }
