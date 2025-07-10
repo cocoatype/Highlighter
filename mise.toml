@@ -1,0 +1,9 @@
+[tasks.generate]
+run = "burgerburgerburg generate"
+
+[tasks.lint]
+run = "swiftlint lint"
+
+[tools]
+ruby = "3.3.4"
+swiftlint = "0.58.2"

@@ -63,9 +63,12 @@ struct Footer: View {
 
 #if DEBUG
 @available(iOS 16.0, *)
-enum PurchaseMarketingFooterPreviews: PreviewProvider {
-    static var previews: some View {
-        Footer()
-    }
+#Preview {
+    Color.black
+        .ignoresSafeArea()
+        .safeAreaInset(edge: .bottom) {
+            Footer()
+                .background(ignoresSafeAreaEdges: .bottom)
+        }
 }
 #endif
