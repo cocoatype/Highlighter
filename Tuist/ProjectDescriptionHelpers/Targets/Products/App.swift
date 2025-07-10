@@ -27,6 +27,7 @@ public enum App {
             .target(Core.target),
             .target(Photo.target, condition: .when([.ios])),
             .target(Shortcuts.target),
+            .target(Widgets.target, condition: .when([.ios])),
         ],
         settings: .settings(
             base: [

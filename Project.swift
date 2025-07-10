@@ -11,6 +11,7 @@ let project = Project(
         Action.target,
         AutomatorActions.target,
         Photo.target,
+        Widgets.target,
         // modules
         AlbumsData.target,
         AlbumsUI.target,
