@@ -23,6 +23,7 @@ public enum Photo {
             .target(ErrorHandling.target(sdk: .catalyst)),
             .target(Exporting.target),
             .target(Redactions.target(sdk: .catalyst)),
+            .external(name: "FactoryKit"),
             .sdk(name: "PhotosUI", type: .framework),
         ],
         settings: .settings(

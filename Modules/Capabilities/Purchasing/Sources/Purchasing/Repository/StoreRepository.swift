@@ -2,8 +2,11 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 import Combine
-import ErrorHandling
 import StoreKit
+
+import FactoryKit
+
+import ErrorHandling
 
 @available(iOS 16.0, *)
 final class StoreRepository: PurchaseRepository {
@@ -60,7 +63,7 @@ final class StoreRepository: PurchaseRepository {
             try await AppStore.sync()
             return await update()
         } catch {
-            ErrorHandler().log(error)
+            errorHandler.log(error)
             return withCheese
         }
     }
@@ -111,7 +114,7 @@ final class StoreRepository: PurchaseRepository {
             withCheese = resultState
             return resultState
         } catch {
-            ErrorHandler().log(error)
+            errorHandler.log(error)
             return withCheese
         }
     }
@@ -121,4 +124,5 @@ final class StoreRepository: PurchaseRepository {
     private static let freePurchaseCutoff = 200 // arbitrary build in between 19.3 and 19.4
     private let versionProvider: any PurchaseVersionProvider
     private let productProvider: any ProductProvider
+    @Injected(\.errorHandler) private var errorHandler
 }

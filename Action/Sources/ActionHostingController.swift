@@ -1,11 +1,14 @@
 //  Created by Geoff Pado on 7/1/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
-import Editing
-import ErrorHandling
 import MobileCoreServices
 import SwiftUI
 import UIKit
+
+import FactoryKit
+
+import Editing
+import ErrorHandling
 
 class ActionHostingController: UIHostingController<ActionView> {
     init() {
@@ -43,7 +46,7 @@ class ActionHostingController: UIHostingController<ActionView> {
                 self?.chain(selector: #selector(Self.openURL(_:)), object: callbackURL)
                 self?.extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
             } catch {
-                ErrorHandler().log(error)
+                Container.shared.errorHandler().log(error)
             }
         }
     }

@@ -1,9 +1,12 @@
 //  Created by Geoff Pado on 7/2/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
-import ErrorHandling
 import UIKit
 import UniformTypeIdentifiers
+
+import FactoryKit
+
+import ErrorHandling
 
 extension UIImage {
     var imageType: UTType? {
@@ -20,11 +23,13 @@ extension UIImage {
             if #available(iOS 17, *) {
                 return heicData()
             } else {
-                ErrorHandler().log(ExportingError.unexpectedHEIC)
+                Container.shared.errorHandler()
+                    .log(ExportingError.unexpectedHEIC)
                 return jpegData(compressionQuality: 0.75)
             }
         default:
-            ErrorHandler().log(ExportingError.unexpectedEncodeType(type.identifier))
+            Container.shared.errorHandler()
+                .log(ExportingError.unexpectedEncodeType(type.identifier))
             return jpegData(compressionQuality: 0.75)
         }
     }

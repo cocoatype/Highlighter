@@ -44,7 +44,7 @@ class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
 
     func limitedLibraryCell(for collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
         #if targetEnvironment(macCatalyst)
-        ErrorHandler().crash("Tried to display a limited library cell on macOS")
+        errorHandler.crash("Tried to display a limited library cell on macOS")
         #else
         return collectionView.dequeueReusableCell(withReuseIdentifier: LimitedLibraryPhotoLibraryViewCell.identifier, for: indexPath)
         #endif
@@ -68,6 +68,7 @@ class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
     }
 
     @Injected(\.defaults) private var defaults
+    @Injected(\.errorHandler) private var errorHandler
     private let permissionsRequester: any PhotoPermissionsRequester
 
     // thatsFineThatsOnlyThree by @nutterfi on 2024-05-15

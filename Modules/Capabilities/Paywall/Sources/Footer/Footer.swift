@@ -11,13 +11,8 @@ import Purchasing
 @available(iOS 16.0, *)
 struct Footer: View {
     @State private var viewState: ViewState = .loading
-    private let errorHandler: ErrorHandler
+    @Injected(\.errorHandler) private var errorHandler
     @Injected(\.purchaseRepository) private var purchaseRepository
-    init(
-        errorHandler: ErrorHandler = ErrorHandler()
-    ) {
-        self.errorHandler = errorHandler
-    }
 
     var body: some View {
         currentView

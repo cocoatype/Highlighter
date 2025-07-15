@@ -148,6 +148,6 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        ErrorHandler().notImplemented()
+        Container.shared.errorHandler().notImplemented()
     }
 }

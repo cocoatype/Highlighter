@@ -1,8 +1,11 @@
 //  Created by Geoff Pado on 12/20/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
-import ErrorHandling
 import UIKit
+
+import FactoryKit
+
+import ErrorHandling
 
 class DesktopSeekBackgroundView: UIVisualEffectView {
     init(style: DesktopSeekBox.Style) {
@@ -18,6 +21,6 @@ class DesktopSeekBackgroundView: UIVisualEffectView {
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        ErrorHandler().notImplemented()
+        Container.shared.errorHandler().notImplemented()
     }
 }

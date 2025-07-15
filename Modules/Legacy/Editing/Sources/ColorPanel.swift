@@ -2,12 +2,20 @@
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
 #if canImport(UIKit)
-import ErrorHandling
 import UIKit
+
+import FactoryKit
+
+import ErrorHandling
 
 class ColorPanel: NSObject {
     private static let _shared: ColorPanel = {
-        guard let underlyingPanel = NSClassFromString("NSColorPanel")?.value(forKeyPath: "sharedColorPanel") as AnyObject? else { ErrorHandler().crash("Unable to create color panel") }
+        guard let underlyingPanel = NSClassFromString("NSColorPanel")?
+            .value(forKeyPath: "sharedColorPanel") as AnyObject?
+        else {
+            Container.shared.errorHandler()
+                .crash("Unable to create color panel")
+        }
         return ColorPanel(underlyingPanel)
     }()
     static var shared: ColorPanel { return _shared }
@@ -36,7 +44,10 @@ class ColorPanel: NSObject {
 
     private var colorObserver: Any?
     private let underlyingPanel: AnyObject
-    private override init() { ErrorHandler().crash("Cannot create ColorPanel without underlying panel") }
+    private override init() {
+        Container.shared.errorHandler()
+            .crash("Cannot create ColorPanel without underlying panel")
+    }
 
     private init(_ underlyingPanel: AnyObject) {
         self.underlyingPanel = underlyingPanel

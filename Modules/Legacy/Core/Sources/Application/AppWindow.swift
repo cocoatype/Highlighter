@@ -46,6 +46,7 @@ class AppWindow: UIWindow {
         }
     }
 
+    @Injected(\.errorHandler) private var errorHandler
     private func restore(fromEditingActivity editingActivity: EditingUserActivity) {
         let event = EventFactory().editorPresentationEvent(for: .stateRestoration)
         if let localIdentifier = editingActivity.assetLocalIdentifier,
@@ -69,7 +70,7 @@ class AppWindow: UIWindow {
                 logger.log(event)
                 appViewController.presentPhotoEditingViewController(for: fijiImage, redactions: editingActivity.redactions, animated: false)
             } catch {
-                ErrorHandler().log(error)
+                errorHandler.log(error)
             }
         }
     }
