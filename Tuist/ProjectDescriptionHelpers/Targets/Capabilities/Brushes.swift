@@ -10,6 +10,7 @@ public enum Brushes {
             dependencies: [
                 .target(ErrorHandling.target(sdk: sdk)),
                 .target(Geometry.target(sdk: sdk)),
+                .external(name: "FactoryKit"),
             ]
         )
     }

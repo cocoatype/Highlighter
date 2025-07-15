@@ -28,6 +28,7 @@ public class InPlaceExporter: NSObject {
     private let asset: any ExportableAsset
     private let outputFactory: any OutputFactory
     @Injected(\.defaults) private var defaults
+    @Injected(\.errorHandler) private var errorHandler
     @Injected(\.logger) private var logger
     private let library: any PhotoLibrary
     init(
@@ -54,7 +55,7 @@ public class InPlaceExporter: NSObject {
             await defaults.set(defaults.value(for: Keys.numberOfSaves) + 1, for: Keys.numberOfSaves)
             await logger.log(ExportingEventFactory().event(style: .inPlace))
         } catch {
-            ErrorHandler().log(error)
+            errorHandler.log(error)
             throw error
         }
     }

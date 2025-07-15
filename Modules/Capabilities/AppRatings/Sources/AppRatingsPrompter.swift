@@ -28,8 +28,7 @@ public struct AppRatingsPrompter {
     @MainActor
     public func displayRatingsPrompt(in windowScene: UIWindowScene?) async {
         guard let windowScene else {
-            ErrorHandler()
-                .log(AppRatingsError.missingWindowScene)
+            errorHandler.log(AppRatingsError.missingWindowScene)
             return
         }
 
@@ -52,6 +51,7 @@ public struct AppRatingsPrompter {
     private static let ratingNumberOfSavesCadence = 3
     private static let paywallNumberOfSaves = 10
     @Injected(\.defaults) private var defaults
+    @Injected(\.errorHandler) private var errorHandler
     @Injected(\.logger) private var logger
     private let ratingRequestMethod: (UIWindowScene) -> Void
     @Injected(\.purchaseRepository) private var repository

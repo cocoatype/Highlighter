@@ -3,6 +3,7 @@
 
 import DetectionsMac
 import ErrorHandlingMac
+import FactoryKit
 import Foundation
 import OSLog
 import Redacting
@@ -50,7 +51,7 @@ class RedactOperation: Operation, @unchecked Sendable {
 
                 self?.finish(with: .success(writeURL.path))
             } catch {
-                ErrorHandler().log(error)
+                Container.shared.errorHandler().log(error)
                 self?.finish(with: .failure(error))
             }
         }

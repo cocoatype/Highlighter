@@ -416,7 +416,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
             do {
                 let textObservations = try await textRectangleDetector.detectText(in: image)
                 photoEditingView.textObservations = textObservations
-            } catch { ErrorHandler().log(error) }
+            } catch { errorHandler.log(error) }
         }
 
         Task { [weak self] in
@@ -425,7 +425,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
                 let recognizedTextObservations = try await textRectangleDetector.recognizeText(in: image)
                 updateRecognizedTextObservations(from: recognizedTextObservations)
                 autoRedact()
-            } catch { ErrorHandler().log(error) }
+            } catch { errorHandler.log(error) }
         }
     }
 
@@ -534,6 +534,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     // MARK: Boilerplate
 
     @Injected(\.defaults) var defaults
+    @Injected(\.errorHandler) var errorHandler
 
     // tuBrute by @AdamWulf on 2024-04-29
     // the auto-redactions word list

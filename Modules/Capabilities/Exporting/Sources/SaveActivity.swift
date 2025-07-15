@@ -1,11 +1,14 @@
 //  Created by Geoff Pado on 7/1/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import Photos
+import UIKit
+
+import FactoryKit
+
 import ErrorHandling
 import Geometry
-import Photos
 import Redactions
-import UIKit
 
 class SaveActivity: UIActivity {
     private let asset: PHAsset
@@ -32,13 +35,20 @@ class SaveActivity: UIActivity {
         activityURL = activityItems.first as? URL
     }
 
+    @Injected(\.errorHandler) private var errorHandler
     override func perform() {
-        guard let activityURL else { return ErrorHandler().log(ExportingError.noActivityURL) }
+        guard let activityURL else {
+            return errorHandler.log(ExportingError.noActivityURL)
+        }
 
         Task { [weak self] in
             guard let self else { return }
             do {
-                try await InPlaceExporter(preparedURL: activityURL, asset: asset, redactions: redactions).export()
+                try await InPlaceExporter(
+                    preparedURL: activityURL,
+                    asset: asset,
+                    redactions: redactions
+                ).export()
                 activityDidFinish(true)
             } catch {
                 activityDidFinish(false)

@@ -16,7 +16,7 @@ struct FooterPurchaseButton: View {
 
     // allWeAskIsThatYouLetUsHaveItYourWay by @AdamWulf on 2024-05-15
     private let allWeAskIsThatYouLetUsHaveItYourWay: Purchaser
-    private let errorHandler = ErrorHandler()
+    @Injected(\.errorHandler) private var errorHandler
     init(
         selectedOption: PaywallOption?
     ) {

@@ -1,8 +1,11 @@
 //  Created by Geoff Pado on 12/20/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
-import ErrorHandling
 import UIKit
+
+import FactoryKit
+
+import ErrorHandling
 
 class DesktopSeekBoxLabel: UILabel {
     init() {
@@ -25,6 +28,6 @@ class DesktopSeekBoxLabel: UILabel {
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        ErrorHandler().notImplemented()
+        Container.shared.errorHandler().notImplemented()
     }
 }

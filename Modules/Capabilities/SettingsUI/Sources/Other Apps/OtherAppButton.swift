@@ -1,8 +1,11 @@
 //  Created by Geoff Pado on 5/19/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
-import ErrorHandling
 import SwiftUI
+
+import FactoryKit
+
+import ErrorHandling
 
 struct OtherAppButton: View {
     private let name: String
@@ -17,9 +20,11 @@ struct OtherAppButton: View {
         self.asset = asset
     }
 
+    @Injected(\.errorHandler) private var errorHandler
     private var url: URL {
         let urlString = "https://apps.apple.com/us/app/cocoatype/id\(id)?uo=4"
-        guard let url = URL(string: urlString) else { ErrorHandler().crash("Invalid App Store URL: \(urlString)") }
+        guard let url = URL(string: urlString)
+        else { errorHandler.crash("Invalid App Store URL: \(urlString)") }
         return url
     }
 

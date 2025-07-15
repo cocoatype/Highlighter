@@ -1,6 +1,8 @@
 //  Created by Geoff Pado on 7/8/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+import FactoryKit
+
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
 import ErrorHandlingMac
@@ -16,12 +18,12 @@ public enum BrushStampFactory {
     }
 
     public static func brushStart(scaledToHeight height: CGFloat, color: NSColor) throws -> CGImage {
-        guard let standardImage = Bundle.module.image(forResource: "Brush Start") else { ErrorHandler().crash("Unable to load brush start image") }
+        guard let standardImage = Bundle.module.image(forResource: "Brush Start") else { Container.shared.errorHandler().crash("Unable to load brush start image") }
         return try scaledImage(from: standardImage, toHeight: height, color: color)
     }
 
     public static func brushEnd(scaledToHeight height: CGFloat, color: NSColor) throws -> CGImage {
-        guard let standardImage = Bundle.module.image(forResource: "Brush End") else { ErrorHandler().crash("Unable to load brush end image") }
+        guard let standardImage = Bundle.module.image(forResource: "Brush End") else { Container.shared.errorHandler().crash("Unable to load brush end image") }
         return try scaledImage(from: standardImage, toHeight: height, color: color)
     }
 
@@ -57,7 +59,7 @@ public enum BrushStampFactory {
     }
 
     public static func brushStamp(scaledToHeight height: CGFloat, color: NSColor) throws -> CGImage {
-        guard let stampImage = Bundle.module.image(forResource: "Brush") else { ErrorHandler().crash("Unable to load brush stamp image") }
+        guard let stampImage = Bundle.module.image(forResource: "Brush") else { Container.shared.errorHandler().crash("Unable to load brush stamp image") }
 
         return try scaledImage(from: stampImage, toHeight: height, color: color)
     }
@@ -93,7 +95,7 @@ public enum BrushStampFactory {
 
     private static func brushStart(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
         guard let startImage = UIImage(named: "Brush Start", in: .module, compatibleWith: nil)
-        else { ErrorHandler().crash("Unable to load brush start image") }
+        else { Container.shared.errorHandler().crash("Unable to load brush start image") }
 
         let brushScale = height / startImage.size.height
         let scaledBrushSize = (startImage.size * brushScale).integral
@@ -111,7 +113,7 @@ public enum BrushStampFactory {
 
     private static func brushEnd(scaledToHeight height: CGFloat, color: UIColor) -> UIImage {
         guard let endImage = UIImage(named: "Brush End", in: .module, compatibleWith: nil)
-        else { ErrorHandler().crash("Unable to load brush end image") }
+        else { Container.shared.errorHandler().crash("Unable to load brush end image") }
 
         let brushScale = height / endImage.size.height
         let scaledBrushSize = (endImage.size * brushScale).integral
@@ -128,7 +130,7 @@ public enum BrushStampFactory {
     }
 
     public static func brushStamp(scaledToHeight height: CGFloat, color: UIColor) throws -> CGImage {
-        guard let stampImage = UIImage(named: "Brush") else { ErrorHandler().crash("Unable to load brush stamp image") }
+        guard let stampImage = UIImage(named: "Brush") else { Container.shared.errorHandler().crash("Unable to load brush stamp image") }
 
         let brushScale = height / stampImage.size.height
         let scaledBrushSize = stampImage.size * brushScale

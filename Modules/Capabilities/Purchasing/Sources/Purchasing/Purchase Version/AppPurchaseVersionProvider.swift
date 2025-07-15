@@ -1,11 +1,15 @@
 //  Created by Geoff Pado on 5/18/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
-import ErrorHandling
 import StoreKit
+
+import FactoryKit
+
+import ErrorHandling
 
 @available(iOS 16.0, *)
 struct AppPurchaseVersionProvider: PurchaseVersionProvider {
+    @Injected(\.errorHandler) private var errorHandler
     var originalPurchaseVersion: Int {
         get async {
             do {
@@ -21,7 +25,7 @@ struct AppPurchaseVersionProvider: PurchaseVersionProvider {
                 return version
                 #endif
             } catch {
-                ErrorHandler().log(error)
+                errorHandler.log(error)
                 return .max
             }
         }

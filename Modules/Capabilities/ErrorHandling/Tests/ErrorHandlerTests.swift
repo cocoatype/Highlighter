@@ -13,11 +13,11 @@ import LoggingDoubles
 @testable import Logging
 
 @Suite(.container)
-struct ErrorHandlerTests {
+struct DefaultHandlerTests {
     @Test func loggingSwiftErrorLogsDescription() throws {
         let logger = SpyLogger()
         Container.shared.logger.register { logger }
-        let handler = ErrorHandler()
+        let handler = DefaultHandler()
 
         handler.log(SampleError.sample)
         let event = try #require(logger.loggedEvents.first)
@@ -29,7 +29,7 @@ struct ErrorHandlerTests {
     @Test func loggingNSErrorLogsInformation() throws {
         let logger = SpyLogger()
         Container.shared.logger.register { logger }
-        let handler = ErrorHandler()
+        let handler = DefaultHandler()
         let error = NSError(domain: "sample", code: 19)
 
         handler.log(error)
@@ -47,7 +47,7 @@ struct ErrorHandlerTests {
         await #expect(processExitsWith: .failure) {
             let logger = SpyLogger()
             Container.shared.logger.register { logger }
-            let handler = ErrorHandler { _ in
+            let handler = DefaultHandler { _ in
                 let event = logger.loggedEvents.first
                 #expect(event?.value == "crash")
                 #expect(event?.info == ["message": "crash"])
@@ -60,7 +60,7 @@ struct ErrorHandlerTests {
         await #expect(processExitsWith: .failure) {
             let logger = SpyLogger()
             Container.shared.logger.register { logger }
-            let handler = ErrorHandler { message in
+            let handler = DefaultHandler { message in
                 let event = logger.loggedEvents.first
                 #expect(event?.value == "notImplemented")
                 #expect(event?.info["file"] == #fileID)

@@ -1,9 +1,12 @@
 //  Created by Geoff Pado on 7/1/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
-import ErrorHandling
 import Photos
 import UIKit
+
+import FactoryKit
+
+import ErrorHandling
 
 class SaveCopyActivity: UIActivity {
     override var activityTitle: String? {
@@ -23,14 +26,17 @@ class SaveCopyActivity: UIActivity {
         activityURL = activityItems.first as? URL
     }
 
+    @Injected(\.errorHandler) private var errorHandler
     override func perform() {
-        guard let activityURL else { return ErrorHandler().log(ExportingError.noActivityURL) }
+        guard let activityURL else {
+            return errorHandler.log(ExportingError.noActivityURL)
+        }
 
         Task {
             do {
                 try await CopyExporter(preparedURL: activityURL).export()
             } catch {
-                ErrorHandler().log(error)
+                errorHandler.log(error)
             }
         }
     }

@@ -1,13 +1,16 @@
 //  Created by Geoff Pado on 10/14/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
-import Editing
-import ErrorHandling
-import Exporting
 import Foundation
 import MobileCoreServices
 import Photos
 import PhotosUI
+
+import FactoryKit
+
+import Editing
+import ErrorHandling
+import Exporting
 import Redactions
 
 class PhotoExtensionViewController: UIViewController, PHContentEditingController {
@@ -38,7 +41,7 @@ class PhotoExtensionViewController: UIViewController, PHContentEditingController
                 let output = try factory.output(from: input)
                 completionHandler(output)
             } catch {
-                ErrorHandler().log(error)
+                Container.shared.errorHandler().log(error)
                 completionHandler(nil)
             }
         }

@@ -1,10 +1,13 @@
 //  Created by Geoff Pado on 5/31/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
-import AlbumsData
-import ErrorHandling
 import Photos
 import UIKit
+
+import FactoryKit
+
+import AlbumsData
+import ErrorHandling
 
 class PhotoLibraryDataSourceAssetsProvider: NSObject {
     var photosCount: Int { allPhotos.count }
@@ -16,10 +19,11 @@ class PhotoLibraryDataSourceAssetsProvider: NSObject {
         return .asset(allPhotos[index])
     }
 
+    @Injected(\.errorHandler) private var errorHandler
     func cell(for collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssetPhotoLibraryViewCell.identifier, for: indexPath)
         guard let photoCell = cell as? AssetPhotoLibraryViewCell else {
-            ErrorHandler().crash("Got incorrect type of cell for photo picker: \(String(describing: type(of: cell)))")
+            errorHandler.crash("Got incorrect type of cell for photo picker: \(String(describing: type(of: cell)))")
         }
 
         photoCell.asset = allPhotos[indexPath.item]

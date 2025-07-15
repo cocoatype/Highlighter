@@ -1,9 +1,12 @@
 //  Created by Geoff Pado on 12/20/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
+import UIKit
+
+import FactoryKit
+
 import DesignSystem
 import ErrorHandling
-import UIKit
 
 class DesktopSeekBorderView: UIView {
     init(style: DesktopSeekBox.Style) {
@@ -74,6 +77,6 @@ class DesktopSeekBorderView: UIView {
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        ErrorHandler().notImplemented()
+        Container.shared.errorHandler().notImplemented()
     }
 }
