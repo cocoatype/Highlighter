@@ -1,13 +1,16 @@
 //  Created by Geoff Pado on 5/15/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Photos
+import SwiftUI
+import UIKit
+
+import FactoryKit
+
 import Editing
 import EditingToolbar
 import Exporting
-import Photos
 import Redactions
-import SwiftUI
-import UIKit
 
 class PhotoEditingNavigationController: NavigationController, PhotoEditingProtectionAlertDelegate {
     init(asset: PHAsset, redactions: [Redaction]?) {
@@ -99,7 +102,9 @@ class PhotoEditingNavigationController: NavigationController, PhotoEditingProtec
         }
     }
 
+    @Injected(\.errorHandler) private var errorHandler
     func presentSaveErrorAlert(for error: Error) {
+        errorHandler.log(error, module: "Core", type: "PhotoEditingNavigationController")
         let alert = PhotoExportErrorAlertFactory.alert(for: error)
         present(alert, animated: true)
     }

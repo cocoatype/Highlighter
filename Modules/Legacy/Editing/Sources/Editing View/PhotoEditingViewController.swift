@@ -513,6 +513,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
                 }
                 present(activityController, animated: true)
             } catch {
+                errorHandler.log(error, module: "Editing", type: "PhotoEditingViewController")
                 let alert = PhotoExportErrorAlertFactory.alert(for: error)
                 present(alert, animated: true)
             }

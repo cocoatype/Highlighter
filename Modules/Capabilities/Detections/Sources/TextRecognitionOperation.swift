@@ -5,10 +5,14 @@ import Foundation
 import OSLog
 import Vision
 
+import FactoryKit
+
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
+import ErrorHandlingMac
 #elseif canImport(UIKit)
 import UIKit
+import ErrorHandling
 #endif
 
 class TextRecognitionOperation: Operation, @unchecked Sendable {
@@ -37,7 +41,10 @@ class TextRecognitionOperation: Operation, @unchecked Sendable {
         os_log("running recognition")
         let imageRequest = VNRecognizeTextRequest { [weak self] request, error in
             guard let textObservations = (request.results as? [VNRecognizedTextObservation]) else {
-                TextRectangleDetectionOperation.log("error getting text rectangles: \(error?.localizedDescription ?? "(null)")", type: .error)
+                if let error {
+                    self?.errorHandler.log(error, module: "Detections", type: "TextRecognitionOperation")
+                }
+
                 self?._finished = true
                 self?._executing = false
                 return
@@ -54,7 +61,7 @@ class TextRecognitionOperation: Operation, @unchecked Sendable {
             try imageRequestHandler.perform([imageRequest])
             _executing = true
         } catch {
-            TextRecognitionOperation.log("error starting image request: \(error.localizedDescription)", type: .error)
+            errorHandler.log(error, module: "Detections", type: "TextRecognitionOperation")
             _finished = true
             _executing = false
         }
@@ -62,10 +69,7 @@ class TextRecognitionOperation: Operation, @unchecked Sendable {
 
     // MARK: Logging
 
-    static var log: OSLog { return OSLog(subsystem: "com.cocoatype.Highlighter", category: "Text Detection") }
-    static func log(_ text: String, type: OSLogType = .default) {
-        os_log("%@", log: TextRecognitionOperation.log, type: type, text)
-    }
+    @Injected(\.errorHandler) private var errorHandler
 
     // MARK: Boilerplate
 

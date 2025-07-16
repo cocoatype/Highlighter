@@ -4,10 +4,14 @@
 import OSLog
 import Vision
 
+import FactoryKit
+
 #if canImport(UIKit)
 import UIKit
+import ErrorHandling
 #elseif canImport(AppKit)
 import AppKit
+import ErrorHandlingMac
 #endif
 
 class TextRectangleDetectionOperation: Operation, @unchecked Sendable {
@@ -32,7 +36,13 @@ class TextRectangleDetectionOperation: Operation, @unchecked Sendable {
     override func start() {
         let imageRequest = VNDetectTextRectanglesRequest { [weak self] request, error in
             guard let textObservations = (request.results as? [VNTextObservation]) else {
-                TextRectangleDetectionOperation.log("error getting text rectangles: \(error?.localizedDescription ?? "(null)")", type: .error)
+                if let error {
+                    self?.errorHandler.log(
+                        error,
+                        module: "Detections",
+                        type: "TextRectangleDetectionOperation"
+                    )
+                }
                 self?._finished = true
                 self?._executing = false
                 return
@@ -48,7 +58,11 @@ class TextRectangleDetectionOperation: Operation, @unchecked Sendable {
             try imageRequestHandler.perform([imageRequest])
             _executing = true
         } catch {
-            TextRectangleDetectionOperation.log("error starting image request: \(error.localizedDescription)", type: .error)
+            errorHandler.log(
+                error,
+                module: "Detections",
+                type: "TextRectangleDetectionOperation"
+            )
             _finished = true
             _executing = false
         }
@@ -56,10 +70,7 @@ class TextRectangleDetectionOperation: Operation, @unchecked Sendable {
 
     // MARK: Logging
 
-    static var log: OSLog { return OSLog(subsystem: "com.cocoatype.Highlighter", category: "Text Detection") }
-    static func log(_ text: String, type: OSLogType = .default) {
-        os_log("%@", log: TextRectangleDetectionOperation.log, type: type, text)
-    }
+    @Injected(\.errorHandler) private var errorHandler
 
     // MARK: Boilerplate
 
