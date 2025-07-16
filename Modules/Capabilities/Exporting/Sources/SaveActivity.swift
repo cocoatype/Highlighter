@@ -38,7 +38,11 @@ class SaveActivity: UIActivity {
     @Injected(\.errorHandler) private var errorHandler
     override func perform() {
         guard let activityURL else {
-            return errorHandler.log(ExportingError.noActivityURL)
+            return errorHandler.log(
+                ExportingError.noActivityURL,
+                module: "Exporting",
+                type: "SaveActivity"
+            )
         }
 
         Task { [weak self] in
@@ -51,6 +55,11 @@ class SaveActivity: UIActivity {
                 ).export()
                 activityDidFinish(true)
             } catch {
+                errorHandler.log(
+                    error,
+                    module: "Exporting",
+                    type: "SaveActivity"
+                )
                 activityDidFinish(false)
             }
         }

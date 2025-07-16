@@ -63,7 +63,9 @@ final class StoreRepository: PurchaseRepository {
             try await AppStore.sync()
             return await update()
         } catch {
-            errorHandler.log(error)
+            errorHandler.log(error,
+                             module: "Purchasing",
+                             type: "StoreRepository")
             return withCheese
         }
     }
@@ -114,7 +116,9 @@ final class StoreRepository: PurchaseRepository {
             withCheese = resultState
             return resultState
         } catch {
-            errorHandler.log(error)
+            errorHandler.log(error,
+                             module: "Purchasing",
+                             type: "StoreRepository")
             return withCheese
         }
     }

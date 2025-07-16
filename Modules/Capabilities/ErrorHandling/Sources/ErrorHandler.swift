@@ -10,7 +10,7 @@ import Logging
 #endif
 
 public protocol ErrorHandler: Sendable {
-    func log(_ error: Error)
+    func log(_ error: Error, module: StaticString, type: StaticString)
     func crash(_ message: String) -> Never
     func notImplemented(in file: String, function: String) -> Never
 }

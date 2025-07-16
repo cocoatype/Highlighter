@@ -33,7 +33,8 @@ extension PhotoEditingViewController {
                 defaults.set(defaults.value(for: Keys.numberOfSaves) + 1, for: Keys.numberOfSaves)
                 await AppRatingsPrompter().displayRatingsPrompt(in: view.window?.windowScene)
             } catch {
-                Container.shared.errorHandler().log(error)
+                Container.shared.errorHandler()
+                    .log(error, module: "Editing", type: "PhotoEditingViewController")
             }
         }
     }
@@ -56,7 +57,8 @@ extension PhotoEditingViewController {
                 }
                 present(saveViewController, animated: true)
             } catch {
-                Container.shared.errorHandler().log(error)
+                Container.shared.errorHandler()
+                    .log(error, module: "Editing", type: "PhotoEditingViewController")
             }
         }
     }

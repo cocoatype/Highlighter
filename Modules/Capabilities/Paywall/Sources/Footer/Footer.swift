@@ -37,7 +37,7 @@ struct Footer: View {
             }
             viewState = .unpurchased(options)
         } catch {
-            errorHandler.log(error)
+            errorHandler.log(error, module: "Paywall", type: "Footer")
         }
     }
 

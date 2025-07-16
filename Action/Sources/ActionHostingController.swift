@@ -46,7 +46,8 @@ class ActionHostingController: UIHostingController<ActionView> {
                 self?.chain(selector: #selector(Self.openURL(_:)), object: callbackURL)
                 self?.extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
             } catch {
-                Container.shared.errorHandler().log(error)
+                Container.shared.errorHandler()
+                    .log(error, module: "Action", type: "ActionHostingController")
             }
         }
     }

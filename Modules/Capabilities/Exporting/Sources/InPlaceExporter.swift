@@ -55,7 +55,7 @@ public class InPlaceExporter: NSObject {
             await defaults.set(defaults.value(for: Keys.numberOfSaves) + 1, for: Keys.numberOfSaves)
             await logger.log(ExportingEventFactory().event(style: .inPlace))
         } catch {
-            errorHandler.log(error)
+            errorHandler.log(error, module: "Exporting", type: "InPlaceExporter")
             throw error
         }
     }

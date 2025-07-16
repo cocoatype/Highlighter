@@ -416,7 +416,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
             do {
                 let textObservations = try await textRectangleDetector.detectText(in: image)
                 photoEditingView.textObservations = textObservations
-            } catch { errorHandler.log(error) }
+            } catch { errorHandler.log(error, module: "Editing", type: "PhotoEditingViewController") }
         }
 
         Task { [weak self] in
@@ -425,7 +425,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
                 let recognizedTextObservations = try await textRectangleDetector.recognizeText(in: image)
                 updateRecognizedTextObservations(from: recognizedTextObservations)
                 autoRedact()
-            } catch { errorHandler.log(error) }
+            } catch { errorHandler.log(error, module: "Editing", type: "PhotoEditingViewController") }
         }
     }
 

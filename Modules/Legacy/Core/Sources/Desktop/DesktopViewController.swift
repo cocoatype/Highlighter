@@ -36,7 +36,9 @@ class DesktopViewController: UIViewController, FileURLProvider {
             do {
                 try loadRepresentedURL()
                 updateURLRepresentation()
-            } catch { errorHandler.log(error) }
+            } catch {
+                errorHandler.log(error, module: "Core", type: "DesktopViewController")
+            }
         } else if image != nil {
             loadImage()
         }
@@ -50,7 +52,7 @@ class DesktopViewController: UIViewController, FileURLProvider {
                 try loadRepresentedURL()
                 updateURLRepresentation()
             } catch {
-                errorHandler.log(error)
+                errorHandler.log(error, module: "Core", type: "DesktopViewController")
             }
         }
     }

@@ -29,14 +29,18 @@ class SaveCopyActivity: UIActivity {
     @Injected(\.errorHandler) private var errorHandler
     override func perform() {
         guard let activityURL else {
-            return errorHandler.log(ExportingError.noActivityURL)
+            return errorHandler.log(ExportingError.noActivityURL,
+                                    module: "Exporting",
+                                    type: "SaveCopyActivity")
         }
 
         Task {
             do {
                 try await CopyExporter(preparedURL: activityURL).export()
             } catch {
-                errorHandler.log(error)
+                errorHandler.log(error,
+                                 module: "Exporting",
+                                 type: "SaveCopyActivity")
             }
         }
     }

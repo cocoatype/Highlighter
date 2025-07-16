@@ -24,12 +24,20 @@ extension UIImage {
                 return heicData()
             } else {
                 Container.shared.errorHandler()
-                    .log(ExportingError.unexpectedHEIC)
+                    .log(
+                        ExportingError.unexpectedHEIC,
+                        module: "Exporting",
+                        type: "UIImageExtensions"
+                    )
                 return jpegData(compressionQuality: 0.75)
             }
         default:
             Container.shared.errorHandler()
-                .log(ExportingError.unexpectedEncodeType(type.identifier))
+                .log(
+                    ExportingError.unexpectedEncodeType(type.identifier),
+                    module: "Exporting",
+                    type: "UIImageExtensions"
+                )
             return jpegData(compressionQuality: 0.75)
         }
     }

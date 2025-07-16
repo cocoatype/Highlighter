@@ -61,7 +61,7 @@ public class PhotoEditingRedactionView: UIView {
                     .map { try RedactionPathLayer(part: $0, color: redaction.color, scale: layer.contentsScale)}
             }
         } catch {
-            errorHandler.log(error)
+            errorHandler.log(error, module: "Editing", type: "PhotoEditingRedactionView")
             layer.sublayers = nil
         }
     }

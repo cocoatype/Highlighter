@@ -28,7 +28,9 @@ public struct AppRatingsPrompter {
     @MainActor
     public func displayRatingsPrompt(in windowScene: UIWindowScene?) async {
         guard let windowScene else {
-            errorHandler.log(AppRatingsError.missingWindowScene)
+            errorHandler.log(AppRatingsError.missingWindowScene,
+                             module: "AppRatings",
+                             type: "AppRatingsPrompter")
             return
         }
 
