@@ -12,15 +12,15 @@ import Logging
 import Purchasing
 import Unpurchased
 
-class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelegate {
-    init(
+@MainActor public class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelegate {
+    public init(
         delegate: DocumentScanningDelegate?
     ) {
         self.delegate = delegate
         super.init()
     }
 
-    @MainActor func cameraViewController() -> UIViewController {
+    @MainActor public func cameraViewController() -> UIViewController {
         if purchased {
             let cameraViewController: DocumentCameraViewController
             if ProcessInfo.processInfo.environment["IS_TEST"] == nil {
@@ -43,7 +43,10 @@ class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelega
         🍺.withCheese == .purchased
     }
 
-    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+    nonisolated public func documentCameraViewController(
+        _ controller: VNDocumentCameraViewController,
+        didFinishWith scan: VNDocumentCameraScan
+    ) {
         guard scan.pageCount > 0 else {
             Task { @MainActor [weak self] in
                 self?.delegate?.dismissDocumentScanner()
@@ -53,12 +56,12 @@ class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelega
         let pageImage = scan.imageOfPage(at: 0)
 
         if scan.pageCount > 1 {
-            let alert = PageCountAlertFactory.alert { [weak self] in
-                Task { @MainActor [weak self] in
+            Task { @MainActor [weak self] in
+                let alert = PageCountAlertFactory.alert { [weak self] in
                     self?.dismissAndEdit(pageImage)
                 }
+                controller.present(alert, animated: true)
             }
-            controller.present(alert, animated: true)
         } else {
             Task { @MainActor [weak self] in
                 self?.dismissAndEdit(pageImage)
@@ -78,9 +81,4 @@ class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelega
     // the purchase repository
     @Injected(\.purchaseRepository) private var 🍺
     @Injected(\.logger) private var logger
-}
-
-@MainActor protocol DocumentScanningDelegate: AnyObject, PhotoEditorPresenting {
-    func presentPurchaseMarketing()
-    func dismissDocumentScanner()
 }

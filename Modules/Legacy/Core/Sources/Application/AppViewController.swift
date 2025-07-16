@@ -11,6 +11,7 @@ import FactoryKit
 
 import AppNavigation
 import AppRatings
+import DocumentScanning
 import Editing
 import ErrorHandling
 import IntroView
