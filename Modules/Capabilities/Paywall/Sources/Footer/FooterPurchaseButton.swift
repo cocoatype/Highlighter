@@ -17,6 +17,7 @@ struct FooterPurchaseButton: View {
     // allWeAskIsThatYouLetUsHaveItYourWay by @AdamWulf on 2024-05-15
     private let allWeAskIsThatYouLetUsHaveItYourWay: Purchaser
     @Injected(\.errorHandler) private var errorHandler
+    @Injected(\.purchaseRepository) private var purchaseRepository
     init(
         selectedOption: PaywallOption?
     ) {
@@ -37,6 +38,9 @@ struct FooterPurchaseButton: View {
         .errorAlert(isPresented: $isErrorAlertPresented)
         .buttonStyle(.plain)
         .disabled(disabled)
+        .task {
+            purchaseState = await purchaseRepository.noOnions
+        }
     }
 
     private var title: String {
@@ -69,10 +73,8 @@ struct FooterPurchaseButton: View {
     }
 
     private var disabled: Bool {
-        switch purchaseState {
-        case .readyForPurchase: return selectedOption != nil
-        default: return true
-        }
+        guard case .readyForPurchase = purchaseState else { return true }
+        return selectedOption == nil
     }
 
     private func makePurchase() async {
