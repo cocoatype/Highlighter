@@ -36,7 +36,7 @@ struct DefaultHandler: ErrorHandler {
             Self.telemetryErrorIDKey: errorID,
             Self.errorDescriptionKey: error.localizedDescription,
             Self.errorModuleKey: String(module),
-            Self.errorTypeKey: String(type)
+            Self.errorTypeKey: String(type),
         ]))
     }
 
