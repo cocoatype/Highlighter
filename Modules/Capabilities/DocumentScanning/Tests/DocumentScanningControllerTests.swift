@@ -5,10 +5,11 @@ import VisionKit
 import Testing
 
 import FactoryKit
+import FactoryTesting
 
 import PurchasingDoubles
 
-@testable import Core
+@testable import DocumentScanning
 
 @MainActor @Suite(.container)
 struct DocumentScanningControllerTests {

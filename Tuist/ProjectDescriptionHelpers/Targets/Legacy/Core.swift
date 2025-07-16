@@ -17,6 +17,7 @@ public enum Core {
             .target(Defaults.target),
             .target(DesignSystem.target),
             .target(Detections.target(sdk: .catalyst)),
+            .target(DocumentScanning.target),
             .target(Editing.target),
             .target(EditingToolbar.target),
             .target(ErrorHandling.target(sdk: .catalyst)),

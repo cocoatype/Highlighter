@@ -4,6 +4,9 @@ run = "burgerburgerburg generate"
 [tasks.lint]
 run = "swiftlint lint"
 
+[tasks.module]
+run = "burgerburgerburg scaffold module --name"
+
 [tools]
 ruby = "3.3.4"
 swiftlint = "0.58.2"

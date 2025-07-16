@@ -6,6 +6,7 @@ import AppIntents
 import FactoryKit
 
 import AppNavigation
+import Logging
 import Purchasing
 
 @available(iOS 16, *)
@@ -33,11 +34,14 @@ public struct OpenDocumentScannerIntent: AppIntent {
     }
 
     @AppDependency private var navigator: any Navigator
+    @Injected(\.logger) private var logger
     @Injected(\.purchaseRepository) private var purchaseRepository
     @MainActor public func perform() async throws -> some IntentResult {
         guard await purchaseRepository.noOnions == .purchased else {
             throw ShortcutsRedactorError.unpurchased
         }
+
+        logger.log(EventFactory().scannerPresentationEvent(for: .appIntent))
 
         navigator.navigate(to: .documentScanner)
         return .result()

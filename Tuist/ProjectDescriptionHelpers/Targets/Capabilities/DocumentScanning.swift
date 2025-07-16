@@ -1,32 +1,26 @@
 import ProjectDescription
 
-public enum Shortcuts {
+public enum DocumentScanning {
     public static let target = Target.capabilitiesTarget(
-        name: "Shortcuts",
+        name: "DocumentScanning",
         hasResources: true,
+        usesMaxSwiftVersion: true,
         dependencies: [
             .target(AppNavigation.target),
-            .target(Defaults.target),
             .target(DesignSystem.target),
-            .target(Detections.target(sdk: .catalyst)),
+            .target(Editing.target),
             .target(Logging.target(sdk: .catalyst)),
-            .target(Observations.target(sdk: .catalyst)),
             .target(Purchasing.target),
-            .target(Redactions.target(sdk: .catalyst)),
-            .target(Rendering.target(sdk: .catalyst)),
+            .target(Unpurchased.target),
             .external(name: "FactoryKit"),
         ]
     )
 
     public static let testTarget = Target.capabilitiesTestTarget(
-        name: "Shortcuts",
+        name: "DocumentScanning",
         dependencies: [
-            .target(Defaults.doublesTarget),
-            .target(Detections.target(sdk: .catalyst)),
-            .target(Observations.target(sdk: .catalyst)),
             .target(Purchasing.doublesTarget),
-            .target(Redactions.target(sdk: .catalyst)),
-            .target(Rendering.doublesTarget(sdk: .catalyst)),
+            .target(Purchasing.target),
             .external(name: "FactoryKit"),
             .external(name: "FactoryTesting"),
         ]

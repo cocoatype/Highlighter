@@ -115,6 +115,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
             self.logger.log(EventFactory().editorPresentationEvent(for: .library))
             photoEditorPresenter?.presentPhotoEditingViewController(for: asset, redactions: nil, animated: true)
         case .documentScan:
+            self.logger.log(EventFactory().scannerPresentationEvent(for: .library))
             documentScannerPresenter?.presentDocumentCameraViewController()
         case .limitedLibrary:
             limitedLibraryPresenter?.presentLimitedLibrary()
