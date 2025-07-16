@@ -6,6 +6,7 @@ public enum Detections {
             name: "Detections",
             sdk: sdk,
             dependencies: [
+                .target(ErrorHandling.target(sdk: sdk)),
                 .target(Observations.target(sdk: sdk)),
             ]
         )
