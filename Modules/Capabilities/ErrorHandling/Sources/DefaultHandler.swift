@@ -23,9 +23,9 @@ struct DefaultHandler: ErrorHandler {
         self.onExit = onExit
     }
 
-    func log(_ error: Error) {
+    func log(_ error: any Error, module: StaticString, type: StaticString) {
         let errorID: String
-        if type(of: error) is NSError.Type {
+        if Swift.type(of: error) is NSError.Type {
             let nsError = error as NSError
             errorID = "\(nsError.domain) - \(nsError.code)"
         } else {
@@ -35,6 +35,8 @@ struct DefaultHandler: ErrorHandler {
         logger.log(Event(name: Self.logError, info: [
             Self.telemetryErrorIDKey: errorID,
             Self.errorDescriptionKey: error.localizedDescription,
+            Self.errorModuleKey: String(module),
+            Self.errorTypeKey: String(type),
         ]))
     }
 
@@ -58,8 +60,17 @@ struct DefaultHandler: ErrorHandler {
 
     // MARK: Event Keys
 
-    private static let errorDescriptionKey = "errorDescription"
+    private static let errorModuleKey = "Highlighter.Error.module"
+    private static let errorTypeKey = "Highlighter.Error.type"
+    private static let errorDescriptionKey = "Highlighter.Error.description"
     private static let telemetryErrorIDKey = "TelemetryDeck.Error.id"
+}
+
+extension String {
+    init(_ staticString: StaticString) {
+        let buffer = staticString.withUTF8Buffer { $0 }
+        self.init(decoding: buffer, as: UTF8.self)
+    }
 }
 
 @objc(ErrorHandling)

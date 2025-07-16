@@ -41,7 +41,8 @@ class PhotoExtensionViewController: UIViewController, PHContentEditingController
                 let output = try factory.output(from: input)
                 completionHandler(output)
             } catch {
-                Container.shared.errorHandler().log(error)
+                Container.shared.errorHandler()
+                    .log(error, module: "Photo", type: "PhotoExtensionViewController")
                 completionHandler(nil)
             }
         }

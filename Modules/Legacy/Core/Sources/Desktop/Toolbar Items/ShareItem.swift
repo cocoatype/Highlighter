@@ -3,6 +3,7 @@
 
 #if targetEnvironment(macCatalyst)
 import AppKit
+import FactoryKit
 import UniformTypeIdentifiers
 
 class ShareItem: NSSharingServicePickerToolbarItem, UIActivityItemsConfigurationReading {
@@ -32,6 +33,8 @@ class ShareItem: NSSharingServicePickerToolbarItem, UIActivityItemsConfiguration
                     loadHandler(url, false, nil)
                     self?.delegate?.didExportImage()
                 } catch {
+                    Container.shared.errorHandler()
+                        .log(error, module: "Core", type: "ShareItem")
                     loadHandler(nil, false, error)
                 }
             }

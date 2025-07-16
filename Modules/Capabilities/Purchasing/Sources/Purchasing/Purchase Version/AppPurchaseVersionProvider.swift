@@ -25,7 +25,9 @@ struct AppPurchaseVersionProvider: PurchaseVersionProvider {
                 return version
                 #endif
             } catch {
-                errorHandler.log(error)
+                errorHandler.log(error,
+                                 module: "Purchasing",
+                                 type: "AppPurchaseVersionProvider")
                 return .max
             }
         }

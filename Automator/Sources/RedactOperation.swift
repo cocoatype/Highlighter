@@ -51,7 +51,8 @@ class RedactOperation: Operation, @unchecked Sendable {
 
                 self?.finish(with: .success(writeURL.path))
             } catch {
-                Container.shared.errorHandler().log(error)
+                Container.shared.errorHandler()
+                    .log(error, module: "Automator", type: "RedactOperation")
                 self?.finish(with: .failure(error))
             }
         }

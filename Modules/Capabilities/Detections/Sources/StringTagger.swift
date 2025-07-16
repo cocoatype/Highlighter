@@ -3,6 +3,14 @@
 
 import Foundation
 
+import FactoryKit
+
+#if canImport(AppKit) && !targetEnvironment(macCatalyst)
+import ErrorHandlingMac
+#elseif canImport(UIKit)
+import ErrorHandling
+#endif
+
 public class StringTagger: NSObject {
     public static func detectNames(in fullTextString: String) -> [Substring] {
         let tagger = NSLinguisticTagger(tagSchemes: [.nameType], options: 0)
@@ -45,6 +53,8 @@ public class StringTagger: NSObject {
                 }
             }
         } catch {
+            Container.shared.errorHandler()
+                .log(error, module: "Detections", type: "StringTagger")
             return []
         }
     }

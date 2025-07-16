@@ -70,7 +70,7 @@ class AppWindow: UIWindow {
                 logger.log(event)
                 appViewController.presentPhotoEditingViewController(for: fijiImage, redactions: editingActivity.redactions, animated: false)
             } catch {
-                errorHandler.log(error)
+                errorHandler.log(error, module: "Core", type: "AppWindow")
             }
         }
     }

@@ -4,18 +4,30 @@
 #if canImport(UIKit)
 import UIKit
 
+import FactoryKit
+
+import ErrorHandling
+
 public enum RedactionSerializer {
     public static func dataRepresentation(of redaction: Redaction) -> Data {
         do {
             let redactionData = try PropertyListEncoder().encode(redaction)
             return redactionData
-        } catch { return Data() }
+        } catch {
+            Container.shared.errorHandler()
+                .log(error, module: "Redactions", type: "RedactionSerializer")
+            return Data()
+        }
     }
 
     public static func redaction(from dataRepresentation: Data) -> Redaction? {
         do {
             return try PropertyListDecoder().decode(Redaction.self, from: dataRepresentation)
-        } catch { return nil }
+        } catch {
+            Container.shared.errorHandler()
+                .log(error, module: "Redactions", type: "RedactionSerializer")
+            return nil
+        }
     }
 
     public static func redaction(fromLegacyData dataRepresentation: [Data]) -> Redaction? {
@@ -23,7 +35,11 @@ public enum RedactionSerializer {
             let paths = try dataRepresentation.compactMap { try NSKeyedUnarchiver.unarchivedObject(ofClass: UIBezierPath.self, from: $0) }
             let parts = Self.parts(from: paths)
             return Redaction(color: .black, parts: parts)
-        } catch { return nil }
+        } catch {
+            Container.shared.errorHandler()
+                .log(error, module: "Redactions", type: "RedactionSerializer")
+            return nil
+        }
     }
 
     public static func parts(from paths: [UIBezierPath]) -> [RedactionPart] {

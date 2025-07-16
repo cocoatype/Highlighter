@@ -85,7 +85,7 @@ struct FooterPurchaseButton: View {
             purchaseState = try await allWeAskIsThatYouLetUsHaveItYourWay
                 .purchase(selectedOption)
         } catch {
-            errorHandler.log(error)
+            errorHandler.log(error, module: "Paywall", type: "FooterPurchaseButton")
             purchaseState = .readyForPurchase(products: products)
             isErrorAlertPresented = true
         }
