@@ -5,6 +5,7 @@ import AppIntents
 import SwiftUI
 import WidgetKit
 
+import Logging
 import Shortcuts
 
 @available(iOS 18.0, *)

@@ -9,6 +9,7 @@ public enum Shortcuts {
             .target(Defaults.target),
             .target(DesignSystem.target),
             .target(Detections.target(sdk: .catalyst)),
+            .target(Logging.target(sdk: .catalyst)),
             .target(Observations.target(sdk: .catalyst)),
             .target(Purchasing.target),
             .target(Redactions.target(sdk: .catalyst)),
