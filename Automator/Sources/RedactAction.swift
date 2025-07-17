@@ -3,11 +3,15 @@
 
 import AppKit
 import Automator
+
+import FactoryKit
+
 import DetectionsMac
+import LoggingMac
 import Redacting
-import OSLog
 
 class RedactAction: AMBundleAction, NSTextFieldDelegate {
+    @Injected(\.logger) private var logger
     override func runAsynchronously(withInput input: Any?) {
         guard let inputArray = input as? [Any] else {
             output = input
@@ -39,6 +43,8 @@ class RedactAction: AMBundleAction, NSTextFieldDelegate {
         redactOperations.forEach {
             finalizeOperation.addDependency($0)
         }
+
+        logger.log(Event(name: "Automator.redactAction"))
 
         operationQueue.addOperations(redactOperations + [finalizeOperation], waitUntilFinished: false)
     }
