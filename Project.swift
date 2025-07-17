@@ -57,6 +57,7 @@ let project = Project(
         URLParsing.target,
         UserActivities.target,
         // doubles
+        AppNavigation.doublesTarget,
         Defaults.doublesTarget,
         DesignSystem.doublesTarget,
         Logging.doublesTarget,

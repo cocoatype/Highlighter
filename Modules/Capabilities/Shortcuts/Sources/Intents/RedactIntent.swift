@@ -6,6 +6,7 @@ import AppIntents
 import FactoryKit
 
 import Defaults
+import Logging
 
 @available(iOS 17.0, *)
 struct RedactIntent: AppIntent {
@@ -96,42 +97,44 @@ struct RedactIntent: AppIntent {
         }
     }
 
+    @Injected(\.logger) private var logger
     func perform() async throws -> some IntentResult & ReturnsValue<[IntentFile]> & OpensIntent {
-        let handler = ShortcutsRedactIntentHandler()
-        let resultFiles = switch strategy {
+        let handler = ShortcutsRedactIntentHandler(
+            sourceImages: sourceImages,
+            selectedColor: color,
+            outputFormat: outputFormat
+        )
+        let usage: IntentUsage
+        let resultFiles: [RedactedFile]
+
+        switch strategy {
         case .autoRedactions:
-            try await handler.handle(
-                sourceImages: sourceImages,
-                selectedColor: color,
-                outputFormat: outputFormat,
+            usage = .redactAuto
+            resultFiles = try await handler.handle(
                 💩: autoRedactions,
                 meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
             )
         case .detections:
-            try await handler.handle(
-                sourceImages: sourceImages,
-                selectedColor: color,
-                outputFormat: outputFormat,
+            usage = .redactDetections
+            resultFiles = try await handler.handle(
                 💩: detectionKinds,
                 meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
             )
         case .everything:
-            try await handler.handle(
-                sourceImages: sourceImages,
-                selectedColor: color,
-                outputFormat: outputFormat,
+            usage = .redactEverything
+            resultFiles = try await handler.handle(
                 💩: SpecialRedactable.everything,
                 meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
             )
         case .words:
-            try await handler.handle(
-                sourceImages: sourceImages,
-                selectedColor: color,
-                outputFormat: outputFormat,
+            usage = .redactWords
+            resultFiles = try await handler.handle(
                 💩: redactedWords,
                 meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
             )
         }
+
+        logger.log(EventFactory().intentUsageEvent(usage: usage))
 
         guard let firstResult = resultFiles.first else { throw ShortcutsRedactorError.exportFailed }
         OpenImageIntent.lastRedactions = firstResult.redactions

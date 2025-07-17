@@ -6,6 +6,7 @@ import AppIntents
 import FactoryKit
 
 import Defaults
+import Logging
 
 @available(iOS 16, *)
 struct DeleteAutoRedactionsIntent: AppIntent {
@@ -26,6 +27,10 @@ struct DeleteAutoRedactionsIntent: AppIntent {
             autoRedactionsSet.removeValue(forKey: word)
         }
         defaults.set(autoRedactionsSet, for: Keys.autoRedactionsSet)
+
+        @Injected(\.logger) var logger
+        logger.log(EventFactory().intentUsageEvent(usage: .deleteAutoRedactions))
+
         return .result()
     }
 }
