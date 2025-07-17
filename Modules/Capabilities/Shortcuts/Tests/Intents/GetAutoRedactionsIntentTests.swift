@@ -7,7 +7,9 @@ import FactoryKit
 import FactoryTesting
 
 import DefaultsDoubles
+import LoggingDoubles
 
+@testable import Logging
 @testable import Shortcuts
 
 @MainActor @Suite(.container)
@@ -32,5 +34,18 @@ struct GetAutoRedactionsIntentTests {
         let result = try await intent.perform()
         let actualWords = try #require(result.value)
         #expect(actualWords == expectedWords)
+    }
+
+    @available(iOS 16, *) @Test func logging() async throws {
+        Container.shared.defaults.register { @MainActor in StubDefaultsProvider() }
+
+        let logger = SpyLogger()
+        Container.shared.logger.register { logger }
+
+        let _ = try await GetAutoRedactionsIntent().perform()
+        let event = try #require(logger.loggedEvents.first { loggedEvent in
+            loggedEvent.name == "Shortcuts.intentUsed"
+        })
+        #expect(event.info["usage"] == "getAutoRedactions")
     }
 }

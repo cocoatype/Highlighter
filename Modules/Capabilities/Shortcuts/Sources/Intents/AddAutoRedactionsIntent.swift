@@ -6,6 +6,7 @@ import AppIntents
 import FactoryKit
 
 import Defaults
+import Logging
 
 @available(iOS 16, *)
 struct AddAutoRedactionsIntent: AppIntent {
@@ -27,6 +28,7 @@ struct AddAutoRedactionsIntent: AppIntent {
         }
     }
 
+    @Injected(\.logger) private var logger
     @MainActor func perform() async throws -> some IntentResult {
         @Injected(\.defaults) var defaults
         var autoRedactionsSet = defaults.value(for: Keys.autoRedactionsSet) ?? [:]
@@ -34,6 +36,9 @@ struct AddAutoRedactionsIntent: AppIntent {
             autoRedactionsSet[word] = isActive
         }
         defaults.set(autoRedactionsSet, for: Keys.autoRedactionsSet)
+
+        logger.log(EventFactory().intentUsageEvent(usage: .addAutoRedactions))
+
         return .result()
     }
 }

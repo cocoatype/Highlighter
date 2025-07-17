@@ -9,4 +9,8 @@ public enum AppNavigation {
             .target(Redactions.target(sdk: .catalyst)),
         ]
     )
+
+    public static let doublesTarget = Target.capabilitiesDoublesTarget(
+        name: "AppNavigation"
+    )
 }

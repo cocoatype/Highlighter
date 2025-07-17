@@ -21,8 +21,11 @@ public enum Shortcuts {
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Shortcuts",
         dependencies: [
+            .target(AppNavigation.doublesTarget),
             .target(Defaults.doublesTarget),
             .target(Detections.target(sdk: .catalyst)),
+            .target(Logging.target(sdk: .catalyst)),
+            .target(Logging.doublesTarget),
             .target(Observations.target(sdk: .catalyst)),
             .target(Purchasing.doublesTarget),
             .target(Redactions.target(sdk: .catalyst)),

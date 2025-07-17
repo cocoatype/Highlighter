@@ -6,6 +6,7 @@ import AppIntents
 import FactoryKit
 
 import Defaults
+import Logging
 
 @available(iOS 16, *)
 struct GetAutoRedactionsIntent: AppIntent {
@@ -33,6 +34,10 @@ struct GetAutoRedactionsIntent: AppIntent {
                 return $0.value
             }.keys
             .sorted()
+
+        @Injected(\.logger) var logger
+        logger.log(EventFactory().intentUsageEvent(usage: .getAutoRedactions))
+
         return .result(value: Array(words))
     }
 }
