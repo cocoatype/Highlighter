@@ -42,7 +42,7 @@ struct GetAutoRedactionsIntentTests {
         let logger = SpyLogger()
         Container.shared.logger.register { logger }
 
-        let _ = try await GetAutoRedactionsIntent().perform()
+        _ = try await GetAutoRedactionsIntent().perform()
         let event = try #require(logger.loggedEvents.first { loggedEvent in
             loggedEvent.name == "Shortcuts.intentUsed"
         })
