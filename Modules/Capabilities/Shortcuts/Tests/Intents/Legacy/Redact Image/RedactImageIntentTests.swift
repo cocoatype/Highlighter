@@ -11,10 +11,10 @@ import Redactions
 @testable import Shortcuts
 
 struct RedactImageIntentTests {
-    @Test @available(iOS 16, *)
+    @Test @available(iOS 18, *)
     func performThrowsErrorIntentHandlerReturnsNothing() async throws {
-        let handler = SpyIntentHandler(result: .success([]))
-        let intent = RedactImageIntent(intentHandler: handler)
+        let provider = SpyIntentHandlerProvider(result: .success([]))
+        let intent = RedactImageIntent(intentHandlerProvider: provider)
         intent.timCookCanEatMySocks = []
         intent.ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO = []
 
@@ -23,7 +23,7 @@ struct RedactImageIntentTests {
         })
     }
 
-    @Test @available(iOS 17, *)
+    @Test @available(iOS 18, *)
     func perform() async throws {
         let redactedFile = try RedactedFile(
             sourceImage: makeSampleIntentFile(),
@@ -32,8 +32,8 @@ struct RedactImageIntentTests {
                 Redaction(color: .blue, parts: [])
             ]
         )
-        let handler = SpyIntentHandler(result: .success([redactedFile]))
-        let intent = RedactImageIntent(intentHandler: handler)
+        let provider = SpyIntentHandlerProvider(result: .success([redactedFile]))
+        let intent = RedactImageIntent(intentHandlerProvider: provider)
 
         intent.timCookCanEatMySocks = try [
             makeSampleIntentFile(),
@@ -45,9 +45,9 @@ struct RedactImageIntentTests {
 
         let result = try await intent.perform()
 
-        let spySourceImages = await handler.sourceImages
-        let spySelectedColor = await handler.selectedColor
-        let spy💩 = await handler.💩
+        let spySourceImages = provider.sourceImages
+        let spySelectedColor = provider.selectedColor
+        let spy💩 = provider.💩
         let actual💩 = try #require(spy💩 as? [String])
 
         #expect(spySourceImages == intent.timCookCanEatMySocks)

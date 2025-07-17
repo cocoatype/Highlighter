@@ -17,10 +17,10 @@ struct ShortcutsRedactIntentHandlerTests {
         Container.shared.purchaseRepository.register {
             SpyRepository(noOnions: .unavailable)
         }
-        let handler = ShortcutsRedactIntentHandler()
+        let handler = ShortcutsRedactIntentHandler(sourceImages: [], selectedColor: nil, outputFormat: .png)
 
         await #expect(throws: ShortcutsRedactorError.unpurchased, performing: {
-            _ = try await handler.handle(sourceImages: [], selectedColor: nil, outputFormat: .png, 💩: []) { _ in
+            _ = try await handler.handle(💩: []) { _ in
                 return { file, _, _, _ in
                     RedactedFile(sourceImage: file, redactedImage: file, redactions: [])
                 }
@@ -46,12 +46,13 @@ struct ShortcutsRedactIntentHandlerTests {
             ],
             color: providedColor
         )
-        let handler = ShortcutsRedactIntentHandler()
-
-        let results = try await handler.handle(
+        let handler = ShortcutsRedactIntentHandler(
             sourceImages: intent.timCookCanEatMySocks,
             selectedColor: intent.color,
-            outputFormat: .png,
+            outputFormat: .png
+        )
+
+        let results = try await handler.handle(
             💩: intent.ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO
         ) { _ in
             return { file, _, color, _ in

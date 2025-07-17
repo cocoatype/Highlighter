@@ -99,43 +99,36 @@ struct RedactIntent: AppIntent {
 
     @Injected(\.logger) private var logger
     func perform() async throws -> some IntentResult & ReturnsValue<[IntentFile]> & OpensIntent {
-        let handler = ShortcutsRedactIntentHandler()
+        let handler = ShortcutsRedactIntentHandler(
+            sourceImages: sourceImages,
+            selectedColor: color,
+            outputFormat: outputFormat
+        )
         let usage: IntentUsage
         let resultFiles: [RedactedFile]
+
         switch strategy {
         case .autoRedactions:
             usage = .redactAuto
             resultFiles = try await handler.handle(
-                sourceImages: sourceImages,
-                selectedColor: color,
-                outputFormat: outputFormat,
                 💩: autoRedactions,
                 meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
             )
         case .detections:
             usage = .redactDetections
             resultFiles = try await handler.handle(
-                sourceImages: sourceImages,
-                selectedColor: color,
-                outputFormat: outputFormat,
                 💩: detectionKinds,
                 meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
             )
         case .everything:
             usage = .redactEverything
             resultFiles = try await handler.handle(
-                sourceImages: sourceImages,
-                selectedColor: color,
-                outputFormat: outputFormat,
                 💩: SpecialRedactable.everything,
                 meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
             )
         case .words:
             usage = .redactWords
             resultFiles = try await handler.handle(
-                sourceImages: sourceImages,
-                selectedColor: color,
-                outputFormat: outputFormat,
                 💩: redactedWords,
                 meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
             )

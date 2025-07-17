@@ -35,7 +35,9 @@ import Unpurchased
             return cameraViewController
         } else {
             return UnpurchasedAlertControllerFactory()
-                .alertController(for: .documentScanner(learnMoreAction: delegate?.presentPurchaseMarketing))
+                .alertController(for: .documentScanner { [weak self] in
+                    self?.delegate?.presentPurchaseMarketing()
+                })
         }
     }
 
