@@ -46,4 +46,12 @@ public struct OpenDocumentScannerIntent: AppIntent {
         navigator.navigate(to: .documentScanner)
         return .result()
     }
+
+    public static var isDiscoverable: Bool {
+        #if targetEnvironment(macCatalyst)
+        return false
+        #else
+        return true
+        #endif
+    }
 }
