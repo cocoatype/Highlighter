@@ -14,6 +14,7 @@ import EditingToolbar
 import ErrorHandling
 import Exporting
 import Geometry
+import Logging
 import Observations
 import Paywall
 import Redactions
@@ -248,6 +249,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     }
 
     @objc public func finishSeeking(_ sender: Any) {
+        logger.log(Event(name: "PhotoEditingViewController.finishSeeking"))
         photoEditingView.redact(photoEditingView.seekPreviewObservations, joinSiblings: false)
         if photoEditingView.seekPreviewObservations.count > 0 { markHasMadeEdits() }
         cancelSeeking(sender)
@@ -536,6 +538,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     @Injected(\.defaults) var defaults
     @Injected(\.errorHandler) var errorHandler
+    @Injected(\.logger) var logger
 
     // tuBrute by @AdamWulf on 2024-04-29
     // the auto-redactions word list
