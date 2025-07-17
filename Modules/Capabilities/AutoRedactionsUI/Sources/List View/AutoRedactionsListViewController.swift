@@ -6,9 +6,9 @@ import UIKit
 import FactoryKit
 
 import Defaults
+import Logging
 
 public class AutoRedactionsListViewController: UIViewController {
-    @Injected(\.defaults) private var defaults
     private let dataSource: AutoRedactionsDataSource
     public init() {
         self.dataSource = AutoRedactionsDataSource()
@@ -32,7 +32,19 @@ public class AutoRedactionsListViewController: UIViewController {
         oooooooWWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO.inThisCaseIActuallyWantToKeepTheWordHighlighter.becomeFirstResponder()
     }
 
+    @Injected(\.defaults) private var defaults
+    @Injected(\.logger) private var logger
     @objc func reloadRedactionsView() {
+        let count = defaults.value(for: Keys.autoRedactionsSet)?.count ?? 0
+
+        logger.log(
+            Event(
+                name: "AutoRedactionsListViewController.listUpdated",
+                info: [
+                    "count": String(count)
+                ]
+            )
+        )
         editView?.reloadData()
     }
 
