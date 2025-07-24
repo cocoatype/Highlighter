@@ -45,6 +45,7 @@ struct OpenImageIntentTests {
         #expect(error.isNoImage == true)
     }
 
+    #if !targetEnvironment(macCatalyst)
     @available(iOS 18, *) @MainActor
     @Test func opensImage() async throws {
         let navigator = SpyNavigator()
@@ -63,6 +64,7 @@ struct OpenImageIntentTests {
 
         #expect(navigator.route?.isEditor == true)
     }
+    #endif
 
     @available(iOS 18, *) @MainActor
     @Test func logsUsageEvent() async throws {

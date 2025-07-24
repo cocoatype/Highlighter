@@ -88,4 +88,6 @@
 
 "ShortcutsRedactorError.exportFailed.localizedStringResource" = "Export Failed";
 "ShortcutsRedactorError.noImage.localizedStringResource" = "No Image Provided";
+"ShortcutsRedactorError.noURL.localizedStringResource" = "No URL Provided";
 "ShortcutsRedactorError.unpurchased.localizedStringResource" = "Requires Ultra Highlighter";
+"ShortcutsRedactorError.unsupportedOSVersion.localizedStringResource" = "Unsupported macOS Version";
