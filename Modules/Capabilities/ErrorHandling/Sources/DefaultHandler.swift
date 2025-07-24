@@ -25,11 +25,12 @@ struct DefaultHandler: ErrorHandler {
 
     func log(_ error: any Error, module: StaticString, type: StaticString) {
         let errorID: String
-        if Swift.type(of: error) is NSError.Type {
+        let errorType = Swift.type(of: error)
+        if errorType is NSError.Type {
             let nsError = error as NSError
             errorID = "\(nsError.domain) - \(nsError.code)"
         } else {
-            errorID = String(describing: error)
+            errorID = "\(String(describing: errorType)).\(String(describing: error))"
         }
 
         logger.log(Event(name: Self.logError, info: [

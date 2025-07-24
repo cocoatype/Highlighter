@@ -9,6 +9,7 @@ public enum AutoRedactionsUI {
             .target(DesignSystem.target),
             .target(Detections.target(sdk: .catalyst)),
             .target(ErrorHandling.target(sdk: .catalyst)),
+            .target(Logging.target(sdk: .catalyst)),
             .external(name: "FactoryKit"),
         ]
     )
