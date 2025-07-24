@@ -52,7 +52,7 @@ struct AppRatingsPrompterTests {
 
         let event = try #require(spy.loggedEvents.first)
         #expect(event.value == "TelemetryDeck.Error.occurred")
-        #expect(event.info["TelemetryDeck.Error.id"] == "missingWindowScene")
+        #expect(event.info["TelemetryDeck.Error.id"] == "AppRatingsError.missingWindowScene")
     }
 
     @Test func displayingPromptLogsEvent() async throws {
