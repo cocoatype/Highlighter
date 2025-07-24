@@ -23,7 +23,7 @@ struct DefaultHandlerTests {
         let event = try #require(logger.loggedEvents.first)
 
         #expect(event.value == "TelemetryDeck.Error.occurred")
-        #expect(event.info["TelemetryDeck.Error.id"] == "sample")
+        #expect(event.info["TelemetryDeck.Error.id"] == "SampleError.sample")
         #expect(event.info["Highlighter.Error.module"] == "ErrorHandlingTests")
         #expect(event.info["Highlighter.Error.type"] == "DefaultHandlerTests")
     }
