@@ -18,4 +18,11 @@ extension ShortcutsRedactorError {
         case .exportFailed, .noURL, .unpurchased, .unsupportedOSVersion: false
         }
     }
+
+    var isNoURL: Bool {
+        switch self {
+        case .noURL: true
+        case .exportFailed, .noImage, .unpurchased, .unsupportedOSVersion: false
+        }
+    }
 }

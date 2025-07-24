@@ -29,23 +29,40 @@ struct OpenImageIntentTests {
 
         #expect(error.isUnpurchased == true)
     }
+
+    #if targetEnvironment(macCatalyst)
+    @available(iOS 16, *)
+    @Test func throwsErrorIfMissingURL() async throws {
+        Container.shared.purchaseRepository.register {
+            SpyRepository(noOnions: .purchased)
+        }
+
+        let file = IntentFile(data: Data(), filename: "sample")
+
+        let error = try await #require(throws: ShortcutsRedactorError.self) {
+            try await OpenImageIntent(sourceImage: file, redactions: [])
+                .perform()
+        }
+
+        #expect(error.isNoURL == true)
+    }
+    #else
     @available(iOS 16, *)
     @Test func throwsErrorIfMissingImage() async throws {
         Container.shared.purchaseRepository.register {
             SpyRepository(noOnions: .purchased)
         }
 
+        let file = IntentFile(data: Data(), filename: "sample")
+
         let error = try await #require(throws: ShortcutsRedactorError.self) {
-            try await OpenImageIntent(
-                sourceImage: IntentFile(data: Data(), filename: "sample"),
-                redactions: []
-            ).perform()
+            try await OpenImageIntent(sourceImage: file, redactions: [])
+                .perform()
         }
 
         #expect(error.isNoImage == true)
     }
 
-    #if !targetEnvironment(macCatalyst)
     @available(iOS 18, *) @MainActor
     @Test func opensImage() async throws {
         let navigator = SpyNavigator()
@@ -64,7 +81,6 @@ struct OpenImageIntentTests {
 
         #expect(navigator.route?.isEditor == true)
     }
-    #endif
 
     @available(iOS 18, *) @MainActor
     @Test func logsUsageEvent() async throws {
@@ -87,4 +103,5 @@ struct OpenImageIntentTests {
         })
         #expect(event.info["usage"] == "openImage")
     }
+    #endif
 }
