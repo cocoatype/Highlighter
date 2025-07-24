@@ -8,14 +8,14 @@ extension ShortcutsRedactorError {
     var isUnpurchased: Bool {
         switch self {
         case .unpurchased: true
-        case .exportFailed, .noImage: false
+        case .exportFailed, .noImage, .noURL, .unsupportedOSVersion: false
         }
     }
 
     var isNoImage: Bool {
         switch self {
         case .noImage: true
-        case .exportFailed, .unpurchased: false
+        case .exportFailed, .noURL, .unpurchased, .unsupportedOSVersion: false
         }
     }
 }
