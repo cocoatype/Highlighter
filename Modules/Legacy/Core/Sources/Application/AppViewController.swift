@@ -22,7 +22,7 @@ import Redactions
 import SettingsUI
 
 @MainActor
-class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, IntroViewController.Actions, SettingsBarButtonItem.Actions, SettingsPresenting, Navigator {
+class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, IntroViewController.Actions, SettingsBarButtonItem.Actions, SettingsPresenting {
     @Injected(\.logger) private var logger
     private let permissionsRequester: PhotoPermissionsRequester
     init(
@@ -36,9 +36,11 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
         overrideUserInterfaceStyle = .dark
         embed(preferredViewController)
 
+        #if !targetEnvironment(macCatalyst)
         if #available(iOS 16, *) {
             AppDependencyManager.shared.add(dependency: (self as Navigator))
         }
+        #endif
     }
 
     @objc func showPhotoLibrary() {
@@ -117,8 +119,21 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
         topPresentedViewController.present(WebViewController(url: url), animated: true)
     }
 
-    // MARK: Navigation
+    // MARK: Status Bar
 
+    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
+    override var childForStatusBarStyle: UIViewController? { nil }
+
+    // MARK: Boilerplate
+
+    @available(*, unavailable)
+    required init(coder: NSCoder) {
+        Container.shared.errorHandler().notImplemented()
+    }
+}
+
+#if !targetEnvironment(macCatalyst)
+extension AppViewController: Navigator {
     func navigate(to route: Route) {
         switch route {
         case .editor(let image, let redactions):
@@ -139,16 +154,5 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
             }
         }
     }
-
-    // MARK: Status Bar
-
-    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
-    override var childForStatusBarStyle: UIViewController? { nil }
-
-    // MARK: Boilerplate
-
-    @available(*, unavailable)
-    required init(coder: NSCoder) {
-        Container.shared.errorHandler().notImplemented()
-    }
 }
+#endif

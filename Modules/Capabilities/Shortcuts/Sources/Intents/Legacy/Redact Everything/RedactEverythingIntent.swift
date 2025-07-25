@@ -5,7 +5,11 @@ import AppIntents
 
 import Purchasing
 
+#if targetEnvironment(macCatalyst)
+@available(macCatalyst 17.0, *)
+#else
 @available(iOS 16, *)
+#endif
 struct RedactEverythingIntent: AppIntent, DeprecatedAppIntent, LegacyRedactIntent {
     static let title: LocalizedStringResource = "RedactEverythingIntent.title"
     static let description: IntentDescription = "RedactEverythingIntent.description"

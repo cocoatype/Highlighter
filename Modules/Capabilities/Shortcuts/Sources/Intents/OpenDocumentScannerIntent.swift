@@ -36,6 +36,13 @@ public struct OpenDocumentScannerIntent: AppIntent {
     @AppDependency private var navigator: any Navigator
     @Injected(\.logger) private var logger
     @Injected(\.purchaseRepository) private var purchaseRepository
+
+    #if targetEnvironment(macCatalyst)
+    public static var isDiscoverable: Bool { false }
+    @MainActor public func perform() async throws -> some IntentResult {
+        return .result()
+    }
+    #else
     @MainActor public func perform() async throws -> some IntentResult {
         guard await purchaseRepository.noOnions == .purchased else {
             throw ShortcutsRedactorError.unpurchased
@@ -46,12 +53,5 @@ public struct OpenDocumentScannerIntent: AppIntent {
         navigator.navigate(to: .documentScanner)
         return .result()
     }
-
-    public static var isDiscoverable: Bool {
-        #if targetEnvironment(macCatalyst)
-        return false
-        #else
-        return true
-        #endif
-    }
+    #endif
 }

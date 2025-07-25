@@ -27,9 +27,7 @@ struct OpenImageIntent: AppIntent {
     // this exists because we can't pass redactions between intents without redactions being a parameter
     static var lastRedactions: [Redaction]?
 
-    #if !targetEnvironment(macCatalyst)
     @AppDependency private var navigator: any Navigator
-    #endif
 
     @Parameter(
         title: "OpenImageIntent.sourceImage.title",
@@ -52,11 +50,9 @@ struct OpenImageIntent: AppIntent {
         self.redactions = redactions
         self.sourceImage = sourceImage
 
-        #if !targetEnvironment(macCatalyst)
         if let navigator {
             self.navigator = navigator
         }
-        #endif
     }
 
     @Injected(\.purchaseRepository) private var purchaseRepository
@@ -70,14 +66,7 @@ struct OpenImageIntent: AppIntent {
             throw ShortcutsRedactorError.noURL
         }
 
-        guard #available(macCatalyst 17.0, *) else {
-            throw ShortcutsRedactorError.unsupportedOSVersion
-        }
-
-        let activity = LaunchActivity(url)
-        var request = UISceneSessionActivationRequest()
-        request.userActivity = activity
-        UIApplication.shared.activateSceneSession(for: request)
+        navigator.navigate(to: .editor(url))
         #else
         guard let image = UIImage(data: sourceImage.data) else {
             throw ShortcutsRedactorError.noImage(sourceImage.data)
