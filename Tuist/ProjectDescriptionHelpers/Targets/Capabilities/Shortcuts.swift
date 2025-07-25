@@ -14,6 +14,7 @@ public enum Shortcuts {
             .target(Purchasing.target),
             .target(Redactions.target(sdk: .catalyst)),
             .target(Rendering.target(sdk: .catalyst)),
+            .target(UserActivities.target),
             .external(name: "FactoryKit"),
         ]
     )

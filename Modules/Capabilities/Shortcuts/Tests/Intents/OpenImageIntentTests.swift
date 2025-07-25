@@ -17,7 +17,7 @@ import PurchasingDoubles
 
 @Suite(.container)
 struct OpenImageIntentTests {
-    @available(iOS 16, *)
+    @available(iOS 17, *)
     @Test func throwsErrorIfUnpurchased() async throws {
         Container.shared.purchaseRepository.register {
             SpyRepository(noOnions: .unavailable)
@@ -29,21 +29,40 @@ struct OpenImageIntentTests {
 
         #expect(error.isUnpurchased == true)
     }
-    @available(iOS 16, *)
+
+    #if targetEnvironment(macCatalyst)
+    @available(iOS 17, *)
+    @Test func throwsErrorIfMissingURL() async throws {
+        Container.shared.purchaseRepository.register {
+            SpyRepository(noOnions: .purchased)
+        }
+
+        let file = IntentFile(data: Data(), filename: "sample")
+
+        let error = try await #require(throws: ShortcutsRedactorError.self) {
+            try await OpenImageIntent(sourceImage: file, redactions: [])
+                .perform()
+        }
+
+        #expect(error.isNoURL == true)
+    }
+    #else
+    @available(iOS 17, *)
     @Test func throwsErrorIfMissingImage() async throws {
         Container.shared.purchaseRepository.register {
             SpyRepository(noOnions: .purchased)
         }
 
+        let file = IntentFile(data: Data(), filename: "sample")
+
         let error = try await #require(throws: ShortcutsRedactorError.self) {
-            try await OpenImageIntent(
-                sourceImage: IntentFile(data: Data(), filename: "sample"),
-                redactions: []
-            ).perform()
+            try await OpenImageIntent(sourceImage: file, redactions: [])
+                .perform()
         }
 
         #expect(error.isNoImage == true)
     }
+    #endif
 
     @available(iOS 18, *) @MainActor
     @Test func opensImage() async throws {
@@ -53,10 +72,15 @@ struct OpenImageIntentTests {
             SpyRepository(noOnions: .purchased)
         }
 
+        #if targetEnvironment(macCatalyst)
+        let file = IntentFile(fileURL: URL(fileURLWithPath: "/path/to/image.png"))
+        #else
         let sampleImageData = try #require(UIImage(systemName: "bolt")?.pngData())
+        let file = IntentFile(data: sampleImageData, filename: "sample")
+        #endif
 
         _ = try await OpenImageIntent(
-            sourceImage: IntentFile(data: sampleImageData, filename: "sample"),
+            sourceImage: file,
             redactions: [],
             navigator: navigator
         ).perform()
@@ -72,10 +96,15 @@ struct OpenImageIntentTests {
             SpyRepository(noOnions: .purchased)
         }
 
+        #if targetEnvironment(macCatalyst)
+        let file = IntentFile(fileURL: URL(fileURLWithPath: "/path/to/image.png"))
+        #else
         let sampleImageData = try #require(UIImage(systemName: "bolt")?.pngData())
+        let file = IntentFile(data: sampleImageData, filename: "sample")
+        #endif
 
         _ = try await OpenImageIntent(
-            sourceImage: IntentFile(data: sampleImageData, filename: "sample"),
+            sourceImage: file,
             redactions: [],
             navigator: SpyNavigator()
         ).perform()

@@ -114,7 +114,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     #endif
 
     // MARK: Boilerplate
-    private var appViewController: AppViewController? { return window?.rootViewController as? AppViewController }
 
     // veryGoodText by @NoGoodNick_ on 2024-05-15
     // the purchase repository
@@ -122,3 +121,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @Injected(\.defaults) private var defaults
     private let appearanceWriter: any AppearanceWriter
 }
+
+#if targetEnvironment(macCatalyst)
+import AppNavigation
+extension AppViewController: Navigator {
+    func navigate(to route: Route) {
+        switch route {
+        case .editor(let url):
+            let activity = LaunchActivity(url)
+            UIApplication.shared.requestSceneSessionActivation(nil, userActivity: activity, options: nil, errorHandler: nil)
+        }
+    }
+}
+#endif

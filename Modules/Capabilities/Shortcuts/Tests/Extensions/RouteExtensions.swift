@@ -6,7 +6,9 @@ import AppNavigation
 extension Route {
     var isDocumentScanner: Bool {
         switch self {
+        #if !targetEnvironment(macCatalyst)
         case .documentScanner: true
+        #endif
         case .editor: false
         }
     }
@@ -14,7 +16,9 @@ extension Route {
     var isEditor: Bool {
         switch self {
         case .editor: true
+        #if !targetEnvironment(macCatalyst)
         case .documentScanner: false
+        #endif
         }
     }
 }

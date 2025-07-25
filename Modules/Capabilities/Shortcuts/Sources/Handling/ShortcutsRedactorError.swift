@@ -7,7 +7,9 @@ import Foundation
 enum ShortcutsRedactorError: Error, CustomLocalizedStringResourceConvertible, Equatable {
     case exportFailed
     case noImage(Data)
+    case noURL
     case unpurchased
+    case unsupportedOSVersion
 
     var localizedStringResource: LocalizedStringResource {
         return switch self {
@@ -21,9 +23,19 @@ enum ShortcutsRedactorError: Error, CustomLocalizedStringResourceConvertible, Eq
                 "ShortcutsRedactorError.noImage.localizedStringResource",
                 bundle: .module
             )
+        case .noURL:
+            LocalizedStringResource(
+                "ShortcutsRedactorError.noURL.localizedStringResource",
+                bundle: .module
+            )
         case .unpurchased:
             LocalizedStringResource(
                 "ShortcutsRedactorError.unpurchased.localizedStringResource",
+                bundle: .module
+            )
+        case .unsupportedOSVersion:
+            LocalizedStringResource(
+                "ShortcutsRedactorError.unsupportedOSVersion.localizedStringResource",
                 bundle: .module
             )
         }

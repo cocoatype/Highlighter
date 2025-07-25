@@ -5,6 +5,10 @@ import Redactions
 import UIKit
 
 public enum Route {
+    #if targetEnvironment(macCatalyst)
+    case editor(URL)
+    #else
     case documentScanner
     case editor(UIImage, [Redaction])
+    #endif
 }
