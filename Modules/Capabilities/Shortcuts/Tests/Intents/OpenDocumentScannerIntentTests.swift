@@ -14,6 +14,7 @@ import PurchasingDoubles
 
 @Suite(.container)
 struct OpenDocumentScannerIntentTests {
+    #if !targetEnvironment(macCatalyst)
     @available(iOS 16, *)
     @Test func throwsErrorIfUnpurchased() async throws {
         Container.shared.purchaseRepository.register {
@@ -39,4 +40,5 @@ struct OpenDocumentScannerIntentTests {
 
         #expect(navigator.route?.isDocumentScanner == true)
     }
+    #endif
 }
