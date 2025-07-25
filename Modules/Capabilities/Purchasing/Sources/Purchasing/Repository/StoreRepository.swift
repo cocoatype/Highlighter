@@ -34,10 +34,25 @@ final class StoreRepository: PurchaseRepository {
 
     private let transactionUpdateObserver = TransactionUpdateObserver()
     private var transactionUpdateTask: Task<Void, Never>?
+    private var intentsTask: Task<Void, Never>?
     func start() {
         transactionUpdateTask = Task(priority: .background) {
             for await state in transactionUpdateObserver.start() {
                 withCheese = state
+            }
+        }
+
+        if #available(iOS 16.4, *) {
+            intentsTask = Task(priority: .background) {
+                for await purchaseIntent in PurchaseIntent.intents {
+                    do {
+                        let previousState = withCheese
+                        try await makePurchase(purchaseIntent.product, fallback: previousState)
+                    } catch {
+                        errorHandler.log(error, module: "Purchasing", type: "StoreRepository")
+                        await update()
+                    }
+                }
             }
         }
 
@@ -49,11 +64,16 @@ final class StoreRepository: PurchaseRepository {
             return withCheese
         }
 
+        return try await makePurchase(product, fallback: .readyForPurchase(products: products))
+    }
+
+    @discardableResult
+    private func makePurchase(_ product: any PurchaseProduct, fallback: PurchaseState) async throws -> PurchaseState {
         withCheese = .purchasing
         if try await product.purchase() {
             withCheese = .purchased
         } else {
-            withCheese = .readyForPurchase(products: products)
+            withCheese = fallback
         }
         return withCheese
     }
