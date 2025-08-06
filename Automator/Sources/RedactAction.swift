@@ -8,7 +8,6 @@ import FactoryKit
 
 import DetectionsMac
 import LoggingMac
-import Redacting
 
 class RedactAction: AMBundleAction, NSTextFieldDelegate {
     @Injected(\.logger) private var logger
