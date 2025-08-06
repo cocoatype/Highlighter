@@ -1,9 +1,12 @@
 //  Created by Geoff Pado on 5/6/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import UIKit
+
+import FactoryKit
+
 import ErrorHandling
 import Redactions
-import UIKit
 
 public class PhotoEditingRedactionView: UIView {
     public init() {
@@ -50,6 +53,7 @@ public class PhotoEditingRedactionView: UIView {
         })
     }
 
+    @Injected(\.errorHandler) private var errorHandler
     private func updateDisplay() {
         do {
             layer.sublayers = try redactions.flatMap { redaction -> [RedactionPathLayer] in
@@ -57,7 +61,7 @@ public class PhotoEditingRedactionView: UIView {
                     .map { try RedactionPathLayer(part: $0, color: redaction.color, scale: layer.contentsScale)}
             }
         } catch {
-            ErrorHandler().log(error)
+            errorHandler.log(error, module: "Editing", type: "PhotoEditingRedactionView")
             layer.sublayers = nil
         }
     }

@@ -4,6 +4,10 @@
 import AppKit
 import UniformTypeIdentifiers
 
+import FactoryKit
+
+import ErrorHandlingMac
+
 enum RedactActionInput {
     case string(String),
          url(URL),
@@ -20,7 +24,11 @@ enum RedactActionInput {
         do {
             let resourceValues = try fileURL.resourceValues(forKeys: [.contentTypeKey])
             return resourceValues.contentType
-        } catch { return nil }
+        } catch {
+            Container.shared.errorHandler()
+                .log(error, module: "Automator", type: "RedactActionInput")
+            return nil
+        }
     }
 
     var imageType: NSBitmapImageRep.FileType {

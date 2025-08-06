@@ -1,12 +1,15 @@
 //  Created by Geoff Pado on 1/2/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+import UIKit
+
+import FactoryKit
+
 import Brushes
 import ErrorHandling
 import Geometry
 import Observations
 import Redactions
-import UIKit
 
 class RedactionPathLayer: CALayer {
     init(part: RedactionPart, color: UIColor, scale: CGFloat) throws {
@@ -71,7 +74,8 @@ class RedactionPathLayer: CALayer {
 
     override init(layer: Any) {
         guard let pathLayer = layer as? RedactionPathLayer else {
-            ErrorHandler().crash("Tried to copy something that was not a RedactionPathLayer")
+            Container.shared.errorHandler()
+                .crash("Tried to copy something that was not a RedactionPathLayer")
         }
 
         self.color = pathLayer.color

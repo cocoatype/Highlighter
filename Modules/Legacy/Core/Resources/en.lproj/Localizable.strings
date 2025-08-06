@@ -25,13 +25,6 @@
 // Title for the 'new from clipboard' keyboard command
 "NewFromClipboardCommand.title" = "New from Clipboard";
 
-// Title for the page count alert when scanning documents
-"PageCountAlertFactory.alertTitle" = "Too Many Pages";
-// Message for the page count alert when scanning documents
-"PageCountAlertFactory.alertMessage" = "Highlighter only supports editing one page at a time. Only the first page of your scan will appear.";
-// Title for the dismiss button on the page count alert when scanning documents
-"PageCountAlertFactory.dismissButtonTitle" = "OK";
-
 // Title for the cancel button on the photo save protection alert
 "PhotoEditingProtectionAlertController.cancelButtonTitle" = "Cancel";
 // Title for the delete button on the photo save protection alert

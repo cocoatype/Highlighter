@@ -5,7 +5,7 @@ import Foundation
 import Purchasing
 import StoreKit
 
-public struct PreviewProduct: PurchaseProduct {
+public struct StubProduct: PurchaseProduct {
     public let id: String
     public let displayName: String
     public let displayPrice: String
@@ -23,7 +23,7 @@ public struct PreviewProduct: PurchaseProduct {
         id = UUID().uuidString
         self.displayName = displayName
         if #available(iOS 15, *) {
-            self.displayPrice = price.formatted()
+            self.displayPrice = price.formatted(.currency(code: "USD"))
         } else {
             self.displayPrice = String(describing: price)
         }

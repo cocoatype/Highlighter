@@ -3,45 +3,55 @@
 
 import AppIntents
 
+import FactoryKit
+
 import AppNavigation
+import Logging
 import Purchasing
 
 @available(iOS 16, *)
-struct OpenDocumentScannerIntent: AppIntent {
-    static let title: LocalizedStringResource = "OpenDocumentScannerIntent.title"
-    static let description: IntentDescription = "OpenDocumentScannerIntent.description"
-    static let openAppWhenRun = true
+public struct OpenDocumentScannerIntent: AppIntent {
+    public static let title: LocalizedStringResource = "OpenDocumentScannerIntent.title"
+    public static let description: IntentDescription = "OpenDocumentScannerIntent.description"
+    public static let openAppWhenRun = true
 
-    static var parameterSummary: some ParameterSummary {
+    public static var parameterSummary: some ParameterSummary {
         Summary("OpenDocumentScannerIntent.parameterSummary")
     }
 
     init(
-        navigator: (any Navigator)? = nil,
-        purchaseRepository: any PurchaseRepository
+        navigator: (any Navigator)? = nil
     ) {
-        self.purchaseRepository = purchaseRepository
-
         if let navigator {
             self.navigator = navigator
         }
     }
 
-    init() {
+    public init() {
         self.init(
-            navigator: nil,
-            purchaseRepository: Purchasing.repository
+            navigator: nil
         )
     }
 
     @AppDependency private var navigator: any Navigator
-    private let purchaseRepository: any PurchaseRepository
-    @MainActor func perform() async throws -> some IntentResult {
+    @Injected(\.logger) private var logger
+    @Injected(\.purchaseRepository) private var purchaseRepository
+
+    #if targetEnvironment(macCatalyst)
+    public static var isDiscoverable: Bool { false }
+    @MainActor public func perform() async throws -> some IntentResult {
+        return .result()
+    }
+    #else
+    @MainActor public func perform() async throws -> some IntentResult {
         guard await purchaseRepository.noOnions == .purchased else {
             throw ShortcutsRedactorError.unpurchased
         }
 
+        logger.log(EventFactory().scannerPresentationEvent(for: .appIntent))
+
         navigator.navigate(to: .documentScanner)
         return .result()
     }
+    #endif
 }

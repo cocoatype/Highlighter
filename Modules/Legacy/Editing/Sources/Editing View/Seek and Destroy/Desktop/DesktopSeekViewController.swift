@@ -2,6 +2,9 @@
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
 import UIKit
+
+import FactoryKit
+
 import ErrorHandling
 
 class DesktopSeekViewController: UIViewController {
@@ -19,6 +22,6 @@ class DesktopSeekViewController: UIViewController {
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        ErrorHandler().notImplemented()
+        Container.shared.errorHandler().notImplemented()
     }
 }

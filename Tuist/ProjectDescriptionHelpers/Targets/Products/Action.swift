@@ -23,6 +23,7 @@ public enum Action {
             .target(DesignSystem.target),
             .target(Editing.target),
             .target(ErrorHandling.target(sdk: .catalyst)),
+            .external(name: "FactoryKit"),
         ],
         settings: .settings(
             base: [

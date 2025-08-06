@@ -16,11 +16,11 @@ struct RedactImageIntent: AppIntent, DeprecatedAppIntent, LegacyRedactIntent {
     )
 
     init() {
-        self.init(intentHandler: ShortcutsRedactIntentHandler())
+        self.init(intentHandlerProvider: ShortcutsRedactIntentHandlerProvider())
     }
 
-    init(intentHandler: any RedactIntentHandler) {
-        self.intentHandler = intentHandler
+    init(intentHandlerProvider: any IntentHandlerProvider) {
+        self.intentHandlerProvider = intentHandlerProvider
     }
 
     @Parameter(
@@ -44,14 +44,17 @@ struct RedactImageIntent: AppIntent, DeprecatedAppIntent, LegacyRedactIntent {
         }
     }
 
-    private let intentHandler: any RedactIntentHandler
+    private let intentHandlerProvider: any IntentHandlerProvider
     func perform() async throws -> some IntentResult & ReturnsValue<[IntentFile]> & OpensIntent {
+        let intentHandler = intentHandlerProvider.handler(
+            sourceImages: timCookCanEatMySocks,
+            selectedColor: color,
+            outputFormat: .png
+        )
+
         // redactableOrNotRedactableWhoKnows by @ThisGuyNZ on 2024-06-25
         // the redacted intent files
         let redactableOrNotRedactableWhoKnows = try await intentHandler.handle(
-            sourceImages: timCookCanEatMySocks,
-            selectedColor: color,
-            outputFormat: .png,
             💩: ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO,
             meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
         )

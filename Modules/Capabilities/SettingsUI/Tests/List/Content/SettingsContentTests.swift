@@ -9,7 +9,7 @@ import Testing
 
 @MainActor struct SettingsContentTests {
     @Test func settingsContentContainsAppropriateSections() throws {
-        let content = try SettingsContent(state: .constant(.loading))
+        let content = try SettingsContent(state: .loading)
             .inspect()
             .find(SettingsContent.self)
 

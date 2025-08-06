@@ -3,7 +3,7 @@
 
 import VisionKit
 
-protocol DocumentCameraViewController: UIViewController {
+public protocol DocumentCameraViewController: UIViewController {
     var delegate: VNDocumentCameraViewControllerDelegate? { get set }
 }
 

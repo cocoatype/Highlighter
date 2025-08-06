@@ -8,16 +8,16 @@ import SwiftUI
 
 @available(iOS 16.0, *)
 struct PurchaseNavigationLink: View {
-    @Binding private var purchaseState: PurchaseState
+    private let purchaseState: PurchaseState
 
     init(
-        purchaseState: Binding<PurchaseState>
+        purchaseState: PurchaseState
     ) {
-        _purchaseState = purchaseState
+        self.purchaseState = purchaseState
     }
 
     var body: some View {
-        NavigationLink(destination: PaywallView(purchaseState: $purchaseState)) {
+        NavigationLink(destination: PaywallView()) {
             VStack(alignment: .leading) {
                 PurchaseTitle()
                 PurchaseSubtitle(state: purchaseState)
@@ -35,13 +35,11 @@ enum PurchaseNavigationLinkPreviews: PreviewProvider {
     static var previews: some View {
         VStack(alignment: .leading, spacing: 8) {
             PurchaseNavigationLink(
-                purchaseState: .constant(.loading)
+                purchaseState: .loading
             )
             PurchaseNavigationLink(
-                purchaseState: .constant(
-                    .readyForPurchase(
-                        products: [PreviewProduct()]
-                    )
+                purchaseState: .readyForPurchase(
+                    products: [StubProduct()]
                 )
             )
         }.preferredColorScheme(.dark)

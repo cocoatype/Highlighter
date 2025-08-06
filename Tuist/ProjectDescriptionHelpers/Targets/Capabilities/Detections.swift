@@ -7,6 +7,7 @@ public enum Detections {
             sdk: sdk,
             usesMaxSwiftVersion: true,
             dependencies: [
+                .target(ErrorHandling.target(sdk: sdk)),
                 .target(Observations.target(sdk: sdk)),
             ]
         )

@@ -11,9 +11,11 @@ public enum AutomatorActions {
         resources: ["Automator/Resources/**"],
         dependencies: [
             .target(Detections.target(sdk: .native)),
+            .target(Logging.target(sdk: .native)),
             .target(Redacting.target),
             .target(Redactions.target(sdk: .native)),
             .target(Rendering.target(sdk: .native)),
+            .external(name: "FactoryKit"),
         ],
         settings: .settings(base: [
             "LD_RUNPATH_SEARCH_PATHS": [

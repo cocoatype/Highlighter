@@ -20,18 +20,17 @@ public struct AppRatingsPrompter {
     }
 
     init(
-        ratingRequestMethod: @escaping ((UIWindowScene) -> Void) = SKStoreReviewController.requestReview(in:),
-        repository: any PurchaseRepository = Purchasing.repository
+        ratingRequestMethod: @escaping ((UIWindowScene) -> Void) = SKStoreReviewController.requestReview(in:)
     ) {
         self.ratingRequestMethod = ratingRequestMethod
-        self.repository = repository
     }
 
     @MainActor
     public func displayRatingsPrompt(in windowScene: UIWindowScene?) async {
         guard let windowScene else {
-            ErrorHandler()
-                .log(AppRatingsError.missingWindowScene)
+            errorHandler.log(AppRatingsError.missingWindowScene,
+                             module: "AppRatings",
+                             type: "AppRatingsPrompter")
             return
         }
 
@@ -54,9 +53,10 @@ public struct AppRatingsPrompter {
     private static let ratingNumberOfSavesCadence = 3
     private static let paywallNumberOfSaves = 10
     @Injected(\.defaults) private var defaults
+    @Injected(\.errorHandler) private var errorHandler
     @Injected(\.logger) private var logger
     private let ratingRequestMethod: (UIWindowScene) -> Void
-    private let repository: any PurchaseRepository
+    @Injected(\.purchaseRepository) private var repository
 }
 
 private enum AppRatingsError: Error {

@@ -1,12 +1,15 @@
 //  Created by Geoff Pado on 8/10/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+import UIKit
+import UniformTypeIdentifiers
+
+import FactoryKit
+
 import AppRatings
 import Defaults
 import ErrorHandling
 import Exporting
-import UIKit
-import UniformTypeIdentifiers
 
 #if targetEnvironment(macCatalyst)
 extension PhotoEditingViewController {
@@ -30,7 +33,8 @@ extension PhotoEditingViewController {
                 defaults.set(defaults.value(for: Keys.numberOfSaves) + 1, for: Keys.numberOfSaves)
                 await AppRatingsPrompter().displayRatingsPrompt(in: view.window?.windowScene)
             } catch {
-                ErrorHandler().log(error)
+                Container.shared.errorHandler()
+                    .log(error, module: "Editing", type: "PhotoEditingViewController")
             }
         }
     }
@@ -53,7 +57,8 @@ extension PhotoEditingViewController {
                 }
                 present(saveViewController, animated: true)
             } catch {
-                ErrorHandler().log(error)
+                Container.shared.errorHandler()
+                    .log(error, module: "Editing", type: "PhotoEditingViewController")
             }
         }
     }

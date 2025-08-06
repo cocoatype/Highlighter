@@ -1,3 +1,6 @@
+// Title for the paywall duration picker
+"DurationPicker.label" = "Purchase Option";
+
 // Title for the purchase button on the purchase marketing view when loading
 "PurchaseButton.loadingTitle" = "Purchase";
 // Title for the purchase button on the purchase marketing view when ready (with price)
@@ -9,6 +12,13 @@
 
 // Text separating the two purchase buttons
 "PurchaseButtonSeparator.text" = "or";
+
+// Title of the button for dismissing the purchase error alert
+"PurchaseErrorAlertModifier.dismissButton" = "OK";
+// Title of the purchase error alert
+"PurchaseErrorAlertModifier.errorTitle" = "Purchase Error Occurred";
+// Body of the purchase error alert
+"PurchaseErrorAlertModifier.errorMessage" = "An error occurred while trying to purchase Ultra Highlighter. Please try again later.";
 
 "FooterPrivacyLink.shortTitle" = "Privacy";
 "FooterPrivacyLink.title" = "Privacy Policy";
@@ -24,6 +34,34 @@
 
 // Text for the subheadline in purchase marketing
 "TopBarSubheadline.text" = "Unlock these powerful new abilities for Black Highlighter.";
+
+// Title for the annual paywall option with no free trial
+"PaywallOption.yearly.shortName" = "Annual";
+// Message for the annual paywall option with no free trial
+"PaywallOption.yearly.message" = "Unlock all these features for just %@/year.\nCancel at any time.";
+// Purchase button title for the annual paywall option with no free trial
+"PaywallOption.yearly.buttonTitle" = "Continue";
+
+// Title for the annual paywall option with free trial
+"PaywallOption.yearlyWithTrial.shortName" = "Annual";
+// Message for the annual paywall option with free trial
+"PaywallOption.yearlyWithTrial.message" = "First two weeks free, then just %@/year.\nNo payment due now.";
+// Purchase button title for the annual paywall option with free trial
+"PaywallOption.yearlyWithTrial.buttonTitle" = "Get Two Weeks Free";
+
+// Title for the monthly paywall option
+"PaywallOption.monthly.shortName" = "Monthly";
+// Message for the monthly paywall option
+"PaywallOption.monthly.message" = "Unlock all these features for just %@/month.\nCancel at any time.";
+// Purchase button title for the monthly paywall option
+"PaywallOption.monthly.buttonTitle" = "Continue";
+
+// Title for the one-time paywall option
+"PaywallOption.oneTime.shortName" = "One-Time";
+// Message for the one-time paywall option
+"PaywallOption.oneTime.message" = "Unlock all these features for one payment of %@.\nNo recurring subscription.";
+// Purchase button title for the one-time paywall option
+"PaywallOption.oneTime.buttonTitle" = "Continue";
 
 "PaywallView.autoRedactionsHeader" = "Seek and destroy.";
 "PaywallView.autoRedactionsText" = "Automatically hide your most private information, ensuring you never overlook sensitive details.";

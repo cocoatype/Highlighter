@@ -16,6 +16,7 @@ class DesktopViewController: UIViewController, FileURLProvider {
     var editingViewController: PhotoEditingViewController? { children.first as? PhotoEditingViewController }
 
     @Injected(\.defaults) private var defaults
+    @Injected(\.errorHandler) private var errorHandler
     init(
         dependencies: SceneDependencies
     ) {
@@ -35,7 +36,9 @@ class DesktopViewController: UIViewController, FileURLProvider {
             do {
                 try loadRepresentedURL()
                 updateURLRepresentation()
-            } catch { ErrorHandler().log(error) }
+            } catch {
+                errorHandler.log(error, module: "Core", type: "DesktopViewController")
+            }
         } else if image != nil {
             loadImage()
         }
@@ -49,7 +52,7 @@ class DesktopViewController: UIViewController, FileURLProvider {
                 try loadRepresentedURL()
                 updateURLRepresentation()
             } catch {
-                ErrorHandler().log(error)
+                errorHandler.log(error, module: "Core", type: "DesktopViewController")
             }
         }
     }
@@ -111,7 +114,7 @@ class DesktopViewController: UIViewController, FileURLProvider {
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        ErrorHandler().notImplemented()
+        Container.shared.errorHandler().notImplemented()
     }
 
     private enum LoadError: Error {
@@ -129,7 +132,7 @@ class DesktopView: UIView {
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        ErrorHandler().notImplemented()
+        Container.shared.errorHandler().notImplemented()
     }
 }
 #endif

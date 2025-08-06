@@ -14,6 +14,7 @@ import EditingToolbar
 import ErrorHandling
 import Exporting
 import Geometry
+import Logging
 import Observations
 import Paywall
 import Redactions
@@ -248,6 +249,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     }
 
     @objc public func finishSeeking(_ sender: Any) {
+        logger.log(Event(name: "PhotoEditingViewController.finishSeeking"))
         photoEditingView.redact(photoEditingView.seekPreviewObservations, joinSiblings: false)
         if photoEditingView.seekPreviewObservations.count > 0 { markHasMadeEdits() }
         cancelSeeking(sender)
@@ -416,7 +418,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
             do {
                 let textObservations = try await textRectangleDetector.detectText(in: image)
                 photoEditingView.textObservations = textObservations
-            } catch { ErrorHandler().log(error) }
+            } catch { errorHandler.log(error, module: "Editing", type: "PhotoEditingViewController") }
         }
 
         Task { [weak self] in
@@ -425,7 +427,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
                 let recognizedTextObservations = try await textRectangleDetector.recognizeText(in: image)
                 updateRecognizedTextObservations(from: recognizedTextObservations)
                 autoRedact()
-            } catch { ErrorHandler().log(error) }
+            } catch { errorHandler.log(error, module: "Editing", type: "PhotoEditingViewController") }
         }
     }
 
@@ -513,6 +515,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
                 }
                 present(activityController, animated: true)
             } catch {
+                errorHandler.log(error, module: "Editing", type: "PhotoEditingViewController")
                 let alert = PhotoExportErrorAlertFactory.alert(for: error)
                 present(alert, animated: true)
             }
@@ -534,6 +537,8 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     // MARK: Boilerplate
 
     @Injected(\.defaults) var defaults
+    @Injected(\.errorHandler) var errorHandler
+    @Injected(\.logger) var logger
 
     // tuBrute by @AdamWulf on 2024-04-29
     // the auto-redactions word list

@@ -1,9 +1,12 @@
 //  Created by Geoff Pado on 5/17/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
+import SwiftUI
+
+import FactoryKit
+
 import Purchasing
 import StoreKit
-import SwiftUI
 
 public struct SettingsView: View {
     private let purchaseRepository: any PurchaseRepository
@@ -12,20 +15,19 @@ public struct SettingsView: View {
     private let readableWidth: CGFloat
 
     init(
-        purchaseRepository: any PurchaseRepository = Purchasing.repository,
         readableWidth: CGFloat = .zero,
         dismissAction: @escaping (() -> Void)
     ) {
-        self._purchaseState = State<PurchaseState>(initialValue: purchaseRepository.withCheese)
+        purchaseRepository = Container.shared.purchaseRepository()
+        _purchaseState = State<PurchaseState>(initialValue: purchaseRepository.withCheese)
         self.dismissAction = dismissAction
         self.readableWidth = readableWidth
-        self.purchaseRepository = purchaseRepository
     }
 
     public var body: some View {
         SettingsNavigationView {
             SettingsList(dismissAction: dismissAction) {
-                SettingsContent(state: $purchaseState)
+                SettingsContent(state: purchaseState)
             }
             .navigationTitle(SettingsUIStrings.SettingsViewController.navigationTitle)
             .navigationBarTitleDisplayMode(.inline)

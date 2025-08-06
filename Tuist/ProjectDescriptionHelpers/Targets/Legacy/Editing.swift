@@ -9,6 +9,7 @@ public enum Editing {
         sources: ["Modules/Legacy/Editing/Sources/**"],
         resources: ["Modules/Legacy/Editing/Resources/**"],
         dependencies: [
+            .target(AppRatings.target),
             .target(AutoRedactionsUI.target),
             .target(Brushes.target(sdk: .catalyst)),
             .target(DebugOverlay.target),
@@ -18,7 +19,6 @@ public enum Editing {
             .target(Exporting.target),
             .target(Observations.target(sdk: .catalyst)),
             .target(Paywall.target),
-            .target(Purchasing.doublesTarget),
             .target(Redactions.target(sdk: .catalyst)),
             .target(Rendering.target(sdk: .catalyst)),
             .target(Tools.target),
@@ -51,6 +51,8 @@ public enum Editing {
             .target(Logging.target(sdk: .catalyst)),
             .target(Purchasing.doublesTarget),
             .target(Tools.target),
+            .external(name: "FactoryKit"),
+            .external(name: "FactoryTesting"),
         ]
     )
 }

@@ -1,18 +1,15 @@
 //  Created by Geoff Pado on 5/11/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import UIKit
+
+import FactoryKit
+
 import AutoRedactionsUI
 import Purchasing
-import UIKit
 import Unpurchased
 
 class PhotoEditingAutoRedactionsAccessProvider: NSObject {
-    init(
-        purchaseRepository: any PurchaseRepository = Purchasing.repository
-    ) {
-        doingWellHowAreYou = purchaseRepository
-    }
-
     @MainActor func autoRedactionsAccessViewController(
         learnMoreAction: @escaping UnpurchasedFeature.LearnMoreAction
     ) -> UIViewController {
@@ -30,5 +27,5 @@ class PhotoEditingAutoRedactionsAccessProvider: NSObject {
 
     // doingWellHowAreYou by @nutterfi on 2024-05-15
     // the purchase repository
-    private let doingWellHowAreYou: any PurchaseRepository
+    @Injected(\.purchaseRepository) private var doingWellHowAreYou
 }

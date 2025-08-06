@@ -1,22 +1,18 @@
 //  Created by Geoff Pado on 12/2/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import SwiftUI
+
+import FactoryKit
+
 import ErrorHandling
 import Purchasing
-import SwiftUI
 
 @available(iOS 16.0, *)
 struct Footer: View {
     @State private var viewState: ViewState = .loading
-    private let errorHandler: ErrorHandler
-    private let purchaseRepository: any PurchaseRepository
-    init(
-        errorHandler: ErrorHandler = ErrorHandler(),
-        purchaseRepository: any PurchaseRepository = Purchasing.repository
-    ) {
-        self.errorHandler = errorHandler
-        self.purchaseRepository = purchaseRepository
-    }
+    @Injected(\.errorHandler) private var errorHandler
+    @Injected(\.purchaseRepository) private var purchaseRepository
 
     var body: some View {
         currentView
@@ -41,7 +37,7 @@ struct Footer: View {
             }
             viewState = .unpurchased(options)
         } catch {
-            errorHandler.log(error)
+            errorHandler.log(error, module: "Paywall", type: "Footer")
         }
     }
 
@@ -61,13 +57,13 @@ struct Footer: View {
 }
 
 #if DEBUG
-import PurchasingDoubles
 @available(iOS 16.0, *)
-enum PurchaseMarketingFooterPreviews: PreviewProvider {
-    static var previews: some View {
-        Footer(purchaseRepository: PreviewRepository(purchaseState: .readyForPurchase(products: [
-            PreviewProduct(),
-        ])))
-    }
+#Preview {
+    Color.black
+        .ignoresSafeArea()
+        .safeAreaInset(edge: .bottom) {
+            Footer()
+                .background(ignoresSafeAreaEdges: .bottom)
+        }
 }
 #endif

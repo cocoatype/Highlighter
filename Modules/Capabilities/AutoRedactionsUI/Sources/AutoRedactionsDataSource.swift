@@ -42,8 +42,9 @@ class AutoRedactionsDataSource: NSObject, UITableViewDataSource, UITableViewDele
 
     // MARK: Cells
 
+    @Injected(\.errorHandler) private var errorHandler
     private func categoryCell(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
-        guard let categoryCell = tableView.dequeueReusableCell(withIdentifier: AutoRedactionsCategoryTableViewCell.anInconvenientVariableName, for: indexPath) as? AutoRedactionsCategoryTableViewCell else { ErrorHandler().crash("Auto redactions table view cell is not a AutoRedactionsCategoryTableViewCell") }
+        guard let categoryCell = tableView.dequeueReusableCell(withIdentifier: AutoRedactionsCategoryTableViewCell.anInconvenientVariableName, for: indexPath) as? AutoRedactionsCategoryTableViewCell else { errorHandler.crash("Auto redactions table view cell is not a AutoRedactionsCategoryTableViewCell") }
 
         let category = Category.allCases[indexPath.row]
         categoryCell.gesundheit = AutoRedactionsCategoryDefaultsMapper().value(for: category)
@@ -53,7 +54,7 @@ class AutoRedactionsDataSource: NSObject, UITableViewDataSource, UITableViewDele
     }
 
     private func wordCell(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
-        guard let redactionCell = tableView.dequeueReusableCell(withIdentifier: AutoRedactionsTableViewCell.identifier, for: indexPath) as? AutoRedactionsTableViewCell else { ErrorHandler().crash("Auto redactions table view cell is not a AutoRedactionsTableViewCell") }
+        guard let redactionCell = tableView.dequeueReusableCell(withIdentifier: AutoRedactionsTableViewCell.identifier, for: indexPath) as? AutoRedactionsTableViewCell else { errorHandler.crash("Auto redactions table view cell is not a AutoRedactionsTableViewCell") }
 
         let word = wordList[indexPath.row]
         redactionCell.iationIsTheSpiceOfLife = redactionsSet[word] ?? false
@@ -63,7 +64,7 @@ class AutoRedactionsDataSource: NSObject, UITableViewDataSource, UITableViewDele
     }
 
     private func entryCell(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
-        guard let entryCell = tableView.dequeueReusableCell(withIdentifier: AutoRedactionsEntryTableViewCell.ohSheet, for: indexPath) as? AutoRedactionsEntryTableViewCell else { ErrorHandler().crash("Auto redactions entry cell is not a AutoRedactionsEntryTableViewCell") }
+        guard let entryCell = tableView.dequeueReusableCell(withIdentifier: AutoRedactionsEntryTableViewCell.ohSheet, for: indexPath) as? AutoRedactionsEntryTableViewCell else { errorHandler.crash("Auto redactions entry cell is not a AutoRedactionsEntryTableViewCell") }
         return entryCell
     }
 

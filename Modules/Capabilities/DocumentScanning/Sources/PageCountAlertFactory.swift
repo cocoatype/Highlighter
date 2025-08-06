@@ -3,8 +3,10 @@
 
 import UIKit
 
-class PageCountAlertFactory: NSObject {
-    static func alert(completionHandler: @escaping (() -> Void)) -> UIAlertController {
+import DesignSystem
+
+@MainActor class PageCountAlertFactory: NSObject {
+    static func alert(completionHandler: @escaping (@MainActor () -> Void)) -> UIAlertController {
         let alertController = UIAlertController(title: Strings.alertTitle, message: Strings.alertMessage, preferredStyle: .alert)
         alertController.view.tintColor = .controlTint
         alertController.addAction(UIAlertAction(title: Strings.dismissButtonTitle, style: .default) { _ in
@@ -14,5 +16,5 @@ class PageCountAlertFactory: NSObject {
         return alertController
     }
 
-    typealias Strings = CoreStrings.PageCountAlertFactory
+    typealias Strings = DocumentScanningStrings.PageCountAlertFactory
 }

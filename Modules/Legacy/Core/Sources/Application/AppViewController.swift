@@ -11,6 +11,7 @@ import FactoryKit
 
 import AppNavigation
 import AppRatings
+import DocumentScanning
 import Editing
 import ErrorHandling
 import IntroView
@@ -21,7 +22,7 @@ import Redactions
 import SettingsUI
 
 @MainActor
-class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, IntroViewController.Actions, SettingsBarButtonItem.Actions, SettingsPresenting, Navigator {
+class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, IntroViewController.Actions, SettingsBarButtonItem.Actions, SettingsPresenting {
     @Injected(\.logger) private var logger
     private let permissionsRequester: PhotoPermissionsRequester
     init(
@@ -35,9 +36,11 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
         overrideUserInterfaceStyle = .dark
         embed(preferredViewController)
 
+        #if !targetEnvironment(macCatalyst)
         if #available(iOS 16, *) {
             AppDependencyManager.shared.add(dependency: (self as Navigator))
         }
+        #endif
     }
 
     @objc func showPhotoLibrary() {
@@ -116,22 +119,6 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
         topPresentedViewController.present(WebViewController(url: url), animated: true)
     }
 
-    // MARK: Navigation
-
-    func navigate(to route: Route) {
-        if presentedViewController != nil {
-            dismiss(animated: false)
-        }
-
-        switch route {
-        case .editor(let image, let redactions):
-            logger.log(EventFactory().editorPresentationEvent(for: .appIntent))
-            presentPhotoEditingViewController(for: image, redactions: redactions)
-        case .documentScanner:
-            presentDocumentCameraViewController()
-        }
-    }
-
     // MARK: Status Bar
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
@@ -141,6 +128,31 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        ErrorHandler().notImplemented()
+        Container.shared.errorHandler().notImplemented()
     }
 }
+
+#if !targetEnvironment(macCatalyst)
+extension AppViewController: Navigator {
+    func navigate(to route: Route) {
+        switch route {
+        case .editor(let image, let redactions):
+            if presentedViewController != nil {
+                dismiss(animated: false)
+            }
+
+            logger.log(EventFactory().editorPresentationEvent(for: .appIntent))
+            presentPhotoEditingViewController(for: image, redactions: redactions)
+        case .documentScanner:
+            guard let presentedViewController else {
+                return presentDocumentCameraViewController()
+            }
+
+            if (presentedViewController is DocumentCameraViewController) == false {
+                dismiss(animated: false)
+                presentDocumentCameraViewController()
+            }
+        }
+    }
+}
+#endif

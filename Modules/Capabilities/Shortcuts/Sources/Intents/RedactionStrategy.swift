@@ -8,11 +8,13 @@ enum RedactionStrategy: String, AppEnum {
     static let typeDisplayRepresentation: TypeDisplayRepresentation = "RedactionStrategy.typeDisplayRepresentation"
 
     static let caseDisplayRepresentations: [RedactionStrategy: DisplayRepresentation] = [
+        autoRedactions: "RedactionStrategy.autoRedactions",
         detections: "RedactionStrategy.detections",
         everything: "RedactionStrategy.everything",
         words: "RedactionStrategy.words",
     ]
 
+    case autoRedactions
     case detections
     case everything
     case words

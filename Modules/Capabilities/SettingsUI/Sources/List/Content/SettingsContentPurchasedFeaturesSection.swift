@@ -10,10 +10,10 @@ import Defaults
 import Purchasing
 
 struct SettingsContentPurchasedFeaturesSection: View {
-    @Binding private var purchaseState: PurchaseState
+    private let purchaseState: PurchaseState
     @Injected(\.defaults) private var defaults
-    init(state: Binding<PurchaseState>) {
-        _purchaseState = state
+    init(state: PurchaseState) {
+        self.purchaseState = state
     }
 
     private var hideAutoRedactions: Bool {
@@ -23,7 +23,7 @@ struct SettingsContentPurchasedFeaturesSection: View {
     var body: some View {
         Section {
             if #available(iOS 16.0, *), purchaseState != .purchased {
-                PurchaseNavigationLink(purchaseState: $purchaseState)
+                PurchaseNavigationLink(purchaseState: purchaseState)
             }
 
             if purchaseState != .purchased && hideAutoRedactions == false {

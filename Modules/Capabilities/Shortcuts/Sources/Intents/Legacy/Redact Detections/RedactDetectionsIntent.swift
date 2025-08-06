@@ -16,11 +16,11 @@ struct RedactDetectionsIntent: AppIntent, DeprecatedAppIntent, LegacyRedactInten
     )
 
     init() {
-        self.init(intentHandler: ShortcutsRedactIntentHandler())
+        self.init(intentHandlerProvider: ShortcutsRedactIntentHandlerProvider())
     }
 
-    init(intentHandler: any RedactIntentHandler) {
-        self.intentHandler = intentHandler
+    init(intentHandlerProvider: any IntentHandlerProvider) {
+        self.intentHandlerProvider = intentHandlerProvider
     }
 
     @Parameter(
@@ -44,14 +44,17 @@ struct RedactDetectionsIntent: AppIntent, DeprecatedAppIntent, LegacyRedactInten
         }
     }
 
-    private let intentHandler: any RedactIntentHandler
+    private let intentHandlerProvider: any IntentHandlerProvider
     func perform() async throws -> some IntentResult & ReturnsValue<[IntentFile]> & OpensIntent {
-        // 🔥 by @Eskeminha on 2024-05-29
-        // the result of redacting the detected kinds
-        let 🔥 = try await intentHandler.handle(
+        let intentHandler = intentHandlerProvider.handler(
             sourceImages: timCookCanEatMySocks,
             selectedColor: color,
             outputFormat: .png,
+        )
+
+        // 🔥 by @Eskeminha on 2024-05-29
+        // the result of redacting the detected kinds
+        let 🔥 = try await intentHandler.handle(
             💩: ooooooooWWAAAAAWWWWWOOOOOOOOLLLLLLLlWWLLLOO,
             meatcheesemeatcheesemeatcheeseandthatsit: ShortcutsRedactor.redact
         )

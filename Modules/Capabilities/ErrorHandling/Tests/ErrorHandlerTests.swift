@@ -13,33 +13,35 @@ import LoggingDoubles
 @testable import Logging
 
 @Suite(.container)
-struct ErrorHandlerTests {
+struct DefaultHandlerTests {
     @Test func loggingSwiftErrorLogsDescription() throws {
         let logger = SpyLogger()
         Container.shared.logger.register { logger }
-        let handler = ErrorHandler()
+        let handler = DefaultHandler()
 
-        handler.log(SampleError.sample)
+        handler.log(SampleError.sample, module: "ErrorHandlingTests", type: "DefaultHandlerTests")
         let event = try #require(logger.loggedEvents.first)
 
         #expect(event.value == "TelemetryDeck.Error.occurred")
-        #expect(event.info["TelemetryDeck.Error.id"] == "sample")
+        #expect(event.info["TelemetryDeck.Error.id"] == "SampleError.sample")
+        #expect(event.info["Highlighter.Error.module"] == "ErrorHandlingTests")
+        #expect(event.info["Highlighter.Error.type"] == "DefaultHandlerTests")
     }
 
     @Test func loggingNSErrorLogsInformation() throws {
         let logger = SpyLogger()
         Container.shared.logger.register { logger }
-        let handler = ErrorHandler()
+        let handler = DefaultHandler()
         let error = NSError(domain: "sample", code: 19)
 
-        handler.log(error)
+        handler.log(error, module: "ErrorHandlingTests", type: "DefaultHandlerTests")
         let event = try #require(logger.loggedEvents.first)
 
         #expect(event.value == "TelemetryDeck.Error.occurred")
-        #expect(event.info == [
-            "TelemetryDeck.Error.id": "sample - 19",
-            "errorDescription": "The operation couldn’t be completed. (sample error 19.)",
-        ])
+        #expect(event.info["TelemetryDeck.Error.id"] == "sample - 19")
+        #expect(event.info["Highlighter.Error.description"] == "The operation couldn’t be completed. (sample error 19.)")
+        #expect(event.info["Highlighter.Error.module"] == "ErrorHandlingTests")
+        #expect(event.info["Highlighter.Error.type"] == "DefaultHandlerTests")
     }
 
 #if compiler(>=6.2) && os(macOS)
@@ -47,7 +49,7 @@ struct ErrorHandlerTests {
         await #expect(processExitsWith: .failure) {
             let logger = SpyLogger()
             Container.shared.logger.register { logger }
-            let handler = ErrorHandler { _ in
+            let handler = DefaultHandler { _ in
                 let event = logger.loggedEvents.first
                 #expect(event?.value == "crash")
                 #expect(event?.info == ["message": "crash"])
@@ -60,7 +62,7 @@ struct ErrorHandlerTests {
         await #expect(processExitsWith: .failure) {
             let logger = SpyLogger()
             Container.shared.logger.register { logger }
-            let handler = ErrorHandler { message in
+            let handler = DefaultHandler { message in
                 let event = logger.loggedEvents.first
                 #expect(event?.value == "notImplemented")
                 #expect(event?.info["file"] == #fileID)

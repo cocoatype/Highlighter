@@ -2,6 +2,9 @@
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
 import UIKit
+
+import FactoryKit
+
 import ErrorHandling
 
 class DesktopSeekContainerView: UIView {
@@ -36,6 +39,6 @@ class DesktopSeekContainerView: UIView {
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        ErrorHandler().notImplemented()
+        Container.shared.errorHandler().notImplemented()
     }
 }

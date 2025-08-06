@@ -6,12 +6,12 @@ import Purchasing
 import SwiftUI
 
 struct DurationPicker: View {
-    @Binding private var selectedOption: PaywallOption
+    @Binding private var selectedOption: PaywallOption?
     private let options: [PaywallOption]
 
     init(
         options: [PaywallOption],
-        selectedOption: Binding<PaywallOption>
+        selectedOption: Binding<PaywallOption?>
     ) {
         self.options = options
         _selectedOption = selectedOption
@@ -19,12 +19,9 @@ struct DurationPicker: View {
 
     var body: some View {
         Picker(selection: $selectedOption) {
-            ForEach(options) { option in
-                Text(option.product.displayName)
-                    .tag(option)
-            }
+            ForEach(options, content: DurationPickerItem.init)
         } label: {
-            Text("Purchase Option")
+            Text(PaywallStrings.DurationPicker.label)
         }
         .pickerStyle(.segmented)
         .introspect(.picker(style: .segmented), on: .iOS(.v13, .v14, .v15, .v16, .v17, .v18), customize: { segmentedControl in
@@ -43,11 +40,11 @@ import PurchasingDoubles
 #Preview {
     DurationPicker(
         options: [
-            PreviewProduct(),
-            PreviewProduct(),
+            StubProduct(duration: .monthly),
+            StubProduct(duration: .annual),
         ].map { PaywallOption(product: $0, isTrialEligible: false) },
         selectedOption: .constant(
-            PaywallOption(product: PreviewProduct(), isTrialEligible: false),
+            PaywallOption(product: StubProduct(), isTrialEligible: false),
         )
     )
 }

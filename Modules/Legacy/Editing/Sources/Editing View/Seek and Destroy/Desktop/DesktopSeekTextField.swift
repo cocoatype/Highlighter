@@ -2,6 +2,9 @@
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
 import UIKit
+
+import FactoryKit
+
 import ErrorHandling
 
 class DesktopSeekTextField: UITextField, UITextFieldDelegate {
@@ -41,6 +44,6 @@ class DesktopSeekTextField: UITextField, UITextFieldDelegate {
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
-        ErrorHandler().notImplemented()
+        Container.shared.errorHandler().notImplemented()
     }
 }

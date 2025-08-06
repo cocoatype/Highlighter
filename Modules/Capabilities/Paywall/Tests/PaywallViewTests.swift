@@ -18,9 +18,7 @@ struct PaywallViewTests {
         let logger = SpyLogger()
         Container.shared.logger.register { logger }
 
-        let view = PaywallView(
-            purchaseState: .constant(.loading)
-        )
+        let view = PaywallView()
 
         try view.inspect().find(ViewType.GeometryReader.self).callOnAppear()
 

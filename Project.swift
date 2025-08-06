@@ -11,6 +11,7 @@ let project = Project(
         Action.target,
         AutomatorActions.target,
         Photo.target,
+        Widgets.target,
         // modules
         AlbumsData.target,
         AlbumsUI.target,
@@ -25,6 +26,7 @@ let project = Project(
         DesignSystem.target,
         Detections.target(sdk: .catalyst),
         Detections.target(sdk: .native),
+        DocumentScanning.target,
         Editing.target,
         EditingToolbar.target,
         ErrorHandling.target(sdk: .catalyst),
@@ -55,6 +57,7 @@ let project = Project(
         URLParsing.target,
         UserActivities.target,
         // doubles
+        AppNavigation.doublesTarget,
         Defaults.doublesTarget,
         DesignSystem.doublesTarget,
         Logging.doublesTarget,
@@ -69,6 +72,7 @@ let project = Project(
         Brushes.testTarget,
         Core.testTarget,
         Defaults.testTarget,
+        DocumentScanning.testTarget,
         Editing.testTarget,
         EditingToolbar.testTarget,
         ErrorHandling.testTarget,

@@ -1,5 +1,5 @@
 "AddAutoRedactionsIntent.description" = "Adds words to the list of auto-hidden words.";
-"AddAutoRedactionsIntent.title" = "Add Auto-hidden Words";
+"AddAutoRedactionsIntent.title" = "Add Auto-Hidden Words";
 "AddAutoRedactionsIntent.addedWords.title" = "Words";
 "AddAutoRedactionsIntent.isActive.title" = "Make Active";
 "AddAutoRedactionsIntent.parameterSummary${addedWords}" = "Add ${addedWords} to auto-hidden words";
@@ -16,7 +16,7 @@
 "ColorEntity.displayRepresentation.title%@" = "%@";
 
 "DeleteAutoRedactionsIntent.description" = "Removes words from the list of auto-hidden words.";
-"DeleteAutoRedactionsIntent.title" = "Remove Auto-hidden Words";
+"DeleteAutoRedactionsIntent.title" = "Remove Auto-Hidden Words";
 "DeleteAutoRedactionsIntent.deletedWords.title" = "Words";
 "DeleteAutoRedactionsIntent.parameterSummary${deletedWords}" = "Remove ${deletedWords} from auto-hidden words";
 
@@ -25,7 +25,7 @@
 "DetectionKind.phoneNumbers" = "Phone Numbers";
 "DetectionKind.typeDisplayRepresentation" = "Detectable Item";
 
-"GetAutoRedactionsIntent.title" = "Get Auto-hidden Words";
+"GetAutoRedactionsIntent.title" = "Get Auto-Hidden Words";
 "GetAutoRedactionsIntent.description" = "Returns the list of auto-hidden words.";
 "GetAutoRedactionsIntent.includeInactive.title" = "Include Inactive Words";
 "GetAutoRedactionsIntent.parameterSummary" = "Get auto-hidden words";
@@ -80,6 +80,7 @@
 "RedactIntent.title" = "Redact Image";
 "RedactIntent.wordsParameterSummary${strategy}${redactedWords}${sourceImages}" = "Redact the ${strategy} ${redactedWords} in ${sourceImages}";
 
+"RedactionStrategy.autoRedactions" = "Auto-Hidden Words";
 "RedactionStrategy.detections" = "Detected Items";
 "RedactionStrategy.everything" = "Everything";
 "RedactionStrategy.words" = "Words";
@@ -87,4 +88,6 @@
 
 "ShortcutsRedactorError.exportFailed.localizedStringResource" = "Export Failed";
 "ShortcutsRedactorError.noImage.localizedStringResource" = "No Image Provided";
+"ShortcutsRedactorError.noURL.localizedStringResource" = "No URL Provided";
 "ShortcutsRedactorError.unpurchased.localizedStringResource" = "Requires Ultra Highlighter";
+"ShortcutsRedactorError.unsupportedOSVersion.localizedStringResource" = "Unsupported macOS Version";

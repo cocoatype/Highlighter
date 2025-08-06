@@ -7,6 +7,7 @@ import FactoryKit
 
 import Defaults
 import Editing
+import ErrorHandling
 
 #if targetEnvironment(macCatalyst)
 @MainActor class RecentsMenuDataSource: NSObject {
@@ -23,7 +24,8 @@ import Editing
             let truncatedBookmarks = newBookmarks.prefix(8)
             defaults.set(Array(truncatedBookmarks), for: Keys.recentBookmarks)
         } catch {
-            dump(error)
+            Container.shared.errorHandler()
+                .log(error, module: "Core", type: "RecentsMenuDataSource")
         }
 
         UIMenuSystem.main.setNeedsRebuild()
