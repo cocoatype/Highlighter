@@ -28,7 +28,7 @@ class URLParsingTests: XCTestCase {
     }
 
     func testParsingInvalidFileURL() throws {
-        let url = URL(fileURLWithPath: "bad-url.pdf")
+        let url = try XCTUnwrap(URL(string: "https://cocoatype.com/"))
         let result = URLParser().parse(url)
 
         XCTAssert(result.isInvalid)
