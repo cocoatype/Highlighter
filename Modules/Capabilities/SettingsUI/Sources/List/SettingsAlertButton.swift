@@ -28,7 +28,7 @@ struct SettingsAlertButton: View {
             } label: {
                 ButtonLabel(title: title, subtitle: subtitle)
             }
-            .unpurchasedAlert(for: .autoRedactions(), isPresented: $showAlert)
+            .unpurchasedAlert(for: .autoRedactions(learnMoreAction: nil), isPresented: $showAlert)
             .settingsCell()
         }
     }
