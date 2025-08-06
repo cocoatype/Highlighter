@@ -7,9 +7,10 @@ import ObservationsMac
 public typealias HighlighterRecognizedText = ObservationsMac.RecognizedText
 public typealias HighlighterRecognizedTextObservation = ObservationsMac.RecognizedTextObservation
 #elseif canImport(UIKit)
-import Observations
 import struct Observations.RecognizedText
 import struct Observations.RecognizedTextObservation
+import struct Observations.TextRectangleObservation
+import struct Observations.WordObservation
 import UIKit
 public typealias HighlighterRecognizedText = RecognizedText
 public typealias HighlighterRecognizedTextObservation = RecognizedTextObservation
