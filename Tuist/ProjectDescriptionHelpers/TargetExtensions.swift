@@ -5,7 +5,7 @@ extension Target {
         name: String,
         sdk: SDK = .catalyst,
         hasResources: Bool = false,
-        usesMaxSwiftVersion: Bool = false,
+        usesMaxSwiftVersion: Bool = true,
         dependencies: [TargetDependency] = []
     ) -> Target {
         Target.target(
