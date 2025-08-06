@@ -16,8 +16,9 @@ import DocumentScanning
 import Editing
 import ErrorHandling
 import IntroView
+import LegacyPhotoLibrary
 import Logging
-import PhotoLibrary
+import PhotoGallery
 import PhotoPermissions
 import Paywall
 import Redactions
@@ -51,7 +52,12 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
 
     private var preferredViewController: UIViewController {
         switch permissionsRequester.authorizationStatus() {
-        case .authorized, .limited: return LibrarySplitViewController()
+        case .authorized, .limited:
+            if #available(iOS 26.0, *) {
+                return PhotoGalleryViewController()
+            } else {
+                return LibrarySplitViewController()
+            }
         default: return NavigationController(rootViewController: IntroViewController())
         }
     }

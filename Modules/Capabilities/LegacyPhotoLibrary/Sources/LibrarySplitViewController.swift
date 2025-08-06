@@ -1,14 +1,15 @@
 //  Created by Geoff Pado on 5/18/22.
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
-import AlbumsData
-import AlbumsUI
-import AppNavigation
-import DesignSystem
-import Editing
 import Photos
 import PhotosUI
 import UIKit
+
+import AlbumsData
+import AppNavigation
+import DesignSystem
+import Editing
+import LegacyAlbumsUI
 import UserActivities
 
 public class LibrarySplitViewController: SplitViewController, PhotoCollectionPresenting, LimitedLibraryPresenting {

@@ -20,7 +20,7 @@ class LimitedLibraryPhotoLibraryViewCell: UICollectionViewCell {
         ])
 
         isAccessibilityElement = true
-        accessibilityLabel = PhotoLibraryStrings.LimitedLibraryPhotoLibraryViewCell.defaultAccessibilityLabel
+        accessibilityLabel = LegacyPhotoLibraryStrings.LimitedLibraryPhotoLibraryViewCell.defaultAccessibilityLabel
         accessibilityTraits = .button
         backgroundColor = .primary
     }

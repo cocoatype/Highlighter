@@ -28,6 +28,7 @@ public enum Core {
             .target(LegacyPhotoLibrary.target),
             .target(Logging.target(sdk: .catalyst)),
             .target(Paywall.target),
+            .target(PhotoGallery.target),
             .target(PhotoPermissions.target),
             .target(Purchasing.target),
             .target(Redactions.target(sdk: .catalyst)),

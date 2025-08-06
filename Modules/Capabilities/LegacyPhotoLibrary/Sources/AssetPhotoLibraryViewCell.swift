@@ -32,7 +32,7 @@ class AssetPhotoLibraryViewCell: UICollectionViewCell {
             if let date = asset.creationDate {
                 dateString = Self.dateFormatter.string(from: date)
             } else { dateString = "" }
-            accessibilityLabel = PhotoLibraryStrings.AssetPhotoLibraryViewCell.accessibilityLabelFormat(dateString)
+            accessibilityLabel = LegacyPhotoLibraryStrings.AssetPhotoLibraryViewCell.accessibilityLabelFormat(dateString)
             accessibilityTraits = .button
         }
     }
