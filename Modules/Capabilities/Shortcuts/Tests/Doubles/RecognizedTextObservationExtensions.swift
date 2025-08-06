@@ -4,9 +4,10 @@
 import Foundation
 import Testing
 
-import Observations
+import struct Observations.RecognizedText
+import struct Observations.RecognizedTextObservation
 
-extension Observations.RecognizedTextObservation {
+extension RecognizedTextObservation {
     init(_ string: String) throws {
         let visionText = MockVisionText(string)
         let recognizedText = RecognizedText(recognizedText: visionText, uuid: UUID())
