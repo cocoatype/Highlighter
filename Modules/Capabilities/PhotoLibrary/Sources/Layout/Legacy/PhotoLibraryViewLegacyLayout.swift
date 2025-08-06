@@ -3,7 +3,7 @@
 
 import UIKit
 
-class PhotoLibraryViewLayout: UICollectionViewFlowLayout {
+class PhotoLibraryViewLegacyLayout: UICollectionViewFlowLayout {
     override init() {
         super.init()
     }
@@ -39,9 +39,9 @@ class PhotoLibraryViewLayout: UICollectionViewFlowLayout {
 
         switch horizontalSizeClass {
         case .compact:
-            return width > PhotoLibraryViewLayout.compactSplitWidth ? 6 : 4
+            return width > Self.compactSplitWidth ? 6 : 4
         case .regular:
-            return width > PhotoLibraryViewLayout.regularSplitWidth ? 7 : 5
+            return width > Self.regularSplitWidth ? 7 : 5
         default: return 4
         }
     }
