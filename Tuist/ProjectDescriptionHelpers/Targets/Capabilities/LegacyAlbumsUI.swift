@@ -1,8 +1,8 @@
 import ProjectDescription
 
-public enum AlbumsUI {
+public enum LegacyAlbumsUI {
     public static let target = Target.capabilitiesTarget(
-        name: "AlbumsUI",
+        name: "LegacyAlbumsUI",
         hasResources: true,
         usesMaxSwiftVersion: false,
         dependencies: [
@@ -14,5 +14,5 @@ public enum AlbumsUI {
         ]
     )
 
-    public static let testTarget = Target.capabilitiesTestTarget(name: "AlbumsUI")
+    public static let testTarget = Target.capabilitiesTestTarget(name: "LegacyAlbumsUI")
 }
