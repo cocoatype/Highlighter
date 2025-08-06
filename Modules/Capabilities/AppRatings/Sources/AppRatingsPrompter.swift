@@ -19,8 +19,9 @@ public struct AppRatingsPrompter {
         )
     }
 
+    typealias RatingRequestMethod = @MainActor (UIWindowScene) -> Void
     init(
-        ratingRequestMethod: @escaping ((UIWindowScene) -> Void) = SKStoreReviewController.requestReview(in:)
+        ratingRequestMethod: @escaping RatingRequestMethod = SKStoreReviewController.requestReview(in:)
     ) {
         self.ratingRequestMethod = ratingRequestMethod
     }
@@ -55,7 +56,7 @@ public struct AppRatingsPrompter {
     @Injected(\.defaults) private var defaults
     @Injected(\.errorHandler) private var errorHandler
     @Injected(\.logger) private var logger
-    private let ratingRequestMethod: (UIWindowScene) -> Void
+    private let ratingRequestMethod: RatingRequestMethod
     @Injected(\.purchaseRepository) private var repository
 }
 
