@@ -5,6 +5,8 @@ import UIKit
 
 import FactoryKit
 
+import ErrorHandling
+import ImageOpening
 import Logging
 import URLParsing
 
@@ -79,14 +81,16 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     }
 
     private func openImage(at imageURL: URL) -> Bool {
-        guard let appViewController,
-              let imageData = try? Data(contentsOf: imageURL),
-              let image = UIImage(data: imageData)
-        else { return false }
-
-        logger.log(EventFactory().editorPresentationEvent(for: .fileURL))
-        appViewController.presentPhotoEditingViewController(for: image, animated: false)
-        return true
+        guard let appViewController else { return false }
+        do {
+            let image = try ImageOpener().openImage(at: imageURL)
+            logger.log(EventFactory().editorPresentationEvent(for: .fileURL))
+            appViewController.presentPhotoEditingViewController(for: image, animated: false)
+            return true
+        } catch {
+            errorHandler.log(error, module: "Core", type: "SceneDelegate")
+            return false
+        }
     }
 
     private func openWebPage(_ webURL: URL) -> Bool {
@@ -96,5 +100,6 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     }
 
     private var appViewController: AppViewController? { return window?.rootViewController as? AppViewController }
+    @Injected(\.errorHandler) private var errorHandler
     @Injected(\.logger) private var logger
 }

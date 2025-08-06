@@ -3,8 +3,10 @@
 
 import UIKit
 
+#if targetEnvironment(macCatalyst)
 class DesktopSceneConfiguration: WindowSceneConfiguration {
     init() {
         super.init(name: "Desktop")
     }
 }
+#endif

@@ -23,6 +23,7 @@ public enum Core {
             .target(ErrorHandling.target(sdk: .catalyst)),
             .target(Exporting.target),
             .target(Geometry.target(sdk: .catalyst)),
+            .target(ImageOpening.target),
             .target(IntroView.target),
             .target(Logging.target(sdk: .catalyst)),
             .target(Paywall.target),
