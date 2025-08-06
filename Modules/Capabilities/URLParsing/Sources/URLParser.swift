@@ -9,7 +9,7 @@ public struct URLParser {
     public func parse(_ url: URL) -> URLParseResult {
         if let action = CallbackAction(url: url) {
             return .callbackAction(action)
-        } else if url.isFileURL, FileManager.default.fileExists(atPath: url.path) {
+        } else if url.isFileURL {
             return .image(url)
         } else if let webURL = webURL(from: url) {
             return .website(webURL)

@@ -14,6 +14,7 @@ import UserActivities
 class AppWindow: UIWindow {
     private let appViewController: AppViewController
     @Injected(\.logger) private var logger
+
     override init(windowScene: UIWindowScene) {
         self.appViewController = AppViewController()
         super.init(windowScene: windowScene)
