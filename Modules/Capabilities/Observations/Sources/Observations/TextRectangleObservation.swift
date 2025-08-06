@@ -25,7 +25,7 @@ public struct TextRectangleObservation: TextObservation, RedactableObservation, 
     }
     #endif
 
-    private init(_ textObservation: VNTextObservation, scaledTo imageSize: CGSize) {
+    public init(_ textObservation: VNTextObservation, scaledTo imageSize: CGSize) {
         self.bounds = Shape(textObservation).scaled(to: imageSize)
 
         let characterObservations = textObservation.characterBoxes?.map {

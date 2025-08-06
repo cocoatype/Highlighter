@@ -22,9 +22,12 @@ open class TextDetector: NSObject {
             throw TextDetectorError.cannotCreateOperation
         }
 
+        let imageSize = image.size
+
         return try await withCheckedThrowingContinuation { continuation in
             detectionOperation.completionBlock = { [weak detectionOperation] in
-                guard let detectedTextObservations = detectionOperation?.textRectangleResults?.map({ TextRectangleObservation($0, in: image) })
+                guard let detectedTextObservations = detectionOperation?.textRectangleResults?
+                    .map({ TextRectangleObservation($0, scaledTo: imageSize) })
                 else { return continuation.resume(throwing: TextDetectorError.resultsMissing) }
 
                 continuation.resume(returning: detectedTextObservations)
