@@ -5,6 +5,7 @@ public enum Rendering {
         Target.capabilitiesTarget(
             name: "Rendering",
             sdk: sdk,
+            usesMaxSwiftVersion: true,
             dependencies: [
                 .target(Brushes.target(sdk: sdk)),
                 .target(Geometry.target(sdk: sdk)),
@@ -16,6 +17,7 @@ public enum Rendering {
 
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Rendering",
+        usesMaxSwiftVersion: true,
         dependencies: [
         ]
     )

@@ -14,7 +14,7 @@ import Redactions
 import UIKit
 #endif
 
-actor DataPhotoRenderer: PhotoRenderer {
+struct DataPhotoRenderer: PhotoRenderer {
     #if canImport(AppKit) && !targetEnvironment(macCatalyst)
     public func render(
         image: NSImage,

@@ -3,7 +3,7 @@
 
 import UIKit
 
-public enum AutoRedactionsAdditionDialogFactory {
+@MainActor public enum AutoRedactionsAdditionDialogFactory {
     public static func newDialog(completionHandler: @escaping ((String?) -> Void)) -> UIAlertController {
         let alertController = UIAlertController(title: AutoRedactionsAdditionDialogFactory.dialogTitle, message: nil, preferredStyle: .alert)
         alertController.view.tintColor = .controlTint

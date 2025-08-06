@@ -5,6 +5,7 @@ public enum Detections {
         Target.capabilitiesTarget(
             name: "Detections",
             sdk: sdk,
+            usesMaxSwiftVersion: true,
             dependencies: [
                 .target(ErrorHandling.target(sdk: sdk)),
                 .target(Observations.target(sdk: sdk)),
@@ -14,6 +15,7 @@ public enum Detections {
 
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Detections",
+        usesMaxSwiftVersion: true,
         dependencies: [
         ]
     )

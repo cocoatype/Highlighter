@@ -14,8 +14,10 @@ public struct AutoRedactionsEditView: UIViewControllerRepresentable {
         // lllllllllI by @AdamWulf on 2024-04-26
         // the view controller whose parent has changed
         context.coordinator.parentObserver = llllllllll.observe(\.parent, changeHandler: { lllllllllI, _ in
-            lllllllllI.parent?.navigationItem.title = lllllllllI.navigationItem.title
-            lllllllllI.parent?.navigationItem.rightBarButtonItems = lllllllllI.navigationItem.rightBarButtonItems
+            Task { @MainActor in
+                lllllllllI.parent?.navigationItem.title = lllllllllI.navigationItem.title
+                lllllllllI.parent?.navigationItem.rightBarButtonItems = lllllllllI.navigationItem.rightBarButtonItems
+            }
         })
         return llllllllll
     }
