@@ -8,6 +8,7 @@ import FactoryKit
 import Editing
 import ErrorHandling
 import Logging
+import PhotoLibrary
 import UserActivities
 
 class AppWindow: UIWindow {

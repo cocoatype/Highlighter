@@ -11,11 +11,13 @@ import FactoryKit
 
 import AppNavigation
 import AppRatings
+import DesignSystem
 import DocumentScanning
 import Editing
 import ErrorHandling
 import IntroView
 import Logging
+import PhotoLibrary
 import PhotoPermissions
 import Paywall
 import Redactions

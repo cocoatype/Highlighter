@@ -1,17 +1,8 @@
-// Accessibility label format for asset cells
-"AssetPhotoLibraryViewCell.accessibilityLabelFormat%@" = "Photo, %@";
-
 // Label for the color picker toolbar item
 "ColorPickerItem.itemLabel" = "Color Picker";
 
 // Title for the desktop settings window
 "DesktopSettingsSceneDelegate.windowTitle" = "Preferences";
-
-// Accessibility label for the document scanner cell
-"DocumentScannerPhotoLibraryViewCell.defaultAccessibilityLabel" = "Scan Document";
-
-// Accessibility label for the document scanner cell
-"LimitedLibraryPhotoLibraryViewCell.defaultAccessibilityLabel" = "Change Selected Photos";
 
 // Preferences menu item title
 "MenuBuilder.preferencesMenuItemTitle" = "Preferences…";
@@ -35,9 +26,6 @@
 "PhotoEditingProtectionAlertController.saveButtonTitle" = "Save to Photos";
 // Title for the share button on the photo save protection alert
 "PhotoEditingProtectionAlertController.shareButtonTitle" = "Share Image";
-
-// Navigation title for the photo library
-"PhotoLibraryViewController.navigationItemTitle" = "Photos";
 
 // Title for the clear recents menu item
 "RecentsMenuDataSource.clearMenuItemTitle" = "Clear Menu";
