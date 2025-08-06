@@ -4,6 +4,7 @@ public enum Paywall {
     public static let target = Target.capabilitiesTarget(
         name: "Paywall",
         hasResources: true,
+        usesMaxSwiftVersion: true,
         dependencies: [
             .target(DesignSystem.target),
             .target(ErrorHandling.target(sdk: .catalyst)),
