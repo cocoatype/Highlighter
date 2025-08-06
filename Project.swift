@@ -46,7 +46,6 @@ let project = Project(
         PhotoPermissions.target,
         PhotoPicker.target,
         Purchasing.target,
-        Redacting.target,
         Redactions.target(sdk: .catalyst),
         Redactions.target(sdk: .native),
         Rendering.target(sdk: .catalyst),

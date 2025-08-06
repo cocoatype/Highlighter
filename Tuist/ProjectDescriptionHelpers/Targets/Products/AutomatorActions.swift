@@ -12,7 +12,6 @@ public enum AutomatorActions {
         dependencies: [
             .target(Detections.target(sdk: .native)),
             .target(Logging.target(sdk: .native)),
-            .target(Redacting.target),
             .target(Redactions.target(sdk: .native)),
             .target(Rendering.target(sdk: .native)),
             .external(name: "FactoryKit"),
