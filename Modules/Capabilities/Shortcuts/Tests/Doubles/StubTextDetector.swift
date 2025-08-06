@@ -5,7 +5,8 @@ import Testing
 import UIKit
 
 import Detections
-import Observations
+import struct Observations.RecognizedTextObservation
+import struct Observations.TextRectangleObservation
 
 class StubTextDetector: TextDetector {
     private let recognizedStrings: [String]
@@ -13,7 +14,7 @@ class StubTextDetector: TextDetector {
         self.recognizedStrings = recognizedStrings
     }
 
-    override func recognizeText(in image: UIImage) async throws -> [Observations.RecognizedTextObservation] {
+    override func recognizeText(in image: UIImage) async throws -> [RecognizedTextObservation] {
         return try recognizedStrings.map(RecognizedTextObservation.init)
     }
 
