@@ -1,0 +1,11 @@
+// Accessibility label format for asset cells
+"AssetPhotoLibraryViewCell.accessibilityLabelFormat%@" = "Photo, %@";
+
+// Accessibility label for the document scanner cell
+"DocumentScannerPhotoLibraryViewCell.defaultAccessibilityLabel" = "Scan Document";
+
+// Accessibility label for the document scanner cell
+"LimitedLibraryPhotoLibraryViewCell.defaultAccessibilityLabel" = "Change Selected Photos";
+
+// Navigation title for the photo library
+"PhotoLibraryViewController.navigationItemTitle" = "Photos";

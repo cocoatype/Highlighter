@@ -7,11 +7,12 @@ import FactoryKit
 import FactoryTesting
 
 import DefaultsDoubles
+import PhotoPermissions
 import Purchasing
 import PurchasingDoubles
 
-@testable import Core
 @testable import Defaults
+@testable import PhotoLibrary
 
 @MainActor @Suite(.container)
 struct PhotoLibraryDataSourceExtraItemsProviderTests {
@@ -39,7 +40,8 @@ struct PhotoLibraryDataSourceExtraItemsProviderTests {
         }
 
         let provider = PhotoLibraryDataSourceExtraItemsProvider(
-            isDocumentScannerSupported: isDocumentScannerSupported
+            isDocumentScannerSupported: isDocumentScannerSupported,
+            permissionsRequester: PhotoLibraryPermissionsRequester()
         )
         let isIncluded = (0..<provider.itemsCount)
             .contains(where: {

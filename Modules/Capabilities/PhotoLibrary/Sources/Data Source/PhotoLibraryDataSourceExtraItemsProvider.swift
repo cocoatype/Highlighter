@@ -13,9 +13,16 @@ import Purchasing
 
 @MainActor
 class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
+    convenience override init() {
+        self.init(
+            isDocumentScannerSupported: VNDocumentCameraViewController.isSupported,
+            permissionsRequester: PhotoLibraryPermissionsRequester()
+        )
+    }
+
     init(
-        isDocumentScannerSupported: Bool = VNDocumentCameraViewController.isSupported,
-        permissionsRequester: any PhotoPermissionsRequester = PhotoLibraryPermissionsRequester()
+        isDocumentScannerSupported: Bool,
+        permissionsRequester: any PhotoPermissionsRequester
     ) {
         self.permissionsRequester = permissionsRequester
         self.isDocumentScannerSupported = isDocumentScannerSupported

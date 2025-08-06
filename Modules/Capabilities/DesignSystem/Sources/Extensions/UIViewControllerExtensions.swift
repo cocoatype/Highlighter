@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 4/29/18.
 //  Copyright (c) 2018 Cocoatype, LLC. All rights reserved.
 
+import PhotosUI
 import UIKit
 
 extension UIViewController {
@@ -22,8 +23,8 @@ extension UIViewController {
         completion: ((Bool) -> Void)?
     ) {
         guard
-          let parentView = embedView ?? self.view,
-          let toView = to.view
+            let parentView = embedView ?? self.view,
+            let toView = to.view
         else { return }
 
         let from = removingExistingChildren ? children.last : nil
@@ -59,5 +60,9 @@ extension UIViewController {
             toView.translatesAutoresizingMaskIntoConstraints = true
             toView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         }
+    }
+
+    public var shouldOverrideInterfaceStyle: Bool {
+        return self is UIImagePickerController || self is PHPickerViewController
     }
 }

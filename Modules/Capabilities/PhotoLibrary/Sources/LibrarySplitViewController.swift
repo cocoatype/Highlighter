@@ -4,14 +4,15 @@
 import AlbumsData
 import AlbumsUI
 import AppNavigation
+import DesignSystem
 import Editing
 import Photos
 import PhotosUI
 import UIKit
 import UserActivities
 
-class LibrarySplitViewController: SplitViewController, PhotoCollectionPresenting, LimitedLibraryPresenting {
-    init() {
+public class LibrarySplitViewController: SplitViewController, PhotoCollectionPresenting, LimitedLibraryPresenting {
+    public init() {
         let collection = PhotoCollectionType.library.defaultCollection
         let albumsNavigationController = NavigationController(rootViewController: AlbumsViewController())
         let photoLibraryNavigationController = NavigationController(rootViewController: PhotoLibraryViewController(collection: collection))
@@ -29,7 +30,7 @@ class LibrarySplitViewController: SplitViewController, PhotoCollectionPresenting
         return photoLibraryViewController
     }
 
-    func present(_ collection: PhotoCollection) {
+    public func present(_ collection: PhotoCollection) {
         photoLibraryViewController?.collection = collection
         show(.secondary)
         userActivity?.needsSave = true
@@ -41,11 +42,15 @@ class LibrarySplitViewController: SplitViewController, PhotoCollectionPresenting
 
     // MARK: Limited Library
 
-    func presentLimitedLibrary() {
+    public func presentLimitedLibrary() {
         PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: self)
     }
 
-    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+    public override func present(
+        _ viewControllerToPresent: UIViewController,
+        animated flag: Bool,
+        completion: (() -> Void)? = nil
+    ) {
         if viewControllerToPresent.shouldOverrideInterfaceStyle {
             viewControllerToPresent.overrideUserInterfaceStyle = .dark
         }
@@ -54,7 +59,7 @@ class LibrarySplitViewController: SplitViewController, PhotoCollectionPresenting
 
     // MARK: User Activity
 
-    override func updateUserActivityState(_ activity: NSUserActivity) {
+    public override func updateUserActivityState(_ activity: NSUserActivity) {
         super.updateUserActivityState(activity)
         guard let libraryActivity = (activity as? LibraryUserActivity),
               let collection = photoLibraryViewController?.collection

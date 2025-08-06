@@ -26,6 +26,7 @@ public enum Core {
             .target(IntroView.target),
             .target(Logging.target(sdk: .catalyst)),
             .target(Paywall.target),
+            .target(PhotoLibrary.target),
             .target(PhotoPermissions.target),
             .target(Purchasing.target),
             .target(Redactions.target(sdk: .catalyst)),
