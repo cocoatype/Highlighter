@@ -20,7 +20,7 @@ class ColorPickerItem: NSToolbarItem {
     }
 }
 
-@objc protocol ColorPickerItemDelegate: AnyObject {
+@objc @MainActor protocol ColorPickerItemDelegate: AnyObject {
     var currentColor: UIColor { get }
     @objc func displayColorPicker(_ sender: NSToolbarItem)
 }

@@ -20,7 +20,7 @@ class SeekItem: NSToolbarItem {
     }
 }
 
-@objc protocol SeekItemDelegate: AnyObject {
+@objc @MainActor protocol SeekItemDelegate: AnyObject {
     @objc func toggleSeeking(_ sender: NSToolbarItem)
 }
 #endif

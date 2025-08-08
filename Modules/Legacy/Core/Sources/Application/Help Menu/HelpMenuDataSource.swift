@@ -4,7 +4,7 @@
 import UIKit
 
 #if targetEnvironment(macCatalyst)
-class HelpMenuDataSource: NSObject {
+@MainActor class HelpMenuDataSource: NSObject {
     var helpMenu: UIMenu {
         UIMenu(options: .displayInline, children: menuItems)
     }
