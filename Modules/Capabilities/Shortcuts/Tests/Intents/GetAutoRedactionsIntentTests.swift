@@ -36,7 +36,8 @@ struct GetAutoRedactionsIntentTests {
         #expect(actualWords == expectedWords)
     }
 
-    @available(iOS 16, *) @Test func logging() async throws {
+    @available(iOS 18, *) @Test
+    func logging() async throws {
         Container.shared.defaults.register { @MainActor in StubDefaultsProvider() }
 
         let logger = SpyLogger()

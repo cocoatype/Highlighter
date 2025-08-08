@@ -22,6 +22,7 @@ public enum Shortcuts {
 
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Shortcuts",
+        usesMaxSwiftVersion: false,
         dependencies: [
             .target(AppNavigation.doublesTarget),
             .target(Defaults.doublesTarget),

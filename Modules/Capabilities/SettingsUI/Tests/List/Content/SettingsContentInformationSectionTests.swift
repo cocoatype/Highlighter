@@ -6,6 +6,7 @@ import XCTest
 
 @testable import SettingsUI
 
+@MainActor
 class SettingsContentInformationSectionTests: XCTestCase {
     func testContainsVersionInformationItem() throws {
         let section = try SettingsContentInformationSection(

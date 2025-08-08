@@ -23,7 +23,7 @@ struct AppRatingsPrompterTests {
         (3, true),
         (5, false),
         (6, true),
-    ])
+    ]) @available(iOS 18.0, *)
     func displayRatingsPrompt(numberOfSaves: Int, shouldDisplay: Bool) async throws {
         Container.shared.defaults.register { @MainActor in
             StubDefaultsProvider(numberOfSaves: numberOfSaves)
@@ -40,7 +40,8 @@ struct AppRatingsPrompterTests {
         }
     }
 
-    @Test func displayingPromptWithNoWindowSceneLogsError() async throws {
+    @Test @available(iOS 18.0, *)
+    func displayingPromptWithNoWindowSceneLogsError() async throws {
         Container.shared.defaults.register { @MainActor in
             StubDefaultsProvider(numberOfSaves: 1)
         }
@@ -55,7 +56,8 @@ struct AppRatingsPrompterTests {
         #expect(event.info["TelemetryDeck.Error.id"] == "AppRatingsError.missingWindowScene")
     }
 
-    @Test func displayingPromptLogsEvent() async throws {
+    @Test @available(iOS 18.0, *)
+    func displayingPromptLogsEvent() async throws {
         let spy = SpyLogger()
         Container.shared.logger.register { spy }
         Container.shared.defaults.register { @MainActor in

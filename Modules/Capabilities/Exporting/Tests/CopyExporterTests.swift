@@ -16,6 +16,7 @@ import LoggingDoubles
 
 @MainActor @Suite(.container)
 struct CopyExporterTests {
+    @available(iOS 18.0, *)
     @Test("When export succeeds, an event is logged")
     func exportSucceeds() async throws {
         Container.shared.defaults.register { @MainActor in

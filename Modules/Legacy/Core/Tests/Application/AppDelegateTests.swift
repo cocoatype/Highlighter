@@ -16,7 +16,8 @@ import TestHelpers
 
 @MainActor @Suite(.container)
 struct AppDelegateTests {
-    @Test func willFinishLaunchingCallsStartOnPurchaseRepository() async {
+    @Test @available(iOS 18.0, *)
+    func willFinishLaunchingCallsStartOnPurchaseRepository() async {
         await confirmation { confirmation in
             Container.shared.defaults.register { @MainActor in StubDefaultsProvider() }
             Container.shared.logger.register { SpyLogger() }

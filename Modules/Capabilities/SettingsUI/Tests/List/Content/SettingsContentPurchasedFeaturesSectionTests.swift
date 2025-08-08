@@ -8,7 +8,7 @@ import XCTest
 
 @testable import SettingsUI
 
-@available(iOS 16.0, *)
+@MainActor @available(iOS 16.0, *)
 class SettingsContentPurchasedFeaturesSectionTests: XCTestCase {
     func testContainsPurchaseNavigationLinkIfNotPurchased() throws {
         let section = try SettingsContentPurchasedFeaturesSection(

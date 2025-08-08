@@ -14,6 +14,7 @@ import LoggingDoubles
 
 @MainActor @Suite(.container)
 struct UnpurchasedAlertViewModifierTests {
+    @available(iOS 18.0, *)
     @Test(arguments: [true, false])
     func presentationEventLog(isPresented: Bool) throws {
         let logger = SpyLogger()
