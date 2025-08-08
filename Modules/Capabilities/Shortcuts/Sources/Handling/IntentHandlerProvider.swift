@@ -4,7 +4,7 @@
 import AppIntents
 
 @available(iOS 16, *)
-protocol IntentHandlerProvider: Sendable {
+protocol IntentHandlerProvider {
     func handler(
         sourceImages: [IntentFile],
         selectedColor: ColorEntity?,

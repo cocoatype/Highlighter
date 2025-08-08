@@ -14,7 +14,8 @@ import LoggingDoubles
 
 @Suite(.container)
 struct DefaultHandlerTests {
-    @Test func loggingSwiftErrorLogsDescription() throws {
+    @Test @available(iOS 18.0, *)
+    func loggingSwiftErrorLogsDescription() throws {
         let logger = SpyLogger()
         Container.shared.logger.register { logger }
         let handler = DefaultHandler()
@@ -28,7 +29,8 @@ struct DefaultHandlerTests {
         #expect(event.info["Highlighter.Error.type"] == "DefaultHandlerTests")
     }
 
-    @Test func loggingNSErrorLogsInformation() throws {
+    @Test @available(iOS 18.0, *)
+    func loggingNSErrorLogsInformation() throws {
         let logger = SpyLogger()
         Container.shared.logger.register { logger }
         let handler = DefaultHandler()
