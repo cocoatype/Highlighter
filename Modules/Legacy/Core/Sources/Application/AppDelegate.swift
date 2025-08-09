@@ -16,7 +16,7 @@ import Purchasing
 import Scenes
 import UserActivities
 
-@UIApplicationMain
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 

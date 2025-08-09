@@ -66,10 +66,10 @@ class PhotoEditingProtectionAlertController: UIAlertController {
         fatalError("\(className) does not implement init(coder:)")
     }
 
-    private typealias Strings = CoreStrings.PhotoEditingProtectionAlertController
+    private typealias Strings = EditingStrings.PhotoEditingProtectionAlertController
 }
 
-protocol PhotoEditingProtectionAlertDelegate: AnyObject {
+@MainActor protocol PhotoEditingProtectionAlertDelegate: AnyObject {
     func dismissPhotoEditingViewControllerAfterSaving()
     func dismissPhotoEditingViewControllerAfterSavingInPlace(asset: PHAsset)
     func destructivelyDismissPhotoEditingViewController()

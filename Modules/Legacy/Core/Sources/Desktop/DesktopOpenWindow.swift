@@ -31,7 +31,9 @@ class DesktopOpenBrowserDelegate: NSObject, UIDocumentBrowserViewControllerDeleg
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentsAt documentURLs: [URL]) {
         guard let documentURL = documentURLs.first else { return }
         let activity = LaunchActivity(documentURL)
-        UIApplication.shared.requestSceneSessionActivation(nil, userActivity: activity, options: nil, errorHandler: nil)
+        Task { @MainActor in
+            UIApplication.shared.requestSceneSessionActivation(nil, userActivity: activity, options: nil, errorHandler: nil)
+        }
     }
 }
 #endif

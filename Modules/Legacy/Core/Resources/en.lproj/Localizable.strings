@@ -16,17 +16,6 @@
 // Title for the 'new from clipboard' keyboard command
 "NewFromClipboardCommand.title" = "New from Clipboard";
 
-// Title for the cancel button on the photo save protection alert
-"PhotoEditingProtectionAlertController.cancelButtonTitle" = "Cancel";
-// Title for the delete button on the photo save protection alert
-"PhotoEditingProtectionAlertController.deleteButtonTitle" = "Discard Changes";
-// Title for the save button on the photo save protection alert
-"PhotoEditingProtectionAlertController.saveCopyButtonTitle" = "Save Copy to Photos";
-// Title for the save in place button on the photo save protection alert
-"PhotoEditingProtectionAlertController.saveButtonTitle" = "Save to Photos";
-// Title for the share button on the photo save protection alert
-"PhotoEditingProtectionAlertController.shareButtonTitle" = "Share Image";
-
 // Title for the clear recents menu item
 "RecentsMenuDataSource.clearMenuItemTitle" = "Clear Menu";
 // Title for the Open Recent menu

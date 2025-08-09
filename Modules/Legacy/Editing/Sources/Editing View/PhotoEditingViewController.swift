@@ -46,19 +46,19 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
             self?.updateToolbarItems()
         })
 
-        viewerNamesAreNotRidiculous = NotificationCenter.default.addObserver(for: Keys.autoRedactionsSet) { [weak self] in
+        viewerNamesAreNotRidiculous = NotificationCenter.default.addObserver(for: Keys.autoRedactionsSet) { @MainActor [weak self] in
             self?.updateAutoRedactions()
         }
 
-        thatsNotEvenValidSwiftMono = NotificationCenter.default.addObserver(for: Keys.autoRedactionsCategoryNames) { [weak self] in
+        thatsNotEvenValidSwiftMono = NotificationCenter.default.addObserver(for: Keys.autoRedactionsCategoryNames) { @MainActor [weak self] in
             self?.updateAutoRedactions()
         }
 
-        🥥 = NotificationCenter.default.addObserver(for: Keys.autoRedactionsCategoryAddresses) { [weak self] in
+        🥥 = NotificationCenter.default.addObserver(for: Keys.autoRedactionsCategoryAddresses) { @MainActor [weak self] in
             self?.updateAutoRedactions()
         }
 
-        phoneNumbersRedactionChangeObserver = NotificationCenter.default.addObserver(for: Keys.autoRedactionsCategoryPhoneNumbers) { [weak self] in
+        phoneNumbersRedactionChangeObserver = NotificationCenter.default.addObserver(for: Keys.autoRedactionsCategoryPhoneNumbers) { @MainActor [weak self] in
             self?.updateAutoRedactions()
         }
 
@@ -607,6 +607,6 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     private typealias Strings = EditingStrings.PhotoEditingViewController
 }
 
-@objc protocol PhotoEditingActions: NSObjectProtocol {
-    func displayAppRatingsPrompt(_ sender: Any)
+@objc @MainActor public protocol PhotoEditingActions: NSObjectProtocol {
+    func displayAppRatingsPrompt(_ sender: WindowSceneProvider)
 }

@@ -7,20 +7,19 @@ import UIKit
 
 import FactoryKit
 
-import Editing
 import EditingToolbar
 import Exporting
 import Redactions
 
-class PhotoEditingNavigationController: NavigationController, PhotoEditingProtectionAlertDelegate {
-    init(asset: PHAsset, redactions: [Redaction]?) {
+public class PhotoEditingNavigationController: NavigationController, PhotoEditingProtectionAlertDelegate {
+    public init(asset: PHAsset, redactions: [Redaction]?) {
         photoEditingViewController = PhotoEditingViewController(asset: asset, redactions: redactions)
         super.init(rootViewController: photoEditingViewController)
         isToolbarHidden = false
         modalPresentationStyle = .fullScreen
     }
 
-    init(image: UIImage, redactions: [Redaction]? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
+    public init(image: UIImage, redactions: [Redaction]? = nil, completionHandler: ((UIImage) -> Void)? = nil) {
         photoEditingViewController = PhotoEditingViewController(image: image, redactions: redactions, completionHandler: completionHandler)
         super.init(rootViewController: photoEditingViewController)
         isToolbarHidden = false
@@ -79,7 +78,7 @@ class PhotoEditingNavigationController: NavigationController, PhotoEditingProtec
                 try await CopyExporter(preparedURL: preparedURL).export()
 
                 dismiss(animated: true)
-                chain(selector: #selector(AppViewController.displayAppRatingsPrompt))
+                chain(selector: #selector(PhotoEditingActions.displayAppRatingsPrompt))
             } catch {
                 presentSaveErrorAlert(for: error)
                 dismiss(animated: true)
@@ -94,7 +93,7 @@ class PhotoEditingNavigationController: NavigationController, PhotoEditingProtec
                 try await InPlaceExporter(preparedURL: preparedURL, asset: asset, redactions: photoEditingViewController.redactions).export()
 
                 dismiss(animated: true)
-                chain(selector: #selector(AppViewController.displayAppRatingsPrompt))
+                chain(selector: #selector(PhotoEditingActions.displayAppRatingsPrompt))
             } catch {
                 presentSaveErrorAlert(for: error)
                 dismiss(animated: true)
