@@ -1,6 +1,5 @@
-"AutoRedactionsAdditionDialogFactory.addButtonTitle" = "Add Word";
-"AutoRedactionsAdditionDialogFactory.placeholder" = "Hidden Word";
-"AutoRedactionsAdditionDialogFactory.dialogTitle" = "Auto-Hide Word";
+// Label to display alongside addition text field
+"AdditionTextLabel.text" = "Word";
 
 // Button title for cancelling addition of a new auto-redacted word
 "CancelButton.title" = "Cancel";

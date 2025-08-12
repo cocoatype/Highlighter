@@ -7,7 +7,7 @@ class AdditionTextLabel: UILabel {
     init() {
         super.init(frame: .zero)
         font = .preferredFont(forTextStyle: .body)
-        text = "Word"
+        text = DesktopAutoRedactionsUIStrings.AdditionTextLabel.text
         translatesAutoresizingMaskIntoConstraints = false
 
         setContentHuggingPriority(.required, for: .horizontal)
