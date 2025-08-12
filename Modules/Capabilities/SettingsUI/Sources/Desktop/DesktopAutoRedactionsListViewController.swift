@@ -21,7 +21,7 @@ class DesktopAutoRedactionsListViewController: UIViewController, DesktopAutoReda
         view = settingsView
     }
 
-    private func addNewWord() {
+    @objc func addNewWord() {
         let newWordDialog = AutoRedactionsAdditionDialogFactory.newDialog { [weak self] string in
             guard let string, string.isEmpty == false,
                   let self else { return }
@@ -32,7 +32,7 @@ class DesktopAutoRedactionsListViewController: UIViewController, DesktopAutoReda
         present(newWordDialog, animated: true)
     }
 
-    private func removeSelectedWord() {
+    @objc func removeSelectedWord() {
         guard let selectedIndex = settingsView.selectedIndex else { return }
         let selectedWord = autoRedactionWord(at: selectedIndex)
         redactionsSet[selectedWord] = nil

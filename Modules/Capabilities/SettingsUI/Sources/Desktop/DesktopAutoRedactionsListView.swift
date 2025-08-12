@@ -14,19 +14,21 @@ class DesktopAutoRedactionsListView: UIView, UITableViewDataSource {
 
         addRemoveControl.addTarget(nil, action: #selector(DesktopAutoRedactionsListViewController.handleAddOrRemove), for: .primaryActionTriggered)
 
-        addSubview(addRemoveControl)
-        addSubview(wordListLabel)
+        addSubview(header)
+        addSubview(footer)
         addSubview(wordListView)
 
         NSLayoutConstraint.activate([
-            wordListLabel.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 1),
-            wordListLabel.leadingAnchor.constraint(equalTo: wordListView.leadingAnchor),
-            wordListView.topAnchor.constraint(equalToSystemSpacingBelow: wordListLabel.bottomAnchor, multiplier: 1),
+            header.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 1),
+            header.leadingAnchor.constraint(equalTo: wordListView.leadingAnchor),
+            header.trailingAnchor.constraint(equalTo: wordListView.trailingAnchor),
+            wordListView.topAnchor.constraint(equalTo: header.bottomAnchor),
             wordListView.trailingAnchor.constraint(equalToSystemSpacingAfter: trailingAnchor, multiplier: -1),
             wordListView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
-            addRemoveControl.topAnchor.constraint(equalToSystemSpacingBelow: wordListView.bottomAnchor, multiplier: 1),
-            addRemoveControl.bottomAnchor.constraint(equalToSystemSpacingBelow: bottomAnchor, multiplier: -1),
-            addRemoveControl.leadingAnchor.constraint(equalTo: wordListView.leadingAnchor),
+            footer.topAnchor.constraint(equalTo: wordListView.bottomAnchor),
+            footer.leadingAnchor.constraint(equalTo: wordListView.leadingAnchor),
+            footer.trailingAnchor.constraint(equalTo: wordListView.trailingAnchor),
+            footer.bottomAnchor.constraint(equalToSystemSpacingBelow: bottomAnchor, multiplier: -1),
         ])
     }
 
@@ -59,13 +61,15 @@ class DesktopAutoRedactionsListView: UIView, UITableViewDataSource {
     private static let wordListLabelText = SettingsUIStrings.DesktopSettingsView.wordListLabel
 
     private let addRemoveControl = DesktopSettingsAddRemoveControl()
-    private let wordListLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .callout)
-        label.text = DesktopAutoRedactionsListView.wordListLabelText
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let header = DesktopAutoRedactionsListHeader()
+    private let footer = DesktopAutoRedactionsListFooter()
+//    private let wordListLabel: UILabel = {
+//        let label = UILabel()
+//        label.font = UIFont.preferredFont(forTextStyle: .callout)
+//        label.text = DesktopAutoRedactionsListView.wordListLabelText
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        return label
+//    }()
     private let wordListView = DesktopSettingsTableView()
 
     private var wordsCount: Int { delegate?.autoRedactionWordsCount ?? 0 }

@@ -8,9 +8,6 @@ class DesktopSettingsTableView: UITableView {
         super.init(frame: .zero, style: .plain)
         backgroundView = alternatingRowView
         translatesAutoresizingMaskIntoConstraints = false
-
-        layer.borderColor = UIColor.separator.cgColor
-        layer.borderWidth = 1
     }
 
     override var contentOffset: CGPoint {
