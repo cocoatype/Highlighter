@@ -1,10 +1,12 @@
 //  Created by Geoff Pado on 6/29/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
-import AutoRedactionsUI
-import Paywall
-import ViewInspector
 import XCTest
+
+import ViewInspector
+
+import MobileAutoRedactionsUI
+import Paywall
 
 @testable import MobileSettingsUI
 

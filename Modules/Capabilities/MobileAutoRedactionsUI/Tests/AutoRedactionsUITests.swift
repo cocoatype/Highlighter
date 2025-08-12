@@ -2,7 +2,8 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 import XCTest
-@testable import AutoRedactionsUI
+
+@testable import MobileAutoRedactionsUI
 
 class AutoRedactionsUITests: XCTestCase {
 
