@@ -24,7 +24,7 @@ public struct DesktopSettingsView: View {
     public var body: some View {
         Group {
             if purchaseState == .purchased {
-                DesktopAutoRedactionsListViewControllerRepresentable()
+                ListViewControllerRepresentable()
             } else if #available(iOS 16.0, *) {
                 PaywallView()
             }

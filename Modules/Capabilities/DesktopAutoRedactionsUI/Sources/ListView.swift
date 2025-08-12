@@ -32,8 +32,8 @@ class ListView: UIView, UITableViewDataSource {
 
     var selectedIndex: Int? { wordListView.indexPathForSelectedRow?.row }
 
-    func appendRow() {
-        wordListView.insertRows(at: [IndexPath(row: wordListView.numberOfRows(inSection: 0), section: 0)], with: .automatic)
+    func insertRow(at index: Int) {
+        wordListView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
 
     func removeRow(at index: Int) {

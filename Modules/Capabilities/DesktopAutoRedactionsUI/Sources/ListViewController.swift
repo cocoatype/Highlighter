@@ -14,6 +14,16 @@ class ListViewController: UIViewController, ListViewDelegate {
         edgesForExtendedLayout = UIRectEdge()
         preferredContentSize = CGSize(width: 500, height: 640)
         settingsView.delegate = self
+
+        if #available(iOS 15, *) {
+            addKeyCommand(
+                UIKeyCommand(
+                    input: UIKeyCommand.inputDelete,
+                    modifierFlags: [],
+                    action: #selector(ListViewController.removeSelectedWord)
+                )
+            )
+        }
     }
 
     override func loadView() {
@@ -21,12 +31,14 @@ class ListViewController: UIViewController, ListViewDelegate {
     }
 
     @objc func addNewWord() {
-        let newWordDialog = AutoRedactionsAdditionDialogFactory.newDialog { [weak self] string in
+        let newWordDialog = AdditionViewController { [weak self] string in
             guard let string, string.isEmpty == false,
                   let self else { return }
 
             redactionsSet[string] = true
-            settingsView.appendRow()
+            if let index = redactions.firstIndex(of: string) {
+                settingsView.insertRow(at: index)
+            }
         }
         present(newWordDialog, animated: true)
     }
@@ -36,6 +48,10 @@ class ListViewController: UIViewController, ListViewDelegate {
         let selectedWord = autoRedactionWord(at: selectedIndex)
         redactionsSet[selectedWord] = nil
         settingsView.removeRow(at: selectedIndex)
+    }
+
+    private var redactions: [String] {
+        Array(redactionsSet.keys.sorted())
     }
 
     private var redactionsSet: [String: Bool] {
@@ -56,7 +72,7 @@ class ListViewController: UIViewController, ListViewDelegate {
     }
 
     private func autoRedactionWord(at index: Int) -> String {
-        Array(redactionsSet.keys.sorted())[index]
+        redactions[index]
     }
 
     // MARK: Boilerplate
