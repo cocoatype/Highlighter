@@ -3,12 +3,12 @@
 
 import UIKit
 
-class DesktopAutoRedactionsListHeaderLabel: UILabel {
+class ListHeaderLabel: UILabel {
     init() {
         super.init(frame: .zero)
 
         font = Self.labelFont
-        text = DesktopSettingsUIStrings.DesktopSettingsView.wordListLabel
+        text = DesktopAutoRedactionsUIStrings.DesktopSettingsView.wordListLabel
         translatesAutoresizingMaskIntoConstraints = false
     }
 

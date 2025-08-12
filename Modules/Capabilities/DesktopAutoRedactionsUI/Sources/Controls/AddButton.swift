@@ -3,12 +3,12 @@
 
 import UIKit
 
-class DesktopAutoRedactionsListFooterAddButton: UIButton {
+class AddButton: UIButton {
     init() {
         super.init(frame: .zero)
 
         setImage(UIImage(systemName: "plus"), for: .normal)
-        addTarget(nil, action: #selector(DesktopAutoRedactionsListViewController.addNewWord), for: .primaryActionTriggered)
+        addTarget(nil, action: #selector(ListViewController.addNewWord), for: .primaryActionTriggered)
 
         translatesAutoresizingMaskIntoConstraints = false
 

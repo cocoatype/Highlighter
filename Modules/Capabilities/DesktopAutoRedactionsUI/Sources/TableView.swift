@@ -3,7 +3,7 @@
 
 import UIKit
 
-class DesktopSettingsTableView: UITableView {
+class TableView: UITableView {
     init() {
         super.init(frame: .zero, style: .plain)
         backgroundView = alternatingRowView

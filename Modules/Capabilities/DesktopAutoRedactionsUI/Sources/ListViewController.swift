@@ -5,10 +5,9 @@ import SwiftUI
 
 import FactoryKit
 
-import DesktopAutoRedactionsUI
 import Defaults
 
-class DesktopAutoRedactionsListViewController: UIViewController, DesktopAutoRedactionsViewDelegate {
+class ListViewController: UIViewController, ListViewDelegate {
     @Injected(\.defaults) private var defaults
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -39,16 +38,6 @@ class DesktopAutoRedactionsListViewController: UIViewController, DesktopAutoReda
         settingsView.removeRow(at: selectedIndex)
     }
 
-    @objc func handleAddOrRemove(_ sender: DesktopSettingsAddRemoveControl) {
-        switch sender.selectedSegmentIndex {
-        case DesktopSettingsAddRemoveControl.addIndex:
-            addNewWord()
-        case DesktopSettingsAddRemoveControl.removeIndex:
-            removeSelectedWord()
-        default: break
-        }
-    }
-
     private var redactionsSet: [String: Bool] {
         get {
             defaults.value(for: Keys.autoRedactionsSet) ?? [:]
@@ -72,7 +61,7 @@ class DesktopAutoRedactionsListViewController: UIViewController, DesktopAutoReda
 
     // MARK: Boilerplate
 
-    private let settingsView = DesktopAutoRedactionsListView()
+    private let settingsView = ListView()
 
     @available(*, unavailable)
     required init(coder: NSCoder) {
@@ -81,10 +70,12 @@ class DesktopAutoRedactionsListViewController: UIViewController, DesktopAutoReda
     }
 }
 
-struct DesktopAutoRedactionsListViewControllerRepresentable: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> some UIViewController {
-        return DesktopAutoRedactionsListViewController()
+public struct ListViewControllerRepresentable: UIViewControllerRepresentable {
+    public init() {}
+
+    public func makeUIViewController(context: Context) -> some UIViewController {
+        return ListViewController()
     }
 
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+    public func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 }

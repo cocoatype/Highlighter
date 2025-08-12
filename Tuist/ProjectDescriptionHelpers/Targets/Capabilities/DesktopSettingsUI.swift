@@ -3,7 +3,6 @@ import ProjectDescription
 public enum DesktopSettingsUI {
     public static let target = Target.capabilitiesTarget(
         name: "DesktopSettingsUI",
-        hasResources: true,
         dependencies: [
             .target(DesktopAutoRedactionsUI.target),
             .target(Paywall.target),

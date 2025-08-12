@@ -5,6 +5,7 @@ import SwiftUI
 
 import FactoryKit
 
+import DesktopAutoRedactionsUI
 import Paywall
 import Purchasing
 

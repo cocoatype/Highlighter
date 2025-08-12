@@ -3,16 +3,14 @@
 
 import UIKit
 
-class DesktopAutoRedactionsListView: UIView, UITableViewDataSource {
-    weak var delegate: DesktopAutoRedactionsViewDelegate?
+class ListView: UIView, UITableViewDataSource {
+    weak var delegate: ListViewDelegate?
 
     init() {
         super.init(frame: .zero)
 
-        wordListView.register(DesktopSettingsTableViewCell.self, forCellReuseIdentifier: DesktopSettingsTableViewCell.identifier)
+        wordListView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
         wordListView.dataSource = self
-
-        addRemoveControl.addTarget(nil, action: #selector(DesktopAutoRedactionsListViewController.handleAddOrRemove), for: .primaryActionTriggered)
 
         addSubview(header)
         addSubview(footer)
@@ -49,8 +47,8 @@ class DesktopAutoRedactionsListView: UIView, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: DesktopSettingsTableViewCell.identifier, for: indexPath)
-        guard let settingsCell = cell as? DesktopSettingsTableViewCell else { return cell }
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath)
+        guard let settingsCell = cell as? TableViewCell else { return cell }
 
         settingsCell.word = delegate?.autoRedactionWord(at: indexPath)
         return settingsCell
@@ -58,10 +56,9 @@ class DesktopAutoRedactionsListView: UIView, UITableViewDataSource {
 
     // MARK: Boilerplate
 
-    private let addRemoveControl = DesktopSettingsAddRemoveControl()
-    private let header = DesktopAutoRedactionsListHeader()
-    private let footer = DesktopAutoRedactionsListFooter()
-    private let wordListView = DesktopSettingsTableView()
+    private let header = ListHeader()
+    private let footer = ListFooter()
+    private let wordListView = TableView()
 
     private var wordsCount: Int { delegate?.autoRedactionWordsCount ?? 0 }
 

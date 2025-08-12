@@ -3,10 +3,10 @@
 
 import UIKit
 
-class DesktopAutoRedactionsListFooter: UIView {
-    private let addButton = DesktopAutoRedactionsListFooterAddButton()
-    private let removeButton = DesktopAutoRedactionsListFooterRemoveButton()
-    private let separator = DesktopAutoRedactionsButtonSeparator()
+class ListFooter: UIView {
+    private let addButton = AddButton()
+    private let removeButton = RemoveButton()
+    private let separator = ButtonSeparator()
 
     init() {
         super.init(frame: .zero)

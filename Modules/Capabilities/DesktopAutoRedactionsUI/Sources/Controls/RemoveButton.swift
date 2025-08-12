@@ -3,14 +3,17 @@
 
 import UIKit
 
-class DesktopAutoRedactionsButtonSeparator: UIView {
+class RemoveButton: UIButton {
     init() {
         super.init(frame: .zero)
-        backgroundColor = .separator
+
+        setImage(UIImage(systemName: "minus"), for: .normal)
+        addTarget(nil, action: #selector(ListViewController.removeSelectedWord), for: .primaryActionTriggered)
+
         translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: 1),
+            widthAnchor.constraint(equalTo: heightAnchor),
         ])
     }
 

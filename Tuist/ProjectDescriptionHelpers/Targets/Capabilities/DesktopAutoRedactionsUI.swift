@@ -5,6 +5,7 @@ public enum DesktopAutoRedactionsUI {
         name: "DesktopAutoRedactionsUI",
         hasResources: true,
         dependencies: [
+            .target(Defaults.target),
             .target(DesignSystem.target),
         ]
     )

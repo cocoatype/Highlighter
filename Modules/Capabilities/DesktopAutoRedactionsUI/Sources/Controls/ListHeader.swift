@@ -3,8 +3,8 @@
 
 import UIKit
 
-class DesktopAutoRedactionsListHeader: UIView {
-    private let label = DesktopAutoRedactionsListHeaderLabel()
+class ListHeader: UIView {
+    private let label = ListHeaderLabel()
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false

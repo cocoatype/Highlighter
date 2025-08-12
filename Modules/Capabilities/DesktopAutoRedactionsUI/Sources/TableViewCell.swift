@@ -3,7 +3,7 @@
 
 import UIKit
 
-class DesktopSettingsTableViewCell: UITableViewCell {
+class TableViewCell: UITableViewCell {
     static let identifier = "DesktopSettingsTableViewCell.identifier"
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

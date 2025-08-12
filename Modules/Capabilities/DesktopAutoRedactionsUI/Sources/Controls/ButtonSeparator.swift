@@ -3,17 +3,14 @@
 
 import UIKit
 
-class DesktopAutoRedactionsListFooterRemoveButton: UIButton {
+class ButtonSeparator: UIView {
     init() {
         super.init(frame: .zero)
-
-        setImage(UIImage(systemName: "minus"), for: .normal)
-        addTarget(nil, action: #selector(DesktopAutoRedactionsListViewController.removeSelectedWord), for: .primaryActionTriggered)
-
+        backgroundColor = .separator
         translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalTo: heightAnchor),
+            widthAnchor.constraint(equalToConstant: 1),
         ])
     }
 
