@@ -6,9 +6,9 @@ public enum MobileSettingsUI {
         hasResources: true,
         usesMaxSwiftVersion: true,
         dependencies: [
-            .target(AutoRedactionsUI.target),
             .target(Defaults.target),
             .target(ErrorHandling.target(sdk: .catalyst)),
+            .target(MobileAutoRedactionsUI.target),
             .target(Paywall.target),
             .target(Purchasing.doublesTarget),
             .target(Purchasing.target),

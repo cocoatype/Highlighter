@@ -1,8 +1,8 @@
 import ProjectDescription
 
-public enum AutoRedactionsUI {
+public enum MobileAutoRedactionsUI {
     public static let target = Target.capabilitiesTarget(
-        name: "AutoRedactionsUI",
+        name: "MobileAutoRedactionsUI",
         hasResources: true,
         usesMaxSwiftVersion: true,
         dependencies: [
@@ -16,7 +16,7 @@ public enum AutoRedactionsUI {
     )
 
     public static let testTarget = Target.capabilitiesTestTarget(
-        name: "AutoRedactionsUI",
+        name: "MobileAutoRedactionsUI",
         usesMaxSwiftVersion: true,
     )
 }

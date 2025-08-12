@@ -5,6 +5,10 @@ public enum DesktopSettingsUI {
         name: "DesktopSettingsUI",
         hasResources: true,
         dependencies: [
+            .target(DesktopAutoRedactionsUI.target),
+            .target(Paywall.target),
+            .target(Purchasing.target),
+            .external(name: "FactoryKit"),
         ]
     )
 

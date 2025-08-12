@@ -5,8 +5,8 @@ import SwiftUI
 
 import FactoryKit
 
-import AutoRedactionsUI
 import Defaults
+import MobileAutoRedactionsUI
 import Purchasing
 
 struct SettingsContentPurchasedFeaturesSection: View {

@@ -5,7 +5,7 @@ import SwiftUI
 
 import FactoryKit
 
-import AutoRedactionsUI
+import DesktopAutoRedactionsUI
 import Defaults
 
 class DesktopAutoRedactionsListViewController: UIViewController, DesktopAutoRedactionsViewDelegate {

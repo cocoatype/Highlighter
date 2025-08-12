@@ -1,7 +1,3 @@
-"AutoRedactionsAdditionDialogFactory.addButtonTitle" = "Add Word";
-"AutoRedactionsAdditionDialogFactory.placeholder" = "Hidden Word";
-"AutoRedactionsAdditionDialogFactory.dialogTitle" = "Auto-Hide Word";
-
 "AutoRedactionsCategoryTableViewCell.addresses" = "Addresses";
 "AutoRedactionsCategoryTableViewCell.names" = "Names";
 "AutoRedactionsCategoryTableViewCell.phoneNumbers" = "Phone Numbers";

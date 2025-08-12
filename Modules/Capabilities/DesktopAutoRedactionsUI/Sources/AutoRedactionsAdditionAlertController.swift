@@ -1,6 +1,8 @@
 //  Created by Geoff Pado on 8/3/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import DesignSystem
+
 import UIKit
 
 @MainActor public enum AutoRedactionsAdditionDialogFactory {
@@ -27,4 +29,6 @@ import UIKit
     private static let addButtonTitle = Strings.AutoRedactionsAdditionDialogFactory.addButtonTitle
     private static let placeholder = Strings.AutoRedactionsAdditionDialogFactory.placeholder
     private static let dialogTitle = Strings.AutoRedactionsAdditionDialogFactory.dialogTitle
+
+    private typealias Strings = DesktopAutoRedactionsUIStrings
 }
