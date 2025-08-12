@@ -6,7 +6,6 @@ import UIKit
 
 import FactoryKit
 
-import AutoRedactionsUI
 import DebugOverlay
 import Defaults
 import Detections
@@ -15,6 +14,7 @@ import ErrorHandling
 import Exporting
 import Geometry
 import Logging
+import MobileAutoRedactionsUI
 import Observations
 import Paywall
 import Redactions

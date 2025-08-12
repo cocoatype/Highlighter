@@ -9,9 +9,9 @@ public enum IntroView {
             .target(AppNavigation.target),
             .target(DesignSystem.target),
             .target(Logging.target(sdk: .catalyst)),
+            .target(MobileSettingsUI.target),
             .target(PhotoPermissions.target),
             .target(PhotoPicker.target),
-            .target(SettingsUI.target),
             .external(name: "FactoryKit"),
         ]
     )
