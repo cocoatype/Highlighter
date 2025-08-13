@@ -4,7 +4,7 @@
 import ErrorHandling
 import UIKit
 
-public protocol FileURLProvider {
+@MainActor public protocol FileURLProvider {
     var representedFileURL: URL? { get }
     func updateRepresentedFileURL(to newURL: URL)
 }

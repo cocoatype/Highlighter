@@ -2,6 +2,7 @@ disabled_rules:
   - line_length # too many violations already
   - shorthand_operator # disagree with this rule
   - identifier_name # incompatible with "name a variable" redemption
+  - statement_position # doesn't work with expression syntax
   - type_name # same
 excluded:
   - .build

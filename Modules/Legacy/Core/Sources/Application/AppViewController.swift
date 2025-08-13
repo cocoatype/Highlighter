@@ -18,14 +18,15 @@ import ErrorHandling
 import IntroView
 import LegacyPhotoLibrary
 import Logging
+import MobileSettingsUI
 import PhotoGallery
+import PhotoLibrary
 import PhotoPermissions
 import Paywall
 import Redactions
-import SettingsUI
 
 @MainActor
-class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, IntroViewController.Actions, SettingsBarButtonItem.Actions, SettingsPresenting {
+class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, IntroViewController.Actions, PhotoEditingActions, SettingsBarButtonItem.Actions, SettingsPresenting {
     @Injected(\.logger) private var logger
     private let permissionsRequester: PhotoPermissionsRequester
     init(

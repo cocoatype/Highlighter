@@ -15,9 +15,9 @@ public enum LegacyPhotoLibrary {
             .target(Geometry.target(sdk: .catalyst)),
             .target(LegacyAlbumsUI.target),
             .target(Logging.target(sdk: .catalyst)),
+            .target(MobileSettingsUI.target),
             .target(PhotoPermissions.target),
             .target(Purchasing.target),
-            .target(SettingsUI.target),
             .target(UserActivities.target),
             .external(name: "FactoryKit"),
         ]

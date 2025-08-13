@@ -8,7 +8,7 @@ import UserActivities
 struct DesktopSceneURLHandler {
     let parser = URLParser()
 
-    @discardableResult
+    @discardableResult @MainActor
     func handle(_ context: UIOpenURLContext) -> Bool {
         let result = parser.parse(context.url)
         switch result {

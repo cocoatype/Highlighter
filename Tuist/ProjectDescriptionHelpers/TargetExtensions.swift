@@ -32,7 +32,7 @@ extension Target {
         name: String,
         sdk: SDK = .catalyst,
         hasResources: Bool = false,
-        usesMaxSwiftVersion: Bool = false,
+        usesMaxSwiftVersion: Bool = true,
         dependencies: [TargetDependency] = []
     ) -> Target {
         moduleTestTarget(
@@ -50,7 +50,7 @@ extension Target {
         sdk: SDK,
         type: String,
         hasResources: Bool = false,
-        usesMaxSwiftVersion: Bool = false,
+        usesMaxSwiftVersion: Bool = true,
         dependencies: [TargetDependency] = []
     ) -> Target {
         return Target.target(
@@ -74,7 +74,8 @@ extension Target {
 
     static func capabilitiesDoublesTarget(
         name: String,
-        sdk: SDK = .catalyst
+        sdk: SDK = .catalyst,
+        usesMaxSwiftVersion: Bool = true
     ) -> Target {
         return Target.target(
             name: "\(name + sdk.nameSuffix)Doubles",
@@ -89,6 +90,7 @@ extension Target {
             settings: .settings(
                 base: [
                     "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": false,
+                    "SWIFT_VERSION": (usesMaxSwiftVersion ? "$(SWIFT_MAX_VERSION)" : "$(inherited)"),
                 ],
                 defaultSettings: .recommended(excluding: [
                     "CODE_SIGN_IDENTITY",

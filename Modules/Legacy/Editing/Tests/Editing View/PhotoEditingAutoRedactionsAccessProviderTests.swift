@@ -6,7 +6,7 @@ import UIKit
 
 import FactoryKit
 
-import AutoRedactionsUI
+import MobileAutoRedactionsUI
 import PurchasingDoubles
 
 @testable import Editing

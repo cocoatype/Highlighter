@@ -27,7 +27,7 @@ class ShareItem: NSSharingServicePickerToolbarItem, UIActivityItemsConfiguration
 
         let itemProvider = NSItemProvider()
         itemProvider.registerFileRepresentation(forTypeIdentifier: UTType.png.identifier, visibility: .all) { [weak self] loadHandler -> Progress? in
-            Task { [weak self] in
+            Task { @MainActor [weak self] in
                 do {
                     let url = try await self?.delegate?.exportedURL()
                     loadHandler(url, false, nil)
@@ -45,7 +45,7 @@ class ShareItem: NSSharingServicePickerToolbarItem, UIActivityItemsConfiguration
     }
 }
 
-protocol ShareItemDelegate: AnyObject {
+@MainActor protocol ShareItemDelegate: AnyObject {
     var canExportImage: Bool { get }
     func exportedURL() async throws -> URL?
     func didExportImage()

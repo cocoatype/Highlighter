@@ -6,9 +6,9 @@ import Testing
 import UIKit
 import Vision
 
-import Observations
+import struct Observations.TextRectangleObservation
 
-extension Observations.TextRectangleObservation {
+extension TextRectangleObservation {
     init(_ string: String) throws {
         let sampleImage = try #require(UIImage(systemName: "bolt"))
         self.init(

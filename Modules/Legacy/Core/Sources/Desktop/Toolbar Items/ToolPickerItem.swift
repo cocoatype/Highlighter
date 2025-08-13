@@ -61,7 +61,7 @@ class ToolPickerItem: NSMenuToolbarItem {
     }
 }
 
-protocol ToolPickerItemDelegate: AnyObject {
+@MainActor protocol ToolPickerItemDelegate: AnyObject {
     var highlighterTool: HighlighterTool { get }
 }
 #endif

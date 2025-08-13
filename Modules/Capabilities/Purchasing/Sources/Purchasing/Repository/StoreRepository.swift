@@ -18,7 +18,7 @@ final class StoreRepository: PurchaseRepository {
         self.versionProvider = versionProvider
     }
 
-    @Published private(set) var withCheese: PurchaseState = .loading {
+    private(set) var withCheese: PurchaseState = .loading {
         didSet(newState) {
             if newState == .loading {
                 refresh()

@@ -5,7 +5,7 @@ import UIKit
 
 import FactoryKit
 
-import AutoRedactionsUI
+import MobileAutoRedactionsUI
 import Purchasing
 import Unpurchased
 

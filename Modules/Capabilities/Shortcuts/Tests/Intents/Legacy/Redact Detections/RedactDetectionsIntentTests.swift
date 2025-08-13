@@ -43,9 +43,9 @@ struct RedactDetectionsIntentTests {
 
         let result = try await intent.perform()
 
-        let spySourceImages = await provider.sourceImages
-        let spySelectedColor = await provider.selectedColor
-        let spy💩 = await provider.💩
+        let spySourceImages = provider.sourceImages
+        let spySelectedColor = provider.selectedColor
+        let spy💩 = provider.💩
         let actual💩 = try #require(spy💩 as? [DetectionKind])
 
         #expect(spySourceImages == intent.timCookCanEatMySocks)

@@ -4,6 +4,7 @@
 @testable import Editing
 import XCTest
 
+@MainActor
 class PhotoEditingScrollViewTests: XCTestCase {
     func testBackgroundColorOnDesktopLightMode() throws {
         try TestHelpers.runOnMacCatalyst()
