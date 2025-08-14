@@ -20,7 +20,6 @@ import LegacyPhotoLibrary
 import Logging
 import MobileSettingsUI
 import PhotoGallery
-import PhotoLibrary
 import PhotoPermissions
 import Paywall
 import Redactions
