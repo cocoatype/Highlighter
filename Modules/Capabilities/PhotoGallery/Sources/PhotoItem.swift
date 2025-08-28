@@ -12,7 +12,6 @@ struct PhotoItem: View {
     }
 
     @State private var image: Image?
-    private let loader = AssetImageLoader()
     var body: some View {
         Color.red
             .overlay(contents)
@@ -20,7 +19,9 @@ struct PhotoItem: View {
             .id(asset.id)
             .task(id: asset.id) {
                 do {
-                    image = try await loader.loadImage(for: asset)
+                    // AssetImageLoader is added here because `PHImageRequestOptions` isn't Sendable until Xcode 26
+                    image = try await AssetImageLoader()
+                        .loadImage(for: asset)
                 } catch {
                     print("error!")
                 }

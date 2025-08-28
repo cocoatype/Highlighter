@@ -21,7 +21,9 @@ public struct PhotoGalleryContainer: View {
                             Image(systemName: "rectangle.stack.badge.plus")
                         }
                     }
+#if compiler(>=6.2)
                     ToolbarSpacer(.fixed)
+#endif
                     ToolbarItem {
                         Button {} label: {
                             Image(systemName: "gear")
