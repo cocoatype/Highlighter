@@ -34,7 +34,7 @@ public class NavigationWrapper: NSObject, ObservableObject {
         navigationObject?.present(collection)
     }
 
-    func presentLimitedLibrary() {
+    public func presentLimitedLibrary() {
         navigationObject?.presentLimitedLibrary()
     }
 

@@ -2,6 +2,7 @@
 //  Copyright © 2025 Cocoatype, LLC. All rights reserved.
 
 import Photos
+import PhotosUI
 import SwiftUI
 import UIKit
 
@@ -10,7 +11,8 @@ import AppNavigation
 import Redactions
 
 @available(iOS 26.0, *)
-public class PhotoGalleryViewController: UIHostingController<PhotoGalleryContainer>, NavigationWrapper.NavigationObject {
+public class PhotoGalleryViewController: UIHostingController<PhotoGalleryContainer>,
+                                         NavigationWrapper.NavigationObject {
     public init() {
         super.init(rootView: PhotoGalleryContainer())
         self.rootView = PhotoGalleryContainer(navigationWrapper: NavigationWrapper(navigationObject: self))
@@ -57,6 +59,6 @@ public class PhotoGalleryViewController: UIHostingController<PhotoGalleryContain
     }
 
     public func presentLimitedLibrary() {
-        next?.limitedLibraryPresenter?.presentLimitedLibrary()
+        PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: self)
     }
 }

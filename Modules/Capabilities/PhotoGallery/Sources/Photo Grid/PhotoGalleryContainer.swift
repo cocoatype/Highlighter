@@ -18,24 +18,7 @@ public struct PhotoGalleryContainer: View {
         } detail: {
             PhotoGrid()
                 .toolbar {
-                    ToolbarItem {
-                        Button {} label: {
-                            Image(systemName: "doc.text.viewfinder")
-                        }
-                    }
-                    ToolbarItem {
-                        Button {} label: {
-                            Image(systemName: "rectangle.stack.badge.plus")
-                        }
-                    }
-#if compiler(>=6.2)
-                    ToolbarSpacer(.fixed)
-#endif
-                    ToolbarItem {
-                        Button {} label: {
-                            Image(systemName: "gear")
-                        }
-                    }
+                    PhotoGalleryToolbarContent()
                 }
         }
         .navigationSplitViewStyle(.prominentDetail)
