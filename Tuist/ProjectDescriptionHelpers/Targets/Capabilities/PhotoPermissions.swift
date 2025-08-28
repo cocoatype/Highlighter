@@ -7,6 +7,7 @@ public enum PhotoPermissions {
         usesMaxSwiftVersion: true,
         dependencies: [
             .target(DesignSystem.target),
+            .external(name: "FactoryKit"),
         ]
     )
 

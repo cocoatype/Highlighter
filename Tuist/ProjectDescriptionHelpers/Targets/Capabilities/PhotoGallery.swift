@@ -6,6 +6,7 @@ public enum PhotoGallery {
         dependencies: [
             .target(AlbumsData.target),
             .target(AppNavigation.target),
+            .target(PhotoPermissions.target),
             .target(Redactions.target(sdk: .catalyst)),
             .external(name: "FactoryKit"),
         ]

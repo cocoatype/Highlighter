@@ -15,16 +15,13 @@ import Purchasing
 class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
     convenience override init() {
         self.init(
-            isDocumentScannerSupported: VNDocumentCameraViewController.isSupported,
-            permissionsRequester: PhotoLibraryPermissionsRequester()
+            isDocumentScannerSupported: VNDocumentCameraViewController.isSupported
         )
     }
 
     init(
-        isDocumentScannerSupported: Bool,
-        permissionsRequester: any PhotoPermissionsRequester
+        isDocumentScannerSupported: Bool
     ) {
-        self.permissionsRequester = permissionsRequester
         self.isDocumentScannerSupported = isDocumentScannerSupported
     }
 
@@ -76,7 +73,7 @@ class PhotoLibraryDataSourceExtraItemsProvider: NSObject {
 
     @Injected(\.defaults) private var defaults
     @Injected(\.errorHandler) private var errorHandler
-    private let permissionsRequester: any PhotoPermissionsRequester
+    @Injected(\.photoPermissionsRequester) private var permissionsRequester
 
     // thatsFineThatsOnlyThree by @nutterfi on 2024-05-15
     // the purchase repository

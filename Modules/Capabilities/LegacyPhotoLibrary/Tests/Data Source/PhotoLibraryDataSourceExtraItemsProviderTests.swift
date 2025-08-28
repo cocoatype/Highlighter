@@ -40,8 +40,7 @@ struct PhotoLibraryDataSourceExtraItemsProviderTests {
         }
 
         let provider = PhotoLibraryDataSourceExtraItemsProvider(
-            isDocumentScannerSupported: isDocumentScannerSupported,
-            permissionsRequester: PhotoLibraryPermissionsRequester()
+            isDocumentScannerSupported: isDocumentScannerSupported
         )
         let isIncluded = (0..<provider.itemsCount)
             .contains(where: {

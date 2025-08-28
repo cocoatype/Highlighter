@@ -3,11 +3,16 @@
 
 import SwiftUI
 
+import FactoryKit
+
 import AppNavigation
+import PhotoPermissions
 
 @available(iOS 26.0, *)
 struct PhotoGalleryToolbarContent: ToolbarContent {
     @EnvironmentObject private var navigationWrapper: NavigationWrapper
+
+    @Injected(\.photoPermissionsRequester) private var permissionsRequester
 
     var body: some ToolbarContent {
         ToolbarItem {
@@ -18,11 +23,13 @@ struct PhotoGalleryToolbarContent: ToolbarContent {
             }
         }
 
-        ToolbarItem {
-            Button {
-                navigationWrapper.presentLimitedLibrary()
-            } label: {
-                Image(systemName: "rectangle.stack.badge.plus")
+        if permissionsRequester.authorizationStatus() == .limited {
+            ToolbarItem {
+                Button {
+                    navigationWrapper.presentLimitedLibrary()
+                } label: {
+                    Image(systemName: "rectangle.stack.badge.plus")
+                }
             }
         }
 

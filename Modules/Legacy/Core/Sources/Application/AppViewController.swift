@@ -27,11 +27,8 @@ import Redactions
 @MainActor
 class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, IntroViewController.Actions, PhotoEditingActions, SettingsBarButtonItem.Actions, SettingsPresenting {
     @Injected(\.logger) private var logger
-    private let permissionsRequester: PhotoPermissionsRequester
-    init(
-        permissionsRequester: any PhotoPermissionsRequester = PhotoLibraryPermissionsRequester()
-    ) {
-        self.permissionsRequester = permissionsRequester
+    @Injected(\.photoPermissionsRequester) private var permissionsRequester: PhotoPermissionsRequester
+    init() {
         super.init(nibName: nil, bundle: nil)
 
         view.isOpaque = false

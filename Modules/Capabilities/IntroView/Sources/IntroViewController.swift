@@ -14,10 +14,7 @@ import PhotoPermissions
 import PhotoPicker
 
 public class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
-    public init(
-        permissionsRequester: any PhotoPermissionsRequester = PhotoLibraryPermissionsRequester()
-    ) {
-        self.permissionsRequester = permissionsRequester
+    public init() {
         super.init(rootView: IntroView())
         self.rootView = IntroView(
             permissionAction: { [weak self] in
@@ -75,7 +72,7 @@ public class IntroViewController: UIHostingController<IntroView>, PhotoPickerDel
     // MARK: Boilerplate
 
     @Injected(\.logger) private var logger
-    private let permissionsRequester: PhotoPermissionsRequester
+    @Injected(\.photoPermissionsRequester) private var permissionsRequester
 
     private lazy var photoPicker: PhotoPicker = {
         let picker = PhotoPicker()
