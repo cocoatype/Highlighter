@@ -12,7 +12,7 @@ import Purchasing
 import PurchasingDoubles
 
 @testable import Defaults
-@testable import PhotoLibrary
+@testable import LegacyPhotoLibrary
 
 @MainActor @Suite(.container)
 struct PhotoLibraryDataSourceExtraItemsProviderTests {

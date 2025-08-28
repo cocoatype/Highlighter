@@ -3,7 +3,7 @@
 
 import XCTest
 
-@testable import PhotoLibrary
+@testable import LegacyPhotoLibrary
 
 class PhotoLibraryViewLayoutTests: XCTestCase {}
 
