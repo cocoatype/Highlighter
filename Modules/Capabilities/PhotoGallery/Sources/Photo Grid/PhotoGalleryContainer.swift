@@ -3,8 +3,15 @@
 
 import SwiftUI
 
+import AppNavigation
+
 @available(iOS 26.0, *)
 public struct PhotoGalleryContainer: View {
+    private let navigationWrapper: NavigationWrapper
+    init(navigationWrapper: NavigationWrapper = .empty) {
+        self.navigationWrapper = navigationWrapper
+    }
+
     public var body: some View {
         NavigationSplitView {
             AlbumsList()
@@ -30,6 +37,8 @@ public struct PhotoGalleryContainer: View {
                         }
                     }
                 }
-        }.navigationSplitViewStyle(.prominentDetail)
+        }
+        .navigationSplitViewStyle(.prominentDetail)
+        .environmentObject(navigationWrapper)
     }
 }

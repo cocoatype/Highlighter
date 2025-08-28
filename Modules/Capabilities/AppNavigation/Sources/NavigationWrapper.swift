@@ -18,6 +18,10 @@ public class NavigationWrapper: NSObject, ObservableObject {
         self.navigationObject = nil
     }
 
+    public func presentEditor(for asset: PHAsset) {
+        navigationObject?.presentPhotoEditingViewController(for: asset, redactions: nil, animated: true)
+    }
+
     public func presentSettings() {
         navigationObject?.presentSettingsViewController()
     }

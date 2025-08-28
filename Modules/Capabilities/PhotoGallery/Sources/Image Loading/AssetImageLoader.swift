@@ -5,7 +5,7 @@ import Photos
 import SwiftUI
 import UIKit
 
-struct AssetImageLoader {
+struct AssetImageLoader: ImageLoader {
     private let imageManager = PHImageManager()
     func loadImage(for asset: PhotoAsset) async throws -> Image {
         let options = PHImageRequestOptions()
@@ -13,7 +13,7 @@ struct AssetImageLoader {
 
         return try await withCheckedThrowingContinuation { continuation in
             imageManager.requestImage(
-                for: asset.asset,
+                for: asset.underlyingAsset,
                 targetSize: CGSize(width: 300, height: 300),
                 contentMode: .aspectFill,
                 options: options) { uiImage, _ in
@@ -26,5 +26,11 @@ struct AssetImageLoader {
 
     enum Error: Swift.Error {
         case imageNotLoaded
+    }
+
+    struct Factory: ImageLoaderFactory {
+        func newImageLoader() -> any ImageLoader {
+            return AssetImageLoader()
+        }
     }
 }

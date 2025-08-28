@@ -1,26 +1,29 @@
-//  Created by Geoff Pado on 8/6/25.
+//  Created by Geoff Pado on 8/28/25.
 //  Copyright © 2025 Cocoatype, LLC. All rights reserved.
 
 import Photos
 import SwiftUI
 
+import FactoryKit
+
 @available(iOS 26.0, *)
-struct PhotoItem: View {
+struct PhotoItemLabel: View {
     private let asset: PhotoAsset
     init(asset: PhotoAsset) {
         self.asset = asset
     }
 
     @State private var image: Image?
+    @Injected(\.imageLoaderFactory) private var imageLoaderFactory
     var body: some View {
         Color.red
             .overlay(contents)
             .clipped()
             .id(asset.id)
-            .task(id: asset.id) {
+            .task(id: asset.id) { @MainActor in
                 do {
-                    // AssetImageLoader is added here because `PHImageRequestOptions` isn't Sendable until Xcode 26
-                    image = try await AssetImageLoader()
+                    image = try await imageLoaderFactory
+                        .newImageLoader()
                         .loadImage(for: asset)
                 } catch {
                     print("error!")
