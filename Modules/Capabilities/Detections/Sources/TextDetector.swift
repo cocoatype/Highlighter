@@ -3,14 +3,16 @@
 
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
-import ObservationsMac
-public typealias HighlighterRecognizedText = ObservationsMac.RecognizedText
-public typealias HighlighterRecognizedTextObservation = ObservationsMac.RecognizedTextObservation
+import struct ObservationsMac.RecognizedText
+import struct ObservationsMac.RecognizedTextObservation
+import struct ObservationsMac.TextRectangleObservation
+import struct ObservationsMac.WordObservation
 #elseif canImport(UIKit)
-import Observations
+import struct Observations.RecognizedText
+import struct Observations.RecognizedTextObservation
+import struct Observations.TextRectangleObservation
+import struct Observations.WordObservation
 import UIKit
-public typealias HighlighterRecognizedText = Observations.RecognizedText
-public typealias HighlighterRecognizedTextObservation = Observations.RecognizedTextObservation
 #endif
 
 import Vision
@@ -55,13 +57,13 @@ open class TextDetector: NSObject {
     }
     #endif
 
-    private func recognizeText(with operation: TextRecognitionOperation) async -> [HighlighterRecognizedText] {
+    private func recognizeText(with operation: TextRecognitionOperation) async -> [RecognizedText] {
         return await withCheckedContinuation { continuation in
             operation.completionBlock = { [weak operation] in
                 // Detect all text in image.
                 guard let operation = operation, let results = operation.recognizedTextResults else { return }
 
-                let candidates = results.compactMap { result -> HighlighterRecognizedText? in
+                let candidates = results.compactMap { result -> RecognizedText? in
                     // For every observation, get the top candidate.
                     guard let topCandidate = result.topCandidates(1).first else {
                         assertionFailure("had zero top candidates")
@@ -77,7 +79,7 @@ open class TextDetector: NSObject {
         }
     }
 
-    private func recognizeTextObservations(with operation: TextRecognitionOperation) async -> [HighlighterRecognizedTextObservation] {
+    private func recognizeTextObservations(with operation: TextRecognitionOperation) async -> [RecognizedTextObservation] {
         await recognizeText(with: operation)
             .compactMap {
                 RecognizedTextObservation($0, imageSize: operation.imageSize)
@@ -95,7 +97,7 @@ open class TextDetector: NSObject {
         try await recognizeWords(with: TextRecognitionOperation(image: image))
     }
 
-    public func detectText(in image: NSImage) async throws -> [HighlighterRecognizedTextObservation] {
+    public func detectText(in image: NSImage) async throws -> [RecognizedTextObservation] {
         try await recognizeTextObservations(with: TextRecognitionOperation(image: image))
     }
     #elseif canImport(UIKit)
@@ -103,7 +105,7 @@ open class TextDetector: NSObject {
         try await recognizeWords(with: TextRecognitionOperation(image: image))
     }
 
-    open func recognizeText(in image: UIImage) async throws -> [HighlighterRecognizedTextObservation] {
+    open func recognizeText(in image: UIImage) async throws -> [RecognizedTextObservation] {
         try await recognizeTextObservations(with: TextRecognitionOperation(image: image))
     }
     #endif
