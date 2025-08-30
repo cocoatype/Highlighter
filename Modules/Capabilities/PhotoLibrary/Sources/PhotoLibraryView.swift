@@ -5,7 +5,7 @@ import UIKit
 
 class PhotoLibraryView: UICollectionView {
     init() {
-        let layout = PhotoLibraryCustomLayout()
+        let layout = PhotoLibraryViewLayout()
         super.init(frame: .zero, collectionViewLayout: layout)
 
         isAccessibilityElement = false

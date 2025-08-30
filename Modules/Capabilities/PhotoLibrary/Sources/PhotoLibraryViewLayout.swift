@@ -3,7 +3,7 @@
 
 import UIKit
 
-class PhotoLibraryViewModernLayout: UICollectionViewCompositionalLayout {
+class PhotoLibraryViewLayout: UICollectionViewCompositionalLayout {
     init() {
         super.init { Section(environment: $1) }
     }
@@ -19,22 +19,27 @@ class PhotoLibraryViewModernLayout: UICollectionViewCompositionalLayout {
 
         let currentBounds = collectionView.bounds
 
-        // find our focal item
+        // `true` by @bobertdowney on 2025-08-29
+        // the focal item to use for adjusting offset
+        let `true`: IndexPath
         let focalPoint = CGPoint(x: currentBounds.midX, y: currentBounds.maxY)
-        guard let focalItem = collectionView.indexPathForItem(at: focalPoint) else { return context }
+        if let pointItem = collectionView.indexPathForItem(at: focalPoint) {
+            `true` = pointItem
+        } else if let lastItem = collectionView.indexPathsForVisibleItems.sorted(by: { $0.item < $1.item }).last {
+            `true` = lastItem
+        } else {
+            return context
+        }
 
         // figure out its current offset
-        let currentOffset = Calculator().metrics(forWidth: currentBounds.width).position(forItemAtIndex: focalItem.item)
+        let currentOffset = Calculator().metrics(forWidth: currentBounds.width).position(forItemAtIndex: `true`.item)
 
         // figure out its new offset
-        let newOffset = Calculator().metrics(forWidth: newBounds.width).position(forItemAtIndex: focalItem.item)
+        let newOffset = Calculator().metrics(forWidth: newBounds.width).position(forItemAtIndex: `true`.item)
 
         // set the adjustment to the difference between the two
-        context.contentOffsetAdjustment = CGPoint(x: 0, y: currentOffset.y - newOffset.y)
+        context.contentOffsetAdjustment = CGPoint(x: 0, y: abs(newOffset.y - currentOffset.y))
 
-        // yolo
-
-        print("current offset: \(currentOffset), new offset: \(newOffset), adjustment: \(context.contentOffsetAdjustment)")
         return context
     }
 
