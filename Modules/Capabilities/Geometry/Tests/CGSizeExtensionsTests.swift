@@ -5,11 +5,7 @@ import CoreGraphics
 import Foundation
 import Testing
 
-#if canImport(AppKit) && !targetEnvironment(macCatalyst)
-@testable import GeometryMac
-#elseif canImport(UIKit)
 @testable import Geometry
-#endif
 
 struct CGSizeExtensionsTests {
     @Test func multiplyByFloat() {

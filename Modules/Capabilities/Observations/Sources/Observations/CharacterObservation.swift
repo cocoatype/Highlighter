@@ -4,11 +4,7 @@
 import CoreGraphics
 import Foundation
 
-#if canImport(AppKit) && !targetEnvironment(macCatalyst)
-import GeometryMac
-#elseif canImport(UIKit)
 import Geometry
-#endif
 
 public struct CharacterObservation: TextObservation, Hashable, RedactableObservation, Sendable {
     public let bounds: Shape

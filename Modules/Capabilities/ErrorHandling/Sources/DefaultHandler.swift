@@ -5,11 +5,7 @@ import Foundation
 
 import FactoryKit
 
-#if canImport(AppKit) && !targetEnvironment(macCatalyst)
-import LoggingMac
-#else
 import Logging
-#endif
 
 struct DefaultHandler: ErrorHandler {
     @Injected(\.logger) private var logger

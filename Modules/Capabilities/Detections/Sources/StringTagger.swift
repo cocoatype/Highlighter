@@ -5,11 +5,7 @@ import Foundation
 
 import FactoryKit
 
-#if canImport(AppKit) && !targetEnvironment(macCatalyst)
-import ErrorHandlingMac
-#elseif canImport(UIKit)
 import ErrorHandling
-#endif
 
 public class StringTagger: NSObject {
     public static func detectNames(in fullTextString: String) -> [Substring] {

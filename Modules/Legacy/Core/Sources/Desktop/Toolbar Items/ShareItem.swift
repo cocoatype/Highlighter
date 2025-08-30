@@ -2,7 +2,6 @@
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
 #if targetEnvironment(macCatalyst)
-import AppKit
 import FactoryKit
 import UniformTypeIdentifiers
 
