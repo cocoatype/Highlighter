@@ -1,7 +1,7 @@
 //  Created by Geoff Pado on 4/17/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
-import SettingsUI
+import MobileSettingsUI
 import UIKit
 
 #if targetEnvironment(macCatalyst)
@@ -14,7 +14,7 @@ class HelpMenuPrivacyAction: UIAction {
 
     // MARK: Boilerplate
 
-    private static let menuItemTitle = SettingsUIStrings.SettingsContentInformationSection.privacyTitle
+    private static let menuItemTitle = MobileSettingsUIStrings.SettingsContentInformationSection.privacyTitle
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

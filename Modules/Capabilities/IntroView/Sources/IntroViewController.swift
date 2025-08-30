@@ -9,9 +9,9 @@ import FactoryKit
 
 import AppNavigation
 import Logging
+import MobileSettingsUI
 import PhotoPermissions
 import PhotoPicker
-import SettingsUI
 
 public class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
     public init(

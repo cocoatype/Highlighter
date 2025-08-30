@@ -10,7 +10,7 @@ import AlbumsData
 import Defaults
 import Editing
 import Logging
-import SettingsUI
+import MobileSettingsUI
 import UserActivities
 
 class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate, PHPhotoLibraryChangeObserver {

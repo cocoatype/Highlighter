@@ -12,7 +12,8 @@ import LoggingDoubles
 
 @MainActor @Suite(.container)
 struct UnpurchasedAlertControllerTests {
-    @Test func viewDidAppear() {
+    @Test @available(iOS 18.0, *)
+    func viewDidAppear() {
         let logger = SpyLogger()
         Container.shared.logger.register { logger }
 

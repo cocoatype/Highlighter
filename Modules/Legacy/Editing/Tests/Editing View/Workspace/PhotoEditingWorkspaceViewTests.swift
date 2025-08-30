@@ -11,6 +11,7 @@ import LoggingDoubles
 @testable import Editing
 @testable import Logging
 
+@MainActor
 class PhotoEditingWorkspaceViewTests: XCTestCase {
     func testBackgroundColorOnDesktopLightMode() throws {
         try TestHelpers.runOnMacCatalyst()
@@ -68,6 +69,7 @@ class PhotoEditingWorkspaceViewTests: XCTestCase {
         }
     }
 
+    @available(iOS 18.0, *)
     func testWhenHandleStrokeCompletionThenEventLogged() throws {
         let logger = SpyLogger()
         Container.shared.logger.register { logger }

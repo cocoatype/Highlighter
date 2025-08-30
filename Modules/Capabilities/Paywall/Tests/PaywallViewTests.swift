@@ -13,7 +13,7 @@ import LoggingDoubles
 
 @MainActor @Suite(.container)
 struct PaywallViewTests {
-    @available(iOS 16.0, *)
+    @available(iOS 18.0, *)
     @Test func appearanceLoggedOnAppear() throws {
         let logger = SpyLogger()
         Container.shared.logger.register { logger }
