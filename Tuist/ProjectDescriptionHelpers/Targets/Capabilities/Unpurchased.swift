@@ -8,7 +8,7 @@ public enum Unpurchased {
         dependencies: [
             .target(Defaults.target),
             .target(DesignSystem.target),
-            .target(Logging.target(sdk: .catalyst)),
+            .target(Logging.target),
             .external(name: "FactoryKit"),
         ]
     )

@@ -8,9 +8,9 @@ public enum MobileAutoRedactionsUI {
         dependencies: [
             .target(Defaults.target),
             .target(DesignSystem.target),
-            .target(Detections.target(sdk: .catalyst)),
-            .target(ErrorHandling.target(sdk: .catalyst)),
-            .target(Logging.target(sdk: .catalyst)),
+            .target(Detections.target),
+            .target(ErrorHandling.target),
+            .target(Logging.target),
             .external(name: "FactoryKit"),
         ]
     )

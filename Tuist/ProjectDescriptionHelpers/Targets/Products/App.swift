@@ -10,7 +10,7 @@ import ProjectDescription
 public enum App {
     public static let target = Target.target(
         name: "Highlighter",
-        destinations: SDK.catalyst.destinations,
+        destinations: [.iPhone, .iPad, .macCatalyst, .appleVisionWithiPadDesign],
         product: .app,
         bundleId: "com.cocoatype.Highlighter",
         infoPlist: "App/Info.plist",

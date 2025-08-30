@@ -7,8 +7,8 @@ public enum Paywall {
         usesMaxSwiftVersion: true,
         dependencies: [
             .target(DesignSystem.target),
-            .target(ErrorHandling.target(sdk: .catalyst)),
-            .target(Logging.target(sdk: .catalyst)),
+            .target(ErrorHandling.target),
+            .target(Logging.target),
             .target(Purchasing.doublesTarget),
             .target(Purchasing.target),
             .target(TestHelpers.interfaceTarget),

@@ -3,14 +3,13 @@ import ProjectDescription
 extension Target {
     static func capabilitiesTarget(
         name: String,
-        sdk: SDK = .catalyst,
         hasResources: Bool = false,
         usesMaxSwiftVersion: Bool = true,
         dependencies: [TargetDependency] = []
     ) -> Target {
         Target.target(
-            name: name + sdk.nameSuffix,
-            destinations: sdk.destinations,
+            name: name,
+            destinations: [.iPhone, .iPad, .macCatalyst, .appleVisionWithiPadDesign],
             product: .framework,
             bundleId: "com.cocoatype.Highlighter.\(name)",
             sources: ["Modules/Capabilities/\(name)/Sources/**"],
@@ -30,14 +29,12 @@ extension Target {
 
     static func capabilitiesTestTarget(
         name: String,
-        sdk: SDK = .catalyst,
         hasResources: Bool = false,
         usesMaxSwiftVersion: Bool = true,
         dependencies: [TargetDependency] = []
     ) -> Target {
         moduleTestTarget(
             name: name,
-            sdk: sdk,
             type: "Capabilities",
             hasResources: hasResources,
             usesMaxSwiftVersion: usesMaxSwiftVersion,
@@ -47,20 +44,19 @@ extension Target {
 
     static func moduleTestTarget(
         name: String,
-        sdk: SDK,
         type: String,
         hasResources: Bool = false,
         usesMaxSwiftVersion: Bool = true,
         dependencies: [TargetDependency] = []
     ) -> Target {
         return Target.target(
-            name: "\(name + sdk.nameSuffix)Tests",
-            destinations: sdk.destinations,
+            name: "\(name)Tests",
+            destinations: [.iPhone, .iPad, .macCatalyst, .appleVisionWithiPadDesign],
             product: .unitTests,
-            bundleId: "com.cocoatype.Highlighter.\(name + sdk.nameSuffix)Tests",
+            bundleId: "com.cocoatype.Highlighter.\(name)Tests",
             sources: ["Modules/\(type)/\(name)/Tests/**"],
             resources: hasResources ? ["Modules/\(type)/\(name)/TestResources/**"] : nil,
-            dependencies: [.target(name: name + sdk.nameSuffix)] + dependencies,
+            dependencies: [.target(name: name)] + dependencies,
             settings: .settings(
                 base: [
                     "SWIFT_VERSION": (usesMaxSwiftVersion ? "$(SWIFT_MAX_VERSION)" : "$(inherited)"),
@@ -74,17 +70,16 @@ extension Target {
 
     static func capabilitiesDoublesTarget(
         name: String,
-        sdk: SDK = .catalyst,
         usesMaxSwiftVersion: Bool = true
     ) -> Target {
         return Target.target(
-            name: "\(name + sdk.nameSuffix)Doubles",
-            destinations: sdk.destinations,
+            name: "\(name)Doubles",
+            destinations: [.iPhone, .iPad, .macCatalyst, .appleVisionWithiPadDesign],
             product: .framework,
-            bundleId: "com.cocoatype.Highlighter.\(name + sdk.nameSuffix)Doubles",
+            bundleId: "com.cocoatype.Highlighter.\(name)Doubles",
             sources: ["Modules/Capabilities/\(name)/Doubles/**"],
             dependencies: [
-                .target(name: name + sdk.nameSuffix),
+                .target(name: name),
                 .target(TestHelpers.interfaceTarget),
             ],
             settings: .settings(

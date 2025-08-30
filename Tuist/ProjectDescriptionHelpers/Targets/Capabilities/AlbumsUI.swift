@@ -9,7 +9,7 @@ public enum AlbumsUI {
             .target(AlbumsData.target),
             .target(AppNavigation.target),
             .target(DesignSystem.target),
-            .target(Redactions.target(sdk: .catalyst)),
+            .target(Redactions.target),
             .external(name: "SwiftUIIntrospect"),
         ]
     )

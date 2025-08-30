@@ -10,7 +10,7 @@ import ProjectDescription
 public enum Photo {
     public static let target = Target.target(
         name: "Photo",
-        destinations: SDK.catalyst.destinations,
+        destinations: [.iPhone, .iPad, .macCatalyst, .appleVisionWithiPadDesign],
         product: .appExtension,
         bundleId: "com.cocoatype.Highlighter.Photo",
         infoPlist: "Photo/Info.plist",
@@ -20,9 +20,9 @@ public enum Photo {
         ] + Shared.resources),
         dependencies: [
             .target(Editing.target),
-            .target(ErrorHandling.target(sdk: .catalyst)),
+            .target(ErrorHandling.target),
             .target(Exporting.target),
-            .target(Redactions.target(sdk: .catalyst)),
+            .target(Redactions.target),
             .external(name: "FactoryKit"),
             .sdk(name: "PhotosUI", type: .framework),
         ],

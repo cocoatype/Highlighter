@@ -3,7 +3,7 @@ import ProjectDescription
 public enum TestHelpers {
     public static let target = Target.target(
         name: "TestHelpers",
-        destinations: SDK.catalyst.destinations,
+        destinations: [.iPhone, .iPad, .macCatalyst, .appleVisionWithiPadDesign],
         product: .framework,
         bundleId: "com.cocoatype.Highlighter.TestHelpers",
         sources: ["Modules/TestHelpers/Sources/**"],

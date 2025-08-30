@@ -5,7 +5,7 @@ public enum Purchasing {
         name: "Purchasing",
         usesMaxSwiftVersion: false,
         dependencies: [
-            .target(ErrorHandling.target(sdk: .catalyst)),
+            .target(ErrorHandling.target),
             .external(name: "FactoryKit"),
         ]
     )

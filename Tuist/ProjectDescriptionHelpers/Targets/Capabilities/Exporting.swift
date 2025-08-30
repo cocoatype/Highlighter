@@ -8,11 +8,11 @@ public enum Exporting {
         dependencies: [
             .target(Defaults.target),
             .target(DesignSystem.target),
-            .target(ErrorHandling.target(sdk: .catalyst)),
-            .target(Geometry.target(sdk: .catalyst)),
-            .target(Logging.target(sdk: .catalyst)),
-            .target(Redactions.target(sdk: .catalyst)),
-            .target(Rendering.target(sdk: .catalyst)),
+            .target(ErrorHandling.target),
+            .target(Geometry.target),
+            .target(Logging.target),
+            .target(Redactions.target),
+            .target(Rendering.target),
             .external(name: "FactoryKit"),
         ]
     )
@@ -23,7 +23,7 @@ public enum Exporting {
             .target(Defaults.target),
             .target(Defaults.doublesTarget),
             .target(Logging.doublesTarget),
-            .target(Logging.target(sdk: .catalyst)),
+            .target(Logging.target),
             .external(name: "FactoryKit"),
             .external(name: "FactoryTesting"),
         ]
