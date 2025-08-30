@@ -10,7 +10,7 @@ import ProjectDescription
 public enum Action {
     public static let target = Target.target(
         name: "Action",
-        destinations: SDK.catalyst.destinations,
+        destinations: [.iPhone, .iPad, .macCatalyst, .appleVisionWithiPadDesign],
         product: .appExtension,
         bundleId: "com.cocoatype.Highlighter.Action",
         infoPlist: "Action/Info.plist",
@@ -22,7 +22,7 @@ public enum Action {
         dependencies: [
             .target(DesignSystem.target),
             .target(Editing.target),
-            .target(ErrorHandling.target(sdk: .catalyst)),
+            .target(ErrorHandling.target),
             .external(name: "FactoryKit"),
         ],
         settings: .settings(

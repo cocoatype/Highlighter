@@ -8,7 +8,7 @@ public enum IntroView {
         dependencies: [
             .target(AppNavigation.target),
             .target(DesignSystem.target),
-            .target(Logging.target(sdk: .catalyst)),
+            .target(Logging.target),
             .target(MobileSettingsUI.target),
             .target(PhotoPermissions.target),
             .target(PhotoPicker.target),

@@ -9,7 +9,7 @@ public enum DocumentScanning {
             .target(AppNavigation.target),
             .target(DesignSystem.target),
             .target(Editing.target),
-            .target(Logging.target(sdk: .catalyst)),
+            .target(Logging.target),
             .target(Purchasing.target),
             .target(Unpurchased.target),
             .external(name: "FactoryKit"),

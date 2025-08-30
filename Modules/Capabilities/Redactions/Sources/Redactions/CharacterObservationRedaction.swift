@@ -1,29 +1,6 @@
 //  Created by Geoff Pado on 5/15/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
-#if canImport(AppKit) && !targetEnvironment(macCatalyst)
-import AppKit
-import GeometryMac
-import ObservationsMac
-
-extension Redaction {
-    public init?(_ characterObservations: [CharacterObservation], color: NSColor) {
-        guard characterObservations.count > 0 else { return nil }
-
-        let parts = characterObservations.reduce(into: [UUID: [CharacterObservation]]()) { result, characterObservation in
-            let textObservationUUID = characterObservation.textObservationUUID
-            var siblingObservations = result[textObservationUUID] ?? []
-            siblingObservations.append(characterObservation)
-            result[textObservationUUID] = siblingObservations
-        }.values.map { siblingObservations in
-            MinimumAreaShapeFinder.minimumAreaShape(for: siblingObservations.map(\.bounds))
-        }.map(RedactionPart.shape)
-
-        self.init(color: color, parts: parts)
-    }
-}
-
-#elseif canImport(UIKit)
 import Geometry
 import Observations
 import UIKit
@@ -44,4 +21,3 @@ extension Redaction {
         self.init(color: color, parts: parts)
     }
 }
-#endif

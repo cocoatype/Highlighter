@@ -1,17 +1,14 @@
 import ProjectDescription
 
 public enum Detections {
-    public static func target(sdk: SDK) -> Target {
-        Target.capabilitiesTarget(
-            name: "Detections",
-            sdk: sdk,
-            usesMaxSwiftVersion: true,
-            dependencies: [
-                .target(ErrorHandling.target(sdk: sdk)),
-                .target(Observations.target(sdk: sdk)),
-            ]
-        )
-    }
+    public static let target = Target.capabilitiesTarget(
+        name: "Detections",
+        usesMaxSwiftVersion: true,
+        dependencies: [
+            .target(ErrorHandling.target),
+            .target(Observations.target),
+        ]
+    )
 
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Detections",

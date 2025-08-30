@@ -7,7 +7,7 @@ public enum AlbumsData {
         usesMaxSwiftVersion: false,
         dependencies: [
             .target(DesignSystem.target),
-            .target(ErrorHandling.target(sdk: .catalyst)),
+            .target(ErrorHandling.target),
         ]
     )
 

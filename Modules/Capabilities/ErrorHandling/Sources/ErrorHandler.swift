@@ -3,11 +3,7 @@
 
 import Foundation
 
-#if canImport(AppKit) && !targetEnvironment(macCatalyst)
-import LoggingMac
-#else
 import Logging
-#endif
 
 public protocol ErrorHandler: Sendable {
     func log(_ error: Error, module: StaticString, type: StaticString)

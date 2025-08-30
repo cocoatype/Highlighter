@@ -1,14 +1,10 @@
 //  Created by Geoff Pado on 5/17/22.
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
-#if canImport(AppKit) && !targetEnvironment(macCatalyst)
-import GeometryMac
-#elseif canImport(UIKit)
-import Geometry
-#endif
-
 import Foundation
 import Vision
+
+import Geometry
 
 public struct RecognizedTextObservation: TextObservation, RedactableObservation {
     public init?(_ recognizedText: RecognizedText, imageSize: CGSize) {

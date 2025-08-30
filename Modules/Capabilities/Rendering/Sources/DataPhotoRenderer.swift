@@ -1,64 +1,13 @@
 //  Created by Geoff Pado on 7/18/22.
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
-#if canImport(AppKit) && !targetEnvironment(macCatalyst)
-import AppKit
-import BrushesMac
-import GeometryMac
-import RedactionsMac
-#elseif canImport(UIKit)
 import Brushes
 import Geometry
 import ImageIO
 import Redactions
 import UIKit
-#endif
 
 struct DataPhotoRenderer: PhotoRenderer {
-    #if canImport(AppKit) && !targetEnvironment(macCatalyst)
-    public func render(
-        image: NSImage,
-        redactions: [Redaction]
-    ) throws -> NSImage {
-        guard let sourceImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)
-        else { throw PhotoRenderError.noCGImage }
-
-        let imageSize = sourceImage.size
-        let context = try createImageContext(size: sourceImage.size, scale: 1)
-
-        let cgImage = try render(
-            sourceImage: sourceImage,
-            redactions: redactions,
-            context: context,
-            orientation: .up,
-            flipped: false
-        )
-        return NSImage(cgImage: cgImage, size: imageSize)
-    }
-
-    private func createImageContext(
-        size: CGSize,
-        scale: CGFloat
-    ) throws -> CGContext {
-        guard let imageRep = NSBitmapImageRep(
-            bitmapDataPlanes: nil,
-            pixelsWide: Int(size.width),
-            pixelsHigh: Int(size.height),
-            bitsPerSample: 8,
-            samplesPerPixel: 4,
-            hasAlpha: true,
-            isPlanar: false,
-            colorSpaceName: .deviceRGB,
-            bytesPerRow: Int(size.width) * 4,
-            bitsPerPixel: 32
-        ),
-              let graphicsContext = NSGraphicsContext(bitmapImageRep: imageRep)
-        else { throw PhotoRenderError.noCurrentGraphicsContext }
-        return graphicsContext.cgContext
-    }
-
-    private func discardImageContext() {}
-    #elseif canImport(UIKit)
     public init() {}
 
     public func render(
@@ -97,7 +46,6 @@ struct DataPhotoRenderer: PhotoRenderer {
     private func discardImageContext() {
         UIGraphicsEndImageContext()
     }
-    #endif
 
     func render(
         imageSource: CGImageSource,
@@ -176,7 +124,7 @@ struct DataPhotoRenderer: PhotoRenderer {
         context.restoreGState()
 
         // draw redactions
-        let drawings = redactions.flatMap { redaction -> [(part: RedactionPart, color: RedactionColor)] in
+        let drawings = redactions.flatMap { redaction -> [(part: RedactionPart, color: UIColor)] in
             return redaction.parts
                 .map { (part: $0, color: redaction.color) }
         }

@@ -1,14 +1,10 @@
 //  Created by Geoff Pado on 5/17/22.
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
-#if canImport(AppKit) && !targetEnvironment(macCatalyst)
-import GeometryMac
-#elseif canImport(UIKit)
-import Geometry
-#endif
-
 import CoreGraphics
 import Foundation
+
+import Geometry
 
 public struct WordObservation: TextObservation {
     init?(recognizedText: RecognizedText, string: String, range: Range<String.Index>, imageSize: CGSize) {

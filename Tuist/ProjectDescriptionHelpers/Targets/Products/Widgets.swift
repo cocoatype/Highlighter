@@ -15,7 +15,7 @@ public enum Widgets {
         ]),
         entitlements: "Widgets/Widgets.entitlements",
         dependencies: [
-            .target(Logging.target(sdk: .catalyst)),
+            .target(Logging.target),
             .target(Shortcuts.target),
         ],
         settings: .settings(

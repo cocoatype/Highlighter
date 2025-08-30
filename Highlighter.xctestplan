@@ -38,11 +38,6 @@
         },
         {
           "containerPath" : "container:Highlighter.xcodeproj",
-          "identifier" : "7AA4B6F1867D582F2DEFAD5C",
-          "name" : "BrushesMac"
-        },
-        {
-          "containerPath" : "container:Highlighter.xcodeproj",
           "identifier" : "619535A22AA80D4F075D6C37",
           "name" : "Core"
         },
@@ -68,11 +63,6 @@
         },
         {
           "containerPath" : "container:Highlighter.xcodeproj",
-          "identifier" : "4E9CADC5FBE10487F2347A7F",
-          "name" : "DetectionsMac"
-        },
-        {
-          "containerPath" : "container:Highlighter.xcodeproj",
           "identifier" : "389704E2C6DE6EDBB0ECA2D4",
           "name" : "Editing"
         },
@@ -80,11 +70,6 @@
           "containerPath" : "container:Highlighter.xcodeproj",
           "identifier" : "F48A8CEBD488537B62B38200",
           "name" : "ErrorHandling"
-        },
-        {
-          "containerPath" : "container:Highlighter.xcodeproj",
-          "identifier" : "1181ECADAE372FAEC16F7AFE",
-          "name" : "ErrorHandlingMac"
         },
         {
           "containerPath" : "container:Highlighter.xcodeproj",
@@ -98,28 +83,13 @@
         },
         {
           "containerPath" : "container:Highlighter.xcodeproj",
-          "identifier" : "DCE2BCD11D46D936583FCE07",
-          "name" : "GeometryMac"
-        },
-        {
-          "containerPath" : "container:Highlighter.xcodeproj",
           "identifier" : "5E040A936A384EB47A9D3B38",
           "name" : "Logging"
         },
         {
           "containerPath" : "container:Highlighter.xcodeproj",
-          "identifier" : "6BB86E84C851E779F7D1D919",
-          "name" : "LoggingMac"
-        },
-        {
-          "containerPath" : "container:Highlighter.xcodeproj",
           "identifier" : "8DE7A186F818CE62B5C6BEDC",
           "name" : "Observations"
-        },
-        {
-          "containerPath" : "container:Highlighter.xcodeproj",
-          "identifier" : "AE01374A7EC37FE5B5AB517B",
-          "name" : "ObservationsMac"
         },
         {
           "containerPath" : "container:Highlighter.xcodeproj",
@@ -133,18 +103,8 @@
         },
         {
           "containerPath" : "container:Highlighter.xcodeproj",
-          "identifier" : "216BAA9077C2935D03C4FF37",
-          "name" : "RedactionsMac"
-        },
-        {
-          "containerPath" : "container:Highlighter.xcodeproj",
           "identifier" : "9DFF499E80136CC33E8AC248",
           "name" : "Rendering"
-        },
-        {
-          "containerPath" : "container:Highlighter.xcodeproj",
-          "identifier" : "3D4E523088C71B443D3AFF3E",
-          "name" : "RenderingMac"
         },
         {
           "containerPath" : "container:Highlighter.xcodeproj",

@@ -1,24 +1,21 @@
 import ProjectDescription
 
 public enum ErrorHandling {
-    public static func target(sdk: SDK) -> Target {
-        Target.capabilitiesTarget(
-            name: "ErrorHandling",
-            sdk: sdk,
-            usesMaxSwiftVersion: true,
-            dependencies: [
-                .target(Logging.target(sdk: sdk)),
-                .external(name: "FactoryKit"),
-            ]
-        )
-    }
+    public static let target = Target.capabilitiesTarget(
+        name: "ErrorHandling",
+        usesMaxSwiftVersion: true,
+        dependencies: [
+            .target(Logging.target),
+            .external(name: "FactoryKit"),
+        ]
+    )
 
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "ErrorHandling",
         usesMaxSwiftVersion: true,
         dependencies: [
             .target(Logging.doublesTarget),
-            .target(Logging.target(sdk: .catalyst)),
+            .target(Logging.target),
             .external(name: "FactoryKit"),
             .external(name: "FactoryTesting"),
         ]

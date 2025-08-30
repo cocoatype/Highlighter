@@ -10,7 +10,7 @@ import ProjectDescription
 public enum App {
     public static let target = Target.target(
         name: "Highlighter",
-        destinations: SDK.catalyst.destinations,
+        destinations: [.iPhone, .iPad, .macCatalyst, .appleVisionWithiPadDesign],
         product: .app,
         bundleId: "com.cocoatype.Highlighter",
         infoPlist: "App/Info.plist",
@@ -23,7 +23,6 @@ public enum App {
         entitlements: "App/Highlighter.entitlements",
         dependencies: [
             .target(Action.target, condition: .when([.ios])),
-            .target(AutomatorActions.target, condition: .when([.catalyst])),
             .target(Core.target),
             .target(Photo.target, condition: .when([.ios])),
             .target(Shortcuts.target),

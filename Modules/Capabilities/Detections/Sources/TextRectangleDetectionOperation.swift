@@ -2,34 +2,20 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import OSLog
+import UIKit
 import Vision
 
 import FactoryKit
 
-#if canImport(UIKit)
-import UIKit
 import ErrorHandling
-#elseif canImport(AppKit)
-import AppKit
-import ErrorHandlingMac
-#endif
 
 class TextRectangleDetectionOperation: Operation, @unchecked Sendable {
-    #if canImport(UIKit)
     init?(image: UIImage) {
         guard let cgImage = image.cgImage else { return nil }
         self.imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: image.imageOrientation.cgImagePropertyOrientation)
 
         super.init()
     }
-    #elseif canImport(AppKit)
-    init?(image: NSImage) {
-        var imageRect = NSRect(origin: .zero, size: image.size)
-        guard let cgImage = image.cgImage(forProposedRect: &imageRect, context: nil, hints: nil) else { return nil }
-
-        self.imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: .up)
-    }
-    #endif
 
     var textRectangleResults: [VNTextObservation]?
 

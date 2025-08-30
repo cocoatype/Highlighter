@@ -1,24 +1,21 @@
 import ProjectDescription
 
 public enum Redactions {
-    public static func target(sdk: SDK) -> Target {
-        Target.capabilitiesTarget(
-            name: "Redactions",
-            sdk: sdk,
-            usesMaxSwiftVersion: true,
-            dependencies: [
-                .target(ErrorHandling.target(sdk: sdk)),
-                .target(Geometry.target(sdk: sdk)),
-                .target(Observations.target(sdk: sdk)),
-            ]
-        )
-    }
+    public static let target = Target.capabilitiesTarget(
+        name: "Redactions",
+        usesMaxSwiftVersion: true,
+        dependencies: [
+            .target(ErrorHandling.target),
+            .target(Geometry.target),
+            .target(Observations.target),
+        ]
+    )
 
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Redactions",
         dependencies: [
-            .target(Geometry.target(sdk: .catalyst)),
-            .target(Observations.target(sdk: .catalyst)),
+            .target(Geometry.target),
+            .target(Observations.target),
             .target(TestHelpers.target),
         ]
     )

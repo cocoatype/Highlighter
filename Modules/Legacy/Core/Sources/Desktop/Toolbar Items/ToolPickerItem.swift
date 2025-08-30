@@ -2,7 +2,6 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 #if targetEnvironment(macCatalyst)
-import AppKit
 import Editing
 import Tools
 import UIKit

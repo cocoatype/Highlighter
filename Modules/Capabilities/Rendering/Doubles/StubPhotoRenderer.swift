@@ -9,7 +9,7 @@ import Rendering
 public struct StubPhotoRenderer: PhotoRenderer {
     public init() {}
 
-    public func render(image: PhotoRendererImage, redactions: [Redaction]) async throws -> PhotoRendererImage {
+    public func render(image: UIImage, redactions: [Redaction]) async throws -> UIImage {
         guard let image = UIImage(systemName: "bolt")
         else { throw StubPhotoRendererError.systemImageMissing }
 

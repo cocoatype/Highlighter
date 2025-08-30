@@ -7,7 +7,7 @@ public enum MobileSettingsUI {
         usesMaxSwiftVersion: true,
         dependencies: [
             .target(Defaults.target),
-            .target(ErrorHandling.target(sdk: .catalyst)),
+            .target(ErrorHandling.target),
             .target(MobileAutoRedactionsUI.target),
             .target(Paywall.target),
             .target(Purchasing.doublesTarget),

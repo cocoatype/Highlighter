@@ -7,7 +7,7 @@ public enum UserActivities {
         usesMaxSwiftVersion: true,
         dependencies: [
             .target(AlbumsData.target),
-            .target(Redactions.target(sdk: .catalyst)),
+            .target(Redactions.target),
         ]
     )
 

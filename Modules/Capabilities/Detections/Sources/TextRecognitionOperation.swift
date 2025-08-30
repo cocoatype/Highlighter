@@ -3,28 +3,14 @@
 
 import Foundation
 import OSLog
+import UIKit
 import Vision
 
 import FactoryKit
 
-#if canImport(AppKit) && !targetEnvironment(macCatalyst)
-import AppKit
-import ErrorHandlingMac
-#elseif canImport(UIKit)
-import UIKit
 import ErrorHandling
-#endif
 
 class TextRecognitionOperation: Operation, @unchecked Sendable {
-    #if canImport(AppKit) && !targetEnvironment(macCatalyst)
-    init(image: NSImage) throws {
-        var imageRect = NSRect(origin: .zero, size: image.size)
-        guard let cgImage = image.cgImage(forProposedRect: &imageRect, context: nil, hints: nil) else { throw TextRecognitionOperationError.cannotCreateCGImageFromImage }
-
-        self.imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: .up)
-        self.imageSize = CGSize(width: cgImage.width, height: cgImage.height)
-    }
-    #elseif canImport(UIKit)
     init(image: UIImage) throws {
         guard let cgImage = image.cgImage else { throw TextRecognitionOperationError.cannotCreateCGImageFromImage }
         self.imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: image.imageOrientation.cgImagePropertyOrientation)
@@ -32,7 +18,6 @@ class TextRecognitionOperation: Operation, @unchecked Sendable {
 
         super.init()
     }
-    #endif
 
     var recognizedTextResults: [VNRecognizedTextObservation]?
     let imageSize: CGSize
