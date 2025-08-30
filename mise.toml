@@ -1,12 +1,16 @@
 [tasks.generate]
-run = "burgerburgerburg generate"
+run = "tuist generate"
 
 [tasks.lint]
 run = "swiftlint lint"
 
 [tasks.module]
-run = "burgerburgerburg scaffold module --name"
+run = "tuist scaffold module --name"
+
+[tasks.spm-install]
+run = "tuist install"
 
 [tools]
 ruby = "3.3.4"
 swiftlint = "0.58.2"
+tuist = "4.65.5"
