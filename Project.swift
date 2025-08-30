@@ -9,7 +9,6 @@ let project = Project(
         // products
         App.target,
         Action.target,
-        AutomatorActions.target,
         Photo.target,
         Widgets.target,
         // modules
