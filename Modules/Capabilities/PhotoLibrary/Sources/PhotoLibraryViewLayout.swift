@@ -5,7 +5,12 @@ import UIKit
 
 class PhotoLibraryViewLayout: UICollectionViewCompositionalLayout {
     init() {
-        super.init { Section(environment: $1) }
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.contentInsetsReference = .none
+        super.init(
+            sectionProvider: { Section(environment: $1) },
+            configuration: configuration
+        )
     }
 
     @available(*, unavailable)
