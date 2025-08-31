@@ -3,6 +3,7 @@ import ProjectDescription
 public enum Shared {
     static let resources: [ResourceFileElement] = [
         "App/Resources/Assets.xcassets",
+        "App/Resources/AppIcon.icon",
     ]
 
     public static let settings: Settings = .settings(base: [
