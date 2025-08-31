@@ -129,12 +129,13 @@ platform :mac do
         method: "app-store",
         provisioningProfiles: {
           "com.cocoatype.Highlighter" => "match AppStore com.cocoatype.Highlighter catalyst"
-        }
+        },
+        teamID: "287EDDET2B",
       })
 
     # Just upload the build to TestFlight, no other changes
     upload_to_app_store(
-      api_key_path: ENV["APPLE_API_KEY_JSON"],      
+      api_key_path: ENV["APPLE_API_KEY_JSON"],
       app_identifier: "com.cocoatype.Highlighter",
       platform: "osx",
       precheck_include_in_app_purchases: false,
