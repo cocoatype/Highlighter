@@ -25,28 +25,22 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
         addSubview(redactionView)
         addSubview(brushStrokeView)
 
-        NSLayoutConstraint.activate([
-            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            imageView.widthAnchor.constraint(equalTo: widthAnchor),
-            imageView.heightAnchor.constraint(equalTo: heightAnchor),
-            visualizationView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            visualizationView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            visualizationView.widthAnchor.constraint(equalTo: widthAnchor),
-            visualizationView.heightAnchor.constraint(equalTo: heightAnchor),
-            debugView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            debugView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            debugView.widthAnchor.constraint(equalTo: widthAnchor),
-            debugView.heightAnchor.constraint(equalTo: heightAnchor),
-            redactionView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            redactionView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            redactionView.widthAnchor.constraint(equalTo: widthAnchor),
-            redactionView.heightAnchor.constraint(equalTo: heightAnchor),
-            brushStrokeView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            brushStrokeView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            brushStrokeView.widthAnchor.constraint(equalTo: widthAnchor),
-            brushStrokeView.heightAnchor.constraint(equalTo: heightAnchor),
-        ])
+        func constraints(for view: UIView) -> [NSLayoutConstraint] {
+            [
+                view.centerXAnchor.constraint(equalTo: centerXAnchor),
+                view.centerYAnchor.constraint(equalTo: centerYAnchor),
+                view.widthAnchor.constraint(equalTo: widthAnchor),
+                view.heightAnchor.constraint(equalTo: heightAnchor),
+            ]
+        }
+
+        NSLayoutConstraint.activate(
+            constraints(for: imageView) +
+            constraints(for: visualizationView) +
+            constraints(for: debugView) +
+            constraints(for: redactionView) +
+            constraints(for: brushStrokeView)
+        )
 
         brushStrokeView.addTarget(self, action: #selector(handleStrokeBegin), for: .touchDown)
         brushStrokeView.addTarget(self, action: #selector(handleStrokeCompletion), for: .touchUpInside)
