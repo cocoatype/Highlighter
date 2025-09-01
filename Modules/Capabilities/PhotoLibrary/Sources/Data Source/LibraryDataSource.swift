@@ -3,5 +3,4 @@
 
 protocol LibraryDataSource {
     var itemsCount: Int { get }
-    func item(at index: Int) -> PhotoLibraryItem
 }

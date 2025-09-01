@@ -3,19 +3,34 @@
 
 import UIKit
 
+import FactoryKit
+
 import AppNavigation
 import DesignSystem
+import Logging
 
 public class DocumentScannerBarButtonItem: UIBarButtonItem {
     public static var standard: DocumentScannerBarButtonItem {
         let standard = DocumentScannerBarButtonItem(
             image: Icons.scanDocument,
             style: .plain,
-            target: nil,
-            action: #selector(DocumentScannerPresenting.presentDocumentCameraViewController)
+            target: self,
+            action: #selector(presentDocumentScanner(_:))
         )
         standard.accessibilityLabel = DocumentScanningStrings.DocumentScannerBarButtonItem.accessibilityLabel
         return standard
+    }
+
+    @objc static func presentDocumentScanner(_ sender: Any) {
+        let logger = Container.shared.logger()
+        logger.log(EventFactory().scannerPresentationEvent(for: .library))
+        UIApplication.shared
+            .sendAction(
+                #selector(DocumentScannerPresenting.presentDocumentCameraViewController),
+                to: nil,
+                from: sender,
+                for: nil
+            )
     }
 
     // MARK: Boilerplate

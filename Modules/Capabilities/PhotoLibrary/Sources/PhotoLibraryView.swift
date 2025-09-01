@@ -11,11 +11,6 @@ class PhotoLibraryView: UICollectionView {
         isAccessibilityElement = false
 
         register(AssetPhotoLibraryViewCell.self, forCellWithReuseIdentifier: AssetPhotoLibraryViewCell.identifier)
-        register(DocumentScannerPhotoLibraryViewCell.self, forCellWithReuseIdentifier: DocumentScannerPhotoLibraryViewCell.identifier)
-
-        #if !targetEnvironment(macCatalyst)
-        register(LimitedLibraryPhotoLibraryViewCell.self, forCellWithReuseIdentifier: LimitedLibraryPhotoLibraryViewCell.identifier)
-        #endif
 
         backgroundColor = .primary
     }
