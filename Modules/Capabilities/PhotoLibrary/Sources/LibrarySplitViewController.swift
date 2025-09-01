@@ -42,7 +42,7 @@ public class LibrarySplitViewController: SplitViewController, PhotoCollectionPre
 
     // MARK: Limited Library
 
-    public func presentLimitedLibrary() {
+    @objc public func presentLimitedLibrary() {
         PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: self)
     }
 

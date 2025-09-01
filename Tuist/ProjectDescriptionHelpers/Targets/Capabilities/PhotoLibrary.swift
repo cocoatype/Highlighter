@@ -11,6 +11,7 @@ public enum PhotoLibrary {
             .target(AppNavigation.target),
             .target(Defaults.target),
             .target(DesignSystem.target),
+            .target(DocumentScanning.target),
             .target(Editing.target),
             .target(ErrorHandling.target),
             .target(Geometry.target),

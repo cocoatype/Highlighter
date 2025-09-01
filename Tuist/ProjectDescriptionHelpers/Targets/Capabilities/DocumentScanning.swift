@@ -7,6 +7,7 @@ public enum DocumentScanning {
         usesMaxSwiftVersion: true,
         dependencies: [
             .target(AppNavigation.target),
+            .target(BarBuilder.target),
             .target(DesignSystem.target),
             .target(Editing.target),
             .target(Logging.target),

@@ -23,7 +23,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         PHPhotoLibrary.shared().register(self)
 
         navigationItem.title = collection.title ?? PhotoLibraryStrings.PhotoLibraryViewController.navigationItemTitle
-        navigationItem.rightBarButtonItem = SettingsBarButtonItem.standard
+        navigationItem.rightBarButtonItems = PhotoLibraryBarButtonsProvider().trailingNavigationItems.reversed()
 
         hideDocumentScannerObserver = NotificationCenter.default.addObserver(
             for: Keys.hideDocumentScanner
