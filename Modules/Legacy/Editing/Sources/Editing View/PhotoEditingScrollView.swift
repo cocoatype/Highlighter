@@ -1,19 +1,26 @@
 //  Created by Geoff Pado on 4/27/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import UIKit
+
 import Geometry
 import Observations
-import UIKit
+import Redactions
+import Tools
 
 class PhotoEditingScrollView: UIScrollView {
     init() {
         workspaceView = PhotoEditingWorkspaceView()
-
         super.init(frame: .zero)
+
+        if #available(iOS 26.0, *) {
+            contentInsetAdjustmentBehavior = .never
+        }
+
         backgroundColor = .appBackground
+        delegate = scrollViewDelegate
         showsHorizontalScrollIndicator = false
         showsVerticalScrollIndicator = false
-        translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(workspaceView)
 
@@ -29,6 +36,11 @@ class PhotoEditingScrollView: UIScrollView {
 
     private(set) var workspaceView: PhotoEditingWorkspaceView
 
+    public var color: UIColor {
+        get { return workspaceView.color }
+        set(newColor) { workspaceView.color = newColor }
+    }
+
     var image: UIImage? {
         get { return workspaceView.image }
         set(newImage) {
@@ -41,6 +53,7 @@ class PhotoEditingScrollView: UIScrollView {
         get { return workspaceView.textObservations }
         set(newTextObservations) {
             workspaceView.textObservations = newTextObservations
+            updateAccessibilityElements()
         }
     }
 
@@ -53,6 +66,60 @@ class PhotoEditingScrollView: UIScrollView {
 
     var redactableCharacterObservations: [CharacterObservation] {
         workspaceView.redactableCharacterObservations
+    }
+
+    var seekPreviewObservations: [CharacterObservation] {
+        get { workspaceView.seekPreviewObservations }
+        set(newTextObservations) {
+            workspaceView.seekPreviewObservations = newTextObservations
+        }
+    }
+
+    public var highlighterTool: HighlighterTool {
+        get { return workspaceView.highlighterTool }
+        set(newTool) {
+            workspaceView.highlighterTool = newTool
+        }
+    }
+
+    // MARK: Redaction
+
+    public var redactions: [Redaction] {
+        workspaceView.redactions
+    }
+
+    public func add(_ redactions: [Redaction]) {
+        workspaceView.add(redactions)
+    }
+
+    func redact(_ observations: [any TextObservation], joinSiblings: Bool) {
+        workspaceView.redact(observations, joinSiblings: joinSiblings)
+        updateAccessibilityElements()
+    }
+
+    func unredact(_ observation: any TextObservation) {
+        workspaceView.unredact(observation)
+        updateAccessibilityElements()
+    }
+
+    // MARK: Accessibility
+
+    private func updateAccessibilityElements() {
+        let wordObservations = recognizedTextObservations?.flatMap(\.allWordObservations) ?? []
+        let accessibilityElements = wordObservations.map { observation in
+            WordObservationAccessibilityElement(observation, in: workspaceView) { [weak self] observation, isRedacted -> Bool in
+                if isRedacted {
+                    self?.unredact(observation)
+                } else {
+                    self?.redact([observation], joinSiblings: true)
+                }
+
+                return true
+            }
+        }
+
+        workspaceView.accessibilityElements = accessibilityElements
+        workspaceView.accessibilityCustomRotors = [RedactedWordObservationRotor(accessibilityElements: accessibilityElements)]
     }
 
     // MARK: View Lifecycle
@@ -102,6 +169,8 @@ class PhotoEditingScrollView: UIScrollView {
     }
 
     // MARK: Boilerplate
+
+    private let scrollViewDelegate = PhotoEditingScrollViewDelegate()
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

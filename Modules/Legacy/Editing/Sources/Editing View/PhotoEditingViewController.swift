@@ -565,7 +565,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     private var colorObserver: Any?
     private let imageManager = PHImageManager()
     private let textRectangleDetector = TextDetector()
-    private let photoEditingView = PhotoEditingView()
+    private let photoEditingView = PhotoEditingScrollView()
     private var redactionChangeObserver: Any?
     private var hideAutoRedactionsChangeObserver: Any?
 

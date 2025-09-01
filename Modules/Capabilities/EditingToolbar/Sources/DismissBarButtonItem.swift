@@ -13,6 +13,10 @@ public class DismissBarButtonItem: UIBarButtonItem {
         self.title = EditingToolbarStrings.DismissBarButtonItem.title
         self.target = self
         self.action = #selector(handleButton)
+
+        if #available(iOS 26.0, *) {
+            self.tintColor = .clear
+        }
     }
 
     @objc private func handleButton() {

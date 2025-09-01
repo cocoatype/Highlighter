@@ -6,8 +6,15 @@ import UIKit
 public class NavigationBarAppearance: UINavigationBarAppearance {
     public override init(idiom: UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom) {
         super.init(idiom: idiom)
-        configureWithOpaqueBackground()
-        backgroundColor = .primaryDark
+
+        if #available(iOS 26.0, *) {
+            configureWithTransparentBackground()
+            backgroundColor = .clear
+        } else {
+            configureWithOpaqueBackground()
+            backgroundColor = .primaryDark
+        }
+
         largeTitleTextAttributes = NavigationBar.largeTitleTextAttributes
         titleTextAttributes = NavigationBar.titleTextAttributes
         backButtonAppearance.normal.titleTextAttributes = NavigationBar.buttonTitleTextAttributes
