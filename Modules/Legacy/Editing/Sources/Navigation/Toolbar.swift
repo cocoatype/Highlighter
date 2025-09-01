@@ -7,7 +7,6 @@ import UIKit
 public class Toolbar: UIToolbar {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        isTranslucent = false
         tintColor = .white
 
         standardAppearance = ToolbarAppearance()
@@ -16,6 +15,12 @@ public class Toolbar: UIToolbar {
         if #available(iOS 15.0, *) {
             scrollEdgeAppearance = ToolbarAppearance()
             compactScrollEdgeAppearance = ToolbarAppearance()
+        }
+
+        if #available(iOS 26.0, *) {
+            isTranslucent = true
+        } else {
+            isTranslucent = false
         }
     }
 

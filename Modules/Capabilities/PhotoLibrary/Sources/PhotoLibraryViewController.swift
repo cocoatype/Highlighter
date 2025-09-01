@@ -46,16 +46,22 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if shouldScrollToBottom {
-            libraryView.layoutIfNeeded()
-            libraryView.scrollToItem(at: dataSource.lastItemIndexPath, at: .bottom, animated: false)
-            shouldScrollToBottom = false
-        }
-
         let cellCount = libraryView.numberOfItems(inSection: 0)
         if cellCount != dataSource.itemsCount {
             libraryView.reloadData()
         }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        scrollToBottom()
+    }
+
+    @objc func scrollToBottom() {
+        guard shouldScrollToBottom else { return }
+        libraryView.layoutIfNeeded()
+        libraryView.scrollToItem(at: dataSource.lastItemIndexPath, at: .bottom, animated: false)
+        shouldScrollToBottom = false
     }
 
     func reloadData() {

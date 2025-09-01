@@ -45,6 +45,14 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
         #endif
     }
 
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        switch traitCollection.userInterfaceIdiom {
+        case .phone, .tv, .carPlay, .mac, .unspecified: .portrait
+        case .pad, .vision: .all
+        @unknown default: .portrait
+        }
+    }
+
     @objc func showPhotoLibrary() {
         transition(to: preferredViewController)
     }
