@@ -15,7 +15,14 @@ public class NavigationBar: UINavigationBar {
         if #available(iOS 15.0, *) {
             compactScrollEdgeAppearance = NavigationBarAppearance()
         }
-        isTranslucent = false
+
+        if #available(iOS 26.0, *) {
+            isOpaque = false
+            isTranslucent = true
+        } else {
+            isOpaque = true
+            isTranslucent = false
+        }
     }
 
     // MARK: Bar Button Appearance
@@ -26,12 +33,12 @@ public class NavigationBar: UINavigationBar {
 
     public static let buttonTitleTextAttributes = [
         NSAttributedString.Key.font: UIFont.navigationBarButtonFont,
-        .foregroundColor: UIColor.white,
+        .foregroundColor: UIColor.controlTint,
     ]
 
     public static let titleTextAttributes = [
         NSAttributedString.Key.font: UIFont.navigationBarTitleFont,
-        .foregroundColor: UIColor.white,
+        .foregroundColor: UIColor.controlTint,
     ]
 
     // MARK: Boilerplate
