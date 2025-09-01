@@ -376,16 +376,6 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     // MARK: Key Commands
 
-    #if targetEnvironment(macCatalyst)
-    #else
-    private let undoKeyCommand = UIKeyCommand(action: #selector(PhotoEditingViewController.undo), input: "z", modifierFlags: .command, discoverabilityTitle: Strings.undoKeyCommandDiscoverabilityTitle)
-    private let redoKeyCommand = UIKeyCommand(action: #selector(PhotoEditingViewController.redo), input: "z", modifierFlags: [.command, .shift], discoverabilityTitle: Strings.redoKeyCommandDiscoverabilityTitle)
-
-    open override var keyCommands: [UIKeyCommand]? {
-        return [undoKeyCommand, redoKeyCommand]
-    }
-    #endif
-
     open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(undo(_:)) {
             return undoManager?.canUndo ?? false
