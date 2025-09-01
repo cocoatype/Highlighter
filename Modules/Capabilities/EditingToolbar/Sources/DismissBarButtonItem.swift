@@ -9,7 +9,12 @@ public class DismissBarButtonItem: UIBarButtonItem {
     init(asset: PHAsset?) {
         self.asset = asset
         super.init()
-        self.style = .done
+        if #available(iOS 26.0, *) {
+            self.style = .prominent
+            self.tintColor = .clear
+        } else {
+            self.style = .done
+        }
         self.title = EditingToolbarStrings.DismissBarButtonItem.title
         self.target = self
         self.action = #selector(handleButton)

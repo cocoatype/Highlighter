@@ -27,7 +27,9 @@ public struct ActionSet {
         if sizeClass == .regular {
             UndoBarButtonItem(undoManager: undoManager, target: target)
             RedoBarButtonItem(undoManager: undoManager, target: target)
+            UIBarButtonItem.fixedSpace(0)
             ColorPickerBarButtonItem(target: target, color: currentColor)
+            UIBarButtonItem.fixedSpace(0)
             SeekBarButtonItem(target: target)
 
             if shouldShowQuickRedact { QuickRedactBarButtonItem(target: target) }
