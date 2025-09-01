@@ -10,7 +10,7 @@ class PhotoEditingViewTests: XCTestCase {
         try TestHelpers.runOnMacCatalyst()
         TestHelpers.performInLightMode {
             do {
-                let workspaceView = PhotoEditingView()
+                let workspaceView = PhotoEditingScrollView()
                 let backgroundColor = try XCTUnwrap(workspaceView.backgroundColor?.hexString)
                 print(UIColor.secondarySystemBackground.hexString)
                 XCTAssertEqual(backgroundColor, "#ececec")
@@ -24,7 +24,7 @@ class PhotoEditingViewTests: XCTestCase {
         try TestHelpers.runOnMacCatalyst()
         TestHelpers.performInDarkMode {
             do {
-                let workspaceView = PhotoEditingView()
+                let workspaceView = PhotoEditingScrollView()
                 let backgroundColor = try XCTUnwrap(workspaceView.backgroundColor?.hexString)
                 print(UIColor.secondarySystemBackground.hexString)
                 XCTAssertEqual(backgroundColor, "#323232")
@@ -38,7 +38,7 @@ class PhotoEditingViewTests: XCTestCase {
         try TestHelpers.skipOnMacCatalyst()
         TestHelpers.performInLightMode {
             do {
-                let workspaceView = PhotoEditingView()
+                let workspaceView = PhotoEditingScrollView()
                 let backgroundColor = try XCTUnwrap(workspaceView.backgroundColor?.hexString)
                 print(UIColor.secondarySystemBackground.hexString)
                 XCTAssertEqual(backgroundColor, "#212121")
@@ -52,7 +52,7 @@ class PhotoEditingViewTests: XCTestCase {
         try TestHelpers.skipOnMacCatalyst()
         TestHelpers.performInDarkMode {
             do {
-                let workspaceView = PhotoEditingView()
+                let workspaceView = PhotoEditingScrollView()
                 let backgroundColor = try XCTUnwrap(workspaceView.backgroundColor?.hexString)
                 print(UIColor.secondarySystemBackground.hexString)
                 XCTAssertEqual(backgroundColor, "#212121")
