@@ -8,6 +8,7 @@ import FactoryKit
 
 import AlbumsData
 import ErrorHandling
+import PhotoAssets
 
 public class PhotoLibraryDataSourceAssetsProvider: NSObject {
     var photosCount: Int { allPhotos.count }
@@ -30,7 +31,7 @@ public class PhotoLibraryDataSourceAssetsProvider: NSObject {
     func handleChangedResult(_ result: PHFetchResult<PHAsset>) { self.allPhotos = result }
 
     public static func photo(withIdentifier identifier: String) -> PHAsset? {
-        return PHAsset.fetchAssets(withLocalIdentifiers: [identifier], options: nil).firstObject
+        return PhotoAssetsRetriever().asset(forLocalIdentifier: identifier, cloudIdentifier: nil)
     }
 
     private func fetchAllPhotos() -> PHFetchResult<PHAsset> {

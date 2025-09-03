@@ -23,6 +23,8 @@ public struct SceneDependencyWrangler {
 
     private func dependencies(from editingActivity: EditingUserActivity) -> SceneDependencies? {
         return SceneDependencies(
+            assetLocalIdentifier: editingActivity.assetLocalIdentifier,
+            assetCloudIdentifier: editingActivity.assetCloudIdentifier,
             image: editingActivity.image,
             url: editingActivity.representedURL,
             redactions: editingActivity.redactions
@@ -32,6 +34,8 @@ public struct SceneDependencyWrangler {
 
     private func dependencies(from launchActivity: LaunchActivity) -> SceneDependencies? {
         return SceneDependencies(
+            assetLocalIdentifier: nil,
+            assetCloudIdentifier: nil,
             image: nil,
             url: launchActivity.representedURL,
             redactions: nil
@@ -40,6 +44,8 @@ public struct SceneDependencyWrangler {
 
     private func dependencies(from url: URL) -> SceneDependencies? {
         return SceneDependencies(
+            assetLocalIdentifier: nil,
+            assetCloudIdentifier: nil,
             image: nil,
             url: url,
             redactions: nil

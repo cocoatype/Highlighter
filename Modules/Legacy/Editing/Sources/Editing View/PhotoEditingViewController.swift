@@ -471,8 +471,8 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     open override func updateUserActivityState(_ activity: NSUserActivity) {
         guard let editingActivity = (activity as? EditingUserActivity) else { return }
-        if let asset = asset {
-            editingActivity.assetLocalIdentifier = asset.localIdentifier
+        if let asset {
+            editingActivity.setIdentifiers(for: asset)
         } else if let representedURL = fileURLProvider?.representedFileURL {
             let accessGranted = representedURL.startAccessingSecurityScopedResource()
             defer { representedURL.stopAccessingSecurityScopedResource() }

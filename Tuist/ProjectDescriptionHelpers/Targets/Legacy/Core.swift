@@ -29,6 +29,7 @@ public enum Core {
             .target(Logging.target),
             .target(MobileSettingsUI.target),
             .target(Paywall.target),
+            .target(PhotoAssets.target),
             .target(PhotoLibrary.target),
             .target(PhotoPermissions.target),
             .target(Purchasing.target),

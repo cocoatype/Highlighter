@@ -1,17 +1,27 @@
 //  Created by Geoff Pado on 7/10/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
-import Redactions
+import Photos
 import UIKit
 
+import PhotoAssets
+import Redactions
+
 public class EditingUserActivity: NSUserActivity {
-    public init(assetLocalIdentifier: String? = nil, imageBookmarkData: Data? = nil, imageData: Data? = nil, redactions: [Redaction]? = nil) {
+    public init(
+        assetLocalIdentifier: String? = nil,
+        assetCloudIdentifier: String? = nil,
+        imageBookmarkData: Data? = nil,
+        imageData: Data? = nil,
+        redactions: [Redaction]? = nil
+    ) {
         super.init(activityType: EditingUserActivity.defaultActivityType)
         isEligibleForHandoff = true
         requiredUserInfoKeys = []
         title = UserActivitiesStrings.EditingUserActivity.activityTitle
 
         self.assetLocalIdentifier = assetLocalIdentifier
+        self.assetCloudIdentifier = assetCloudIdentifier
         self.imageBookmarkData = imageBookmarkData
         self.imageData = imageData
         self.redactions = redactions
@@ -23,6 +33,7 @@ public class EditingUserActivity: NSUserActivity {
         guard userActivity.activityType == EditingUserActivity.defaultActivityType else { return nil }
 
         let assetLocalIdentifier = (userActivity.userInfo?[EditingUserActivity.assetLocalIdentifierKey] as? String)
+        let assetCloudIdentifier = (userActivity.userInfo?[EditingUserActivity.assetCloudIdentifierKey] as? String)
         let imageBookmarkData = (userActivity.userInfo?[EditingUserActivity.imageBookmarkDataKey] as? Data)
         let imageData = (userActivity.userInfo?[EditingUserActivity.imageDataKey] as? Data)
         let redactionsData = (userActivity.userInfo?[EditingUserActivity.redactionsKey2] as? [Data])
@@ -31,12 +42,19 @@ public class EditingUserActivity: NSUserActivity {
         let legacyRedactionsData = (userActivity.userInfo?[EditingUserActivity.redactionsKey] as? [[Data]])
         let legacyRedactions = legacyRedactionsData?.compactMap(RedactionSerializer.redaction(fromLegacyData:))
 
-        self.init(assetLocalIdentifier: assetLocalIdentifier, imageBookmarkData: imageBookmarkData, imageData: imageData, redactions: redactions ?? legacyRedactions)
+        self.init(
+            assetLocalIdentifier: assetLocalIdentifier,
+            assetCloudIdentifier: assetCloudIdentifier,
+            imageBookmarkData: imageBookmarkData,
+            imageData: imageData,
+            redactions: redactions ?? legacyRedactions
+        )
         isEligibleForHandoff = userActivity.isEligibleForHandoff
         title = userActivity.title
     }
 
-    public var assetLocalIdentifier: String? { didSet { userInfo = generatedUserInfo }}
+    public private(set) var assetLocalIdentifier: String?
+    public private(set) var assetCloudIdentifier: String?
     public var imageBookmarkData: Data? { didSet { userInfo = generatedUserInfo }}
     public var imageData: Data? { didSet { userInfo = generatedUserInfo }}
     public var redactions: [Redaction]? { didSet { userInfo = generatedUserInfo }}
@@ -44,11 +62,22 @@ public class EditingUserActivity: NSUserActivity {
     private var generatedUserInfo: [AnyHashable: Any] {
         var userInfo = [AnyHashable: Any]()
         userInfo[EditingUserActivity.assetLocalIdentifierKey] = assetLocalIdentifier
+        userInfo[EditingUserActivity.assetCloudIdentifierKey] = assetCloudIdentifier
         userInfo[EditingUserActivity.imageBookmarkDataKey] = imageBookmarkData
         userInfo[EditingUserActivity.imageDataKey] = imageData
         userInfo[EditingUserActivity.redactionsKey2] = redactions?.map(RedactionSerializer.dataRepresentation(of:))
 
         return userInfo
+    }
+
+    // MARK: Asset
+
+    private let mapper = PhotoAssetsCloudIdentifierMapper()
+    public func setIdentifiers(for asset: PHAsset) {
+        assetLocalIdentifier = asset.localIdentifier
+        assetCloudIdentifier = mapper.cloudIdentifier(for: asset.localIdentifier)
+
+        userInfo = generatedUserInfo
     }
 
     // MARK: Image
@@ -78,6 +107,7 @@ public class EditingUserActivity: NSUserActivity {
     // MARK: Boilerplate
 
     public static let assetLocalIdentifierKey = "EditingUserActivity.assetLocalIdentifierKey"
+    public static let assetCloudIdentifierKey = "EditingUserActivity.assetCloudIdentifierKey"
     public static let imageBookmarkDataKey = "EditingUserActivity.imageBookmarkDataKey"
     public static let imageDataKey = "EditingUserActivity.imageDataKey"
     public static let redactionsKey2 = "EditingUserActivity.redactionsKey2"

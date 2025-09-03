@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 8/3/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+import Photos
 import UIKit
 
 import FactoryKit
@@ -8,6 +9,7 @@ import FactoryKit
 import Defaults
 import Editing
 import ErrorHandling
+import PhotoAssets
 import Redactions
 import Scenes
 
@@ -20,6 +22,8 @@ class DesktopViewController: UIViewController, FileURLProvider {
     init(
         dependencies: SceneDependencies
     ) {
+        self.assetLocalIdentifier = dependencies.assetLocalIdentifier
+        self.assetCloudIdentifier = dependencies.assetCloudIdentifier
         self.initialRedactions = dependencies.redactions
         self.representedURL = dependencies.representedURL
         self.image = dependencies.image
@@ -41,6 +45,8 @@ class DesktopViewController: UIViewController, FileURLProvider {
             }
         } else if image != nil {
             loadImage()
+        } else if assetLocalIdentifier != nil || assetCloudIdentifier != nil {
+            loadAsset()
         }
     }
 
@@ -87,6 +93,20 @@ class DesktopViewController: UIViewController, FileURLProvider {
 
     private func validateAllToolbarItems() {
         windowScene?.titlebar?.toolbar?.visibleItems?.forEach { $0.validate() }
+    }
+
+    // MARK: Asset
+
+    private var assetLocalIdentifier: String?
+    private var assetCloudIdentifier: String?
+
+    private let retriever = PhotoAssetsRetriever()
+    private func loadAsset() {
+        guard let asset = retriever.asset(forLocalIdentifier: assetLocalIdentifier, cloudIdentifier: assetCloudIdentifier)
+        else { return }
+
+        embed(PhotoEditingViewController(asset: asset, redactions: initialRedactions))
+        validateAllToolbarItems()
     }
 
     // MARK: Image
