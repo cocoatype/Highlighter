@@ -24,12 +24,18 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             let restorationActivity = session.stateRestorationActivity
             let dragActivity = connectionOptions.userActivities.first
 
-            if let userActivity = restorationActivity ?? dragActivity {
-                window.restore(from: userActivity)
+            if let restorationActivity {
+                window.restore(from: restorationActivity, reason: .stateRestoration)
+            } else if let dragActivity {
+                window.restore(from: dragActivity, reason: .dragAndDrop)
             }
 
             return
         }
+    }
+
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        window?.restore(from: userActivity, reason: .handoff)
     }
 
     func stateRestorationActivity(for scene: UIScene) -> NSUserActivity? {

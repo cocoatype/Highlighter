@@ -6,6 +6,7 @@ public enum EditorPresentationReason: PresentationReason {
     case documentScanner
     case dragAndDrop
     case fileURL
+    case handoff
     case library
     case photoPicker
     case stateRestoration
@@ -18,6 +19,7 @@ public enum EditorPresentationReason: PresentationReason {
         case .documentScanner: "documentScanner"
         case .dragAndDrop: "dragAndDrop"
         case .fileURL: "fileURL"
+        case .handoff: "handoff"
         case .library: "library"
         case .photoPicker: "photoPicker"
         case .xCallbackURL: "xCallbackURL"

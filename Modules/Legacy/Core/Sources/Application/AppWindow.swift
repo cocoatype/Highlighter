@@ -38,9 +38,9 @@ class AppWindow: UIWindow {
         return appViewController.stateRestorationActivity
     }
 
-    func restore(from activity: NSUserActivity) {
+    func restore(from activity: NSUserActivity, reason: EditorPresentationReason) {
         if let editingActivity = EditingUserActivity(userActivity: activity) {
-            restore(fromEditingActivity: editingActivity)
+            restore(fromEditingActivity: editingActivity, reason: reason)
         } else if let libraryActivity = LibraryUserActivity(userActivity: activity) {
             restore(fromLibraryActivity: libraryActivity)
         } else {
@@ -49,8 +49,8 @@ class AppWindow: UIWindow {
     }
 
     @Injected(\.errorHandler) private var errorHandler
-    private func restore(fromEditingActivity editingActivity: EditingUserActivity) {
-        let event = EventFactory().editorPresentationEvent(for: .stateRestoration)
+    private func restore(fromEditingActivity editingActivity: EditingUserActivity, reason: EditorPresentationReason) {
+        let event = EventFactory().editorPresentationEvent(for: reason)
         if let localIdentifier = editingActivity.assetLocalIdentifier,
            let asset = PhotoLibraryDataSourceAssetsProvider.photo(withIdentifier: localIdentifier) {
             logger.log(event)
