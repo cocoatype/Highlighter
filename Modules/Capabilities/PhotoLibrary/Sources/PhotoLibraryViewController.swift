@@ -117,7 +117,12 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
     // MARK: UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? AssetPhotoLibraryViewCell,
+              let asset = cell.asset
+        else { return }
+
         logger.log(EventFactory().editorPresentationEvent(for: .library))
+        photoEditorPresenter?.presentPhotoEditingViewController(for: asset, redactions: nil, animated: true)
     }
 
     // MARK: Photo Library Changes
