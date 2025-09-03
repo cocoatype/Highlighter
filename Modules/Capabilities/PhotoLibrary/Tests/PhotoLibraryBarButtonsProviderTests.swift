@@ -46,7 +46,7 @@ struct PhotoLibraryBarButtonsProviderTests {
         )
 
         let barButtons = provider.trailingNavigationItems
-        let isIncluded = barButton
+        let isIncluded = barButtons
             .contains(where: {
                 $0 is DocumentScannerBarButtonItem
             })
