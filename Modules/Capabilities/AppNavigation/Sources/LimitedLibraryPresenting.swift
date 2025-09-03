@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-public protocol LimitedLibraryPresenting {
+@objc public protocol LimitedLibraryPresenting {
     func presentLimitedLibrary()
 }
 

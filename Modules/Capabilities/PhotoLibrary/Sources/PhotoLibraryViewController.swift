@@ -23,7 +23,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         PHPhotoLibrary.shared().register(self)
 
         navigationItem.title = collection.title ?? PhotoLibraryStrings.PhotoLibraryViewController.navigationItemTitle
-        navigationItem.rightBarButtonItem = SettingsBarButtonItem.standard
+        navigationItem.rightBarButtonItems = PhotoLibraryBarButtonsProvider().trailingNavigationItems.reversed()
 
         hideDocumentScannerObserver = NotificationCenter.default.addObserver(
             for: Keys.hideDocumentScanner
@@ -81,8 +81,9 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
     // MARK: UICollectionViewDragDelegate
 
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        let item = dataSource.item(at: indexPath)
-        guard case .asset(let asset) = item else { return [] }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? AssetPhotoLibraryViewCell,
+              let asset = cell.asset
+        else { return [] }
 
         let userActivity = EditingUserActivity(assetLocalIdentifier: asset.localIdentifier)
         let dragItemProvider = NSItemProvider(object: userActivity)
@@ -116,16 +117,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
     // MARK: UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch dataSource.item(at: indexPath) {
-        case .asset(let asset):
-            self.logger.log(EventFactory().editorPresentationEvent(for: .library))
-            photoEditorPresenter?.presentPhotoEditingViewController(for: asset, redactions: nil, animated: true)
-        case .documentScan:
-            self.logger.log(EventFactory().scannerPresentationEvent(for: .library))
-            documentScannerPresenter?.presentDocumentCameraViewController()
-        case .limitedLibrary:
-            limitedLibraryPresenter?.presentLimitedLibrary()
-        }
+        logger.log(EventFactory().editorPresentationEvent(for: .library))
     }
 
     // MARK: Photo Library Changes

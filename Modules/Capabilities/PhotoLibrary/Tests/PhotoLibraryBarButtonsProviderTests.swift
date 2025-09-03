@@ -1,5 +1,5 @@
-//  Created by Geoff Pado on 5/16/24.
-//  Copyright © 2024 Cocoatype, LLC. All rights reserved.
+//  Created by Geoff Pado on 9/1/25.
+//  Copyright © 2025 Cocoatype, LLC. All rights reserved.
 
 import Testing
 
@@ -7,6 +7,7 @@ import FactoryKit
 import FactoryTesting
 
 import DefaultsDoubles
+import DocumentScanning
 import PhotoPermissions
 import Purchasing
 import PurchasingDoubles
@@ -15,7 +16,7 @@ import PurchasingDoubles
 @testable import PhotoLibrary
 
 @MainActor @Suite(.container)
-struct PhotoLibraryDataSourceExtraItemsProviderTests {
+struct PhotoLibraryBarButtonsProviderTests {
     @Test(arguments: [
         (true, false, PurchaseState.purchased, true),
         (true, false, .unavailable, true),
@@ -39,15 +40,15 @@ struct PhotoLibraryDataSourceExtraItemsProviderTests {
             SpyRepository(withCheese: purchaseState)
         }
 
-        let provider = PhotoLibraryDataSourceExtraItemsProvider(
+        let provider = PhotoLibraryBarButtonsProvider(
             isDocumentScannerSupported: isDocumentScannerSupported,
             permissionsRequester: PhotoLibraryPermissionsRequester()
         )
-        let isIncluded = (0..<provider.itemsCount)
+
+        let barButtons = provider.trailingNavigationItems
+        let isIncluded = barButtons
             .contains(where: {
-                if case .documentScan = provider.item(atIndex: $0) {
-                    return true
-                } else { return false }
+                $0 is DocumentScannerBarButtonItem
             })
         #expect(isIncluded == shouldBeIncluded)
     }

@@ -15,10 +15,6 @@ public class PhotoLibraryDataSourceAssetsProvider: NSObject {
         self.collection = collection
     }
 
-    func item(atIndex index: Int) -> PhotoLibraryItem {
-        return .asset(allPhotos[index])
-    }
-
     @Injected(\.errorHandler) private var errorHandler
     func cell(for collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssetPhotoLibraryViewCell.identifier, for: indexPath)

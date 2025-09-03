@@ -31,29 +31,12 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch item(at: indexPath) {
-        case .asset:
-            return assetsProvider.cell(for: collectionView, at: indexPath)
-        case .documentScan:
-            return extraItemsProvider.documentScannerCell(for: collectionView, at: indexPath)
-        case .limitedLibrary:
-            return extraItemsProvider.limitedLibraryCell(for: collectionView, at: indexPath)
-        }
+        return assetsProvider.cell(for: collectionView, at: indexPath)
     }
 
     // MARK: Photos
 
-    var itemsCount: Int { assetsProvider.photosCount + extraItemsProvider.itemsCount }
-
-    func item(at index: Int) -> PhotoLibraryItem {
-        let photosCount = assetsProvider.photosCount
-        guard index < photosCount else { return extraItemsProvider.item(atIndex: index - photosCount) }
-        return assetsProvider.item(atIndex: index)
-    }
-
-    func item(at indexPath: IndexPath) -> PhotoLibraryItem {
-        item(at: indexPath.item)
-    }
+    var itemsCount: Int { assetsProvider.photosCount }
 
     var lastItemIndexPath: IndexPath {
         IndexPath(row: itemsCount - 1, section: 0)
@@ -62,6 +45,5 @@ class PhotoLibraryDataSource: NSObject, LibraryDataSource, UICollectionViewDataS
     // MARK: Providers
 
     private let assetsProvider: PhotoLibraryDataSourceAssetsProvider
-    private let extraItemsProvider = PhotoLibraryDataSourceExtraItemsProvider()
     private let changeCalculator: PhotoLibraryDataSourceChangeCalculator
 }

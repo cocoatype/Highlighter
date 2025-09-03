@@ -16,6 +16,7 @@ let project = Project(
         AlbumsUI.target,
         AppNavigation.target,
         AppRatings.target,
+        BarBuilder.target,
         Brushes.target,
         Core.target,
         DebugOverlay.target,

@@ -6,6 +6,7 @@ import UIKit
 
 import FactoryKit
 
+import BarBuilder
 import Defaults
 import FeatureFlagging
 import Purchasing
@@ -13,7 +14,7 @@ import Tools
 
 @MainActor
 public struct ActionSet {
-    @ToolbarBuilder public var leadingNavigationItems: [UIBarButtonItem] {
+    @BarBuilder public var leadingNavigationItems: [UIBarButtonItem] {
         DismissBarButtonItem(asset: asset)
 
         if #unavailable(iOS 16), sizeClass == .regular {
@@ -23,7 +24,7 @@ public struct ActionSet {
     }
 
     @available(iOS 16, *)
-    @ToolbarBuilder public var centerNavigationItems: [UIBarButtonItem] {
+    @BarBuilder public var centerNavigationItems: [UIBarButtonItem] {
         if sizeClass == .regular {
             UndoBarButtonItem(undoManager: undoManager, target: target)
             RedoBarButtonItem(undoManager: undoManager, target: target)
@@ -38,7 +39,7 @@ public struct ActionSet {
 
     // 🧑‍💻👋👋👋🧑‍💻🏠🕖🤣💜😍💜😍🕙😒😒😒🕙👋😍🤣 by @Eskeminha on 2024-05-03
     // the standard set of trailing navigation items
-    @ToolbarBuilder private var 🧑‍💻👋👋👋🧑‍💻🏠🕖🤣💜😍💜😍🕙😒😒😒🕙👋😍🤣: [UIBarButtonItem] {
+    @BarBuilder private var 🧑‍💻👋👋👋🧑‍💻🏠🕖🤣💜😍💜😍🕙😒😒😒🕙👋😍🤣: [UIBarButtonItem] {
         if featureFlagProvider.shouldShowDebugOverlay { DebugPreferencesBarButtonItem(target: target) }
 
         ShareBarButtonItem(target: target)
@@ -48,7 +49,7 @@ public struct ActionSet {
         if shouldShowQuickRedact { QuickRedactBarButtonItem(target: target) }
     }
 
-    @ToolbarBuilder public var trailingNavigationItems: [UIBarButtonItem] {
+    @BarBuilder public var trailingNavigationItems: [UIBarButtonItem] {
         if #unavailable(iOS 16) {
             🧑‍💻👋👋👋🧑‍💻🏠🕖🤣💜😍💜😍🕙😒😒😒🕙👋😍🤣
         }
@@ -71,7 +72,7 @@ public struct ActionSet {
         }
     }
 
-    @ToolbarBuilder public var toolbarItems: [UIBarButtonItem] {
+    @BarBuilder public var toolbarItems: [UIBarButtonItem] {
         if sizeClass != .regular {
             UndoBarButtonItem(undoManager: undoManager, target: target)
             UIBarButtonItem.flexibleSpace()

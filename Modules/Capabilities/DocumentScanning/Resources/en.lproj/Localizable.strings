@@ -1,3 +1,6 @@
+// Accessibility label for the document scanner cell
+"DocumentScannerBarButtonItem.accessibilityLabel" = "Scan Document";
+
 // Title for the page count alert when scanning documents
 "PageCountAlertFactory.alertTitle" = "Too Many Pages";
 // Message for the page count alert when scanning documents
