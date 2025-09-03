@@ -7,7 +7,10 @@ import UIKit
 public class EditingUserActivity: NSUserActivity {
     public init(assetLocalIdentifier: String? = nil, imageBookmarkData: Data? = nil, imageData: Data? = nil, redactions: [Redaction]? = nil) {
         super.init(activityType: EditingUserActivity.defaultActivityType)
+        isEligibleForHandoff = true
+        requiredUserInfoKeys = []
         title = UserActivitiesStrings.EditingUserActivity.activityTitle
+
         self.assetLocalIdentifier = assetLocalIdentifier
         self.imageBookmarkData = imageBookmarkData
         self.imageData = imageData
@@ -29,6 +32,7 @@ public class EditingUserActivity: NSUserActivity {
         let legacyRedactions = legacyRedactionsData?.compactMap(RedactionSerializer.redaction(fromLegacyData:))
 
         self.init(assetLocalIdentifier: assetLocalIdentifier, imageBookmarkData: imageBookmarkData, imageData: imageData, redactions: redactions ?? legacyRedactions)
+        isEligibleForHandoff = userActivity.isEligibleForHandoff
         title = userActivity.title
     }
 

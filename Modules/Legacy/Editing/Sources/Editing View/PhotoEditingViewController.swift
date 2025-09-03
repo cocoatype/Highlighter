@@ -178,6 +178,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
         navigationController?.setToolbarHidden(actionSet.toolbarItems.count == 0, animated: animated)
 
         userActivity?.needsSave = true
+        userActivity?.becomeCurrent()
     }
 
     private var shareBarButtonItem: UIBarButtonItem? {

@@ -34,6 +34,10 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         self.window = window
     }
 
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        UIApplication.shared.requestSceneSessionActivation(nil, userActivity: userActivity, options: nil, errorHandler: nil)
+    }
+
     func stateRestorationActivity(for scene: UIScene) -> NSUserActivity? {
         window?.stateRestorationActivity
     }
