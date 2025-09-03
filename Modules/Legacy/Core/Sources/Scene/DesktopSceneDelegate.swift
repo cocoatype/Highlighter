@@ -14,7 +14,8 @@ import Tools
 import UserActivities
 
 #if targetEnvironment(macCatalyst)
-class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, ShareItemDelegate, ToolPickerItemDelegate, ColorPickerItemDelegate, SeekItemDelegate {
+class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, ShareItemDelegate,
+                            ToolPickerItemDelegate, ColorPickerItemDelegate, SeekItemDelegate, ZoomItemDelegate {
     var window: DesktopAppWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -87,10 +88,31 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         editingViewController?.toggleSeeking(sender)
     }
 
+    // MARK: ZoomItemDelegate
+
+    func zoomIn(_ sender: NSToolbarItem) {
+        guard let editingViewController else { return }
+        let currentScale = editingViewController.zoomScale
+        editingViewController.zoomScale = ZoomItemGroup.zoomStops.first(where: {
+            $0 > currentScale
+        }) ?? ZoomItemGroup.zoomStops.last ?? currentScale
+        print("zoom scale is \(editingViewController.zoomScale)")
+    }
+
+    func zoomOut(_ sender: NSToolbarItem) {
+        guard let editingViewController else { return }
+        let currentScale = editingViewController.zoomScale
+        editingViewController.zoomScale = ZoomItemGroup.zoomStops.reversed().first(where: {
+            $0 < currentScale
+        }) ?? ZoomItemGroup.zoomStops.first ?? currentScale
+        print("zoom scale is \(editingViewController.zoomScale)")
+    }
+
     // MARK: NSToolbarDelegate
 
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
         [
+            ZoomItemGroup.identifier,
             SeekItem.identifier,
             ColorPickerItem.identifier,
             ToolPickerItem.identifier,
@@ -108,6 +130,9 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         case ShareItem.identifier: return ShareItem(delegate: self)
         case ColorPickerItem.identifier: return ColorPickerItem(delegate: self)
         case SeekItem.identifier: return SeekItem(delegate: self)
+        case ZoomInItem.identifier: return ZoomInItem(delegate: self)
+        case ZoomOutItem.identifier: return ZoomOutItem(delegate: self)
+        case ZoomItemGroup.identifier: return ZoomItemGroup(delegate: self)
         default: return nil
         }
     }
