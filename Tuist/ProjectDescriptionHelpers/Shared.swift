@@ -6,6 +6,9 @@ public enum Shared {
         "App/Resources/AppIcon.icon",
     ]
 
+    public static let debugCodeSignIdentity = "Apple Development: Buddy Build (D47V8Y25W5)"
+    public static let releaseCodeSignIdentity = "Apple Distribution"
+
     public static let settings: Settings = .settings(base: [
         "CODE_SIGN_STYLE": "Manual",
         "CURRENT_PROJECT_VERSION": "0",
@@ -23,8 +26,8 @@ public enum Shared {
         "SWIFT_MAX_VERSION": "$(SWIFT_MAX_VERSION_$(XCODE_VERSION_MAJOR))",
         "TARGETED_DEVICE_FAMILY": "1,2,6",
     ], debug: [
-        "CODE_SIGN_IDENTITY": "Apple Development: Buddy Build (D47V8Y25W5)",
+        "CODE_SIGN_IDENTITY": .string(Shared.debugCodeSignIdentity),
     ], release: [
-        "CODE_SIGN_IDENTITY": "Apple Distribution",
+        "CODE_SIGN_IDENTITY": .string(Shared.releaseCodeSignIdentity),
     ])
 }
