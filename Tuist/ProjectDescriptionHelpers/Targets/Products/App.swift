@@ -35,12 +35,12 @@ public enum App {
                 "TARGETED_DEVICE_FAMILY": "1,2,6",
             ],
             debug: [
-                "CODE_SIGN_IDENTITY[sdk=macosx*]": "$(inherited)",
+                "CODE_SIGN_IDENTITY[sdk=macosx*]": .string(Shared.debugCodeSignIdentity),
                 "PROVISIONING_PROFILE_SPECIFIER": "match Development com.cocoatype.Highlighter",
                 "PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]": "match Development com.cocoatype.Highlighter macos",
                 "ENABLE_DEBUG_DYLIB": false,
             ], release: [
-                "CODE_SIGN_IDENTITY[sdk=macosx*]": "$(inherited)",
+                "CODE_SIGN_IDENTITY[sdk=macosx*]": .string(Shared.releaseCodeSignIdentity),
                 "PROVISIONING_PROFILE_SPECIFIER": "match AppStore com.cocoatype.Highlighter",
                 "PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]": "match AppStore com.cocoatype.Highlighter macos",
             ],
