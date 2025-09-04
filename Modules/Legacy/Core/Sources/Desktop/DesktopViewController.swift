@@ -33,17 +33,9 @@ class DesktopViewController: UIViewController, FileURLProvider {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if children.contains(where: { $0 is PhotoEditingViewController }), let representedURL = representedURL {
-            windowScene?.titlebar?.representedURL = representedURL
-            windowScene?.title = representedURL.lastPathComponent
-        } else if representedURL != nil {
-            do {
-                try loadRepresentedURL()
-                updateURLRepresentation()
-            } catch {
-                errorHandler.log(error, module: "Core", type: "DesktopViewController")
-            }
-        } else if image != nil {
+        updateWindowURL()
+
+        if image != nil {
             loadImage()
         } else if assetLocalIdentifier != nil || assetCloudIdentifier != nil {
             loadAsset()
@@ -54,35 +46,43 @@ class DesktopViewController: UIViewController, FileURLProvider {
 
     var representedURL: URL? {
         didSet {
-            do {
-                try loadRepresentedURL()
-                updateURLRepresentation()
-            } catch {
-                errorHandler.log(error, module: "Core", type: "DesktopViewController")
+            updateWindowURL()
+        }
+    }
+
+    private func updateWindowURL() {
+        if let windowURL {
+            if editingViewController == nil {
+                RecentsMenuDataSource.addRecentItem(windowURL, defaults: defaults)
             }
+
+            windowScene?.titlebar?.representedURL = windowURL
+            windowScene?.title = windowURL.lastPathComponent
+        } else {
+            // reset to nil
         }
     }
 
-    private func loadRepresentedURL() throws {
-        guard let representedURL = representedURL, image == nil else { return }
-        let accessGranted = representedURL.startAccessingSecurityScopedResource()
-        defer { representedURL.stopAccessingSecurityScopedResource() }
-        guard accessGranted else { throw LoadError.accessNotGranted }
+    private var windowURL: URL? {
+        guard let representedURL,
+              FileManager.default.fileExists(atPath: representedURL.path)
+        else { return nil }
 
-        let data = try Data(contentsOf: representedURL)
-        guard let image = UIImage(data: data) else { return }
-        self.image = image
-    }
+        do {
+            let cachesDirectory = try FileManager.default.url(
+                for: .cachesDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: false
+            )
 
-    private func updateURLRepresentation() {
-        guard let representedURL = representedURL else {
-            return
+            guard cachesDirectory.isParent(of: representedURL) == false else { return nil }
+
+            return representedURL
+        } catch {
+            errorHandler.log(error, module: "Core", type: "DesktopViewController")
+            return nil
         }
-
-        RecentsMenuDataSource.addRecentItem(representedURL, defaults: defaults)
-
-        windowScene?.titlebar?.representedURL = representedURL
-        windowScene?.title = representedURL.lastPathComponent
     }
 
     var representedFileURL: URL? { representedURL }
@@ -135,10 +135,6 @@ class DesktopViewController: UIViewController, FileURLProvider {
     @available(*, unavailable)
     required init(coder: NSCoder) {
         Container.shared.errorHandler().notImplemented()
-    }
-
-    private enum LoadError: Error {
-        case accessNotGranted
     }
 }
 

@@ -4,6 +4,9 @@
 import Photos
 import UIKit
 
+import FactoryKit
+
+import ErrorHandling
 import PhotoAssets
 import Redactions
 
@@ -12,7 +15,6 @@ public class EditingUserActivity: NSUserActivity {
         assetLocalIdentifier: String? = nil,
         assetCloudIdentifier: String? = nil,
         imageBookmarkData: Data? = nil,
-        imageData: Data? = nil,
         redactions: [Redaction]? = nil
     ) {
         super.init(activityType: EditingUserActivity.defaultActivityType)
@@ -23,10 +25,11 @@ public class EditingUserActivity: NSUserActivity {
         self.assetLocalIdentifier = assetLocalIdentifier
         self.assetCloudIdentifier = assetCloudIdentifier
         self.imageBookmarkData = imageBookmarkData
-        self.imageData = imageData
         self.redactions = redactions
 
         self.userInfo = generatedUserInfo
+
+        loadImage()
     }
 
     public convenience init?(userActivity: NSUserActivity) {
@@ -35,7 +38,6 @@ public class EditingUserActivity: NSUserActivity {
         let assetLocalIdentifier = (userActivity.userInfo?[EditingUserActivity.assetLocalIdentifierKey] as? String)
         let assetCloudIdentifier = (userActivity.userInfo?[EditingUserActivity.assetCloudIdentifierKey] as? String)
         let imageBookmarkData = (userActivity.userInfo?[EditingUserActivity.imageBookmarkDataKey] as? Data)
-        let imageData = (userActivity.userInfo?[EditingUserActivity.imageDataKey] as? Data)
         let redactionsData = (userActivity.userInfo?[EditingUserActivity.redactionsKey2] as? [Data])
         let redactions = redactionsData?.compactMap(RedactionSerializer.redaction(from:))
 
@@ -46,7 +48,6 @@ public class EditingUserActivity: NSUserActivity {
             assetLocalIdentifier: assetLocalIdentifier,
             assetCloudIdentifier: assetCloudIdentifier,
             imageBookmarkData: imageBookmarkData,
-            imageData: imageData,
             redactions: redactions ?? legacyRedactions
         )
         isEligibleForHandoff = userActivity.isEligibleForHandoff
@@ -56,7 +57,6 @@ public class EditingUserActivity: NSUserActivity {
     public private(set) var assetLocalIdentifier: String?
     public private(set) var assetCloudIdentifier: String?
     public var imageBookmarkData: Data? { didSet { userInfo = generatedUserInfo }}
-    public var imageData: Data? { didSet { userInfo = generatedUserInfo }}
     public var redactions: [Redaction]? { didSet { userInfo = generatedUserInfo }}
 
     private var generatedUserInfo: [AnyHashable: Any] {
@@ -64,7 +64,6 @@ public class EditingUserActivity: NSUserActivity {
         userInfo[EditingUserActivity.assetLocalIdentifierKey] = assetLocalIdentifier
         userInfo[EditingUserActivity.assetCloudIdentifierKey] = assetCloudIdentifier
         userInfo[EditingUserActivity.imageBookmarkDataKey] = imageBookmarkData
-        userInfo[EditingUserActivity.imageDataKey] = imageData
         userInfo[EditingUserActivity.redactionsKey2] = redactions?.map(RedactionSerializer.dataRepresentation(of:))
 
         return userInfo
@@ -82,34 +81,61 @@ public class EditingUserActivity: NSUserActivity {
 
     // MARK: Image
 
-    public var image: UIImage? {
-        get {
-            guard let data = imageData else { return nil }
-            return UIImage(data: data)
-        } set(newImage) {
-            imageData = newImage?.pngData()
+    public private(set) var image: UIImage?
+
+    private func loadImage() {
+        guard image == nil, let representedURL else { return }
+
+        let accessGranted = representedURL.startAccessingSecurityScopedResource()
+        defer { representedURL.stopAccessingSecurityScopedResource() }
+        guard accessGranted else { return }
+
+        do {
+            let data = try Data(contentsOf: representedURL)
+            self.image = UIImage(data: data)
+        } catch {
+            errorHandler.log(error, module: "UserActivities", type: "EditingUserActivity")
         }
     }
 
     // MARK: URL
 
     public var representedURL: URL? {
-        var isStale = false
-        guard let bookmarkData = imageBookmarkData,
-              let url = try? URL(resolvingBookmarkData: bookmarkData, bookmarkDataIsStale: &isStale),
-              FileManager.default.fileExists(atPath: url.path),
-              let cachesDirectory = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false),
-              cachesDirectory.isParent(of: url) == false
-        else { return nil }
-        return url
+        do {
+            var isStale = false
+            guard let imageBookmarkData else { return nil }
+            let url = try URL(resolvingBookmarkData: imageBookmarkData, bookmarkDataIsStale: &isStale)
+
+            if isStale {
+                do {
+                    #if targetEnvironment(macCatalyst)
+                    let options = URL.BookmarkCreationOptions.withSecurityScope
+                    #else
+                    let options: URL.BookmarkCreationOptions = []
+                    #endif
+
+                    let newBookmarkData = try url.bookmarkData(options: options)
+                    self.imageBookmarkData = newBookmarkData
+                } catch {
+                    errorHandler.log(error, module: "UserActivities", type: "EditingUserActivity")
+                    return url
+                }
+            }
+
+            return url
+        } catch {
+            errorHandler.log(error, module: "UserActivities", type: "EditingUserActivity")
+            return nil
+        }
     }
 
     // MARK: Boilerplate
 
+    @Injected(\.errorHandler) private var errorHandler
+
     public static let assetLocalIdentifierKey = "EditingUserActivity.assetLocalIdentifierKey"
     public static let assetCloudIdentifierKey = "EditingUserActivity.assetCloudIdentifierKey"
     public static let imageBookmarkDataKey = "EditingUserActivity.imageBookmarkDataKey"
-    public static let imageDataKey = "EditingUserActivity.imageDataKey"
     public static let redactionsKey2 = "EditingUserActivity.redactionsKey2"
     public static let redactionsKey = "EditingUserActivity.redactionsKey"
 

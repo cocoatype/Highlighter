@@ -29,7 +29,6 @@ public struct SceneDependencyWrangler {
             url: editingActivity.representedURL,
             redactions: editingActivity.redactions
         )
-
     }
 
     private func dependencies(from launchActivity: LaunchActivity) -> SceneDependencies? {

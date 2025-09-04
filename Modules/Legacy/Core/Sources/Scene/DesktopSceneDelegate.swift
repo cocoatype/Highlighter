@@ -53,10 +53,6 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
         window?.windowScene?.titlebar?.toolbar?.visibleItems?.forEach { $0.validate() }
     }
 
-    private func image(from options: UIScene.ConnectionOptions) -> UIImage? {
-        options.userActivities.compactMap(EditingUserActivity.init(userActivity:)).first?.image
-    }
-
     // MARK: ShareItemDelegate
 
     var canExportImage: Bool { return editingViewController != nil }

@@ -479,8 +479,6 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
             guard accessGranted else { return }
 
             editingActivity.imageBookmarkData = try? representedURL.bookmarkData()
-        } else if let image = image {
-            editingActivity.image = image
         }
         editingActivity.redactions = photoEditingView.redactions
     }

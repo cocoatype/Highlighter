@@ -105,9 +105,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.requestSceneSessionActivation(existingScene, userActivity: activity, options: nil, errorHandler: nil)
     }
 
+    private let pasteboardReader = PasteboardReader()
     @objc func newSceneFromClipboard() {
-        guard let data = UIPasteboard.general.data(forPasteboardType: UTType.image.identifier) else { return }
-        let activity = EditingUserActivity(imageData: data)
+        guard let pasteboardBookmarkData = pasteboardReader.cacheBookmarkDataForPasteboardContents() else { return }
+
+        let activity = EditingUserActivity(imageBookmarkData: pasteboardBookmarkData)
         activity.needsSave = true
         UIApplication.shared.requestSceneSessionActivation(nil, userActivity: activity, options: nil, errorHandler: nil)
     }
