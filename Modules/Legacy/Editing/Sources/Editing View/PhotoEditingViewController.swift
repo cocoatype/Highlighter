@@ -467,6 +467,13 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
         return wordObservations + categoryObservations
     }
 
+    // MARK: Zoom
+
+    public var zoomScale: CGFloat {
+        get { photoEditingView.zoomScale }
+        set { photoEditingView.setZoomScale(newValue, animated: true) }
+    }
+
     // MARK: User Activity
 
     open override func updateUserActivityState(_ activity: NSUserActivity) {

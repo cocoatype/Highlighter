@@ -47,6 +47,11 @@
 "OutputFormat.heic" = "HEIC";
 "OutputFormat.png" = "PNG";
 
+"RecognizeTextIntent.combineResults.title" = "Combine Results";
+"RecognizeTextIntent.description" = "Recognizes all text in an image.";
+"RecognizeTextIntent.parameterSummary${sourceFile}" = "Recognize text in ${sourceFile}";
+"RecognizeTextIntent.title" = "Recognize Text";
+
 "RedactDetectionsIntent.color" = "Color";
 "RedactDetectionsIntent.description" = "Redacts detected items in an image.";
 "RedactDetectionsIntent.detectionKind.title" = "Items to Detect";

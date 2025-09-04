@@ -39,3 +39,12 @@
 "ToolPickerItem.magicToolItem" = "Magic Highlighter";
 // Menu item for the manual highlighter tool
 "ToolPickerItem.manualToolItem" = "Manual Highlighter";
+
+// Label for the zoom in toolbar item
+"ZoomInItem.label" = "Zoom In";
+
+// Label for the zoom toolbar item group
+"ZoomItemGroup.label" = "Zoom";
+
+// Label for the zoom out toolbar item
+"ZoomOutItem.label" = "Zoom Out";
