@@ -9,6 +9,7 @@ public enum Route {
     case editor(URL)
     #else
     case documentScanner
+    case paywall
     case editor(UIImage, [Redaction])
     #endif
 }

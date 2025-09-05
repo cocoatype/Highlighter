@@ -162,6 +162,15 @@ extension AppViewController: Navigator {
                 dismiss(animated: false)
                 presentDocumentCameraViewController()
             }
+        case .paywall:
+            guard let presentedViewController else {
+                return presentPurchaseMarketing()
+            }
+
+            if #available(iOS 16.0, *), (presentedViewController is PaywallHostingController) == false {
+                dismiss(animated: false)
+                presentPurchaseMarketing()
+            }
         }
     }
 }
