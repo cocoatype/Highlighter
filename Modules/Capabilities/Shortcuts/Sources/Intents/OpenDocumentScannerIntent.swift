@@ -44,13 +44,15 @@ public struct OpenDocumentScannerIntent: AppIntent {
     }
     #else
     @MainActor public func perform() async throws -> some IntentResult {
-        guard await purchaseRepository.noOnions == .purchased else {
-            throw ShortcutsRedactorError.unpurchased
+        let isPurchased = await purchaseRepository.noOnions == .purchased
+        if isPurchased {
+            logger.log(EventFactory().scannerPresentationEvent(for: .appIntent))
+
+            navigator.navigate(to: .documentScanner)
+        } else {
+            navigator.navigate(to: .paywall)
         }
 
-        logger.log(EventFactory().scannerPresentationEvent(for: .appIntent))
-
-        navigator.navigate(to: .documentScanner)
         return .result()
     }
     #endif

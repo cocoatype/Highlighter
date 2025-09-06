@@ -15,17 +15,15 @@ import PurchasingDoubles
 @Suite(.container)
 struct OpenDocumentScannerIntentTests {
     #if !targetEnvironment(macCatalyst)
-    @available(iOS 16, *)
-    @Test func throwsErrorIfUnpurchased() async throws {
+    @available(iOS 18, *) @MainActor
+    @Test func openPaywallIfUnpurchased() async throws {
+        let navigator = SpyNavigator()
         Container.shared.purchaseRepository.register {
             SpyRepository(noOnions: .unavailable)
         }
 
-        let error = try await #require(throws: ShortcutsRedactorError.self) {
-            try await OpenDocumentScannerIntent().perform()
-        }
-
-        #expect(error.isUnpurchased == true)
+        _ = try await OpenDocumentScannerIntent(navigator: navigator).perform()
+        #expect(navigator.route?.isPaywall == true)
     }
 
     @available(iOS 18, *) @MainActor

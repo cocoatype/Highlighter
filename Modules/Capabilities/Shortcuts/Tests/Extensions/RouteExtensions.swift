@@ -8,6 +8,7 @@ extension Route {
         switch self {
         #if !targetEnvironment(macCatalyst)
         case .documentScanner: true
+        case .paywall: false
         #endif
         case .editor: false
         }
@@ -17,8 +18,18 @@ extension Route {
         switch self {
         case .editor: true
         #if !targetEnvironment(macCatalyst)
-        case .documentScanner: false
+        case .documentScanner, .paywall: false
         #endif
+        }
+    }
+
+    var isPaywall: Bool {
+        switch self {
+#if !targetEnvironment(macCatalyst)
+        case .paywall: true
+        case .documentScanner: false
+#endif
+        case .editor: false
         }
     }
 }
