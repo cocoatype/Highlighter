@@ -75,11 +75,15 @@ public struct ActionSet {
     @BarBuilder public var toolbarItems: [UIBarButtonItem] {
         if sizeClass != .regular {
             UndoBarButtonItem(undoManager: undoManager, target: target)
-            UIBarButtonItem.flexibleSpace()
+            if #unavailable(iOS 26.0) {
+                UIBarButtonItem.flexibleSpace()
+            }
             RedoBarButtonItem(undoManager: undoManager, target: target)
             UIBarButtonItem.flexibleSpace()
             ColorPickerBarButtonItem(target: target, color: currentColor)
-            UIBarButtonItem.flexibleSpace()
+            if #unavailable(iOS 26.0) {
+                UIBarButtonItem.flexibleSpace()
+            }
             HighlighterToolBarButtonItem(tool: selectedTool, target: target)
         }
     }
