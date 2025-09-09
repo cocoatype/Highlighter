@@ -50,6 +50,7 @@
 "RecognizeTextIntent.combineResults.title" = "Combine Results";
 "RecognizeTextIntent.description" = "Recognizes all text in an image.";
 "RecognizeTextIntent.parameterSummary${sourceFile}" = "Recognize text in ${sourceFile}";
+"RecognizeTextIntent.sourceFile.title" = "Source Image";
 "RecognizeTextIntent.title" = "Recognize Text";
 
 "RedactDetectionsIntent.color" = "Color";
