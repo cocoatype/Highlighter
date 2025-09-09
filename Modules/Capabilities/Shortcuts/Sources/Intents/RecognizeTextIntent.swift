@@ -16,7 +16,7 @@ struct RecognizeTextIntent: AppIntent {
     static let description: IntentDescription = "RecognizeTextIntent.description"
 
     @Parameter(
-        title: "RecognizeTextIntent.image.title"
+        title: "RecognizeTextIntent.sourceFile.title"
     )
     var sourceFile: IntentFile
 
