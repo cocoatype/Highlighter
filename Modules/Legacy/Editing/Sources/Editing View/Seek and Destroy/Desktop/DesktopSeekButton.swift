@@ -13,7 +13,7 @@ class DesktopSeekButton: UIButton {
         addSubview(box)
 
         titleLabel?.font = Self.font
-        setTitle(EditingStrings.DesktopSeekButton.title, for: .normal)
+        setTitle(Strings.DesktopSeekButton.title, for: .normal)
         setTitleColor(.secondaryLabel, for: .normal)
         setTitleColor(.label, for: .highlighted)
         contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)

@@ -5,7 +5,7 @@ import SwiftUI
 
 struct SettingsContentOtherAppsSection: View {
     var body: some View {
-        Section(header: SettingsSectionHeader(MobileSettingsUIStrings.SettingsContentOtherAppsSection.header)) {
+        Section(header: SettingsSectionHeader(Strings.SettingsContentOtherAppsSection.header)) {
             OtherAppButton(
                 name: "Barc",
                 subtitle: "Save and store loyalty cards",

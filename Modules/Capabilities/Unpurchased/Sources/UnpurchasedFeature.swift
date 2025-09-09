@@ -29,5 +29,5 @@ public struct UnpurchasedFeature {
     let learnMoreAction: LearnMoreAction?
     let hideFeatureKey: Key<Bool>?
 
-    private typealias Strings = UnpurchasedStrings.UnpurchasedFeature
+    private typealias Strings = Unpurchased.Strings.UnpurchasedFeature
 }

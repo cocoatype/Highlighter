@@ -12,14 +12,12 @@ struct PurchaseErrorAlertModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .alert(Strings.errorTitle, isPresented: $isPresented) {
-                Button(Strings.dismissButton) {}
+            .alert(Strings.PurchaseErrorAlertModifier.errorTitle, isPresented: $isPresented) {
+                Button(Strings.PurchaseErrorAlertModifier.dismissButton) {}
             } message: {
-                Text(Strings.errorMessage)
+                Text(Strings.PurchaseErrorAlertModifier.errorMessage)
             }
     }
-
-    private typealias Strings = PaywallStrings.PurchaseErrorAlertModifier
 }
 
 @available(iOS 16.0, *)

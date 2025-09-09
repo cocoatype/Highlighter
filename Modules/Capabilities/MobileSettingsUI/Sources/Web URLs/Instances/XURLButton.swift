@@ -6,14 +6,12 @@ import SwiftUI
 struct XURLButton: View {
     var body: some View {
         WebURLButton(
-            title: Strings.twitterTitle,
-            subtitle: Strings.twitterSubtitle,
+            title: Strings.SettingsContentContactSection.twitterTitle,
+            subtitle: Strings.SettingsContentContactSection.twitterSubtitle,
             asset: MobileSettingsUIAsset.x,
             url: URL(websitePath: "contact/x")
         )
     }
-
-    private typealias Strings = MobileSettingsUIStrings.SettingsContentContactSection
 }
 
 #Preview {

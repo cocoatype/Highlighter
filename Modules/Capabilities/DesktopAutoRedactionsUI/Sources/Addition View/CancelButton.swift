@@ -10,7 +10,7 @@ class CancelButton: UIButton {
         setContentHuggingPriority(.required, for: .vertical)
         translatesAutoresizingMaskIntoConstraints = false
 
-        setTitle(DesktopAutoRedactionsUIStrings.CancelButton.title, for: .normal)
+        setTitle(Strings.CancelButton.title, for: .normal)
         addTarget(nil, action: #selector(AdditionViewController.cancel(_:)), for: .primaryActionTriggered)
     }
 }

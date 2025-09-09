@@ -55,5 +55,5 @@ public class UnpurchasedAlertControllerFactory {
         return alertController
     }
 
-    private typealias Strings = UnpurchasedStrings.UnpurchasedAlert
+    private typealias Strings = Unpurchased.Strings.UnpurchasedAlert
 }

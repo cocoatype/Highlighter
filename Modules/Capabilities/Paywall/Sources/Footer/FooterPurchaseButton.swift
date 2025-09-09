@@ -46,29 +46,29 @@ struct FooterPurchaseButton: View {
     private var title: String {
         switch purchaseState {
         case .loading:
-            return Strings.loadingTitle
+            return Strings.PurchaseButton.loadingTitle
         case .purchasing, .restoring:
-            return Strings.purchasingTitle
+            return Strings.PurchaseButton.purchasingTitle
         case .readyForPurchase:
-            guard let selectedOption else { return Strings.loadingTitle }
+            guard let selectedOption else { return Strings.PurchaseButton.loadingTitle }
             switch selectedOption.duration {
             case .monthly:
-                return PaywallStrings.PaywallOption.Monthly.buttonTitle
+                return Strings.PaywallOption.Monthly.buttonTitle
             case .annual:
                 if selectedOption.isTrialEligible {
-                    return PaywallStrings.PaywallOption.YearlyWithTrial.buttonTitle
+                    return Strings.PaywallOption.YearlyWithTrial.buttonTitle
                 } else {
-                    return PaywallStrings.PaywallOption.Yearly.buttonTitle
+                    return Strings.PaywallOption.Yearly.buttonTitle
                 }
             case .oneTime:
-                return PaywallStrings.PaywallOption.OneTime.buttonTitle
+                return Strings.PaywallOption.OneTime.buttonTitle
             case .unknown:
-                return Strings.readyTitle(selectedOption.displayPrice)
+                return Strings.PurchaseButton.readyTitle(selectedOption.displayPrice)
             }
         case .unavailable:
-            return Strings.loadingTitle
+            return Strings.PurchaseButton.loadingTitle
         case .purchased:
-            return Strings.purchasedTitle
+            return Strings.PurchaseButton.purchasedTitle
         }
     }
 
@@ -92,8 +92,6 @@ struct FooterPurchaseButton: View {
             isErrorAlertPresented = true
         }
     }
-
-    private typealias Strings = PaywallStrings.PurchaseButton
 }
 
 #if DEBUG

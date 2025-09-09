@@ -23,7 +23,7 @@ public class ExportingPreparer: NSObject {
             let exportedImage = try await Rendering.renderer
                 .render(image: image, redactions: redactions)
 
-            let representedURLName = "\(ExportingStrings.PhotoEditingExporter.defaultImageName).\(imageType.preferredFilenameExtension ?? "png")"
+            let representedURLName = "\(Strings.PhotoEditingExporter.defaultImageName).\(imageType.preferredFilenameExtension ?? "png")"
             let temporaryURL = URL(fileURLWithPath: NSTemporaryDirectory())
                 .appendingPathComponent(representedURLName)
 

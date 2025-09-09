@@ -6,14 +6,12 @@ import SwiftUI
 struct ThreadsURLButton: View {
     var body: some View {
         WebURLButton(
-            title: Strings.threadsTitle,
-            subtitle: Strings.threadsSubtitle,
+            title: Strings.SettingsContentContactSection.threadsTitle,
+            subtitle: Strings.SettingsContentContactSection.threadsSubtitle,
             asset: MobileSettingsUIAsset.threads,
             url: URL(websitePath: "contact/threads")
         )
     }
-
-    private typealias Strings = MobileSettingsUIStrings.SettingsContentContactSection
 }
 
 #Preview {

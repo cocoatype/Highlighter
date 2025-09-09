@@ -14,7 +14,7 @@ public class LimitedLibraryBarButtonItem: UIBarButtonItem {
             target: nil,
             action: #selector(LimitedLibraryPresenting.presentLimitedLibrary)
         )
-        standard.accessibilityLabel = PhotoLibraryStrings.DocumentScannerPhotoLibraryViewCell.defaultAccessibilityLabel
+        standard.accessibilityLabel = Strings.DocumentScannerPhotoLibraryViewCell.defaultAccessibilityLabel
         return standard
     }
 

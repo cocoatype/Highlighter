@@ -16,7 +16,11 @@ public struct PhotoPermissionsDeniedAlertFactory {
     }
 
     public func alert() -> UIAlertController {
-        let alertController = UIAlertController(title: Strings.alertTitle, message: Strings.alertMessage, preferredStyle: .alert)
+        let alertController = UIAlertController(
+            title: Strings.PhotoPermissionsDeniedAlertFactory.alertTitle,
+            message: Strings.PhotoPermissionsDeniedAlertFactory.alertMessage,
+            preferredStyle: .alert
+        )
         alertController.view.tintColor = .controlTint
 
         alertController.addAction(settingsAction())
@@ -26,14 +30,19 @@ public struct PhotoPermissionsDeniedAlertFactory {
     }
 
     private func settingsAction() -> PhotoPermissionsAlertAction {
-        PhotoPermissionsAlertAction.action(title: Strings.actionButtonTitle, style: .default) {
+        PhotoPermissionsAlertAction.action(
+            title: Strings.PhotoPermissionsDeniedAlertFactory.actionButtonTitle,
+            style: .default
+        ) {
             guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
             urlOpener.open(settingsURL, options: [:], completionHandler: nil)
         }
     }
-    private let cancelAction = PhotoPermissionsAlertAction.action(title: Strings.cancelButtonTitle, style: .cancel, handlerBody: nil)
-
-    typealias Strings = PhotoPermissionsStrings.PhotoPermissionsDeniedAlertFactory
+    private let cancelAction = PhotoPermissionsAlertAction.action(
+        title: Strings.PhotoPermissionsDeniedAlertFactory.cancelButtonTitle,
+        style: .cancel,
+        handlerBody: nil
+    )
 }
 
 protocol URLOpening {

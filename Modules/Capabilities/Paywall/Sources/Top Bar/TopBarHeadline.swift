@@ -5,7 +5,7 @@ import SwiftUI
 
 struct TopBarHeadline: View {
     var body: some View {
-        Text(PaywallStrings.TopBarHeadline.text)
+        Text(Strings.TopBarHeadline.text)
             .foregroundColor(.white)
             .lineLimit(2)
             .fixedSize(horizontal: false, vertical: true)

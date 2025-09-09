@@ -10,7 +10,7 @@ struct SettingsContentContactSection: View {
     }
 
     var body: some View {
-        Section(header: SettingsSectionHeader(Strings.header)) {
+        Section(header: SettingsSectionHeader(Strings.SettingsContentContactSection.header)) {
             MailButton()
             ReviewButton()
             BlueskyURLButton()
@@ -24,6 +24,4 @@ struct SettingsContentContactSection: View {
         let versionString = infoDictionary?["CFBundleShortVersionString"] as? String
         return versionString ?? "???"
     }
-
-    private typealias Strings = MobileSettingsUIStrings.SettingsContentContactSection
 }

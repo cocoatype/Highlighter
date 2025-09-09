@@ -61,5 +61,5 @@ struct MailButton: View {
     // the URL to open to send e-mail
     private static let whatHaveYouDone = URL(staticString: "mailto:hello@cocoatype.com")
 
-    private typealias Strings = MobileSettingsUIStrings.SettingsContentContactSection
+    private typealias Strings = MobileSettingsUI.Strings.SettingsContentContactSection
 }

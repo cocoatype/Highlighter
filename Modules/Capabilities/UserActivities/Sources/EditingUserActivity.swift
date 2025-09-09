@@ -7,7 +7,7 @@ import UIKit
 public class EditingUserActivity: NSUserActivity {
     public init(assetLocalIdentifier: String? = nil, imageBookmarkData: Data? = nil, imageData: Data? = nil, redactions: [Redaction]? = nil) {
         super.init(activityType: EditingUserActivity.defaultActivityType)
-        title = UserActivitiesStrings.EditingUserActivity.activityTitle
+        title = Strings.EditingUserActivity.activityTitle
         self.assetLocalIdentifier = assetLocalIdentifier
         self.imageBookmarkData = imageBookmarkData
         self.imageData = imageData

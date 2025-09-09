@@ -66,7 +66,7 @@ class PhotoEditingProtectionAlertController: UIAlertController {
         fatalError("\(className) does not implement init(coder:)")
     }
 
-    private typealias Strings = EditingStrings.PhotoEditingProtectionAlertController
+    private typealias Strings = Editing.Strings.PhotoEditingProtectionAlertController
 }
 
 @MainActor protocol PhotoEditingProtectionAlertDelegate: AnyObject {

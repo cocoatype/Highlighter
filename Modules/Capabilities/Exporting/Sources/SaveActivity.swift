@@ -19,7 +19,7 @@ class SaveActivity: UIActivity {
     }
 
     override var activityTitle: String? {
-        ExportingStrings.SaveActivity.title
+        Strings.SaveActivity.title
     }
 
     override var activityImage: UIImage? {

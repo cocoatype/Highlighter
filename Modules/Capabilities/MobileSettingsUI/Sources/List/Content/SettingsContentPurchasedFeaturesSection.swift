@@ -36,5 +36,5 @@ struct SettingsContentPurchasedFeaturesSection: View {
         }
     }
 
-    private typealias Strings = MobileSettingsUIStrings.SettingsContentPurchasedFeaturesSection
+    private typealias Strings = MobileSettingsUI.Strings.SettingsContentPurchasedFeaturesSection
 }

@@ -22,19 +22,17 @@ struct PaywallOptionDescription: View {
     private var description: String? {
         switch option.duration {
         case .monthly:
-            return Strings.Monthly.message(option.displayPrice)
+            return Strings.PaywallOption.Monthly.message(option.displayPrice)
         case .annual where option.isTrialEligible:
-            return Strings.YearlyWithTrial.message(option.displayPrice)
+            return Strings.PaywallOption.YearlyWithTrial.message(option.displayPrice)
         case .annual:
-            return Strings.Yearly.message(option.displayPrice)
+            return Strings.PaywallOption.Yearly.message(option.displayPrice)
         case .oneTime:
-            return Strings.OneTime.message(option.displayPrice)
+            return Strings.PaywallOption.OneTime.message(option.displayPrice)
         case .unknown:
             return nil
         }
     }
-
-    private typealias Strings = PaywallStrings.PaywallOption
 }
 
 #if DEBUG

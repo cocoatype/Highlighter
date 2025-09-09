@@ -18,11 +18,9 @@ struct FooterTermsLink: View {
 
     var body: some View {
         if usesShortTitle {
-            FooterLink(title: Strings.shortTitle, action: openTerms)
+            FooterLink(title: Strings.FooterTermsLink.shortTitle, action: openTerms)
         } else {
-            FooterLink(title: Strings.title, action: openTerms)
+            FooterLink(title: Strings.FooterTermsLink.title, action: openTerms)
         }
     }
-
-    private typealias Strings = PaywallStrings.FooterTermsLink
 }

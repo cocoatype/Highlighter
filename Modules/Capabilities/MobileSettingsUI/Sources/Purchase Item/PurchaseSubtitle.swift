@@ -39,7 +39,7 @@ struct PurchaseSubtitle: View {
         return Strings.withProduct(displayPrice)
     }
 
-    private typealias Strings = MobileSettingsUIStrings.PurchaseSubtitle
+    private typealias Strings = MobileSettingsUI.Strings.PurchaseSubtitle
 }
 
 #if DEBUG

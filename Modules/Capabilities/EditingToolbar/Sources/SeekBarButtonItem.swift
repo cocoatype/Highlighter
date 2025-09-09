@@ -7,6 +7,6 @@ import UIKit
 class SeekBarButtonItem: UIBarButtonItem {
     convenience init(target: AnyObject?) {
         self.init(image: Icons.seekAndDestroy, style: .plain, target: target, action: #selector(ActionsBuilderActions.startSeeking(_:)))
-        accessibilityLabel = EditingToolbarStrings.SeekBarButtonItem.accessibilityLabel
+        accessibilityLabel = Strings.SeekBarButtonItem.accessibilityLabel
     }
 }

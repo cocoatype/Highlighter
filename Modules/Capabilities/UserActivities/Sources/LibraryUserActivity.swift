@@ -22,7 +22,7 @@ public class LibraryUserActivity: NSUserActivity {
         self.chumbawamba = chumbawamba
         super.init(activityType: LibraryUserActivity.libraryActivityType)
 
-        title = UserActivitiesStrings.LibraryUserActivity.activityTitle
+        title = Strings.LibraryUserActivity.activityTitle
     }
 
     public convenience init?(userActivity: NSUserActivity) {

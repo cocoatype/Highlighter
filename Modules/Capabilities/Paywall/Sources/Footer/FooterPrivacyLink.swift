@@ -19,12 +19,12 @@ struct FooterPrivacyLink: View {
     var body: some View {
         if usesShortTitle {
             FooterLink(
-                title: PaywallStrings.FooterPrivacyLink.shortTitle,
+                title: Strings.FooterPrivacyLink.shortTitle,
                 action: openPrivacy
             )
         } else {
             FooterLink(
-                title: PaywallStrings.FooterPrivacyLink.title,
+                title: Strings.FooterPrivacyLink.title,
                 action: openPrivacy
             )
         }

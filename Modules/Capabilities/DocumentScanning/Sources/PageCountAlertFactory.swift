@@ -7,14 +7,20 @@ import DesignSystem
 
 @MainActor class PageCountAlertFactory: NSObject {
     static func alert(completionHandler: @escaping (@MainActor () -> Void)) -> UIAlertController {
-        let alertController = UIAlertController(title: Strings.alertTitle, message: Strings.alertMessage, preferredStyle: .alert)
+        let alertController = UIAlertController(
+            title: Strings.PageCountAlertFactory.alertTitle,
+            message: Strings.PageCountAlertFactory.alertMessage,
+            preferredStyle: .alert
+        )
         alertController.view.tintColor = .controlTint
-        alertController.addAction(UIAlertAction(title: Strings.dismissButtonTitle, style: .default) { _ in
-            completionHandler()
-        })
+
+        let dismissAction = UIAlertAction(
+            title: Strings.PageCountAlertFactory.dismissButtonTitle,
+            style: .default,
+            handler: { _ in completionHandler() }
+        )
+        alertController.addAction(dismissAction)
 
         return alertController
     }
-
-    typealias Strings = DocumentScanningStrings.PageCountAlertFactory
 }

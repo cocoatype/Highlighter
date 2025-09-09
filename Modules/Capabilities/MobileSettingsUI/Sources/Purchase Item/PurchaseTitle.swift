@@ -5,7 +5,7 @@ import SwiftUI
 
 struct PurchaseTitle: View {
     var body: some View {
-        return Text(MobileSettingsUIStrings.PurchaseItem.title)
+        return Text(Strings.PurchaseItem.title)
             .font(.app(textStyle: .title3))
             .foregroundColor(.white)
     }
