@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 8/3/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
+import Photos
 import UIKit
 
 import FactoryKit
@@ -8,6 +9,7 @@ import FactoryKit
 import Defaults
 import Editing
 import ErrorHandling
+import PhotoAssets
 import Redactions
 import Scenes
 
@@ -20,6 +22,8 @@ class DesktopViewController: UIViewController, FileURLProvider {
     init(
         dependencies: SceneDependencies
     ) {
+        self.assetLocalIdentifier = dependencies.assetLocalIdentifier
+        self.assetCloudIdentifier = dependencies.assetCloudIdentifier
         self.initialRedactions = dependencies.redactions
         self.representedURL = dependencies.representedURL
         self.image = dependencies.image
@@ -29,18 +33,12 @@ class DesktopViewController: UIViewController, FileURLProvider {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if children.contains(where: { $0 is PhotoEditingViewController }), let representedURL = representedURL {
-            windowScene?.titlebar?.representedURL = representedURL
-            windowScene?.title = representedURL.lastPathComponent
-        } else if representedURL != nil {
-            do {
-                try loadRepresentedURL()
-                updateURLRepresentation()
-            } catch {
-                errorHandler.log(error, module: "Core", type: "DesktopViewController")
-            }
-        } else if image != nil {
+        updateWindowURL()
+
+        if image != nil {
             loadImage()
+        } else if assetLocalIdentifier != nil || assetCloudIdentifier != nil {
+            loadAsset()
         }
     }
 
@@ -48,35 +46,43 @@ class DesktopViewController: UIViewController, FileURLProvider {
 
     var representedURL: URL? {
         didSet {
-            do {
-                try loadRepresentedURL()
-                updateURLRepresentation()
-            } catch {
-                errorHandler.log(error, module: "Core", type: "DesktopViewController")
+            updateWindowURL()
+        }
+    }
+
+    private func updateWindowURL() {
+        if let windowURL {
+            if editingViewController == nil {
+                RecentsMenuDataSource.addRecentItem(windowURL, defaults: defaults)
             }
+
+            windowScene?.titlebar?.representedURL = windowURL
+            windowScene?.title = windowURL.lastPathComponent
+        } else {
+            // reset to nil
         }
     }
 
-    private func loadRepresentedURL() throws {
-        guard let representedURL = representedURL, image == nil else { return }
-        let accessGranted = representedURL.startAccessingSecurityScopedResource()
-        defer { representedURL.stopAccessingSecurityScopedResource() }
-        guard accessGranted else { throw LoadError.accessNotGranted }
+    private var windowURL: URL? {
+        guard let representedURL,
+              FileManager.default.fileExists(atPath: representedURL.path)
+        else { return nil }
 
-        let data = try Data(contentsOf: representedURL)
-        guard let image = UIImage(data: data) else { return }
-        self.image = image
-    }
+        do {
+            let cachesDirectory = try FileManager.default.url(
+                for: .cachesDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: false
+            )
 
-    private func updateURLRepresentation() {
-        guard let representedURL = representedURL else {
-            return
+            guard cachesDirectory.isParent(of: representedURL) == false else { return nil }
+
+            return representedURL
+        } catch {
+            errorHandler.log(error, module: "Core", type: "DesktopViewController")
+            return nil
         }
-
-        RecentsMenuDataSource.addRecentItem(representedURL, defaults: defaults)
-
-        windowScene?.titlebar?.representedURL = representedURL
-        windowScene?.title = representedURL.lastPathComponent
     }
 
     var representedFileURL: URL? { representedURL }
@@ -87,6 +93,20 @@ class DesktopViewController: UIViewController, FileURLProvider {
 
     private func validateAllToolbarItems() {
         windowScene?.titlebar?.toolbar?.visibleItems?.forEach { $0.validate() }
+    }
+
+    // MARK: Asset
+
+    private var assetLocalIdentifier: String?
+    private var assetCloudIdentifier: String?
+
+    private let retriever = PhotoAssetsRetriever()
+    private func loadAsset() {
+        guard let asset = retriever.asset(forLocalIdentifier: assetLocalIdentifier, cloudIdentifier: assetCloudIdentifier)
+        else { return }
+
+        embed(PhotoEditingViewController(asset: asset, redactions: initialRedactions))
+        validateAllToolbarItems()
     }
 
     // MARK: Image
@@ -115,10 +135,6 @@ class DesktopViewController: UIViewController, FileURLProvider {
     @available(*, unavailable)
     required init(coder: NSCoder) {
         Container.shared.errorHandler().notImplemented()
-    }
-
-    private enum LoadError: Error {
-        case accessNotGranted
     }
 }
 

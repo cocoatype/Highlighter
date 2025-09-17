@@ -178,6 +178,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
         navigationController?.setToolbarHidden(actionSet.toolbarItems.count == 0, animated: animated)
 
         userActivity?.needsSave = true
+        userActivity?.becomeCurrent()
     }
 
     private var shareBarButtonItem: UIBarButtonItem? {
@@ -477,16 +478,14 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     open override func updateUserActivityState(_ activity: NSUserActivity) {
         guard let editingActivity = (activity as? EditingUserActivity) else { return }
-        if let asset = asset {
-            editingActivity.assetLocalIdentifier = asset.localIdentifier
+        if let asset {
+            editingActivity.setIdentifiers(for: asset)
         } else if let representedURL = fileURLProvider?.representedFileURL {
             let accessGranted = representedURL.startAccessingSecurityScopedResource()
             defer { representedURL.stopAccessingSecurityScopedResource() }
             guard accessGranted else { return }
 
             editingActivity.imageBookmarkData = try? representedURL.bookmarkData()
-        } else if let image = image {
-            editingActivity.image = image
         }
         editingActivity.redactions = photoEditingView.redactions
     }

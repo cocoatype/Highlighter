@@ -17,6 +17,7 @@ public enum PhotoLibrary {
             .target(Geometry.target),
             .target(Logging.target),
             .target(MobileSettingsUI.target),
+            .target(PhotoAssets.target),
             .target(PhotoPermissions.target),
             .target(Purchasing.target),
             .target(UserActivities.target),
