@@ -5,8 +5,8 @@
 import Editing
 import UIKit
 
-enum MenuBuilder {
-    @MainActor static func buildMenu(with builder: UIMenuBuilder) {
+@MainActor enum MenuBuilder {
+    static func buildMenu(with builder: UIMenuBuilder) {
         guard builder.system == .main else { return }
 
         let documentChildren = [
