@@ -29,11 +29,10 @@ import UIKit
         let recentsMenuDataSource = RecentsMenuDataSource()
         builder.replace(menu: .openRecent, with: recentsMenuDataSource.recentsMenu)
 
-        let findMenu = UIMenu(
+        builder.replace(menu: .find, with: UIMenu(
             options: .displayInline,
             children: [findMenuItem]
-        )
-        builder.insertSibling(findMenu, beforeMenu: .spelling)
+        ))
 
         let helpMenuDataSource = HelpMenuDataSource()
         builder.replaceChildren(ofMenu: .help) { _ in
@@ -49,6 +48,7 @@ import UIKit
 
     private static let saveMenuItem = UIKeyCommand(
         title: Strings.MenuBuilder.saveMenuItemTitle,
+        image: UIImage(systemName: "square.and.arrow.down"),
         action: #selector(PhotoEditingViewController.save(_:)),
         input: "S",
         modifierFlags: [.command]
@@ -56,6 +56,7 @@ import UIKit
 
     private static let saveAsMenuItem = UIKeyCommand(
         title: Strings.MenuBuilder.saveAsMenuItemTitle,
+        image: UIImage(systemName: "plus.square.on.square"),
         action: #selector(PhotoEditingViewController.saveAs(_:)),
         input: "S",
         modifierFlags: [.command, .shift]
@@ -63,6 +64,7 @@ import UIKit
 
     private static let findMenuItem = UIKeyCommand(
         title: Strings.MenuBuilder.findMenuItemTitle,
+        image: UIImage(systemName: "magnifyingglass"),
         action: #selector(PhotoEditingViewController.startSeeking(_:)),
         input: "F",
         modifierFlags: [.command]
@@ -70,10 +72,10 @@ import UIKit
 
     private static let preferencesMenuItem = UIKeyCommand(
         title: Strings.MenuBuilder.preferencesMenuItemTitle,
+        image: UIImage(systemName: "gear"),
         action: #selector(AppDelegate.displayPreferences),
         input: ",",
         modifierFlags: [.command]
     )
 }
-
 #endif
