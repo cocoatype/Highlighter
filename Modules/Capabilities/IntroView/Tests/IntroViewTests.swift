@@ -12,7 +12,7 @@ struct IntroViewTests {
     @Test
     func permissionLabel() throws {
         let introView = try IntroView().inspect()
-        _ = try introView.find(IntroLabel.self, containing: Strings.permissionLabelText)
+        _ = try introView.find(IntroLabel.self, containing: Strings.IntroView.permissionLabelText)
     }
 
     @Test
@@ -21,8 +21,8 @@ struct IntroViewTests {
             let introView = try IntroView(
                 permissionAction: { buttonTapped() }
             ).inspect()
-            let button = try introView.find(IntroButton.self, containing: Strings.permissionButtonTitle)
-            let internalButton = try button.find(button: Strings.permissionButtonTitle)
+            let button = try introView.find(IntroButton.self, containing: Strings.IntroView.permissionButtonTitle)
+            let internalButton = try button.find(button: Strings.IntroView.permissionButtonTitle)
             try internalButton.tap()
         }
     }
@@ -30,7 +30,7 @@ struct IntroViewTests {
     @Test
     func importLabel() throws {
         let introView = try IntroView().inspect()
-        _ = try introView.find(IntroLabel.self, containing: Strings.importLabelText)
+        _ = try introView.find(IntroLabel.self, containing: Strings.IntroView.importLabelText)
     }
 
     @Test
@@ -39,8 +39,8 @@ struct IntroViewTests {
             let introView = try IntroView(
                 importAction: { buttonTapped() }
             ).inspect()
-            let button = try introView.find(IntroButton.self, containing: Strings.importButtonTitle)
-            let internalButton = try button.find(button: Strings.importButtonTitle)
+            let button = try introView.find(IntroButton.self, containing: Strings.IntroView.importButtonTitle)
+            let internalButton = try button.find(button: Strings.IntroView.importButtonTitle)
             try internalButton.tap()
         }
     }
@@ -52,6 +52,4 @@ struct IntroViewTests {
         let (_, _, maxWidth, _, _, _, _) = try vStack.flexFrame()
         #expect(maxWidth == 240)
     }
-
-    private typealias Strings = IntroViewStrings.IntroView
 }

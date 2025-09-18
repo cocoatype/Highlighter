@@ -16,7 +16,7 @@ class ZoomItemGroup: NSToolbarItemGroup {
 
     init(delegate: any ZoomItemDelegate) {
         super.init(itemIdentifier: Self.identifier)
-        label = CoreStrings.ZoomItemGroup.label
+        label = Strings.ZoomItemGroup.label
         subitems = [ZoomOutItem(delegate: delegate), ZoomInItem(delegate: delegate)]
     }
 }

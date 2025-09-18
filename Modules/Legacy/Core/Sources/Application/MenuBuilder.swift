@@ -10,8 +10,18 @@ enum MenuBuilder {
         guard builder.system == .main else { return }
 
         let documentChildren = [
-            UIKeyCommand(title: Strings.saveMenuItemTitle, action: #selector(PhotoEditingViewController.save(_:)), input: "S", modifierFlags: [.command]),
-            UIKeyCommand(title: Strings.saveAsMenuItemTitle, action: #selector(PhotoEditingViewController.saveAs(_:)), input: "S", modifierFlags: [.command, .shift]),
+            UIKeyCommand(
+                title: Strings.MenuBuilder.saveMenuItemTitle,
+                action: #selector(PhotoEditingViewController.save(_:)),
+                input: "S",
+                modifierFlags: [.command]
+            ),
+            UIKeyCommand(
+                title: Strings.MenuBuilder.saveAsMenuItemTitle,
+                action: #selector(PhotoEditingViewController.saveAs(_:)),
+                input: "S",
+                modifierFlags: [.command, .shift]
+            ),
         ]
 
         if #available(macCatalyst 16.0, *) {
@@ -29,9 +39,17 @@ enum MenuBuilder {
         let recentsMenuDataSource = RecentsMenuDataSource()
         builder.replace(menu: .openRecent, with: recentsMenuDataSource.recentsMenu)
 
-        let findMenu = UIMenu(options: .displayInline, children: [
-            UIKeyCommand(title: Strings.findMenuItemTitle, action: #selector(PhotoEditingViewController.startSeeking(_:)), input: "F", modifierFlags: [.command])
-        ])
+        let findMenu = UIMenu(
+            options: .displayInline,
+            children: [
+                UIKeyCommand(
+                    title: Strings.MenuBuilder.findMenuItemTitle,
+                    action: #selector(PhotoEditingViewController.startSeeking(_:)),
+                    input: "F",
+                    modifierFlags: [.command]
+                )
+            ]
+        )
         builder.insertSibling(findMenu, beforeMenu: .spelling)
 
         let helpMenuDataSource = HelpMenuDataSource()
@@ -39,13 +57,19 @@ enum MenuBuilder {
             helpMenuDataSource.helpMenu.children
         }
 
-        let preferencesMenu = UIMenu(options: .displayInline, children: [
-            UIKeyCommand(title: Strings.preferencesMenuItemTitle, action: #selector(AppDelegate.displayPreferences), input: ",", modifierFlags: [.command])
-        ])
+        let preferencesMenu = UIMenu(
+            options: .displayInline,
+            children: [
+                UIKeyCommand(
+                    title: Strings.MenuBuilder.preferencesMenuItemTitle,
+                    action: #selector(AppDelegate.displayPreferences),
+                    input: ",",
+                    modifierFlags: [.command]
+                )
+            ]
+        )
         builder.insertSibling(preferencesMenu, afterMenu: .about)
     }
-
-    private typealias Strings = CoreStrings.MenuBuilder
 }
 
 #endif

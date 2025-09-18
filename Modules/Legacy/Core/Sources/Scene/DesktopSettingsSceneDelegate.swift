@@ -16,7 +16,7 @@ class DesktopSettingsSceneDelegate: NSObject, UIWindowSceneDelegate {
         scene.sizeRestrictions?.maximumSize = CGSize(width: 640, height: Double.greatestFiniteMagnitude)
         scene.sizeRestrictions?.minimumSize = CGSize(width: 640, height: 320)
 
-        scene.title = CoreStrings.DesktopSettingsSceneDelegate.windowTitle
+        scene.title = Strings.DesktopSettingsSceneDelegate.windowTitle
 
         let window = AppWindow(windowScene: scene)
         let settingsViewController = DesktopSettingsViewController()

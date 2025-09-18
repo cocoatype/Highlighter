@@ -18,6 +18,6 @@ struct DebugPreferencesBarButtonItemTests {
         #expect(item.style == .plain)
         #expect(item.target === target)
         #expect(item.action == #selector(ActionsBuilderActions.showDebugPreferences(_:)))
-        #expect(item.accessibilityLabel == EditingToolbarStrings.DebugPreferencesBarButtonItem.accessibilityLabel)
+        #expect(item.accessibilityLabel == EditingToolbar.Strings.DebugPreferencesBarButtonItem.accessibilityLabel)
     }
 }
