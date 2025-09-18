@@ -10,18 +10,8 @@ enum MenuBuilder {
         guard builder.system == .main else { return }
 
         let documentChildren = [
-            UIKeyCommand(
-                title: Strings.MenuBuilder.saveMenuItemTitle,
-                action: #selector(PhotoEditingViewController.save(_:)),
-                input: "S",
-                modifierFlags: [.command]
-            ),
-            UIKeyCommand(
-                title: Strings.MenuBuilder.saveAsMenuItemTitle,
-                action: #selector(PhotoEditingViewController.saveAs(_:)),
-                input: "S",
-                modifierFlags: [.command, .shift]
-            ),
+            saveMenuItem,
+            saveAsMenuItem,
         ]
 
         if #available(macCatalyst 16.0, *) {
@@ -41,14 +31,7 @@ enum MenuBuilder {
 
         let findMenu = UIMenu(
             options: .displayInline,
-            children: [
-                UIKeyCommand(
-                    title: Strings.MenuBuilder.findMenuItemTitle,
-                    action: #selector(PhotoEditingViewController.startSeeking(_:)),
-                    input: "F",
-                    modifierFlags: [.command]
-                )
-            ]
+            children: [findMenuItem]
         )
         builder.insertSibling(findMenu, beforeMenu: .spelling)
 
@@ -59,17 +42,38 @@ enum MenuBuilder {
 
         let preferencesMenu = UIMenu(
             options: .displayInline,
-            children: [
-                UIKeyCommand(
-                    title: Strings.MenuBuilder.preferencesMenuItemTitle,
-                    action: #selector(AppDelegate.displayPreferences),
-                    input: ",",
-                    modifierFlags: [.command]
-                )
-            ]
+            children: [preferencesMenuItem]
         )
         builder.insertSibling(preferencesMenu, afterMenu: .about)
     }
+
+    private static let saveMenuItem = UIKeyCommand(
+        title: Strings.MenuBuilder.saveMenuItemTitle,
+        action: #selector(PhotoEditingViewController.save(_:)),
+        input: "S",
+        modifierFlags: [.command]
+    )
+
+    private static let saveAsMenuItem = UIKeyCommand(
+        title: Strings.MenuBuilder.saveAsMenuItemTitle,
+        action: #selector(PhotoEditingViewController.saveAs(_:)),
+        input: "S",
+        modifierFlags: [.command, .shift]
+    )
+
+    private static let findMenuItem = UIKeyCommand(
+        title: Strings.MenuBuilder.findMenuItemTitle,
+        action: #selector(PhotoEditingViewController.startSeeking(_:)),
+        input: "F",
+        modifierFlags: [.command]
+    )
+
+    private static let preferencesMenuItem = UIKeyCommand(
+        title: Strings.MenuBuilder.preferencesMenuItemTitle,
+        action: #selector(AppDelegate.displayPreferences),
+        input: ",",
+        modifierFlags: [.command]
+    )
 }
 
 #endif

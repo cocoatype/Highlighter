@@ -2,7 +2,7 @@
 run = "tuist generate"
 
 [tasks.lint]
-run = "swiftlint lint"
+run = "swiftlint lint --quiet"
 
 [tasks.module]
 run = "tuist scaffold module --name"

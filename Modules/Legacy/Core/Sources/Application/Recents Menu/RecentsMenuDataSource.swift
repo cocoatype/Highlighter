@@ -56,7 +56,7 @@ import ErrorHandling
             UICommand(
                 title: Strings.RecentsMenuDataSource.clearMenuItemTitle,
                 action: #selector(AppDelegate.clearRecents)
-            )
+            ),
         ]
     )
 
