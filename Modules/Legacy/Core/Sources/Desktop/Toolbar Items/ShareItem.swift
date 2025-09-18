@@ -13,7 +13,7 @@ class ShareItem: NSSharingServicePickerToolbarItem, UIActivityItemsConfiguration
         super.init(itemIdentifier: Self.identifier)
 
         image = UIImage(systemName: "square.and.arrow.up")
-        label = CoreStrings.ShareItem.label
+        label = Strings.ShareItem.label
         isEnabled = true
 
         activityItemsConfiguration = self

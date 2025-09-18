@@ -6,14 +6,12 @@ import SwiftUI
 struct BlueskyURLButton: View {
     var body: some View {
         WebURLButton(
-            title: Strings.blueskyTitle,
-            subtitle: Strings.blueskySubtitle,
+            title: Strings.SettingsContentContactSection.blueskyTitle,
+            subtitle: Strings.SettingsContentContactSection.blueskySubtitle,
             asset: MobileSettingsUIAsset.bluesky,
             url: URL(websitePath: "contact/bluesky")
         )
     }
-
-    private typealias Strings = MobileSettingsUIStrings.SettingsContentContactSection
 }
 
 #Preview {

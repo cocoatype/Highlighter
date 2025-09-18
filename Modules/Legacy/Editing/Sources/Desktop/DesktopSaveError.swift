@@ -8,13 +8,13 @@ enum DesktopSaveError: Error {
 
     var alertTitle: String {
         switch self {
-        case .missingRepresentedURL: return EditingStrings.DesktopSaveError.missingRepresentedURLTitle
-        case .missingImageType: return EditingStrings.DesktopSaveError.missingImageTypeTitle
-        case .noImageData: return EditingStrings.DesktopSaveError.noImageDataTitle
+        case .missingRepresentedURL: return Strings.DesktopSaveError.missingRepresentedURLTitle
+        case .missingImageType: return Strings.DesktopSaveError.missingImageTypeTitle
+        case .noImageData: return Strings.DesktopSaveError.noImageDataTitle
         }
     }
 
     var alertMessage: String {
-        return EditingStrings.DesktopSaveError.alertMessage
+        return Strings.DesktopSaveError.alertMessage
     }
 }

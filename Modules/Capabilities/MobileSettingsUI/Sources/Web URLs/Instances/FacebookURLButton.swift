@@ -6,14 +6,12 @@ import SwiftUI
 struct FacebookURLButton: View {
     var body: some View {
         WebURLButton(
-            title: Strings.facebookTitle,
-            subtitle: Strings.facebookSubtitle,
+            title: Strings.SettingsContentContactSection.facebookTitle,
+            subtitle: Strings.SettingsContentContactSection.facebookSubtitle,
             asset: MobileSettingsUIAsset.facebook,
             url: URL(websitePath: "contact/facebook")
         )
     }
-
-    private typealias Strings = MobileSettingsUIStrings.SettingsContentContactSection
 }
 
 #Preview {

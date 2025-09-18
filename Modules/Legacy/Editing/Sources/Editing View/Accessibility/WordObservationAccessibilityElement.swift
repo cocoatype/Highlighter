@@ -15,7 +15,7 @@ class WordObservationAccessibilityElement: UIAccessibilityElement {
         accessibilityLabel = wordObservation.string
         accessibilityFrameInContainerSpace = wordObservation.bounds.boundingBox
         accessibilityTraits = .button
-        accessibilityValue = isRedacted ? EditingStrings.WordObservationAccessibilityElement.redactedValue : nil
+        accessibilityValue = isRedacted ? Strings.WordObservationAccessibilityElement.redactedValue : nil
     }
 
     private let onActivate: (WordObservation, Bool) -> Bool

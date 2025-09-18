@@ -8,7 +8,7 @@ public class ColorPickerBarButtonItem: UIBarButtonItem {
         self.init(customView: ColorWell(target: target, color: color))
 
         UIView.appearance(whenContainedInInstancesOf: [UIColorPickerViewController.self]).overrideUserInterfaceStyle = .dark
-        accessibilityLabel = EditingToolbarStrings.ColorPickerBarButtonItem.accessibilityLabel
+        accessibilityLabel = Strings.ColorPickerBarButtonItem.accessibilityLabel
         accessibilityValue = color.accessibilityName
     }
 

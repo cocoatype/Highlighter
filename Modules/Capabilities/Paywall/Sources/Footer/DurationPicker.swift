@@ -21,7 +21,7 @@ struct DurationPicker: View {
         Picker(selection: $selectedOption) {
             ForEach(options, content: DurationPickerItem.init)
         } label: {
-            Text(PaywallStrings.DurationPicker.label)
+            Text(Strings.DurationPicker.label)
         }
         .pickerStyle(.segmented)
         .introspect(.picker(style: .segmented), on: .iOS(.v13, .v14, .v15, .v16, .v17, .v18), customize: { segmentedControl in

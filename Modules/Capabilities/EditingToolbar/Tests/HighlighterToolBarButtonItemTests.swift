@@ -8,7 +8,7 @@ import Testing
 
 @MainActor
 struct HighlighterToolBarButtonItemTests {
-    private typealias Strings = EditingToolbarStrings.HighlighterToolBarButtonItem
+    private typealias Strings = EditingToolbar.Strings.HighlighterToolBarButtonItem
 
     @Test(arguments: [
         HighlighterTool.magic,

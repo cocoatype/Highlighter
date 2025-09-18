@@ -26,7 +26,7 @@ public struct AlbumsList: View {
             }
         }
         .listStyle(SidebarListStyle())
-        .navigationTitle(AlbumsUIStrings.AlbumsViewController.navigationTitle)
+        .navigationTitle(Strings.AlbumsViewController.navigationTitle)
         .environmentObject(navigationWrapper)
         .albumsListBackground()
     }

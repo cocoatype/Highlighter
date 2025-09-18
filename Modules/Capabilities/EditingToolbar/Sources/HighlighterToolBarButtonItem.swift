@@ -28,14 +28,12 @@ class HighlighterToolBarButtonItem: UIBarButtonItem {
 
     private static func title(for tool: HighlighterTool) -> String {
         switch tool {
-        case .magic: return Strings.magicToolItem
-        case .lasso: return Strings.lassoToolItem
-        case .manual: return Strings.manualToolItem
-        case .eraser: return Strings.eraserToolItem
+        case .magic: return Strings.HighlighterToolBarButtonItem.magicToolItem
+        case .lasso: return Strings.HighlighterToolBarButtonItem.lassoToolItem
+        case .manual: return Strings.HighlighterToolBarButtonItem.manualToolItem
+        case .eraser: return Strings.HighlighterToolBarButtonItem.eraserToolItem
         }
     }
 
-    private static let buttonTitle = Strings.buttonTitle
-
-    private typealias Strings = EditingToolbarStrings.HighlighterToolBarButtonItem
+    private static let buttonTitle = Strings.HighlighterToolBarButtonItem.buttonTitle
 }

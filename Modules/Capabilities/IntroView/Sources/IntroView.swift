@@ -12,11 +12,11 @@ public struct IntroView: View {
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 3) {
-            IntroLabel(Strings.permissionLabelText)
-            IntroButton(Strings.permissionButtonTitle, action: permissionAction)
+            IntroLabel(Strings.IntroView.permissionLabelText)
+            IntroButton(Strings.IntroView.permissionButtonTitle, action: permissionAction)
 
-            IntroLabel(Strings.importLabelText).padding(.top, 12)
-            IntroButton(Strings.importButtonTitle, action: importAction)
+            IntroLabel(Strings.IntroView.importLabelText).padding(.top, 12)
+            IntroButton(Strings.IntroView.importButtonTitle, action: importAction)
         }.background(Color.appPrimary).frame(maxWidth: 240)
     }
 
@@ -24,6 +24,4 @@ public struct IntroView: View {
 
     private let permissionAction: (() -> Void)
     private let importAction: (() -> Void)
-
-    private typealias Strings = IntroViewStrings.IntroView
 }

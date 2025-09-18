@@ -10,7 +10,7 @@ public class DismissBarButtonItem: UIBarButtonItem {
         self.asset = asset
         super.init()
         self.style = .done
-        self.title = EditingToolbarStrings.DismissBarButtonItem.title
+        self.title = Strings.DismissBarButtonItem.title
         self.target = self
         self.action = #selector(handleButton)
 

@@ -601,7 +601,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
         fatalError("\(className) does not implement init(coder:)")
     }
 
-    private typealias Strings = EditingStrings.PhotoEditingViewController
+    private typealias Strings = Editing.Strings.PhotoEditingViewController
 }
 
 @objc @MainActor public protocol PhotoEditingActions: NSObjectProtocol {

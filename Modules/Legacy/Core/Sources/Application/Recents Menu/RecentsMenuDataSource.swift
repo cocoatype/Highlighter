@@ -37,7 +37,11 @@ import ErrorHandling
     }
 
     var recentsMenu: UIMenu {
-        UIMenu(title: Strings.menuTitle, identifier: nil, children: menuItems + [clearMenu])
+        UIMenu(
+            title: Strings.RecentsMenuDataSource.menuTitle,
+            identifier: nil,
+            children: menuItems + [clearMenu]
+        )
     }
 
     private var menuItems: [UIMenuElement] {
@@ -46,9 +50,15 @@ import ErrorHandling
         }
     }
 
-    private let clearMenu = UIMenu(options: .displayInline, children: [
-        UICommand(title: Strings.clearMenuItemTitle, action: #selector(AppDelegate.clearRecents))
-    ])
+    private let clearMenu = UIMenu(
+        options: .displayInline,
+        children: [
+            UICommand(
+                title: Strings.RecentsMenuDataSource.clearMenuItemTitle,
+                action: #selector(AppDelegate.clearRecents)
+            ),
+        ]
+    )
 
     private func icon(for url: URL) -> UIImage? {
         let cgImage = FileIconFetcher().icon(for: url).takeUnretainedValue()
@@ -62,7 +72,5 @@ import ErrorHandling
         return recentBookmarks
             .compactMap { try? URL(resolvingBookmarkData: $0, relativeTo: nil, bookmarkDataIsStale: &bool) }
     }
-
-    private typealias Strings = CoreStrings.RecentsMenuDataSource
 }
 #endif

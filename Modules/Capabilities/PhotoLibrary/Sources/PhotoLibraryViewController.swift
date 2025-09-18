@@ -22,7 +22,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
 
         PHPhotoLibrary.shared().register(self)
 
-        navigationItem.title = collection.title ?? PhotoLibraryStrings.PhotoLibraryViewController.navigationItemTitle
+        navigationItem.title = collection.title ?? Strings.PhotoLibraryViewController.navigationItemTitle
         navigationItem.rightBarButtonItems = PhotoLibraryBarButtonsProvider().trailingNavigationItems.reversed()
 
         hideDocumentScannerObserver = NotificationCenter.default.addObserver(
@@ -74,7 +74,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
             let newDataSource = PhotoLibraryDataSource(newCollection)
             dataSource = newDataSource
             shouldScrollToBottom = true
-            navigationItem.title = collection.title ?? PhotoLibraryStrings.PhotoLibraryViewController.navigationItemTitle
+            navigationItem.title = collection.title ?? Strings.PhotoLibraryViewController.navigationItemTitle
         }
     }
 

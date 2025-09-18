@@ -10,7 +10,7 @@ class SaveButton: UIButton {
         setContentHuggingPriority(.required, for: .vertical)
         translatesAutoresizingMaskIntoConstraints = false
 
-        setTitle(DesktopAutoRedactionsUIStrings.SaveButton.title, for: .normal)
+        setTitle(Strings.SaveButton.title, for: .normal)
         addTarget(nil, action: #selector(AdditionViewController.saveWord), for: .primaryActionTriggered)
     }
 }

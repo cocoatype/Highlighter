@@ -22,17 +22,15 @@ struct DurationPickerItem: View {
     private var shortName: String? {
         switch option.duration {
         case .monthly:
-            return Strings.Monthly.shortName
+            return Strings.PaywallOption.Monthly.shortName
         case .annual where option.isTrialEligible:
-            return Strings.YearlyWithTrial.shortName
+            return Strings.PaywallOption.YearlyWithTrial.shortName
         case .annual:
-            return Strings.Yearly.shortName
+            return Strings.PaywallOption.Yearly.shortName
         case .oneTime:
-            return Strings.OneTime.shortName
+            return Strings.PaywallOption.OneTime.shortName
         case .unknown:
             return nil
         }
     }
-
-    private typealias Strings = PaywallStrings.PaywallOption
 }

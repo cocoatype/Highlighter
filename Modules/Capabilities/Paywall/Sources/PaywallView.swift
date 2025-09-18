@@ -87,7 +87,7 @@ public struct PaywallView: View {
         }
     }
 
-    private typealias Strings = PaywallStrings.PaywallView
+    private typealias Strings = Paywall.Strings.PaywallView
     let inspection = Inspection<Self>()
 }
 

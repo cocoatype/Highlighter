@@ -14,7 +14,7 @@ class HelpMenuAcknowledgementsAction: UIAction {
 
     // MARK: Boilerplate
 
-    private static let menuItemTitle = MobileSettingsUIStrings.SettingsContentInformationSection.acknowledgementsTitle
+    private static let menuItemTitle = MobileSettingsUI.Strings.SettingsContentInformationSection.acknowledgementsTitle
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

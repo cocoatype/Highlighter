@@ -10,7 +10,7 @@ import ErrorHandling
 
 class SaveCopyActivity: UIActivity {
     override var activityTitle: String? {
-        ExportingStrings.SaveCopyActivity.title
+        Strings.SaveCopyActivity.title
     }
 
     override var activityImage: UIImage? {

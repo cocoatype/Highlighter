@@ -15,7 +15,7 @@ public class AlbumsViewController: UIHostingController<AlbumsList>, NavigationWr
         view.tintColor = .primaryDark
 
         if let navigationObject {
-            navigationItem.title = AlbumsUIStrings.AlbumsViewController.navigationTitle
+            navigationItem.title = Strings.AlbumsViewController.navigationTitle
             albumsList.navigationWrapper = NavigationWrapper(navigationObject: navigationObject)
             self.rootView = albumsList
         }

@@ -17,7 +17,7 @@ public class DocumentScannerBarButtonItem: UIBarButtonItem {
             target: self,
             action: #selector(presentDocumentScanner(_:))
         )
-        standard.accessibilityLabel = DocumentScanningStrings.DocumentScannerBarButtonItem.accessibilityLabel
+        standard.accessibilityLabel = Strings.DocumentScannerBarButtonItem.accessibilityLabel
         return standard
     }
 

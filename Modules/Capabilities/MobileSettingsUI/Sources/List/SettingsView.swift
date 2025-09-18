@@ -29,7 +29,7 @@ public struct SettingsView: View {
             SettingsList(dismissAction: dismissAction) {
                 SettingsContent(state: purchaseState)
             }
-            .navigationTitle(MobileSettingsUIStrings.SettingsViewController.navigationTitle)
+            .navigationTitle(Strings.SettingsViewController.navigationTitle)
             .navigationBarTitleDisplayMode(.inline)
         }
         .environment(\.readableWidth, readableWidth)

@@ -6,7 +6,12 @@ import UIKit
 #if targetEnvironment(macCatalyst)
 class NewFromClipboardCommand: UIKeyCommand {
     override convenience init() {
-        self.init(title: CoreStrings.NewFromClipboardCommand.title, action: #selector(AppDelegate.newSceneFromClipboard), input: "N", modifierFlags: [.command, .alternate])
+        self.init(
+            title: Strings.NewFromClipboardCommand.title,
+            action: #selector(AppDelegate.newSceneFromClipboard),
+            input: "N",
+            modifierFlags: [.command, .alternate]
+        )
     }
 }
 #endif

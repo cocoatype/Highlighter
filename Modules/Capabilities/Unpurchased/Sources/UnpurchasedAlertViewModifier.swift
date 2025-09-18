@@ -46,7 +46,7 @@ public struct UnpurchasedAlertViewModifier: ViewModifier {
         }
     }
 
-    private typealias Strings = UnpurchasedStrings.UnpurchasedAlert
+    private typealias Strings = Unpurchased.Strings.UnpurchasedAlert
 }
 
 public extension View {

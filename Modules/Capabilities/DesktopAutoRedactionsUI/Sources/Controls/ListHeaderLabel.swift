@@ -8,7 +8,7 @@ class ListHeaderLabel: UILabel {
         super.init(frame: .zero)
 
         font = Self.labelFont
-        text = DesktopAutoRedactionsUIStrings.DesktopSettingsView.wordListLabel
+        text = Strings.DesktopSettingsView.wordListLabel
         translatesAutoresizingMaskIntoConstraints = false
     }
 

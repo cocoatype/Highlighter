@@ -37,7 +37,7 @@ struct UnpurchasedAlertControllerFactoryTests {
 
         #expect(alert.actions.count == 1)
         let cancelAction = try #require(alert.actions.first)
-        #expect(cancelAction.title == UnpurchasedStrings.UnpurchasedAlert.dismissButton)
+        #expect(cancelAction.title == Strings.UnpurchasedAlert.dismissButton)
         #expect(cancelAction.style == .cancel)
 
         // just for code coverage
@@ -57,7 +57,7 @@ struct UnpurchasedAlertControllerFactoryTests {
 
             #expect(alert.actions.count == 2)
             let learnMoreAction = try #require(alert.actions.first)
-            #expect(learnMoreAction.title == UnpurchasedStrings.UnpurchasedAlert.learnMoreButton)
+            #expect(learnMoreAction.title == Strings.UnpurchasedAlert.learnMoreButton)
             #expect(learnMoreAction.style == .default)
             let handler = try #require((learnMoreAction as? UnpurchasedAlertAction)?.action)
             handler()
@@ -78,7 +78,7 @@ struct UnpurchasedAlertControllerFactoryTests {
 
         #expect(alert.actions.count == 2)
         let hideAction = try #require(alert.actions.first)
-        #expect(hideAction.title == UnpurchasedStrings.UnpurchasedAlert.hideButton)
+        #expect(hideAction.title == Strings.UnpurchasedAlert.hideButton)
         #expect(hideAction.style == .default)
         let handler = try #require((hideAction as? UnpurchasedAlertAction)?.action)
         handler()

@@ -14,7 +14,7 @@ class HelpMenuContactAction: UIAction {
 
     // MARK: Boilerplate
 
-    private static let menuItemTitle = MobileSettingsUIStrings.SettingsContentContactSection.header
+    private static let menuItemTitle = MobileSettingsUI.Strings.SettingsContentContactSection.header
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

@@ -15,7 +15,7 @@ struct DocumentScanControl: ControlWidget {
             kind: "com.cocoatype.Highlighter.DocumentScanControl"
         ) {
             ControlWidgetButton(
-                WidgetsStrings.DocumentScanControl.title,
+                Strings.DocumentScanControl.title,
                 action: OpenDocumentScannerIntent()
             ) { _ in
                 Image(systemName: "doc.text.viewfinder")

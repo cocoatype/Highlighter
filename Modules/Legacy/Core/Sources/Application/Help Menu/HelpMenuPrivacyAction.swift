@@ -14,7 +14,7 @@ class HelpMenuPrivacyAction: UIAction {
 
     // MARK: Boilerplate
 
-    private static let menuItemTitle = MobileSettingsUIStrings.SettingsContentInformationSection.privacyTitle
+    private static let menuItemTitle = MobileSettingsUI.Strings.SettingsContentInformationSection.privacyTitle
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

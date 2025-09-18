@@ -13,7 +13,7 @@ class SeekItem: NSToolbarItem {
         super.init(itemIdentifier: Self.identifier)
         image = UIImage(systemName: "magnifyingglass")?.applyingSymbolConfiguration(.init(scale: .large))
         isBordered = true
-        label = CoreStrings.SeekItem.label
+        label = Strings.SeekItem.label
 
         target = delegate
         action = #selector(SeekItemDelegate.toggleSeeking(_:))

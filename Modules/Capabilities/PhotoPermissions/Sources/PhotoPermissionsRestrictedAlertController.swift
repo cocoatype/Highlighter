@@ -8,7 +8,11 @@ public struct PhotoPermissionsRestrictedAlertFactory {
     public init() {}
 
     public func alert() -> UIAlertController {
-        let alertController = UIAlertController(title: Strings.alertTitle, message: Strings.alertMessage, preferredStyle: .alert)
+        let alertController = UIAlertController(
+            title: Strings.PhotoPermissionsRestrictedAlertFactory.alertTitle,
+            message: Strings.PhotoPermissionsRestrictedAlertFactory.alertMessage,
+            preferredStyle: .alert
+        )
         alertController.view.tintColor = .controlTint
 
         alertController.addAction(dismissAction)
@@ -16,7 +20,9 @@ public struct PhotoPermissionsRestrictedAlertFactory {
         return alertController
     }
 
-    private let dismissAction = PhotoPermissionsAlertAction.action(title: Strings.dismissButtonTitle, style: .cancel, handlerBody: nil)
-
-    private typealias Strings = PhotoPermissionsStrings.PhotoPermissionsRestrictedAlertFactory
+    private let dismissAction = PhotoPermissionsAlertAction.action(
+        title: Strings.PhotoPermissionsRestrictedAlertFactory.dismissButtonTitle,
+        style: .cancel,
+        handlerBody: nil
+    )
 }

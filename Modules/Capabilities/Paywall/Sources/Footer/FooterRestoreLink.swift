@@ -20,12 +20,12 @@ struct FooterRestoreLink: View {
     var body: some View {
         if usesShortTitle {
             FooterLink(
-                title: PaywallStrings.FooterRestoreLink.shortTitle,
+                title: Strings.FooterRestoreLink.shortTitle,
                 action: restore
             )
         } else {
             FooterLink(
-                title: PaywallStrings.FooterRestoreLink.title,
+                title: Strings.FooterRestoreLink.title,
                 action: restore
             )
         }

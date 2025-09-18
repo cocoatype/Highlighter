@@ -6,7 +6,7 @@ import SwiftUI
 
 struct TopBarSubheadline: View {
     var body: some View {
-        Text(PaywallStrings.TopBarSubheadline.text)
+        Text(Strings.TopBarSubheadline.text)
             .foregroundColor(.primaryUltraLight)
             .lineLimit(nil)
             .fixedSize(horizontal: false, vertical: true)

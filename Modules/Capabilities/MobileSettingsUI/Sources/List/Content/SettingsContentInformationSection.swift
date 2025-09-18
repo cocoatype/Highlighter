@@ -27,5 +27,5 @@ struct SettingsContentInformationSection: View {
         return versionString ?? "???"
     }
 
-    private typealias Strings = MobileSettingsUIStrings.SettingsContentInformationSection
+    private typealias Strings = MobileSettingsUI.Strings.SettingsContentInformationSection
 }

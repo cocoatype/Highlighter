@@ -14,7 +14,7 @@ class HelpMenuAboutAction: UIAction {
 
     // MARK: Boilerplate
 
-    private static let menuItemTitle = MobileSettingsUIStrings.SettingsContentInformationSection.aboutTitle
+    private static let menuItemTitle = MobileSettingsUI.Strings.SettingsContentInformationSection.aboutTitle
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

@@ -15,7 +15,7 @@ class ZoomInItem: NSToolbarItem {
         image = UIImage(systemName: "plus.magnifyingglass")?
             .applyingSymbolConfiguration(.init(scale: .large))
         isBordered = true
-        label = CoreStrings.ZoomInItem.label
+        label = Strings.ZoomInItem.label
 
         target = delegate
         action = #selector(ZoomItemDelegate.zoomIn(_:))
