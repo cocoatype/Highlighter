@@ -2,14 +2,14 @@
 "ColorPickerItem.itemLabel" = "Color Picker";
 
 // Title for the desktop settings window
-"DesktopSettingsSceneDelegate.windowTitle" = "Preferences";
+"DesktopSettingsSceneDelegate.windowTitle" = "Settings";
 
 // Preferences menu item title
-"MenuBuilder.preferencesMenuItemTitle" = "Preferences…";
+"MenuBuilder.preferencesMenuItemTitle" = "Settings…";
 // Save menu title
 "MenuBuilder.saveMenuItemTitle" = "Save";
 // Save As menu title
-"MenuBuilder.saveAsMenuItemTitle" = "Save As…";
+"MenuBuilder.saveAsMenuItemTitle" = "Duplicate…";
 // Find menu item title
 "MenuBuilder.findMenuItemTitle" = "Find…";
 
