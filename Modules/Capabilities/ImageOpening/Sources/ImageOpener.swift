@@ -7,12 +7,14 @@ public struct ImageOpener {
     public init() {}
 
     public func openImage(at url: URL) throws -> UIImage {
-        guard url.startAccessingSecurityScopedResource() else {
-            throw ImageOpeningError.securityScopeDenied
-        }
-        defer { url.stopAccessingSecurityScopedResource() }
+        return try openImage(resource: url)
+    }
 
-        let imageData = try Data(contentsOf: url)
+    func openImage(resource: SecureResource) throws -> UIImage {
+        _ = resource.startAccessingSecurityScopedResource()
+        defer { resource.stopAccessingSecurityScopedResource() }
+
+        let imageData = try resource.data
         guard let image = UIImage(data: imageData) else {
             throw ImageOpeningError.noImageFound
         }

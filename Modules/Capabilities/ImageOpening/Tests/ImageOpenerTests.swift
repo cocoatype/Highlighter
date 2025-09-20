@@ -8,15 +8,65 @@ import UIKit
 @testable import ImageOpening
 
 struct ImageOpenerTests {
-    @Test
-    func openImage() throws {
-        let boltImage = try #require(UIImage(systemName: "bolt"))
-        let boltData = try #require(boltImage.pngData())
-        let boltEncoded = boltData.base64EncodedString()
-        let boltURL = try #require(URL(string: "data:image/png;base64,\(boltEncoded)"))
-
-        #expect(throws: ImageOpeningError.securityScopeDenied) {
-            try ImageOpener().openImage(at: boltURL)
+    static var imageData: Data {
+        get throws {
+            let image = try #require(UIImage(systemName: "bolt"))
+            return try #require(image.pngData())
         }
+    }
+
+    @Test
+    func `openImage succeeds if not secure`() throws {
+        let resource = try SpySecureResource(
+            dataResult: .success(Self.imageData),
+            isSecure: false
+        )
+        _ = try ImageOpener().openImage(resource: resource)
+        #expect(resource.startAccessingCalled)
+        #expect(resource.stopAccessingCalled)
+    }
+
+    @Test
+    func `openImage fails if data errors and not secure`() throws {
+        let resource = SpySecureResource(
+            dataResult: .failure(TestError.sample),
+            isSecure: false
+        )
+
+        #expect(throws: TestError.sample) {
+            _ = try ImageOpener().openImage(resource: resource)
+        }
+        #expect(resource.startAccessingCalled)
+        #expect(resource.stopAccessingCalled)
+    }
+
+    @Test
+    func `openImage succeeds if secure`() throws {
+        let resource = try SpySecureResource(
+            dataResult: .success(Self.imageData),
+            isSecure: true
+        )
+
+        _ = try ImageOpener().openImage(resource: resource)
+        #expect(resource.startAccessingCalled)
+        #expect(resource.stopAccessingCalled)
+    }
+
+    @Test
+    func `openImage fails if data errors and secure`() throws {
+        let resource = SpySecureResource(
+            dataResult: .failure(TestError.sample),
+            isSecure: true
+        )
+
+        #expect(throws: TestError.sample) {
+            _ = try ImageOpener().openImage(resource: resource)
+        }
+        #expect(resource.startAccessingCalled)
+        #expect(resource.stopAccessingCalled)
+    }
+
+    enum TestError: Error {
+        case sample
     }
 }
