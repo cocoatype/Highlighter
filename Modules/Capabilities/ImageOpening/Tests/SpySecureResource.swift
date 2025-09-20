@@ -27,7 +27,7 @@ class SpySecureResource: SecureResource {
     func stopAccessingSecurityScopedResource() {
         stopAccessingCalled = true
     }
-    
+
     var data: Data {
         get throws {
             guard isSecure else { return try dataResult.get() }
