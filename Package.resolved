@@ -1,9 +1,10 @@
 {
+  "originHash" : "13e77acbf0a735a1d580a9ef59a46c5c02a448e837aad9efcd3cc746ea9dcecb",
   "pins" : [
     {
       "identity" : "clippingbezier",
       "kind" : "remoteSourceControl",
-      "location" : "git@github.com:adamwulf/ClippingBezier.git",
+      "location" : "git@github.com:adamwulf/ClippingBezier",
       "state" : {
         "revision" : "7b55731c019b2e9de3c9543d2892f034dba86da8",
         "version" : "1.2.5"
@@ -12,7 +13,7 @@
     {
       "identity" : "factory",
       "kind" : "remoteSourceControl",
-      "location" : "git@github.com:hmlongco/Factory.git",
+      "location" : "git@github.com:hmlongco/Factory",
       "state" : {
         "revision" : "ccc898f21992ebc130bc04cc197460a5ae230bcf",
         "version" : "2.5.3"
@@ -21,7 +22,7 @@
     {
       "identity" : "performancebezier",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/adamwulf/PerformanceBezier.git",
+      "location" : "https://github.com/adamwulf/PerformanceBezier",
       "state" : {
         "revision" : "b3cc82221836a8ce1f0692033d58b1ff836c57f8",
         "version" : "1.3.2"
@@ -30,7 +31,7 @@
     {
       "identity" : "swiftclient",
       "kind" : "remoteSourceControl",
-      "location" : "git@github.com:TelemetryDeck/SwiftClient.git",
+      "location" : "git@github.com:TelemetryDeck/SwiftClient",
       "state" : {
         "revision" : "a7fd1eb469589a3c8fd8cc3abe19b092b5d674dc",
         "version" : "2.9.4"
@@ -39,7 +40,7 @@
     {
       "identity" : "swiftui-introspect",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/siteline/SwiftUI-Introspect.git",
+      "location" : "https://github.com/siteline/SwiftUI-Introspect",
       "state" : {
         "revision" : "668a65735751432b640260c56dfa621cec568368",
         "version" : "1.2.0"
@@ -48,7 +49,7 @@
     {
       "identity" : "viewinspector",
       "kind" : "remoteSourceControl",
-      "location" : "git@github.com:nalexn/ViewInspector.git",
+      "location" : "git@github.com:nalexn/ViewInspector",
       "state" : {
         "revision" : "5acfa0a3c095ac9ad050abe51c60d1831e8321da",
         "version" : "0.10.0"

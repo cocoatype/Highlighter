@@ -25,7 +25,9 @@ public enum Shortcuts {
         usesMaxSwiftVersion: false,
         dependencies: [
             .target(AppNavigation.doublesTarget),
+            .target(AppNavigation.target),
             .target(Defaults.doublesTarget),
+            .target(Defaults.target),
             .target(Detections.target),
             .target(Logging.target),
             .target(Logging.doublesTarget),

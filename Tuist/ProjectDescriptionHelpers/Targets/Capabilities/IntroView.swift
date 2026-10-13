@@ -19,6 +19,7 @@ public enum IntroView {
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "IntroView",
         dependencies: [
+            .target(DesignSystem.target),
             .external(name: "ViewInspector"),
         ]
     )

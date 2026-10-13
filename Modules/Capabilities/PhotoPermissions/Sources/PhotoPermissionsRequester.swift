@@ -10,12 +10,12 @@ public protocol PhotoPermissionsRequester {
 }
 
 public struct PhotoLibraryPermissionsRequester: PhotoPermissionsRequester {
-    public init() {
+    nonisolated public init() {
         self.init(photoLibraryType: PHPhotoLibrary.self)
     }
 
-    private let photoLibraryType: any PhotoLibrary.Type
-    init(photoLibraryType: any PhotoLibrary.Type) {
+    nonisolated private let photoLibraryType: any PhotoLibrary.Type
+    nonisolated init(photoLibraryType: any PhotoLibrary.Type) {
         self.photoLibraryType = photoLibraryType
     }
 
@@ -28,7 +28,7 @@ public struct PhotoLibraryPermissionsRequester: PhotoPermissionsRequester {
     }
 }
 
-protocol PhotoLibrary {
+protocol PhotoLibrary: SendableMetatype {
     static func authorizationStatus(for type: PHAccessLevel) -> PHAuthorizationStatus
     static func requestAuthorization(for type: PHAccessLevel) async -> PHAuthorizationStatus
 }

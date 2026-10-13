@@ -7,7 +7,6 @@ public enum DocumentScanning {
         usesMaxSwiftVersion: true,
         dependencies: [
             .target(AppNavigation.target),
-            .target(BarBuilder.target),
             .target(DesignSystem.target),
             .target(Editing.target),
             .target(Logging.target),
@@ -21,7 +20,6 @@ public enum DocumentScanning {
         name: "DocumentScanning",
         dependencies: [
             .target(Purchasing.doublesTarget),
-            .target(Purchasing.target),
             .external(name: "FactoryKit"),
             .external(name: "FactoryTesting"),
         ]

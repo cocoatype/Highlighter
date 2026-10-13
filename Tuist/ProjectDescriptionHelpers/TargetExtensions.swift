@@ -70,7 +70,8 @@ extension Target {
 
     static func capabilitiesDoublesTarget(
         name: String,
-        usesMaxSwiftVersion: Bool = true
+        usesMaxSwiftVersion: Bool = true,
+        dependencies: [TargetDependency] = [],
     ) -> Target {
         return Target.target(
             name: "\(name)Doubles",
@@ -80,8 +81,7 @@ extension Target {
             sources: ["Modules/Capabilities/\(name)/Doubles/**"],
             dependencies: [
                 .target(name: name),
-                .target(TestHelpers.interfaceTarget),
-            ],
+            ] + dependencies,
             settings: .settings(
                 base: [
                     "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": false,

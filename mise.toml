@@ -13,4 +13,4 @@ run = "tuist install"
 [tools]
 ruby = "3.3.4"
 swiftlint = "0.58.2"
-tuist = "4.65.5"
+tuist = "4.206.0"

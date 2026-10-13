@@ -1,12 +1,12 @@
 //  Created by Geoff Pado on 10/16/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
-#if canImport(UIKit)
-import UIKit
-
 import FactoryKit
 
 import ErrorHandling
+
+#if canImport(UIKit)
+import UIKit
 
 public enum RedactionSerializer {
     public static func dataRepresentation(of redaction: Redaction) -> Data {
