@@ -19,8 +19,10 @@ public enum Paywall {
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Paywall",
         dependencies: [
-            .target(Purchasing.doublesTarget),
             .target(Logging.doublesTarget),
+            .target(Logging.target),
+            .target(Purchasing.doublesTarget),
+            .target(Purchasing.target),
             .external(name: "FactoryKit"),
             .external(name: "FactoryTesting"),
             .external(name: "ViewInspector"),

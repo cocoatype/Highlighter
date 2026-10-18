@@ -2,5 +2,5 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 public enum DesignSystem {
-    public static let appearanceWriter: AppearanceWriter = AppAppearanceWriter()
+    @MainActor public static let appearanceWriter: AppearanceWriter = AppAppearanceWriter()
 }

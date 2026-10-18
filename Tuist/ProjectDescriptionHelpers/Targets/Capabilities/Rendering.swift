@@ -7,7 +7,6 @@ public enum Rendering {
         dependencies: [
             .target(Brushes.target),
             .target(Geometry.target),
-            .target(Observations.target),
             .target(Redactions.target),
         ]
     )
@@ -19,5 +18,10 @@ public enum Rendering {
         ]
     )
 
-    public static let doublesTarget = Target.capabilitiesDoublesTarget(name: "Rendering")
+    public static let doublesTarget = Target.capabilitiesDoublesTarget(
+        name: "Rendering",
+        dependencies: [
+            .target(Redactions.target),
+        ]
+    )
 }

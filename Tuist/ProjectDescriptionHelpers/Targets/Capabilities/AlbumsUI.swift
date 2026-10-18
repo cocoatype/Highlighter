@@ -8,7 +8,6 @@ public enum AlbumsUI {
         dependencies: [
             .target(AlbumsData.target),
             .target(AppNavigation.target),
-            .target(DesignSystem.target),
             .target(Redactions.target),
             .external(name: "SwiftUIIntrospect"),
         ]

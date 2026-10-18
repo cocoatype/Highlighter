@@ -7,6 +7,7 @@ public enum Detections {
         dependencies: [
             .target(ErrorHandling.target),
             .target(Observations.target),
+            .external(name: "FactoryKit"),
         ]
     )
 

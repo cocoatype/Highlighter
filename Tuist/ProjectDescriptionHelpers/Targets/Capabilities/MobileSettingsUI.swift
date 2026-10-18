@@ -7,6 +7,7 @@ public enum MobileSettingsUI {
         usesMaxSwiftVersion: true,
         dependencies: [
             .target(Defaults.target),
+            .target(DesignSystem.target),
             .target(ErrorHandling.target),
             .target(MobileAutoRedactionsUI.target),
             .target(Paywall.target),
@@ -21,6 +22,9 @@ public enum MobileSettingsUI {
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "MobileSettingsUI",
         dependencies: [
+            .target(MobileAutoRedactionsUI.target),
+            .target(Paywall.target),
+            .target(Purchasing.target),
             .external(name: "ViewInspector"),
         ]
     )

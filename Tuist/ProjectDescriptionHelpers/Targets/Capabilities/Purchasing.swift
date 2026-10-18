@@ -17,5 +17,10 @@ public enum Purchasing {
         ]
     )
 
-    public static let doublesTarget = Target.capabilitiesDoublesTarget(name: "Purchasing")
+    public static let doublesTarget = Target.capabilitiesDoublesTarget(
+        name: "Purchasing",
+        dependencies: [
+            .target(TestHelpers.interfaceTarget),
+        ],
+    )
 }

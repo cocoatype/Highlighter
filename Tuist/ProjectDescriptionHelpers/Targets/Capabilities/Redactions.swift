@@ -8,6 +8,7 @@ public enum Redactions {
             .target(ErrorHandling.target),
             .target(Geometry.target),
             .target(Observations.target),
+            .external(name: "FactoryKit"),
         ]
     )
 

@@ -18,5 +18,10 @@ public enum Logging {
         ]
     )
 
-    public static let doublesTarget = Target.capabilitiesDoublesTarget(name: "Logging")
+    public static let doublesTarget = Target.capabilitiesDoublesTarget(
+        name: "Logging",
+        dependencies: [
+            .target(TestHelpers.interfaceTarget),
+        ],
+    )
 }

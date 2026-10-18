@@ -9,6 +9,7 @@ public enum PhotoLibrary {
             .target(AlbumsData.target),
             .target(AlbumsUI.target),
             .target(AppNavigation.target),
+            .target(BarBuilder.target),
             .target(Defaults.target),
             .target(DesignSystem.target),
             .target(DocumentScanning.target),
@@ -28,6 +29,11 @@ public enum PhotoLibrary {
         name: "PhotoLibrary",
         dependencies: [
             .target(Defaults.doublesTarget),
+            .target(Defaults.target),
+            .target(DocumentScanning.target),
+            .target(PhotoPermissions.target),
+            .target(Purchasing.doublesTarget),
+            .target(Purchasing.target),
             .external(name: "FactoryKit"),
             .external(name: "FactoryTesting"),
         ]
