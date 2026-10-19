@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>method</key>
+  <string>app-store-connect</string>
+  <key>provisioningProfiles</key>
+  <dict>
+    <key>com.cocoatype.Highlighter</key>
+    <key>Highlighter (iOS App)</key>
+    <key>com.cocoatype.Highlighter.Action</key>
+    <key>Highlighter (iOS Action Extension)</key>
+    <key>com.cocoatype.Highlighter.Photo</key>
+    <key>Highlighter (iOS Photo Extension)</key>
+    <key>com.cocoatype.Highlighter.Widgets</key>
+    <key>Highlighter (iOS Widgets)</key>
+  </dict>
+  <key>signingCertificate</key>
+  <string>Apple Distribution: Cocoatype, LLC (287EDDET2B)</string>
+  <key>teamID</key>
+  <string>287EDDET2B</string>
+  <key>manageAppVersionAndBuildNumber</key>
+  <false/>
+</dict>
+</plist>
