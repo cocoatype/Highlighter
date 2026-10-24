@@ -4,6 +4,7 @@ $deviceType = "com.apple.CoreSimulator.SimDeviceType.iPhone-18-Pro"
 
 $speedArgs = @(
     "-enableCodeCoverage", "NO",
+    "-collect-test-diagnostics", "never",
     "COMPILER_INDEX_STORE_ENABLE=NO"
 )
 
