@@ -55,7 +55,7 @@ $elapsed = 0
 while ($elapsed -lt $timeout) {
     $state = (xcrun simctl list devices --json | ConvertFrom-Json).devices."$runtime" |
       Where-Object { $_.udid -eq $targetDevice.udid } |
-      Select-Object -ExpandPropery state
+      Select-Object -ExpandProperty state
 
     if ($state -eq "Booted") {
         "Simulator booted successfully" | Write-Output
