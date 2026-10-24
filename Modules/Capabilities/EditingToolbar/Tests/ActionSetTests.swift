@@ -140,12 +140,12 @@ struct ActionSetTests {
     @Test func compactToolbarItemsContainsEverything() throws {
         registerDependencies()
         let set = ActionSet()
-        try #require(set.toolbarItems.count == 7)
+        try #require(set.toolbarItems.count == 5)
 
         #expect(set.toolbarItems[0] is UndoBarButtonItem)
-        #expect(set.toolbarItems[2] is RedoBarButtonItem)
-        #expect(set.toolbarItems[4] is ColorPickerBarButtonItem)
-        #expect(set.toolbarItems[6] is HighlighterToolBarButtonItem)
+        #expect(set.toolbarItems[1] is RedoBarButtonItem)
+        #expect(set.toolbarItems[3] is ColorPickerBarButtonItem)
+        #expect(set.toolbarItems[4] is HighlighterToolBarButtonItem)
     }
 
     // MARK: - Helpers

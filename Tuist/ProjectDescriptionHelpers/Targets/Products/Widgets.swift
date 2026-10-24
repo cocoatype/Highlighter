@@ -24,10 +24,9 @@ public enum Widgets {
                 "SWIFT_VERSION": "$(SWIFT_MAX_VERSION)",
             ],
             debug: [
-                "PROVISIONING_PROFILE_SPECIFIER": "match Development com.cocoatype.Highlighter.Widgets",
                 "ENABLE_DEBUG_DYLIB": true,
             ], release: [
-                "PROVISIONING_PROFILE_SPECIFIER": "match AppStore com.cocoatype.Highlighter.Widgets",
+                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (Widgets Extension)",
             ],
             defaultSettings: .recommended(excluding: [
                 "CODE_SIGN_IDENTITY",

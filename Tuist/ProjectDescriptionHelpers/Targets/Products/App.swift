@@ -36,13 +36,12 @@ public enum App {
             ],
             debug: [
                 "CODE_SIGN_IDENTITY[sdk=macosx*]": .string(Shared.debugCodeSignIdentity),
-                "PROVISIONING_PROFILE_SPECIFIER": "match Development com.cocoatype.Highlighter",
-                "PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]": "match Development com.cocoatype.Highlighter macos",
+                "PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]": "Black Highlighter (macOS Dev)",
                 "ENABLE_DEBUG_DYLIB": false,
             ], release: [
                 "CODE_SIGN_IDENTITY[sdk=macosx*]": .string(Shared.releaseCodeSignIdentity),
-                "PROVISIONING_PROFILE_SPECIFIER": "match AppStore com.cocoatype.Highlighter",
-                "PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]": "match AppStore com.cocoatype.Highlighter macos",
+                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (App)",
+                "PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]": "Black Highlighter (macOS App)",
             ],
             defaultSettings: .recommended(excluding: [
                 "CODE_SIGN_IDENTITY",

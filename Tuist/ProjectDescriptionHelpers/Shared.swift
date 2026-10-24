@@ -28,6 +28,8 @@ public enum Shared {
         "TARGETED_DEVICE_FAMILY": "1,2,6",
     ], debug: [
         "CODE_SIGN_IDENTITY": .string(Shared.debugCodeSignIdentity),
+        "CODE_SIGN_IDENTITY[sdk=iphoneos*]": "Apple Development",
+        "CODE_SIGN_STYLE[sdk=iphoneos*]": "Automatic",
     ], release: [
         "CODE_SIGN_IDENTITY": .string(Shared.releaseCodeSignIdentity),
     ])

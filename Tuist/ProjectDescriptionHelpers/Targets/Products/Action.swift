@@ -31,11 +31,8 @@ public enum Action {
                 "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "Accent Color",
                 "SKIP_INSTALL": "YES",
             ],
-            debug: [
-                "PROVISIONING_PROFILE_SPECIFIER": "match Development com.cocoatype.Highlighter.Action",
-            ],
             release: [
-                "PROVISIONING_PROFILE_SPECIFIER": "match AppStore com.cocoatype.Highlighter.Action",
+                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (Action Extension)",
             ],
             defaultSettings: .recommended(excluding: [
                 "CODE_SIGN_IDENTITY",
