@@ -5,6 +5,7 @@ param (
 )
 
 $env:NSUnbufferedIO = 'YES'
+. "$PSScriptRoot/app-store-connect.ps1"
 
 & {
     xcodebuild archive `
@@ -21,14 +22,23 @@ if ($script:xcodebuildExitCode -ne 0) {
     exit $script:xcodebuildExitCode
 }
 
+# Export and upload to App Store Connect
+$keyDirectory = Join-Path ([System.IO.Path]::GetTempPath()) ([System.Guid]::NewGuid().ToString())
+$keyPath = Save-AppStoreConnectKey -Directory $keyDirectory
+
 & {
     xcodebuild -exportArchive `
       -exportOptionsPlist "./scripts/export-mac.plist" `
       -archivePath $ArchivePath `
-      -exportPath $ExportPath 2>&1
+      -exportPath $ExportPath `
+      -authenticationKeyPath $keyPath `
+      -authenticationKeyID $AppStoreConnectKeyID `
+      -authenticationKeyIssuerID $AppStoreConnectIssuerID 2>&1
 
     $script:exportExitCode = $LASTEXITCODE
 } | xcbeautify --quiet --is-ci
+
+Remove-Item -Recurse -Force $keyDirectory
 
 if ($script:exportExitCode -ne 0) {
     Write-Error "xcodebuild -exportArchive failed with exit code $($script:exportExitCode)"
