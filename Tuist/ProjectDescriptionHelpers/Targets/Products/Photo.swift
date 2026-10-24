@@ -32,11 +32,8 @@ public enum Photo {
                 "ASSETCATALOG_COMPILER_APPICON_NAME": "AppIcon",
                 "SKIP_INSTALL": "YES",
             ],
-            debug: [
-                "PROVISIONING_PROFILE_SPECIFIER": "match Development com.cocoatype.Highlighter.Photo",
-            ],
             release: [
-                "PROVISIONING_PROFILE_SPECIFIER": "match AppStore com.cocoatype.Highlighter.Photo",
+                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (Photo Extension)",
             ],
             defaultSettings: .recommended(excluding: [
                 "CODE_SIGN_IDENTITY",

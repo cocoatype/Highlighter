@@ -1,15 +1,17 @@
 param (
-    [string]$ArchivePath,
-    [string]$ExportPath,
+    [Parameter(Mandatory = $true)][string]$ArchivePath,
+    [Parameter(Mandatory = $true)][string]$ExportPath,
     [string]$Scheme = "Highlighter"
 )
+
+$env:NSUnbufferedIO = 'YES'
 
 & {
     xcodebuild archive `
       -workspace Highlighter.xcworkspace `
       -scheme $Scheme `
       -destination "generic/platform=iOS" `
-      @speedArgs 2>&1
+      -archivePath $ArchivePath 2>&1
 
     $script:xcodebuildExitCode = $LASTEXITCODE
 } | xcbeautify --quiet --is-ci
@@ -29,6 +31,6 @@ if ($script:xcodebuildExitCode -ne 0) {
 } | xcbeautify --quiet --is-ci
 
 if ($script:exportExitCode -ne 0) {
-    Write-Error "xcodebuild archive failed with exit code $($script:exportExitCode)"
+    Write-Error "xcodebuild -exportArchive failed with exit code $($script:exportExitCode)"
     exit $script:exportExitCode
 }

@@ -7,13 +7,13 @@
   <key>provisioningProfiles</key>
   <dict>
     <key>com.cocoatype.Highlighter</key>
-    <key>Highlighter (iOS App)</key>
+    <string>Black Highlighter (App)</string>
     <key>com.cocoatype.Highlighter.Action</key>
-    <key>Highlighter (iOS Action Extension)</key>
+    <string>Black Highlighter (Action Extension)</string>
     <key>com.cocoatype.Highlighter.Photo</key>
-    <key>Highlighter (iOS Photo Extension)</key>
+    <string>Black Highlighter (Photo Extension)</string>
     <key>com.cocoatype.Highlighter.Widgets</key>
-    <key>Highlighter (iOS Widgets)</key>
+    <string>Black Highlighter (Widgets Extension)</string>
   </dict>
   <key>signingCertificate</key>
   <string>Apple Distribution: Cocoatype, LLC (287EDDET2B)</string>
