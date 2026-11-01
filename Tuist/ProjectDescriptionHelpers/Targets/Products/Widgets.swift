@@ -26,7 +26,7 @@ public enum Widgets {
             debug: [
                 "ENABLE_DEBUG_DYLIB": true,
             ], release: [
-                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (Widgets Extension)",
+                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (iOS Widgets Extension)",
             ],
             defaultSettings: .recommended(excluding: [
                 "CODE_SIGN_IDENTITY",
