@@ -456,8 +456,9 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
             .flatMap { combinedObservation in
                 taggingFunctions
                     .map { function in function(combinedObservation.associatedString) }
-                    .map {
-                        let matchingObservations = combinedObservation.characterObservations(with: $0)
+                    .compactMap { substrings -> CharacterObservation? in
+                        let matchingObservations = combinedObservation.characterObservations(with: substrings)
+                        guard matchingObservations.isEmpty == false else { return nil }
                         let combinedShape = MinimumAreaShapeFinder.minimumAreaShape(for: matchingObservations.map(\.bounds))
                         return CharacterObservation(bounds: combinedShape, textObservationUUID: combinedObservation.textObservationUUID)
                     }
