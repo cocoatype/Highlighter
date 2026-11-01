@@ -40,7 +40,7 @@ public enum App {
                 "ENABLE_DEBUG_DYLIB": false,
             ], release: [
                 "CODE_SIGN_IDENTITY[sdk=macosx*]": .string(Shared.releaseCodeSignIdentity),
-                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (App)",
+                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (iOS App)",
                 "PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]": "Black Highlighter (macOS App)",
             ],
             defaultSettings: .recommended(excluding: [
