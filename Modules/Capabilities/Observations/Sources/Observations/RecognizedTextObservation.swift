@@ -39,9 +39,18 @@ public struct RecognizedTextObservation: TextObservation, RedactableObservation 
         recognizedText.recognizedText.string
     }
 
+    public var textObservationUUID: UUID {
+        recognizedText.uuid
+    }
+
     public func wordObservation(for substring: Substring) -> WordObservation? {
-        let wordRange = substring.startIndex ..< substring.endIndex
-        return WordObservation(recognizedText: recognizedText, string: String(substring), range: wordRange, imageSize: imageSize)
+        wordObservation(for: substring.startIndex ..< substring.endIndex)
+    }
+
+    public func wordObservation(for range: Range<String.Index>) -> WordObservation? {
+        let string = self.string
+        guard range.lowerBound >= string.startIndex, range.upperBound <= string.endIndex else { return nil }
+        return WordObservation(recognizedText: recognizedText, string: String(string[range]), range: range, imageSize: imageSize)
     }
 
     public func wordObservations(matching: String) -> [WordObservation] {

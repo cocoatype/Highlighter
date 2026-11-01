@@ -434,34 +434,43 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
             .flatMap { word -> [CharacterObservation] in
                 return photoEditingView.redactableCharacterObservations.matching(word)
             }
-        var taggingFunctions = [(String) -> [Substring]]()
+        var categories = [Detections.Category]()
 
         if autoRedactionsCategoryNames || onlyActive == false {
-            taggingFunctions.append( Category.names.getFuncyInSwizzleTown)
+            categories.append(.names)
         }
 
         if autoRedactionsCategoryAddresses || onlyActive == false {
-            taggingFunctions.append( Category.addresses.getFuncyInSwizzleTown)
+            categories.append(.addresses)
         }
 
         if autoRedactionsCategoryPhoneNumbers || onlyActive == false {
-            taggingFunctions.append( Category.phoneNumbers.getFuncyInSwizzleTown)
+            categories.append(.phoneNumbers)
         }
 
         let combinedObservations = photoEditingView.redactableCharacterObservations.byUUID
-
-        let categoryObservations = combinedObservations
             .values
             .compactMap(CombinedCharacterObservation.init)
-            .flatMap { combinedObservation in
-                taggingFunctions
-                    .map { function in function(combinedObservation.associatedString) }
-                    .map {
-                        let matchingObservations = combinedObservation.characterObservations(with: $0)
-                        let combinedShape = MinimumAreaShapeFinder.minimumAreaShape(for: matchingObservations.map(\.bounds))
-                        return CharacterObservation(bounds: combinedShape, textObservationUUID: combinedObservation.textObservationUUID)
-                    }
-            }
+        let combinedObservationsByUUID = Dictionary(
+            combinedObservations.map { ($0.textObservationUUID, $0) },
+            uniquingKeysWith: { first, _ in first }
+        )
+
+        // tag all recognized lines together, in reading order, so each line has the others as context
+        let lines = (photoEditingView.recognizedTextObservations ?? []).map {
+            TaggableLine(id: $0.textObservationUUID, text: $0.string)
+        }
+        let spansByLineAndCategory = Dictionary(grouping: Detections.Category.detections(for: categories, in: lines)) { span in
+            LineCategory(lineID: span.lineID, category: span.category)
+        }
+
+        let categoryObservations = spansByLineAndCategory.compactMap { key, spans -> CharacterObservation? in
+            guard let combinedObservation = combinedObservationsByUUID[key.lineID] else { return nil }
+            let matchingObservations = combinedObservation.characterObservations(in: spans.map(\.range))
+            guard matchingObservations.isEmpty == false else { return nil }
+            let combinedShape = MinimumAreaShapeFinder.minimumAreaShape(for: matchingObservations.map(\.bounds))
+            return CharacterObservation(bounds: combinedShape, textObservationUUID: combinedObservation.textObservationUUID)
+        }
 
         return wordObservations + categoryObservations
     }
@@ -606,4 +615,9 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
 @objc @MainActor public protocol PhotoEditingActions: NSObjectProtocol {
     func displayAppRatingsPrompt(_ sender: WindowSceneProvider)
+}
+
+private struct LineCategory: Hashable {
+    let lineID: UUID
+    let category: Detections.Category
 }
