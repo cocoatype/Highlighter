@@ -8,7 +8,6 @@ import FactoryKit
 import DesignSystem
 import Logging
 import Purchasing
-import TestHelpersInterface
 
 @available(iOS 16.0, *)
 public struct PaywallView: View {
@@ -88,7 +87,6 @@ public struct PaywallView: View {
     }
 
     private typealias Strings = Paywall.Strings.PaywallView
-    let inspection = Inspection<Self>()
 }
 
 @available(iOS 16.0, *)

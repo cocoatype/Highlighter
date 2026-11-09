@@ -5,7 +5,6 @@ import AlbumsData
 import Combine
 import ErrorHandling
 import Photos
-import SwiftUI
 import UIKit
 import VisionKit
 

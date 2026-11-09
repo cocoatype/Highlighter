@@ -2,7 +2,6 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Photos
-import SwiftUI
 import UIKit
 
 import FactoryKit

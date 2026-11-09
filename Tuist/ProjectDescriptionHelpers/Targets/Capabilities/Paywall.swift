@@ -11,7 +11,6 @@ public enum Paywall {
             .target(Logging.target),
             .target(Purchasing.doublesTarget),
             .target(Purchasing.target),
-            .target(TestHelpers.interfaceTarget),
             .external(name: "FactoryKit"),
         ]
     )
