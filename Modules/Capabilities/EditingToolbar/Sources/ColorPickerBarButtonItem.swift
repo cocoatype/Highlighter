@@ -11,9 +11,11 @@ public class ColorPickerBarButtonItem: UIBarButtonItem {
         accessibilityLabel = Strings.ColorPickerBarButtonItem.accessibilityLabel
         accessibilityValue = color.accessibilityName
 
+        #if !targetEnvironment(macCatalyst)
         if #available(iOS 27.1, *) {
             axisBehavior = .verticalPreferred
         }
+        #endif
     }
 
     class ColorWell: UIColorWell {
