@@ -10,6 +10,12 @@ public class ColorPickerBarButtonItem: UIBarButtonItem {
         UIView.appearance(whenContainedInInstancesOf: [UIColorPickerViewController.self]).overrideUserInterfaceStyle = .dark
         accessibilityLabel = Strings.ColorPickerBarButtonItem.accessibilityLabel
         accessibilityValue = color.accessibilityName
+
+        #if !targetEnvironment(macCatalyst)
+        if #available(iOS 27.1, *) {
+            axisBehavior = .verticalPreferred
+        }
+        #endif
     }
 
     class ColorWell: UIColorWell {
