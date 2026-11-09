@@ -14,6 +14,7 @@ public class ColorPickerBarButtonItem: UIBarButtonItem {
         #if !targetEnvironment(macCatalyst)
         if #available(iOS 27.1, *) {
             axisBehavior = .verticalPreferred
+            visibilityPriority = .high
         }
         #endif
     }

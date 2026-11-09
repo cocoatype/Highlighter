@@ -23,6 +23,12 @@ class HighlighterToolBarButtonItem: UIBarButtonItem {
         )
         self.target = target
 
+        #if !targetEnvironment(macCatalyst)
+        if #available(iOS 27.1, *) {
+            visibilityPriority = .high
+        }
+        #endif
+
         accessibilityValue = Self.title(for: tool)
     }
 
