@@ -10,6 +10,7 @@ public class DismissBarButtonItem: UIBarButtonItem {
         self.asset = asset
         super.init()
         self.style = .done
+        self.image = UIImage(systemName: "xmark")
         self.title = Strings.DismissBarButtonItem.title
         self.target = self
         self.action = #selector(handleButton)

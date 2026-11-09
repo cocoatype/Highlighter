@@ -6,7 +6,19 @@ import UIKit
 
 class SeekBarButtonItem: UIBarButtonItem {
     convenience init(target: AnyObject?) {
-        self.init(image: Icons.seekAndDestroy, style: .plain, target: target, action: #selector(ActionsBuilderActions.startSeeking(_:)))
+        self.init(
+            image: Icons.seekAndDestroy,
+            style: .plain,
+            target: target,
+            action: #selector(ActionsBuilderActions.startSeeking(_:))
+        )
         accessibilityLabel = Strings.SeekBarButtonItem.accessibilityLabel
+        title = Strings.SeekBarButtonItem.accessibilityLabel
+
+        #if !targetEnvironment(macCatalyst)
+        if #available(iOS 27.1, *) {
+            visibilityPriority = .low
+        }
+        #endif
     }
 }

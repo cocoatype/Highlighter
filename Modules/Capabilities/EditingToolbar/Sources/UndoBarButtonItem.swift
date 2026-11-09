@@ -6,7 +6,13 @@ import UIKit
 
 class UndoBarButtonItem: UIBarButtonItem {
     convenience init(undoManager: UndoManager?, target: AnyObject?) {
-        self.init(image: Icons.undo, style: .plain, target: target, action: #selector(ActionsBuilderActions.undo(_:)))
+        self.init(
+            image: Icons.undo,
+            style: .plain,
+            target: target,
+            action: #selector(ActionsBuilderActions.undo(_:))
+        )
         isEnabled = undoManager?.canUndo ?? false
+        title = undoManager?.undoMenuItemTitle ?? Strings.UndoBarButtonItem.title
     }
 }
