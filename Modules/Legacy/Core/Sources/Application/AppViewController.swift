@@ -3,7 +3,6 @@
 
 import AppIntents
 import Photos
-import SwiftUI
 import UIKit
 import VisionKit
 

@@ -1,7 +1,7 @@
 //  Created by Geoff Pado on 1/10/22.
 //  Copyright © 2022 Cocoatype, LLC. All rights reserved.
 
-import SwiftUI
+import UIKit
 
 class TabletSeekViewController: UIViewController {
     init() {
