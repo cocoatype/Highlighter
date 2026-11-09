@@ -10,8 +10,11 @@ struct DoneButton: View {
     }
 
     var body: some View {
-        Button(Strings.DoneButton.label, action: action)
-            .foregroundColor(.white)
-            .font(Font.navigationBarButtonFont)
+        Button(action: action) {
+            Image(systemName: "xmark")
+        }
+        .foregroundColor(.white)
+        .font(Font.navigationBarButtonFont)
+        .accessibilityLabel(Strings.DoneButton.label)
     }
 }
