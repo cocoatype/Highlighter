@@ -8,10 +8,14 @@ public enum AlbumsUI {
         dependencies: [
             .target(AlbumsData.target),
             .target(AppNavigation.target),
-            .target(Redactions.target),
-            .external(name: "SwiftUIIntrospect"),
+            .target(DesignSystem.target),
         ]
     )
 
-    public static let testTarget = Target.capabilitiesTestTarget(name: "AlbumsUI")
+    public static let testTarget = Target.capabilitiesTestTarget(
+        name: "AlbumsUI",
+        dependencies: [
+            .target(AlbumsData.target),
+        ]
+    )
 }

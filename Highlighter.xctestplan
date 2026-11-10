@@ -412,6 +412,13 @@
         "identifier" : "AB94737BB65B38D6AD869B5F",
         "name" : "ExportingTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "CDF6EE4AB5693C601A1982E2",
+        "name" : "AlbumsUITests"
+      }
     }
   ],
   "version" : 1
