@@ -15,3 +15,11 @@ cyclomatic_complexity:
 trailing_comma:
   mandatory_comma: true
   
+
+custom_rules:
+  no_swiftui_outside_widgets:
+    name: "No SwiftUI Outside Widgets"
+    regex: '^\s*(@testable\s+)?import\s+SwiftUI\b'
+    excluded: '/Widgets/'
+    message: "SwiftUI is only allowed in the Widgets target; use UIKit instead (see #436)."
+    severity: error

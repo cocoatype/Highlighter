@@ -10,7 +10,6 @@ let packageSettings = PackageSettings(
         "FactoryKit": .framework,
         "TelemetryClient": .framework,
         "TelemetryDeck": .framework,
-        "SwiftUIIntrospect": .framework,
     ],
     baseSettings: Shared.settings,
     targetSettings: [
@@ -36,8 +35,6 @@ let package = Package(
     dependencies: [
         .package(url: "git@github.com:adamwulf/ClippingBezier.git", from: "1.2.0"),
         .package(url: "git@github.com:hmlongco/Factory.git", from: "2.5.0"),
-        .package(url: "https://github.com/siteline/SwiftUI-Introspect.git", from: "1.2.0"),
         .package(url: "git@github.com:TelemetryDeck/SwiftClient.git", from: "2.8.0"),
-        .package(url: "git@github.com:nalexn/ViewInspector.git", from: "0.10.5"),
     ]
 )
