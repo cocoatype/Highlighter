@@ -23,9 +23,6 @@
 #elseif os(tvOS) || os(watchOS)
   import UIKit
 #endif
-#if canImport(SwiftUI)
-  import SwiftUI
-#endif
 
 // swiftlint:disable superfluous_disable_command file_length implicit_return
 
@@ -162,13 +159,6 @@
     return color
   }
 
-  #if canImport(SwiftUI)
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
-  {{accessModifier}} var swiftUIColor: SwiftUI.Color {
-      return SwiftUI.Color(asset: self)
-  }
-  #endif
-
   fileprivate init(name: String) {
     self.name = name
   }
@@ -187,16 +177,6 @@
     #endif
   }
 }
-
-#if canImport(SwiftUI)
-@available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
-{{accessModifier}} extension SwiftUI.Color {
-  init(asset: {{colorType}}) {
-    let bundle = Bundle.module
-    self.init(asset.name, bundle: bundle)
-  }
-}
-#endif
 
 {% endif %}
 {% if resourceCount.data > 0 %}
@@ -254,33 +234,7 @@
     return result
   }
 
-  #if canImport(SwiftUI)
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
-  {{accessModifier}} var swiftUIImage: SwiftUI.Image {
-    SwiftUI.Image(asset: self)
-  }
-  #endif
 }
-
-#if canImport(SwiftUI)
-@available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
-{{accessModifier}} extension SwiftUI.Image {
-  init(asset: {{imageType}}) {
-    let bundle = Bundle.module
-    self.init(asset.name, bundle: bundle)
-  }
-
-  init(asset: {{imageType}}, label: Text) {
-    let bundle = Bundle.module
-    self.init(asset.name, bundle: bundle, label: label)
-  }
-
-  init(decorative asset: {{imageType}}) {
-    let bundle = Bundle.module
-    self.init(decorative: asset.name, bundle: bundle)
-  }
-}
-#endif
 
 {% endif %}
 {% else %}
