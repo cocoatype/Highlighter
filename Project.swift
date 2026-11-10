@@ -62,6 +62,7 @@ let project = Project(
         TestHelpers.target,
         TestHelpers.interfaceTarget,
         // tests
+        AlbumsUI.testTarget,
         AppRatings.testTarget,
         Brushes.testTarget,
         Core.testTarget,
