@@ -75,3 +75,16 @@
 "PaywallView.supportDevelopmentText" = "Support an indie developer building tools focused on your privacy needs.";
 
 "PurchaseRestoreButton.title" = "Restore";
+
+// Accessibility label for the paywall close button
+"CloseButton.accessibilityLabel" = "Close";
+
+// Message shown in the paywall footer when purchase options fail to load
+"PaywallLoadError.message" = "Purchase options couldn’t be loaded.";
+// Title of the button for retrying loading purchase options
+"PaywallLoadError.retryButton" = "Try Again";
+
+// Title of the restore purchases error alert
+"RestoreErrorAlert.errorTitle" = "Restore Error Occurred";
+// Body of the restore purchases error alert
+"RestoreErrorAlert.errorMessage" = "An error occurred while trying to restore your purchases. Please try again later.";

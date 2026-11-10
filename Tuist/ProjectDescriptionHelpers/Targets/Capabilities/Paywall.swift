@@ -24,7 +24,6 @@ public enum Paywall {
             .target(Purchasing.target),
             .external(name: "FactoryKit"),
             .external(name: "FactoryTesting"),
-            .external(name: "ViewInspector"),
         ]
     )
 }
