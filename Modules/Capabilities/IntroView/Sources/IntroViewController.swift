@@ -2,7 +2,6 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import PhotosUI
-import SwiftUI
 import UIKit
 
 import FactoryKit
@@ -13,27 +12,27 @@ import MobileSettingsUI
 import PhotoPermissions
 import PhotoPicker
 
-public class IntroViewController: UIHostingController<IntroView>, PhotoPickerDelegate {
+public class IntroViewController: UIViewController, PhotoPickerDelegate {
     public init(
         permissionsRequester: any PhotoPermissionsRequester = PhotoLibraryPermissionsRequester()
     ) {
         self.permissionsRequester = permissionsRequester
-        super.init(rootView: IntroView())
-        self.rootView = IntroView(
+        super.init(nibName: nil, bundle: nil)
+
+        navigationItem.rightBarButtonItem = SettingsBarButtonItem.standard
+    }
+
+    public override func loadView() {
+        view = IntroView(
             permissionAction: { [weak self] in
                 Task { [weak self] in
                     await self?.requestPermission()
                 }
             },
-            importAction: importPhoto
+            importAction: { [weak self] in
+                self?.importPhoto()
+            }
         )
-
-        navigationItem.rightBarButtonItem = SettingsBarButtonItem.standard
-    }
-
-    public override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        view.backgroundColor = .primary
     }
 
     func requestPermission() async {
@@ -68,7 +67,7 @@ public class IntroViewController: UIHostingController<IntroView>, PhotoPickerDel
 
     // MARK: Actions
 
-    @objc public protocol Actions {
+    @objc(IntroViewControllerActions) public protocol Actions {
         @MainActor func showPhotoLibrary()
     }
 
