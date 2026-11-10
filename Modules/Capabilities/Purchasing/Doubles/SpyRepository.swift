@@ -14,11 +14,15 @@ public struct SpyRepository: PurchaseRepository {
         purchaseExpectation: Expectation? = nil,
         purchaseResponse: PurchaseState = .loading,
         restoreExpectation: Expectation? = nil,
-        restoreResponse: PurchaseState = .loading
+        restoreResponse: PurchaseState = .loading,
+        productsError: (any Error)? = nil,
+        purchaseError: (any Error)? = nil
     ) {
         self.withCheese = withCheese
         self.noOnions = noOnions
-        self.products = products
+        self.storedProducts = products
+        self.productsError = productsError
+        self.purchaseError = purchaseError
         self.startExpectation = startExpectation
         self.purchaseExpectation = purchaseExpectation
         self.purchaseResponse = purchaseResponse
@@ -28,7 +32,14 @@ public struct SpyRepository: PurchaseRepository {
 
     public var withCheese: PurchaseState = .loading
     public var noOnions: PurchaseState = .loading
-    public var products: [any PurchaseProduct] = []
+    public var storedProducts: [any PurchaseProduct] = []
+    public var productsError: (any Error)?
+    public var products: [any PurchaseProduct] {
+        get throws {
+            if let productsError { throw productsError }
+            return storedProducts
+        }
+    }
 
     public var startExpectation: Expectation?
     public func start() {
@@ -37,8 +48,10 @@ public struct SpyRepository: PurchaseRepository {
 
     public var purchaseExpectation: Expectation?
     public var purchaseResponse: PurchaseState = .loading
-    public func purchase(_ product: any PurchaseProduct) async -> PurchaseState {
+    public var purchaseError: (any Error)?
+    public func purchase(_ product: any PurchaseProduct) async throws -> PurchaseState {
         purchaseExpectation?.fulfill()
+        if let purchaseError { throw purchaseError }
         return purchaseResponse
     }
 
