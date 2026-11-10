@@ -23,7 +23,6 @@ public enum Unpurchased {
             .target(Logging.doublesTarget),
             .external(name: "FactoryKit"),
             .external(name: "FactoryTesting"),
-            .external(name: "ViewInspector"),
         ]
     )
 }

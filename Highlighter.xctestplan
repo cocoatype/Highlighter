@@ -419,6 +419,13 @@
         "identifier" : "CDF6EE4AB5693C601A1982E2",
         "name" : "AlbumsUITests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "16482792E6872C97C9E49E9C",
+        "name" : "DesktopSettingsUITests"
+      }
     }
   ],
   "version" : 1
