@@ -1,12 +1,9 @@
 //  Created by Geoff Pado on 3/3/25.
 //  Copyright © 2025 Cocoatype, LLC. All rights reserved.
 
-//  Created by Geoff Pado on 3/3/25.
-//  Copyright © 2025 Cocoatype, LLC. All rights reserved.
-
 import DesignSystem
 import Testing
-import ViewInspector
+import UIKit
 
 @testable import IntroView
 
@@ -14,27 +11,23 @@ import ViewInspector
 struct IntroButtonTests {
     @Test
     func title() throws {
-        let button = try IntroButton("Title", action: {}).inspect()
-        let text = try button.find(text: "Title")
-        let attributes = try text.attributes()
-        let color = try #require(try attributes.foregroundColor())
-        #expect(color == .white)
+        let button = IntroButton("Title", action: {})
+        let attributedTitle = try #require(button.titleLabel?.attributedText)
+        #expect(attributedTitle.string == "Title")
 
-        let font = try attributes.font()
-        #expect(font == .app(textStyle: .headline))
-
-        let isUnderline = try attributes.isUnderline()
-        #expect(isUnderline)
+        let attributes = attributedTitle.attributes(at: 0, effectiveRange: nil)
+        #expect(attributes[.foregroundColor] as? UIColor == .white)
+        #expect(attributes[.font] as? UIFont == .appFont(forTextStyle: .headline))
+        #expect(attributes[.underlineStyle] as? Int == NSUnderlineStyle.single.rawValue)
     }
 
     @Test
     func action() async throws {
-        try await confirmation { buttonTapped in
-            let button = try IntroButton("Title", action: {
+        await confirmation { buttonTapped in
+            let button = IntroButton("Title", action: {
                 buttonTapped()
-            }).inspect()
-            let internalButton = try button.find(button: "Title")
-            try internalButton.tap()
+            })
+            button.sendActions(for: .primaryActionTriggered)
         }
     }
 }
