@@ -84,4 +84,33 @@ struct UnpurchasedAlertControllerFactoryTests {
         handler()
         #expect(defaults.value(for: key) == true)
     }
+
+    @Test func actionHandlerRunsAfterHideAction() async throws {
+        let key = Keys.hideAutoRedactions
+        let feature = UnpurchasedFeature(message: "", learnMoreAction: nil, hideFeatureKey: key)
+        let defaults = StubDefaultsProvider()
+        Container.shared.defaults.register { defaults }
+
+        try await confirmation { handled in
+            let alert = UnpurchasedAlertControllerFactory().alertController(for: feature) {
+                #expect(defaults.value(for: key) == true)
+                handled()
+            }
+            let hideAction = try #require(alert.actions.first)
+            let handler = try #require((hideAction as? UnpurchasedAlertAction)?.action)
+            handler()
+        }
+    }
+
+    @Test func actionHandlerRunsAfterCancelAction() async throws {
+        let feature = UnpurchasedFeature(message: "", learnMoreAction: nil, hideFeatureKey: nil)
+        try await confirmation { handled in
+            let alert = UnpurchasedAlertControllerFactory().alertController(for: feature) {
+                handled()
+            }
+            let cancelAction = try #require(alert.actions.first)
+            let handler = try #require((cancelAction as? UnpurchasedAlertAction)?.action)
+            handler()
+        }
+    }
 }

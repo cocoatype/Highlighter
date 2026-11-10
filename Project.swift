@@ -67,6 +67,7 @@ let project = Project(
         Brushes.testTarget,
         Core.testTarget,
         Defaults.testTarget,
+        DesktopSettingsUI.testTarget,
         DocumentScanning.testTarget,
         Editing.testTarget,
         EditingToolbar.testTarget,
