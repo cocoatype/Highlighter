@@ -11,5 +11,15 @@ class PhotoEditingChainedResponder: UIResponder {
     /// Provides the responder that follows this one in the chain.
     var successor: () -> UIResponder? = { nil }
 
+    /// The view controller at the head of the editing responder chain.
+    weak var editingViewController: PhotoEditingViewController?
+
     override var next: UIResponder? { successor() }
+
+    /// Sends `action` to whichever responder in the editing chain handles it,
+    /// including responders that come before this one.
+    func sendToEditor(_ action: Selector, sender: Any? = nil) {
+        guard let target = editingViewController?.target(forAction: action, withSender: sender) else { return }
+        UIApplication.shared.sendAction(action, to: target, from: sender ?? self, for: nil)
+    }
 }

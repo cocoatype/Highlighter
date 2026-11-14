@@ -68,10 +68,10 @@ struct PhotoEditingViewControllerResponderTests {
             undoManager.registerUndo(withTarget: viewController) { _ in registerUndo() }
         }
         registerUndo()
-        #expect(viewController.target(forAction: undo, withSender: nil) != nil)
+        #expect(viewController.target(forAction: undo, withSender: nil) is PhotoEditingHistoryController)
         #expect(viewController.target(forAction: redo, withSender: nil) == nil)
 
         undoManager.undo()
-        #expect(viewController.target(forAction: redo, withSender: nil) != nil)
+        #expect(viewController.target(forAction: redo, withSender: nil) is PhotoEditingHistoryController)
     }
 }

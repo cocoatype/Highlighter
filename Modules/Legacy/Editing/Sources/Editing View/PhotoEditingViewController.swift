@@ -130,10 +130,15 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     /// Helpers that handle actions on behalf of this view controller, in the
     /// order they appear in the responder chain after it.
-    private var chainedResponders: [PhotoEditingChainedResponder] { [] }
+    private var chainedResponders: [PhotoEditingChainedResponder] {
+        [
+            historyController,
+        ]
+    }
 
     private func linkChainedResponders() {
         let responders = chainedResponders
+        responders.forEach { $0.editingViewController = self }
         for (responder, successor) in zip(responders, responders.dropFirst()) {
             responder.successor = { [weak successor] in successor }
         }
@@ -336,18 +341,8 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     // MARK: Undo/Redo
 
-    private let localUndoManager = UndoManager()
-    public override var undoManager: UndoManager? { localUndoManager }
-
-    @objc private func undo(_ sender: Any) {
-        undoManager?.undo()
-        updateToolbarItems()
-    }
-
-    @objc private func redo(_ sender: Any) {
-        undoManager?.redo()
-        updateToolbarItems()
-    }
+    private let historyController = PhotoEditingHistoryController()
+    public override var undoManager: UndoManager? { historyController.undoManager }
 
     // MARK: Auto Redact
 
@@ -390,18 +385,6 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
         removeAutoRedactions()
         autoRedact()
-    }
-
-    // MARK: Key Commands
-
-    open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        if action == #selector(undo(_:)) {
-            return undoManager?.canUndo ?? false
-        } else if action == #selector(redo(_:)) {
-            return undoManager?.canRedo ?? false
-        }
-
-        return super.canPerformAction(action, withSender: sender)
     }
 
     // MARK: Image
