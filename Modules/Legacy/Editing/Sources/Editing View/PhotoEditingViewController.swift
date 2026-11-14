@@ -69,18 +69,11 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
         updateToolbarItems(animated: false)
 
-        let options = StandardImageRequestOptions()
-
         if image != nil {
             updateScrollView()
         } else if let asset = asset {
-            imageManager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: options) { [weak self] image, info in
-                let isDegraded = (info?[PHImageResultIsDegradedKey] as? NSNumber)?.boolValue ?? false
-                guard let image = image, isDegraded == false else { return }
-
-                DispatchQueue.main.async {
-                    self?.image = image
-                }
+            imageLoader.requestImage(for: asset) { [weak self] image in
+                self?.image = image
             }
         }
     }
@@ -234,29 +227,11 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
         photoEditingView.image = image
 
         guard let image else { return }
-        Task { [weak self] in
-            guard let self else { return }
-            do {
-                let textObservations = try await textRectangleDetector.detectText(in: image)
-                photoEditingView.textObservations = textObservations
-            } catch { errorHandler.log(error, module: "Editing", type: "PhotoEditingViewController") }
-        }
-
-        Task { [weak self] in
-            guard let self else { return }
-            do {
-                let recognizedTextObservations = try await textRectangleDetector.recognizeText(in: image)
-                updateRecognizedTextObservations(from: recognizedTextObservations)
-                autoRedactor.autoRedact()
-            } catch { errorHandler.log(error, module: "Editing", type: "PhotoEditingViewController") }
-        }
+        textDetectionController.detectText(in: image)
     }
 
-    @MainActor
-    private func updateRecognizedTextObservations(from textObservations: [RecognizedTextObservation]) {
-        // store recognized text observations
-        photoEditingView.recognizedTextObservations = textObservations
-    }
+    private let imageLoader = PhotoEditingImageLoader()
+    private lazy var textDetectionController = PhotoEditingTextDetectionController(photoEditingView: photoEditingView, autoRedactor: autoRedactor)
 
     // MARK: Zoom
 
@@ -327,8 +302,6 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     public var redactions: [Redaction] { return photoEditingView.redactions }
 
     private let asset: PHAsset?
-    private let imageManager = PHImageManager()
-    private let textRectangleDetector = TextDetector()
     private let photoEditingView = PhotoEditingScrollView()
     private var redactionChangeObserver: Any?
     private var hideAutoRedactionsChangeObserver: Any?
