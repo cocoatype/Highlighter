@@ -57,6 +57,7 @@ public enum Editing {
             .target(MobileAutoRedactionsUI.target),
             .target(Purchasing.doublesTarget),
             .target(Tools.target),
+            .target(UserActivities.target),
             .external(name: "FactoryKit"),
             .external(name: "FactoryTesting"),
         ]

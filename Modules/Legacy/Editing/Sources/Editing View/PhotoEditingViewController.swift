@@ -496,18 +496,12 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     open override func updateUserActivityState(_ activity: NSUserActivity) {
         guard let editingActivity = (activity as? EditingUserActivity) else { return }
-        if let asset = asset {
-            editingActivity.assetLocalIdentifier = asset.localIdentifier
-        } else if let representedURL = fileURLProvider?.representedFileURL {
-            let accessGranted = representedURL.startAccessingSecurityScopedResource()
-            defer { representedURL.stopAccessingSecurityScopedResource() }
-            guard accessGranted else { return }
-
-            editingActivity.imageBookmarkData = try? representedURL.bookmarkData()
-        } else if let image = image {
-            editingActivity.image = image
-        }
-        editingActivity.redactions = photoEditingView.redactions
+        PhotoEditingUserActivityUpdater(
+            asset: asset,
+            representedFileURL: fileURLProvider?.representedFileURL,
+            image: image,
+            redactions: photoEditingView.redactions
+        ).update(editingActivity)
     }
 
     // MARK: Sharing
