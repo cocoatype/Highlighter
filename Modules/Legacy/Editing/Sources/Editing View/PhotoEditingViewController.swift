@@ -127,6 +127,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
             historyController,
             colorPickerController,
             seekController,
+            autoRedactAccessController,
         ]
     }
 
@@ -226,22 +227,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     // MARK: Auto Redact
 
-    @objc private func showAutoRedactAccess(_ sender: Any) {
-        present(
-            PhotoEditingAutoRedactionsAccessProvider()
-                .autoRedactionsAccessViewController { [weak self] in
-                    if #available(iOS 16, *) {
-                        self?.present(PaywallHostingController(), animated: true)
-                    }
-                },
-            animated: true
-        )
-    }
-
-    @objc public func hideAutoRedactAccess(_ sender: Any) {
-        guard presentedViewController is AutoRedactionsAccessNavigationController else { return }
-        dismiss(animated: true)
-    }
+    private let autoRedactAccessController = PhotoEditingAutoRedactAccessController()
 
     @MainActor
     private func autoRedact() {

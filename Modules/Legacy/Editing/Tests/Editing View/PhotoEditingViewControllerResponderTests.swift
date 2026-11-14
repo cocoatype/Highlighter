@@ -36,7 +36,8 @@ struct PhotoEditingViewControllerResponderTests {
         // EditingToolbar's ActionsBuilderActions & ToolbarActions
         "toggleHighlighterTool": PhotoEditingViewController.self,
         "selectedColorDidChange:": PhotoEditingColorPickerController.self,
-        "showAutoRedactAccess:": PhotoEditingViewController.self,
+        "showAutoRedactAccess:": PhotoEditingAutoRedactAccessController.self,
+        "hideAutoRedactAccess:": PhotoEditingAutoRedactAccessController.self,
         "showDebugPreferences:": PhotoEditingViewController.self,
         "selectHighlighterTool:event:": PhotoEditingViewController.self,
 
