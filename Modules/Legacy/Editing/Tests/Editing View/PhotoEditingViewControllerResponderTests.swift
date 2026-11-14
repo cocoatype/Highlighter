@@ -22,8 +22,8 @@ struct PhotoEditingViewControllerResponderTests {
     /// whether by a bar button item, a key command, or up the responder chain.
     private static let expectedHandlers: [String: AnyClass] = [
         // PhotoEditingResponderActions
-        "refreshToolbarItems": PhotoEditingViewController.self,
-        "selectHighlighterTool:": PhotoEditingViewController.self,
+        "refreshToolbarItems": PhotoEditingToolbarController.self,
+        "selectHighlighterTool:": PhotoEditingToolController.self,
         "toggleColorPicker:": PhotoEditingColorPickerController.self,
         "showColorPicker:": PhotoEditingColorPickerController.self,
         "toggleSeeking:": PhotoEditingSeekController.self,
@@ -34,12 +34,12 @@ struct PhotoEditingViewControllerResponderTests {
         "sharePhoto:": PhotoEditingShareController.self,
 
         // EditingToolbar's ActionsBuilderActions & ToolbarActions
-        "toggleHighlighterTool": PhotoEditingViewController.self,
+        "toggleHighlighterTool": PhotoEditingToolController.self,
         "selectedColorDidChange:": PhotoEditingColorPickerController.self,
         "showAutoRedactAccess:": PhotoEditingAutoRedactAccessController.self,
         "hideAutoRedactAccess:": PhotoEditingAutoRedactAccessController.self,
         "showDebugPreferences:": PhotoEditingViewController.self,
-        "selectHighlighterTool:event:": PhotoEditingViewController.self,
+        "selectHighlighterTool:event:": PhotoEditingToolController.self,
 
         // Workspace actions
         "markHasMadeEdits": PhotoEditingViewController.self,

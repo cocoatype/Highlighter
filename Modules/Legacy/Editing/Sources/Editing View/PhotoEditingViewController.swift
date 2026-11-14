@@ -25,7 +25,7 @@ import UserActivities
 #warning("#61: Simplify this class")
 // swiftlint:disable file_length
 // swiftlint:disable:next type_body_length
-public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, HighlighterToolSelectionHandler {
+public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     public init(
         asset: PHAsset? = nil,
         image: UIImage? = nil,
@@ -41,19 +41,8 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
         linkChainedResponders()
 
         photoEditingView.add(redactions ?? [])
-        updateToolbarItems(animated: false)
-
-        redactionChangeObserver = NotificationCenter.default.addObserver(forName: PhotoEditingRedactionView.redactionsDidChange, object: nil, queue: .main, using: { [weak self] _ in
-            self?.updateToolbarItems()
-        })
-
         autoRedactor.onRedact = { [weak self] in self?.markHasMadeEdits() }
-
-        hideAutoRedactionsChangeObserver = NotificationCenter.default.addObserver(for: Keys.hideAutoRedactions) { [weak self] in
-            self?.updateToolbarItems()
-        }
-
-        updateToolbarItems(animated: false)
+        toolbarController.updateToolbarItems(animated: false)
 
         userActivity = EditingUserActivity()
 
@@ -67,7 +56,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        updateToolbarItems(animated: false)
+        toolbarController.updateToolbarItems(animated: false)
 
         if image != nil {
             updateScrollView()
@@ -91,7 +80,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
                 previousTraitCollection.verticalSizeClass != traitCollection.verticalSizeClass
         else { return }
 
-        updateToolbarItems(animated: false)
+        toolbarController.updateToolbarItems(animated: false)
         seekController.updateSeekPresentation()
     }
 
@@ -103,6 +92,8 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     /// order they appear in the responder chain after it.
     private var chainedResponders: [PhotoEditingChainedResponder] {
         [
+            toolController,
+            toolbarController,
             historyController,
             colorPickerController,
             seekController,
@@ -138,45 +129,11 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     public var highlighterTool: HighlighterTool { return photoEditingView.highlighterTool }
 
-    @objc func toggleHighlighterTool() {
-        select(photoEditingView.highlighterTool.next)
-    }
+    private lazy var toolController = PhotoEditingToolController(photoEditingView: photoEditingView)
 
-    @objc public func selectHighlighterTool(_ sender: UICommand) {
-        guard let index = sender.propertyList as? Int else { return }
-        select(HighlighterTool.allCases[index])
-    }
+    // MARK: Toolbar
 
-    @objc public func selectHighlighterTool(_ sender: Any, event: HighlighterToolSelectionEvent) {
-        select(event.tool)
-    }
-
-    private func select(_ tool: HighlighterTool) {
-        photoEditingView.highlighterTool = tool
-        updateToolbarItems()
-    }
-
-    @objc public func refreshToolbarItems() { updateToolbarItems() }
-
-    private func updateToolbarItems(animated: Bool = true) {
-        let actionSet = ActionSet(for: self, undoManager: undoManager, selectedTool: photoEditingView.highlighterTool, sizeClass: traitCollection.horizontalSizeClass, currentColor: photoEditingView.color, asset: asset)
-
-        if #available(iOS 16, *) {
-            navigationItem.style = .editor
-
-            navigationItem.leadingItemGroups = actionSet.leadingNavigationItems.map { $0.creatingFixedGroup() }
-            navigationItem.centerItemGroups = actionSet.centerNavigationItems.map { $0.creatingFixedGroup() }
-            navigationItem.trailingItemGroups = actionSet.trailingNavigationItems.map { $0.creatingFixedGroup() }
-        } else {
-            navigationItem.setLeftBarButtonItems(actionSet.leadingNavigationItems, animated: false)
-            navigationItem.setRightBarButtonItems(actionSet.trailingNavigationItems, animated: false)
-        }
-
-        setToolbarItems(actionSet.toolbarItems, animated: animated)
-        navigationController?.setToolbarHidden(actionSet.toolbarItems.count == 0, animated: animated)
-
-        userActivity?.needsSave = true
-    }
+    private lazy var toolbarController = PhotoEditingToolbarController(photoEditingView: photoEditingView, asset: asset)
 
     // MARK: Seek and Destroy
 
@@ -201,7 +158,6 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     private let autoRedactAccessController = PhotoEditingAutoRedactAccessController()
     private lazy var autoRedactor = PhotoEditingAutoRedactor(photoEditingView: photoEditingView)
-
 
     // MARK: Image
 
@@ -276,15 +232,6 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     private let asset: PHAsset?
     private let photoEditingView = PhotoEditingScrollView()
-    private var redactionChangeObserver: Any?
-    private var hideAutoRedactionsChangeObserver: Any?
-
-    deinit {
-        [
-            redactionChangeObserver,
-            hideAutoRedactionsChangeObserver,
-        ].forEach { $0.map(NotificationCenter.default.removeObserver) }
-    }
 
     override convenience init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.init(asset: nil, image: nil, completionHandler: nil)
