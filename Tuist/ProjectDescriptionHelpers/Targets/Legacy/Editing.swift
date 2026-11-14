@@ -37,6 +37,8 @@ public enum Editing {
             base: [
                 "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "",
                 "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": false,
+                // ClippingBezier ships private headers in its public headers folder; remove when ClippingBezier is
+                "OTHER_SWIFT_FLAGS": ["$(inherited)", "-Xcc", "-Wno-incomplete-umbrella"],
             ],
             defaultSettings: .recommended(excluding: [
                 "CODE_SIGN_IDENTITY",
