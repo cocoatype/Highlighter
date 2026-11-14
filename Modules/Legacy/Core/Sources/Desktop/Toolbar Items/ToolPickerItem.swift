@@ -43,7 +43,7 @@ class ToolPickerItem: NSMenuToolbarItem {
 
     private class Command: UICommand {
         convenience init(tool: HighlighterTool, currentTool: HighlighterTool) {
-            self.init(title: Self.title(for: tool), image: tool.image, action: #selector(PhotoEditingViewController.selectHighlighterTool(_:)), propertyList: HighlighterTool.allCases.firstIndex(of: tool), state: (currentTool == tool ? .on : .off))
+            self.init(title: Self.title(for: tool), image: tool.image, action: #selector(PhotoEditingResponderActions.selectHighlighterTool(_:)), propertyList: HighlighterTool.allCases.firstIndex(of: tool), state: (currentTool == tool ? .on : .off))
         }
 
         static func title(for tool: HighlighterTool) -> String {

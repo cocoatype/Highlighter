@@ -38,6 +38,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
         super.init(nibName: nil, bundle: nil)
 
         definesPresentationContext = true
+        linkChainedResponders()
 
         photoEditingView.add(redactions ?? [])
         updateToolbarItems(animated: false)
@@ -124,6 +125,23 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     }
 
     open override var canBecomeFirstResponder: Bool { return true }
+
+    // MARK: Responder Chain
+
+    /// Helpers that handle actions on behalf of this view controller, in the
+    /// order they appear in the responder chain after it.
+    private var chainedResponders: [PhotoEditingChainedResponder] { [] }
+
+    private func linkChainedResponders() {
+        let responders = chainedResponders
+        for (responder, successor) in zip(responders, responders.dropFirst()) {
+            responder.successor = { [weak successor] in successor }
+        }
+        responders.last?.successor = { [weak self] in self?.superNext }
+    }
+
+    open override var next: UIResponder? { chainedResponders.first ?? super.next }
+    private var superNext: UIResponder? { super.next }
 
     // MARK: Edit Protection
 

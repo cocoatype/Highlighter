@@ -18,35 +18,35 @@ public struct ActionSet {
         DismissBarButtonItem(asset: asset)
 
         if #unavailable(iOS 16), sizeClass == .regular {
-            UndoBarButtonItem(undoManager: undoManager, target: target)
-            RedoBarButtonItem(undoManager: undoManager, target: target)
+            UndoBarButtonItem(undoManager: undoManager, target: target(for: #selector(ActionsBuilderActions.undo(_:))))
+            RedoBarButtonItem(undoManager: undoManager, target: target(for: #selector(ActionsBuilderActions.redo(_:))))
         }
     }
 
     @available(iOS 16, *)
     @BarBuilder public var centerNavigationItems: [UIBarButtonItem] {
         if sizeClass == .regular {
-            UndoBarButtonItem(undoManager: undoManager, target: target)
-            RedoBarButtonItem(undoManager: undoManager, target: target)
+            UndoBarButtonItem(undoManager: undoManager, target: target(for: #selector(ActionsBuilderActions.undo(_:))))
+            RedoBarButtonItem(undoManager: undoManager, target: target(for: #selector(ActionsBuilderActions.redo(_:))))
             UIBarButtonItem.fixedSpace(0)
-            ColorPickerBarButtonItem(target: target, color: currentColor)
+            ColorPickerBarButtonItem(target: target(for: #selector(ActionsBuilderActions.selectedColorDidChange(_:))), color: currentColor)
             UIBarButtonItem.fixedSpace(0)
-            SeekBarButtonItem(target: target)
+            SeekBarButtonItem(target: target(for: #selector(ActionsBuilderActions.startSeeking(_:))))
 
-            if shouldShowQuickRedact { QuickRedactBarButtonItem(target: target) }
+            if shouldShowQuickRedact { QuickRedactBarButtonItem(target: target(for: #selector(ActionsBuilderActions.showAutoRedactAccess(_:)))) }
         }
     }
 
     // 🧑‍💻👋👋👋🧑‍💻🏠🕖🤣💜😍💜😍🕙😒😒😒🕙👋😍🤣 by @Eskeminha on 2024-05-03
     // the standard set of trailing navigation items
     @BarBuilder private var 🧑‍💻👋👋👋🧑‍💻🏠🕖🤣💜😍💜😍🕙😒😒😒🕙👋😍🤣: [UIBarButtonItem] {
-        if featureFlagProvider.shouldShowDebugOverlay { DebugPreferencesBarButtonItem(target: target) }
+        if featureFlagProvider.shouldShowDebugOverlay { DebugPreferencesBarButtonItem(target: target(for: #selector(ActionsBuilderActions.showDebugPreferences(_:)))) }
 
-        ShareBarButtonItem(target: target)
+        ShareBarButtonItem(target: target(for: #selector(ToolbarActions.sharePhoto(_:))))
 
-        SeekBarButtonItem(target: target)
+        SeekBarButtonItem(target: target(for: #selector(ActionsBuilderActions.startSeeking(_:))))
 
-        if shouldShowQuickRedact { QuickRedactBarButtonItem(target: target) }
+        if shouldShowQuickRedact { QuickRedactBarButtonItem(target: target(for: #selector(ActionsBuilderActions.showAutoRedactAccess(_:)))) }
     }
 
     @BarBuilder public var trailingNavigationItems: [UIBarButtonItem] {
@@ -55,17 +55,17 @@ public struct ActionSet {
         }
 
         if sizeClass == .regular, #unavailable(iOS 16) {
-            SeekBarButtonItem(target: target)
-            if shouldShowQuickRedact { QuickRedactBarButtonItem(target: target) }
+            SeekBarButtonItem(target: target(for: #selector(ActionsBuilderActions.startSeeking(_:))))
+            if shouldShowQuickRedact { QuickRedactBarButtonItem(target: target(for: #selector(ActionsBuilderActions.showAutoRedactAccess(_:)))) }
         }
 
         if sizeClass == .regular {
             if #unavailable(iOS 16) {
-                ColorPickerBarButtonItem(target: target, color: currentColor)
+                ColorPickerBarButtonItem(target: target(for: #selector(ActionsBuilderActions.selectedColorDidChange(_:))), color: currentColor)
             }
             HighlighterToolBarButtonItem(tool: selectedTool, target: target)
             if #available(iOS 16, *) {
-                ShareBarButtonItem(target: target)
+                ShareBarButtonItem(target: target(for: #selector(ToolbarActions.sharePhoto(_:))))
             }
         } else if #available(iOS 16, *) {
             🧑‍💻👋👋👋🧑‍💻🏠🕖🤣💜😍💜😍🕙😒😒😒🕙👋😍🤣
@@ -74,13 +74,13 @@ public struct ActionSet {
 
     @BarBuilder public var toolbarItems: [UIBarButtonItem] {
         if sizeClass != .regular {
-            UndoBarButtonItem(undoManager: undoManager, target: target)
+            UndoBarButtonItem(undoManager: undoManager, target: target(for: #selector(ActionsBuilderActions.undo(_:))))
             if #unavailable(iOS 26.0) {
                 UIBarButtonItem.flexibleSpace()
             }
-            RedoBarButtonItem(undoManager: undoManager, target: target)
+            RedoBarButtonItem(undoManager: undoManager, target: target(for: #selector(ActionsBuilderActions.redo(_:))))
             UIBarButtonItem.flexibleSpace()
-            ColorPickerBarButtonItem(target: target, color: currentColor)
+            ColorPickerBarButtonItem(target: target(for: #selector(ActionsBuilderActions.selectedColorDidChange(_:))), color: currentColor)
             if #unavailable(iOS 26.0) {
                 UIBarButtonItem.flexibleSpace()
             }
@@ -94,6 +94,21 @@ public struct ActionSet {
         let isPurchased = allTextIsSpecial.withCheese == .purchased
         let hideAutoRedactions = defaults.value(for: Keys.hideAutoRedactions)
         return isPurchased || hideAutoRedactions == false
+    }
+
+    // MARK: Targets
+
+    /// Finds the responder that will handle `action`, starting from `target`
+    /// and walking up its responder chain. Falls back to `target` itself if it
+    /// responds to `action`, or to `nil` (sending the action up the first
+    /// responder's chain) otherwise.
+    private func target(for action: Selector) -> AnyObject? {
+        if let responder = target as? UIResponder,
+           let resolved = responder.target(forAction: action, withSender: nil) as AnyObject? {
+            return resolved
+        }
+
+        return target.responds(to: action) ? target : nil
     }
 
     // MARK: Boilerplate

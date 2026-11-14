@@ -29,7 +29,7 @@ class DesktopSeekContainerView: UIView {
     }
 
     @objc public func handleTap() {
-        chain(selector: #selector(PhotoEditingViewController.cancelSeeking(_:)))
+        chain(selector: #selector(PhotoEditingResponderActions.cancelSeeking(_:)))
     }
 
     // MARK: Boilerplate

@@ -65,7 +65,7 @@ import UIKit
     private static let findMenuItem = UIKeyCommand(
         title: Strings.MenuBuilder.findMenuItemTitle,
         image: UIImage(systemName: "magnifyingglass"),
-        action: #selector(PhotoEditingViewController.startSeeking(_:)),
+        action: #selector(PhotoEditingResponderActions.startSeeking(_:)),
         input: "F",
         modifierFlags: [.command]
     )
