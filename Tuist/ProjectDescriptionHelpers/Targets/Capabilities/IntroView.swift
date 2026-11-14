@@ -20,7 +20,6 @@ public enum IntroView {
         name: "IntroView",
         dependencies: [
             .target(DesignSystem.target),
-            .external(name: "ViewInspector"),
         ]
     )
 }

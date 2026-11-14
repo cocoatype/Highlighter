@@ -2,7 +2,6 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import ErrorHandling
-import SwiftUI
 import UIKit
 
 public extension UIFont {
@@ -48,7 +47,7 @@ public extension UIFont {
         family.font(size: standardFontSize(for: textStyle))
     }
 
-    fileprivate static func standardFontSize(for textStyle: UIFont.TextStyle) -> CGFloat {
+    private static func standardFontSize(for textStyle: UIFont.TextStyle) -> CGFloat {
         #if targetEnvironment(macCatalyst)
         return macStandardFontSize(for: textStyle)
         #else
@@ -87,53 +86,6 @@ public extension UIFont {
         case .caption1: return 12.0
         case .caption2: return 11.0
         default: return mobileStandardFontSize(for: .body)
-        }
-    }
-}
-
-extension Font {
-    public static func app(textStyle: UIFont.TextStyle) -> Font {
-        let family: DesignSystemFontConvertible
-        switch textStyle {
-        case .headline, .title2, .title3, .largeTitle:
-            family = DesignSystemFontFamily.Aleo.bold
-        default:
-            family = DesignSystemFontFamily.Aleo.regular
-        }
-
-        let fontSize = UIFont.standardFontSize(for: textStyle)
-
-        return family.swiftUIFont(size: fontSize, relativeTo: textStyle.swiftUI)
-    }
-
-    // MARK: Special
-
-    public static var navigationBarButtonFont: Font {
-        return Font(UIFont.navigationBarButtonFont)
-    }
-
-    // MARK: Text Styles
-
-    public static var sidebarItem: Font {
-        return app(textStyle: .body)
-    }
-}
-
-extension UIFont.TextStyle {
-    var swiftUI: Font.TextStyle {
-        switch self {
-        case .largeTitle: return .largeTitle
-        case .title1: return .title
-        case .title2: return .title2
-        case .title3: return .title3
-        case .headline: return .headline
-        case .body: return .body
-        case .callout: return .callout
-        case .subheadline: return .subheadline
-        case .footnote: return .footnote
-        case .caption1: return .caption
-        case .caption2: return .caption2
-        default: return .body
         }
     }
 }

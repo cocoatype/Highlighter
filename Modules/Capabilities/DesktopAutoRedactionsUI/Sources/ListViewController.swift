@@ -1,15 +1,15 @@
 //  Created by Geoff Pado on 9/23/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
-import SwiftUI
+import UIKit
 
 import FactoryKit
 
 import Defaults
 
-class ListViewController: UIViewController, ListViewDelegate {
+public class ListViewController: UIViewController, ListViewDelegate {
     @Injected(\.defaults) private var defaults
-    init() {
+    public init() {
         super.init(nibName: nil, bundle: nil)
         edgesForExtendedLayout = UIRectEdge()
         preferredContentSize = CGSize(width: 500, height: 640)
@@ -26,7 +26,7 @@ class ListViewController: UIViewController, ListViewDelegate {
         }
     }
 
-    override func loadView() {
+    public override func loadView() {
         view = settingsView
     }
 
@@ -80,18 +80,8 @@ class ListViewController: UIViewController, ListViewDelegate {
     private let settingsView = ListView()
 
     @available(*, unavailable)
-    required init(coder: NSCoder) {
+    public required init(coder: NSCoder) {
         let typeName = NSStringFromClass(type(of: self))
         fatalError("\(typeName) does not implement init(coder:)")
     }
-}
-
-public struct ListViewControllerRepresentable: UIViewControllerRepresentable {
-    public init() {}
-
-    public func makeUIViewController(context: Context) -> some UIViewController {
-        return ListViewController()
-    }
-
-    public func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 }

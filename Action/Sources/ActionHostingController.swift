@@ -2,7 +2,6 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import MobileCoreServices
-import SwiftUI
 import UIKit
 
 import FactoryKit
@@ -10,9 +9,9 @@ import FactoryKit
 import Editing
 import ErrorHandling
 
-class ActionHostingController: UIHostingController<ActionView> {
+class ActionHostingController: UIViewController {
     init() {
-        super.init(rootView: ActionView())
+        super.init(nibName: nil, bundle: nil)
     }
 
     override func loadView() {
