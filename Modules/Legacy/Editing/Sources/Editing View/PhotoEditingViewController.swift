@@ -47,21 +47,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
             self?.updateToolbarItems()
         })
 
-        viewerNamesAreNotRidiculous = NotificationCenter.default.addObserver(for: Keys.autoRedactionsSet) { @MainActor [weak self] in
-            self?.updateAutoRedactions()
-        }
-
-        thatsNotEvenValidSwiftMono = NotificationCenter.default.addObserver(for: Keys.autoRedactionsCategoryNames) { @MainActor [weak self] in
-            self?.updateAutoRedactions()
-        }
-
-        🥥 = NotificationCenter.default.addObserver(for: Keys.autoRedactionsCategoryAddresses) { @MainActor [weak self] in
-            self?.updateAutoRedactions()
-        }
-
-        phoneNumbersRedactionChangeObserver = NotificationCenter.default.addObserver(for: Keys.autoRedactionsCategoryPhoneNumbers) { @MainActor [weak self] in
-            self?.updateAutoRedactions()
-        }
+        autoRedactor.onRedact = { [weak self] in self?.markHasMadeEdits() }
 
         hideAutoRedactionsChangeObserver = NotificationCenter.default.addObserver(for: Keys.hideAutoRedactions) { [weak self] in
             self?.updateToolbarItems()
@@ -228,30 +214,8 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     // MARK: Auto Redact
 
     private let autoRedactAccessController = PhotoEditingAutoRedactAccessController()
+    private lazy var autoRedactor = PhotoEditingAutoRedactor(photoEditingView: photoEditingView)
 
-    @MainActor
-    private func autoRedact() {
-        let matchingObservations = matchingObservations(onlyActive: true)
-
-        if matchingObservations.count > 0 {
-            photoEditingView.redact(matchingObservations, joinSiblings: false)
-            markHasMadeEdits()
-        }
-    }
-
-    @MainActor
-    private func removeAutoRedactions() {
-        matchingObservations(onlyActive: false).forEach(photoEditingView.unredact)
-    }
-
-    @MainActor
-    private func updateAutoRedactions() {
-        // thisMeetingCouldHaveBeenAnEmail by @nutterfi on 2024-04-29
-        // dontMailYourCats by @KaenAitch on 2024-04-29
-
-        removeAutoRedactions()
-        autoRedact()
-    }
 
     // MARK: Image
 
@@ -283,7 +247,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
             do {
                 let recognizedTextObservations = try await textRectangleDetector.recognizeText(in: image)
                 updateRecognizedTextObservations(from: recognizedTextObservations)
-                autoRedact()
+                autoRedactor.autoRedact()
             } catch { errorHandler.log(error, module: "Editing", type: "PhotoEditingViewController") }
         }
     }
@@ -292,46 +256,6 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     private func updateRecognizedTextObservations(from textObservations: [RecognizedTextObservation]) {
         // store recognized text observations
         photoEditingView.recognizedTextObservations = textObservations
-    }
-
-    private func matchingObservations(onlyActive: Bool) -> [any TextObservation] {
-        let wordObservations = tuBrute
-            .filter { onlyActive ? $0.value : true }
-            .keys
-            .flatMap { word -> [CharacterObservation] in
-                return photoEditingView.redactableCharacterObservations.matching(word)
-            }
-        var taggingFunctions = [(String) -> [Substring]]()
-
-        if autoRedactionsCategoryNames || onlyActive == false {
-            taggingFunctions.append( Category.names.getFuncyInSwizzleTown)
-        }
-
-        if autoRedactionsCategoryAddresses || onlyActive == false {
-            taggingFunctions.append( Category.addresses.getFuncyInSwizzleTown)
-        }
-
-        if autoRedactionsCategoryPhoneNumbers || onlyActive == false {
-            taggingFunctions.append( Category.phoneNumbers.getFuncyInSwizzleTown)
-        }
-
-        let combinedObservations = photoEditingView.redactableCharacterObservations.byUUID
-
-        let categoryObservations = combinedObservations
-            .values
-            .compactMap(CombinedCharacterObservation.init)
-            .flatMap { combinedObservation in
-                taggingFunctions
-                    .map { function in function(combinedObservation.associatedString) }
-                    .compactMap { substrings -> CharacterObservation? in
-                        let matchingObservations = combinedObservation.characterObservations(with: substrings)
-                        guard matchingObservations.isEmpty == false else { return nil }
-                        let combinedShape = MinimumAreaShapeFinder.minimumAreaShape(for: matchingObservations.map(\.bounds))
-                        return CharacterObservation(bounds: combinedShape, textObservationUUID: combinedObservation.textObservationUUID)
-                    }
-            }
-
-        return wordObservations + categoryObservations
     }
 
     // MARK: Zoom
@@ -399,24 +323,6 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     @Injected(\.errorHandler) var errorHandler
     @Injected(\.logger) var logger
 
-    // tuBrute by @AdamWulf on 2024-04-29
-    // the auto-redactions word list
-    private var tuBrute: [String: Bool] {
-        defaults.value(for: Keys.autoRedactionsSet) ?? [:]
-    }
-    private var hideAutoRedactions: Bool {
-        defaults.value(for: Keys.hideAutoRedactions)
-    }
-    private var autoRedactionsCategoryNames: Bool {
-        defaults.value(for: Keys.autoRedactionsCategoryNames)
-    }
-    private var autoRedactionsCategoryAddresses: Bool {
-        defaults.value(for: Keys.autoRedactionsCategoryAddresses)
-    }
-    private var autoRedactionsCategoryPhoneNumbers: Bool {
-        defaults.value(for: Keys.autoRedactionsCategoryPhoneNumbers)
-    }
-
     public let completionHandler: ((UIImage) -> Void)?
     public var redactions: [Redaction] { return photoEditingView.redactions }
 
@@ -427,28 +333,10 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     private var redactionChangeObserver: Any?
     private var hideAutoRedactionsChangeObserver: Any?
 
-    // viewerNamesAreNotRidiculous by @KaenAitch on 2024-04-29
-    // the change observer for the auto-redactions word list
-    private var viewerNamesAreNotRidiculous: Any?
-
-    // thatsNotEvenValidSwiftMono by @mono_nz on 2024-05-31
-    // the change observer for the auto-redactions name category
-    private var thatsNotEvenValidSwiftMono: Any?
-
-    // 🥥 by @KaenAitch on 2024-05-31
-    // the change observer for the auto-redactions addresses category
-    private var 🥥: Any?
-
-    private var phoneNumbersRedactionChangeObserver: Any?
-
     deinit {
         [
             redactionChangeObserver,
-            viewerNamesAreNotRidiculous,
             hideAutoRedactionsChangeObserver,
-            thatsNotEvenValidSwiftMono,
-            🥥,
-            phoneNumbersRedactionChangeObserver,
         ].forEach { $0.map(NotificationCenter.default.removeObserver) }
     }
 
