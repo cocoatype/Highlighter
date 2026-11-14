@@ -8,23 +8,10 @@ import FactoryKit
 
 import DebugOverlay
 import Defaults
-import Detections
-import EditingToolbar
-import ErrorHandling
-import Exporting
-import Geometry
-import Logging
-import MobileAutoRedactionsUI
-import Observations
-import Paywall
 import Redactions
-import Rendering
 import Tools
 import UserActivities
 
-#warning("#61: Simplify this class")
-// swiftlint:disable file_length
-// swiftlint:disable:next type_body_length
 public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate {
     public init(
         asset: PHAsset? = nil,
@@ -224,8 +211,6 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate 
     // MARK: Boilerplate
 
     @Injected(\.defaults) var defaults
-    @Injected(\.errorHandler) var errorHandler
-    @Injected(\.logger) var logger
 
     public let completionHandler: ((UIImage) -> Void)?
     public var redactions: [Redaction] { return photoEditingView.redactions }
