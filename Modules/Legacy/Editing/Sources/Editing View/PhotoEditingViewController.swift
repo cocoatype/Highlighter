@@ -107,6 +107,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
             colorPickerController,
             seekController,
             autoRedactAccessController,
+            shareController,
         ]
     }
 
@@ -177,14 +178,6 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
         userActivity?.needsSave = true
     }
 
-    private var shareBarButtonItem: UIBarButtonItem? {
-        if #available(iOS 16, *) {
-            return navigationItem.trailingItemGroups.flatMap { $0.barButtonItems }.first(where: { $0 is ShareBarButtonItem })
-        } else {
-            return navigationItem.rightBarButtonItems?.first(where: { $0 is ShareBarButtonItem })
-        }
-    }
-
     // MARK: Seek and Destroy
 
     private lazy var seekController = PhotoEditingSeekController(photoEditingView: photoEditingView)
@@ -253,31 +246,11 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     }
 
     // MARK: Sharing
-    public var preparedURL: URL {
-        get async throws {
-            guard let image = photoEditingView.image else { throw PhotoEditingError.noEditingImage }
-            return try await ExportingPreparer(image: image, asset: asset, redactions: redactions).preparedURL
-        }
-    }
 
-    @objc @MainActor public func sharePhoto(_ sender: Any) {
-        Task { [weak self] in
-            guard let self else { return }
-            do {
-                guard let image else { throw PhotoEditingError.noEditingImage }
-                let activityController = try await ExportingActivityController(image: image, asset: asset, redactions: photoEditingView.redactions)
-                activityController.popoverPresentationController?.barButtonItem = shareBarButtonItem
-                activityController.completionWithItemsHandler = { [weak self] _, _, _, _ in
-                    self?.clearHasMadeEdits()
-                    self?.chain(selector: #selector(PhotoEditingActions.displayAppRatingsPrompt))
-                }
-                present(activityController, animated: true)
-            } catch {
-                errorHandler.log(error, module: "Editing", type: "PhotoEditingViewController")
-                let alert = PhotoExportErrorAlertFactory.alert(for: error)
-                present(alert, animated: true)
-            }
-        }
+    private lazy var shareController = PhotoEditingShareController(photoEditingView: photoEditingView, asset: asset)
+
+    public var preparedURL: URL {
+        get async throws { try await shareController.preparedURL }
     }
 
     @objc @MainActor public func showDebugPreferences(_ sender: Any) {

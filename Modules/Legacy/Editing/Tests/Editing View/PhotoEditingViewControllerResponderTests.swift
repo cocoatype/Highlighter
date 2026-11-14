@@ -31,7 +31,7 @@ struct PhotoEditingViewControllerResponderTests {
         "cancelSeeking:": PhotoEditingSeekController.self,
         "finishSeeking:": PhotoEditingSeekController.self,
         "seekBarDidChangeText:": PhotoEditingSeekController.self,
-        "sharePhoto:": PhotoEditingViewController.self,
+        "sharePhoto:": PhotoEditingShareController.self,
 
         // EditingToolbar's ActionsBuilderActions & ToolbarActions
         "toggleHighlighterTool": PhotoEditingViewController.self,

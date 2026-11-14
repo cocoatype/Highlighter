@@ -111,7 +111,7 @@ public class PhotoEditingNavigationController: NavigationController, PhotoEditin
     }
 
     func presentShareDialogInPhotoEditingViewController() {
-        photoEditingViewController.sharePhoto(self)
+        photoEditingViewController.chain(selector: #selector(PhotoEditingResponderActions.sharePhoto(_:)), object: self, ignoreSelf: false)
     }
 
     private let photoEditingViewController: PhotoEditingViewController
