@@ -26,11 +26,11 @@ struct PhotoEditingViewControllerResponderTests {
         "selectHighlighterTool:": PhotoEditingViewController.self,
         "toggleColorPicker:": PhotoEditingColorPickerController.self,
         "showColorPicker:": PhotoEditingColorPickerController.self,
-        "toggleSeeking:": PhotoEditingViewController.self,
-        "startSeeking:": PhotoEditingViewController.self,
-        "cancelSeeking:": PhotoEditingViewController.self,
-        "finishSeeking:": PhotoEditingViewController.self,
-        "seekBarDidChangeText:": PhotoEditingViewController.self,
+        "toggleSeeking:": PhotoEditingSeekController.self,
+        "startSeeking:": PhotoEditingSeekController.self,
+        "cancelSeeking:": PhotoEditingSeekController.self,
+        "finishSeeking:": PhotoEditingSeekController.self,
+        "seekBarDidChangeText:": PhotoEditingSeekController.self,
         "sharePhoto:": PhotoEditingViewController.self,
 
         // EditingToolbar's ActionsBuilderActions & ToolbarActions
@@ -55,6 +55,17 @@ struct PhotoEditingViewControllerResponderTests {
         }
     }
 
+    @Test func navigationControllerForwardsUnhandledActionsToEditingChain() {
+        let navigationController = PhotoEditingNavigationController(image: UIImage())
+        let presentedResponder = PresentedResponder(next: navigationController)
+
+        let finishSeeking = NSSelectorFromString("finishSeeking:")
+        #expect(presentedResponder.target(forAction: finishSeeking, withSender: nil) is PhotoEditingSeekController)
+
+        let unhandled = NSSelectorFromString("notARealAction:")
+        #expect(presentedResponder.target(forAction: unhandled, withSender: nil) == nil)
+    }
+
     @Test func undoIsOnlyAvailableWhenUndoManagerCanUndo() throws {
         let viewController = PhotoEditingViewController()
         let undoManager = try #require(viewController.undoManager)
@@ -74,4 +85,15 @@ struct PhotoEditingViewControllerResponderTests {
         undoManager.undo()
         #expect(viewController.target(forAction: redo, withSender: nil) is PhotoEditingHistoryController)
     }
+}
+
+/// Stands in for a view controller presented from the navigation
+/// controller, whose responder chain skips the editing view controller.
+private class PresentedResponder: UIResponder {
+    init(next: UIResponder) {
+        self.followingResponder = next
+    }
+
+    private let followingResponder: UIResponder
+    override var next: UIResponder? { followingResponder }
 }

@@ -25,7 +25,7 @@ import UserActivities
 #warning("#61: Simplify this class")
 // swiftlint:disable file_length
 // swiftlint:disable:next type_body_length
-public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, UIPopoverPresentationControllerDelegate, HighlighterToolSelectionHandler {
+public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, HighlighterToolSelectionHandler {
     public init(
         asset: PHAsset? = nil,
         image: UIImage? = nil,
@@ -113,7 +113,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
         else { return }
 
         updateToolbarItems(animated: false)
-        updateSeekPresentation()
+        seekController.updateSeekPresentation()
     }
 
     open override var canBecomeFirstResponder: Bool { return true }
@@ -126,6 +126,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
         [
             historyController,
             colorPickerController,
+            seekController,
         ]
     }
 
@@ -206,93 +207,13 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     // MARK: Seek and Destroy
 
-    private let seekBar = SeekBar()
-
-    private var isSeeking = false {
-        didSet {
-            seekBar.isSeeking = isSeeking
-        }
-    }
+    private lazy var seekController = PhotoEditingSeekController(photoEditingView: photoEditingView)
 
     open override var inputAccessoryView: UIView? {
-        return seekBar
-    }
-
-    @objc public func toggleSeeking(_ sender: Any) {
-        if isSeeking {
-            cancelSeeking(sender)
-        } else {
-            startSeeking(sender)
-        }
-    }
-
-    @objc public func startSeeking(_ sender: Any) {
-        isSeeking = true
-
-        #if targetEnvironment(macCatalyst)
-        present(DesktopSeekViewController(), animated: true, completion: nil)
-        #else
-        if traitCollection.horizontalSizeClass == .regular {
-            let seekViewController = TabletSeekViewController()
-            seekViewController.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
-            seekViewController.popoverPresentationController?.delegate = self
-            present(seekViewController, animated: true)
-        } else {
-            seekBar.becomeFirstResponder()
-        }
-        #endif
-    }
-
-    @objc public func cancelSeeking(_ sender: Any) {
-        isSeeking = false
-
-        photoEditingView.seekPreviewObservations = []
-
-        #if targetEnvironment(macCatalyst)
-        if presentedViewController is DesktopSeekViewController {
-            dismiss(animated: true, completion: nil)
-        }
-        #else
-        seekBar.resignFirstResponder()
-        seekBar.searchTextField?.text = nil
-
-        if presentedViewController is TabletSeekViewController {
-            dismiss(animated: true, completion: nil)
-        }
-
-        becomeFirstResponder()
-        #endif
-    }
-
-    @objc public func finishSeeking(_ sender: Any) {
-        logger.log(Event(name: "PhotoEditingViewController.finishSeeking"))
-        photoEditingView.redact(photoEditingView.seekPreviewObservations, joinSiblings: false)
-        if photoEditingView.seekPreviewObservations.count > 0 { markHasMadeEdits() }
-        cancelSeeking(sender)
-    }
-
-    @objc public func seekBarDidChangeText(_ sender: UISearchTextField) {
-        guard let text = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        else { return }
-
-        let redactedCharacterObservations = photoEditingView.redactableCharacterObservations.matching(text)
-        photoEditingView.seekPreviewObservations = redactedCharacterObservations
+        return seekController.seekBar
     }
 
     open override var canResignFirstResponder: Bool { true }
-
-    public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        cancelSeeking(presentationController)
-    }
-
-    public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
-    }
-
-    private func updateSeekPresentation() {
-        #warning("#24: Move text between tablet and phone presentations")
-        cancelSeeking(self)
-    }
 
     // MARK: Color Picker
 

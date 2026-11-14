@@ -86,7 +86,7 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
     // MARK: SeekItemDelegate
 
     func toggleSeeking(_ sender: NSToolbarItem) {
-        editingViewController?.toggleSeeking(sender)
+        editingViewController?.chain(selector: #selector(PhotoEditingResponderActions.toggleSeeking(_:)), object: sender, ignoreSelf: false)
     }
 
     // MARK: ZoomItemDelegate
