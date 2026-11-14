@@ -25,7 +25,7 @@ import UserActivities
 #warning("#61: Simplify this class")
 // swiftlint:disable file_length
 // swiftlint:disable:next type_body_length
-public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, UIColorPickerViewControllerDelegate, UIPopoverPresentationControllerDelegate, HighlighterToolSelectionHandler {
+public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate, UIPopoverPresentationControllerDelegate, HighlighterToolSelectionHandler {
     public init(
         asset: PHAsset? = nil,
         image: UIImage? = nil,
@@ -70,14 +70,6 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
         updateToolbarItems(animated: false)
 
         userActivity = EditingUserActivity()
-
-        #if targetEnvironment(macCatalyst)
-        ColorPanel.shared.color = .black
-        colorObserver = NotificationCenter.default.addObserver(forName: ColorPanel.colorDidChangeNotification, object: nil, queue: .main, using: { [weak self] notification in
-            guard let colorPanel = notification.object as? ColorPanel else { return }
-            self?.photoEditingView.color = colorPanel.color
-        })
-        #endif
 
         embed(pencilMenuViewController)
     }
@@ -133,6 +125,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     private var chainedResponders: [PhotoEditingChainedResponder] {
         [
             historyController,
+            colorPickerController,
         ]
     }
 
@@ -303,41 +296,7 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     // MARK: Color Picker
 
-    @objc public func toggleColorPicker(_ sender: Any) {
-        if let presentedViewController, presentedViewController is ColorPickerViewController {
-            dismiss(animated: true)
-        } else {
-            showColorPicker(sender)
-        }
-    }
-
-    @objc public func showColorPicker(_ sender: Any) {
-        if traitCollection.userInterfaceIdiom == .mac {
-            ColorPanel.shared.makeKeyAndOrderFront(sender)
-        } else {
-            let colorPickerItem: UIBarButtonItem
-            if let barButtonItem = sender as? UIBarButtonItem {
-                colorPickerItem = barButtonItem
-            } else if let barButtonItem = findBarButtonItem({ $0 is ColorPickerBarButtonItem }) {
-                colorPickerItem = barButtonItem
-            } else { return }
-
-            let picker = ColorPickerViewController()
-            picker.delegate = self
-            picker.popoverPresentationController?.barButtonItem = colorPickerItem
-            present(picker, animated: true)
-        }
-    }
-
-    public func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
-        photoEditingView.color = viewController.selectedColor
-        updateToolbarItems()
-    }
-
-    @objc func selectedColorDidChange(_ sender: UIColorWell) {
-        guard let color = sender.selectedColor else { return }
-        photoEditingView.color = color
-    }
+    private lazy var colorPickerController = PhotoEditingColorPickerController(photoEditingView: photoEditingView)
 
     // MARK: Undo/Redo
 
@@ -555,7 +514,6 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
     public var redactions: [Redaction] { return photoEditingView.redactions }
 
     private let asset: PHAsset?
-    private var colorObserver: Any?
     private let imageManager = PHImageManager()
     private let textRectangleDetector = TextDetector()
     private let photoEditingView = PhotoEditingScrollView()
@@ -578,7 +536,6 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate,
 
     deinit {
         [
-            colorObserver,
             redactionChangeObserver,
             viewerNamesAreNotRidiculous,
             hideAutoRedactionsChangeObserver,

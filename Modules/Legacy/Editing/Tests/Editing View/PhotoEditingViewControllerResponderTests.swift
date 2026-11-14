@@ -24,8 +24,8 @@ struct PhotoEditingViewControllerResponderTests {
         // PhotoEditingResponderActions
         "refreshToolbarItems": PhotoEditingViewController.self,
         "selectHighlighterTool:": PhotoEditingViewController.self,
-        "toggleColorPicker:": PhotoEditingViewController.self,
-        "showColorPicker:": PhotoEditingViewController.self,
+        "toggleColorPicker:": PhotoEditingColorPickerController.self,
+        "showColorPicker:": PhotoEditingColorPickerController.self,
         "toggleSeeking:": PhotoEditingViewController.self,
         "startSeeking:": PhotoEditingViewController.self,
         "cancelSeeking:": PhotoEditingViewController.self,
@@ -35,7 +35,7 @@ struct PhotoEditingViewControllerResponderTests {
 
         // EditingToolbar's ActionsBuilderActions & ToolbarActions
         "toggleHighlighterTool": PhotoEditingViewController.self,
-        "selectedColorDidChange:": PhotoEditingViewController.self,
+        "selectedColorDidChange:": PhotoEditingColorPickerController.self,
         "showAutoRedactAccess:": PhotoEditingViewController.self,
         "showDebugPreferences:": PhotoEditingViewController.self,
         "selectHighlighterTool:event:": PhotoEditingViewController.self,
