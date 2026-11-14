@@ -13,7 +13,9 @@ struct AppPurchaseVersionProvider: PurchaseVersionProvider {
     var originalPurchaseVersion: Int {
         get async {
             do {
-                #if DEBUG
+                // Mac returns the marketing version instead of the build version
+                // but the Mac app never gets the grandfathered support anyway
+                #if DEBUG || targetEnvironment(macCatalyst)
                 return .max
                 #else
                 let appTransaction = try await AppTransaction.shared.payloadValue
