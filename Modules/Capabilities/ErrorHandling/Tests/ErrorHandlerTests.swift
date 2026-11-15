@@ -41,9 +41,33 @@ struct DefaultHandlerTests {
 
         #expect(event.value == "TelemetryDeck.Error.occurred")
         #expect(event.info["TelemetryDeck.Error.id"] == "sample - 19")
-        #expect(event.info["Highlighter.Error.description"] == "The operation couldn’t be completed. (sample error 19.)")
+        #expect(event.info["Highlighter.Error.description"] == nil)
         #expect(event.info["Highlighter.Error.module"] == "ErrorHandlingTests")
         #expect(event.info["Highlighter.Error.type"] == "DefaultHandlerTests")
+    }
+
+    @Test func errorIDOmitsAssociatedValues() {
+        let error = SampleError.withDetails(path: "/private/var/mobile/IMG_1234.jpg")
+        #expect(DefaultHandler.errorID(for: error) == "SampleError.withDetails")
+    }
+
+    @Test func errorIDIncludesWrappedNSError() {
+        let error = SampleError.wrapping(NSError(domain: "sample", code: 19, userInfo: [
+            NSURLErrorFailingURLStringErrorKey: "https://example.com/?guid=secret",
+        ]))
+        #expect(DefaultHandler.errorID(for: error) == "SampleError.wrapping(sample - 19)")
+    }
+
+    @Test func errorIDIncludesWrappedURLError() {
+        let error = SampleError.wrapping(URLError(.notConnectedToInternet, userInfo: [
+            NSURLErrorFailingURLStringErrorKey: "https://example.com/?guid=secret",
+        ]))
+        #expect(DefaultHandler.errorID(for: error) == "SampleError.wrapping(NSURLErrorDomain - -1009)")
+    }
+
+    @Test func errorIDIncludesWrappedSwiftError() {
+        let error = SampleError.labeledWrapping(label: "secret", error: SampleError.sample)
+        #expect(DefaultHandler.errorID(for: error) == "SampleError.labeledWrapping(SampleError.sample)")
     }
 
 #if compiler(>=6.2) && os(macOS)
@@ -79,4 +103,7 @@ struct DefaultHandlerTests {
 
 private enum SampleError: Error {
     case sample
+    case withDetails(path: String)
+    case wrapping(any Error)
+    case labeledWrapping(label: String, error: any Error)
 }
