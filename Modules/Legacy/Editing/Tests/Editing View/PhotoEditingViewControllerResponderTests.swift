@@ -10,7 +10,13 @@ import PurchasingDoubles
 
 @testable import Editing
 
-@MainActor @Suite(.container)
+// Creating a PhotoEditingViewController on Mac Catalyst resets the shared
+// color panel, which crashes inside AppKit when there's no app to search for
+// a responder, as in a unit test bundle.
+@MainActor @Suite(
+    .container,
+    .disabled(if: TestHelpers.isMacCatalyst, "PhotoEditingViewController can't be created outside an app on Mac Catalyst")
+)
 struct PhotoEditingViewControllerResponderTests {
     init() {
         Container.shared.purchaseRepository.register {
