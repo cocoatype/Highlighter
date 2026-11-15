@@ -4,7 +4,7 @@ public enum AlbumsUI {
     public static let target = Target.capabilitiesTarget(
         name: "AlbumsUI",
         hasResources: true,
-        usesMaxSwiftVersion: false,
+        usesMaxSwiftVersion: true,
         dependencies: [
             .target(AlbumsData.target),
             .target(AppNavigation.target),
