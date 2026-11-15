@@ -12,10 +12,8 @@ struct Purchaser {
     @Injected(\.purchaseRepository) private var repository
 
     func purchase(_ option: PaywallOption) async throws -> PurchaseState {
-        let purchaseState = try await repository.purchase(option.product)
-        let event = eventBuilder.startEvent(for: option)
-        logger.log(event)
-
-        return purchaseState
+        // log before purchasing, so attempts that throw still count as started
+        logger.log(eventBuilder.startEvent(for: option))
+        return try await repository.purchase(option.product)
     }
 }

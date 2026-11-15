@@ -35,4 +35,31 @@ struct PurchaserTests {
         let event = try #require(logger.loggedEvents.first)
         #expect(event.value == "Paywall.purchaseStarted")
     }
+
+    @available(iOS 18.0, *)
+    @Test("Failed purchase still sends purchase started log")
+    func failedPurchaseStartedLog() async throws {
+        let logger = SpyLogger()
+        Container.shared.logger.register { logger }
+        Container.shared.purchaseRepository.register { SpyRepository(purchaseError: PurchaserTestError.failed) }
+        await #expect(throws: PurchaserTestError.failed) {
+            try await Purchaser()
+                .purchase(
+                    PaywallOption(
+                        product: StubProduct(
+                            duration: .monthly
+                        ),
+                        isTrialEligible: false
+                    )
+                )
+        }
+
+        #expect(logger.loggedEvents.count == 1)
+        let event = try #require(logger.loggedEvents.first)
+        #expect(event.value == "Paywall.purchaseStarted")
+    }
+}
+
+private enum PurchaserTestError: Error {
+    case failed
 }
