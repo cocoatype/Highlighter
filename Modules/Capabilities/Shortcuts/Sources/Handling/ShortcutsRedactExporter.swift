@@ -9,7 +9,7 @@ import UIKit
 import UniformTypeIdentifiers
 
 @available(iOS 16.0, *)
-class ShortcutsRedactExporter: NSObject {
+final class ShortcutsRedactExporter: NSObject, RedactExporter {
     private let renderer: any PhotoRenderer
     init(renderer: any PhotoRenderer = Rendering.renderer) {
         self.renderer = renderer

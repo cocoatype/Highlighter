@@ -21,12 +21,11 @@ public enum Widgets {
         settings: .settings(
             base: [
                 "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": "NO",
-                "SWIFT_VERSION": "$(SWIFT_MAX_VERSION)",
             ],
             debug: [
                 "ENABLE_DEBUG_DYLIB": true,
             ], release: [
-                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (Widgets Extension)",
+                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (iOS Widgets Extension)",
             ],
             defaultSettings: .recommended(excluding: [
                 "CODE_SIGN_IDENTITY",

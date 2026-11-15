@@ -14,6 +14,10 @@ param (
 
 $ErrorActionPreference = 'Stop'
 
+# `pwsh -File` passes "A,B" as a single string, so split comma-separated lists
+$CertificateSecrets = @($CertificateSecrets -split ',' | ForEach-Object { $_.Trim() } | Where-Object { $_ })
+$ProfileSecrets = @($ProfileSecrets -split ',' | ForEach-Object { $_.Trim() } | Where-Object { $_ })
+
 $workDir = Join-Path ([System.IO.Path]::GetTempPath()) ([System.Guid]::NewGuid().ToString())
 New-Item -ItemType Directory -Path $workDir | Out-Null
 

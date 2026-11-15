@@ -10,8 +10,8 @@ import UIKit
 @available(iOS 16.0, *)
 struct ShortcutsRedactor {
     init(
-        detector: TextDetector = TextDetector(),
-        exporter: ShortcutsRedactExporter = ShortcutsRedactExporter()
+        detector: any TextDetecting = TextDetector(),
+        exporter: any RedactExporter = ShortcutsRedactExporter()
     ) {
         self.detector = detector
         self.exporter = exporter
@@ -113,6 +113,6 @@ struct ShortcutsRedactor {
 
     // MARK: Boilerplate
 
-    private let detector: TextDetector
-    private let exporter: ShortcutsRedactExporter
+    private let detector: any TextDetecting
+    private let exporter: any RedactExporter
 }

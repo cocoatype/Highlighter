@@ -2,7 +2,6 @@
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
 import Photos
-import SwiftUI
 import UIKit
 
 import FactoryKit
@@ -26,20 +25,23 @@ public class PhotoEditingNavigationController: NavigationController, PhotoEditin
         modalPresentationStyle = .fullScreen
     }
 
-    // MARK: Hack
+    // MARK: Responder Chain
 
-    @objc public func finishSeeking(_ sender: Any) {
-        (viewControllers.first as? PhotoEditingViewController)?.finishSeeking(sender)
-    }
+    private var isForwardingToEditor = false
 
-    @objc public func seekBarDidChangeText(_ sender: UISearchTextField) {
-        (viewControllers.first as? PhotoEditingViewController)?.seekBarDidChangeText(sender)
-    }
+    /// Presentations such as the seek popover and the auto-redactions access
+    /// sheet are presented from this controller, so their responder chains
+    /// skip the editing view controller. Fall back to the editing responder
+    /// chain for any action nothing in our own chain handles.
+    public override func target(forAction action: Selector, withSender sender: Any?) -> Any? {
+        if let target = super.target(forAction: action, withSender: sender) { return target }
 
-    // nextNextNextNext by @KaenAitch on 2024-06-25
-    // the sender of this method
-    @objc private func hideAutoRedactAccess(_ nextNextNextNext: Any) {
-        (viewControllers.first as? PhotoEditingViewController)?.hideAutoRedactAccess(nextNextNextNext)
+        // the editing chain ends with this controller, so don't recurse
+        guard isForwardingToEditor == false else { return nil }
+        isForwardingToEditor = true
+        defer { isForwardingToEditor = false }
+
+        return photoEditingViewController.target(forAction: action, withSender: sender)
     }
 
     // MARK: Dismissal
@@ -109,7 +111,7 @@ public class PhotoEditingNavigationController: NavigationController, PhotoEditin
     }
 
     func presentShareDialogInPhotoEditingViewController() {
-        photoEditingViewController.sharePhoto(self)
+        photoEditingViewController.chain(selector: #selector(PhotoEditingResponderActions.sharePhoto(_:)), object: self, ignoreSelf: false)
     }
 
     private let photoEditingViewController: PhotoEditingViewController

@@ -4,7 +4,6 @@ public enum IntroView {
     public static let target = Target.capabilitiesTarget(
         name: "IntroView",
         hasResources: true,
-        usesMaxSwiftVersion: true,
         dependencies: [
             .target(AppNavigation.target),
             .target(DesignSystem.target),
@@ -20,7 +19,6 @@ public enum IntroView {
         name: "IntroView",
         dependencies: [
             .target(DesignSystem.target),
-            .external(name: "ViewInspector"),
         ]
     )
 }

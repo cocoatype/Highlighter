@@ -3,19 +3,17 @@
 
 import DesignSystem
 import Testing
-import ViewInspector
+import UIKit
 
 @testable import IntroView
 
 @MainActor
 struct IntroLabelTests {
     @Test func body() throws {
-        let label = try IntroLabel("Text").inspect()
-        let text = try label.find(text: "Text")
-        let color = try #require(try text.attributes().foregroundColor())
-        #expect(color == .primaryExtraLight)
-
-        let font = try text.attributes().font()
-        #expect(font == .app(textStyle: .body))
+        let label = IntroLabel("Text")
+        #expect(label.text == "Text")
+        #expect(label.textColor == .primaryExtraLight)
+        #expect(label.font == .appFont(forTextStyle: .body))
+        #expect(label.numberOfLines == 0)
     }
 }

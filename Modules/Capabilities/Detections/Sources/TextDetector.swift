@@ -9,8 +9,8 @@ import struct Observations.RecognizedTextObservation
 import struct Observations.TextRectangleObservation
 import struct Observations.WordObservation
 
-open class TextDetector: NSObject {
-    open func detectText(in image: UIImage) async throws -> [TextRectangleObservation] {
+public final class TextDetector: NSObject, Sendable {
+    public func detectText(in image: UIImage) async throws -> [TextRectangleObservation] {
         guard let detectionOperation = TextRectangleDetectionOperation(image: image) else {
             throw TextDetectorError.cannotCreateOperation
         }
@@ -65,7 +65,7 @@ open class TextDetector: NSObject {
         try await recognizeWords(with: TextRecognitionOperation(image: image))
     }
 
-    open func recognizeText(in image: UIImage) async throws -> [RecognizedTextObservation] {
+    public func recognizeText(in image: UIImage) async throws -> [RecognizedTextObservation] {
         try await recognizeTextObservations(with: TextRecognitionOperation(image: image))
     }
 

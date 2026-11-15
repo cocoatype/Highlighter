@@ -4,6 +4,7 @@
 import DesignSystem
 import UIKit
 
+@MainActor
 public enum PhotoExportErrorAlertFactory {
     public static func alert(for error: Error) -> UIAlertController {
         let alert = UIAlertController(

@@ -3,7 +3,7 @@
 
 import Photos
 
-protocol ExportableAsset {
+protocol ExportableAsset: Sendable {
     func requestContentEditingInput(with options: PHContentEditingInputRequestOptions?) async -> (PHContentEditingInput?, [AnyHashable: Any])
 
     var changeRequest: PHAssetChangeRequest { get }
@@ -13,7 +13,10 @@ extension PHAsset: ExportableAsset {
     public func requestContentEditingInput(with options: PHContentEditingInputRequestOptions?) async -> (PHContentEditingInput?, [AnyHashable: Any]) {
         await withCheckedContinuation { continuation in
             requestContentEditingInput(with: options) { input, info in
-                continuation.resume(returning: (input, info))
+                // Photos hands these to the completion handler and doesn't use them
+                // afterward, so it's safe to transfer them to the awaiting task.
+                nonisolated(unsafe) let result = (input, info)
+                continuation.resume(returning: result)
             }
         }
     }

@@ -17,7 +17,7 @@ class DesktopSeekTextField: UITextField, UITextFieldDelegate {
 
         setContentHuggingPriority(.required, for: .vertical)
 
-        addTarget(nil, action: #selector(PhotoEditingViewController.seekBarDidChangeText(_:)), for: .editingChanged)
+        addTarget(nil, action: #selector(PhotoEditingResponderActions.seekBarDidChangeText(_:)), for: .editingChanged)
     }
 
     override func didMoveToWindow() {
@@ -29,14 +29,14 @@ class DesktopSeekTextField: UITextField, UITextFieldDelegate {
     // MARK: Key Commands
 
     override var keyCommands: [UIKeyCommand]? {
-        let escapeCommand = UIKeyCommand(action: #selector(PhotoEditingViewController.cancelSeeking(_:)), input: UIKeyCommand.inputEscape)
+        let escapeCommand = UIKeyCommand(action: #selector(PhotoEditingResponderActions.cancelSeeking(_:)), input: UIKeyCommand.inputEscape)
         return (super.keyCommands ?? []) + [escapeCommand]
     }
 
     // MARK: Delegate
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        chain(selector: #selector(PhotoEditingViewController.finishSeeking(_:)))
+        chain(selector: #selector(PhotoEditingResponderActions.finishSeeking(_:)))
         return false
     }
 

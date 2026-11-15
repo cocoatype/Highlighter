@@ -3,7 +3,7 @@
 
 import Photos
 
-protocol PhotoLibrary {
+protocol PhotoLibrary: Sendable {
     func performChanges(
         _ changeBlock: @escaping () -> Void) async throws
 }

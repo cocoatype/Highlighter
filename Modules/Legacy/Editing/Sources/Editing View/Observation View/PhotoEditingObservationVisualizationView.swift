@@ -143,7 +143,10 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
         get async {
             guard let textObservations, let recognizedTextObservations else { return [] }
 
-            let calculator = PhotoEditingObservationCalculator(detectedTextObservations: textObservations, recognizedTextObservations: recognizedTextObservations)
+            let calculator = PhotoEditingObservationCalculator(
+                detectedCharacterObservations: textObservations.flatMap(\.characterObservations),
+                recognizedCharacterObservations: recognizedTextObservations.flatMap(\.characterObservations)
+            )
             let observationsByUUID = await calculator.calculatedObservationsByUUID
 
             // map dictionary keys into redactions
@@ -155,11 +158,4 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
         }
     }
 
-    // MARK: Boilerplate
-
-    private var reduceMotionObserver: Any?
-
-    deinit {
-        reduceMotionObserver.map(NotificationCenter.default.removeObserver)
-    }
 }

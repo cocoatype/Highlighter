@@ -1,0 +1,42 @@
+{
+  "originHash" : "d3a4a4d311645260d7177ffb44636559c10ef2f1a1b6312463dc260adf1b949c",
+  "pins" : [
+    {
+      "identity" : "clippingbezier",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:adamwulf/ClippingBezier",
+      "state" : {
+        "revision" : "7b55731c019b2e9de3c9543d2892f034dba86da8",
+        "version" : "1.2.5"
+      }
+    },
+    {
+      "identity" : "factory",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:hmlongco/Factory",
+      "state" : {
+        "revision" : "ccc898f21992ebc130bc04cc197460a5ae230bcf",
+        "version" : "2.5.3"
+      }
+    },
+    {
+      "identity" : "performancebezier",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/adamwulf/PerformanceBezier",
+      "state" : {
+        "revision" : "b3cc82221836a8ce1f0692033d58b1ff836c57f8",
+        "version" : "1.3.2"
+      }
+    },
+    {
+      "identity" : "swiftclient",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:TelemetryDeck/SwiftClient",
+      "state" : {
+        "revision" : "a7fd1eb469589a3c8fd8cc3abe19b092b5d674dc",
+        "version" : "2.9.4"
+      }
+    }
+  ],
+  "version" : 2
+}

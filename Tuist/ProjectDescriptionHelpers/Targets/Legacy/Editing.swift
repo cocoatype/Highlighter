@@ -26,7 +26,6 @@ public enum Editing {
             .target(Paywall.target),
             .target(Purchasing.target),
             .target(Redactions.target),
-            .target(Rendering.target),
             .target(Tools.target),
             .target(Unpurchased.target),
             .target(UserActivities.target),
@@ -37,6 +36,8 @@ public enum Editing {
             base: [
                 "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "",
                 "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": false,
+                // ClippingBezier ships private headers in its public headers folder; remove when ClippingBezier is
+                "OTHER_SWIFT_FLAGS": ["$(inherited)", "-Xcc", "-Wno-incomplete-umbrella"],
             ],
             defaultSettings: .recommended(excluding: [
                 "CODE_SIGN_IDENTITY",
@@ -49,12 +50,15 @@ public enum Editing {
         name: "Editing",
         type: "Legacy",
         dependencies: [
+            .target(Defaults.doublesTarget),
             .target(Geometry.target),
             .target(Logging.doublesTarget),
             .target(Logging.target),
             .target(MobileAutoRedactionsUI.target),
+            .target(Observations.target),
             .target(Purchasing.doublesTarget),
             .target(Tools.target),
+            .target(UserActivities.target),
             .external(name: "FactoryKit"),
             .external(name: "FactoryTesting"),
         ]

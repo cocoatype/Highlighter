@@ -13,7 +13,12 @@ import Logging
 public class UnpurchasedAlertControllerFactory {
     public init() {}
 
-    public func alertController(for feature: UnpurchasedFeature) -> UIAlertController {
+    /// - Parameter actionHandler: called after any of the alert's actions has run (for example,
+    ///   after the "Hide" action has updated the feature's defaults key).
+    public func alertController(
+        for feature: UnpurchasedFeature,
+        actionHandler: (@MainActor () -> Void)? = nil
+    ) -> UIAlertController {
         let alertController = UnpurchasedAlertController(
             title: Strings.title,
             message: feature.message,
@@ -29,6 +34,7 @@ public class UnpurchasedAlertControllerFactory {
                     style: .default
                 ) {
                     learnMoreAction()
+                    actionHandler?()
                 }
             )
         }
@@ -41,6 +47,7 @@ public class UnpurchasedAlertControllerFactory {
                 ) {
                     @Injected(\.defaults) var defaults
                     defaults.set(true, for: hideFeatureKey)
+                    actionHandler?()
                 }
             )
         }
@@ -49,7 +56,9 @@ public class UnpurchasedAlertControllerFactory {
             UnpurchasedAlertAction.action(
                 title: Strings.dismissButton,
                 style: .cancel
-            ) {}
+            ) {
+                actionHandler?()
+            }
         )
 
         return alertController

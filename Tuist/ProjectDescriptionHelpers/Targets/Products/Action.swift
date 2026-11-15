@@ -32,7 +32,7 @@ public enum Action {
                 "SKIP_INSTALL": "YES",
             ],
             release: [
-                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (Action Extension)",
+                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (iOS Action Extension)",
             ],
             defaultSettings: .recommended(excluding: [
                 "CODE_SIGN_IDENTITY",

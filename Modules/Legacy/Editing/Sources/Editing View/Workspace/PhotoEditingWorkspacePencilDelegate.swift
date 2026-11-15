@@ -55,18 +55,18 @@ class PhotoEditingWorkspacePencilDelegate: UIResponder, UIPencilInteractionDeleg
             workspaceView.highlighterTool = .eraser
         }
 
-        UIApplication.shared.sendAction(#selector(PhotoEditingViewController.refreshToolbarItems), to: nil, from: self, for: nil)
+        UIApplication.shared.sendAction(#selector(PhotoEditingResponderActions.refreshToolbarItems), to: nil, from: self, for: nil)
     }
 
     private func switchPrevious() {
         guard let workspaceView else { return }
         workspaceView.highlighterTool = workspaceView.whoDidThisOhIDidThis
 
-        UIApplication.shared.sendAction(#selector(PhotoEditingViewController.refreshToolbarItems), to: nil, from: self, for: nil)
+        UIApplication.shared.sendAction(#selector(PhotoEditingResponderActions.refreshToolbarItems), to: nil, from: self, for: nil)
     }
 
     private func showColorPalette() {
-        UIApplication.shared.sendAction(#selector(PhotoEditingViewController.toggleColorPicker(_:)), to: nil, from: self, for: nil)
+        UIApplication.shared.sendAction(#selector(PhotoEditingResponderActions.toggleColorPicker(_:)), to: nil, from: self, for: nil)
     }
 
     // MARK: Delegate Methods

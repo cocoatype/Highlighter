@@ -10,7 +10,9 @@ import ErrorHandling
 import Geometry
 import Redactions
 
-class SaveActivity: UIActivity {
+// UIActivity isn't annotated for concurrency, but UIKit only calls it on the main thread, and the export task below
+// hops back to the main actor before touching it again.
+final class SaveActivity: UIActivity, @unchecked Sendable {
     private let asset: PHAsset
     private let redactions: [Redaction]
     init(asset: PHAsset, redactions: [Redaction]) {
@@ -45,7 +47,7 @@ class SaveActivity: UIActivity {
             )
         }
 
-        Task { [weak self] in
+        Task { @MainActor [weak self] in
             guard let self else { return }
             do {
                 try await InPlaceExporter(

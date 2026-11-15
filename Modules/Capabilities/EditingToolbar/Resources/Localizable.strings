@@ -18,8 +18,14 @@
 // Menu item for the manual highlighter tool
 "HighlighterToolBarButtonItem.manualToolItem" = "Manual Highlighter";
 
-//  Accessibility label for the quick redact toolbar item
+// Accessibility label for the quick redact toolbar item
 "QuickRedactBarButtonItem.accessibilityLabel" = "Auto-Hidden Words";
+
+// Title for the redo toolbar item
+"RedoBarButtonItem.title" = "Redo";
 
 // Accessibility label for the seek toolbar item
 "SeekBarButtonItem.accessibilityLabel" = "Search";
+
+// Title for the redo toolbar item
+"UndoBarButtonItem.title" = "Undo";

@@ -2,6 +2,7 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 import AppIntents
+import os
 import UIKit
 
 import FactoryKit
@@ -25,7 +26,11 @@ struct OpenImageIntent: AppIntent {
     }
 
     // this exists because we can't pass redactions between intents without redactions being a parameter
-    static var lastRedactions: [Redaction]?
+    static var lastRedactions: [Redaction]? {
+        get { lastRedactionsLock.withLock { $0 } }
+        set { lastRedactionsLock.withLock { $0 = newValue } }
+    }
+    private static let lastRedactionsLock = OSAllocatedUnfairLock<[Redaction]?>(initialState: nil)
 
     @AppDependency private var navigator: any Navigator
 

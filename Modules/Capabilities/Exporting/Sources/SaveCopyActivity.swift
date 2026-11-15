@@ -34,7 +34,7 @@ class SaveCopyActivity: UIActivity {
                                     type: "SaveCopyActivity")
         }
 
-        Task {
+        Task { [errorHandler] in
             do {
                 try await CopyExporter(preparedURL: activityURL).export()
             } catch {

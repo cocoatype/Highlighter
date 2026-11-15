@@ -33,7 +33,7 @@ public enum Photo {
                 "SKIP_INSTALL": "YES",
             ],
             release: [
-                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (Photo Extension)",
+                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (iOS Photo Extension)",
             ],
             defaultSettings: .recommended(excluding: [
                 "CODE_SIGN_IDENTITY",

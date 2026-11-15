@@ -8,6 +8,7 @@ import FactoryKit
 
 import ErrorHandling
 
+@MainActor
 class ColorPanel: NSObject {
     private static let _shared: ColorPanel = {
         guard let underlyingPanel = NSClassFromString("NSColorPanel")?
@@ -42,7 +43,6 @@ class ColorPanel: NSObject {
     static let colorDidChangeNotification = Notification.Name("ColorPanel.colorDidChangeNotification")
     private static let underlyingPanelDidChangeNotification = Notification.Name("NSColorPanelColorDidChangeNotification")
 
-    private var colorObserver: Any?
     private let underlyingPanel: AnyObject
     private override init() {
         Container.shared.errorHandler()
@@ -53,13 +53,16 @@ class ColorPanel: NSObject {
         self.underlyingPanel = underlyingPanel
         super.init()
 
-        colorObserver = NotificationCenter.default.addObserver(forName: Self.underlyingPanelDidChangeNotification, object: nil, queue: nil, using: { [weak self] _ in
-            NotificationCenter.default.post(name: Self.colorDidChangeNotification, object: self)
-        })
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(underlyingPanelColorDidChange),
+            name: Self.underlyingPanelDidChangeNotification,
+            object: nil
+        )
     }
 
-    deinit {
-        colorObserver.map(NotificationCenter.default.removeObserver(_:))
+    @objc private func underlyingPanelColorDidChange() {
+        NotificationCenter.default.post(name: Self.colorDidChangeNotification, object: self)
     }
 }
 #endif

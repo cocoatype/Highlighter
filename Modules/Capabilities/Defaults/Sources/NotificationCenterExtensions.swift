@@ -15,4 +15,15 @@ public extension NotificationCenter {
             }
         })
     }
+
+    // Selector-based observers are removed automatically when the observer is deallocated, so they don't need a
+    // token to clean up in deinit.
+    func addObserver<ValueType: DefaultsRepresentable>(
+        _ observer: Any,
+        selector: Selector,
+        for key: Key<ValueType>,
+        provider: (any DefaultsProvider)? = nil
+    ) {
+        addObserver(observer, selector: selector, name: key.valueDidChange, object: provider)
+    }
 }

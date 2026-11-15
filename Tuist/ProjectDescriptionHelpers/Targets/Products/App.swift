@@ -33,6 +33,8 @@ public enum App {
                 "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "Accent Color",
                 "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": "NO",
                 "TARGETED_DEVICE_FAMILY": "1,2,6",
+                "COCOATYPE_APPEARANCE": "Dark",
+                "COCOATYPE_APPEARANCE[sdk=macosx*]": "Automatic",
             ],
             debug: [
                 "CODE_SIGN_IDENTITY[sdk=macosx*]": .string(Shared.debugCodeSignIdentity),
@@ -40,7 +42,7 @@ public enum App {
                 "ENABLE_DEBUG_DYLIB": false,
             ], release: [
                 "CODE_SIGN_IDENTITY[sdk=macosx*]": .string(Shared.releaseCodeSignIdentity),
-                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (App)",
+                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (iOS App)",
                 "PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]": "Black Highlighter (macOS App)",
             ],
             defaultSettings: .recommended(excluding: [

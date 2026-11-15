@@ -2,17 +2,22 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 import DesignSystem
-import SwiftUI
+import UIKit
 
-public struct IntroLabel: View {
-    private let text: String
-    public init(_ text: String) {
+class IntroLabel: UILabel {
+    init(_ text: String) {
+        super.init(frame: .zero)
         self.text = text
+        font = .appFont(forTextStyle: .body)
+        textColor = .primaryExtraLight
+        adjustsFontForContentSizeCategory = true
+        numberOfLines = 0
+        translatesAutoresizingMaskIntoConstraints = false
     }
 
-    public var body: some View {
-        Text(text)
-            .foregroundColor(.primaryExtraLight)
-            .font(.app(textStyle: .body))
+    @available(*, unavailable)
+    required init(coder: NSCoder) {
+        let typeName = NSStringFromClass(type(of: self))
+        fatalError("\(typeName) does not implement init(coder:)")
     }
 }

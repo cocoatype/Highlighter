@@ -15,10 +15,12 @@ struct RedactEverythingIntent: AppIntent, DeprecatedAppIntent, LegacyRedactInten
     static let description: IntentDescription = "RedactEverythingIntent.description"
 
     @available(iOS 17.0, *)
-    static let deprecation = IntentDeprecation(
-        message: "LegacyRedactIntent.deprecationMessage",
-        replacedBy: RedactIntent.self
-    )
+    static var deprecation: IntentDeprecation<RedactIntent> {
+        IntentDeprecation(
+            message: "LegacyRedactIntent.deprecationMessage",
+            replacedBy: RedactIntent.self
+        )
+    }
 
     init() {
         self.init(intentHandlerProvider: ShortcutsRedactIntentHandlerProvider())

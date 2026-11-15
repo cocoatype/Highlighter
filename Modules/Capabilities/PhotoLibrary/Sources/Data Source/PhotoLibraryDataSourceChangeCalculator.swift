@@ -4,6 +4,7 @@
 import AlbumsData
 import Photos
 
+@MainActor
 class PhotoLibraryDataSourceChangeCalculator: NSObject {
     init(collection: PhotoCollection) {
         self.fetchResult = collection.assets

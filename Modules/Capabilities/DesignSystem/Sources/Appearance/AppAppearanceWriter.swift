@@ -11,5 +11,8 @@ struct AppAppearanceWriter: AppearanceWriter {
         barButtonAppearance.setTitleTextAttributes(NavigationBar.buttonTitleTextAttributes, for: .highlighted)
 
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = .controlTint
+
+        let appearance = NavigationBarAppearance()
+        UINavigationBar.appearance().standardAppearance = appearance
     }
 }

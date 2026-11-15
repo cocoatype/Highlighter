@@ -1,7 +1,6 @@
 //  Created by Geoff Pado on 4/3/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
-import SwiftUI
 import UIKit
 
 public extension UIColor {
@@ -74,13 +73,4 @@ public extension UIColor {
 
         return String(format: "#%02x%02x%02x", redInt, greenInt, blueInt)
     }
-}
-
-public extension Color {
-    static let primaryUltraLight = Color(.primaryUltraLight)
-    static let primaryExtraLight = Color(.primaryExtraLight)
-    static let primaryLight = Color(.primaryLight)
-    static let appPrimary = Color(.primary)
-    static let primaryDark = Color(.primaryDark)
-    static let cellBackground = Color(.tableViewCellBackground)
 }

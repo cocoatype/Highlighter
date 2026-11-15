@@ -4,6 +4,7 @@
 import AlbumsData
 import UIKit
 
+@MainActor
 public protocol PhotoCollectionPresenting {
     func present(_ collection: PhotoCollection)
 }

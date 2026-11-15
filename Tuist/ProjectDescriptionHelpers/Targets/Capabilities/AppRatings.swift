@@ -3,7 +3,6 @@ import ProjectDescription
 public enum AppRatings {
     public static let target = Target.capabilitiesTarget(
         name: "AppRatings",
-        usesMaxSwiftVersion: true,
         dependencies: [
             .target(Defaults.target),
             .target(ErrorHandling.target),

@@ -49,7 +49,7 @@ class DesktopSeekBox: UIView {
             }
         }
 
-        var visualEffect: UIVisualEffect {
+        @MainActor var visualEffect: UIVisualEffect {
             switch self {
             case .inner: return UIBlurEffect(style: .systemThinMaterial)
             case .outer: return UIBlurEffect(style: .systemThinMaterial)

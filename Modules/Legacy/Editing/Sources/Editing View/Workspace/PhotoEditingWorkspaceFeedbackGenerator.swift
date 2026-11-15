@@ -3,6 +3,7 @@
 
 import UIKit
 
+@MainActor
 protocol PhotoEditingWorkspaceFeedbackGenerator {
     init(view: UIView)
     func prepare()

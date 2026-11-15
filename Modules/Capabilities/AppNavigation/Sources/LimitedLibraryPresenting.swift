@@ -1,8 +1,9 @@
 //  Created by Geoff Pado on 10/16/20.
 //  Copyright © 2020 Cocoatype, LLC. All rights reserved.
 
-import SwiftUI
+import UIKit
 
+@MainActor
 @objc public protocol LimitedLibraryPresenting {
     func presentLimitedLibrary()
 }

@@ -5,10 +5,10 @@ import AlbumsData
 import Combine
 import ErrorHandling
 import Photos
-import SwiftUI
 import UIKit
 import VisionKit
 
+@MainActor
 class PhotoLibraryDataSource: NSObject, LibraryDataSource, UICollectionViewDataSource {
     let collection: PhotoCollection
     init(_ collection: PhotoCollection) {
