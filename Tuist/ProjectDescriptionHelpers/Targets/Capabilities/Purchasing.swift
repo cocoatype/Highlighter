@@ -3,7 +3,6 @@ import ProjectDescription
 public enum Purchasing {
     public static let target = Target.capabilitiesTarget(
         name: "Purchasing",
-        usesMaxSwiftVersion: true,
         dependencies: [
             .target(ErrorHandling.target),
             .external(name: "FactoryKit"),

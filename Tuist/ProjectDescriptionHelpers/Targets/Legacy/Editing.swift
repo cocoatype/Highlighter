@@ -26,7 +26,6 @@ public enum Editing {
             .target(Paywall.target),
             .target(Purchasing.target),
             .target(Redactions.target),
-            .target(Rendering.target),
             .target(Tools.target),
             .target(Unpurchased.target),
             .target(UserActivities.target),
@@ -39,7 +38,6 @@ public enum Editing {
                 "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": false,
                 // ClippingBezier ships private headers in its public headers folder; remove when ClippingBezier is
                 "OTHER_SWIFT_FLAGS": ["$(inherited)", "-Xcc", "-Wno-incomplete-umbrella"],
-                "SWIFT_VERSION": "$(SWIFT_MAX_VERSION)",
             ],
             defaultSettings: .recommended(excluding: [
                 "CODE_SIGN_IDENTITY",
@@ -57,6 +55,7 @@ public enum Editing {
             .target(Logging.doublesTarget),
             .target(Logging.target),
             .target(MobileAutoRedactionsUI.target),
+            .target(Observations.target),
             .target(Purchasing.doublesTarget),
             .target(Tools.target),
             .target(UserActivities.target),
