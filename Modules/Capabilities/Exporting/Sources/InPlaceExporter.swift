@@ -12,7 +12,7 @@ import ErrorHandling
 import Logging
 import Redactions
 
-public class InPlaceExporter: NSObject {
+public final class InPlaceExporter: NSObject, Sendable {
     public convenience init(
         preparedURL: URL,
         asset: PHAsset,
@@ -27,9 +27,7 @@ public class InPlaceExporter: NSObject {
 
     private let asset: any ExportableAsset
     private let outputFactory: any OutputFactory
-    @Injected(\.defaults) private var defaults
-    @Injected(\.errorHandler) private var errorHandler
-    @Injected(\.logger) private var logger
+    private let errorHandler = Container.shared.errorHandler()
     private let library: any PhotoLibrary
     init(
         asset: any ExportableAsset,
@@ -52,8 +50,7 @@ public class InPlaceExporter: NSObject {
                 asset.changeRequest.contentEditingOutput = output
             }
 
-            await defaults.set(defaults.value(for: Keys.numberOfSaves) + 1, for: Keys.numberOfSaves)
-            await logger.log(ExportingEventFactory().event(style: .inPlace))
+            await ExportRecorder.recordExport(style: .inPlace)
         } catch {
             errorHandler.log(error, module: "Exporting", type: "InPlaceExporter")
             throw error

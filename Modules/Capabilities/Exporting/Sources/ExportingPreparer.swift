@@ -7,7 +7,7 @@ import Rendering
 import UIKit
 import UniformTypeIdentifiers
 
-public class ExportingPreparer: NSObject {
+public final class ExportingPreparer: NSObject, Sendable {
     private let image: UIImage
     private let asset: PHAsset?
     private let redactions: [Redaction]
