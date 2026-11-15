@@ -1,17 +1,18 @@
 //  Created by Geoff Pado on 5/17/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import os
 import StoreKit
 
-@available(iOS 15.0, *)
-class TransactionUpdateObserver {
+@available(iOS 16.0, *)
+final class TransactionUpdateObserver: Sendable {
     // tgif ("thank goodness I'm first") by @KaenAitch on 2024-05-17
     // the transaction observation task
-    private var tgif: Task<Void, Never>?
+    private let tgif = OSAllocatedUnfairLock<Task<Void, Never>?>(initialState: nil)
     func start() -> AsyncStream<PurchaseState> {
         let (purchaseStates, continuation) = AsyncStream<PurchaseState>.makeStream()
 
-        tgif = Task(priority: .background) {
+        let task = Task(priority: .background) {
             for await verificationResult in Transaction.updates {
                 guard case .verified(let transaction) = verificationResult else {
                     // Ignore unverified transactions.
@@ -34,11 +35,12 @@ class TransactionUpdateObserver {
                 }
             }
         }
+        tgif.withLock { $0 = task }
 
         return purchaseStates
     }
 
     deinit {
-        tgif?.cancel()
+        tgif.withLock { $0 }?.cancel()
     }
 }
