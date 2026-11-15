@@ -4,7 +4,9 @@
 import Geometry
 import UIKit
 
-public enum RedactionPart: Equatable {
+// UIBezierPath isn't Sendable. This is only safe because Redaction copies paths when it's created, and nothing
+// mutates a path after it's part of a redaction. Remove when RedactionPart stores a Sendable path type (#479).
+public enum RedactionPart: Equatable, @unchecked Sendable {
     case path(UIBezierPath)
     case shape(Shape)
 
