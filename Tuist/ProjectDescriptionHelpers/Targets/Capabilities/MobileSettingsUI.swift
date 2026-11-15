@@ -4,7 +4,6 @@ public enum MobileSettingsUI {
     public static let target = Target.capabilitiesTarget(
         name: "MobileSettingsUI",
         hasResources: true,
-        usesMaxSwiftVersion: true,
         dependencies: [
             .target(Defaults.target),
             .target(DesignSystem.target),
@@ -12,7 +11,6 @@ public enum MobileSettingsUI {
             .target(Logging.target),
             .target(MobileAutoRedactionsUI.target),
             .target(Paywall.target),
-            .target(Purchasing.doublesTarget),
             .target(Purchasing.target),
             .target(Unpurchased.target),
             .external(name: "FactoryKit"),

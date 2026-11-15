@@ -3,7 +3,6 @@ import ProjectDescription
 public enum URLParsing {
     public static let target = Target.capabilitiesTarget(
         name: "URLParsing",
-        usesMaxSwiftVersion: true,
         dependencies: [
         ]
     )

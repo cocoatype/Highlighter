@@ -40,7 +40,6 @@ public enum Core {
                     "-enable-upcoming-feature",
                     "IsolatedDefaultValues",
                 ],
-                "SWIFT_VERSION": "$(SWIFT_MAX_VERSION)",
             ],
             defaultSettings: .recommended(excluding: [
                 "CODE_SIGN_IDENTITY",

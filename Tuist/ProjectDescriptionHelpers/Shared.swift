@@ -19,12 +19,7 @@ public enum Shared {
         "MACOSX_DEPLOYMENT_TARGET": "12.0",
         "MARKETING_VERSION": "999",
         "OTHER_CODE_SIGN_FLAGS": "--deep",
-        "SWIFT_VERSION": "5.0",
-        "SWIFT_MAX_VERSION_1500": "5.0",
-        "SWIFT_MAX_VERSION_1600": "6.0",
-        "SWIFT_MAX_VERSION_2600": "6.0",
-        "SWIFT_MAX_VERSION_2700": "6.0",
-        "SWIFT_MAX_VERSION": "$(SWIFT_MAX_VERSION_$(XCODE_VERSION_MAJOR))",
+        "SWIFT_VERSION": "6.0",
         "TARGETED_DEVICE_FAMILY": "1,2,6",
     ], debug: [
         "CODE_SIGN_IDENTITY": .string(Shared.debugCodeSignIdentity),

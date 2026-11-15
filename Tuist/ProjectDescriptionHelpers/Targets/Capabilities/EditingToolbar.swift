@@ -4,7 +4,6 @@ public enum EditingToolbar {
     public static let target = Target.capabilitiesTarget(
         name: "EditingToolbar",
         hasResources: true,
-        usesMaxSwiftVersion: true,
         dependencies: [
             .target(BarBuilder.target),
             .target(Defaults.target),
@@ -18,7 +17,6 @@ public enum EditingToolbar {
 
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "EditingToolbar",
-        usesMaxSwiftVersion: true,
         dependencies: [
             .target(Defaults.target),
             .target(Defaults.doublesTarget),

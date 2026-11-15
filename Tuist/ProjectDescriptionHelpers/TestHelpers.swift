@@ -12,11 +12,6 @@ public enum TestHelpers {
             .target(interfaceTarget),
             .xctest,
         ],
-        settings: .settings(
-            base: [
-                "SWIFT_VERSION": "$(SWIFT_MAX_VERSION)",
-            ]
-        )
     )
 
     public static let interfaceTarget = Target.target(
@@ -28,7 +23,6 @@ public enum TestHelpers {
         settings: .settings(
             base: [
                 "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": false,
-                "SWIFT_VERSION": "$(SWIFT_MAX_VERSION)",
             ]
         )
     )

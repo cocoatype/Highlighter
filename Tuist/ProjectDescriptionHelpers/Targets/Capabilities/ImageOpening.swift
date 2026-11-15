@@ -3,7 +3,6 @@ import ProjectDescription
 public enum ImageOpening {
     public static let target = Target.capabilitiesTarget(
         name: "ImageOpening",
-        usesMaxSwiftVersion: true,
         dependencies: [
         ]
     )

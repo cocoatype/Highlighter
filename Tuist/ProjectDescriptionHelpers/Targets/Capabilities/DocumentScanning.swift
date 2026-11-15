@@ -4,7 +4,6 @@ public enum DocumentScanning {
     public static let target = Target.capabilitiesTarget(
         name: "DocumentScanning",
         hasResources: true,
-        usesMaxSwiftVersion: true,
         dependencies: [
             .target(AppNavigation.target),
             .target(DesignSystem.target),
