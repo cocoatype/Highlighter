@@ -5,6 +5,7 @@ import ErrorHandling
 import Photos
 import UIKit
 
+@MainActor
 public class PhotoCollectionsDataSource: NSObject, ObservableObject, PHPhotoLibraryChangeObserver {
     @Published public var collectionsData: [PhotoCollectionSection]
 
@@ -17,7 +18,7 @@ public class PhotoCollectionsDataSource: NSObject, ObservableObject, PHPhotoLibr
 
     // MARK: Change Observer
 
-    public func photoLibraryDidChange(_ changeInstance: PHChange) {
+    nonisolated public func photoLibraryDidChange(_ changeInstance: PHChange) {
         Task { @MainActor in
             collectionsData = Self.allSections()
         }

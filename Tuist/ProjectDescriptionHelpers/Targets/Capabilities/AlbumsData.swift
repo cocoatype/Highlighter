@@ -4,7 +4,7 @@ public enum AlbumsData {
     public static let target = Target.capabilitiesTarget(
         name: "AlbumsData",
         hasResources: true,
-        usesMaxSwiftVersion: false,
+        usesMaxSwiftVersion: true,
         dependencies: [
             .target(DesignSystem.target),
             .target(ErrorHandling.target),
