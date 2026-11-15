@@ -3,6 +3,6 @@
 
 import Photos
 
-public protocol OutputFactory {
+public protocol OutputFactory: Sendable {
     func output(from input: PHContentEditingInput) throws -> PHContentEditingOutput
 }

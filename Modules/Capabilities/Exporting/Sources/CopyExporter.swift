@@ -10,14 +10,12 @@ import Defaults
 import Logging
 import Redactions
 
-public class CopyExporter: NSObject {
+public final class CopyExporter: NSObject, Sendable {
     private let preparedURL: URL
     public convenience init(preparedURL: URL) {
         self.init(preparedURL: preparedURL, library: PHPhotoLibrary.shared())
     }
 
-    @Injected(\.defaults) private var defaults
-    @Injected(\.logger) private var logger
     private let library: any PhotoLibrary
     init(
         preparedURL: URL,
@@ -32,7 +30,6 @@ public class CopyExporter: NSObject {
             PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: preparedURL)
         }
 
-        await defaults.set(defaults.value(for: Keys.numberOfSaves) + 1, for: Keys.numberOfSaves)
-        await logger.log(ExportingEventFactory().event(style: .copy))
+        await ExportRecorder.recordExport(style: .copy)
     }
 }

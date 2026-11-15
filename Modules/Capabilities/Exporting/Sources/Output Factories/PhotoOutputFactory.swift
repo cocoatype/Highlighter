@@ -5,7 +5,7 @@ import Photos
 import Redactions
 import UIKit
 
-class PhotoOutputFactory: OutputFactory {
+final class PhotoOutputFactory: OutputFactory {
     private let preparedURL: URL
     private let redactions: [Redaction]
 
