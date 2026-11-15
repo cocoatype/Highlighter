@@ -20,21 +20,40 @@ struct DefaultHandler: ErrorHandler {
     }
 
     func log(_ error: any Error, module: StaticString, type: StaticString) {
-        let errorID: String
-        let errorType = Swift.type(of: error)
-        if errorType is NSError.Type {
-            let nsError = error as NSError
-            errorID = "\(nsError.domain) - \(nsError.code)"
-        } else {
-            errorID = "\(String(describing: errorType)).\(String(describing: error))"
-        }
-
         logger.log(Event(name: Self.logError, info: [
-            Self.telemetryErrorIDKey: errorID,
-            Self.errorDescriptionKey: error.localizedDescription,
+            Self.telemetryErrorIDKey: Self.errorID(for: error),
             Self.errorModuleKey: String(module),
             Self.errorTypeKey: String(type),
         ]))
+    }
+
+    /// An identifier for `error` built only from type names, case names, and
+    /// error domains and codes. Associated values and user info can carry user
+    /// details (file names, URLs, device identifiers), so they are never
+    /// included, except that a wrapped error contributes its own identifier.
+    static func errorID(for error: any Error) -> String {
+        let mirror = Mirror(reflecting: error)
+        guard mirror.displayStyle == .enum else {
+            let nsError = error as NSError
+            return "\(nsError.domain) - \(nsError.code)"
+        }
+
+        let errorType = String(describing: Swift.type(of: error))
+        guard let payload = mirror.children.first else {
+            return "\(errorType).\(error)"
+        }
+
+        let caseName = payload.label ?? "unknown"
+        guard let wrappedError = wrappedError(in: payload.value) else {
+            return "\(errorType).\(caseName)"
+        }
+
+        return "\(errorType).\(caseName)(\(errorID(for: wrappedError)))"
+    }
+
+    private static func wrappedError(in payload: Any) -> (any Error)? {
+        if let error = payload as? any Error { return error }
+        return Mirror(reflecting: payload).children.lazy.compactMap { $0.value as? any Error }.first
     }
 
     func crash(_ message: String) -> Never {
@@ -59,7 +78,6 @@ struct DefaultHandler: ErrorHandler {
 
     private static let errorModuleKey = "Highlighter.Error.module"
     private static let errorTypeKey = "Highlighter.Error.type"
-    private static let errorDescriptionKey = "Highlighter.Error.description"
     private static let telemetryErrorIDKey = "TelemetryDeck.Error.id"
 }
 
