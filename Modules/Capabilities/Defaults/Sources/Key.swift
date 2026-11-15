@@ -39,6 +39,9 @@ public enum Keys {
     public static let hideAutoRedactions = Key<Bool>(
         value: "Defaults.Keys.hideAutoRedactions"
     )
+    public static let originalPurchaseVersion = Key<String>(
+        value: "Defaults.Keys.originalPurchaseVersion"
+    )
 
     // Debug Overlay
     public static let showDetectedTextOverlay = Key<Bool>(
