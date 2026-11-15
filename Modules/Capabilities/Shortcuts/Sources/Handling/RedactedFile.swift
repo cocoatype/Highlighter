@@ -5,7 +5,7 @@ import AppIntents
 import Redactions
 
 @available(iOS 16, *)
-struct RedactedFile {
+struct RedactedFile: Sendable {
     let sourceImage: IntentFile
     let redactedImage: IntentFile
     let redactions: [Redaction]

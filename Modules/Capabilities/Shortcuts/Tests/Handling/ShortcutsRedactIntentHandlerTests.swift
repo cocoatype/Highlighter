@@ -20,7 +20,7 @@ struct ShortcutsRedactIntentHandlerTests {
         let handler = ShortcutsRedactIntentHandler(sourceImages: [], selectedColor: nil, outputFormat: .png)
 
         await #expect(throws: ShortcutsRedactorError.unpurchased, performing: {
-            _ = try await handler.handle(💩: []) { _ in
+            _ = try await handler.handle(💩: [String]()) { _ in
                 return { file, _, _, _ in
                     RedactedFile(sourceImage: file, redactedImage: file, redactions: [])
                 }

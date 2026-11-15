@@ -4,7 +4,7 @@ public enum Shortcuts {
     public static let target = Target.capabilitiesTarget(
         name: "Shortcuts",
         hasResources: true,
-        usesMaxSwiftVersion: false,
+        usesMaxSwiftVersion: true,
         dependencies: [
             .target(AppNavigation.target),
             .target(Defaults.target),
@@ -22,7 +22,7 @@ public enum Shortcuts {
 
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Shortcuts",
-        usesMaxSwiftVersion: false,
+        usesMaxSwiftVersion: true,
         dependencies: [
             .target(AppNavigation.doublesTarget),
             .target(AppNavigation.target),

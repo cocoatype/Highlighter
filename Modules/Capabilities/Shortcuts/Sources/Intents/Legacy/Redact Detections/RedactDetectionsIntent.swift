@@ -6,14 +6,16 @@ import Foundation
 
 @available(iOS 16.0, *)
 struct RedactDetectionsIntent: AppIntent, DeprecatedAppIntent, LegacyRedactIntent {
-    static var title: LocalizedStringResource = "RedactDetectionsIntent.title"
+    static let title: LocalizedStringResource = "RedactDetectionsIntent.title"
     static let description: IntentDescription = "RedactDetectionsIntent.description"
 
     @available(iOS 17.0, *)
-    static let deprecation = IntentDeprecation(
-        message: "LegacyRedactIntent.deprecationMessage",
-        replacedBy: RedactIntent.self
-    )
+    static var deprecation: IntentDeprecation<RedactIntent> {
+        IntentDeprecation(
+            message: "LegacyRedactIntent.deprecationMessage",
+            replacedBy: RedactIntent.self
+        )
+    }
 
     init() {
         self.init(intentHandlerProvider: ShortcutsRedactIntentHandlerProvider())

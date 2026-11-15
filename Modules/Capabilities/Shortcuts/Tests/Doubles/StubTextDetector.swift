@@ -8,17 +8,19 @@ import Detections
 import struct Observations.RecognizedTextObservation
 import struct Observations.TextRectangleObservation
 
-class StubTextDetector: TextDetector {
+@testable import Shortcuts
+
+final class StubTextDetector: TextDetecting {
     private let recognizedStrings: [String]
     init(recognizedStrings: [String]) {
         self.recognizedStrings = recognizedStrings
     }
 
-    override func recognizeText(in image: UIImage) async throws -> [RecognizedTextObservation] {
+    func recognizeText(in image: UIImage) async throws -> [RecognizedTextObservation] {
         return try recognizedStrings.map(RecognizedTextObservation.init)
     }
 
-    override func detectText(in image: UIImage) async throws -> [TextRectangleObservation] {
+    func detectText(in image: UIImage) async throws -> [TextRectangleObservation] {
         try recognizedStrings.map(TextRectangleObservation.init)
     }
 }
