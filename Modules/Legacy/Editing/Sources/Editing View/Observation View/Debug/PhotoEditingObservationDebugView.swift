@@ -24,10 +24,6 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
         subscribeToUpdates()
     }
 
-    deinit {
-        _ = cancellables.map(NotificationCenter.default.removeObserver(_:))
-    }
-
     // MARK: Text Observations
 
     var textObservations: [TextRectangleObservation]? {
@@ -51,15 +47,17 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
     private var isRecognizedTextOverlayEnabled: Bool { defaults.value(for: Keys.showRecognizedTextOverlay) }
     private var isCalculatedOverlayEnabled: Bool { defaults.value(for: Keys.showCalculatedOverlay) }
     private var isCombinedOverlayEnabled: Bool { defaults.value(for: Keys.showCombinedOverlay) }
-    private var cancellables = [any NSObjectProtocol]()
-
     private func subscribeToUpdates() {
-        let update: @MainActor @Sendable () -> Void = { [weak self] in self?.updateDebugLayers() }
-        cancellables.append(NotificationCenter.default.addObserver(for: Keys.showDetectedTextOverlay, block: update))
-        cancellables.append(NotificationCenter.default.addObserver(for: Keys.showDetectedCharactersOverlay, block: update))
-        cancellables.append(NotificationCenter.default.addObserver(for: Keys.showRecognizedTextOverlay, block: update))
-        cancellables.append(NotificationCenter.default.addObserver(for: Keys.showCalculatedOverlay, block: update))
-        cancellables.append(NotificationCenter.default.addObserver(for: Keys.showCombinedOverlay, block: update))
+        let selector = #selector(overlaySettingDidChange)
+        NotificationCenter.default.addObserver(self, selector: selector, for: Keys.showDetectedTextOverlay)
+        NotificationCenter.default.addObserver(self, selector: selector, for: Keys.showDetectedCharactersOverlay)
+        NotificationCenter.default.addObserver(self, selector: selector, for: Keys.showRecognizedTextOverlay)
+        NotificationCenter.default.addObserver(self, selector: selector, for: Keys.showCalculatedOverlay)
+        NotificationCenter.default.addObserver(self, selector: selector, for: Keys.showCombinedOverlay)
+    }
+
+    @objc private func overlaySettingDidChange() {
+        updateDebugLayers()
     }
 
     private func updateDebugLayers() {
@@ -99,7 +97,10 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
                 } else { return characterLayers }
             }
 
-            let calculator = PhotoEditingObservationCalculator(detectedTextObservations: textObservations, recognizedTextObservations: recognizedTextObservations)
+            let calculator = PhotoEditingObservationCalculator(
+                detectedCharacterObservations: textObservations.flatMap(\.characterObservations),
+                recognizedCharacterObservations: recognizedTextObservations.flatMap(\.characterObservations)
+            )
             let calculatedObservations = await calculator.calculatedObservationsByUUID
 
             let wordCharacterLayers: [PhotoEditingObservationDebugLayer]

@@ -11,6 +11,7 @@ public class HighlighterToolSelectionEvent: UIEvent {
     }
 }
 
+@MainActor
 @objc public protocol HighlighterToolSelectionHandler {
     @objc func selectHighlighterTool(_ sender: Any, event: HighlighterToolSelectionEvent)
 }

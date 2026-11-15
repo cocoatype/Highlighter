@@ -3,6 +3,7 @@
 
 import UIKit
 
+@MainActor
 @objc public protocol WindowSceneProvider {
     var windowScene: UIWindowScene? { get }
 }

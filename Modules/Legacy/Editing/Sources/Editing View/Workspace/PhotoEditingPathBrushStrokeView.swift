@@ -28,7 +28,7 @@ class PhotoEditingPathBrushStrokeView: UIControl {
     override class var layerClass: AnyClass { PathLayer.self }
     private var pathLayer: PathLayer? { layer as? PathLayer }
 
-    private static var standardLineWidth = 10.0
+    nonisolated private static let standardLineWidth = 10.0
     private static let lassoLineWidth = 3.0
 
     private func updatePathLayer() {

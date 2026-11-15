@@ -15,22 +15,22 @@ final class PhotoEditingToolbarController: PhotoEditingChainedResponder {
         self.asset = asset
         super.init()
 
-        redactionChangeObserver = NotificationCenter.default.addObserver(forName: PhotoEditingRedactionView.redactionsDidChange, object: nil, queue: .main, using: { [weak self] _ in
-            MainActor.assumeIsolated {
-                self?.updateToolbarItems()
-            }
-        })
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateToolbarItemsForChange),
+            name: PhotoEditingRedactionView.redactionsDidChange,
+            object: nil
+        )
 
-        hideAutoRedactionsChangeObserver = NotificationCenter.default.addObserver(for: Keys.hideAutoRedactions) { [weak self] in
-            self?.updateToolbarItems()
-        }
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateToolbarItemsForChange),
+            for: Keys.hideAutoRedactions
+        )
     }
 
-    deinit {
-        [
-            redactionChangeObserver,
-            hideAutoRedactionsChangeObserver,
-        ].forEach { $0.map(NotificationCenter.default.removeObserver) }
+    @objc private func updateToolbarItemsForChange() {
+        updateToolbarItems()
     }
 
     @objc func refreshToolbarItems() { updateToolbarItems() }
@@ -70,6 +70,4 @@ final class PhotoEditingToolbarController: PhotoEditingChainedResponder {
 
     private let photoEditingView: PhotoEditingScrollView
     private let asset: PHAsset?
-    private var redactionChangeObserver: Any?
-    private var hideAutoRedactionsChangeObserver: Any?
 }
