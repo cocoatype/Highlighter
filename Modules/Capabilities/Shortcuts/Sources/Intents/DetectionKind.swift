@@ -6,9 +6,9 @@ import Detections
 
 @available(iOS 16.0, *)
 enum DetectionKind: String, AppEnum {
-    static var typeDisplayRepresentation: TypeDisplayRepresentation = "DetectionKind.typeDisplayRepresentation"
+    static let typeDisplayRepresentation: TypeDisplayRepresentation = "DetectionKind.typeDisplayRepresentation"
 
-    static var caseDisplayRepresentations: [DetectionKind: DisplayRepresentation] = [
+    static let caseDisplayRepresentations: [DetectionKind: DisplayRepresentation] = [
         names: "DetectionKind.names",
         addresses: "DetectionKind.addresses",
         phoneNumbers: "DetectionKind.phoneNumbers",

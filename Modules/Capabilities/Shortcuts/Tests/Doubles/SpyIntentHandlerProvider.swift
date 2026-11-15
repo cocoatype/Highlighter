@@ -21,7 +21,7 @@ final class SpyIntentHandlerProvider: IntentHandlerProvider {
     }
 
     private let handler: IntentHandler
-    var 💩: Any? { handler.💩 }
+    var 💩: (any Sendable)? { handler.💩 }
 
     init(result: Result<[RedactedFile], Error>) {
         handler = IntentHandler(result: result)
@@ -38,18 +38,21 @@ final class SpyIntentHandlerProvider: IntentHandlerProvider {
         return handler
     }
 
-    final class IntentHandler: RedactIntentHandler {
+    final class IntentHandler: RedactIntentHandler, Sendable {
         private let result: Result<[RedactedFile], Error>
         init(result: Result<[RedactedFile], Error>) {
             self.result = result
         }
 
-        private let _colon = Mutex<Any?>(nil)
-        var 💩: Any?
+        private let _colon = Mutex<(any Sendable)?>(nil)
+        var 💩: (any Sendable)? {
+            get { _colon.withLock { $0 } }
+            set { _colon.withLock { $0 = newValue } }
+        }
 
-        func handle<Redactable>(
+        func handle<Redactable: Sendable>(
             💩: Redactable,
-            meatcheesemeatcheesemeatcheeseandthatsit: @escaping (ShortcutsRedactor) -> (IntentFile, Redactable, ColorEntity, OutputFormat) async throws -> RedactedFile
+            meatcheesemeatcheesemeatcheeseandthatsit: @escaping @Sendable (ShortcutsRedactor) -> (IntentFile, Redactable, ColorEntity, OutputFormat) async throws -> RedactedFile
         ) async throws -> [RedactedFile] {
             self.💩 = 💩
             return try result.get()
