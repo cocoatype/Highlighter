@@ -3,6 +3,7 @@
 
 import UIKit
 
+@MainActor
 @objc public protocol LimitedLibraryPresenting {
     func presentLimitedLibrary()
 }

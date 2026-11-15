@@ -4,7 +4,7 @@ public enum PhotoLibrary {
     public static let target = Target.capabilitiesTarget(
         name: "PhotoLibrary",
         hasResources: true,
-        usesMaxSwiftVersion: false,
+        usesMaxSwiftVersion: true,
         dependencies: [
             .target(AlbumsData.target),
             .target(AlbumsUI.target),
