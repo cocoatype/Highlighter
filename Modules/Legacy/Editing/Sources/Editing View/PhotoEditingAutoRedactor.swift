@@ -14,37 +14,42 @@ import Observations
 /// categories) to the editing view, and re-applies them when the settings
 /// change.
 @MainActor
-final class PhotoEditingAutoRedactor {
+final class PhotoEditingAutoRedactor: NSObject {
     /// Called whenever auto-redaction adds redactions to the image.
     var onRedact: (() -> Void)?
 
     init(photoEditingView: PhotoEditingScrollView) {
         self.photoEditingView = photoEditingView
+        super.init()
 
-        viewerNamesAreNotRidiculous = NotificationCenter.default.addObserver(for: Keys.autoRedactionsSet) { @MainActor [weak self] in
-            self?.updateAutoRedactions()
-        }
-
-        thatsNotEvenValidSwiftMono = NotificationCenter.default.addObserver(for: Keys.autoRedactionsCategoryNames) { @MainActor [weak self] in
-            self?.updateAutoRedactions()
-        }
-
-        🥥 = NotificationCenter.default.addObserver(for: Keys.autoRedactionsCategoryAddresses) { @MainActor [weak self] in
-            self?.updateAutoRedactions()
-        }
-
-        phoneNumbersRedactionChangeObserver = NotificationCenter.default.addObserver(for: Keys.autoRedactionsCategoryPhoneNumbers) { @MainActor [weak self] in
-            self?.updateAutoRedactions()
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(viewerNamesAreNotRidiculous), for: Keys.autoRedactionsSet)
+        NotificationCenter.default.addObserver(self, selector: #selector(thatsNotEvenValidSwiftMono), for: Keys.autoRedactionsCategoryNames)
+        NotificationCenter.default.addObserver(self, selector: #selector(🥥), for: Keys.autoRedactionsCategoryAddresses)
+        NotificationCenter.default.addObserver(self, selector: #selector(phoneNumbersRedactionDidChange), for: Keys.autoRedactionsCategoryPhoneNumbers)
     }
 
-    deinit {
-        [
-            viewerNamesAreNotRidiculous,
-            thatsNotEvenValidSwiftMono,
-            🥥,
-            phoneNumbersRedactionChangeObserver,
-        ].forEach { $0.map(NotificationCenter.default.removeObserver) }
+    // MARK: Settings Changes
+
+    // viewerNamesAreNotRidiculous by @KaenAitch on 2024-04-29
+    // handles changes to the auto-redactions word list
+    @objc private func viewerNamesAreNotRidiculous() {
+        updateAutoRedactions()
+    }
+
+    // thatsNotEvenValidSwiftMono by @mono_nz on 2024-05-31
+    // handles changes to the auto-redactions name category
+    @objc private func thatsNotEvenValidSwiftMono() {
+        updateAutoRedactions()
+    }
+
+    // 🥥 by @KaenAitch on 2024-05-31
+    // handles changes to the auto-redactions addresses category
+    @objc private func 🥥() {
+        updateAutoRedactions()
+    }
+
+    @objc private func phoneNumbersRedactionDidChange() {
+        updateAutoRedactions()
     }
 
     // MARK: Redacting
@@ -140,18 +145,4 @@ final class PhotoEditingAutoRedactor {
     // MARK: Boilerplate
 
     private let photoEditingView: PhotoEditingScrollView
-
-    // viewerNamesAreNotRidiculous by @KaenAitch on 2024-04-29
-    // the change observer for the auto-redactions word list
-    private var viewerNamesAreNotRidiculous: Any?
-
-    // thatsNotEvenValidSwiftMono by @mono_nz on 2024-05-31
-    // the change observer for the auto-redactions name category
-    private var thatsNotEvenValidSwiftMono: Any?
-
-    // 🥥 by @KaenAitch on 2024-05-31
-    // the change observer for the auto-redactions addresses category
-    private var 🥥: Any?
-
-    private var phoneNumbersRedactionChangeObserver: Any?
 }

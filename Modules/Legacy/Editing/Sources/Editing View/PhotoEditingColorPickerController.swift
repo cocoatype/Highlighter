@@ -14,16 +14,21 @@ final class PhotoEditingColorPickerController: PhotoEditingChainedResponder, UIC
 
         #if targetEnvironment(macCatalyst)
         ColorPanel.shared.color = .black
-        colorObserver = NotificationCenter.default.addObserver(forName: ColorPanel.colorDidChangeNotification, object: nil, queue: .main, using: { [weak self] notification in
-            guard let colorPanel = notification.object as? ColorPanel else { return }
-            self?.photoEditingView.color = colorPanel.color
-        })
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(colorPanelColorDidChange(_:)),
+            name: ColorPanel.colorDidChangeNotification,
+            object: nil
+        )
         #endif
     }
 
-    deinit {
-        colorObserver.map(NotificationCenter.default.removeObserver)
+    #if targetEnvironment(macCatalyst)
+    @objc private func colorPanelColorDidChange(_ notification: Notification) {
+        guard let colorPanel = notification.object as? ColorPanel else { return }
+        photoEditingView.color = colorPanel.color
     }
+    #endif
 
     // MARK: Actions
 
@@ -71,5 +76,4 @@ final class PhotoEditingColorPickerController: PhotoEditingChainedResponder, UIC
     // MARK: Boilerplate
 
     private let photoEditingView: PhotoEditingScrollView
-    private var colorObserver: Any?
 }

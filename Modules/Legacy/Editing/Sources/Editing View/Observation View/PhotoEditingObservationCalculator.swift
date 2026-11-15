@@ -7,8 +7,8 @@ import Observations
 import Redactions
 
 actor PhotoEditingObservationCalculator {
-    private let detectedTextObservations: [RedactableObservation]
-    private let recognizedTextObservations: [RedactableObservation]
+    private let detectedCharacterObservations: [CharacterObservation]
+    private let recognizedCharacterObservations: [CharacterObservation]
     private let finder: any PhotoEditingIntersectionFinder = {
         if #available(iOS 16.0, *) {
             return PhotoEditingSystemIntersectionFinder()
@@ -17,17 +17,19 @@ actor PhotoEditingObservationCalculator {
         }
     }()
 
-    init(detectedTextObservations: [RedactableObservation], recognizedTextObservations: [RedactableObservation]) {
-        self.detectedTextObservations = detectedTextObservations
-        self.recognizedTextObservations = recognizedTextObservations
+    // takes character observations rather than the text observations themselves, since character observations are
+    // Sendable and recognized text observations aren't
+    init(detectedCharacterObservations: [CharacterObservation], recognizedCharacterObservations: [CharacterObservation]) {
+        self.detectedCharacterObservations = detectedCharacterObservations
+        self.recognizedCharacterObservations = recognizedCharacterObservations
     }
 
     var calculatedObservations: [CharacterObservation] {
         // get all character observations from recognized text
-        let recognizedCharacterObservations = recognizedTextObservations.flatMap(\.characterObservations).filter(\.bounds.isNotZero)
+        let recognizedCharacterObservations = recognizedCharacterObservations.filter(\.bounds.isNotZero)
 
         // get all character observations from detected text
-        let detectedCharacterObservations = detectedTextObservations.flatMap(\.characterObservations).filter(\.bounds.isNotZero)
+        let detectedCharacterObservations = detectedCharacterObservations.filter(\.bounds.isNotZero)
 
         // find where all detected observations belong
         let calculationPass = detectedCharacterObservations.reduce(into: PhotoEditingObservationCalculationPass()) { currentPass, detectedObservation in
