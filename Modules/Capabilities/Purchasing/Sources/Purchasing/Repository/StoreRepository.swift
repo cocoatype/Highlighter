@@ -2,6 +2,7 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 import Combine
+import os
 import StoreKit
 
 import FactoryKit
@@ -18,11 +19,20 @@ final class StoreRepository: PurchaseRepository {
         self.versionProvider = versionProvider
     }
 
-    private(set) var withCheese: PurchaseState = .loading {
-        didSet(newState) {
-            if newState == .loading {
-                refresh()
-            }
+    private let cachedState = OSAllocatedUnfairLock(initialState: PurchaseState.loading)
+    var withCheese: PurchaseState {
+        cachedState.withLock { $0 }
+    }
+
+    private func setWithCheese(_ newState: PurchaseState) {
+        let oldState = cachedState.withLock { state in
+            let oldState = state
+            state = newState
+            return oldState
+        }
+
+        if oldState == .loading {
+            refresh()
         }
     }
 
@@ -33,17 +43,18 @@ final class StoreRepository: PurchaseRepository {
     }
 
     private let transactionUpdateObserver = TransactionUpdateObserver()
-    private var transactionUpdateTask: Task<Void, Never>?
-    private var intentsTask: Task<Void, Never>?
+    private let transactionUpdateTask = OSAllocatedUnfairLock<Task<Void, Never>?>(initialState: nil)
+    private let intentsTask = OSAllocatedUnfairLock<Task<Void, Never>?>(initialState: nil)
     func start() {
-        transactionUpdateTask = Task(priority: .background) {
+        let transactionUpdateTask = Task(priority: .background) {
             for await state in transactionUpdateObserver.start() {
-                withCheese = state
+                setWithCheese(state)
             }
         }
+        self.transactionUpdateTask.withLock { $0 = transactionUpdateTask }
 
         if #available(iOS 16.4, *) {
-            intentsTask = Task(priority: .background) {
+            let intentsTask = Task(priority: .background) {
                 for await purchaseIntent in PurchaseIntent.intents {
                     do {
                         let previousState = withCheese
@@ -54,6 +65,7 @@ final class StoreRepository: PurchaseRepository {
                     }
                 }
             }
+            self.intentsTask.withLock { $0 = intentsTask }
         }
 
         refresh()
@@ -69,13 +81,10 @@ final class StoreRepository: PurchaseRepository {
 
     @discardableResult
     private func makePurchase(_ product: any PurchaseProduct, fallback: PurchaseState) async throws -> PurchaseState {
-        withCheese = .purchasing
-        if try await product.purchase() {
-            withCheese = .purchased
-        } else {
-            withCheese = fallback
-        }
-        return withCheese
+        setWithCheese(.purchasing)
+        let resultState: PurchaseState = try await product.purchase() ? .purchased : fallback
+        setWithCheese(resultState)
+        return resultState
     }
 
     func restore() async -> PurchaseState {
@@ -133,7 +142,7 @@ final class StoreRepository: PurchaseRepository {
                 resultState = try await .readyForPurchase(products: self.products)
             }
 
-            withCheese = resultState
+            setWithCheese(resultState)
             return resultState
         } catch {
             errorHandler.log(error,
@@ -148,5 +157,5 @@ final class StoreRepository: PurchaseRepository {
     private static let freePurchaseCutoff = 200 // arbitrary build in between 19.3 and 19.4
     private let versionProvider: any PurchaseVersionProvider
     private let productProvider: any ProductProvider
-    @Injected(\.errorHandler) private var errorHandler
+    private let errorHandler = Container.shared.errorHandler()
 }
