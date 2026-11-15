@@ -241,6 +241,13 @@
     {
       "target" : {
         "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "DE152677D2304DC58677782F",
+        "name" : "DetectionsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
         "identifier" : "C4AABEDBC85179F534B47EDC",
         "name" : "ToolsTests"
       }

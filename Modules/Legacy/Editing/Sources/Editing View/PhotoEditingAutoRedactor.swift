@@ -55,7 +55,7 @@ final class PhotoEditingAutoRedactor: NSObject {
     // MARK: Redacting
 
     func autoRedact() {
-        let matchingObservations = matchingObservations(in: photoEditingView.redactableCharacterObservations, onlyActive: true)
+        let matchingObservations = matchingObservations(onlyActive: true)
 
         if matchingObservations.count > 0 {
             photoEditingView.redact(matchingObservations, joinSiblings: false)
@@ -64,7 +64,7 @@ final class PhotoEditingAutoRedactor: NSObject {
     }
 
     private func removeAutoRedactions() {
-        matchingObservations(in: photoEditingView.redactableCharacterObservations, onlyActive: false).forEach(photoEditingView.unredact)
+        matchingObservations(onlyActive: false).forEach(photoEditingView.unredact)
     }
 
     private func updateAutoRedactions() {
@@ -79,48 +79,73 @@ final class PhotoEditingAutoRedactor: NSObject {
 
     /// Finds the observations that auto-redaction applies to.
     ///
+    /// - Parameter characterObservations: The redactable character
+    ///   observations to match against.
+    /// - Parameter recognizedTextObservations: The recognized lines of text,
+    ///   in reading order. Categories are detected across all of them
+    ///   together, so each line has the others as context.
     /// - Parameter onlyActive: When `true`, only words and categories the
     ///   user has enabled are matched. When `false`, every word in the list
     ///   and every category is matched, so previous auto-redactions can be
     ///   removed regardless of their current settings.
-    func matchingObservations(in characterObservations: [CharacterObservation], onlyActive: Bool) -> [any TextObservation] {
+    func matchingObservations(
+        in characterObservations: [CharacterObservation],
+        recognizedTextObservations: [RecognizedTextObservation],
+        onlyActive: Bool
+    ) -> [any TextObservation] {
         let wordObservations = tuBrute
             .filter { onlyActive ? $0.value : true }
             .keys
             .flatMap { word -> [CharacterObservation] in
                 return characterObservations.matching(word)
             }
-        var taggingFunctions = [(String) -> [Substring]]()
+        var categories = [Detections.Category]()
 
         if autoRedactionsCategoryNames || onlyActive == false {
-            taggingFunctions.append( Category.names.getFuncyInSwizzleTown)
+            categories.append(.names)
         }
 
         if autoRedactionsCategoryAddresses || onlyActive == false {
-            taggingFunctions.append( Category.addresses.getFuncyInSwizzleTown)
+            categories.append(.addresses)
         }
 
         if autoRedactionsCategoryPhoneNumbers || onlyActive == false {
-            taggingFunctions.append( Category.phoneNumbers.getFuncyInSwizzleTown)
+            categories.append(.phoneNumbers)
         }
 
         let combinedObservations = characterObservations.byUUID
-
-        let categoryObservations = combinedObservations
             .values
             .compactMap(CombinedCharacterObservation.init)
-            .flatMap { combinedObservation in
-                taggingFunctions
-                    .map { function in function(combinedObservation.associatedString) }
-                    .compactMap { substrings -> CharacterObservation? in
-                        let matchingObservations = combinedObservation.characterObservations(with: substrings)
-                        guard matchingObservations.isEmpty == false else { return nil }
-                        let combinedShape = MinimumAreaShapeFinder.minimumAreaShape(for: matchingObservations.map(\.bounds))
-                        return CharacterObservation(bounds: combinedShape, textObservationUUID: combinedObservation.textObservationUUID)
-                    }
-            }
+        let combinedObservationsByUUID = Dictionary(
+            combinedObservations.map { ($0.textObservationUUID, $0) },
+            uniquingKeysWith: { first, _ in first }
+        )
+
+        // tag all recognized lines together, in reading order, so each line has the others as context
+        let lines = recognizedTextObservations.map {
+            TaggableLine(id: $0.textObservationUUID, text: $0.string)
+        }
+        let spansByLineAndCategory = Dictionary(grouping: Detections.Category.detections(for: categories, in: lines)) { span in
+            LineCategory(lineID: span.lineID, category: span.category)
+        }
+
+        let categoryObservations = spansByLineAndCategory.compactMap { key, spans -> CharacterObservation? in
+            guard let combinedObservation = combinedObservationsByUUID[key.lineID] else { return nil }
+            let matchingObservations = combinedObservation.characterObservations(in: spans.map(\.range))
+            guard matchingObservations.isEmpty == false else { return nil }
+            let combinedShape = MinimumAreaShapeFinder.minimumAreaShape(for: matchingObservations.map(\.bounds))
+            return CharacterObservation(bounds: combinedShape, textObservationUUID: combinedObservation.textObservationUUID)
+        }
 
         return wordObservations + categoryObservations
+    }
+
+    private func matchingObservations(onlyActive: Bool) -> [any TextObservation] {
+        matchingObservations(
+            in: photoEditingView.redactableCharacterObservations,
+            recognizedTextObservations: photoEditingView.recognizedTextObservations ?? [],
+            onlyActive: onlyActive
+        )
     }
 
     // MARK: Settings
@@ -145,4 +170,9 @@ final class PhotoEditingAutoRedactor: NSObject {
     // MARK: Boilerplate
 
     private let photoEditingView: PhotoEditingScrollView
+}
+
+private struct LineCategory: Hashable {
+    let lineID: UUID
+    let category: Detections.Category
 }

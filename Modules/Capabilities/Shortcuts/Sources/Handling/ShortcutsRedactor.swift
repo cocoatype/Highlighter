@@ -52,10 +52,13 @@ struct ShortcutsRedactor {
         }
 
         let texts = try await detector.recognizeText(in: image)
-        let wordObservations = texts.flatMap { text -> [WordObservation] in
-            detections.flatMap { $0.taggingFunction(text.string) }
-                .compactMap { text.wordObservation(for: $0) }
-        }
+        let lines = texts.map { TaggableLine(id: $0.textObservationUUID, text: $0.string) }
+        let textsByID = Dictionary(texts.map { ($0.textObservationUUID, $0) }, uniquingKeysWith: { first, _ in first })
+        let wordObservations = Detections.Category
+            .detections(for: detections.map(\.category), in: lines)
+            .compactMap { span -> WordObservation? in
+                textsByID[span.lineID]?.wordObservation(for: span.range)
+            }
         return try await redact(
             input,
             wordObservations: wordObservations,

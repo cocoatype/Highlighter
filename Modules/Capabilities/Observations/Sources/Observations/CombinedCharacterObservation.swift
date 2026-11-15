@@ -20,11 +20,14 @@ public struct CombinedCharacterObservation {
     }
 
     public func characterObservations(with substrings: [Substring]) -> [CharacterObservation] {
+        characterObservations(in: substrings.map { $0.startIndex ..< $0.endIndex })
+    }
+
+    public func characterObservations(in ranges: [Range<String.Index>]) -> [CharacterObservation] {
         characterObservations.filter { observation in
             guard let observationRange = observation.range else { return false }
-            return substrings.contains { substring in
-                let substringRange = substring.startIndex ..< substring.endIndex
-                return observationRange.overlaps(substringRange)
+            return ranges.contains { range in
+                observationRange.overlaps(range)
             }
         }
     }

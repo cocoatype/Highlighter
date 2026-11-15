@@ -18,8 +18,8 @@ enum DetectionKind: String, AppEnum {
     case addresses
     case phoneNumbers
 
-    var taggingFunction: ((String) -> [Substring]) {
-        Category(detectionKind: self).getFuncyInSwizzleTown
+    var category: Detections.Category {
+        Category(detectionKind: self)
     }
 }
 

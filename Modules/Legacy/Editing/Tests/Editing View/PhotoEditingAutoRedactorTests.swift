@@ -26,7 +26,7 @@ struct PhotoEditingAutoRedactorTests {
     @Test func activeMatchingOnlyIncludesEnabledWords() {
         let redactor = PhotoEditingAutoRedactor(photoEditingView: PhotoEditingScrollView())
 
-        let matches = redactor.matchingObservations(in: observations, onlyActive: true)
+        let matches = redactor.matchingObservations(in: observations, recognizedTextObservations: [], onlyActive: true)
 
         #expect(Self.matchedWords(in: matches) == ["secret"])
     }
@@ -34,7 +34,7 @@ struct PhotoEditingAutoRedactorTests {
     @Test func inactiveMatchingIncludesEveryListedWord() {
         let redactor = PhotoEditingAutoRedactor(photoEditingView: PhotoEditingScrollView())
 
-        let matches = redactor.matchingObservations(in: observations, onlyActive: false)
+        let matches = redactor.matchingObservations(in: observations, recognizedTextObservations: [], onlyActive: false)
 
         #expect(Self.matchedWords(in: matches) == ["hidden", "secret"])
     }
