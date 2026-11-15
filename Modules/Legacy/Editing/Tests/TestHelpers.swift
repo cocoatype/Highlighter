@@ -7,6 +7,14 @@ import XCTest
 @testable import Editing
 
 enum TestHelpers {
+    static let isMacCatalyst: Bool = {
+        #if targetEnvironment(macCatalyst)
+        true
+        #else
+        false
+        #endif
+    }()
+
     static func runOnMacCatalyst() throws {
         #if targetEnvironment(macCatalyst)
         #else

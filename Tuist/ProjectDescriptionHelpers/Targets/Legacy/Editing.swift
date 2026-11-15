@@ -51,12 +51,14 @@ public enum Editing {
         name: "Editing",
         type: "Legacy",
         dependencies: [
+            .target(Defaults.doublesTarget),
             .target(Geometry.target),
             .target(Logging.doublesTarget),
             .target(Logging.target),
             .target(MobileAutoRedactionsUI.target),
             .target(Purchasing.doublesTarget),
             .target(Tools.target),
+            .target(UserActivities.target),
             .external(name: "FactoryKit"),
             .external(name: "FactoryTesting"),
         ]

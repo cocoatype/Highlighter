@@ -7,6 +7,7 @@ import FactoryKit
 
 import AppRatings
 import Defaults
+import DesignSystem
 import Editing
 import Redactions
 import Scenes
@@ -79,13 +80,13 @@ class DesktopSceneDelegate: NSObject, UIWindowSceneDelegate, NSToolbarDelegate, 
     var currentColor: UIColor { return .black }
 
     @objc func displayColorPicker(_ sender: NSToolbarItem) {
-        editingViewController?.showColorPicker(self)
+        editingViewController?.chain(selector: #selector(PhotoEditingResponderActions.showColorPicker(_:)), object: self, ignoreSelf: false)
     }
 
     // MARK: SeekItemDelegate
 
     func toggleSeeking(_ sender: NSToolbarItem) {
-        editingViewController?.toggleSeeking(sender)
+        editingViewController?.chain(selector: #selector(PhotoEditingResponderActions.toggleSeeking(_:)), object: sender, ignoreSelf: false)
     }
 
     // MARK: ZoomItemDelegate
