@@ -25,11 +25,15 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         navigationItem.title = collection.title ?? Strings.PhotoLibraryViewController.navigationItemTitle
         navigationItem.rightBarButtonItems = PhotoLibraryBarButtonsProvider().trailingNavigationItems.reversed()
 
-        hideDocumentScannerObserver = NotificationCenter.default.addObserver(
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(hideDocumentScannerDidChange),
             for: Keys.hideDocumentScanner
-        ) { [weak self] in
-            self?.libraryView.reloadData()
-        }
+        )
+    }
+
+    @objc private func hideDocumentScannerDidChange() {
+        libraryView.reloadData()
     }
 
     override func loadView() {
@@ -127,7 +131,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
 
     // MARK: Photo Library Changes
 
-    func photoLibraryDidChange(_ change: PHChange) {
+    nonisolated func photoLibraryDidChange(_ change: PHChange) {
         DispatchQueue.main.async { [unowned self] in
             assert(self.libraryView.dataSource === self.dataSource, "Library view's data source is wrong!")
             self.dataSource.calculateChange(in: self.libraryView, from: change)
@@ -145,13 +149,9 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
     }
     private let libraryView = PhotoLibraryView()
     @Injected(\.logger) private var logger
-    private var purchaseStateObserver: Any?
-    private var hideDocumentScannerObserver: Any?
     private var shouldScrollToBottom = true
 
     deinit {
-        purchaseStateObserver.map(NotificationCenter.default.removeObserver)
-        hideDocumentScannerObserver.map { NotificationCenter.default.removeObserver($0) }
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
     }
 
