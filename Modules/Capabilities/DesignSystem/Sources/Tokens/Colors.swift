@@ -12,21 +12,45 @@ public extension UIColor {
 
     // MARK: Base Colors
 
-    static let primaryUltraLight = UIColor(hexLiteral: 0xcbcbcb)
-    static let primaryExtraLight = UIColor(hexLiteral: 0xababab)
-    static let primaryLight = UIColor(hexLiteral: 0x484848)
-    static let primary = UIColor(hexLiteral: 0x212121)
-    static let primaryDark = UIColor(hexLiteral: 0x1b1b1b)
+    private static let pitch = UIColor(hexLiteral: 0x0d0d0d)
+    private static let tarPit = UIColor(hexLiteral: 0x161616)
+    private static let tar = UIColor(hexLiteral: 0x1b1b1b)
+    private static let inkBlack = UIColor(hexLiteral: 0x232220)
+    private static let rule = UIColor(hexLiteral: 0x2e2d2a)
+    private static let inkBright = UIColor(hexLiteral: 0xebebeb)
+    private static let ink = UIColor(hexLiteral: 0xcbcbcb)
+    private static let inkDim = UIColor(hexLiteral: 0xb8b6b1)
+    private static let accent = UIColor(hexLiteral: 0xf8e08e)
+    private static let paper = UIColor(hexLiteral: 0xf4f1ea)
+    private static let paperRule = UIColor(hexLiteral: 0xe6e1d2)
+    private static let paperInk = UIColor(hexLiteral: 0x6e6a5c)
+
+    struct Borders {
+        public static let standard = UIColor.rule
+        public static let accent = UIColor.accent
+        public static let accentDim = UIColor.accent.withAlphaComponent(0.4)
+    }
+
+    // MARK: Legacy Colors
+
+    static let primaryUltraLight = UIColor.ink
+    static let primaryExtraLight = UIColor.inkDim
+    static let primaryLight = UIColor.inkDim
+    static let primary = UIColor.tar
+    static let primaryDark = UIColor.pitch
 
     static let controlTint = UIColor(light: .primary, dark: .white)
-    static let tableViewCellBackground = UIColor(hexLiteral: 0x2c2c2c)
-    static let tableViewCellBackgroundHighlighted = UIColor.primaryLight
-    static let tableViewSeparator = UIColor(hexLiteral: 0x878787)
+    static let tableViewCellBackground = UIColor.inkBlack
+    static let tableViewCellBackgroundHighlighted = UIColor.rule
 
-    static let seekBoxInnerBorder = UIColor(named: "Seek Box Inner Border")
-    static let seekBoxOuterBorder = UIColor(named: "Seek Box Outer Border")
+    static let seekBoxInnerBorder = UIColor(white: 1.0, alpha: 0.22)
+    static let seekBoxOuterBorder = UIColor(
+        light: UIColor(white: 0.0, alpha: 0.22),
+        dark: UIColor(white: 0.0, alpha: 0.8),
+    )
 
     // MARK: - Dynamic Colors
+
     convenience init(light: UIColor, dark: UIColor) {
         self.init { traitCollection in
             switch traitCollection.userInterfaceStyle {

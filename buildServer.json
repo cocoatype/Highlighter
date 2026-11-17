@@ -14,6 +14,6 @@
 	],
 	"workspace": "/Users/pado/Developer/Highlighter/Highlighter.xcworkspace",
 	"build_root": "/Users/pado/Library/Developer/FlowDeck/DerivedData/Highlighter-ab827bafd2be",
-	"scheme": "Highlighter",
-	"kind": "xcode"
+	"kind": "xcode",
+	"indexStorePath": "/Users/pado/Library/Developer/FlowDeck/DerivedData/Highlighter-ab827bafd2be/Index.noindex/DataStore"
 }

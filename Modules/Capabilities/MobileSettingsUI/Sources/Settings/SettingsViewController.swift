@@ -187,9 +187,9 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, MFMail
     private lazy var dataSource: UICollectionViewDiffableDataSource<SettingsModel.SectionID, SettingsModel.Row> = {
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, SettingsModel.Row> { cell, _, row in
             cell.contentConfiguration = SettingsCellConfiguration.content(for: row)
-            cell.backgroundConfiguration = SettingsCellConfiguration.background(for: cell.configurationState)
+            cell.backgroundConfiguration = SettingsCellConfiguration.background(for: cell.configurationState, in: cell)
             cell.configurationUpdateHandler = { cell, state in
-                cell.backgroundConfiguration = SettingsCellConfiguration.background(for: state)
+                cell.backgroundConfiguration = SettingsCellConfiguration.background(for: state, in: cell)
             }
             cell.accessories = row.showsDisclosureIndicator ? [.disclosureIndicator()] : []
         }
@@ -213,6 +213,7 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, MFMail
         let layout = UICollectionViewCompositionalLayout { [weak self] sectionIndex, environment in
             var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
             configuration.backgroundColor = .primary
+            configuration.separatorConfiguration.color = UIColor.Borders.standard
             let hasHeader = self?.model.sections[safe: sectionIndex]?.header != nil
             configuration.headerMode = hasHeader ? .supplementary : .none
             return NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: environment)

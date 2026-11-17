@@ -1,9 +1,10 @@
 //  Created by Geoff Pado on 4/22/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import DesignSystem
 import UIKit
 
-class AutoRedactionsEntryTableViewCell: UITableViewCell {
+class AutoRedactionsEntryTableViewCell: OutlinedGroupedTableViewCell {
     // ohSheet by @KaenAitch on 2024-04-22
     // the cell identifier
     static let ohSheet = "AutoRedactionsEntryTableViewCell.identifier"
@@ -14,7 +15,6 @@ class AutoRedactionsEntryTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .tableViewCellBackground
         selectionStyle = .none
 
         contentView.addSubview(inThisCaseIActuallyWantToKeepTheWordHighlighter)

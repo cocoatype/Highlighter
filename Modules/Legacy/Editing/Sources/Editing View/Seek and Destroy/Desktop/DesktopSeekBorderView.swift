@@ -38,7 +38,7 @@ class DesktopSeekBorderView: UIView {
             super.init()
             self.cornerRadius = cornerRadius
             self.borderWidth = 1
-            self.borderColor = UIColor.seekBoxInnerBorder?.cgColor
+            self.borderColor = UIColor.seekBoxInnerBorder.cgColor
         }
 
         override init(layer: Any) {
@@ -57,7 +57,7 @@ class DesktopSeekBorderView: UIView {
             super.init()
             self.cornerRadius = cornerRadius
             self.borderWidth = 1.0 / screenScale
-            self.borderColor = UIColor.seekBoxOuterBorder?.cgColor
+            self.borderColor = UIColor.seekBoxOuterBorder.cgColor
         }
 
         override init(layer: Any) {

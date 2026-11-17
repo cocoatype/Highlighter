@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 8/3/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import DesignSystem
 import UIKit
 
 class AutoRedactionsListView: UITableView {
@@ -8,6 +9,7 @@ class AutoRedactionsListView: UITableView {
         super.init(frame: .zero, style: .insetGrouped)
         backgroundColor = .primary
         indicatorStyle = .white
+        separatorColor = UIColor.Borders.standard
 
         register(AutoRedactionsTableViewCell.self, forCellReuseIdentifier: AutoRedactionsTableViewCell.identifier)
         register(AutoRedactionsEntryTableViewCell.self, forCellReuseIdentifier: AutoRedactionsEntryTableViewCell.ohSheet)
