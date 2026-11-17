@@ -112,17 +112,28 @@ Every bullet must follow these rules. These are not suggestions.
 ### Hard rules — never violate
 
 - **Never use the word “now”** to indicate when a change takes effect. The reader already knows it’s a new release. Drop “now” or rephrase using imperative mood.
-- **Never use first-person plural** (“we”, “our”, “us”, “our team”). Talk about the feature or the user instead.
+- **Never sound corporate.** Black Highlighter is made by one indie developer, and the notes should read like a person wrote them. No “our team”, “the Black Highlighter team”, or stiff passive phrasing. See “Personality” below.
 - **Never write filler** like “Bug fixes and performance improvements” or “Various improvements”. Every bullet must name a specific change.
 - **Never invent changes**. If the GitHub issue doesn’t say it, it doesn’t go in the notes.
 - **Always use smart/curly quotes and apostrophes** (`’ “ ”`), never straight ones (`' " "`). Applies everywhere, including section headers like “What’s New”.
+
+### Personality
+
+Black Highlighter has a single indie developer behind it, and release notes are a small chance to talk to the people using it. Write like a friendly person, not a company.
+
+- **First person is welcome.** Use “I” for things the developer did or cares about (“I rebuilt how detections work…”). “We” is fine when it includes the user, or in casual phrasing like “we catch more things”. Avoid “our team”, “the team”, and other corporate plurals, since there is no team.
+- **Be warm and conversational.** Contractions, plain words, and the occasional exclamation point are good. Keep it genuine, not gushing.
+- **Own the mistakes.** For bug fixes, a short, honest touch is better than a sterile statement (“Sorry about that one!”). Use it sparingly, and only when the issue shows the bug actually affected people.
+- **Thank people when it’s earned.** If an issue came from user feedback, a brief thank-you is welcome. Don’t invent feedback that isn’t in the issue.
+- **Personality never replaces specifics.** Every bullet still names a concrete change, stays short, and follows the hard rules. Friendly is a tone, not extra length.
+- **Don’t overdo it.** Not every bullet needs a flourish. Aim for a personable feel across the whole note, not a joke in each line.
 
 ### Voice and tense
 
 - **Active voice.** “Tapping Done closes the editing view.” Not “When Done is tapped, the editing view is closed.”
 - **Full sentences** ending in a period.
 - **Imperative mood** works well for “What’s New” bullets that describe a new capability. Example: “Scan a document to redact it right away.”
-- **Address the user as “you”** when describing a benefit. That’s fine — it’s still about them, not us.
+- **Address the user as “you”** when describing a benefit. Keep the focus on what they get.
 
 ### Front-load the fix (Bug Fixes especially)
 
@@ -174,7 +185,7 @@ Example:
 
 ### Concision
 
-Cut backstory. Cut “We discovered that…”. Cut “This is fixed.”
+Cut backstory. Cut “We discovered that…”. Cut “This is fixed.” Personality should come from word choice, not extra sentences.
 
 ```diff
 - We discovered that when people opened an image with auto-hidden words turned on, there were cases where the app would add a redaction to every line, even ones with no matching words. This is fixed.
@@ -202,7 +213,7 @@ These are the target quality bar:
 Before you print the assembled notes in step 5, scan every bullet and confirm:
 
 1. No bullet contains the word “now”.
-2. No bullet contains “we”, “our”, or “us”.
+2. No bullet sounds corporate (“our team”, “the team”), and the notes read like one friendly person wrote them.
 3. Every bullet is a full sentence with a period.
 4. Bug Fix bullets describe the corrected behavior, not the broken one.
 5. Each bullet maps to a real, completed, non-`Selfish` issue from step 1.
