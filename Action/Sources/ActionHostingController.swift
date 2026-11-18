@@ -1,8 +1,8 @@
 //  Created by Geoff Pado on 7/1/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
-import MobileCoreServices
 import UIKit
+import UniformTypeIdentifiers
 
 import FactoryKit
 
@@ -34,7 +34,7 @@ class ActionHostingController: UIViewController {
     private var loadTask: Task<Void, Never>?
     private func loadImageFromExtensionContext() async {
         print(#function)
-        let imageTypeIdentifier = (kUTTypeImage as String)
+        let imageTypeIdentifier = UTType.image.identifier
 
         guard let imageProvider = extensionContext?
             .inputItems
