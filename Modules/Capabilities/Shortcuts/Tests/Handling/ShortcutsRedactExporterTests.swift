@@ -6,6 +6,9 @@ import Testing
 import UIKit
 import UniformTypeIdentifiers
 
+import FactoryKit
+import FactoryTesting
+
 import RenderingDoubles
 
 @testable import Shortcuts
@@ -42,8 +45,8 @@ struct ShortcutsRedactExporterTests {
         outputFormat: OutputFormat,
         expectedType: UTType
     ) async throws {
-        let renderer = StubPhotoRenderer()
-        let exporter = ShortcutsRedactExporter(renderer: renderer)
+        Container.shared.renderer.register { StubPhotoRenderer() }
+        let exporter = ShortcutsRedactExporter()
 
         let inputData = try data(for: inputType)
         let inputFile = IntentFile(data: inputData, filename: "image")

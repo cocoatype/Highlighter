@@ -2,12 +2,15 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 import Photos
-import Redactions
-import Rendering
 import UIKit
 import UniformTypeIdentifiers
 
-public final class ExportingPreparer: NSObject, Sendable {
+import FactoryKit
+
+import Redactions
+import Rendering
+
+public struct ExportingPreparer: Sendable {
     private let image: UIImage
     private let asset: PHAsset?
     private let redactions: [Redaction]
@@ -18,9 +21,10 @@ public final class ExportingPreparer: NSObject, Sendable {
         self.redactions = redactions
     }
 
+    @Injected(\.renderer) private var renderer
     public var preparedURL: URL {
         get async throws {
-            let exportedImage = try await Rendering.renderer
+            let exportedImage = try await renderer
                 .render(image: image, redactions: redactions)
 
             let representedURLName = "\(Strings.PhotoEditingExporter.defaultImageName).\(imageType.preferredFilenameExtension ?? "png")"

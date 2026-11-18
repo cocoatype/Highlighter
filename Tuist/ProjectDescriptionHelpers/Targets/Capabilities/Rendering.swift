@@ -7,6 +7,7 @@ public enum Rendering {
             .target(Brushes.target),
             .target(Geometry.target),
             .target(Redactions.target),
+            .external(name: "FactoryKit"),
         ]
     )
 
