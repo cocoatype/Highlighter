@@ -5,7 +5,7 @@ import Photos
 import UIKit
 
 class PhotoEditingProtectionAlertController: UIAlertController {
-    init(asset: PHAsset?, delegate: PhotoEditingProtectionAlertDelegate) {
+    init(asset: PHAsset?, delegate: any PhotoEditingProtectionAlertDelegate) {
         self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
         view.tintColor = .controlTint
@@ -58,7 +58,7 @@ class PhotoEditingProtectionAlertController: UIAlertController {
         return .actionSheet
         #endif
     }
-    weak var delegate: PhotoEditingProtectionAlertDelegate?
+    weak var delegate: any PhotoEditingProtectionAlertDelegate?
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

@@ -6,7 +6,7 @@ import UIKit
 
 public class SettingsBarButtonItem: UIBarButtonItem {
     public static var standard: SettingsBarButtonItem {
-        let standard = SettingsBarButtonItem(image: Icons.help, style: .plain, target: nil, action: #selector(Actions.presentSettingsViewController))
+        let standard = SettingsBarButtonItem(image: Icons.help, style: .plain, target: nil, action: #selector((any Actions).presentSettingsViewController))
         standard.accessibilityLabel = Strings.SettingsBarButtonItem.accessibilityLabel
         return standard
     }

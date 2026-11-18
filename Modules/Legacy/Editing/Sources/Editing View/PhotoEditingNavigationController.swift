@@ -80,7 +80,7 @@ public class PhotoEditingNavigationController: NavigationController, PhotoEditin
                 try await CopyExporter(preparedURL: preparedURL).export()
 
                 dismiss(animated: true)
-                chain(selector: #selector(PhotoEditingActions.displayAppRatingsPrompt))
+                chain(selector: #selector((any PhotoEditingActions).displayAppRatingsPrompt))
             } catch {
                 presentSaveErrorAlert(for: error)
                 dismiss(animated: true)
@@ -95,7 +95,7 @@ public class PhotoEditingNavigationController: NavigationController, PhotoEditin
                 try await InPlaceExporter(preparedURL: preparedURL, asset: asset, redactions: photoEditingViewController.redactions).export()
 
                 dismiss(animated: true)
-                chain(selector: #selector(PhotoEditingActions.displayAppRatingsPrompt))
+                chain(selector: #selector((any PhotoEditingActions).displayAppRatingsPrompt))
             } catch {
                 presentSaveErrorAlert(for: error)
                 dismiss(animated: true)
@@ -104,14 +104,14 @@ public class PhotoEditingNavigationController: NavigationController, PhotoEditin
     }
 
     @Injected(\.errorHandler) private var errorHandler
-    func presentSaveErrorAlert(for error: Error) {
+    func presentSaveErrorAlert(for error: any Error) {
         errorHandler.log(error, module: "Core", type: "PhotoEditingNavigationController")
         let alert = PhotoExportErrorAlertFactory.alert(for: error)
         present(alert, animated: true)
     }
 
     func presentShareDialogInPhotoEditingViewController() {
-        photoEditingViewController.chain(selector: #selector(PhotoEditingResponderActions.sharePhoto(_:)), object: self, ignoreSelf: false)
+        photoEditingViewController.chain(selector: #selector((any PhotoEditingResponderActions).sharePhoto(_:)), object: self, ignoreSelf: false)
     }
 
     private let photoEditingViewController: PhotoEditingViewController

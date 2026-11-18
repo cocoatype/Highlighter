@@ -8,8 +8,8 @@ public protocol SettingsPresenting {
 }
 
 extension UIResponder {
-    public var settingsPresenter: SettingsPresenting? {
-        if let settingsPresenter = (self as? SettingsPresenting) {
+    public var settingsPresenter: any SettingsPresenting? {
+        if let settingsPresenter = (self as? any SettingsPresenting) {
             return settingsPresenter
         }
 

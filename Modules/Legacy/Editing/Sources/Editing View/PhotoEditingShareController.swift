@@ -36,7 +36,7 @@ final class PhotoEditingShareController: PhotoEditingChainedResponder {
                 activityController.completionWithItemsHandler = { [weak editingViewController] _, _, _, _ in
                     editingViewController?.clearHasMadeEdits()
                     // the ratings prompt needs a view controller as its sender
-                    editingViewController?.chain(selector: #selector(PhotoEditingActions.displayAppRatingsPrompt))
+                    editingViewController?.chain(selector: #selector((any PhotoEditingActions).displayAppRatingsPrompt))
                 }
                 editingViewController.present(activityController, animated: true)
             } catch {

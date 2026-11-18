@@ -8,7 +8,7 @@ class DesktopSeekButton: UIButton {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
 
-        addTarget(nil, action: #selector(PhotoEditingResponderActions.finishSeeking(_:)), for: .primaryActionTriggered)
+        addTarget(nil, action: #selector((any PhotoEditingResponderActions).finishSeeking(_:)), for: .primaryActionTriggered)
 
         addSubview(box)
 

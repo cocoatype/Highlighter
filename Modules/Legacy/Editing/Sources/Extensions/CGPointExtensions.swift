@@ -4,7 +4,7 @@
 import UIKit
 
 extension CGPoint {
-    @MainActor func converted(from: UICoordinateSpace, to: UICoordinateSpace) -> CGPoint {
+    @MainActor func converted(from: any UICoordinateSpace, to: any UICoordinateSpace) -> CGPoint {
         from.convert(self, to: to)
     }
 }

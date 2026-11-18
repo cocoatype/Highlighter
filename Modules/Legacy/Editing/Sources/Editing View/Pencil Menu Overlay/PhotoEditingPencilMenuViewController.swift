@@ -85,7 +85,7 @@ class PhotoEditingPencilMenuViewController: UIViewController {
     }
 
     func completeMenu(with tool: HighlighterTool) {
-        UIApplication.shared.sendAction(#selector(HighlighterToolSelectionHandler.selectHighlighterTool(_:event:)), to: nil, from: self, for: HighlighterToolSelectionEvent(tool: tool))
+        UIApplication.shared.sendAction(#selector((any HighlighterToolSelectionHandler).selectHighlighterTool(_:event:)), to: nil, from: self, for: HighlighterToolSelectionEvent(tool: tool))
         state = .closed
     }
 

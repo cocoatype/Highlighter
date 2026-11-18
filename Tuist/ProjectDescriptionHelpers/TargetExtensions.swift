@@ -25,6 +25,7 @@ extension Target {
                 base: [
                     "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": false,
                     "SWIFT_APPROACHABLE_CONCURRENCY": true,
+                    "SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY": true,
                 ],
                 defaultSettings: .recommended(excluding: [
                     "CODE_SIGN_IDENTITY",
@@ -70,6 +71,7 @@ extension Target {
             settings: .settings(
                 base: [
                     "SWIFT_APPROACHABLE_CONCURRENCY": true,
+                    "SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY": true,
                 ],
                 defaultSettings: .recommended(excluding: [
                     "CODE_SIGN_IDENTITY",
@@ -95,6 +97,7 @@ extension Target {
                 base: [
                     "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": false,
                     "SWIFT_APPROACHABLE_CONCURRENCY": true,
+                    "SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY": true,
                 ],
                 defaultSettings: .recommended(excluding: [
                     "CODE_SIGN_IDENTITY",

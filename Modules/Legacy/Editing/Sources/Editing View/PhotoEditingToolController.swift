@@ -28,7 +28,7 @@ final class PhotoEditingToolController: PhotoEditingChainedResponder, Highlighte
 
     private func select(_ tool: HighlighterTool) {
         photoEditingView.highlighterTool = tool
-        sendToEditor(#selector(PhotoEditingResponderActions.refreshToolbarItems))
+        sendToEditor(#selector((any PhotoEditingResponderActions).refreshToolbarItems))
     }
 
     // MARK: Boilerplate

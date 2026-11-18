@@ -10,7 +10,7 @@ class SeekBarButtonItem: UIBarButtonItem {
             image: Icons.seekAndDestroy,
             style: .plain,
             target: target,
-            action: #selector(ActionsBuilderActions.startSeeking(_:))
+            action: #selector((any ActionsBuilderActions).startSeeking(_:))
         )
         accessibilityLabel = Strings.SeekBarButtonItem.accessibilityLabel
         title = Strings.SeekBarButtonItem.accessibilityLabel

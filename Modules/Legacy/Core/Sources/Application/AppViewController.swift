@@ -25,7 +25,7 @@ import Redactions
 @MainActor
 class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanningDelegate, DocumentScannerPresenting, IntroViewController.Actions, PhotoEditingActions, SettingsBarButtonItem.Actions, SettingsPresenting {
     @Injected(\.logger) private var logger
-    private let permissionsRequester: PhotoPermissionsRequester
+    private let permissionsRequester: any PhotoPermissionsRequester
     init(
         permissionsRequester: any PhotoPermissionsRequester = PhotoLibraryPermissionsRequester()
     ) {
@@ -39,7 +39,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
 
         #if !targetEnvironment(macCatalyst)
         if #available(iOS 16, *) {
-            AppDependencyManager.shared.add(dependency: (self as Navigator))
+            AppDependencyManager.shared.add(dependency: (self as any Navigator))
         }
         #endif
     }
@@ -100,7 +100,7 @@ class AppViewController: UIViewController, PhotoEditorPresenting, DocumentScanni
 
     // MARK: App Ratings Prompt
 
-    @objc func displayAppRatingsPrompt(_ sender: WindowSceneProvider) {
+    @objc func displayAppRatingsPrompt(_ sender: any WindowSceneProvider) {
         let windowScene = sender.windowScene ?? self.windowScene ?? UIApplication.shared.windowScene
         Task {
             await AppRatingsPrompter().displayRatingsPrompt(in: windowScene)
@@ -157,7 +157,7 @@ extension AppViewController: Navigator {
                 return presentDocumentCameraViewController()
             }
 
-            if (presentedViewController is DocumentCameraViewController) == false {
+            if (presentedViewController is any DocumentCameraViewController) == false {
                 dismiss(animated: false)
                 presentDocumentCameraViewController()
             }

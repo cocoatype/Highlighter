@@ -231,5 +231,5 @@ public class PhotoEditingViewController: UIViewController, UIScrollViewDelegate 
 }
 
 @objc @MainActor public protocol PhotoEditingActions: NSObjectProtocol {
-    func displayAppRatingsPrompt(_ sender: WindowSceneProvider)
+    func displayAppRatingsPrompt(_ sender: any WindowSceneProvider)
 }

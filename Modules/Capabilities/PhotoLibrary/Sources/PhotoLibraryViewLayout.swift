@@ -49,7 +49,7 @@ class PhotoLibraryViewLayout: UICollectionViewCompositionalLayout {
     }
 
     class Section: NSCollectionLayoutSection {
-        convenience init(environment: NSCollectionLayoutEnvironment) {
+        convenience init(environment: any NSCollectionLayoutEnvironment) {
             let environmentWidth = environment.container.effectiveContentSize.width
             let metrics = Calculator().metrics(forWidth: environmentWidth)
             let group = Group.standard(metrics: metrics)

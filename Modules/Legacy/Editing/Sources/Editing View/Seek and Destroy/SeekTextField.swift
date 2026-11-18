@@ -12,14 +12,14 @@ class SeekTextField: UISearchTextField, UISearchTextFieldDelegate {
         super.init(frame: .zero)
         self.delegate = self
 
-        addTarget(nil, action: #selector(PhotoEditingResponderActions.seekBarDidChangeText(_:)), for: .editingChanged)
+        addTarget(nil, action: #selector((any PhotoEditingResponderActions).seekBarDidChangeText(_:)), for: .editingChanged)
 
         translatesAutoresizingMaskIntoConstraints = false
         returnKeyType = .done
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        chain(selector: #selector(PhotoEditingResponderActions.finishSeeking(_:)))
+        chain(selector: #selector((any PhotoEditingResponderActions).finishSeeking(_:)))
         return false
     }
 

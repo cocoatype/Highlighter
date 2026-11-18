@@ -31,7 +31,7 @@ public enum PhotoCollectionType {
         return PHAssetCollection.fetchAssetCollections(with: assetCollectionType, subtype: assetCollectionSubtype, options: nil)
     }
 
-    public var defaultCollection: PhotoCollection {
+    public var defaultCollection: any PhotoCollection {
         guard let defaultCollection = fetchResult.firstObject else {
             assertionFailure("Did not return a default collection for type: \(self)")
             return AssetCollection(PHAssetCollection())

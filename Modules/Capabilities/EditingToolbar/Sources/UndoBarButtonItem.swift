@@ -10,7 +10,7 @@ class UndoBarButtonItem: UIBarButtonItem {
             image: Icons.undo,
             style: .plain,
             target: target,
-            action: #selector(ActionsBuilderActions.undo(_:))
+            action: #selector((any ActionsBuilderActions).undo(_:))
         )
         isEnabled = undoManager?.canUndo ?? false
         title = undoManager?.undoMenuItemTitle ?? Strings.UndoBarButtonItem.title

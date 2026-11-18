@@ -70,7 +70,7 @@ final class PhotoEditingColorPickerController: PhotoEditingChainedResponder, UIC
 
     func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
         photoEditingView.color = viewController.selectedColor
-        sendToEditor(#selector(PhotoEditingResponderActions.refreshToolbarItems))
+        sendToEditor(#selector((any PhotoEditingResponderActions).refreshToolbarItems))
     }
 
     // MARK: Boilerplate

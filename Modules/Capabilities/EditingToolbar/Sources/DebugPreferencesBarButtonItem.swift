@@ -6,7 +6,7 @@ import UIKit
 @MainActor
 class DebugPreferencesBarButtonItem: UIBarButtonItem {
     convenience init(target: AnyObject?) {
-        self.init(image: UIImage(systemName: "ladybug"), style: .plain, target: target, action: #selector(ActionsBuilderActions.showDebugPreferences(_:)))
+        self.init(image: UIImage(systemName: "ladybug"), style: .plain, target: target, action: #selector((any ActionsBuilderActions).showDebugPreferences(_:)))
         accessibilityLabel = Strings.DebugPreferencesBarButtonItem.accessibilityLabel
     }
 }

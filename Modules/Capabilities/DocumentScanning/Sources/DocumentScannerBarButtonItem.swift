@@ -26,7 +26,7 @@ public class DocumentScannerBarButtonItem: UIBarButtonItem {
         logger.log(EventFactory().scannerPresentationEvent(for: .library))
         UIApplication.shared
             .sendAction(
-                #selector(DocumentScannerPresenting.presentDocumentCameraViewController),
+                #selector((any DocumentScannerPresenting).presentDocumentCameraViewController),
                 to: nil,
                 from: sender,
                 for: nil

@@ -4,11 +4,11 @@
 import VisionKit
 
 public protocol DocumentCameraViewController: UIViewController {
-    var delegate: VNDocumentCameraViewControllerDelegate? { get set }
+    var delegate: any VNDocumentCameraViewControllerDelegate? { get set }
 }
 
 extension VNDocumentCameraViewController: DocumentCameraViewController {}
 
 class StubDocumentCameraViewController: UIViewController, DocumentCameraViewController {
-    weak var delegate: VNDocumentCameraViewControllerDelegate?
+    weak var delegate: any VNDocumentCameraViewControllerDelegate?
 }

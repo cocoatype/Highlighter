@@ -6,12 +6,12 @@ import UIKit
 
 @MainActor
 public protocol PhotoCollectionPresenting {
-    func present(_ collection: PhotoCollection)
+    func present(_ collection: any PhotoCollection)
 }
 
 extension UIResponder {
-    public var collectionPresenter: PhotoCollectionPresenting? {
-        if let presenter = (self as? PhotoCollectionPresenting) {
+    public var collectionPresenter: any PhotoCollectionPresenting? {
+        if let presenter = (self as? any PhotoCollectionPresenting) {
             return presenter
         }
 

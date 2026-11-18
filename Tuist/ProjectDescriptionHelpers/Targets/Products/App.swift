@@ -34,7 +34,7 @@ public enum App {
                 "COCOATYPE_APPEARANCE": "Dark",
                 "COCOATYPE_APPEARANCE[sdk=macosx*]": "Automatic",
                 "SWIFT_APPROACHABLE_CONCURRENCY": true,
-                "SWIFT_VERSION": "6.0",
+                "SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY": true,
             ],
             debug: [
                 "CODE_SIGN_IDENTITY[sdk=macosx*]": .string(Shared.debugCodeSignIdentity),

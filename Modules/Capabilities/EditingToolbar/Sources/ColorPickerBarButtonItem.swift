@@ -22,7 +22,7 @@ public class ColorPickerBarButtonItem: UIBarButtonItem {
     class ColorWell: UIColorWell {
         init(target: AnyObject?, color: UIColor) {
             super.init(frame: .zero)
-            addTarget(target, action: #selector(ActionsBuilderActions.selectedColorDidChange(_:)), for: .primaryActionTriggered)
+            addTarget(target, action: #selector((any ActionsBuilderActions).selectedColorDidChange(_:)), for: .primaryActionTriggered)
             selectedColor = color
             overrideUserInterfaceStyle = .dark
             translatesAutoresizingMaskIntoConstraints = false

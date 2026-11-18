@@ -10,7 +10,7 @@ public struct ImageOpener {
         return try openImage(resource: url)
     }
 
-    func openImage(resource: SecureResource) throws -> UIImage {
+    func openImage(resource: any SecureResource) throws -> UIImage {
         _ = resource.startAccessingSecurityScopedResource()
         defer { resource.stopAccessingSecurityScopedResource() }
 

@@ -4,12 +4,12 @@
 import Vision
 
 public struct RecognizedText: Equatable {
-    let recognizedText: VisionText
+    let recognizedText: any VisionText
     let uuid: UUID
 
     var string: String { recognizedText.string }
 
-    public init(recognizedText: VisionText, uuid: UUID) {
+    public init(recognizedText: any VisionText, uuid: UUID) {
         self.recognizedText = recognizedText
         self.uuid = uuid
     }

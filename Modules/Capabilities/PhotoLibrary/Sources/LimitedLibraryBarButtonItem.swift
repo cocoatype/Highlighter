@@ -12,7 +12,7 @@ public class LimitedLibraryBarButtonItem: UIBarButtonItem {
             image: Icons.limitedLibrary,
             style: .plain,
             target: nil,
-            action: #selector(LimitedLibraryPresenting.presentLimitedLibrary)
+            action: #selector((any LimitedLibraryPresenting).presentLimitedLibrary)
         )
         standard.accessibilityLabel = Strings.DocumentScannerPhotoLibraryViewCell.defaultAccessibilityLabel
         return standard

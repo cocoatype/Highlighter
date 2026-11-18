@@ -8,8 +8,8 @@ import UIKit
 }
 
 extension UIResponder {
-    public var documentScannerPresenter: DocumentScannerPresenting? {
-        if let presenter = (self as? DocumentScannerPresenting) {
+    public var documentScannerPresenter: any DocumentScannerPresenting? {
+        if let presenter = (self as? any DocumentScannerPresenting) {
             return presenter
         }
 

@@ -39,7 +39,7 @@ public class IntroViewController: UIViewController, PhotoPickerDelegate {
         let status = await permissionsRequester.requestAuthorization()
         switch status {
         case .authorized, .limited:
-            UIApplication.shared.sendAction(#selector(Actions.showPhotoLibrary), to: nil, from: self, for: nil)
+            UIApplication.shared.sendAction(#selector((any Actions).showPhotoLibrary), to: nil, from: self, for: nil)
         case .restricted:
             present(PhotoPermissionsRestrictedAlertFactory().alert(), animated: true)
         case .denied:
@@ -74,7 +74,7 @@ public class IntroViewController: UIViewController, PhotoPickerDelegate {
     // MARK: Boilerplate
 
     @Injected(\.logger) private var logger
-    private let permissionsRequester: PhotoPermissionsRequester
+    private let permissionsRequester: any PhotoPermissionsRequester
 
     private lazy var photoPicker: PhotoPicker = {
         let picker = PhotoPicker()
