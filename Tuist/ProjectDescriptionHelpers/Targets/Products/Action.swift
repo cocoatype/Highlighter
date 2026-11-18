@@ -30,6 +30,7 @@ public enum Action {
                 "ASSETCATALOG_COMPILER_APPICON_NAME": "ActionIcon",
                 "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "Accent Color",
                 "SKIP_INSTALL": "YES",
+                "SWIFT_APPROACHABLE_CONCURRENCY": true,
             ],
             release: [
                 "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (iOS Action Extension)",

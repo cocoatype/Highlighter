@@ -38,6 +38,7 @@ public enum Editing {
                 "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": false,
                 // ClippingBezier ships private headers in its public headers folder; remove when ClippingBezier is
                 "OTHER_SWIFT_FLAGS": ["$(inherited)", "-Xcc", "-Wno-incomplete-umbrella"],
+                "SWIFT_APPROACHABLE_CONCURRENCY": true,
             ],
             defaultSettings: .recommended(excluding: [
                 "CODE_SIGN_IDENTITY",

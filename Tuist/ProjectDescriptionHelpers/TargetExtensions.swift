@@ -24,6 +24,7 @@ extension Target {
             settings: .settings(
                 base: [
                     "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": false,
+                    "SWIFT_APPROACHABLE_CONCURRENCY": true,
                 ],
                 defaultSettings: .recommended(excluding: [
                     "CODE_SIGN_IDENTITY",
@@ -67,7 +68,9 @@ extension Target {
             buildableFolders: buildableFolders,
             dependencies: [.target(name: name)] + dependencies,
             settings: .settings(
-                base: [:],
+                base: [
+                    "SWIFT_APPROACHABLE_CONCURRENCY": true,
+                ],
                 defaultSettings: .recommended(excluding: [
                     "CODE_SIGN_IDENTITY",
                 ])
@@ -91,6 +94,7 @@ extension Target {
             settings: .settings(
                 base: [
                     "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": false,
+                    "SWIFT_APPROACHABLE_CONCURRENCY": true,
                 ],
                 defaultSettings: .recommended(excluding: [
                     "CODE_SIGN_IDENTITY",

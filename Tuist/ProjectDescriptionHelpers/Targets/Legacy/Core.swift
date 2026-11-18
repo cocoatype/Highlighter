@@ -36,10 +36,7 @@ public enum Core {
         settings: .settings(
             base: [
                 "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": false,
-                "OTHER_SWIFT_FLAGS": [
-                    "-enable-upcoming-feature",
-                    "IsolatedDefaultValues",
-                ],
+                "SWIFT_APPROACHABLE_CONCURRENCY": true,
             ],
             defaultSettings: .recommended(excluding: [
                 "CODE_SIGN_IDENTITY",
