@@ -6,13 +6,20 @@ extension Target {
         hasResources: Bool = false,
         dependencies: [TargetDependency] = []
     ) -> Target {
-        Target.target(
+        var buildableFolders: [BuildableFolder] = [
+            .folder("Modules/Capabilities/\(name)/Sources"),
+        ]
+
+        if hasResources {
+            buildableFolders.append(.folder("Modules/Capabilities/\(name)/Resources"))
+        }
+
+        return Target.target(
             name: name,
             destinations: [.iPhone, .iPad, .macCatalyst, .appleVisionWithiPadDesign],
             product: .framework,
             bundleId: "com.cocoatype.Highlighter.\(name)",
-            sources: ["Modules/Capabilities/\(name)/Sources/**"],
-            resources: hasResources ? ["Modules/Capabilities/\(name)/Resources/**"] : nil,
+            buildableFolders: buildableFolders,
             dependencies: dependencies,
             settings: .settings(
                 base: [
@@ -44,13 +51,20 @@ extension Target {
         hasResources: Bool = false,
         dependencies: [TargetDependency] = []
     ) -> Target {
+        var buildableFolders: [BuildableFolder] = [
+            .folder("Modules/\(type)/\(name)/Tests"),
+        ]
+
+        if hasResources {
+            buildableFolders.append(.folder("Modules/\(type)/\(name)/TestResources"))
+        }
+
         return Target.target(
             name: "\(name)Tests",
             destinations: [.iPhone, .iPad, .macCatalyst, .appleVisionWithiPadDesign],
             product: .unitTests,
             bundleId: "com.cocoatype.Highlighter.\(name)Tests",
-            sources: ["Modules/\(type)/\(name)/Tests/**"],
-            resources: hasResources ? ["Modules/\(type)/\(name)/TestResources/**"] : nil,
+            buildableFolders: buildableFolders,
             dependencies: [.target(name: name)] + dependencies,
             settings: .settings(
                 base: [:],
@@ -70,7 +84,7 @@ extension Target {
             destinations: [.iPhone, .iPad, .macCatalyst, .appleVisionWithiPadDesign],
             product: .framework,
             bundleId: "com.cocoatype.Highlighter.\(name)Doubles",
-            sources: ["Modules/Capabilities/\(name)/Doubles/**"],
+            buildableFolders: [.folder("Modules/Capabilities/\(name)/Doubles")],
             dependencies: [
                 .target(name: name),
             ] + dependencies,

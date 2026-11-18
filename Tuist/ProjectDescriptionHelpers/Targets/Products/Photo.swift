@@ -14,10 +14,10 @@ public enum Photo {
         product: .appExtension,
         bundleId: "com.cocoatype.Highlighter.Photo",
         infoPlist: "Photo/Info.plist",
-        sources: ["Photo/Sources/**"],
-        resources: .resources([
-            "Photo/Resources/**",
-        ] + Shared.resources),
+        buildableFolders: [
+            .folder("Photo/Sources"),
+            .folder("Photo/Resources"),
+        ],
         dependencies: [
             .target(Editing.target),
             .target(ErrorHandling.target),

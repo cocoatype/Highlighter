@@ -14,12 +14,10 @@ public enum App {
         product: .app,
         bundleId: "com.cocoatype.Highlighter",
         infoPlist: "App/Info.plist",
-        sources: [
-            "App/Sources/**",
+        buildableFolders: [
+            .folder("App/Sources"),
+            .folder("App/Resources"),
         ],
-        resources: .resources([
-            "App/Resources/**",
-        ] + Shared.resources),
         entitlements: "App/Highlighter.entitlements",
         dependencies: [
             .target(Action.target, condition: .when([.ios])),
