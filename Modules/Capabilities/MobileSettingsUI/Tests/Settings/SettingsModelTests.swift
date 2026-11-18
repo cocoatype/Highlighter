@@ -32,11 +32,10 @@ struct SettingsModelTests {
 
     @Test func sectionsInOrder() {
         let model = model()
-        #expect(model.sections.map(\.id) == [.purchasedFeatures, .information, .contact, .otherApps])
+        #expect(model.sections.map(\.id) == [.purchasedFeatures, .information, .contact])
         #expect(model.sections[0].header == nil)
         #expect(model.sections[1].header == Strings.SettingsContentInformationSection.header)
         #expect(model.sections[2].header == Strings.SettingsContentContactSection.header)
-        #expect(model.sections[3].header == Strings.SettingsContentOtherAppsSection.header)
     }
 
     // MARK: Information
@@ -109,7 +108,7 @@ struct SettingsModelTests {
         #expect(subtitle == Strings.PurchaseSubtitle.withProduct(monthly.displayPrice + Strings.PurchaseSubtitle.monthly))
     }
 
-    // MARK: Contact and Other Apps
+    // MARK: Contact
 
     @Test func contactRows() {
         let rows = model().sections[2].rows
@@ -118,12 +117,5 @@ struct SettingsModelTests {
         #expect(rows[1].action == .openURL(SettingsModel.reviewURL))
         #expect(rows[2].action == .web(URL(string: "https://blackhighlighter.app/contact/bluesky")!))
         #expect(rows.allSatisfy { $0.iconName != nil })
-    }
-
-    @Test func otherAppRows() {
-        let rows = model().sections[3].rows
-        #expect(rows.map(\.title) == ["Barc", "Kineo", "Debigulator"])
-        #expect(rows[0].action == .openURL(URL(string: "https://apps.apple.com/us/app/cocoatype/id6642707689?uo=4")!))
-        #expect(rows.allSatisfy { $0.showsDisclosureIndicator == false })
     }
 }
