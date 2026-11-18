@@ -120,7 +120,6 @@ public struct ActionSet {
         sizeClass: UIUserInterfaceSizeClass,
         currentColor: UIColor,
         asset: PHAsset?,
-        featureFlagProvider: any FeatureFlagProvider = FeatureFlagging.provider
     ) {
         self.target = target
         self.undoManager = undoManager
@@ -128,7 +127,6 @@ public struct ActionSet {
         self.sizeClass = sizeClass
         self.currentColor = currentColor
         self.asset = asset
-        self.featureFlagProvider = featureFlagProvider
     }
 
     private let target: AnyObject
@@ -138,7 +136,7 @@ public struct ActionSet {
     private let currentColor: UIColor
     private let asset: PHAsset?
     @Injected(\.defaults) private var defaults
-    private let featureFlagProvider: any FeatureFlagProvider
+    @Injected(\.featureFlagProvider) private var featureFlagProvider
 
     // allTextIsSpecial by @ThisGuyNZ on 2024-05-15
     // the purchase repository

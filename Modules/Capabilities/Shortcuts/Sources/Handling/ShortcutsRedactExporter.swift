@@ -3,17 +3,17 @@
 
 import AppIntents
 import OSLog
-import Redactions
-import Rendering
 import UIKit
 import UniformTypeIdentifiers
 
+import FactoryKit
+
+import Redactions
+import Rendering
+
 @available(iOS 16.0, *)
-final class ShortcutsRedactExporter: NSObject, RedactExporter {
-    private let renderer: any PhotoRenderer
-    init(renderer: any PhotoRenderer = Rendering.renderer) {
-        self.renderer = renderer
-    }
+struct ShortcutsRedactExporter: RedactExporter {
+    @Injected(\.renderer) private var renderer
 
     func export(
         _ input: IntentFile,
