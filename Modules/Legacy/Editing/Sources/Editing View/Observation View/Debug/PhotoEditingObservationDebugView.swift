@@ -14,11 +14,8 @@ import Observations
 
 class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
     @Injected(\.defaults) private var defaults
-    private let flagProvider: any FeatureFlagProvider
-    init(
-        flagProvider: any FeatureFlagProvider = FeatureFlagging.provider
-    ) {
-        self.flagProvider = flagProvider
+    @Injected(\.featureFlagProvider) private var featureFlagProvider
+    override init() {
         super.init()
         isUserInteractionEnabled = false
         subscribeToUpdates()
@@ -70,7 +67,7 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
 
     private var debugLayers: [CAShapeLayer] {
         get async {
-            guard flagProvider.shouldShowDebugOverlay, let textObservations, let recognizedTextObservations else { return [] }
+            guard featureFlagProvider.shouldShowDebugOverlay, let textObservations, let recognizedTextObservations else { return [] }
 
             // find words (new system)
             let wordLayers: [PhotoEditingObservationDebugLayer]
