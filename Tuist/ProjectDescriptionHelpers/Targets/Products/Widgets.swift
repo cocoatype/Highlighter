@@ -7,12 +7,10 @@ public enum Widgets {
         product: .appExtension,
         bundleId: "com.cocoatype.Highlighter.Widgets",
         infoPlist: "Widgets/Info.plist",
-        sources: [
-            "Widgets/Sources/**",
+        buildableFolders: [
+            .folder("Widgets/Sources"),
+            .folder("Widgets/Resources"),
         ],
-        resources: .resources([
-            "Widgets/Resources/**",
-        ]),
         entitlements: "Widgets/Widgets.entitlements",
         dependencies: [
             .target(Logging.target),

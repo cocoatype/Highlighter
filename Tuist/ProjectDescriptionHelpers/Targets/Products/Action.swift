@@ -14,10 +14,10 @@ public enum Action {
         product: .appExtension,
         bundleId: "com.cocoatype.Highlighter.Action",
         infoPlist: "Action/Info.plist",
-        sources: ["Action/Sources/**"],
-        resources: .resources([
-            "Action/Resources/**",
-        ] + Shared.resources),
+        buildableFolders: [
+            .folder("Action/Sources"),
+            .folder("Action/Resources"),
+        ],
         entitlements: "Action/Action.entitlements",
         dependencies: [
             .target(DesignSystem.target),
