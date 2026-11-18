@@ -67,7 +67,6 @@ struct SettingsModel: Equatable {
             Self.purchasedFeaturesSection(purchaseState: purchaseState, hideAutoRedactions: hideAutoRedactions, isPaywallAvailable: isPaywallAvailable),
             Self.informationSection(infoDictionary: infoDictionary),
             Self.contactSection,
-            Self.otherAppsSection,
         ]
     }
 
@@ -150,32 +149,5 @@ struct SettingsModel: Equatable {
             Row(id: "threads", title: Strings.threadsTitle, subtitle: Strings.threadsSubtitle, iconName: MobileSettingsUIAsset.threads.name, action: .web(URL(websitePath: "contact/threads"))),
             Row(id: "x", title: Strings.twitterTitle, subtitle: Strings.twitterSubtitle, iconName: MobileSettingsUIAsset.x.name, action: .web(URL(websitePath: "contact/x"))),
         ])
-    }
-
-    // MARK: Other Apps
-
-    private static var otherAppsSection: Section {
-        Section(id: .otherApps, header: MobileSettingsUI.Strings.SettingsContentOtherAppsSection.header, rows: [
-            otherAppRow(name: "Barc", subtitle: "Save and store loyalty cards", id: "6642707689", iconName: MobileSettingsUIAsset.barc.name),
-            otherAppRow(name: "Kineo", subtitle: "Draw flipbook-style animations", id: "286948844", iconName: MobileSettingsUIAsset.kineo.name),
-            otherAppRow(name: "Debigulator", subtitle: "Shrink images to send faster", id: "1510076117", iconName: MobileSettingsUIAsset.debigulator.name),
-        ])
-    }
-
-    private static func otherAppRow(name: String, subtitle: String, id: String, iconName: String) -> Row {
-        Row(
-            id: "otherApp.\(id)",
-            title: name,
-            subtitle: subtitle,
-            iconName: iconName,
-            action: .openURL(appStoreURL(id: id))
-        )
-    }
-
-    static func appStoreURL(id: String) -> URL {
-        let urlString = "https://apps.apple.com/us/app/cocoatype/id\(id)?uo=4"
-        guard let url = URL(string: urlString)
-        else { Container.shared.errorHandler().crash("Invalid App Store URL: \(urlString)") }
-        return url
     }
 }
