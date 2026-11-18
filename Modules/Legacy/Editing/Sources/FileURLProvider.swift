@@ -14,8 +14,8 @@ extension FileURLProvider {
 }
 
 public extension UIResponder {
-    var fileURLProvider: FileURLProvider? {
-        if let provider = (self as? FileURLProvider) {
+    var fileURLProvider: any FileURLProvider? {
+        if let provider = (self as? any FileURLProvider) {
             return provider
         }
 

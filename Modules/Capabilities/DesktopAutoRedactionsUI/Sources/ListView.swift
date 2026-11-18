@@ -4,7 +4,7 @@
 import UIKit
 
 class ListView: UIView, UITableViewDataSource {
-    weak var delegate: ListViewDelegate?
+    weak var delegate: any ListViewDelegate?
 
     init() {
         super.init(frame: .zero)

@@ -10,11 +10,11 @@ class TabletSeekSearchBar: UISearchBar, UISearchTextFieldDelegate {
         returnKeyType = .done
         translatesAutoresizingMaskIntoConstraints = false
 
-        searchTextField.addTarget(nil, action: #selector(PhotoEditingResponderActions.seekBarDidChangeText(_:)), for: .editingChanged)
+        searchTextField.addTarget(nil, action: #selector((any PhotoEditingResponderActions).seekBarDidChangeText(_:)), for: .editingChanged)
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        chain(selector: #selector(PhotoEditingResponderActions.finishSeeking(_:)))
+        chain(selector: #selector((any PhotoEditingResponderActions).finishSeeking(_:)))
         return false
     }
 

@@ -9,8 +9,8 @@ import UIKit
 }
 
 extension UIResponder {
-    public var limitedLibraryPresenter: LimitedLibraryPresenting? {
-        if let presenter = (self as? LimitedLibraryPresenting) {
+    public var limitedLibraryPresenter: any LimitedLibraryPresenting? {
+        if let presenter = (self as? any LimitedLibraryPresenting) {
             return presenter
         }
 

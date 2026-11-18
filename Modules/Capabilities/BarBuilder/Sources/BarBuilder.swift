@@ -17,19 +17,19 @@ extension Array: BarSection where Element == UIBarButtonItem {
 
 @MainActor @resultBuilder
 public struct BarBuilder {
-    public static func buildBlock(_ components: BarSection...) -> [UIBarButtonItem] {
+    public static func buildBlock(_ components: any BarSection...) -> [UIBarButtonItem] {
         components.flatMap(\.barButtonItems)
     }
 
-    public static func buildOptional(_ component: [BarSection]?) -> [UIBarButtonItem] {
+    public static func buildOptional(_ component: [any BarSection]?) -> [UIBarButtonItem] {
         component?.flatMap(\.barButtonItems) ?? []
     }
 
-    public static func buildEither(first component: [BarSection]) -> [UIBarButtonItem] {
+    public static func buildEither(first component: [any BarSection]) -> [UIBarButtonItem] {
         component.flatMap(\.barButtonItems)
     }
 
-    public static func buildEither(second component: [BarSection]) -> [UIBarButtonItem] {
+    public static func buildEither(second component: [any BarSection]) -> [UIBarButtonItem] {
         component.flatMap(\.barButtonItems)
     }
 }

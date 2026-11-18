@@ -6,7 +6,7 @@ import DesignSystem
 import UIKit
 
 enum AlbumsCellConfiguration {
-    static func content(for collection: PhotoCollection, state: UICellConfigurationState) -> UIListContentConfiguration {
+    static func content(for collection: any PhotoCollection, state: UICellConfigurationState) -> UIListContentConfiguration {
         var content = UIListContentConfiguration.sidebarCell().updated(for: state)
         content.text = collection.title
         content.textProperties.font = .appFont(forTextStyle: .body)

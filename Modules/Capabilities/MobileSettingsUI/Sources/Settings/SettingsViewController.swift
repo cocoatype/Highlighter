@@ -26,7 +26,7 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, MFMail
                 image: UIImage(systemName: "xmark"),
                 style: .plain,
                 target: nil,
-                action: #selector(SettingsHostingControllerActions.dismissSettingsViewController)
+                action: #selector((any SettingsHostingControllerActions).dismissSettingsViewController)
             )
             item.accessibilityLabel = Strings.DoneButton.label
             item.tintColor = .white

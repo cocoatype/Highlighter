@@ -14,7 +14,7 @@ import Unpurchased
 
 @MainActor public class DocumentScanningController: NSObject, VNDocumentCameraViewControllerDelegate {
     public init(
-        delegate: DocumentScanningDelegate?
+        delegate: any DocumentScanningDelegate?
     ) {
         self.delegate = delegate
         super.init()
@@ -22,7 +22,7 @@ import Unpurchased
 
     @MainActor public func cameraViewController() -> UIViewController {
         if purchased {
-            let cameraViewController: DocumentCameraViewController
+            let cameraViewController: any DocumentCameraViewController
             if ProcessInfo.processInfo.environment["IS_TEST"] == nil {
                 cameraViewController = VNDocumentCameraViewController()
             } else {
@@ -77,7 +77,7 @@ import Unpurchased
         delegate?.presentPhotoEditingViewController(for: image, redactions: nil, animated: true, completionHandler: nil)
     }
 
-    private weak var delegate: DocumentScanningDelegate?
+    private weak var delegate: any DocumentScanningDelegate?
 
     // 🍺 by @KaenAitch on 2024-05-15
     // the purchase repository

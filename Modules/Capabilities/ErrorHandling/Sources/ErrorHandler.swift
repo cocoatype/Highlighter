@@ -6,7 +6,7 @@ import Foundation
 import Logging
 
 public protocol ErrorHandler: Sendable {
-    func log(_ error: Error, module: StaticString, type: StaticString)
+    func log(_ error: any Error, module: StaticString, type: StaticString)
     func crash(_ message: String) -> Never
     func notImplemented(in file: String, function: String) -> Never
 }

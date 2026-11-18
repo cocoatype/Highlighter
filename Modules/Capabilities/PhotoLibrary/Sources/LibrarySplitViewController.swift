@@ -30,7 +30,7 @@ public class LibrarySplitViewController: SplitViewController, PhotoCollectionPre
         return photoLibraryViewController
     }
 
-    public func present(_ collection: PhotoCollection) {
+    public func present(_ collection: any PhotoCollection) {
         photoLibraryViewController?.collection = collection
         show(.secondary)
         userActivity?.needsSave = true

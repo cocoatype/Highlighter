@@ -11,7 +11,7 @@ public class AutoRedactionsAccessViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .done,
             target: nil,
-            action: #selector(AutoRedactionsAccessActions.hideAutoRedactAccess(_:))
+            action: #selector((any AutoRedactionsAccessActions).hideAutoRedactAccess(_:))
         )
 
         embed(AutoRedactionsListViewController())

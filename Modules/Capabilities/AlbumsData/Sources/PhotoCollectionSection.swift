@@ -3,9 +3,9 @@
 
 public struct PhotoCollectionSection {
     public let title: String
-    public let collections: [PhotoCollection]
+    public let collections: [any PhotoCollection]
 
-    public init(title: String, collections: [PhotoCollection]) {
+    public init(title: String, collections: [any PhotoCollection]) {
         self.title = title
         self.collections = collections
     }

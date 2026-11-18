@@ -10,7 +10,7 @@ class RedoBarButtonItem: UIBarButtonItem {
             image: Icons.redo,
             style: .plain,
             target: target,
-            action: #selector(ActionsBuilderActions.redo(_:))
+            action: #selector((any ActionsBuilderActions).redo(_:))
         )
         isEnabled = undoManager?.canRedo ?? false
         title = undoManager?.redoMenuItemTitle ?? Strings.RedoBarButtonItem.title

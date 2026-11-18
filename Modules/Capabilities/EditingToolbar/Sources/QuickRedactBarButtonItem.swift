@@ -5,7 +5,7 @@ import UIKit
 
 class QuickRedactBarButtonItem: UIBarButtonItem {
     convenience init(target: AnyObject?) {
-        self.init(image: UIImage(systemName: "gear"), style: .plain, target: target, action: #selector(ActionsBuilderActions.showAutoRedactAccess(_:)))
+        self.init(image: UIImage(systemName: "gear"), style: .plain, target: target, action: #selector((any ActionsBuilderActions).showAutoRedactAccess(_:)))
         accessibilityLabel = Strings.QuickRedactBarButtonItem.accessibilityLabel
         title = Strings.QuickRedactBarButtonItem.accessibilityLabel
 

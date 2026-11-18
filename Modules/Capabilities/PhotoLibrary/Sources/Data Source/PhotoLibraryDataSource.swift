@@ -10,8 +10,8 @@ import VisionKit
 
 @MainActor
 class PhotoLibraryDataSource: NSObject, LibraryDataSource, UICollectionViewDataSource {
-    let collection: PhotoCollection
-    init(_ collection: PhotoCollection) {
+    let collection: any PhotoCollection
+    init(_ collection: any PhotoCollection) {
         self.collection = collection
         self.assetsProvider = PhotoLibraryDataSourceAssetsProvider(collection: collection)
         self.changeCalculator = PhotoLibraryDataSourceChangeCalculator(collection: collection)

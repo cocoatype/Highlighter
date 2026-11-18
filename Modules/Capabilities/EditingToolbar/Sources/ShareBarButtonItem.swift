@@ -5,6 +5,6 @@ import UIKit
 
 public class ShareBarButtonItem: UIBarButtonItem {
     convenience init(target: AnyObject?) {
-        self.init(barButtonSystemItem: .action, target: target, action: #selector(ToolbarActions.sharePhoto))
+        self.init(barButtonSystemItem: .action, target: target, action: #selector((any ToolbarActions).sharePhoto))
     }
 }

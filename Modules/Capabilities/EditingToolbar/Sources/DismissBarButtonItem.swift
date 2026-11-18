@@ -23,7 +23,7 @@ public class DismissBarButtonItem: UIBarButtonItem {
     @objc private func handleButton() {
         let event = Event(asset: asset)
         UIApplication.shared.sendAction(
-            #selector(ToolbarActions.dismissPhotoEditingViewController),
+            #selector((any ToolbarActions).dismissPhotoEditingViewController),
             to: nil,
             from: self,
             for: event

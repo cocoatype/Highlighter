@@ -117,7 +117,7 @@ public class AlbumsViewController: UIViewController, UICollectionViewDelegate {
 
     private let photoCollectionsDataSource: PhotoCollectionsDataSource
     private var collectionsDataCancellable: AnyCancellable?
-    private var collectionsByIdentifier = [String: PhotoCollection]()
+    private var collectionsByIdentifier = [String: any PhotoCollection]()
     private var selectedCollectionIdentifier: String?
     private var hasAppliedSnapshot = false
 

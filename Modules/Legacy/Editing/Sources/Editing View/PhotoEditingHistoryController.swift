@@ -10,12 +10,12 @@ final class PhotoEditingHistoryController: PhotoEditingChainedResponder {
 
     @objc func undo(_ sender: Any) {
         localUndoManager.undo()
-        sendToEditor(#selector(PhotoEditingResponderActions.refreshToolbarItems))
+        sendToEditor(#selector((any PhotoEditingResponderActions).refreshToolbarItems))
     }
 
     @objc func redo(_ sender: Any) {
         localUndoManager.redo()
-        sendToEditor(#selector(PhotoEditingResponderActions.refreshToolbarItems))
+        sendToEditor(#selector((any PhotoEditingResponderActions).refreshToolbarItems))
     }
 
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {

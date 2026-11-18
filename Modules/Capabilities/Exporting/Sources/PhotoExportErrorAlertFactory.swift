@@ -6,7 +6,7 @@ import UIKit
 
 @MainActor
 public enum PhotoExportErrorAlertFactory {
-    public static func alert(for error: Error) -> UIAlertController {
+    public static func alert(for error: any Error) -> UIAlertController {
         let alert = UIAlertController(
             title: Strings.PhotoExportErrorAlertFactory.title,
             message: Strings.PhotoExportErrorAlertFactory.messageFormat(error.localizedDescription),

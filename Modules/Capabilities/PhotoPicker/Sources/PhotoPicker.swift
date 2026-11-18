@@ -6,7 +6,7 @@ import UniformTypeIdentifiers
 
 @MainActor
 public class PhotoPicker: NSObject, PHPickerViewControllerDelegate {
-    public weak var delegate: PhotoPickerDelegate?
+    public weak var delegate: any PhotoPickerDelegate?
 
     public lazy var pickerViewController: PHPickerViewController = {
         var configuration = PHPickerConfiguration()

@@ -6,7 +6,7 @@ import Photos
 
 @MainActor
 class PhotoLibraryDataSourceChangeCalculator: NSObject {
-    init(collection: PhotoCollection) {
+    init(collection: any PhotoCollection) {
         self.fetchResult = collection.assets
     }
 

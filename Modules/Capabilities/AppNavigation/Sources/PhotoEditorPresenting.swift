@@ -12,8 +12,8 @@ public protocol PhotoEditorPresenting {
 }
 
 extension UIResponder {
-    public var photoEditorPresenter: PhotoEditorPresenting? {
-        if let presenter = (self as? PhotoEditorPresenting) {
+    public var photoEditorPresenter: any PhotoEditorPresenting? {
+        if let presenter = (self as? any PhotoEditorPresenting) {
             return presenter
         }
 

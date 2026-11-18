@@ -12,7 +12,7 @@ import ErrorHandling
 @MainActor
 public class PhotoLibraryDataSourceAssetsProvider: NSObject {
     var photosCount: Int { allPhotos.count }
-    init(collection: PhotoCollection) {
+    init(collection: any PhotoCollection) {
         self.collection = collection
     }
 
@@ -38,5 +38,5 @@ public class PhotoLibraryDataSourceAssetsProvider: NSObject {
         return collection.assets
     }
 
-    private let collection: PhotoCollection
+    private let collection: any PhotoCollection
 }

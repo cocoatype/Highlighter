@@ -15,7 +15,7 @@ import UserActivities
 
 class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate, PHPhotoLibraryChangeObserver {
     init(
-        collection: PhotoCollection
+        collection: any PhotoCollection
     ) {
         self.dataSource = PhotoLibraryDataSource(collection)
         super.init(nibName: nil, bundle: nil)
@@ -72,7 +72,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         libraryView.reloadData()
     }
 
-    var collection: PhotoCollection {
+    var collection: any PhotoCollection {
         get { return dataSource.collection }
         set(newCollection) {
             let newDataSource = PhotoLibraryDataSource(newCollection)
@@ -84,7 +84,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
 
     // MARK: UICollectionViewDragDelegate
 
-    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: any UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         guard let cell = collectionView.cellForItem(at: indexPath) as? AssetPhotoLibraryViewCell,
               let asset = cell.asset
         else { return [] }
@@ -99,18 +99,18 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
 
     // MARK: UIDropInteractionDelegate
 
-    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
+    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: any UIDropSession) -> Bool {
         guard session.items.count == 1 else { return false }
         guard session.canLoadObjects(ofClass: UIImage.self) else { return false }
 
         return true
     }
 
-    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: any UIDropSession) -> UIDropProposal {
         return UIDropProposal(operation: .copy)
     }
 
-    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
+    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: any UIDropSession) {
         session.loadObjects(ofClass: UIImage.self) { [weak self] dropItems in
             guard let image = (dropItems.first as? UIImage) else { return }
             self?.logger.log(EventFactory().editorPresentationEvent(for: .dragAndDrop))

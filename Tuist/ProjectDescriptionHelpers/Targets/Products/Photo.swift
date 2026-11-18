@@ -31,6 +31,8 @@ public enum Photo {
                 "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "Accent Color",
                 "ASSETCATALOG_COMPILER_APPICON_NAME": "AppIcon",
                 "SKIP_INSTALL": "YES",
+                "SWIFT_APPROACHABLE_CONCURRENCY": true,
+                "SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY": true,
             ],
             release: [
                 "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (iOS Photo Extension)",

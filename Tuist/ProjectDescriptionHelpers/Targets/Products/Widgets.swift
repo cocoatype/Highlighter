@@ -19,6 +19,8 @@ public enum Widgets {
         settings: .settings(
             base: [
                 "DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER": "NO",
+                "SWIFT_APPROACHABLE_CONCURRENCY": true,
+                "SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY": true,
             ],
             debug: [
                 "ENABLE_DEBUG_DYLIB": true,
