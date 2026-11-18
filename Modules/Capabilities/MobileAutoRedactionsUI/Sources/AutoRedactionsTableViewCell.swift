@@ -1,14 +1,14 @@
 //  Created by Geoff Pado on 8/3/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import DesignSystem
 import UIKit
 
-class AutoRedactionsTableViewCell: UITableViewCell {
+class AutoRedactionsTableViewCell: OutlinedGroupedTableViewCell {
     static let identifier = "AutoRedactionsTableViewCell.identifier"
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .tableViewCellBackground
         selectionStyle = .none
 
         contentView.addSubview(label)

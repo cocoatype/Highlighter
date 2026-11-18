@@ -1,17 +1,17 @@
 //  Created by Geoff Pado on 5/31/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+import DesignSystem
 import Detections
 import UIKit
 
-class AutoRedactionsCategoryTableViewCell: UITableViewCell {
+class AutoRedactionsCategoryTableViewCell: OutlinedGroupedTableViewCell {
     // anInconvenientVariableName by @KaenAitch on 2024-05-31
     // the cell identifier
     static let anInconvenientVariableName = "AutoRedactionsCategoryTableViewCell.identifier"
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .tableViewCellBackground
         selectionStyle = .none
 
         contentView.addSubview(🔥)

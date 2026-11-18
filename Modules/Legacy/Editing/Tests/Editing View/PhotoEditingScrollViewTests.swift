@@ -41,7 +41,7 @@ class PhotoEditingScrollViewTests: XCTestCase {
                 let workspaceView = PhotoEditingScrollView()
                 let backgroundColor = try XCTUnwrap(workspaceView.backgroundColor?.hexString)
                 print(UIColor.secondarySystemBackground.hexString)
-                XCTAssertEqual(backgroundColor, "#212121")
+                XCTAssertEqual(backgroundColor, "#1b1b1b")
             } catch {
                 XCTFail(error.localizedDescription)
             }
@@ -55,7 +55,7 @@ class PhotoEditingScrollViewTests: XCTestCase {
                 let workspaceView = PhotoEditingScrollView()
                 let backgroundColor = try XCTUnwrap(workspaceView.backgroundColor?.hexString)
                 print(UIColor.secondarySystemBackground.hexString)
-                XCTAssertEqual(backgroundColor, "#212121")
+                XCTAssertEqual(backgroundColor, "#1b1b1b")
             } catch {
                 XCTFail(error.localizedDescription)
             }

@@ -39,10 +39,8 @@ enum SettingsCellConfiguration {
         return content
     }
 
-    static func background(for state: UICellConfigurationState) -> UIBackgroundConfiguration {
-        var background = UIBackgroundConfiguration.listGroupedCell()
-        background.backgroundColor = (state.isHighlighted || state.isSelected) ? .tableViewCellBackgroundHighlighted : .tableViewCellBackground
-        return background
+    @MainActor static func background(for state: UICellConfigurationState, in cell: UICollectionViewCell) -> UIBackgroundConfiguration {
+        OutlinedGroupedTableViewCell.configuration(in: cell, isHighlighted: state.isHighlighted || state.isSelected)
     }
 
     static func header(title: String?) -> UIListContentConfiguration {
