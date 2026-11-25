@@ -64,5 +64,6 @@ iOS/iPadOS/Mac Catalyst/visionOS app for redacting text in images. UIKit app, Sw
 ## Git and GitHub
 
 - The default branch is the current `release/*` branch (e.g. `release/26.2`), not `main`, and PRs target it. The git remote is named `github`.
-- Branches are named `issue/<number>`. Commit messages are short imperative summaries ("Factory PhotoRenderer", "Fix default zoom to safe areas").
+- Branches are named `issue/<number>`. Create them tracking the local release branch (`git checkout -b issue/<n> --track release/<version>`), and push with `git push github <branch>`, without `-u`, so the upstream stays the release branch.
+- Commit messages are short imperative summaries ("Factory PhotoRenderer", "Fix default zoom to safe areas").
 - The repo is public, but it isn't open to outside contributions (see README).
