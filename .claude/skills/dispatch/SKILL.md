@@ -102,7 +102,12 @@ Never merge the PR.
 
 ## Step 8: Report
 
-Leave the worktree with `ExitWorktree` and `action: "keep"`. The branch and worktree stay for review follow-ups, and the session goes back to the main checkout.
+Once the PR is open, clean up the worktree. The branch is pushed, so it can be checked out again whenever it's needed.
+
+1. Leave the worktree with `ExitWorktree` and `action: "keep"`. `ExitWorktree` can't remove a worktree that was entered by `path`, so this step only returns the session to the main checkout.
+2. Remove the worktree from the main checkout: `git worktree remove .claude/worktrees/issue-<n>`. Keep the local `issue/<n>` branch.
+
+Never pass `--force`. If git refuses because the worktree has uncommitted changes, leave it in place and tell the user what's there. Skip the cleanup if the push or the PR failed, so the work isn't lost.
 
 Tell the user, briefly:
 
@@ -110,4 +115,3 @@ Tell the user, briefly:
 - what changed
 - what ran (lint, iOS tests, Mac tests) and the results
 - any decisions you made that they should check
-- the worktree path, for follow-ups. Once the PR is merged, remove it with `git worktree remove .claude/worktrees/issue-<n>`.
