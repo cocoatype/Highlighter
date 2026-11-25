@@ -3,7 +3,7 @@ name: dispatch
 description: Take a GitHub issue from cocoatype/Highlighter from start to an open pull request. Creates a dedicated worktree and branch for the issue, generates the project, implements the change, lints, builds, and tests it, then commits, pushes, and opens a PR that closes the issue. Run as `/dispatch <issue-number>`.
 argument-hint: <issue-number>
 disable-model-invocation: true
-allowed-tools: Bash(gh issue view:*), Bash(gh pr list:*), Bash(gh pr create:*), Bash(gh repo view:*), Bash(git fetch:*), Bash(git worktree:*), Bash(git branch:*), Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git add:*), Bash(git commit:*), Bash(git push github issue/*), Bash(git rev-parse:*), Bash(git config user.name), Bash(mise:*), Bash(pwsh scripts/test.ps1), Bash(pwsh scripts/test-mac.ps1), Bash(xcrun simctl:*), Read, Edit, Write, Glob, Grep, EnterWorktree, ExitWorktree, AskUserQuestion
+allowed-tools: Bash(gh issue view:*), Bash(gh pr list:*), Bash(gh pr create:*), Bash(gh repo view:*), Bash(git fetch:*), Bash(git worktree:*), Bash(git branch:*), Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git add:*), Bash(git commit:*), Bash(git push github issue/*), Bash(git rev-parse:*), Bash(git config user.name), Bash(mise:*), Bash(pwsh scripts/test.ps1), Bash(pwsh scripts/test-mac.ps1), Bash(pwsh scripts/clean-derived-data.ps1:*), Bash(xcrun simctl:*), Read, Edit, Write, Glob, Grep, EnterWorktree, ExitWorktree, AskUserQuestion
 ---
 
 # Dispatch an issue
@@ -106,8 +106,9 @@ Once the PR is open, clean up the worktree. The branch is pushed, so it can be c
 
 1. Leave the worktree with `ExitWorktree` and `action: "keep"`. `ExitWorktree` can't remove a worktree that was entered by `path`, so this step only returns the session to the main checkout.
 2. Remove the worktree from the main checkout: `git worktree remove .claude/worktrees/issue-<n>`. Keep the local `issue/<n>` branch.
+3. Once the worktree is gone, delete its Xcode build products, which are often several GB: `pwsh scripts/clean-derived-data.ps1 -WorktreePath .claude/worktrees/issue-<n>`. The script only deletes DerivedData folders whose recorded workspace is inside that worktree.
 
-Never pass `--force`. If git refuses because the worktree has uncommitted changes, leave it in place and tell the user what's there. Skip the cleanup if the push or the PR failed, so the work isn't lost.
+Never pass `--force`. If git refuses because the worktree has uncommitted changes, leave it and its DerivedData in place, and tell the user what's there. Skip the cleanup if the push or the PR failed, so the work isn't lost.
 
 Tell the user, briefly:
 
