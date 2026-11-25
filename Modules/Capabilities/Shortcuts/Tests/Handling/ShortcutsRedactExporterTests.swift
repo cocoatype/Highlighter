@@ -13,6 +13,7 @@ import RenderingDoubles
 
 @testable import Shortcuts
 
+@Suite(.container)
 struct ShortcutsRedactExporterTests {
     @available(iOS 17, *)
     private func data(for type: UTType) throws -> Data {
