@@ -18,28 +18,52 @@ final class PhotoEditingTextDetectionController {
     }
 
     func detectText(in image: UIImage) {
-        Task { [weak self] in
-            guard let self else { return }
-            do {
-                let textObservations = try await textRectangleDetector.detectText(in: image)
-                photoEditingView.textObservations = textObservations
-            } catch { errorHandler.log(error, module: "Editing", type: "PhotoEditingViewController") }
+        detectionTask?.cancel()
+        detectionTask = Task { [weak self] in
+            await self?.detectTextAndAutoRedact(in: image)
         }
+    }
 
-        Task { [weak self] in
-            guard let self else { return }
-            do {
-                let recognizedTextObservations = try await textRectangleDetector.recognizeText(in: image)
-                photoEditingView.recognizedTextObservations = recognizedTextObservations
-                autoRedactor.autoRedact()
-            } catch { errorHandler.log(error, module: "Editing", type: "PhotoEditingViewController") }
+    /// Runs text detection and recognition, then applies auto-redactions
+    /// once the redactable observations have been calculated from both.
+    func detectTextAndAutoRedact(in image: UIImage) async {
+        async let detection: Void = detectTextRectangles(in: image)
+        async let recognition = recognizeText(in: image)
+        let (_, didRecognizeText) = await (detection, recognition)
+
+        guard didRecognizeText, Task.isCancelled == false else { return }
+        await photoEditingView.redactableCharacterObservationsUpdated()
+
+        guard Task.isCancelled == false else { return }
+        autoRedactor.autoRedact()
+    }
+
+    private func detectTextRectangles(in image: UIImage) async {
+        do {
+            let textObservations = try await textDetector.detectText(in: image)
+            guard Task.isCancelled == false else { return }
+            photoEditingView.textObservations = textObservations
+        } catch { errorHandler.log(error, module: "Editing", type: "PhotoEditingViewController") }
+    }
+
+    /// Returns whether text was recognized.
+    private func recognizeText(in image: UIImage) async -> Bool {
+        do {
+            let recognizedTextObservations = try await textDetector.recognizeText(in: image)
+            guard Task.isCancelled == false else { return false }
+            photoEditingView.recognizedTextObservations = recognizedTextObservations
+            return true
+        } catch {
+            errorHandler.log(error, module: "Editing", type: "PhotoEditingViewController")
+            return false
         }
     }
 
     // MARK: Boilerplate
 
     @Injected(\.errorHandler) private var errorHandler
-    private let textRectangleDetector = TextDetector()
+    @Injected(\.textDetector) private var textDetector
+    private var detectionTask: Task<Void, Never>?
     private let photoEditingView: PhotoEditingScrollView
     private let autoRedactor: PhotoEditingAutoRedactor
 }

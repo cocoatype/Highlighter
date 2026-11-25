@@ -53,6 +53,7 @@ public enum Editing {
         type: "Legacy",
         dependencies: [
             .target(Defaults.doublesTarget),
+            .target(Detections.target),
             .target(Geometry.target),
             .target(Logging.doublesTarget),
             .target(Logging.target),

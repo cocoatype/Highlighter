@@ -68,6 +68,12 @@ class PhotoEditingScrollView: UIScrollView {
         workspaceView.redactableCharacterObservations
     }
 
+    /// Waits until `redactableCharacterObservations` reflects the current
+    /// text and recognized text observations.
+    func redactableCharacterObservationsUpdated() async {
+        await workspaceView.redactableCharacterObservationsUpdated()
+    }
+
     var seekPreviewObservations: [CharacterObservation] {
         get { workspaceView.seekPreviewObservations }
         set(newTextObservations) {

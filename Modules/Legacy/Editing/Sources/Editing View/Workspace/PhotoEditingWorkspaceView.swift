@@ -130,21 +130,34 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
         }
     }
 
-    var redactableCharacterObservations = [CharacterObservation]()
+    private(set) var redactableCharacterObservations = [CharacterObservation]()
 
+    /// Waits until `redactableCharacterObservations` reflects the current
+    /// text and recognized text observations.
+    func redactableCharacterObservationsUpdated() async {
+        // a newer calculation may replace the one being awaited, so keep
+        // waiting until the latest one has finished
+        while let task = redactableObservationsTask {
+            await task.value
+            guard task != redactableObservationsTask else { return }
+        }
+    }
+
+    private var redactableObservationsTask: Task<Void, Never>?
     private func updateRedactableObservations() {
         let recognizedCharacterObservations = recognizedTextObservations?.flatMap(\.characterObservations) ?? []
         let textCharacterObservations = textObservations?.flatMap(\.characterObservations) ?? []
-        Task.detached { [weak self] in
+
+        redactableObservationsTask?.cancel()
+        redactableObservationsTask = Task { [weak self] in
             let calculator = PhotoEditingObservationCalculator(
                 detectedCharacterObservations: textCharacterObservations,
                 recognizedCharacterObservations: recognizedCharacterObservations
             )
             let filteredTextCharacterObservations = await calculator.calculatedObservations
 
-            await MainActor.run { [weak self] in
-                self?.redactableCharacterObservations = filteredTextCharacterObservations
-            }
+            guard Task.isCancelled == false else { return }
+            self?.redactableCharacterObservations = filteredTextCharacterObservations
         }
     }
 
