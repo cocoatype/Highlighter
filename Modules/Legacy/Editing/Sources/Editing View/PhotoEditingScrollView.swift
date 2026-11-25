@@ -53,7 +53,6 @@ class PhotoEditingScrollView: UIScrollView {
         get { return workspaceView.textObservations }
         set(newTextObservations) {
             workspaceView.textObservations = newTextObservations
-            updateAccessibilityElements()
         }
     }
 
@@ -61,6 +60,7 @@ class PhotoEditingScrollView: UIScrollView {
         get { return workspaceView.recognizedTextObservations }
         set(newTextObservations) {
             workspaceView.recognizedTextObservations = newTextObservations
+            updateAccessibilityElements()
         }
     }
 
