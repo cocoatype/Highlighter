@@ -164,3 +164,5 @@ build-iPhoneSimulator/
 *.xcodeproj/
 *.xcworkspace/
 Derived/
+# Claude Code worktrees (see the dispatch skill)
+.claude/worktrees/
