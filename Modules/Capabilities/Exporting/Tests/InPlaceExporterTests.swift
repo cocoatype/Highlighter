@@ -14,6 +14,7 @@ import LoggingDoubles
 @testable import Exporting
 @testable import Logging
 
+@Suite(.container)
 struct InPlaceExporterTests {
     @available(iOS 18.0, *)
     @Test("When export succeeds, an event is logged")
