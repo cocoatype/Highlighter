@@ -8,7 +8,7 @@ class SeekBar: UIToolbar {
         super.init(frame: CGRect(origin: .zero, size: CGSize(width: 320, height: 44)))
 
         items = [
-            UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector((any PhotoEditingResponderActions).cancelSeeking(_:))),
+            UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector((any SeekActions).cancelSeeking(_:))),
             SeekTextField.barButtonItem(),
         ]
         reloadView()

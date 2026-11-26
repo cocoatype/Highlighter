@@ -14,11 +14,5 @@ import UIKit
     func toggleColorPicker(_ sender: Any)
     func showColorPicker(_ sender: Any)
 
-    func toggleSeeking(_ sender: Any)
-    func startSeeking(_ sender: Any)
-    func cancelSeeking(_ sender: Any)
-    func finishSeeking(_ sender: Any)
-    func seekBarDidChangeText(_ sender: UISearchTextField)
-
     func sharePhoto(_ sender: Any)
 }
