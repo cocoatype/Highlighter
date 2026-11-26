@@ -73,6 +73,11 @@
         },
         {
           "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "23694E27495C41E8FA09BA91",
+          "name" : "EditingEngine"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
           "identifier" : "4CBE9AEFC4011160AF0FBB10",
           "name" : "Exporting"
         },
@@ -304,6 +309,13 @@
         "containerPath" : "container:Highlighter.xcodeproj",
         "identifier" : "7C98246E8C096DC5B09B72A0",
         "name" : "EditingTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "0DCBF7D8395F82DB4A6B1A57",
+        "name" : "EditingEngineTests"
       }
     },
     {

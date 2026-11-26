@@ -5,6 +5,7 @@ import UIKit
 
 import FactoryKit
 
+import EditingEngine
 import Logging
 import SeekUI
 
