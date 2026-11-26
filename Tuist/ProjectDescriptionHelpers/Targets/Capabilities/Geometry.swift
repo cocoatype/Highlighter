@@ -10,6 +10,7 @@ public enum Geometry {
 
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Geometry",
+        supportsNativeMac: true,
         dependencies: [
         ]
     )
