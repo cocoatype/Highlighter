@@ -13,6 +13,7 @@ public enum Redactions {
 
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Redactions",
+        hasResources: true,
         dependencies: [
             .target(Geometry.target),
             .target(Observations.target),
