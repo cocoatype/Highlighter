@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 7/29/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+#if canImport(UIKit)
 import UIKit
 
 public enum Icons {
@@ -35,3 +36,4 @@ public enum Icons {
     public static let screenshotsCollection = "camera.viewfinder"
     public static let standardCollection = "rectangle.stack"
 }
+#endif

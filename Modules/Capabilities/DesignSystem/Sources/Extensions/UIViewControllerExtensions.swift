@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 4/29/18.
 //  Copyright (c) 2018 Cocoatype, LLC. All rights reserved.
 
+#if canImport(UIKit)
 import PhotosUI
 import UIKit
 
@@ -66,3 +67,4 @@ extension UIViewController {
         return self is UIImagePickerController || self is PHPickerViewController
     }
 }
+#endif

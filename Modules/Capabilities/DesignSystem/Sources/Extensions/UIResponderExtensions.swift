@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 8/27/21.
 //  Copyright © 2021 Cocoatype, LLC. All rights reserved.
 
+#if canImport(UIKit)
 import UIKit
 
 extension UIResponder {
@@ -11,3 +12,4 @@ extension UIResponder {
         actionTarget?.perform(selector, with: object)
     }
 }
+#endif
