@@ -27,6 +27,7 @@ public enum Editing {
             .target(Paywall.target),
             .target(Purchasing.target),
             .target(Redactions.target),
+            .target(SeekUI.target),
             .target(Tools.target),
             .target(Unpurchased.target),
             .target(UserActivities.target),

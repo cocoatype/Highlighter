@@ -3,8 +3,8 @@
 
 import UIKit
 
-class SeekBar: UIToolbar {
-    init() {
+public final class SeekBar: UIToolbar {
+    public init() {
         super.init(frame: CGRect(origin: .zero, size: CGSize(width: 320, height: 44)))
 
         items = [
@@ -15,7 +15,7 @@ class SeekBar: UIToolbar {
     }
 
     // https://stackoverflow.com/a/18926749/49345
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         guard let items = items else { return }
         var totalItemsWidth = 0.0
         let itemsMargin = 8.0
@@ -35,13 +35,13 @@ class SeekBar: UIToolbar {
 
     // MARK: Interactivity
 
-    var isSeeking = false {
+    public var isSeeking = false {
         didSet {
             reloadView()
         }
     }
 
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         reloadView()
     }
@@ -58,11 +58,11 @@ class SeekBar: UIToolbar {
 
     // MARK: First Responder
 
-    @discardableResult override func becomeFirstResponder() -> Bool {
+    @discardableResult override public func becomeFirstResponder() -> Bool {
         searchTextField?.becomeFirstResponder() ?? false
     }
 
-    @discardableResult override func resignFirstResponder() -> Bool {
+    @discardableResult override public func resignFirstResponder() -> Bool {
         searchTextField?.resignFirstResponder() ?? false
     }
 
@@ -72,7 +72,7 @@ class SeekBar: UIToolbar {
         items?.first(where: { $0.view is SeekTextField })
     }
 
-    var searchTextField: SeekTextField? {
+    public var searchTextField: UISearchTextField? {
         textFieldBarButtonItem?.view as? SeekTextField
     }
 

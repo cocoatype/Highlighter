@@ -6,6 +6,7 @@ import UIKit
 import FactoryKit
 
 import Logging
+import SeekUI
 
 /// Runs Seek and Destroy: presenting the search UI appropriate to the
 /// current device, previewing matches as the user types, and redacting the

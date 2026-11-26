@@ -3,23 +3,23 @@
 
 import UIKit
 
-class TabletSeekViewController: UIViewController {
-    init() {
+public final class TabletSeekViewController: UIViewController {
+    public init() {
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .popover
         updatePreferredContentSize()
     }
 
-    override func loadView() {
+    override public func loadView() {
         view = seekView
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         seekView.activate()
     }
 
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         updatePreferredContentSize()
     }

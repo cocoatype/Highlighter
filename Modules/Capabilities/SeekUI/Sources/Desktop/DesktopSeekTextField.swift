@@ -5,6 +5,7 @@ import UIKit
 
 import FactoryKit
 
+import DesignSystem
 import ErrorHandling
 
 class DesktopSeekTextField: UITextField, UITextFieldDelegate {
