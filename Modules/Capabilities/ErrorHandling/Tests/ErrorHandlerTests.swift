@@ -14,7 +14,7 @@ import LoggingDoubles
 
 @Suite(.container)
 struct DefaultHandlerTests {
-    @Test @available(iOS 18.0, *)
+    @Test @available(iOS 18.0, macOS 15.0, *)
     func loggingSwiftErrorLogsDescription() throws {
         let logger = SpyLogger()
         Container.shared.logger.register { logger }
@@ -29,7 +29,7 @@ struct DefaultHandlerTests {
         #expect(event.info["Highlighter.Error.type"] == "DefaultHandlerTests")
     }
 
-    @Test @available(iOS 18.0, *)
+    @Test @available(iOS 18.0, macOS 15.0, *)
     func loggingNSErrorLogsInformation() throws {
         let logger = SpyLogger()
         Container.shared.logger.register { logger }
@@ -71,7 +71,8 @@ struct DefaultHandlerTests {
     }
 
 #if compiler(>=6.2) && os(macOS)
-    @Test func crashingLogsMessage() async throws {
+    @Test @available(iOS 18.0, macOS 15.0, *)
+    func crashingLogsMessage() async throws {
         await #expect(processExitsWith: .failure) {
             let logger = SpyLogger()
             Container.shared.logger.register { logger }
@@ -84,7 +85,8 @@ struct DefaultHandlerTests {
         }
     }
 
-    @Test func notImplementedLogsMessage() async {
+    @Test @available(iOS 18.0, macOS 15.0, *)
+    func notImplementedLogsMessage() async {
         await #expect(processExitsWith: .failure) {
             let logger = SpyLogger()
             Container.shared.logger.register { logger }
