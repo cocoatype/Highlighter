@@ -17,7 +17,7 @@ struct TelemetryLoggerTests {
         #expect(TelemetryManager.isInitialized == true)
     }
 
-    @available(iOS 18, *)
+    @available(iOS 18.0, macOS 15.0, *)
     @Test func logSendsEventNameAndInfo() throws {
         let signaledName = Mutex<String?>(nil)
         let signaledInfo = Mutex<[String: String]?>(nil)

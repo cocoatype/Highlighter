@@ -6,7 +6,7 @@ import Synchronization
 import Logging
 import TestHelpersInterface
 
-@available(iOS 18.0, *)
+@available(iOS 18.0, macOS 15.0, *)
 public final class SpyLogger: Logger {
     public init(
         logExpectation: Expectation? = nil
