@@ -4,7 +4,6 @@
 import Combine
 import UIKit
 
-private import ClippingBezier
 import FactoryKit
 
 import Defaults
