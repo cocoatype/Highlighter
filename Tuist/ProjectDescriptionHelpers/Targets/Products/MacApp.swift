@@ -17,6 +17,9 @@ public enum MacApp {
             .folder("Mac/Sources"),
         ],
         entitlements: "Mac/HighlighterMac.entitlements",
+        dependencies: [
+            .target(Documents.target),
+        ],
         settings: .settings(
             base: [
                 "SWIFT_APPROACHABLE_CONCURRENCY": true,
