@@ -6,11 +6,13 @@ import XCTest
 @testable import URLParsing
 
 class URLParsingTests: XCTestCase {
+    #if canImport(UIKit)
     func testParsingCallbackImageURL() throws {
         let url = try CallbackActionURLGenerator().openURL(imageURL: imageURL)
         let result = URLParser().parse(url)
         XCTAssert(result.isCallbackAction)
     }
+    #endif
 
     func testParsingImageURL() throws {
         let result = try URLParser().parse(imageURL)
