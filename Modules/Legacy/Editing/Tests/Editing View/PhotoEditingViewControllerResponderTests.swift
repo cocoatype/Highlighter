@@ -32,12 +32,14 @@ struct PhotoEditingViewControllerResponderTests {
         "selectHighlighterTool:": PhotoEditingToolController.self,
         "toggleColorPicker:": PhotoEditingColorPickerController.self,
         "showColorPicker:": PhotoEditingColorPickerController.self,
+        "sharePhoto:": PhotoEditingShareController.self,
+
+        // SeekActions
         "toggleSeeking:": PhotoEditingSeekController.self,
         "startSeeking:": PhotoEditingSeekController.self,
         "cancelSeeking:": PhotoEditingSeekController.self,
         "finishSeeking:": PhotoEditingSeekController.self,
         "seekBarDidChangeText:": PhotoEditingSeekController.self,
-        "sharePhoto:": PhotoEditingShareController.self,
 
         // EditingToolbar's ActionsBuilderActions & ToolbarActions
         "toggleHighlighterTool": PhotoEditingToolController.self,
