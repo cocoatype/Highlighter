@@ -1,6 +1,6 @@
 //  Copyright © 2026 Geoff Pado. All rights reserved.
 
-#if canImport(AppKit)
+#if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
 
 public extension NSColor {

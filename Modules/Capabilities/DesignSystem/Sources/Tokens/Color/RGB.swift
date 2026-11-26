@@ -10,9 +10,9 @@ struct RGB: Hashable {
 
     init(hex: Int) {
         self.init(
-            red: Double((hex & 0xFF0000) >> 16),
-            green: Double((hex & 0x00FF00) >> 8),
-            blue: Double((hex & 0x0000FF) >> 0),
+            red: Double((hex & 0xFF0000) >> 16) / 255,
+            green: Double((hex & 0x00FF00) >> 8) / 255,
+            blue: Double((hex & 0x0000FF) >> 0) / 255,
             alpha: 1,
         )
     }
