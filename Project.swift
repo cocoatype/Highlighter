@@ -30,6 +30,7 @@ let project = Project(
         EditingToolbar.target,
         ErrorHandling.target,
         Exporting.target,
+        ExportingUI.target,
         FeatureFlagging.target,
         Geometry.target,
         ImageOpening.target,

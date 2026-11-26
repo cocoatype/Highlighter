@@ -1,0 +1,14 @@
+// Title for the alert when exporting fails
+"PhotoExportErrorAlertFactory.title" = "Saving Failed";
+
+// Message for the alert when exporting fails
+"PhotoExportErrorAlertFactory.messageFormat" = "An error occurred while saving: %@. Please contact support if this continues to happen.";
+
+// Dismiss button title for the alert when exporting fails
+"PhotoExportErrorAlertFactory.dismissButtonTitle" = "OK";
+
+// Title for the save (and overwrite) activity
+"SaveActivity.title" = "Save Image";
+
+// Title for the save copy activity
+"SaveCopyActivity.title" = "Save Image as Copy";

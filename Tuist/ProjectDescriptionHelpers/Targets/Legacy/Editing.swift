@@ -18,6 +18,7 @@ public enum Editing {
             .target(EditingToolbar.target),
             .target(ErrorHandling.target),
             .target(Exporting.target),
+            .target(ExportingUI.target),
             .target(FeatureFlagging.target),
             .target(Geometry.target),
             .target(MobileAutoRedactionsUI.target),

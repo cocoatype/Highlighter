@@ -7,7 +7,7 @@ import UIKit
 import FactoryKit
 
 import ErrorHandling
-import Geometry
+import Exporting
 import Redactions
 
 // UIActivity isn't annotated for concurrency, but UIKit only calls it on the main thread, and the export task below
@@ -25,7 +25,7 @@ final class SaveActivity: UIActivity, @unchecked Sendable {
     }
 
     override var activityImage: UIImage? {
-        ExportingAsset.save.image
+        ExportingUIAsset.save.image
     }
 
     override func canPerform(withActivityItems activityItems: [Any]) -> Bool {
@@ -41,7 +41,7 @@ final class SaveActivity: UIActivity, @unchecked Sendable {
     override func perform() {
         guard let activityURL else {
             return errorHandler.log(
-                ExportingError.noActivityURL,
+                ExportingUIError.noActivityURL,
                 module: "Exporting",
                 type: "SaveActivity"
             )

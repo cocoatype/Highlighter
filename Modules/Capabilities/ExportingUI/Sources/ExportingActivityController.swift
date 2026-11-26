@@ -2,10 +2,10 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 import Photos
-import Redactions
-import Rendering
 import UIKit
-import UniformTypeIdentifiers
+
+import Exporting
+import Redactions
 
 public class ExportingActivityController: UIActivityViewController {
     public init(image: UIImage, asset: PHAsset?, redactions: [Redaction]) async throws {

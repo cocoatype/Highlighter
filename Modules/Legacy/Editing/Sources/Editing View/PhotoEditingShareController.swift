@@ -10,6 +10,7 @@ import DesignSystem
 import EditingToolbar
 import ErrorHandling
 import Exporting
+import ExportingUI
 
 /// Exports the redacted image, either for sharing or as a prepared file.
 final class PhotoEditingShareController: PhotoEditingChainedResponder {

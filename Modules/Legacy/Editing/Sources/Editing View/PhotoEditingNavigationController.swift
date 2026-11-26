@@ -8,6 +8,7 @@ import FactoryKit
 
 import EditingToolbar
 import Exporting
+import ExportingUI
 import Redactions
 
 public class PhotoEditingNavigationController: NavigationController, PhotoEditingProtectionAlertDelegate {

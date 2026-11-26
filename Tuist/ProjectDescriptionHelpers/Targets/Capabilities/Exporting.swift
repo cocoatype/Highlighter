@@ -6,7 +6,6 @@ public enum Exporting {
         hasResources: true,
         dependencies: [
             .target(Defaults.target),
-            .target(DesignSystem.target),
             .target(ErrorHandling.target),
             .target(Geometry.target),
             .target(Logging.target),
