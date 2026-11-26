@@ -4,6 +4,7 @@ extension Target {
     static func capabilitiesTarget(
         name: String,
         hasResources: Bool = false,
+        supportsNativeMac: Bool = false,
         dependencies: [TargetDependency] = []
     ) -> Target {
         var buildableFolders: [BuildableFolder] = [
@@ -16,7 +17,7 @@ extension Target {
 
         return Target.target(
             name: name,
-            destinations: [.iPhone, .iPad, .macCatalyst, .appleVisionWithiPadDesign],
+            destinations: destinations(supportsNativeMac: supportsNativeMac),
             product: .framework,
             bundleId: "com.cocoatype.Highlighter.\(name)",
             buildableFolders: buildableFolders,
@@ -37,12 +38,14 @@ extension Target {
     static func capabilitiesTestTarget(
         name: String,
         hasResources: Bool = false,
+        supportsNativeMac: Bool = false,
         dependencies: [TargetDependency] = []
     ) -> Target {
         moduleTestTarget(
             name: name,
             type: "Capabilities",
             hasResources: hasResources,
+            supportsNativeMac: supportsNativeMac,
             dependencies: dependencies
         )
     }
@@ -51,6 +54,7 @@ extension Target {
         name: String,
         type: String,
         hasResources: Bool = false,
+        supportsNativeMac: Bool = false,
         dependencies: [TargetDependency] = []
     ) -> Target {
         var buildableFolders: [BuildableFolder] = [
@@ -63,7 +67,7 @@ extension Target {
 
         return Target.target(
             name: "\(name)Tests",
-            destinations: [.iPhone, .iPad, .macCatalyst, .appleVisionWithiPadDesign],
+            destinations: destinations(supportsNativeMac: supportsNativeMac),
             product: .unitTests,
             bundleId: "com.cocoatype.Highlighter.\(name)Tests",
             buildableFolders: buildableFolders,
@@ -82,11 +86,12 @@ extension Target {
 
     static func capabilitiesDoublesTarget(
         name: String,
+        supportsNativeMac: Bool = false,
         dependencies: [TargetDependency] = [],
     ) -> Target {
         return Target.target(
             name: "\(name)Doubles",
-            destinations: [.iPhone, .iPad, .macCatalyst, .appleVisionWithiPadDesign],
+            destinations: destinations(supportsNativeMac: supportsNativeMac),
             product: .framework,
             bundleId: "com.cocoatype.Highlighter.\(name)Doubles",
             buildableFolders: [.folder("Modules/Capabilities/\(name)/Doubles")],
@@ -104,5 +109,17 @@ extension Target {
                 ])
             )
         )
+    }
+
+    private static func destinations(
+        supportsNativeMac: Bool,
+    ) -> Set<Destination> {
+        var destinations: Set<Destination> = [.iPhone, .iPad, .macCatalyst, .appleVisionWithiPadDesign]
+
+        if supportsNativeMac {
+            destinations.insert(.mac)
+        }
+
+        return destinations
     }
 }
