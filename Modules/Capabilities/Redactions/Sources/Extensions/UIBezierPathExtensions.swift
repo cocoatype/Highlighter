@@ -19,6 +19,9 @@ extension UIBezierPath {
             }
         }
 
+        // brush strokes have fewer than four points; they stay paths
+        guard points.count >= 4 else { return nil }
+
         return Shape(
             bottomLeft: points[1],
             bottomRight: points[2],
