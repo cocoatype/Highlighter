@@ -15,6 +15,7 @@ public enum Editing {
             .target(Defaults.target),
             .target(DesignSystem.target),
             .target(Detections.target),
+            .target(EditingEngine.target),
             .target(EditingToolbar.target),
             .target(ErrorHandling.target),
             .target(Exporting.target),

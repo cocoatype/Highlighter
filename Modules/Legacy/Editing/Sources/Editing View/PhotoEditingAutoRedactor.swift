@@ -7,6 +7,7 @@ import FactoryKit
 
 import Defaults
 import Detections
+import EditingEngine
 import Geometry
 import Observations
 

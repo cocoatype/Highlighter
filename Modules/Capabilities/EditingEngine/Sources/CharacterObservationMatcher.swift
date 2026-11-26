@@ -4,7 +4,7 @@
 import Foundation
 import Observations
 
-extension [CharacterObservation] {
+public extension [CharacterObservation] {
     func matching(_ text: String) -> [CharacterObservation] {
         return filter { characterObservation -> Bool in
             guard let associatedWord = characterObservation.associatedWord else { return false }
