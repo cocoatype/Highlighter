@@ -16,7 +16,7 @@ public enum Shared {
         "DEVELOPMENT_TEAM": "287EDDET2B",
         "ENABLE_HARDENED_RUNTIME[sdk=macosx*]": "YES",
         "IPHONEOS_DEPLOYMENT_TARGET": "15.0",
-        "MACOSX_DEPLOYMENT_TARGET": "12.0",
+        "MACOSX_DEPLOYMENT_TARGET": "13.0",
         "MARKETING_VERSION": "999",
         "OTHER_CODE_SIGN_FLAGS": "--deep",
         "SWIFT_VERSION": "6.0",
