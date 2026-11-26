@@ -17,12 +17,23 @@ struct ShapeTests {
             topRight: CGPoint(x: 0.2, y: 0.1)
         )
         let scaledShape = shape.scaled(to: CGSize(width: 100, height: 100))
+        #if canImport(UIKit)
+        // UIKit's origin is top-left, so the normalized points are flipped vertically.
         let expectedShape = Shape(
             bottomLeft: CGPoint(x: 10, y: 80),
             bottomRight: CGPoint(x: 20, y: 80),
             topLeft: CGPoint(x: 10, y: 90),
             topRight: CGPoint(x: 20, y: 90)
         )
+        #else
+        // AppKit's origin is bottom-left, like the normalized points, so they're only scaled.
+        let expectedShape = Shape(
+            bottomLeft: CGPoint(x: 10, y: 20),
+            bottomRight: CGPoint(x: 20, y: 20),
+            topLeft: CGPoint(x: 10, y: 10),
+            topRight: CGPoint(x: 20, y: 10)
+        )
+        #endif
         #expect(scaledShape == expectedShape)
     }
 

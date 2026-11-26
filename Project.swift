@@ -1,6 +1,45 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
+let testTargets: [Target] = [
+    AlbumsUI.testTarget,
+    AppRatings.testTarget,
+    Brushes.testTarget,
+    Core.testTarget,
+    Defaults.testTarget,
+    DesktopSettingsUI.testTarget,
+    Detections.testTarget,
+    DocumentScanning.testTarget,
+    Editing.testTarget,
+    EditingToolbar.testTarget,
+    ErrorHandling.testTarget,
+    Exporting.testTarget,
+    FeatureFlagging.testTarget,
+    Geometry.testTarget,
+    ImageOpening.testTarget,
+    IntroView.testTarget,
+    Logging.testTarget,
+    MobileAutoRedactionsUI.testTarget,
+    MobileSettingsUI.testTarget,
+    Observations.testTarget,
+    Paywall.testTarget,
+    PhotoLibrary.testTarget,
+    PhotoPermissions.testTarget,
+    PhotoPicker.testTarget,
+    Purchasing.testTarget,
+    Redactions.testTarget,
+    SeekUI.testTarget,
+    Shortcuts.testTarget,
+    Tools.testTarget,
+    Unpurchased.testTarget,
+    URLParsing.testTarget,
+    UserActivities.testTarget,
+]
+
+// Test targets that also build for native macOS. These run in the NativeMacTests scheme, so a module is tested on
+// native macOS as soon as its test target passes `supportsNativeMac: true`.
+let nativeMacTestTargets = testTargets.filter { $0.destinations.contains(.mac) }
+
 let project = Project(
     name: "Highlighter",
     organizationName: "Cocoatype, LLC",
@@ -64,40 +103,7 @@ let project = Project(
         // test helpers
         TestHelpers.target,
         TestHelpers.interfaceTarget,
-        // tests
-        AlbumsUI.testTarget,
-        AppRatings.testTarget,
-        Brushes.testTarget,
-        Core.testTarget,
-        Defaults.testTarget,
-        DesktopSettingsUI.testTarget,
-        Detections.testTarget,
-        DocumentScanning.testTarget,
-        Editing.testTarget,
-        EditingToolbar.testTarget,
-        ErrorHandling.testTarget,
-        Exporting.testTarget,
-        FeatureFlagging.testTarget,
-        Geometry.testTarget,
-        ImageOpening.testTarget,
-        IntroView.testTarget,
-        Logging.testTarget,
-        MobileAutoRedactionsUI.testTarget,
-        MobileSettingsUI.testTarget,
-        Observations.testTarget,
-        Paywall.testTarget,
-        PhotoLibrary.testTarget,
-        PhotoPermissions.testTarget,
-        PhotoPicker.testTarget,
-        Purchasing.testTarget,
-        Redactions.testTarget,
-        SeekUI.testTarget,
-        Shortcuts.testTarget,
-        Tools.testTarget,
-        Unpurchased.testTarget,
-        URLParsing.testTarget,
-        UserActivities.testTarget,
-    ],
+    ] + testTargets,
     schemes: [
         .scheme(
             name: "Highlighter",
@@ -118,6 +124,20 @@ let project = Project(
                 ),
                 options: .options(
                     storeKitConfigurationPath: "App/Configuration.storekit"
+                )
+            )
+        ),
+        .scheme(
+            name: "NativeMacTests",
+            testAction: .targets(
+                nativeMacTestTargets.map { "\($0.name)" },
+                arguments: .arguments(
+                    environmentVariables: [
+                        "IS_TEST": .environmentVariable(value: "1", isEnabled: true),
+                    ],
+                    launchArguments: [
+                        .launchArgument(name: "-FeatureFlag.autoRedactInEdit YES", isEnabled: true),
+                    ]
                 )
             )
         ),

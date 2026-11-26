@@ -48,8 +48,9 @@ iOS/iPadOS/Mac Catalyst/visionOS app for redacting text in images. UIKit app, Sw
 - Write new tests with Swift Testing (`import Testing`, `@Test`, `#expect`, `#require`), not XCTest.
 - If a suite registers Factory overrides, mark it `@Suite(.container)` (from `FactoryTesting`) and override with `Container.shared.<dep>.register { … }`.
 - Test doubles go in the module's `Doubles/` folder, named by kind: `Stub…` for canned return values, `Spy…` for recording calls.
-- `Highlighter.xctestplan` controls which test targets run. A new test target needs to be in both `Project.swift` and the test plan, or it won't run.
-- Run tests with the **Highlighter** scheme, because the test plan sets the `IS_TEST` environment variable. Other schemes give false failures. `scripts/test.ps1` shows the full `xcodebuild` invocation.
+- `Highlighter.xctestplan` controls which test targets run. A new test target needs to be in both `testTargets` in `Project.swift` and the test plan, or it won't run.
+- Test targets that pass `supportsNativeMac: true` also run on native macOS in the generated `NativeMacTests` scheme. `scripts/test-mac.ps1` runs both the Catalyst and native macOS tests.
+- Run tests with the **Highlighter** scheme, because the test plan sets the `IS_TEST` environment variable. Other schemes give false failures, except `NativeMacTests`, which sets the same environment itself. `scripts/test.ps1` shows the full `xcodebuild` invocation.
 
 ## Style
 
