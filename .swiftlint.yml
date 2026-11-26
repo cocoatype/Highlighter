@@ -5,6 +5,7 @@ disabled_rules:
   - statement_position # doesn't work with expression syntax
   - type_name # same
 excluded:
+  - Tuist
   - .build
   - Derived
   - vendor
