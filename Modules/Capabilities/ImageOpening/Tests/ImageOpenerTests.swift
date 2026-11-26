@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 8/6/25.
 //  Copyright © 2025 Cocoatype, LLC. All rights reserved.
 
+#if canImport(UIKit)
 import Foundation
 import Testing
 import UIKit
@@ -70,3 +71,4 @@ struct ImageOpenerTests {
         case sample
     }
 }
+#endif
