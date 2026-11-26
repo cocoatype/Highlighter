@@ -3,6 +3,8 @@
 
 import UIKit
 
+import DesignSystem
+
 class SeekTextField: UISearchTextField, UISearchTextFieldDelegate {
     static func barButtonItem() -> UIBarButtonItem {
         return UIBarButtonItem(customView: SeekTextField())

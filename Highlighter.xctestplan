@@ -113,6 +113,11 @@
         },
         {
           "containerPath" : "container:Highlighter.xcodeproj",
+          "identifier" : "F53CA3716EA4583D1084AAF4",
+          "name" : "SeekUI"
+        },
+        {
+          "containerPath" : "container:Highlighter.xcodeproj",
           "identifier" : "1483D3127EF6377D60773B09",
           "name" : "Shortcuts"
         },
@@ -432,6 +437,13 @@
         "containerPath" : "container:Highlighter.xcodeproj",
         "identifier" : "16482792E6872C97C9E49E9C",
         "name" : "DesktopSettingsUITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "B22EB62196A691CE521E0769",
+        "name" : "SeekUITests"
       }
     }
   ],

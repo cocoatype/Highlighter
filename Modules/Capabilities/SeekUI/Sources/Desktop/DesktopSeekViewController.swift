@@ -7,14 +7,14 @@ import FactoryKit
 
 import ErrorHandling
 
-class DesktopSeekViewController: UIViewController {
-    init() {
+public final class DesktopSeekViewController: UIViewController {
+    public init() {
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .overCurrentContext
         modalTransitionStyle = .crossDissolve
     }
 
-    override func loadView() {
+    override public func loadView() {
         view = DesktopSeekContainerView()
     }
 

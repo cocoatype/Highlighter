@@ -3,6 +3,8 @@
 
 import UIKit
 
+import DesignSystem
+
 class TabletSeekSearchBar: UISearchBar, UISearchTextFieldDelegate {
     init() {
         super.init(frame: .zero)

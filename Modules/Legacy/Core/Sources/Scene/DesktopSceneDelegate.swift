@@ -11,6 +11,7 @@ import DesignSystem
 import Editing
 import Redactions
 import Scenes
+import SeekUI
 import Tools
 import UserActivities
 

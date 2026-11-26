@@ -10,9 +10,6 @@
 // Title for the no export data alert
 "DesktopSaveError.noImageDataTitle" = "Export Failed";
 
-// Title for the finalize button on seek and destroy
-"DesktopSeekButton.title" = "Hide";
-
 // Title for the cancel button on the photo save protection alert
 "PhotoEditingProtectionAlertController.cancelButtonTitle" = "Cancel";
 // Title for the delete button on the photo save protection alert

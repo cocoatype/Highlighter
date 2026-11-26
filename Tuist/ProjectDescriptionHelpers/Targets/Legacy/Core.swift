@@ -28,6 +28,7 @@ public enum Core {
             .target(Purchasing.target),
             .target(Redactions.target),
             .target(Scenes.target),
+            .target(SeekUI.target),
             .target(Tools.target),
             .target(URLParsing.target),
             .target(UserActivities.target),

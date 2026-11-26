@@ -6,7 +6,7 @@ import UIKit
 /// Seek and Destroy actions handled somewhere in the photo editing responder
 /// chain.
 ///
-/// These are separate from ``PhotoEditingResponderActions`` so the Seek views
+/// These are separate from `PhotoEditingResponderActions` so the Seek views
 /// can send them without depending on the rest of the editor.
 @objc @MainActor public protocol SeekActions: NSObjectProtocol {
     func toggleSeeking(_ sender: Any)

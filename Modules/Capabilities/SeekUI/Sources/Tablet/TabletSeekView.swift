@@ -3,6 +3,8 @@
 
 import UIKit
 
+import DesignSystem
+
 class TabletSeekView: UIView {
     init() {
         super.init(frame: .zero)
