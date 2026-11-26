@@ -4,15 +4,14 @@
 import Geometry
 import UIKit
 
-// UIBezierPath isn't Sendable. This is only safe because Redaction copies paths when it's created, and nothing
-// mutates a path after it's part of a redaction. Remove when RedactionPart stores a Sendable path type (#479).
-public enum RedactionPart: Equatable, @unchecked Sendable {
-    case path(UIBezierPath)
+public enum RedactionPart: Equatable, Sendable {
+    case path(RedactionPath)
     case shape(Shape)
 
-    var path: UIBezierPath {
+    /// A new `UIBezierPath` for this part. Each call returns a separate instance.
+    var bezierPath: UIBezierPath {
         switch self {
-        case .path(let path): return path
+        case .path(let path): return path.bezierPath
         case .shape(let shape): return UIBezierPath(cgPath: shape.path)
         }
     }

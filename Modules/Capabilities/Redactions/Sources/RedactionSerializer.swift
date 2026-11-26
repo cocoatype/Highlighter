@@ -47,7 +47,7 @@ public enum RedactionSerializer {
             if let shape = path.shape {
                 return .shape(shape)
             } else {
-                return .path(path)
+                return .path(RedactionPath(path))
             }
         }
     }

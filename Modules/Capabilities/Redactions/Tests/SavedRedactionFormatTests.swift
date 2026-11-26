@@ -41,6 +41,42 @@ struct SavedRedactionFormatTests {
         #expect(redaction.parts[1] == .shape(.savedWide))
     }
 
+    @Test(arguments: ["ShapeRedaction", "PathRedaction"])
+    func savedRedactionRoundTrips(fixtureName: String) throws {
+        let data = try fixture(named: fixtureName)
+        let redaction = try #require(RedactionSerializer.redaction(from: data))
+
+        let reencoded = RedactionSerializer.dataRepresentation(of: redaction)
+        let restored = try #require(RedactionSerializer.redaction(from: reencoded))
+
+        #expect(restored == redaction)
+    }
+
+    @Test func pathRedactionRoundTripKeepsBrushStroke() throws {
+        let data = try fixture(named: "PathRedaction")
+        let redaction = try #require(RedactionSerializer.redaction(from: data))
+
+        let reencoded = RedactionSerializer.dataRepresentation(of: redaction)
+        let restored = try #require(RedactionSerializer.redaction(from: reencoded))
+
+        try #require(restored.parts.count == 1)
+        try expectSavedBrushStroke(restored.parts[0])
+    }
+
+    @Test func legacyRedactionRoundTripsThroughCurrentFormat() throws {
+        let data = try fixture(named: "LegacyRedaction")
+        let pathsData = try PropertyListDecoder().decode([Data].self, from: data)
+        let redaction = try #require(RedactionSerializer.redaction(fromLegacyData: pathsData))
+
+        let reencoded = RedactionSerializer.dataRepresentation(of: redaction)
+        let restored = try #require(RedactionSerializer.redaction(from: reencoded))
+
+        #expect(restored == redaction)
+        try #require(restored.parts.count == 2)
+        try expectSavedBrushStroke(restored.parts[0])
+        #expect(restored.parts[1] == .shape(.savedWide))
+    }
+
     // MARK: Helpers
 
     private func fixture(named name: String) throws -> Data {
