@@ -8,6 +8,7 @@ let project = Project(
     targets: [
         // products
         App.target,
+        MacApp.target,
         Action.target,
         Photo.target,
         Widgets.target,
