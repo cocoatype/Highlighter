@@ -1,8 +1,11 @@
 //  Created by Geoff Pado on 11/25/26.
 //  Copyright © 2026 Cocoatype, LLC. All rights reserved.
 
+import CoreGraphics
+
 #if canImport(UIKit)
 import UIKit
+#endif
 
 /// An immutable brush stroke: the stroke's geometry plus the `UIBezierPath` drawing properties that the
 /// renderer, the editing view, and the saved format depend on.
@@ -25,33 +28,22 @@ public struct RedactionPath: Equatable, Sendable {
     public let flatness: CGFloat
     public let usesEvenOddFillRule: Bool
 
-    public init(_ bezierPath: UIBezierPath) {
-        var elements = [Element]()
-        bezierPath.cgPath.applyWithBlock { elementPointer in
-            let element = elementPointer.pointee
-            switch element.type {
-            case .moveToPoint:
-                elements.append(.move(to: element.points[0]))
-            case .addLineToPoint:
-                elements.append(.line(to: element.points[0]))
-            case .addQuadCurveToPoint:
-                elements.append(.quadCurve(to: element.points[1], control: element.points[0]))
-            case .addCurveToPoint:
-                elements.append(.curve(to: element.points[2], control1: element.points[0], control2: element.points[1]))
-            case .closeSubpath:
-                elements.append(.closeSubpath)
-            @unknown default:
-                break
-            }
-        }
-
+    init(
+        elements: [Element],
+        lineWidth: CGFloat,
+        lineCapStyle: CGLineCap,
+        lineJoinStyle: CGLineJoin,
+        miterLimit: CGFloat,
+        flatness: CGFloat,
+        usesEvenOddFillRule: Bool,
+    ) {
         self.elements = elements
-        lineWidth = bezierPath.lineWidth
-        lineCapStyle = bezierPath.lineCapStyle
-        lineJoinStyle = bezierPath.lineJoinStyle
-        miterLimit = bezierPath.miterLimit
-        flatness = bezierPath.flatness
-        usesEvenOddFillRule = bezierPath.usesEvenOddFillRule
+        self.lineWidth = lineWidth
+        self.lineCapStyle = lineCapStyle
+        self.lineJoinStyle = lineJoinStyle
+        self.miterLimit = miterLimit
+        self.flatness = flatness
+        self.usesEvenOddFillRule = usesEvenOddFillRule
     }
 
     /// A new `CGPath` with this path's geometry.
@@ -74,6 +66,42 @@ public struct RedactionPath: Equatable, Sendable {
         return path
     }
 
+    public var currentPoint: CGPoint { cgPath.currentPoint }
+
+    // MARK: - UIBezierPath Support
+
+    #if canImport(UIKit)
+    public init(_ bezierPath: UIBezierPath) {
+        var elements = [Element]()
+        bezierPath.cgPath.applyWithBlock { elementPointer in
+            let element = elementPointer.pointee
+            switch element.type {
+            case .moveToPoint:
+                elements.append(.move(to: element.points[0]))
+            case .addLineToPoint:
+                elements.append(.line(to: element.points[0]))
+            case .addQuadCurveToPoint:
+                elements.append(.quadCurve(to: element.points[1], control: element.points[0]))
+            case .addCurveToPoint:
+                elements.append(.curve(to: element.points[2], control1: element.points[0], control2: element.points[1]))
+            case .closeSubpath:
+                elements.append(.closeSubpath)
+            @unknown default:
+                break
+            }
+        }
+
+        self.init(
+            elements: elements,
+            lineWidth: bezierPath.lineWidth,
+            lineCapStyle: bezierPath.lineCapStyle,
+            lineJoinStyle: bezierPath.lineJoinStyle,
+            miterLimit: bezierPath.miterLimit,
+            flatness: bezierPath.flatness,
+            usesEvenOddFillRule: bezierPath.usesEvenOddFillRule,
+        )
+    }
+
     /// A new `UIBezierPath` with this path's geometry and drawing properties. Each call returns a separate
     /// instance, so callers can mutate the result freely.
     public var bezierPath: UIBezierPath {
@@ -86,7 +114,5 @@ public struct RedactionPath: Equatable, Sendable {
         bezierPath.usesEvenOddFillRule = usesEvenOddFillRule
         return bezierPath
     }
-
-    public var currentPoint: CGPoint { cgPath.currentPoint }
+    #endif
 }
-#endif
