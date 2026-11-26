@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 4/1/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+#if canImport(UIKit)
 import UIKit
 
 public class PromptLabel: UILabel {
@@ -21,3 +22,4 @@ public class PromptLabel: UILabel {
         fatalError("\(className) does not implement init(coder:)")
     }
 }
+#endif

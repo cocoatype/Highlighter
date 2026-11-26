@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 5/15/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+#if canImport(UIKit)
 import UIKit
 
 public class NavigationBar: UINavigationBar {
@@ -49,3 +50,4 @@ public class NavigationBar: UINavigationBar {
         fatalError("\(className) does not implement init(coder:)")
     }
 }
+#endif

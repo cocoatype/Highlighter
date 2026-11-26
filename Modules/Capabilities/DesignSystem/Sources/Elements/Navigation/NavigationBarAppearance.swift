@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 5/11/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
+#if canImport(UIKit)
 import UIKit
 
 public class NavigationBarAppearance: UINavigationBarAppearance {
@@ -35,3 +36,4 @@ public class NavigationBarAppearance: UINavigationBarAppearance {
         fatalError("\(typeName) does not implement init(coder:)")
     }
 }
+#endif

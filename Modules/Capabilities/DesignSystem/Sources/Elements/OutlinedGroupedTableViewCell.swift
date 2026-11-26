@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 11/16/26.
 //  Copyright © 2026 Cocoatype, LLC. All rights reserved.
 
+#if canImport(UIKit)
 import UIKit
 
 /// A table view cell for an inset grouped table that strokes the outline of its group.
@@ -69,3 +70,4 @@ private struct GroupedCellCorners: Equatable {
         }
     }
 }
+#endif

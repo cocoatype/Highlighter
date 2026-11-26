@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 4/3/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+#if canImport(UIKit)
 import ErrorHandling
 import UIKit
 
@@ -89,3 +90,4 @@ public extension UIFont {
         }
     }
 }
+#endif

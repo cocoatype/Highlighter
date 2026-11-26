@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 4/3/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+#if canImport(UIKit)
 import UIKit
 
 public extension UIColor {
@@ -98,3 +99,4 @@ public extension UIColor {
         return String(format: "#%02x%02x%02x", redInt, greenInt, blueInt)
     }
 }
+#endif
