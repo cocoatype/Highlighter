@@ -40,3 +40,18 @@ fileprivate extension HighlighterTool {
         }
     }
 }
+
+fileprivate extension UIColor {
+    var hexString: String {
+        var red = CGFloat.zero
+        var green = CGFloat.zero
+        var blue = CGFloat.zero
+        getRed(&red, green: &green, blue: &blue, alpha: nil)
+
+        let redInt = Int(round(red * 255))
+        let greenInt = Int(round(green * 255))
+        let blueInt = Int(round(blue * 255))
+
+        return String(format: "#%02x%02x%02x", redInt, greenInt, blueInt)
+    }
+}
