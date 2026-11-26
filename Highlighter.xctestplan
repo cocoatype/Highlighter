@@ -358,6 +358,13 @@
     {
       "target" : {
         "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "604946C469EBCD2041AB1010",
+        "name" : "DocumentsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
         "identifier" : "E7EB7246A46AEDD50E04A6A0",
         "name" : "UserActivitiesTests"
       }
