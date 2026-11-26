@@ -3,7 +3,6 @@
 
 enum ExportingError: Error {
     case missingBundleVersion
-    case noActivityURL
     case noDataGenerated
     case noInputProvided
     case failedImageDecode

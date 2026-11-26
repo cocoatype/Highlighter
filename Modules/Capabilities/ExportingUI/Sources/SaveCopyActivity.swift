@@ -1,12 +1,12 @@
 //  Created by Geoff Pado on 7/1/24.
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
-import Photos
 import UIKit
 
 import FactoryKit
 
 import ErrorHandling
+import Exporting
 
 class SaveCopyActivity: UIActivity {
     override var activityTitle: String? {
@@ -14,7 +14,7 @@ class SaveCopyActivity: UIActivity {
     }
 
     override var activityImage: UIImage? {
-        ExportingAsset.saveCopy.image
+        ExportingUIAsset.saveCopy.image
     }
 
     override func canPerform(withActivityItems activityItems: [Any]) -> Bool {
@@ -29,7 +29,7 @@ class SaveCopyActivity: UIActivity {
     @Injected(\.errorHandler) private var errorHandler
     override func perform() {
         guard let activityURL else {
-            return errorHandler.log(ExportingError.noActivityURL,
+            return errorHandler.log(ExportingUIError.noActivityURL,
                                     module: "Exporting",
                                     type: "SaveCopyActivity")
         }
