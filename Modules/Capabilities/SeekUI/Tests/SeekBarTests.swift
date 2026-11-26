@@ -1,10 +1,13 @@
 //  Created by Geoff Pado on 11/25/26.
 //  Copyright © 2026 Cocoatype, LLC. All rights reserved.
 
+import Foundation
 import Testing
 import UIKit
 
 @testable import SeekUI
+
+private let isMacCatalyst = ProcessInfo.processInfo.isMacCatalystApp
 
 @MainActor
 struct SeekBarTests {
@@ -15,7 +18,8 @@ struct SeekBarTests {
         #expect(seekBar.isUserInteractionEnabled == false)
     }
 
-    @Test func isShownWhenSeekingInCompactWidth() {
+    @Test(.disabled(if: isMacCatalyst, "Mac Catalyst is always regular width"))
+    func isShownWhenSeekingInCompactWidth() {
         let seekBar = SeekBar()
 
         seekBar.isSeeking = true
@@ -24,7 +28,8 @@ struct SeekBarTests {
         #expect(seekBar.isUserInteractionEnabled)
     }
 
-    @Test func isHiddenAgainWhenSeekingStops() {
+    @Test(.disabled(if: isMacCatalyst, "Mac Catalyst is always regular width"))
+    func isHiddenAgainWhenSeekingStops() {
         let seekBar = SeekBar()
 
         seekBar.isSeeking = true
