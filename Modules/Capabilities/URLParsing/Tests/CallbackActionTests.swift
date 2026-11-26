@@ -6,6 +6,7 @@ import XCTest
 @testable import URLParsing
 
 class CallbackActionTests: XCTestCase {
+    #if canImport(UIKit)
     func testCreatingOpenAction() throws {
         let url = try CallbackActionURLGenerator().openURL(imageURL: imageURL)
         let expectedImage = try XCTUnwrap(UIImage(contentsOfFile: imageURL.path))
@@ -44,9 +45,11 @@ class CallbackActionTests: XCTestCase {
         let action = CallbackAction(url: url)
         XCTAssertNil(action)
     }
+    #endif
 }
 
 extension CallbackAction {
+    #if canImport(UIKit)
     var isEdit: Bool {
         switch self {
         case .edit: true
@@ -67,4 +70,5 @@ extension CallbackAction {
         case .open: nil
         }
     }
+    #endif
 }

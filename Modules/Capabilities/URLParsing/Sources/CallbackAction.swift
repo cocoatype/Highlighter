@@ -1,10 +1,16 @@
 //  Created by Geoff Pado on 5/29/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+#if canImport(UIKit)
 import UIKit
+#else
+import Foundation
+#endif
 
 public enum CallbackAction {
-    case edit(UIImage, URL?), open(UIImage)
+    #if canImport(UIKit)
+    case edit(UIImage, URL?)
+    case open(UIImage)
 
     public var image: UIImage {
         switch self {
@@ -41,4 +47,7 @@ public enum CallbackAction {
             return nil
         }
     }
+    #else
+    init?(url: URL) { return nil }
+    #endif
 }
