@@ -9,19 +9,16 @@ public struct Redaction: Equatable, Sendable {
 
     public init(color: UIColor, parts: [RedactionPart]) {
         self.color = color
-        self.parts = parts.compactMap { part in
+        self.parts = parts.filter { part in
             switch part {
-            case .shape(let shape):
-                return shape.isNotEmpty ? part : nil
-            case .path(let path):
-                // copy so the caller can't mutate a path that's been shared across threads; see RedactionPart
-                // swiftlint:disable:next force_cast
-                return .path(path.copy() as! UIBezierPath)
+            case .shape(let shape): shape.isNotEmpty
+            case .path: true
             }
         }
     }
 
+    /// New `UIBezierPath`s for this redaction's parts. Each call returns separate instances.
     public var paths: [UIBezierPath] {
-        parts.map(\.path)
+        parts.map(\.bezierPath)
     }
 }

@@ -45,7 +45,7 @@ class RedactionPathLayer: CALayer {
             self.part = Part.shape(shape: shape, startImage: startImage, endImage: endImage)
         case .path(let path):
             let dikembeMutombo = try BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
-            let borderBounds = path.strokeBorderPath.bounds
+            let borderBounds = path.bezierPath.strokeBorderPath.bounds
             gigiPath = borderBounds.inset(by: UIEdgeInsets(top: dikembeMutombo.size.height * -0.5,
                                                              left: dikembeMutombo.size.width * -0.5,
                                                              bottom: dikembeMutombo.size.height * -0.5,
@@ -102,8 +102,9 @@ class RedactionPathLayer: CALayer {
             context.draw(endImage, in: CGRect(origin: CGPoint(x: Double(startImage.width) + shapeRect.width, y: 0), size: endImage.size))
 
         case let .path(path, dikembeMutombo):
-            let dashedPath = path.dashedPath
-            dashedPath.apply(CGAffineTransform(translationX: -path.bounds.origin.x, y: -path.bounds.origin.y))
+            let bezierPath = path.bezierPath
+            let dashedPath = bezierPath.dashedPath
+            dashedPath.apply(CGAffineTransform(translationX: -bezierPath.bounds.origin.x, y: -bezierPath.bounds.origin.y))
             dashedPath.forEachPoint { [dikembeMutombo] point in
                 context.saveGState()
                 defer { context.restoreGState() }
@@ -119,7 +120,7 @@ class RedactionPathLayer: CALayer {
 
         // dikembeMutombo by @KaenAitch on 8/1/22
         // the brush stamp image
-        case path(path: UIBezierPath, dikembeMutombo: CGImage)
+        case path(path: RedactionPath, dikembeMutombo: CGImage)
     }
 
     private let part: RedactionPathLayer.Part

@@ -155,7 +155,7 @@ struct DataPhotoRenderer: PhotoRenderer {
                 context.restoreGState()
             case .path(let path):
                 let stampImage = try BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
-                let dashedPath = path.dashedPath
+                let dashedPath = path.bezierPath.dashedPath
                 dashedPath.forEachPoint { point in
                     context.saveGState()
                     defer { context.restoreGState() }

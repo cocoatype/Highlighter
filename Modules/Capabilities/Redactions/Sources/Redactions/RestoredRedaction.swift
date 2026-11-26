@@ -20,7 +20,7 @@ extension Redaction: Codable {
     public func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         let colorData = try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: true)
-        let pathsData = parts.map(\.path).compactMap { try? NSKeyedArchiver.archivedData(withRootObject: $0, requiringSecureCoding: true) }
+        let pathsData = parts.map(\.bezierPath).compactMap { try? NSKeyedArchiver.archivedData(withRootObject: $0, requiringSecureCoding: true) }
 
         try container.encode(colorData, forKey: .color)
         try container.encode(pathsData, forKey: .paths)
