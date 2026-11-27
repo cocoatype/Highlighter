@@ -2,13 +2,19 @@
 
 import CoreGraphics
 
-struct RGB: Hashable {
-    let red: Double
-    let green: Double
-    let blue: Double
-    let alpha: Double
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
-    init(hex: Int) {
+public struct RGB: Hashable, Sendable {
+    public let red: Double
+    public let green: Double
+    public let blue: Double
+    public let alpha: Double
+
+    public init(hex: Int) {
         self.init(
             red: Double((hex & 0xFF0000) >> 16) / 255,
             green: Double((hex & 0x00FF00) >> 8) / 255,
@@ -17,7 +23,7 @@ struct RGB: Hashable {
         )
     }
 
-    init?(hexString: String) {
+    public init?(hexString: String) {
         let strippedString = if hexString.hasPrefix("#") {
             String(hexString.suffix(from: hexString.index(after: hexString.startIndex)))
         } else {
@@ -51,4 +57,17 @@ struct RGB: Hashable {
 
         return String(format: "#%02x%02x%02x", redInt, greenInt, blueInt)
     }
+
+    #if canImport(UIKit)
+    public init(color: UIColor) {
+        var red = CGFloat.zero
+        var green = CGFloat.zero
+        var blue = CGFloat.zero
+        var alpha = CGFloat.zero
+        color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+
+        self.init(red: red, green: green, blue: blue, alpha: alpha)
+    }
+    #elseif canImport(AppKit)
+    #endif
 }
