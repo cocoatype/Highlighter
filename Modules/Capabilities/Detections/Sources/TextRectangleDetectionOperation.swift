@@ -1,8 +1,8 @@
 //  Created by Geoff Pado on 4/22/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import Foundation
 import OSLog
-import UIKit
 import Vision
 
 import FactoryKit
@@ -10,9 +10,8 @@ import FactoryKit
 import ErrorHandling
 
 class TextRectangleDetectionOperation: Operation, @unchecked Sendable {
-    init?(image: UIImage) {
-        guard let cgImage = image.cgImage else { return nil }
-        self.imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: image.imageOrientation.cgImagePropertyOrientation)
+    init(image: DetectableImage) {
+        self.imageRequestHandler = VNImageRequestHandler(cgImage: image.cgImage, orientation: image.orientation)
 
         super.init()
     }

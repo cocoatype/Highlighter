@@ -27,7 +27,7 @@ struct ShortcutsRedactor {
             throw ShortcutsRedactorError.noImage(input.data)
         }
 
-        let textObservations = try await detector.recognizeText(in: image)
+        let textObservations = try await detector.recognizeText(in: DetectableImage(image))
         let wordObservations = wordList.flatMap { word -> [WordObservation] in
             textObservations.flatMap { observation -> [WordObservation] in
                 observation.wordObservations(matching: word)
@@ -51,7 +51,7 @@ struct ShortcutsRedactor {
             throw ShortcutsRedactorError.noImage(input.data)
         }
 
-        let texts = try await detector.recognizeText(in: image)
+        let texts = try await detector.recognizeText(in: DetectableImage(image))
         let lines = texts.map { TaggableLine(id: $0.textObservationUUID, text: $0.string) }
         let textsByID = Dictionary(texts.map { ($0.textObservationUUID, $0) }, uniquingKeysWith: { first, _ in first })
         let wordObservations = Detections.Category
@@ -77,7 +77,7 @@ struct ShortcutsRedactor {
             throw ShortcutsRedactorError.noImage(input.data)
         }
 
-        let texts = try await detector.detectText(in: image)
+        let texts = try await detector.detectText(in: DetectableImage(image))
         let redactions = texts.map { Redaction($0, color: color.color) }
         return try await RedactedFile(
             sourceImage: input,

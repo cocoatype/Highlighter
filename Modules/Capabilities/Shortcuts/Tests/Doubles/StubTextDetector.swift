@@ -16,11 +16,11 @@ final class StubTextDetector: TextDetecting {
         self.recognizedStrings = recognizedStrings
     }
 
-    func recognizeText(in image: UIImage) async throws -> [RecognizedTextObservation] {
+    func recognizeText(in image: DetectableImage) async throws -> [RecognizedTextObservation] {
         return try recognizedStrings.map(RecognizedTextObservation.init)
     }
 
-    func detectText(in image: UIImage) async throws -> [TextRectangleObservation] {
+    func detectText(in image: DetectableImage) async throws -> [TextRectangleObservation] {
         try recognizedStrings.map(TextRectangleObservation.init)
     }
 }
