@@ -50,7 +50,7 @@ public extension UIColor {
 
     // MARK: - Hex
 
-    private convenience init(_ rgb: RGB) {
+    convenience init(_ rgb: RGB) {
         self.init(
             red: rgb.red,
             green: rgb.green,
