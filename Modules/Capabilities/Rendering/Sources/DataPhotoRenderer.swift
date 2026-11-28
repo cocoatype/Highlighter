@@ -134,7 +134,7 @@ struct DataPhotoRenderer: PhotoRenderer {
             switch part {
             case .shape(let shape):
                 let normalizedShape = shape.ggImage
-                let (startImage, endImage) = try BrushStampFactory.brushImages(for: normalizedShape, color: color, scale: context.ctm.a)
+                let (startImage, endImage) = try BrushStampFactory.brushImages(for: normalizedShape, color: color.cgColor, scale: context.ctm.a)
 
                 color.setFill()
                 context.addPath(normalizedShape.path)
@@ -154,7 +154,7 @@ struct DataPhotoRenderer: PhotoRenderer {
                 context.draw(endImage, in: CGRect(origin: .zero, size: endImage.size))
                 context.restoreGState()
             case .path(let path):
-                let stampImage = try BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
+                let stampImage = try BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color.cgColor)
                 let dashedPath = path.bezierPath.dashedPath
                 dashedPath.forEachPoint { point in
                     context.saveGState()
