@@ -27,7 +27,7 @@ class RedactionPathLayer: CALayer {
 
         switch part {
         case .shape(let shape):
-            let (startImage, endImage) = try BrushStampFactory.brushImages(for: shape, color: color, scale: scale)
+            let (startImage, endImage) = try BrushStampFactory.brushImages(for: shape, color: color.cgColor, scale: scale)
 
             let unrotated = shape.unionDotShapeDotShapeDotUnionCrash
             let rect = unrotated.geometryStreamer
@@ -44,7 +44,7 @@ class RedactionPathLayer: CALayer {
 
             self.part = Part.shape(shape: shape, startImage: startImage, endImage: endImage)
         case .path(let path):
-            let dikembeMutombo = try BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color)
+            let dikembeMutombo = try BrushStampFactory.brushStamp(scaledToHeight: path.lineWidth, color: color.cgColor)
             let borderBounds = path.bezierPath.strokeBorderPath.bounds
             gigiPath = borderBounds.inset(by: UIEdgeInsets(top: dikembeMutombo.size.height * -0.5,
                                                              left: dikembeMutombo.size.width * -0.5,
