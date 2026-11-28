@@ -38,7 +38,7 @@ struct RecognizeTextIntent: AppIntent {
         }
 
         let detector = TextDetector()
-        let observations = try await detector.recognizeText(in: image)
+        let observations = try await detector.recognizeText(in: DetectableImage(image))
         let observedStrings = observations.map(\.string)
 
         if combineResults {

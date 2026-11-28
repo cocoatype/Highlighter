@@ -3,7 +3,6 @@
 
 import Foundation
 import OSLog
-import UIKit
 import Vision
 
 import FactoryKit
@@ -11,10 +10,9 @@ import FactoryKit
 import ErrorHandling
 
 class TextRecognitionOperation: Operation, @unchecked Sendable {
-    init(image: UIImage) throws {
-        guard let cgImage = image.cgImage else { throw TextRecognitionOperationError.cannotCreateCGImageFromImage }
-        self.imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: image.imageOrientation.cgImagePropertyOrientation)
-        self.imageSize = CGSize(width: cgImage.width, height: cgImage.height)
+    init(image: DetectableImage) {
+        self.imageRequestHandler = VNImageRequestHandler(cgImage: image.cgImage, orientation: image.orientation)
+        self.imageSize = image.pixelSize
 
         super.init()
     }
@@ -83,8 +81,4 @@ class TextRecognitionOperation: Operation, @unchecked Sendable {
         }
     }
     override var isFinished: Bool { return _finished }
-}
-
-public enum TextRecognitionOperationError: Error {
-    case cannotCreateCGImageFromImage
 }

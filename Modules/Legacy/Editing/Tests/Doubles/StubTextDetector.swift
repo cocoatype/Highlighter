@@ -17,7 +17,7 @@ final class StubTextDetector: TextDetecting {
         self.recognizedStrings = recognizedStrings
     }
 
-    func recognizeText(in image: UIImage) async throws -> [RecognizedTextObservation] {
+    func recognizeText(in image: DetectableImage) async throws -> [RecognizedTextObservation] {
         recognizedStrings.enumerated().compactMap { index, string in
             let visionText = StubVisionText(string: string, line: index)
             return RecognizedTextObservation(
@@ -27,7 +27,7 @@ final class StubTextDetector: TextDetecting {
         }
     }
 
-    func detectText(in image: UIImage) async throws -> [TextRectangleObservation] {
+    func detectText(in image: DetectableImage) async throws -> [TextRectangleObservation] {
         []
     }
 

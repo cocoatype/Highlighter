@@ -8,6 +8,7 @@ import FactoryKit
 import FactoryTesting
 
 import DefaultsDoubles
+import Detections
 
 @testable import Editing
 
@@ -19,7 +20,7 @@ struct PhotoEditingTextDetectionControllerTests {
         }
     }
 
-    @Test func autoRedactsRecognizedTextOnFirstDetection() async {
+    @Test func autoRedactsRecognizedTextOnFirstDetection() async throws {
         Container.shared.textDetector.register { StubTextDetector(recognizedStrings: ["secret", "public"]) }
         let photoEditingView = PhotoEditingScrollView()
         let controller = PhotoEditingTextDetectionController(
@@ -27,12 +28,12 @@ struct PhotoEditingTextDetectionControllerTests {
             autoRedactor: PhotoEditingAutoRedactor(photoEditingView: photoEditingView)
         )
 
-        await controller.detectTextAndAutoRedact(in: UIImage())
+        await controller.detectTextAndAutoRedact(in: try blankImage())
 
         #expect(photoEditingView.redactions.count == 1)
     }
 
-    @Test func doesNotAutoRedactUnlistedText() async {
+    @Test func doesNotAutoRedactUnlistedText() async throws {
         Container.shared.textDetector.register { StubTextDetector(recognizedStrings: ["public"]) }
         let photoEditingView = PhotoEditingScrollView()
         let controller = PhotoEditingTextDetectionController(
@@ -40,8 +41,21 @@ struct PhotoEditingTextDetectionControllerTests {
             autoRedactor: PhotoEditingAutoRedactor(photoEditingView: photoEditingView)
         )
 
-        await controller.detectTextAndAutoRedact(in: UIImage())
+        await controller.detectTextAndAutoRedact(in: try blankImage())
 
         #expect(photoEditingView.redactions.isEmpty)
+    }
+
+    private func blankImage() throws -> DetectableImage {
+        let context = try #require(CGContext(
+            data: nil,
+            width: 1,
+            height: 1,
+            bitsPerComponent: 8,
+            bytesPerRow: 0,
+            space: CGColorSpaceCreateDeviceRGB(),
+            bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
+        ))
+        return try DetectableImage(cgImage: #require(context.makeImage()))
     }
 }

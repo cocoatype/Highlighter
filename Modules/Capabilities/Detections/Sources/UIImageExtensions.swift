@@ -4,6 +4,21 @@
 #if canImport(UIKit)
 import UIKit
 
+public extension DetectableImage {
+    /// Creates a detectable image from a `UIImage`.
+    ///
+    /// - Throws: `DetectableImageError.missingCGImage` if the image isn't
+    ///   backed by a `CGImage`.
+    init(_ image: UIImage) throws {
+        guard let cgImage = image.cgImage else { throw DetectableImageError.missingCGImage }
+        self.init(cgImage: cgImage, orientation: image.imageOrientation.cgImagePropertyOrientation)
+    }
+}
+
+public enum DetectableImageError: Error {
+    case missingCGImage
+}
+
 extension UIImage.Orientation {
     var cgImagePropertyOrientation: CGImagePropertyOrientation {
         switch self {

@@ -1,7 +1,7 @@
 //  Created by Geoff Pado on 4/22/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
-import UIKit
+import Foundation
 import Vision
 
 import struct Observations.RecognizedText
@@ -10,14 +10,13 @@ import struct Observations.TextRectangleObservation
 import struct Observations.WordObservation
 
 public final class TextDetector: NSObject, Sendable {
-    public func detectText(in image: UIImage) async throws -> [TextRectangleObservation] {
-        guard let detectionOperation = TextRectangleDetectionOperation(image: image) else {
-            throw TextDetectorError.cannotCreateOperation
-        }
+    public func detectText(in image: DetectableImage) async throws -> [TextRectangleObservation] {
+        let detectionOperation = TextRectangleDetectionOperation(image: image)
+        let imageSize = image.orientedSize
 
         return try await withCheckedThrowingContinuation { continuation in
             detectionOperation.completionBlock = { [weak detectionOperation] in
-                guard let detectedTextObservations = detectionOperation?.textRectangleResults?.map({ TextRectangleObservation($0, in: image) })
+                guard let detectedTextObservations = detectionOperation?.textRectangleResults?.map({ TextRectangleObservation($0, scaledTo: imageSize) })
                 else { return continuation.resume(throwing: TextDetectorError.resultsMissing) }
 
                 continuation.resume(returning: detectedTextObservations)
@@ -61,12 +60,12 @@ public final class TextDetector: NSObject, Sendable {
             .flatMap(\.allWordObservations)
     }
 
-    public func recognizeWords(in image: UIImage) async throws -> [WordObservation] {
-        try await recognizeWords(with: TextRecognitionOperation(image: image))
+    public func recognizeWords(in image: DetectableImage) async throws -> [WordObservation] {
+        await recognizeWords(with: TextRecognitionOperation(image: image))
     }
 
-    public func recognizeText(in image: UIImage) async throws -> [RecognizedTextObservation] {
-        try await recognizeTextObservations(with: TextRecognitionOperation(image: image))
+    public func recognizeText(in image: DetectableImage) async throws -> [RecognizedTextObservation] {
+        await recognizeTextObservations(with: TextRecognitionOperation(image: image))
     }
 
     // MARK: Boilerplate
@@ -75,6 +74,5 @@ public final class TextDetector: NSObject, Sendable {
 }
 
 public enum TextDetectorError: Error {
-    case cannotCreateOperation
     case resultsMissing
 }
