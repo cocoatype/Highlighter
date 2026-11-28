@@ -20,7 +20,7 @@ struct AppPurchaseVersionProvider: PurchaseVersionProvider {
         get async {
             // Mac returns the marketing version instead of the build version
             // but the Mac app never gets the grandfathered support anyway
-            #if DEBUG || targetEnvironment(macCatalyst)
+            #if DEBUG || canImport(AppKit)
             return .max
             #else
             return await fetchOriginalPurchaseVersion()

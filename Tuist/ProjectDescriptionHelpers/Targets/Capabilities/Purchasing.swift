@@ -3,6 +3,7 @@ import ProjectDescription
 public enum Purchasing {
     public static let target = Target.capabilitiesTarget(
         name: "Purchasing",
+        supportsNativeMac: true,
         dependencies: [
             .target(Defaults.target),
             .target(ErrorHandling.target),
@@ -12,6 +13,7 @@ public enum Purchasing {
 
     public static let testTarget = Target.capabilitiesTestTarget(
         name: "Purchasing",
+        supportsNativeMac: true,
         dependencies: [
             .target(doublesTarget),
             .target(Defaults.target),
@@ -24,6 +26,7 @@ public enum Purchasing {
 
     public static let doublesTarget = Target.capabilitiesDoublesTarget(
         name: "Purchasing",
+        supportsNativeMac: true,
         dependencies: [
             .target(TestHelpers.interfaceTarget),
         ],
