@@ -464,6 +464,13 @@
         "identifier" : "B22EB62196A691CE521E0769",
         "name" : "SeekUITests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Highlighter.xcodeproj",
+        "identifier" : "3078D775A29817D32A6DEAB2",
+        "name" : "MainMenuTests"
+      }
     }
   ],
   "version" : 1
