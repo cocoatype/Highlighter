@@ -22,6 +22,7 @@ public enum MacApp {
         entitlements: "Mac/HighlighterMac.entitlements",
         dependencies: [
             .target(Documents.target),
+            .target(MainMenu.target),
         ],
         settings: .settings(
             base: [

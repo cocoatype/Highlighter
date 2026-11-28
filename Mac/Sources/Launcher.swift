@@ -3,6 +3,8 @@
 
 import AppKit
 
+import MainMenu
+
 @main
 enum Launcher {
     @MainActor
@@ -12,6 +14,7 @@ enum Launcher {
         let delegate = AppDelegate()
         let application = NSApplication.shared
         application.delegate = delegate
+        MainMenuBuilder.install(in: application)
         application.run()
     }
 }

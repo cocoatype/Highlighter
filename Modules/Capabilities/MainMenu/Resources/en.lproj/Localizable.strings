@@ -1,0 +1,74 @@
+// Title for the application menu item that shows the About panel. %@ is the app name.
+"MainMenuBuilder.aboutItemTitleFormat" = "About %@";
+
+// Title for the Services submenu in the application menu
+"MainMenuBuilder.servicesMenuTitle" = "Services";
+
+// Title for the application menu item that hides the app. %@ is the app name.
+"MainMenuBuilder.hideItemTitleFormat" = "Hide %@";
+
+// Title for the application menu item that hides every other app
+"MainMenuBuilder.hideOthersItemTitle" = "Hide Others";
+
+// Title for the application menu item that shows every hidden app
+"MainMenuBuilder.showAllItemTitle" = "Show All";
+
+// Title for the application menu item that quits the app. %@ is the app name.
+"MainMenuBuilder.quitItemTitleFormat" = "Quit %@";
+
+// Title for the File menu
+"MainMenuBuilder.fileMenuTitle" = "File";
+
+// Title for the File menu item that closes the front window
+"MainMenuBuilder.closeItemTitle" = "Close";
+
+// Title for the Edit menu
+"MainMenuBuilder.editMenuTitle" = "Edit";
+
+// Title for the Edit menu item that undoes the last change
+"MainMenuBuilder.undoItemTitle" = "Undo";
+
+// Title for the Edit menu item that redoes the last undone change
+"MainMenuBuilder.redoItemTitle" = "Redo";
+
+// Title for the Edit menu item that cuts the selection
+"MainMenuBuilder.cutItemTitle" = "Cut";
+
+// Title for the Edit menu item that copies the selection
+"MainMenuBuilder.copyItemTitle" = "Copy";
+
+// Title for the Edit menu item that pastes
+"MainMenuBuilder.pasteItemTitle" = "Paste";
+
+// Title for the Edit menu item that deletes the selection
+"MainMenuBuilder.deleteItemTitle" = "Delete";
+
+// Title for the Edit menu item that selects everything
+"MainMenuBuilder.selectAllItemTitle" = "Select All";
+
+// Title for the View menu
+"MainMenuBuilder.viewMenuTitle" = "View";
+
+// Title for the View menu item that shows or hides the window toolbar
+"MainMenuBuilder.showToolbarItemTitle" = "Show Toolbar";
+
+// Title for the View menu item that opens the toolbar customization sheet
+"MainMenuBuilder.customizeToolbarItemTitle" = "Customize Toolbar…";
+
+// Title for the View menu item that makes the window full screen
+"MainMenuBuilder.enterFullScreenItemTitle" = "Enter Full Screen";
+
+// Title for the Window menu
+"MainMenuBuilder.windowMenuTitle" = "Window";
+
+// Title for the Window menu item that minimizes the front window
+"MainMenuBuilder.minimizeItemTitle" = "Minimize";
+
+// Title for the Window menu item that zooms the front window
+"MainMenuBuilder.zoomItemTitle" = "Zoom";
+
+// Title for the Window menu item that brings every app window to the front
+"MainMenuBuilder.bringAllToFrontItemTitle" = "Bring All to Front";
+
+// Title for the Help menu
+"MainMenuBuilder.helpMenuTitle" = "Help";
