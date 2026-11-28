@@ -13,6 +13,9 @@ public enum MacApp {
         bundleId: "com.cocoatype.Highlighter",
         deploymentTargets: .macOS("13.0"),
         infoPlist: "Mac/Info.plist",
+        resources: [
+            "App/Resources/AppIcon.icon",
+        ],
         buildableFolders: [
             .folder("Mac/Sources"),
         ],
@@ -28,6 +31,9 @@ public enum MacApp {
             debug: [
                 "CODE_SIGN_IDENTITY": .string(Shared.debugCodeSignIdentity),
                 "ENABLE_DEBUG_DYLIB": false,
+            ],
+            release: [
+                "PROVISIONING_PROFILE_SPECIFIER": "Black Highlighter (macOS Non-Catalyst App)",
             ],
             defaultSettings: .recommended(excluding: [
                 "CODE_SIGN_IDENTITY",

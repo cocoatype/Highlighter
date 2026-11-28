@@ -1,8 +1,20 @@
 param (
     [Parameter(Mandatory = $true)][string]$ArchivePath,
     [Parameter(Mandatory = $true)][string]$ExportPath,
-    [string]$Scheme = "Highlighter"
+    [string]$Scheme,
+    # Archive the native AppKit app instead of the Catalyst app
+    [switch]$Native
 )
+
+if ($Native) {
+    if (-not $Scheme) { $Scheme = "HighlighterMac" }
+    $destination = "generic/platform=macOS"
+    $exportOptionsPlist = "./scripts/export-mac-native.plist"
+} else {
+    if (-not $Scheme) { $Scheme = "Highlighter" }
+    $destination = "generic/platform=macOS,variant=Mac Catalyst"
+    $exportOptionsPlist = "./scripts/export-mac.plist"
+}
 
 $env:NSUnbufferedIO = 'YES'
 . "$PSScriptRoot/app-store-connect.ps1"
@@ -11,7 +23,7 @@ $env:NSUnbufferedIO = 'YES'
     xcodebuild archive `
       -workspace Highlighter.xcworkspace `
       -scheme $Scheme `
-      -destination "generic/platform=macOS,variant=Mac Catalyst" `
+      -destination $destination `
       -archivePath $ArchivePath 2>&1
 
     $script:xcodebuildExitCode = $LASTEXITCODE
@@ -28,7 +40,7 @@ $keyPath = Save-AppStoreConnectKey -Directory $keyDirectory
 
 & {
     xcodebuild -exportArchive `
-      -exportOptionsPlist "./scripts/export-mac.plist" `
+      -exportOptionsPlist $exportOptionsPlist `
       -archivePath $ArchivePath `
       -exportPath $ExportPath `
       -authenticationKeyPath $keyPath `
