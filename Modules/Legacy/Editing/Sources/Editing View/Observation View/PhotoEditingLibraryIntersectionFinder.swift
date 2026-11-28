@@ -3,9 +3,10 @@
 
 private import ClippingBezier
 import CoreGraphics
-import Observations
 
-struct PhotoEditingLibraryIntersectionFinder: PhotoEditingIntersectionFinder {
+import EditingEngine
+
+struct PhotoEditingLibraryIntersectionFinder: IntersectionFinder {
     func intersectionExists(between lhs: CGPath, and rhs: CGPath) -> Bool {
         let lhsPath = UIBezierPath(cgPath: lhs)
         let rhsPath = UIBezierPath(cgPath: rhs)

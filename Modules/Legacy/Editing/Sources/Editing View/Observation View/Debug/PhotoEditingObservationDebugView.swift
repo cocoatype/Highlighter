@@ -7,6 +7,7 @@ import UIKit
 import FactoryKit
 
 import Defaults
+import EditingEngine
 import FeatureFlagging
 import Geometry
 import Observations
@@ -93,7 +94,7 @@ class PhotoEditingObservationDebugView: PhotoEditingRedactionView {
                 } else { return characterLayers }
             }
 
-            let calculator = PhotoEditingObservationCalculator(
+            let calculator = ObservationCalculator(
                 detectedCharacterObservations: textObservations.flatMap(\.characterObservations),
                 recognizedCharacterObservations: recognizedTextObservations.flatMap(\.characterObservations)
             )

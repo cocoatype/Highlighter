@@ -6,6 +6,7 @@ import UIKit
 private import ClippingBezier
 import FactoryKit
 
+import EditingEngine
 import Logging
 import Observations
 import Redactions
@@ -150,7 +151,7 @@ class PhotoEditingWorkspaceView: UIControl, UIGestureRecognizerDelegate {
 
         redactableObservationsTask?.cancel()
         redactableObservationsTask = Task { [weak self] in
-            let calculator = PhotoEditingObservationCalculator(
+            let calculator = ObservationCalculator(
                 detectedCharacterObservations: textCharacterObservations,
                 recognizedCharacterObservations: recognizedCharacterObservations
             )
