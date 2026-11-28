@@ -86,6 +86,8 @@ public enum MainMenuBuilder {
 
     private static func fileMenu() -> NSMenu {
         menu(Strings.MainMenuBuilder.fileMenuTitle, items: [
+            item(Strings.MainMenuBuilder.openItemTitle, #selector(NSDocumentController.openDocument(_:)), "o"),
+            .separator(),
             item(Strings.MainMenuBuilder.closeItemTitle, #selector(NSWindow.performClose(_:)), "w"),
         ])
     }
