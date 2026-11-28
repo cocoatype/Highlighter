@@ -39,6 +39,7 @@ struct MainMenuBuilderTests {
         Shortcut(#selector(NSApplication.hideOtherApplications(_:)), "h", [.command, .option]),
         Shortcut(#selector(NSApplication.unhideAllApplications(_:)), ""),
         Shortcut(#selector(NSApplication.terminate(_:)), "q"),
+        Shortcut(#selector(NSDocumentController.openDocument(_:)), "o"),
         Shortcut(#selector(NSWindow.performClose(_:)), "w"),
         Shortcut(Selector(("undo:")), "z"),
         Shortcut(Selector(("redo:")), "z", [.command, .shift]),
@@ -61,6 +62,13 @@ struct MainMenuBuilderTests {
         if !shortcut.keyEquivalent.isEmpty {
             #expect(item.keyEquivalentModifierMask == shortcut.modifiers)
         }
+    }
+
+    @Test func fileMenuOpensBeforeClosing() throws {
+        let menu = try #require(menus.main.items[1].submenu)
+        let actions = menu.items.compactMap(\.action)
+
+        #expect(actions == [#selector(NSDocumentController.openDocument(_:)), #selector(NSWindow.performClose(_:))])
     }
 
     private var allItems: [NSMenuItem] {

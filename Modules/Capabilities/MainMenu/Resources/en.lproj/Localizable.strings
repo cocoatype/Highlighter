@@ -19,6 +19,9 @@
 // Title for the File menu
 "MainMenuBuilder.fileMenuTitle" = "File";
 
+// Title for the File menu item that shows the Open panel to choose an image
+"MainMenuBuilder.openItemTitle" = "Open…";
+
 // Title for the File menu item that closes the front window
 "MainMenuBuilder.closeItemTitle" = "Close";
 
