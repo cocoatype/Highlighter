@@ -2,10 +2,11 @@
 //  Copyright © 2024 Cocoatype, LLC. All rights reserved.
 
 import CoreGraphics
-import Observations
 
-@available(iOS 16.0, *)
-struct PhotoEditingSystemIntersectionFinder: PhotoEditingIntersectionFinder {
+import Geometry
+
+@available(iOS 16.0, macOS 13.0, *)
+struct SystemIntersectionFinder: IntersectionFinder {
     func intersectionExists(between lhs: CGPath, and rhs: CGPath) -> Bool {
         guard lhs.intersects(rhs) || rhs.intersects(lhs) else { return false }
         let intersection = lhs.intersection(rhs)

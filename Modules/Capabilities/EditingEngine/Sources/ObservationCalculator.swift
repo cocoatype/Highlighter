@@ -3,30 +3,24 @@
 
 import Foundation
 
-import EditingEngine
+import FactoryKit
+
 import Geometry
 import Observations
-import Redactions
 
-actor PhotoEditingObservationCalculator {
+public actor ObservationCalculator {
     private let detectedCharacterObservations: [CharacterObservation]
     private let recognizedCharacterObservations: [CharacterObservation]
-    private let finder: any PhotoEditingIntersectionFinder = {
-        if #available(iOS 16.0, *) {
-            return PhotoEditingSystemIntersectionFinder()
-        } else {
-            return PhotoEditingLibraryIntersectionFinder()
-        }
-    }()
+    @Injected(\.intersectionFinder) private var finder
 
     // takes character observations rather than the text observations themselves, since character observations are
     // Sendable and recognized text observations aren't
-    init(detectedCharacterObservations: [CharacterObservation], recognizedCharacterObservations: [CharacterObservation]) {
+    public init(detectedCharacterObservations: [CharacterObservation], recognizedCharacterObservations: [CharacterObservation]) {
         self.detectedCharacterObservations = detectedCharacterObservations
         self.recognizedCharacterObservations = recognizedCharacterObservations
     }
 
-    var calculatedObservations: [CharacterObservation] {
+    public var calculatedObservations: [CharacterObservation] {
         // get all character observations from recognized text
         let recognizedCharacterObservations = recognizedCharacterObservations.filter(\.bounds.isNotZero)
 
@@ -34,7 +28,7 @@ actor PhotoEditingObservationCalculator {
         let detectedCharacterObservations = detectedCharacterObservations.filter(\.bounds.isNotZero)
 
         // find where all detected observations belong
-        let calculationPass = detectedCharacterObservations.reduce(into: PhotoEditingObservationCalculationPass()) { currentPass, detectedObservation in
+        let calculationPass = detectedCharacterObservations.reduce(into: ObservationCalculationPass()) { currentPass, detectedObservation in
             let detectedPath = detectedObservation.bounds.path
             let intersectingRecognizedObservation = recognizedCharacterObservations.first(where: { recognizedObservation in
                 let recognizedPath = recognizedObservation.bounds.path
@@ -85,7 +79,7 @@ actor PhotoEditingObservationCalculator {
         return combinedObservations + childlessObservations + unfulfilledObservations + calculationPass.orphanedObservations
     }
 
-    var calculatedObservationsByUUID: [UUID: [CharacterObservation]] {
+    public var calculatedObservationsByUUID: [UUID: [CharacterObservation]] {
         return calculatedObservations.byUUID
     }
 }

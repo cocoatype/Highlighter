@@ -5,7 +5,9 @@ public enum EditingEngine {
         name: "EditingEngine",
         supportsNativeMac: true,
         dependencies: [
+            .target(Geometry.target),
             .target(Observations.target),
+            .external(name: "FactoryKit"),
         ]
     )
 
@@ -15,6 +17,8 @@ public enum EditingEngine {
         dependencies: [
             .target(Geometry.target),
             .target(Observations.target),
+            .external(name: "FactoryKit"),
+            .external(name: "FactoryTesting"),
         ]
     )
 }

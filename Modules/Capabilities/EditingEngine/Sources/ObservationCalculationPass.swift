@@ -4,7 +4,7 @@
 import Foundation
 import Observations
 
-struct PhotoEditingObservationCalculationPass {
+struct ObservationCalculationPass {
     // a dictionary with a key of a recognized observation, and a value of an
     // array of matching detected observations
     var recognizedObservations = [CharacterObservation: [CharacterObservation]]()

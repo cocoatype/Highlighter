@@ -1,6 +1,7 @@
 //  Created by Geoff Pado on 4/27/19.
 //  Copyright © 2019 Cocoatype, LLC. All rights reserved.
 
+import EditingEngine
 import Observations
 import Redactions
 import UIKit
@@ -143,7 +144,7 @@ class PhotoEditingObservationVisualizationView: PhotoEditingRedactionView {
         get async {
             guard let textObservations, let recognizedTextObservations else { return [] }
 
-            let calculator = PhotoEditingObservationCalculator(
+            let calculator = ObservationCalculator(
                 detectedCharacterObservations: textObservations.flatMap(\.characterObservations),
                 recognizedCharacterObservations: recognizedTextObservations.flatMap(\.characterObservations)
             )
